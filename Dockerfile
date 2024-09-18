@@ -11,15 +11,6 @@ COPY . .
 
 RUN npm run build
 
-FROM node:20.11.1-alpine3.19
-
-COPY package.json .
-COPY package-lock.json .
-
-# second installation of only production dependencies reduces the final docker image size
-# with the default packages setup it was ~130MB size reduction from ~300MB to ~172MB
-# however, it requires some additional time to re-install part of the deps that were installed in the first build stage
-
 ENV PORT=80
 
 EXPOSE 80
