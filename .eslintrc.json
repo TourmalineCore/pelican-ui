@@ -1,0 +1,96 @@
+{
+  "root": true,
+  "ignorePatterns": [
+      "sw-*.js",
+      "next.*",
+      "postcss.config.js"
+    ],
+  "env": {
+    "browser": true,
+    "es2024": true,
+    "es6": true
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "@stylistic/eslint-plugin"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "next/core-web-vitals"
+  ],
+  "settings": {
+      "import/resolver": {
+        "node": {
+          "paths": ["node_modules", "src"],
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
+      }
+    },
+  "rules": {
+    "@stylistic/linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "@stylistic/max-len": [
+      "error",
+      {
+        "code": 180,
+        "comments": 200
+      }
+    ],
+    "@stylistic/indent": ["error", 2, { "SwitchCase": 1 }],
+    "@stylistic/object-property-newline": "error",
+    "@stylistic/explicit-function-return-type": "off",
+    "@stylistic/no-var-requires": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      { "functions": false, "classes": true, "variables": true, "typedefs": true }
+    ],
+    "react/require-default-props": 0,
+    "react/prop-types": 0,
+    "react/destructuring-assignment": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/no-did-update-set-state": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/function-component-definition": "off",
+    "react/jsx-filename-extension": 0,
+    "react/sort-comp": [1, {
+      "order": [
+        "static-methods",
+        "lifecycle",
+        "render",
+        "everything-else"
+      ]
+    }],
+    "jsx-a11y/label-has-associated-control": 0,
+    "jsx-a11y/control-has-associated-label": 0,
+    "jsx-a11y/anchor-is-valid": "off",
+    "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-default-export": 0,
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/no-array-for-each": "off",
+    "no-underscore-dangle": 0,
+    "func-names": 0,
+    "no-plusplus": 0,
+    "no-return-assign": 0,
+    "no-param-reassign": 0,
+    "no-unused-vars": "off",
+    "no-restricted-syntax": ["error", "BinaryExpression[operator='in']"],
+    "class-methods-use-this": 0,
+    "default-param-last": "off",
+    // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
+    "no-prototype-builtins": "off"
+  }
+}
