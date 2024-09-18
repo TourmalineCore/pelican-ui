@@ -39,7 +39,7 @@ service:
 
 ingress:
   enabled: true
-  hostname: "pelican.tourmalinecore.com"
+  hostname: "to-dos.tourmalinecore.com"
   path: ""
   annotations:
       cert-manager.io/cluster-issuer: letsencrypt 
