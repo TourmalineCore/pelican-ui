@@ -7,7 +7,7 @@ RUN npm run build
 
 FROM nginx:1.26.0-alpine3.19-slim
 COPY /ci/nginx.conf /data/conf/nginx.conf
-COPY --from=build /build /usr/share/nginx/html
+COPY --from=build /next /usr/share/nginx/html
 EXPOSE 80
 
 WORKDIR /usr/share/nginx/html
