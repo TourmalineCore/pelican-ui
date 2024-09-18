@@ -19,8 +19,6 @@ COPY package-lock.json .
 # second installation of only production dependencies reduces the final docker image size
 # with the default packages setup it was ~130MB size reduction from ~300MB to ~172MB
 # however, it requires some additional time to re-install part of the deps that were installed in the first build stage
-RUN npm ci --omit=dev
-
 COPY --from=build /dist /dist
 
 ENV PORT=80
