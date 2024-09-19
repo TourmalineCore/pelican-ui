@@ -9,8 +9,8 @@ COPY . .
 
 RUN npm run build
 
-ENV PORT 81
+ENV PORT 80
 
-EXPOSE 81
+EXPOSE 80
 
 CMD ["npm", "run", "start"]
