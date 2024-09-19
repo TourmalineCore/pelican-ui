@@ -39,7 +39,7 @@ service:
 
 ingress:
   enabled: true
-  hostname: "to-dos.tourmalinecore.com"
+  hostname: "pelican.tourmalinecore.com"
   path: ""
   annotations:
       cert-manager.io/cluster-issuer: letsencrypt 
@@ -57,7 +57,7 @@ networkPolicy:
 
 # CUSTOM: Here you store non secret env vars that will be passed to the pod's environment
 extraConfigMapEnvVars:
-  VITE_API_ROOT: "https://to-dos.tourmalinecore.com/api/to-dos-api"
+  VITE_API_ROOT: "https://pelican.tourmalinecore.com/api/pelican-api"
 
 # this is needed to tell the container to read extra env vars from the dedicated Config Map that we create in extraDeploy
 extraEnvVarsCM: "{{ include \"common.names.fullname\" . }}"
