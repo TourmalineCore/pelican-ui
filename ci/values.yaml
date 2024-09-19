@@ -2,7 +2,7 @@
 
 image:
   registry: docker.io
-  repository: pandyz/pelican-ui
+  repository: tourmalinecore/pelican-ui
   tag: "latest"
   pullPolicy: Always
   debug: true
