@@ -42,10 +42,8 @@ ingress:
   hostname: "pelican.tourmalinecore.com"
   path: ""
   annotations:
-    # redirect from http to https
+    cert-manager.io/cluster-issuer: letsencrypt 
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    cert-manager.io/cluster-issuer: letsencrypt
-    nginx.ingress.kubernetes.io/rewrite-target: /api/pelican-ui/$2
   ingressClassName: "nginx"
   tls: true
 
