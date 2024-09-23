@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "next dev",
+    "build": "next build",
+    "start": "next start",
     "postcss": "postcss components/Footer/Footer.scss --dir build/static/css --parser postcss-scss",
-    "build": "NODE_ENV=production next build",
     "start:pre-release": "next start",
     "lint": "npm run lint:ts && npm run lint:scss",
     "lint:fix": "npm run lint:ts:fix && npm run lint:scss:fix",
