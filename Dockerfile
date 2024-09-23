@@ -34,7 +34,7 @@ RUN \
 FROM nginx:alpine AS runner
 
 # Copy NGINX configuration
-COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY /app/nginx.conf /etc/nginx/nginx.conf
 
 # Set working directory
 WORKDIR /app
