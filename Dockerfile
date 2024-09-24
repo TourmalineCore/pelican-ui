@@ -1,48 +1,41 @@
-# Базовый образ с Node.js
-FROM node:18-alpine AS base
+FROM node:21-alpine as base
 
-# Установка зависимостей на этапе deps
+# Install dependencies
 FROM base AS deps
+
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Копируем файлы пакетов и устанавливаем зависимости
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+COPY package.json package-lock.json* ./
+RUN npm ci
 
-FROM base AS builder
+# Build
+FROM base as builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN \
-  if [ -f yarn.lock ]; then yarn run build; \
-  elif [ -f package-lock.json ]; then npm run build; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+RUN npm run build
 
-FROM nginx:alpine AS runner
-
-RUN addgroup -S nextjs && adduser -S nextjs -G nextjs
-
-COPY /ci/nginx.conf /data/conf/nginx.conf
-
-RUN mkdir -p /var/cache/nginx && chown -R nextjs:nextjs /var/cache/nginx
-
+# Runner
+FROM base AS runner
 WORKDIR /app
 
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+USER nextjs
+
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
 
-RUN chown -R nextjs:nextjs /app
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-EXPOSE 80
+EXPOSE 3000
 
-CMD ["nginx", "-g", "daemon off;"]
+ENV PORT 3000
+
+CMD ["node", "server.js"]
