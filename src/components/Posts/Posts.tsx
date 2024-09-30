@@ -1,14 +1,20 @@
 import { api } from '@/src/common/utils/HttpClient';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export function Posts() {
-  useEffect(() => {
-    console.log('before fetch data');
+  type ArticleData = {
+    id: number;
+    attributes: {
+      [name: string]: string,
+    }
+  };
 
+  const [articles, setArticles] = useState<ArticleData[]>([]);
+
+  useEffect(() => {
     async function fetchData() {
-      const responseData = api.get('/posts');
-      console.log('responseData:', responseData);
-      console.log('after fetch data');
+      const responseData = await api.get('/posts');
+      setArticles(responseData.data.data);
     }
 
     fetchData();
@@ -17,6 +23,7 @@ export function Posts() {
   return (
     <div className="posts">
       Posts
+      {articles.map((el) => <div key={el.id}>{el.id}</div>)}
     </div>
   );
 }
