@@ -25,6 +25,7 @@
   },
   "parser": "@typescript-eslint/parser",
   "extends": [
+    "plugin:react/recommended",
     "airbnb",
     "airbnb-typescript",
     "next/core-web-vitals"

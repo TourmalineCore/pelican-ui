@@ -1,0 +1,21 @@
+{
+    "eslint.alwaysShowStatus": true,
+    "eslint.options": {
+      "extensions": [ ".js", ".jsx", ".ts", ".tsx" ]
+    },
+    "eslint.validate": [
+      "javascript",
+      "typescript", 
+      "typescriptreact",
+    ],
+    "[javascript]": {
+      "editor.formatOnSave": true
+    },
+    "files.eol": "\n",
+    "editor.tabSize": 2,
+    "stylelint.validate": ["css", "scss"],
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.fixAll.stylelint": "explicit"
+    }
+} 
