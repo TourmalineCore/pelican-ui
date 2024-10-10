@@ -44,6 +44,7 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt 
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
   ingressClassName: "nginx"
   tls: true
 
