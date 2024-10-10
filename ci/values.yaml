@@ -40,7 +40,7 @@ service:
 ingress:
   enabled: true
   hostname: "pelican.tourmalinecore.com"
-  path: ""
+  path: /pelican(/|$)(.*)
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt 
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
