@@ -3,7 +3,7 @@ name: Publish Docker image
 on:
   push:
     branches:
-      - feature/add-build-image-in-github-registry
+      - master
 
 jobs:
   push_to_registry:
