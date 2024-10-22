@@ -1,0 +1,56 @@
+# Here you can find docs bitnami/nginx chart https://github.com/bitnami/charts/blob/main/bitnami/nginx/README.md
+
+image:
+  registry: ghcr.io
+  repository: tourmalinecore/pelican-ui
+  tag: "latest"
+  pullPolicy: Always
+  debug: true
+
+containerPorts:
+  http: 3000
+  https: ""
+
+replicaCount: 1
+
+# 1000m means 100% of processor time 
+# 1m means 0.1% of processor time.
+# at start pod is being allocated with resources from requests, if it needs more consumption can grow until limits.
+# if pod uses more resources than limits in spite of the reason kube-system will perform a forced restart
+resources:
+  limits:
+    cpu: 50m
+    memory: 512Mi
+  requests:
+    cpu: 1m
+    memory: 256Mi
+
+livenessProbe:
+  enabled: false
+
+readinessProbe:
+  enabled: false
+
+service:
+  type: ClusterIP
+  ports:
+    http: 3000
+    https: ""
+
+ingress:
+  enabled: true
+  hostname: "pelican.tourmalinecore.com"
+  path: ""
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt 
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+  ingressClassName: "nginx"
+  tls: true
+
+# not needed in this setup
+serviceAccount:
+  create: false
+
+# not needed in this setup
+networkPolicy:
+  enabled: false
