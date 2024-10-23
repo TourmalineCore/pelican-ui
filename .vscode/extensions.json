@@ -2,5 +2,13 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
+    "ms-vscode-remote.remote-containers",
+    "vscode-icons-team.vscode-icons",
+    "k--kato.intellij-idea-keybindings",
+    "eamodio.gitlens",
+    
+    // Use code-spell-checker plugins only in open-source projects
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-russian"
   ]
 }
