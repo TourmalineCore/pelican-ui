@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/quotes */
 import '../styles/index.scss';
 import type { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';

@@ -1,19 +1,19 @@
 import { api } from '@/src/common/utils/HttpClient';
 import { useEffect, useState } from 'react';
 
-export function Posts() {
-  type ArticleData = {
-    id: number;
-    attributes: {
-      [name: string]: string,
-    }
-  };
+type ArticleData = {
+  id: number;
+  attributes: {
+    [name: string]: string,
+  }
+};
 
+export function Posts() {
   const [articles, setArticles] = useState<ArticleData[]>([]);
 
   useEffect(() => {
     async function fetchData() {
-      const responseData = await api.get('/posts');
+      const responseData = await api.get(`/posts`);
       setArticles(responseData.data.data);
     }
 
@@ -22,7 +22,7 @@ export function Posts() {
 
   return (
     <div className="posts">
-      Posts
+      Посты
       {articles.map((el) => <div key={el.id}>{el.id}</div>)}
     </div>
   );

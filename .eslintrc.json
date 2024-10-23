@@ -58,6 +58,13 @@
       "error",
       { "functions": false, "classes": true, "variables": true, "typedefs": true }
     ],
+    "@typescript-eslint/quotes": [
+      "error",
+      "backtick",
+      { 
+        "avoidEscape": true
+      }
+    ],
     "react/require-default-props": 0,
     "react/prop-types": 0,
     "react/destructuring-assignment": 0,
