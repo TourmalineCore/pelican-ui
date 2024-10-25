@@ -1,0 +1,31 @@
+.button {
+  position: relative;
+  display: block;
+  border-radius: 16px;
+  background-color: initial;
+  cursor: pointer;
+
+  &_primary {
+    border: none;
+    color: $color-white;
+    background-color: $color-green;
+    transition: background-color ease-out 0.3s;
+
+    &:focus,
+    &:hover {
+      background-color: $color-green-dark;
+    }
+  }
+
+  &_secondary {
+    border: 1px solid $color-green;
+    color: $color-green;
+    background-color: $color-white;
+    transition: background-color ease-out 0.2s;
+
+    &:focus,
+    &:hover {
+      background-color: $color-green-10;
+    }
+  }
+}

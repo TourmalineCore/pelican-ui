@@ -1,0 +1,31 @@
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: $ff-inter;
+  background-color: $color-background-page;
+}
+
+.container {
+  padding-right: 16px;
+  padding-left: 16px;
+
+  @include tablet-xl {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+  @include desktop {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+.caption-1 {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
+}

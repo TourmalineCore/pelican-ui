@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+import { Header } from '../Header/Header';
 
 export function Layout({
   children,
@@ -6,6 +7,7 @@ export function Layout({
 } & PropsWithChildren) {
   return (
     <div className="layout">
+      <Header />
       <main>
         {children}
       </main>
