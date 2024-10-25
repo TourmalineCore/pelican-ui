@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { Layout } from '../components/Layout/Layout';
-import { Posts } from '../components/Posts/Posts';
 
 export default function HomePage() {
   return (
@@ -12,7 +11,7 @@ export default function HomePage() {
       <Layout>
         Hello, World!
       </Layout>
-      <Posts />
+      {/* <Posts /> */}
     </>
   );
 }
