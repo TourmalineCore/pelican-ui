@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-export function HeaderMenuButton({
+export function HeaderMobileButton({
   isActive,
   setIsActive,
 }: {
@@ -11,7 +11,7 @@ export function HeaderMenuButton({
   return (
     <div
       role="button"
-      className={clsx(`header-menu-button`, {
+      className={clsx(`header-mobile-button`, {
         active: isActive,
       })}
       onClick={setIsActive}

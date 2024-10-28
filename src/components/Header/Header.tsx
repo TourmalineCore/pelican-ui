@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { DESKTOP_BREAKPOINT } from "@/src/common/constants";
-import { HeaderMenuButton } from "./components/HeaderMenuButton/HeaderMenuButton";
 import { HeaderLogo } from "./components/HeaderLogo/HeaderLogo";
 import { HeaderEye } from "./components/HeaderEye/HeaderEye";
 import { Button } from "../Button/Button";
 import { HeaderNavigation } from "./components/HeaderNavigation/HeaderNavigation";
+import { HeaderMobileButton } from "./components/HeaderMobileButton/HeaderMobileButton";
 
 export function Header() {
   const [isActive, setIsActive] = useState(false);
@@ -32,7 +32,7 @@ export function Header() {
         <div className="header__right">
           <HeaderEye />
           {!isDesktop && (
-            <HeaderMenuButton
+            <HeaderMobileButton
               isActive={isActive}
               setIsActive={handleToggle}
             />
