@@ -46,12 +46,12 @@
       }
 
       &::before {
-        background-image: url("../../../public/image/header/parrot-close-eye.svg");
+        background-image: url("../../../../public/image/header/parrot-close-eye.svg");
         visibility: hidden;
       }
 
       &::after {
-        background-image: url("../../../public/image/header/parrot-open-eye.svg");
+        background-image: url("../../../../public/image/header/parrot-open-eye.svg");
       }
 
       &:focus,

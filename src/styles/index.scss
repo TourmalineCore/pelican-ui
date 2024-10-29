@@ -5,10 +5,10 @@
 @import "globals";
 
 // Component
-@import "../components/Layout/Layout";
-@import "../components/Header/Header";
-@import "../components/Header/components/HeaderMobileButton/HeaderMobileButton";
-@import "../components/Header/components/HeaderLogo/HeaderLogo";
-@import "../components/Header/components/HeaderEye/HeaderEye";
-@import "../components/Header/components/HeaderNavigation/HeaderNavigation";
-@import "../components/Button/Button";
+@import "../components/globals/Layout/Layout";
+@import "../components/globals/Header/Header";
+@import "../components/globals/Header/components/HeaderMobileButton/HeaderMobileButton";
+@import "../components/globals/Header/components/HeaderLogo/HeaderLogo";
+@import "../components/globals/Header/components/HeaderEye/HeaderEye";
+@import "../components/globals/Header/components/HeaderNavigation/HeaderNavigation";
+@import "../components/globals/Button/Button";

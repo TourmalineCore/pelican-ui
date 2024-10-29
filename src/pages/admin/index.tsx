@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Layout } from '../../components/Layout/Layout';
+import { Layout } from '../../components/globals/Layout/Layout';
 
 export default function AdminPage() {
   return (
