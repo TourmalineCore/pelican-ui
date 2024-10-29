@@ -1,8 +1,7 @@
 import { test, expect } from '@playwright/experimental-ct-react';
 import { Header } from './Header';
-import '../../../public/image/button/parrot-close-eye.svg';
 
-test(`HeaderTest`, async ({ page, mount }) => {
+test(`HeaderComponentTest`, async ({ mount, page }) => {
   await page.setViewportSize({
     width: 1366,
     height: 768,

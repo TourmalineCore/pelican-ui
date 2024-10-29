@@ -15,7 +15,8 @@
     "lint:ts:fix": "next lint -- --fix",
     "lint:scss:fix": "npm run lint:scss -- --fix",
     "prepare": "husky",
-    "test-e2-ui": "npx playwright test --ui"
+    "test-e2-ui": "npx playwright test --ui",
+    "test-ct": "cross-env NODE_ENV=test playwright test -c playwright-ct.config.ts --trace on"
   },
   "dependencies": {
     "axios": "^1.7.7",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.0.3",
     "@commitlint/config-conventional": "^19.0.3",
+    "@playwright/experimental-ct-react": "^1.48.2",
     "@playwright/test": "^1.48.1",
     "@stylistic/eslint-plugin": "^1.6.3",
     "@stylistic/stylelint-config": "^1.0.1",
@@ -42,6 +44,7 @@
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "autoprefixer": "^10.4.19",
+    "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
