@@ -18,10 +18,10 @@ const MOCK_NAVIGATION = [
     id: 4,
     name: `Льготы`,
   },
-  {
-    id: 5,
-    name: `Документация`,
-  },
+  // {
+  //   id: 5,
+  //   name: `Документация`,
+  // },
 ];
 
 export function HeaderNavigation() {
