@@ -12,6 +12,13 @@ async function desktopTest({
 }: {
   page: Page,
 }) {
+  await page.route(`**/logo-desktop.0f1db5cc.svg`, async (route) => {
+    await route.fulfill({
+      contentType: `image/svg+xml`,
+      path: `public/images/header/logo.svg`,
+    });
+  });
+
   await setViewportSizeAndGoToPage({
     page,
     width: 1366,
