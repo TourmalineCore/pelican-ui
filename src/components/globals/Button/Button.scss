@@ -1,6 +1,7 @@
 .button {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
   border-radius: 16px;
   background-color: initial;
   cursor: pointer;
