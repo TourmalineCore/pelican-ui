@@ -130,5 +130,6 @@ dist
 .pnp.*
 /test-results/
 /playwright-report/
+/test/pw-test-results/
 /blob-report/
 /playwright/.cache/
