@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { DESKTOP_BREAKPOINT } from "@/src/common/constants";
+import { GlobalComponentProps } from "@/src/types";
 import { HeaderLogo } from "./components/HeaderLogo/HeaderLogo";
 import { HeaderEye } from "./components/HeaderEye/HeaderEye";
 import { Button } from "../Button/Button";
 import { HeaderNavigation } from "./components/HeaderNavigation/HeaderNavigation";
 import { HeaderMobileButton } from "./components/HeaderMobileButton/HeaderMobileButton";
 
-export function Header() {
+export function Header({
+  navigationLinks,
+}: {
+  navigationLinks: GlobalComponentProps['navigationLinks']
+}) {
   const [isActive, setIsActive] = useState(false);
   const windowWidth = useWindowWidth();
 
@@ -26,7 +31,7 @@ export function Header() {
 
         <div className="header__left">
           <HeaderLogo />
-          {isDesktop && <HeaderNavigation />}
+          {isDesktop && <HeaderNavigation navigationLinks={navigationLinks} />}
         </div>
 
         <div className="header__right">
