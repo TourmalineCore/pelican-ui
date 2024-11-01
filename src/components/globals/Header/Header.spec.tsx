@@ -1,10 +1,11 @@
+import { getStrapiURL } from '@/src/common/utils/getStrapiURL';
 import { setViewportSizeAndGoToPage } from '@/test/helpers';
 import { Page, Route } from '@playwright/test';
 import { test, expect } from 'playwright-ssr';
 
 test.describe(`HeaderComponentTests`, () => {
   test.beforeEach(async ({ webServer }) => {
-    await webServer.route(`http://localhost:1337/api/navigations`, async (route: Route) => {
+    await webServer.route(getStrapiURL(`/api/navigations`), async (route: Route) => {
       const mockResponse = [
         {
           id: 1,
