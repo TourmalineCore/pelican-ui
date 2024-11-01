@@ -1,28 +1,28 @@
 import Link from "next/link";
 
 // TODO: replace to cms api?
-const MOCK_NAVIGATION = [
-  {
-    id: 1,
-    name: `Услуги`,
-  },
-  {
-    id: 2,
-    name: `Правила посещения`,
-  },
-  {
-    id: 3,
-    name: `Адрес`,
-  },
-  {
-    id: 4,
-    name: `Льготы`,
-  },
-  {
-    id: 5,
-    name: `Документация`,
-  },
-];
+// const MOCK_NAVIGATION = [
+//   {
+//     id: 1,
+//     name: `Услуги`,
+//   },
+//   {
+//     id: 2,
+//     name: `Правила посещения`,
+//   },
+//   {
+//     id: 3,
+//     name: `Адрес`,
+//   },
+//   {
+//     id: 4,
+//     name: `Льготы`,
+//   },
+//   {
+//     id: 5,
+//     name: `Документация`,
+//   },
+// ];
 
 export function HeaderNavigation({ navigations }: { navigations: any[] }) {
   return (

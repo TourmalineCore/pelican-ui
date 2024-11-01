@@ -14,18 +14,18 @@ test.describe(`HeaderComponentTests`, () => {
           id: 2,
           name: `Правила посещения`,
         },
-        // {
-        //   id: 3,
-        //   name: `Адрес`,
-        // },
-        // {
-        //   id: 4,
-        //   name: `Льготы`,
-        // },
-        // {
-        //   id: 5,
-        //   name: `Документация`,
-        // },
+        {
+          id: 3,
+          name: `Адрес`,
+        },
+        {
+          id: 4,
+          name: `Льготы`,
+        },
+        {
+          id: 5,
+          name: `Документация`,
+        },
       ];
 
       await route.fulfill({
