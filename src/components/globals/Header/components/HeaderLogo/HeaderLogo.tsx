@@ -3,8 +3,8 @@ import Image from "next/image";
 import { DESKTOP_BREAKPOINT } from "@/src/common/constants";
 import Link from "next/link";
 import { AppRoute } from "@/src/common/enum";
-import Logo from '../../../../../../public/image/header/logo.svg';
-import LogoDesktop from '../../../../../../public/image/header/logo-desktop.svg';
+import Logo from '../../../../../../public/images/header/logo.svg';
+import LogoDesktop from '../../../../../../public/images/header/logo-desktop.svg';
 
 export function HeaderLogo() {
   const windowWidth = useWindowWidth();

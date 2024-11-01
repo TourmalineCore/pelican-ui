@@ -1,14 +1,40 @@
-import { test, expect } from '@playwright/experimental-ct-react';
-import { Header } from './Header';
-import '../../../public/image/button/parrot-close-eye.svg';
+import { setViewportSizeAndGoToPage } from '@/test/helpers';
+import { test, expect, Page } from '@playwright/test';
 
-test(`HeaderTest`, async ({ page, mount }) => {
-  await page.setViewportSize({
+test.describe(`HeaderComponentTests`, () => {
+  test(`MobileTest`, mobileTest);
+
+  test(`DesktopTest`, desktopTest);
+});
+
+async function desktopTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSizeAndGoToPage({
+    page,
     width: 1366,
-    height: 768,
   });
 
-  await mount(<Header />);
+  await expect(getHeaderByTestId({ page }))
+    .toHaveScreenshot(`header.png`);
+}
 
-  await expect(page.getByTestId(`header`)).toHaveScreenshot(`header-component.png`);
-});
+async function mobileTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSizeAndGoToPage({
+    page,
+    width: 375,
+  });
+
+  await expect(getHeaderByTestId({ page }))
+    .toHaveScreenshot(`header-mobile.png`);
+}
+
+function getHeaderByTestId({ page }: { page: Page }) {
+  return page.getByTestId(`header`);
+}
