@@ -14,12 +14,40 @@ export default function HomePage({
       <Layout navigations={navigations}>
         Hello, World!
       </Layout>
-      {/* <Posts /> */}
     </>
   );
 }
 
 export async function getServerSideProps() {
+  if (process.env.APP_ENV === `test`) {
+    return {
+      props: {
+        navigations: [
+          {
+            id: 1,
+            name: `Услуги`,
+          },
+          {
+            id: 2,
+            name: `Правила посещения`,
+          },
+          {
+            id: 3,
+            name: `Адрес`,
+          },
+          {
+            id: 4,
+            name: `Льготы`,
+          },
+          {
+            id: 5,
+            name: `Документация`,
+          },
+        ],
+      },
+    };
+  }
+
   const res = await api.get(`/navigations`);
 
   return {
