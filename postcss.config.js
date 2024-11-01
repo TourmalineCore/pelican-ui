@@ -1,5 +1,5 @@
 module.exports = {
-  plugins: process.env.NODE_ENV !== 'test' ? [
+  plugins: [
     'postcss-flexbugs-fixes',
     process.env.NODE_ENV === 'production'
       ? [
@@ -18,5 +18,5 @@ module.exports = {
         },
       ]
       : null,
-  ].filter(Boolean) : []
+  ].filter(Boolean)
 };
