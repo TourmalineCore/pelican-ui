@@ -16,7 +16,6 @@ async function mobileTest({
 }) {
   await setViewportSizeAndGoToPage({
     page,
-    width: 375,
   });
 
   await expect(getHeaderByTestId({ page }))

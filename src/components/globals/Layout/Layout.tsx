@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { GlobalComponentProps } from '@/src/types';
+import { GlobalComponentProps } from '@/src/common/types';
 import { Header } from '../Header/Header';
 
 type LayoutProps = GlobalComponentProps & PropsWithChildren;

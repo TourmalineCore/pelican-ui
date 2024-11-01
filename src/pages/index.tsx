@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Layout } from '../components/globals/Layout/Layout';
-import { GlobalComponentProps } from '../types';
+import { GlobalComponentProps } from '../common/types';
 
 export default function HomePage({
   navigationLinks,

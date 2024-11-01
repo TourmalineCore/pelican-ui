@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { DESKTOP_BREAKPOINT } from "@/src/common/constants";
-import { GlobalComponentProps } from "@/src/types";
+import { GlobalComponentProps } from "@/src/common/types";
 import { HeaderLogo } from "./components/HeaderLogo/HeaderLogo";
 import { HeaderEye } from "./components/HeaderEye/HeaderEye";
 import { Button } from "../Button/Button";

@@ -1,4 +1,4 @@
-import { GlobalComponentProps } from "@/src/types";
+import { GlobalComponentProps } from "@/src/common/types";
 import Link from "next/link";
 
 export function HeaderNavigation({
