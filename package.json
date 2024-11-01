@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "test": "cross-env APP_ENV=test next dev",
     "build": "next build",
     "start": "next start",
     "postcss": "postcss components/Footer/Footer.scss --dir build/static/css --parser postcss-scss",

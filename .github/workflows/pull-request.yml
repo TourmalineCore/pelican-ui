@@ -31,7 +31,7 @@ jobs:
 
     - name: Run dev server
       run: |
-        npm run dev &
+        npm run test &
         npx --yes wait-on http://localhost:3000
 
     - name: Install Playwright Browsers
