@@ -29,10 +29,10 @@ jobs:
     - name: Check linting
       run: npm run lint
 
-    - name: Run dev server
-      run: |
-        npm run dev &
-        npx --yes wait-on http://localhost:3000
+    # - name: Run dev server
+    #   run: |
+    #     npm run dev &
+    #     npx --yes wait-on http://localhost:3000
 
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
