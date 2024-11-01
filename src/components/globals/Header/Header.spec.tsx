@@ -7,6 +7,8 @@ test.describe(`HeaderComponentTests`, () => {
   test(`TabletTest`, tabletTest);
 
   test(`DesktopTest`, desktopTest);
+
+  test(`DesktopXlTest`, desktopXlTest);
 });
 
 async function mobileTest({
@@ -47,7 +49,21 @@ async function desktopTest({
   });
 
   await expect(getHeaderByTestId({ page }))
-    .toHaveScreenshot(`header.png`);
+    .toHaveScreenshot(`header-desktop.png`);
+}
+
+async function desktopXlTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSizeAndGoToPage({
+    page,
+    width: 1920,
+  });
+
+  await expect(getHeaderByTestId({ page }))
+    .toHaveScreenshot(`header-desktop-xl.png`);
 }
 
 function getHeaderByTestId({ page }: { page: Page }) {
