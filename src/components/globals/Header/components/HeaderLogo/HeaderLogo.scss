@@ -7,4 +7,9 @@
     width: 77px;
     height: 46px;
   }
+
+  @include desktop-xl {
+    width: 120px;
+    height: 71px;
+  }
 }

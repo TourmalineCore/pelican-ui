@@ -18,4 +18,8 @@
   @include desktop {
     margin-right: 24px;
   }
+
+  @include desktop-xl {
+    margin-right: 32px;
+  }
 }

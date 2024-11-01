@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps } from '../common/types';
+import { NAVIGATION_LINKS } from '../common/mocks/header-mocks';
 
 export default function HomePage({
   navigationLinks,
@@ -17,35 +18,6 @@ export default function HomePage({
     </>
   );
 }
-
-// TODO move to other file
-const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
-  {
-    id: 1,
-    name: `Услуги`,
-    link: ``,
-  },
-  {
-    id: 2,
-    name: `Правила посещения`,
-    link: ``,
-  },
-  {
-    id: 3,
-    name: `Адрес`,
-    link: ``,
-  },
-  {
-    id: 4,
-    name: `Льготы`,
-    link: ``,
-  },
-  {
-    id: 5,
-    name: `Документация`,
-    link: ``,
-  },
-];
 
 export async function getServerSideProps() {
   // TODO Uncomment when the api appears, there will be static data here

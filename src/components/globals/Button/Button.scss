@@ -2,6 +2,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: 16px;
   background-color: initial;
   cursor: pointer;
@@ -28,5 +29,13 @@
     &:hover {
       background-color: $color-green-10;
     }
+
+    @include desktop-xl {
+      border: 1.5px solid $color-green;
+    }
+  }
+
+  @include desktop-xl {
+    border-radius: 20px;
   }
 }

@@ -12,4 +12,8 @@
       color: $color-green;
     }
   }
+
+  @include desktop-xl {
+    gap: 40px;
+  }
 }
