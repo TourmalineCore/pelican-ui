@@ -2,12 +2,13 @@ import { PropsWithChildren } from 'react';
 import { Header } from '../Header/Header';
 
 export function Layout({
+  navigations,
   children,
 }: {
-} & PropsWithChildren) {
+} & PropsWithChildren & { navigations: any }) {
   return (
     <div className="layout">
-      <Header />
+      <Header navigations={navigations} />
       <main>
         {children}
       </main>

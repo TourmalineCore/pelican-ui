@@ -24,19 +24,19 @@ const MOCK_NAVIGATION = [
   },
 ];
 
-export function HeaderNavigation() {
+export function HeaderNavigation({ navigations }: { navigations: any[] }) {
   return (
     <ul className="header-navigation">
-      {MOCK_NAVIGATION.map(({ id, name }) => (
+      {navigations.map((item: any) => (
         <li
-          key={id}
+          key={item.id}
           className="header-navigation__item"
         >
           <Link
             href="#"
             className="caption-1 header-navigation__link"
           >
-            {name}
+            {item.name}
           </Link>
         </li>
       ))}

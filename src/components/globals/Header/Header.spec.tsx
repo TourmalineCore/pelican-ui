@@ -1,7 +1,40 @@
 import { setViewportSizeAndGoToPage } from '@/test/helpers';
-import { test, expect, Page } from '@playwright/test';
+import { Page, Route } from '@playwright/test';
+import { test, expect } from 'playwright-ssr';
 
 test.describe(`HeaderComponentTests`, () => {
+  test.beforeEach(async ({ webServer }) => {
+    await webServer.route(`http://localhost:1337/api/navigations`, async (route: Route) => {
+      const mockResponse = [
+        {
+          id: 1,
+          name: `Услуги`,
+        },
+        {
+          id: 2,
+          name: `Правила посещения`,
+        },
+        // {
+        //   id: 3,
+        //   name: `Адрес`,
+        // },
+        // {
+        //   id: 4,
+        //   name: `Льготы`,
+        // },
+        // {
+        //   id: 5,
+        //   name: `Документация`,
+        // },
+      ];
+
+      await route.fulfill({
+        status: 200,
+        contentType: `application/json`,
+        body: JSON.stringify({ data: mockResponse }),
+      });
+    });
+  });
   test(`MobileTest`, mobileTest);
 
   test(`DesktopTest`, desktopTest);
@@ -12,12 +45,12 @@ async function desktopTest({
 }: {
   page: Page,
 }) {
-  await page.route(`**/logo-desktop.0f1db5cc.svg`, async (route) => {
-    await route.fulfill({
-      contentType: `image/svg+xml`,
-      path: `public/images/header/logo.svg`,
-    });
-  });
+  // await page.route(`**/logo-desktop.0f1db5cc.svg`, async (route) => {
+  //   await route.fulfill({
+  //     contentType: `image/svg+xml`,
+  //     path: `public/images/header/logo.svg`,
+  //   });
+  // });
 
   await setViewportSizeAndGoToPage({
     page,

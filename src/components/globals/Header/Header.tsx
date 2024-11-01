@@ -7,7 +7,7 @@ import { Button } from "../Button/Button";
 import { HeaderNavigation } from "./components/HeaderNavigation/HeaderNavigation";
 import { HeaderMobileButton } from "./components/HeaderMobileButton/HeaderMobileButton";
 
-export function Header() {
+export function Header({ navigations }: { navigations: any }) {
   const [isActive, setIsActive] = useState(false);
   const windowWidth = useWindowWidth();
 
@@ -20,13 +20,14 @@ export function Header() {
   return (
     <div
       className="header"
+      data-cy="header"
       data-testid="header"
     >
       <div className="container header__wrapper">
 
         <div className="header__left">
           <HeaderLogo />
-          {isDesktop && <HeaderNavigation />}
+          {isDesktop && <HeaderNavigation navigations={navigations} />}
         </div>
 
         <div className="header__right">
