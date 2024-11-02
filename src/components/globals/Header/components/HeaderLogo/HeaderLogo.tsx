@@ -10,7 +10,7 @@ export function HeaderLogo() {
   const windowWidth = useWindowWidth();
 
   return (
-    <Link href={AppRoute.Main}>
+    <Link href={AppRoute.Home}>
       <Image
         className="header-logo"
         src={getLogo({ breakpoint: windowWidth })}
