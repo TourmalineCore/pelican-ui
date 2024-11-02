@@ -3,7 +3,7 @@ import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps } from '../common/types';
 import { NAVIGATION_LINKS } from '../common/mocks/header-mocks';
 
-export default function HomePage({
+export default function UniversalPage({
   navigationLinks,
 }: GlobalComponentProps) {
   return (

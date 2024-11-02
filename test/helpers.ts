@@ -1,8 +1,9 @@
+import { Breakpoint } from "@/src/common/enum";
 import { Page } from "@playwright/test";
 
 export async function setViewportSizeAndGoToPage({
   page,
-  width = 375,
+  width = Breakpoint.MOBILE,
   height = 768,
 }: {
   page: Page,

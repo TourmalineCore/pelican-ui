@@ -1,3 +1,4 @@
+import { Breakpoint } from '@/src/common/enum';
 import { setViewportSizeAndGoToPage } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
@@ -31,7 +32,7 @@ async function tabletTest({
 }) {
   await setViewportSizeAndGoToPage({
     page,
-    width: 768,
+    width: Breakpoint.TABLET,
   });
 
   await expect(getHeaderByTestId({ page }))
@@ -45,7 +46,7 @@ async function desktopTest({
 }) {
   await setViewportSizeAndGoToPage({
     page,
-    width: 1366,
+    width: Breakpoint.DESKTOP,
   });
 
   await expect(getHeaderByTestId({ page }))
@@ -59,7 +60,7 @@ async function desktopXlTest({
 }) {
   await setViewportSizeAndGoToPage({
     page,
-    width: 1920,
+    width: Breakpoint.DESKTOP_XL,
   });
 
   await expect(getHeaderByTestId({ page }))

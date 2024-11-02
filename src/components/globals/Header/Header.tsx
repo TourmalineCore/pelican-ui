@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
-import { DESKTOP_BREAKPOINT } from "@/src/common/constants";
 import { GlobalComponentProps } from "@/src/common/types";
+import { Breakpoint } from "@/src/common/enum";
 import { HeaderLogo } from "./components/HeaderLogo/HeaderLogo";
 import { HeaderEye } from "./components/HeaderEye/HeaderEye";
 import { Button } from "../Button/Button";
@@ -20,7 +20,7 @@ export function Header({
     return null;
   }
 
-  const isDesktop = windowWidth >= DESKTOP_BREAKPOINT;
+  const isDesktop = windowWidth >= Breakpoint.DESKTOP;
 
   return (
     <div
