@@ -5,5 +5,14 @@ export type GlobalComponentProps = {
 
     // TODO: in the future change string to enum AppRoute
     link: string;
-  }[]
+  }[],
+  heroTitle: string,
+  scheduleTitle: string,
+  scheduleTimetable: {
+    days: string,
+    time: string,
+    ticketsOfficeTime: string,
+  }[],
+  cleanupTitle: string,
+  cleanupDescription: string,
 };
