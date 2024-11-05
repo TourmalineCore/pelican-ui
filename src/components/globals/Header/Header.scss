@@ -27,14 +27,14 @@
     &__contact-button {
       margin-right: 16px;
       padding: 12px 24px;
-      width: 141px;
       height: 49px;
+      min-width: 141px;
     }
 
     &__ticket-button {
       padding: 12px 56px;
-      width: 180px;
       height: 49px;
+      min-width: 180px;
       transition: all ease-out 0.6s;
 
       &::before,
@@ -77,14 +77,14 @@
     &__contact-button {
       margin-right: 24px;
       padding: 16px 40px;
-      width: 214px;
       height: 68px;
+      min-width: 214px;
     }
 
     &__ticket-button {
       padding: 16px 72px;
       width: 242px;
-      height: 68px;
+      min-height: 68px;
 
       &::before,
       &::after {

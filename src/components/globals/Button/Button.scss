@@ -7,7 +7,7 @@
   background-color: initial;
   cursor: pointer;
 
-  &_primary {
+  &--primary {
     border: none;
     color: $color-white;
     background-color: $color-green;
@@ -19,7 +19,7 @@
     }
   }
 
-  &_secondary {
+  &--secondary {
     border: 1px solid $color-green;
     color: $color-green;
     background-color: $color-white;

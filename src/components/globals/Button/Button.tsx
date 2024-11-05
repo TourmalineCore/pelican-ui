@@ -14,7 +14,7 @@ export function Button({
   return (
     <button
       type="button"
-      className={clsx(`button button_${theme}`, className)}
+      className={clsx(`button button--${theme}`, className)}
       {...props}
     >
       {children}
