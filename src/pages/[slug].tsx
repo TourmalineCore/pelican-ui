@@ -1,10 +1,19 @@
 import Head from 'next/head';
+import { Hero } from '@/src/components/globals/Hero/Hero';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps } from '../common/types';
 import { NAVIGATION_LINKS } from '../common/mocks/header-mocks';
+import {
+  INFO_CARD_TITLE, INFO_CARD_DESCRIPTION, HERO_TITLE, SCHEDULE_TIMETABLE, SCHEDULE_TITLE,
+} from '../common/mocks/hero-mocks';
 
 export default function UniversalPage({
   navigationLinks,
+  heroTitle,
+  scheduleTitle,
+  scheduleTimetable,
+  infoCardTitle,
+  infoCardDescription,
 }: GlobalComponentProps) {
   return (
     <>
@@ -13,7 +22,13 @@ export default function UniversalPage({
         <title>Главная</title>
       </Head>
       <Layout navigationLinks={navigationLinks}>
-        Hello, World!
+        <Hero
+          heroTitle={heroTitle}
+          scheduleTitle={scheduleTitle}
+          scheduleTimetable={scheduleTimetable}
+          infoCardTitle={infoCardTitle}
+          infoCardDescription={infoCardDescription}
+        />
       </Layout>
     </>
   );
@@ -33,6 +48,11 @@ export async function getServerSideProps() {
   return {
     props: {
       navigationLinks: NAVIGATION_LINKS,
+      heroTitle: HERO_TITLE,
+      scheduleTitle: SCHEDULE_TITLE,
+      scheduleTimetable: SCHEDULE_TIMETABLE,
+      cleanupTitle: INFO_CARD_TITLE,
+      cleanupDescription: INFO_CARD_DESCRIPTION,
     },
   };
 }
