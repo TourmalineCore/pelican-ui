@@ -4,15 +4,17 @@ export const HERO_TITLE: GlobalComponentProps['heroTitle'] = `Челябинск
 export const SCHEDULE_TITLE: GlobalComponentProps['scheduleTitle'] = `График работы`;
 export const SCHEDULE_TIMETABLE: GlobalComponentProps['scheduleTimetable'] = [
   {
+    id: 0,
     days: `Понедельник - четверг`,
     time: `10:00-18:00`,
     ticketsOfficeTime: `(вход и касса 11:00-17:00)`,
   },
   {
+    id: 1,
     days: `Пятница – воскресенье, праздники`,
     time: `10:00-19:00`,
     ticketsOfficeTime: `(вход и касса 11:00-18:00)`,
   },
 ];
-export const CLEANUP_TITLE: GlobalComponentProps['cleanupTitle'] = `29 октября зоопарк не работает`;
-export const CLEANUP_DESCRIPTION: GlobalComponentProps['cleanupDescription'] = `Каждый последний понедельник месяца санитарный день.`;
+export const INFO_CARD_TITLE: GlobalComponentProps['infoCardTitle'] = `29 октября зоопарк не работает`;
+export const INFO_CARD_DESCRIPTION: GlobalComponentProps['infoCardDescription'] = `Каждый последний понедельник месяца санитарный день.`;

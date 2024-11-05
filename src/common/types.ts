@@ -9,10 +9,11 @@ export type GlobalComponentProps = {
   heroTitle: string,
   scheduleTitle: string,
   scheduleTimetable: {
+    id: number,
     days: string,
     time: string,
     ticketsOfficeTime: string,
   }[],
-  cleanupTitle: string,
-  cleanupDescription: string,
+  infoCardTitle: string,
+  infoCardDescription: string,
 };
