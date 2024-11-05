@@ -3,7 +3,6 @@ import Link from "next/link";
 export function HeaderEye() {
   return (
     <Link
-
       href="#"
       className="header-eye"
     >
