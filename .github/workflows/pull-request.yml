@@ -2,7 +2,7 @@ name: Check linting
 
 on: 
   push:
-    branches: 
+    branches:
       - feature/*
 
 jobs:
@@ -28,3 +28,21 @@ jobs:
 
     - name: Check linting
       run: npm run lint
+
+    - name: Run dev server
+      run: |
+        npm run test &
+        npx --yes wait-on http://localhost:3000
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: Run Playwright tests
+      run: npx playwright test
+
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 1

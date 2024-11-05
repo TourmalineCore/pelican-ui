@@ -5,4 +5,10 @@
 @import "globals";
 
 // Component
-@import "../components/Layout/Layout";
+@import "../components/globals/Layout/Layout";
+@import "../components/globals/Header/Header";
+@import "../components/globals/Header/components/HeaderMobileButton/HeaderMobileButton";
+@import "../components/globals/Header/components/HeaderLogo/HeaderLogo";
+@import "../components/globals/Header/components/HeaderEye/HeaderEye";
+@import "../components/globals/Header/components/HeaderNavigation/HeaderNavigation";
+@import "../components/globals/Button/Button";

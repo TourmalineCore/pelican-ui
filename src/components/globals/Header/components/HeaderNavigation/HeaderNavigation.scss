@@ -1,0 +1,19 @@
+.header-navigation {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  &__link {
+    color: $color-black-75;
+    transition: color ease-out 0.2s;
+
+    &:focus,
+    &:hover {
+      color: $color-green;
+    }
+  }
+
+  @include desktop-xl {
+    gap: 40px;
+  }
+}

@@ -1,0 +1,25 @@
+.header-eye {
+  margin-right: 20px;
+  padding: 0 2px;
+  width: 28px;
+  height: 22px;
+  cursor: pointer;
+
+  svg {
+    stroke: $color-black;
+    transition: all ease-out 0.2s;
+
+    &:focus,
+    &:hover {
+      stroke: $color-green;
+    }
+  }
+
+  @include desktop {
+    margin-right: 24px;
+  }
+
+  @include desktop-xl {
+    margin-right: 32px;
+  }
+}

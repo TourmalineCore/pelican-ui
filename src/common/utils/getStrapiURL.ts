@@ -1,3 +1,5 @@
 export function getStrapiURL(path = ``) {
-  return `${`http://pelican.local.tourmalinecore.internal`}${path}`;
+  return `${process.env.NODE_ENV === `production`
+    ? `http://pelican.local.tourmalinecore.internal`
+    : `http://localhost:1337`}${path}`;
 }

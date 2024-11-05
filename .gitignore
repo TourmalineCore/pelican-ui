@@ -128,3 +128,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+/test-results/
+/playwright-report/
+/test/pw-test-results/
+/blob-report/
+/playwright/.cache/
