@@ -8,7 +8,7 @@ export type GlobalComponentProps = {
   }[],
   heroTitle: string,
   scheduleTitle: string,
-  scheduleTimetable: {
+  scheduleTimetables: {
     id: number,
     days: string,
     time: string,

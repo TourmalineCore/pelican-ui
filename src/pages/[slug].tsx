@@ -4,14 +4,14 @@ import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps } from '../common/types';
 import { NAVIGATION_LINKS } from '../common/mocks/header-mocks';
 import {
-  INFO_CARD_TITLE, INFO_CARD_DESCRIPTION, HERO_TITLE, SCHEDULE_TIMETABLE, SCHEDULE_TITLE,
+  INFO_CARD_TITLE, INFO_CARD_DESCRIPTION, HERO_TITLE, SCHEDULE_TITLE, SCHEDULE_TIMETABLES,
 } from '../common/mocks/hero-mocks';
 
 export default function UniversalPage({
   navigationLinks,
   heroTitle,
   scheduleTitle,
-  scheduleTimetable,
+  scheduleTimetables,
   infoCardTitle,
   infoCardDescription,
 }: GlobalComponentProps) {
@@ -25,7 +25,7 @@ export default function UniversalPage({
         <Hero
           heroTitle={heroTitle}
           scheduleTitle={scheduleTitle}
-          scheduleTimetable={scheduleTimetable}
+          scheduleTimetables={scheduleTimetables}
           infoCardTitle={infoCardTitle}
           infoCardDescription={infoCardDescription}
         />
@@ -50,9 +50,9 @@ export async function getServerSideProps() {
       navigationLinks: NAVIGATION_LINKS,
       heroTitle: HERO_TITLE,
       scheduleTitle: SCHEDULE_TITLE,
-      scheduleTimetable: SCHEDULE_TIMETABLE,
-      cleanupTitle: INFO_CARD_TITLE,
-      cleanupDescription: INFO_CARD_DESCRIPTION,
+      scheduleTimetables: SCHEDULE_TIMETABLES,
+      infoCardTitle: INFO_CARD_TITLE,
+      infoCardDescription: INFO_CARD_DESCRIPTION,
     },
   };
 }

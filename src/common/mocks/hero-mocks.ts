@@ -2,7 +2,7 @@ import { GlobalComponentProps } from "@/src/common/types";
 
 export const HERO_TITLE: GlobalComponentProps['heroTitle'] = `Челябинский зоопарк`;
 export const SCHEDULE_TITLE: GlobalComponentProps['scheduleTitle'] = `График работы`;
-export const SCHEDULE_TIMETABLE: GlobalComponentProps['scheduleTimetable'] = [
+export const SCHEDULE_TIMETABLES: GlobalComponentProps['scheduleTimetables'] = [
   {
     id: 0,
     days: `Понедельник - четверг`,
