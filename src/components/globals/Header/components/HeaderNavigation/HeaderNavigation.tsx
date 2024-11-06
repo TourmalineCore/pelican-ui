@@ -2,12 +2,14 @@ import { GlobalComponentProps } from "@/src/common/types";
 import Link from "next/link";
 
 export function HeaderNavigation({
+  className,
   navigationLinks,
 }: {
-  navigationLinks: GlobalComponentProps['navigationLinks']
+  className?: string
+  navigationLinks: GlobalComponentProps['navigationLinks'],
 }) {
   return (
-    <ul className="header-navigation">
+    <ul className={className || `header-navigation`}>
       {navigationLinks.map(({
         id,
         name,
@@ -15,11 +17,11 @@ export function HeaderNavigation({
       }) => (
         <li
           key={id}
-          className="header-navigation__item"
+          className={`${className || `header-navigation`}__item`}
         >
           <Link
             href={link}
-            className="caption-1 header-navigation__link"
+            className={`${className || `header-navigation`}__link`}
           >
             {name}
           </Link>

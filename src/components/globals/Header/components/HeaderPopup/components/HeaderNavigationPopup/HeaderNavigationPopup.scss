@@ -1,0 +1,26 @@
+.header-navigation-popup {
+  &__item {
+    & + & {
+      margin-top: 8px;
+    }
+  }
+
+  &__link {
+    @include body-2-medium;
+
+    color: $color-black-60;
+    transition: color ease-out 0.2s;
+    animation: fade-in 1s;
+
+    &:focus,
+    &:hover {
+      color: $color-green;
+    }
+
+    @include tablet-xl {
+      // TODO: fix font-size after redesigned
+      font-size: 20px;
+      line-height: 1.4;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-.header-mobile-button {
+.header-popup-button {
   position: relative;
   display: block;
   width: 29px;
@@ -35,12 +35,12 @@
   }
 
   &.active::before {
-    top: 9px;
+    top: 5px;
     transform: rotate(45deg);
   }
 
   &.active::after {
-    bottom: 9px;
+    bottom: 13px;
     transform: rotate(-45deg);
   }
 }

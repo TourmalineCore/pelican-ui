@@ -2,13 +2,18 @@
   position: sticky;
   top: 0;
   border-radius: 0 0 16px 16px;
-  padding: 12px 0;
+  padding-top: 12px;
   height: 64px;
   box-shadow: 0 2px 16px 0 $color-black-10;
   background: $color-white;
+  transition: border-radius 0.3s ease-in;
 
   &__wrapper {
     justify-content: space-between;
+  }
+
+  &.active {
+    border-radius: 0;
   }
 
   &__wrapper,
@@ -25,6 +30,8 @@
     height: 97px;
 
     &__contact-button {
+      @include caption-1-medium;
+
       margin-right: 16px;
       padding: 12px 24px;
       height: 49px;
@@ -32,6 +39,8 @@
     }
 
     &__ticket-button {
+      @include caption-1-medium;
+
       padding: 12px 56px;
       height: 49px;
       min-width: 180px;

@@ -29,6 +29,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-intersection-observer": "^9.8.1",
+    "react-transition-group": "^4.4.5",
     "sharp": "^0.33.3"
   },
   "devDependencies": {
@@ -37,9 +38,11 @@
     "@playwright/test": "^1.48.1",
     "@stylistic/eslint-plugin": "^1.6.3",
     "@stylistic/stylelint-config": "^1.0.1",
+    "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-transition-group": "^4.4.11",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "autoprefixer": "^10.4.19",
