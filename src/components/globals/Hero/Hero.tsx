@@ -2,17 +2,18 @@ import Image from "next/image";
 import { GlobalComponentProps } from "@/src/common/types";
 import HeroImageSrc from "@/public/images/hero/hero-main-page.png";
 import { Button } from "@/src/components/globals/Button/Button";
+import { HeroSchedule } from "./components/HeroSchedule/HeroSchedule";
 
 export function Hero({
   heroTitle,
   scheduleTitle,
-  scheduleTimetable,
+  scheduleTimetables,
   infoCardTitle,
   infoCardDescription,
 }: {
   heroTitle: GlobalComponentProps['heroTitle'],
   scheduleTitle: GlobalComponentProps['scheduleTitle'],
-  scheduleTimetable: GlobalComponentProps['scheduleTimetable'],
+  scheduleTimetables: GlobalComponentProps['scheduleTimetables'],
   infoCardTitle: GlobalComponentProps['infoCardTitle'],
   infoCardDescription: GlobalComponentProps['infoCardDescription'],
 }) {
@@ -29,21 +30,11 @@ export function Hero({
         />
       </div>
       <div className="hero__cards">
-        <div className="hero__schedule schedule">
-          <p className="schedule__title">{scheduleTitle}</p>
-          <ul className="schedule__list">
-            {scheduleTimetable.map((el) => (
-              <li
-                className="schedule__item"
-                key={el.id}
-              >
-                <p className="schedule__days">{el.days}</p>
-                <span className="schedule__time">{el.time}</span>
-                <span className="schedule__tickets-office-time">{el.ticketsOfficeTime}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <HeroSchedule
+          className="hero__schedule"
+          scheduleTitle={scheduleTitle}
+          scheduleTimetables={scheduleTimetables}
+        />
         <div className="hero__info-card info-card">
           <p className="info-card__title">{infoCardTitle}</p>
           <p className="info-card__description">{infoCardDescription}</p>

@@ -1,0 +1,32 @@
+.hero {
+  position: relative;
+  display: grid;
+  padding: 16px 16px 54px;
+  gap: 12px;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto auto;
+
+  &__title {
+    display: none;
+  }
+
+  &__image-wrapper {
+    overflow: hidden;
+    border-radius: 24px;
+    max-height: 200px;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__buttons {
+    height: 47px;
+  }
+}

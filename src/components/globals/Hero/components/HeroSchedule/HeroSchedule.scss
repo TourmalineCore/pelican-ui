@@ -1,0 +1,13 @@
+.schedule {
+  padding: 16px;
+
+  &__title {
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+}

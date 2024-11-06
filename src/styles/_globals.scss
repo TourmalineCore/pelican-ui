@@ -28,13 +28,63 @@ body {
   }
 }
 
+.body-2 {
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1.45;
+
+  @include tablet-xl {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+
+  @include desktop-xl {
+    font-size: 34px;
+    line-height: 1.4;
+  }
+}
+
 .caption-1 {
   font-family: inherit;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.4;
 
+  @include tablet-xl {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
   @include desktop-xl {
     font-size: 26px;
   }
+}
+
+.caption-2 {
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.45;
+
+  @include tablet-xl {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  @include desktop-xl {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.font-weight-regular {
+  font-weight: 400;
+}
+
+img {
+  width: 100%;
+  height: 100%;
 }
