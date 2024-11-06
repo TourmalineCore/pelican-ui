@@ -6,7 +6,7 @@ type LayoutProps = GlobalComponentProps & PropsWithChildren;
 
 export function Layout({
   children,
-  mail,
+  email,
   phone,
   navigationLinks,
   popupTicketBuyText,
@@ -16,7 +16,7 @@ export function Layout({
     <div className="layout">
       <Header
         navigationLinks={navigationLinks}
-        mail={mail}
+        email={email}
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
       />

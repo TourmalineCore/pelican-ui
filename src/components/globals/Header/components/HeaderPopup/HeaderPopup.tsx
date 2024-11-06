@@ -8,7 +8,7 @@ import { SocialMedia } from "../../../SocialNetwork/SocialMedia";
 export function HeaderPopup({
   isActive,
   navigationLinks,
-  mail,
+  email,
   phone,
   popupTicketBuyText,
 }: GlobalComponentProps & {
@@ -50,10 +50,10 @@ export function HeaderPopup({
                   {phone}
                 </a>
                 <a
-                  href={`mailto:${mail}`}
+                  href={`mailto:${email}`}
                   className="header-popup__email"
                 >
-                  {mail}
+                  {email}
                 </a>
               </div>
 

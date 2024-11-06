@@ -6,7 +6,7 @@ export type GlobalComponentProps = {
     // TODO: in the future change string to enum AppRoute
     link: string;
   }[]
-  mail: string;
+  email: string;
   phone: string;
   popupTicketBuyText: string;
 };

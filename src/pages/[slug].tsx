@@ -2,11 +2,11 @@ import Head from 'next/head';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps } from '../common/types';
 import {
-  MAIL, NAVIGATION_LINKS, PHONE, POPUP_TICKET_BUY_TEXT,
+  EMAIL, NAVIGATION_LINKS, PHONE, POPUP_TICKET_BUY_TEXT,
 } from '../common/mocks/globals-mock';
 
 export default function UniversalPage({
-  mail,
+  email,
   navigationLinks,
   phone,
   popupTicketBuyText,
@@ -19,7 +19,7 @@ export default function UniversalPage({
       </Head>
       <Layout
         navigationLinks={navigationLinks}
-        mail={mail}
+        email={email}
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
       >
@@ -43,7 +43,7 @@ export async function getServerSideProps() {
   return {
     props: {
       popupTicketBuyText: POPUP_TICKET_BUY_TEXT,
-      mail: MAIL,
+      email: EMAIL,
       phone: PHONE,
       navigationLinks: NAVIGATION_LINKS,
     },

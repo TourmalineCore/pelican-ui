@@ -17,7 +17,7 @@ const HeaderPopup = dynamic(
 
 export function Header({
   navigationLinks,
-  mail,
+  email,
   phone,
   popupTicketBuyText,
 }: GlobalComponentProps) {
@@ -76,7 +76,7 @@ export function Header({
       {!isDesktop && (
         <HeaderPopup
           isActive={isActive}
-          mail={mail}
+          email={email}
           phone={phone}
           navigationLinks={navigationLinks}
           popupTicketBuyText={popupTicketBuyText}
