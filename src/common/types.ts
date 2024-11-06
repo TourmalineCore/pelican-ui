@@ -8,12 +8,14 @@ export type GlobalComponentProps = {
   }[],
   heroTitle: string,
   scheduleTitle: string,
-  scheduleTimetables: {
-    id: number,
-    days: string,
-    time: string,
-    ticketsOfficeTime: string,
-  }[],
+  scheduleTimetables: Timetable[],
   infoCardTitle: string,
   infoCardDescription: string,
+};
+
+export type Timetable = {
+  id: number,
+  days: string,
+  time: string,
+  ticketsOfficeTime: string,
 };
