@@ -31,11 +31,10 @@ export function HeaderPopup({
         data-testId="header-popup"
       >
         {isActive && (
-          <div className="header-popup__inner">
-
+          <>
             <button
               type="button"
-              className="body-2-medium header-popup__ticket-button"
+              className="header-popup__ticket-button"
             >
               {popupTicketBuyText}
             </button>
@@ -62,8 +61,7 @@ export function HeaderPopup({
               </div>
 
             </div>
-
-          </div>
+          </>
         )}
       </div>
     </CSSTransition>
