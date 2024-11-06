@@ -1,0 +1,16 @@
+.info-card {
+  border-radius: 24px;
+  padding: 16px;
+  background-image: url("../../../../../../public/images/hero/hero-print-leo.svg");
+  background-repeat: no-repeat;
+  background-color: $color-green-leo;
+
+  &__title {
+    margin-bottom: 8px;
+    color: $color-white;
+  }
+
+  &__description {
+    color: $color-white-90;
+  }
+}

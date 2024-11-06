@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { GlobalComponentProps } from "@/src/common/types";
-import HeroImageSrc from "@/public/images/hero/hero-main-page.png";
 import { Button } from "@/src/components/globals/Button/Button";
+import HeroImageSrc from "@/public/images/hero/hero-main-page.png";
 import { HeroSchedule } from "./components/HeroSchedule/HeroSchedule";
+import { HeroInfoCard } from "./components/HeroInfoCard/HeroInfoCard";
 
 export function Hero({
   heroTitle,
@@ -35,10 +36,11 @@ export function Hero({
           scheduleTitle={scheduleTitle}
           scheduleTimetables={scheduleTimetables}
         />
-        <div className="hero__info-card info-card">
-          <p className="info-card__title">{infoCardTitle}</p>
-          <p className="info-card__description">{infoCardDescription}</p>
-        </div>
+        <HeroInfoCard
+          className="hero__info-card"
+          infoCardTitle={infoCardTitle}
+          infoCardDescription={infoCardDescription}
+        />
       </div>
       <div className="header__buttons">
         <Button
