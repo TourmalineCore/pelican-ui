@@ -1,10 +1,15 @@
 import Head from 'next/head';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps } from '../common/types';
-import { NAVIGATION_LINKS } from '../common/mocks/header-mocks';
+import {
+  EMAIL, NAVIGATION_LINKS, PHONE, POPUP_TICKET_BUY_TEXT,
+} from '../common/mocks/globals-mock';
 
 export default function UniversalPage({
+  email,
   navigationLinks,
+  phone,
+  popupTicketBuyText,
 }: GlobalComponentProps) {
   return (
     <>
@@ -12,7 +17,12 @@ export default function UniversalPage({
         <meta name="description" content="Сайт зоопарка" />
         <title>Главная</title>
       </Head>
-      <Layout navigationLinks={navigationLinks}>
+      <Layout
+        navigationLinks={navigationLinks}
+        email={email}
+        phone={phone}
+        popupTicketBuyText={popupTicketBuyText}
+      >
         Hello, World!
       </Layout>
     </>
@@ -32,6 +42,9 @@ export async function getServerSideProps() {
   // TODO there will be a request in the Strapi api here
   return {
     props: {
+      popupTicketBuyText: POPUP_TICKET_BUY_TEXT,
+      email: EMAIL,
+      phone: PHONE,
       navigationLinks: NAVIGATION_LINKS,
     },
   };

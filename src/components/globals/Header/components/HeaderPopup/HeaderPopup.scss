@@ -1,0 +1,123 @@
+.header-popup {
+  position: relative;
+  border-radius: 0 0 32px 32px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  background-color: $color-white;
+
+  &__ticket-button {
+    @include body-2-medium;
+
+    margin-bottom: 8px;
+    border: none;
+    color: $color-black-60;
+    background: none;
+    transition: color ease-out 0.2s;
+    animation: fade-in 1s;
+
+    &:focus,
+    &:hover {
+      color: $color-green;
+    }
+
+    @include tablet-xl {
+      // TODO: fix font-size after redesigned
+      font-size: 20px;
+      line-height: 1.4;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: 8px;
+    animation: fade-in 1.5s;
+
+    @include tablet {
+      margin-top: 0;
+    }
+  }
+
+  &__social-media {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+
+    img {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include tablet {
+      gap: 16px;
+
+      img {
+        width: 64px;
+        height: 64px;
+      }
+    }
+  }
+
+  &__phone {
+    margin-bottom: 4px;
+
+    @include tablet-xl {
+      margin-bottom: 8px;
+    }
+  }
+
+  &.enter {
+    height: 0;
+  }
+
+  &.enter-active {
+    height: 356px;
+    transition: all 0.2s ease-in;
+
+    @include tablet {
+      height: 396px;
+    }
+
+    @include tablet-xl {
+      height: 408px;
+    }
+  }
+
+  &.exit {
+    height: 356px;
+
+    @include tablet {
+      height: 396px;
+    }
+
+    @include tablet-xl {
+      height: 408px;
+    }
+  }
+
+  &.exit-active {
+    height: 0;
+    transition: all 0.2s ease-in;
+  }
+
+  &__phone,
+  &__email {
+    @include body-2-medium;
+
+    display: block;
+    color: $color-green-dark;
+
+    @include tablet {
+      @include h1-text;
+    }
+
+    @include tablet-xl {
+      @include h2-text;
+    }
+  }
+
+  @include tablet {
+    padding-top: 32px;
+  }
+}

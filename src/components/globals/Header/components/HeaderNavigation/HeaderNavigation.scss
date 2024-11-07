@@ -4,6 +4,9 @@
   gap: 32px;
 
   &__link {
+    @include caption-1-medium;
+
+    display: block;
     color: $color-black-75;
     transition: color ease-out 0.2s;
 
