@@ -27,6 +27,51 @@
   }
 
   &__buttons {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__contact-button {
+    padding: 12px 24px;
+  }
+
+  &__ticket-button {
+    padding: 12px 56px;
+
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      right: 1.5px;
+      bottom: 0;
+      width: 82px;
+      height: 67px;
+    }
+
+    &::before {
+      background-image: url("../../../../public/images/hero/parrot-closed-eye.svg");
+      visibility: hidden;
+    }
+
+    &::after {
+      background-image: url("../../../../public/images/hero/parrot-open-eye.svg");
+    }
+
+    &:hover,
+    &:focus {
+      &::before {
+        visibility: visible;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &__contact-button,
+  &__ticket-button {
+    width: 165px;
     height: 47px;
   }
 }

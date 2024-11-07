@@ -42,15 +42,15 @@ export function Hero({
           infoCardDescription={infoCardDescription}
         />
       </div>
-      <div className="header__buttons">
+      <div className="hero__buttons">
         <Button
-          className="caption-1 header__contact-button"
+          className="caption-1 hero__contact-button"
           theme="secondary"
         >
           Связаться
         </Button>
         <Button
-          className="caption-1 header__ticket-button"
+          className="caption-1 hero__ticket-button"
           theme="primary"
         >
           Билеты
