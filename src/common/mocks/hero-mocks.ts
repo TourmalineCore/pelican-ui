@@ -17,7 +17,7 @@ export const SCHEDULE_TIMETABLES: HeroComponentProps['scheduleTimetables'] = [
     ticketsOfficeTime: `(вход и касса 10:00-18:00)`,
   },
 ];
-export const INFO_CARD_TITLE: HeroComponentProps['infoCardTitle'] = `29 июля зоопарк не работает`;
+export const INFO_CARD_TITLE: HeroComponentProps['infoCardTitle'] = `29 октября зоопарк не работает`;
 export const INFO_CARD_DESCRIPTION: HeroComponentProps['infoCardDescription'] = `Каждый последний понедельник месяца санитарный день.`;
 export const HERO_IMAGE: HeroComponentProps['image'] = {
   url: heroImage,
