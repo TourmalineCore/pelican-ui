@@ -1,4 +1,4 @@
-import { GlobalComponentProps } from "@/src/common/types";
+import { HeroComponentProps } from "@/src/common/types";
 import { ScheduleTimetable } from "./ScheduleTimetable/ScheduleTimetable";
 
 export function HeroSchedule({
@@ -7,8 +7,8 @@ export function HeroSchedule({
   scheduleTimetables,
 }: {
   className: string,
-  scheduleTitle: GlobalComponentProps['scheduleTitle'],
-  scheduleTimetables: GlobalComponentProps['scheduleTimetables'],
+  scheduleTitle: HeroComponentProps['scheduleTitle'],
+  scheduleTimetables: HeroComponentProps['scheduleTimetables'],
 }) {
   return (
     <div className={`${className} schedule`}>

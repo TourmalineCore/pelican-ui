@@ -1,4 +1,4 @@
-import { GlobalComponentProps } from "@/src/common/types";
+import { HeroComponentProps } from "@/src/common/types";
 
 export function HeroInfoCard({
   className = ``,
@@ -6,13 +6,13 @@ export function HeroInfoCard({
   infoCardDescription,
 }: {
   className: string,
-  infoCardTitle: GlobalComponentProps['infoCardTitle'],
-  infoCardDescription: GlobalComponentProps['infoCardDescription'],
+  infoCardTitle: HeroComponentProps['infoCardTitle'],
+  infoCardDescription: HeroComponentProps['infoCardDescription'],
 }) {
   return (
     <div className={`${className} info-card`}>
-      <p className="info-card__title body-1 font-weight-medium">{infoCardTitle}</p>
-      <p className="info-card__description caption-1 font-weight-medium">{infoCardDescription}</p>
+      <p className="info-card__title">{infoCardTitle}</p>
+      <p className="info-card__description">{infoCardDescription}</p>
     </div>
   );
 }

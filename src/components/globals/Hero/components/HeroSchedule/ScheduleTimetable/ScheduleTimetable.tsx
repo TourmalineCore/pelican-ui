@@ -7,9 +7,9 @@ export function ScheduleTimetable({
 }) {
   return (
     <li className="schedule-timetable">
-      <p className="schedule-timetable__days caption-1 font-weight-medium">{scheduleTimetable.days}</p>
-      <span className="schedule-timetable__time body-2 font-weight-medium">{scheduleTimetable.time}</span>
-      <span className="schedule-timetable__tickets-office-time caption-2 font-weight-regular">{scheduleTimetable.ticketsOfficeTime}</span>
+      <p className="schedule-timetable__days">{scheduleTimetable.days}</p>
+      <span className="schedule-timetable__time">{scheduleTimetable.time}</span>
+      <span className="schedule-timetable__tickets-office-time">{scheduleTimetable.ticketsOfficeTime}</span>
     </li>
   );
 }

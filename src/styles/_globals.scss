@@ -42,25 +42,3 @@ img {
     opacity: 100;
   }
 }
-
-.caption-2 {
-  font-size: 14px;
-  line-height: 1.45;
-
-  @include tablet-xl {
-    font-size: 16px;
-    line-height: 1.4;
-  }
-
-  @include desktop-xl {
-    font-size: 24px;
-  }
-}
-
-.font-weight-medium {
-  font-weight: 500;
-}
-
-.font-weight-regular {
-  font-weight: 400;
-}

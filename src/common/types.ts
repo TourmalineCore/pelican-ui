@@ -9,11 +9,14 @@ export type GlobalComponentProps = {
   email: string;
   phone: string;
   popupTicketBuyText?: string;
-  heroTitle?: string,
-  scheduleTitle?: string,
-  scheduleTimetables?: Timetable[],
-  infoCardTitle?: string,
-  infoCardDescription?: string,
+};
+
+export type HeroComponentProps = {
+  title: string,
+  scheduleTitle: string,
+  scheduleTimetables: Timetable[],
+  infoCardTitle: string,
+  infoCardDescription: string,
 };
 
 export type Timetable = {
@@ -21,4 +24,4 @@ export type Timetable = {
   days: string,
   time: string,
   ticketsOfficeTime: string,
-}[];
+};
