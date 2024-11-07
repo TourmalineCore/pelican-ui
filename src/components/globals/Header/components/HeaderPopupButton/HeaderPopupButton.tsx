@@ -1,20 +1,21 @@
 import clsx from "clsx";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-export function HeaderMobileButton({
+export function HeaderPopupButton({
   isActive,
-  setIsActive,
+  handleToggle,
 }: {
   isActive: boolean;
-  setIsActive: () => void
+  handleToggle: () => void
 }) {
   return (
     <div
       role="button"
-      className={clsx(`header-mobile-button`, {
+      className={clsx(`header-popup-button`, {
         active: isActive,
       })}
-      onClick={setIsActive}
+      data-testid="header-popup-button"
+      onClick={handleToggle}
       onKeyUp={handleOnKeyUp}
       tabIndex={0}
     >
@@ -24,7 +25,7 @@ export function HeaderMobileButton({
 
   function handleOnKeyUp(event: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>) {
     if (event.key === `Enter`) {
-      setIsActive();
+      handleToggle();
     }
   }
 }

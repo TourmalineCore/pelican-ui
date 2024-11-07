@@ -2,18 +2,23 @@ import Head from 'next/head';
 import { Hero } from '@/src/components/globals/Hero/Hero';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps } from '../common/types';
-import { NAVIGATION_LINKS } from '../common/mocks/header-mocks';
 import {
-  INFO_CARD_TITLE, INFO_CARD_DESCRIPTION, HERO_TITLE, SCHEDULE_TITLE, SCHEDULE_TIMETABLES,
+  EMAIL, NAVIGATION_LINKS, PHONE, POPUP_TICKET_BUY_TEXT,
+} from '../common/mocks/globals-mock';
+import {
+  HERO_TITLE, INFO_CARD_DESCRIPTION, INFO_CARD_TITLE, SCHEDULE_TIMETABLES, SCHEDULE_TITLE,
 } from '../common/mocks/hero-mocks';
 
 export default function UniversalPage({
+  email,
   navigationLinks,
   heroTitle,
   scheduleTitle,
   scheduleTimetables,
   infoCardTitle,
   infoCardDescription,
+  phone,
+  popupTicketBuyText,
 }: GlobalComponentProps) {
   return (
     <>
@@ -21,7 +26,12 @@ export default function UniversalPage({
         <meta name="description" content="Сайт зоопарка" />
         <title>Главная</title>
       </Head>
-      <Layout navigationLinks={navigationLinks}>
+      <Layout
+        navigationLinks={navigationLinks}
+        email={email}
+        phone={phone}
+        popupTicketBuyText={popupTicketBuyText}
+      >
         <Hero
           heroTitle={heroTitle}
           scheduleTitle={scheduleTitle}
@@ -47,6 +57,9 @@ export async function getServerSideProps() {
   // TODO there will be a request in the Strapi api here
   return {
     props: {
+      popupTicketBuyText: POPUP_TICKET_BUY_TEXT,
+      email: EMAIL,
+      phone: PHONE,
       navigationLinks: NAVIGATION_LINKS,
       heroTitle: HERO_TITLE,
       scheduleTitle: SCHEDULE_TITLE,

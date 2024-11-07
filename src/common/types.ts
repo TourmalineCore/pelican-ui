@@ -6,11 +6,14 @@ export type GlobalComponentProps = {
     // TODO: in the future change string to enum AppRoute
     link: string;
   }[],
-  heroTitle: string,
-  scheduleTitle: string,
-  scheduleTimetables: Timetable[],
-  infoCardTitle: string,
-  infoCardDescription: string,
+  email: string;
+  phone: string;
+  popupTicketBuyText?: string;
+  heroTitle?: string,
+  scheduleTitle?: string,
+  scheduleTimetables?: Timetable[],
+  infoCardTitle?: string,
+  infoCardDescription?: string,
 };
 
 export type Timetable = {
@@ -18,4 +21,4 @@ export type Timetable = {
   days: string,
   time: string,
   ticketsOfficeTime: string,
-};
+}[];

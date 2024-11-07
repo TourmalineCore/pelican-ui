@@ -1,5 +1,9 @@
 import { GlobalComponentProps } from "../types";
 
+export const EMAIL = `metodist@chelzoo.ru`;
+export const PHONE = `+7 (351) 263-18-64`;
+export const POPUP_TICKET_BUY_TEXT = `Купить билет`;
+
 export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
     id: 1,
