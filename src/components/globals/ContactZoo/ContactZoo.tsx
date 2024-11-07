@@ -13,6 +13,7 @@ export function ContactZoo() {
   }
 
   const isDesktop = windowWidth >= Breakpoint.DESKTOP;
+  // const isTablet = windowWidth >= Breakpoint.TABLET;
 
   return (
     <section
@@ -20,19 +21,22 @@ export function ContactZoo() {
       data-testid="contact-zoo"
     >
       <div className="contact-zoo__wrapper container">
-        <h2 className="contact-zoo__title">
-          Один из первых и самых больших контактных зоопарков
-        </h2>
-        <p className="contact-zoo__description">
-          В этой части зоопарка вы почувствуете себя вдали от городской суеты
-          в компании кур, гусей, коз и многих других животных.
-        </p>
+        <div className="contact-zoo__text">
+          <h2 className="contact-zoo__title">
+            Один из первых и самых больших контактных зоопарков
+          </h2>
+          <p className="contact-zoo__description">
+            В этой части зоопарка вы почувствуете себя вдали от городской суеты
+            в компании кур, гусей, коз и многих других животных.
+          </p>
+        </div>
         <div className="contact-zoo__images">
           <div className="contact-zoo__image-wrapper">
             <Image
               className="contact-zoo__image"
               src={FirstImageSrc}
               alt="Изображение с кроликом"
+              fill
             />
           </div>
           {isDesktop && (
@@ -41,6 +45,7 @@ export function ContactZoo() {
                 className="contact-zoo__image"
                 src={SecondImageSrc}
                 alt="Изображение с кроликом"
+                fill
               />
             </div>
           )}
