@@ -11,11 +11,19 @@
 
     margin-bottom: 8px;
     color: $color-white;
+
+    @include tablet {
+      margin-bottom: 16px;
+    }
   }
 
   &__description {
     @include caption-1-medium;
 
     color: $color-white-90;
+
+    @include tablet {
+      color: $color-white;
+    }
   }
 }

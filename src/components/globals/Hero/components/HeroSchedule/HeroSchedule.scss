@@ -6,11 +6,28 @@
 
   &__title {
     display: none;
+
+    @include tablet {
+      @include h2-text;
+
+      display: block;
+      margin-bottom: 16px;
+      color: $color-green-dark;
+    }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
     gap: 14px;
+
+    @include tablet {
+      gap: 12px;
+    }
+  }
+
+  @include tablet {
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
