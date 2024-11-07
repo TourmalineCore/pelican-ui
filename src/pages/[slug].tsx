@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Hero } from '@/src/components/globals/Hero/Hero';
+import { Hero } from '@/src/components/home-page/Hero/Hero';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps, HeroComponentProps } from '../common/types';
 import {
