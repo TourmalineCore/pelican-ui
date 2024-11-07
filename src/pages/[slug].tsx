@@ -6,7 +6,12 @@ import {
   EMAIL, NAVIGATION_LINKS, PHONE, POPUP_TICKET_BUY_TEXT,
 } from '../common/mocks/globals-mock';
 import {
-  HERO_TITLE, INFO_CARD_DESCRIPTION, INFO_CARD_TITLE, SCHEDULE_TIMETABLES, SCHEDULE_TITLE,
+  HERO_IMAGE,
+  HERO_TITLE,
+  INFO_CARD_DESCRIPTION,
+  INFO_CARD_TITLE,
+  SCHEDULE_TIMETABLES,
+  SCHEDULE_TITLE,
 } from '../common/mocks/hero-mocks';
 
 type UniversalProps = GlobalComponentProps & HeroComponentProps;
@@ -15,6 +20,7 @@ export default function UniversalPage({
   email,
   navigationLinks,
   title,
+  image,
   scheduleTitle,
   scheduleTimetables,
   infoCardTitle,
@@ -36,6 +42,7 @@ export default function UniversalPage({
       >
         <Hero
           title={title}
+          image={image}
           scheduleTitle={scheduleTitle}
           scheduleTimetables={scheduleTimetables}
           infoCardTitle={infoCardTitle}
@@ -63,7 +70,9 @@ export async function getServerSideProps() {
       email: EMAIL,
       phone: PHONE,
       navigationLinks: NAVIGATION_LINKS,
+
       title: HERO_TITLE,
+      image: HERO_IMAGE,
       scheduleTitle: SCHEDULE_TITLE,
       scheduleTimetables: SCHEDULE_TIMETABLES,
       infoCardTitle: INFO_CARD_TITLE,

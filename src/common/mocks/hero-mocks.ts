@@ -1,4 +1,5 @@
 import { HeroComponentProps } from "@/src/common/types";
+import heroImage from '../../../public/images/hero/hero-main-page.png';
 
 export const HERO_TITLE: HeroComponentProps['title'] = `Челябинский зоопарк`;
 export const SCHEDULE_TITLE: HeroComponentProps['scheduleTitle'] = `График работы`;
@@ -18,3 +19,7 @@ export const SCHEDULE_TIMETABLES: HeroComponentProps['scheduleTimetables'] = [
 ];
 export const INFO_CARD_TITLE: HeroComponentProps['infoCardTitle'] = `29 июля зоопарк не работает`;
 export const INFO_CARD_DESCRIPTION: HeroComponentProps['infoCardDescription'] = `Каждый последний понедельник месяца санитарный день.`;
+export const HERO_IMAGE: HeroComponentProps['image'] = {
+  url: heroImage,
+  alt: `Изображение львов`,
+};

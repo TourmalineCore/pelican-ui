@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export type GlobalComponentProps = {
   navigationLinks: {
     id: number;
@@ -13,6 +15,10 @@ export type GlobalComponentProps = {
 
 export type HeroComponentProps = {
   title: string,
+  image: {
+    url: StaticImageData;
+    alt: string;
+  }
   scheduleTitle: string,
   scheduleTimetables: Timetable[],
   infoCardTitle: string,
