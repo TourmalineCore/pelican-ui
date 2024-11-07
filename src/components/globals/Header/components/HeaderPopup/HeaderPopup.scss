@@ -1,15 +1,9 @@
 .header-popup {
-  &__wrapper {
-    position: relative;
-    border-radius: 0 0 32px 32px;
-    padding-top: 24px;
-    padding-bottom: 24px;
-    background-color: $color-white;
-
-    @include tablet {
-      padding-top: 32px;
-    }
-  }
+  position: relative;
+  border-radius: 0 0 32px 32px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  background-color: $color-white;
 
   &__ticket-button {
     @include body-2-medium;
@@ -50,8 +44,18 @@
     gap: 8px;
     grid-template-columns: repeat(2, 1fr);
 
+    img {
+      width: 48px;
+      height: 48px;
+    }
+
     @include tablet {
       gap: 16px;
+
+      img {
+        width: 64px;
+        height: 64px;
+      }
     }
   }
 
@@ -63,11 +67,11 @@
     }
   }
 
-  &-enter {
+  &.enter {
     height: 0;
   }
 
-  &-enter-active {
+  &.enter-active {
     height: 356px;
     transition: all 0.2s ease-in;
 
@@ -80,7 +84,7 @@
     }
   }
 
-  &-exit {
+  &.exit {
     height: 356px;
 
     @include tablet {
@@ -92,7 +96,7 @@
     }
   }
 
-  &-exit-active {
+  &.exit-active {
     height: 0;
     transition: all 0.2s ease-in;
   }
@@ -111,5 +115,9 @@
     @include tablet-xl {
       @include h2-text;
     }
+  }
+
+  @include tablet {
+    padding-top: 32px;
   }
 }

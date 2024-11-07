@@ -28,14 +28,7 @@ const ICONS = [
   },
 ];
 
-export function SocialMedia({
-  size,
-}:{
-  size: {
-    width: number;
-    height: number;
-  }
-}) {
+export function SocialMedia() {
   return (
     <>
       {ICONS.map(({
@@ -46,14 +39,8 @@ export function SocialMedia({
         <a
           href={link}
           key={alt}
-          style={{
-            width: size.width,
-            height: size.height,
-          }}
         >
           <Image
-            width={size.width}
-            height={size.height}
             src={icon}
             alt={alt}
           />

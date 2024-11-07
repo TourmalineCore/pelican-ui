@@ -8,6 +8,7 @@
   &__link {
     @include body-2-medium;
 
+    display: block;
     color: $color-black-60;
     transition: color ease-out 0.2s;
     animation: fade-in 1s;

@@ -1,7 +1,5 @@
 import { GlobalComponentProps } from "@/src/common/types";
 import { CSSTransition } from 'react-transition-group';
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
-import { Breakpoint } from "@/src/common/enum";
 import { HeaderNavigationPopup } from "./components/HeaderNavigationPopup/HeaderNavigationPopup";
 import { SocialMedia } from "../../../SocialNetwork/SocialMedia";
 
@@ -14,12 +12,9 @@ export function HeaderPopup({
 }: GlobalComponentProps & {
   isActive: boolean
 }) {
-  const windowWidth = useWindowWidth();
-
   return (
     <CSSTransition
       in={isActive}
-      classNames="header-popup"
       timeout={{
         enter: 300,
         exit: 200,
@@ -27,7 +22,7 @@ export function HeaderPopup({
       unmountOnExit
     >
       <div
-        className="container header-popup__wrapper"
+        className="container header-popup"
         data-testId="header-popup"
       >
         {isActive && (
@@ -57,7 +52,7 @@ export function HeaderPopup({
               </div>
 
               <div className="header-popup__social-media">
-                <SocialMedia size={getSocialMediaIconSize({ windowSize: windowWidth })} />
+                <SocialMedia />
               </div>
 
             </div>
@@ -66,18 +61,4 @@ export function HeaderPopup({
       </div>
     </CSSTransition>
   );
-
-  function getSocialMediaIconSize({ windowSize }: { windowSize: number }) {
-    if (windowSize >= Breakpoint.TABLET) {
-      return {
-        width: 64,
-        height: 64,
-      };
-    }
-
-    return {
-      width: 48,
-      height: 48,
-    };
-  }
 }
