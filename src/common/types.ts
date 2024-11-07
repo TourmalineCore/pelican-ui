@@ -13,7 +13,15 @@ export type GlobalComponentProps = {
   popupTicketBuyText?: string;
 };
 
+export type HomePageProps = {
+  id: number,
+  title: string;
+  blocks: HeroComponentProps[];
+};
+
 export type HeroComponentProps = {
+  id: number
+  __component: "home.hero",
   title: string,
   image: {
     url: StaticImageData;

@@ -11,7 +11,7 @@ export function Hero({
   infoCardTitle,
   infoCardDescription,
   image,
-}: HeroComponentProps) {
+}: Omit<HeroComponentProps, 'id' | '__component'>) {
   return (
     <section
       className="hero container"
