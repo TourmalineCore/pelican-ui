@@ -1,0 +1,63 @@
+.contact-zoo {
+  padding-top: 52px;
+
+  &__wrapper {
+    border-radius: 32px 32px 0 0;
+    padding: 40px 16px 60px;
+    background-image: url("../../../../public/images/contact-zoo/footsteps.png");
+    background-position: -230px -25px;
+    background-size: cover;
+    background-color: rgb(240 232 224 / 100%);
+  }
+
+  &__title {
+    @include h1-text;
+
+    margin-bottom: 12px;
+    color: rgb(0 0 0 / 75%);
+  }
+
+  &__description {
+    @include caption-1-medium;
+
+    margin-bottom: 24px;
+    color: rgb(0 0 0 / 60%);
+  }
+
+  &__images {
+    margin-bottom: 24px;
+  }
+
+  &__image-wrapper {
+    overflow: hidden;
+    border-radius: 24px;
+
+    &:nth-child(1) {
+      aspect-ratio: 343 / 343;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+  }
+
+  &__btn {
+    @include caption-1-medium;
+
+    position: relative;
+    padding: 12px 127px;
+    width: 100%;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -72px;
+      width: 100%;
+      height: fit-content;
+      max-width: 139px;
+      background-image: url("../../../../public/images/contact-zoo/gooses.svg");
+      aspect-ratio: 139 / 81;
+    }
+  }
+}
