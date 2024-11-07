@@ -33,6 +33,11 @@ img {
   }
 }
 
+.blur {
+  background-color: $color-black-20;
+  filter: blur(16px);
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
