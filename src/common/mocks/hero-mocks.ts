@@ -8,13 +8,13 @@ export const SCHEDULE_TIMETABLES: HeroComponentProps['scheduleTimetables'] = [
     id: 0,
     days: `Понедельник - четверг`,
     time: `10:00-18:00`,
-    ticketsOfficeTime: `(вход и касса до 17:00)`,
+    ticketsOfficeTime: `(вход и касса 10:00-17:00)`,
   },
   {
     id: 1,
     days: `Пятница – воскресенье, праздники`,
     time: `10:00-19:00`,
-    ticketsOfficeTime: `(вход и касса до 18:00)`,
+    ticketsOfficeTime: `(вход и касса 10:00-18:00)`,
   },
 ];
 export const INFO_CARD_TITLE: HeroComponentProps['infoCardTitle'] = `29 июля зоопарк не работает`;
