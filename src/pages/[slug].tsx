@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { ContactZoo } from '@/src/components/globals/ContactZoo/ContactZoo';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps } from '../common/types';
 import {
@@ -23,7 +24,7 @@ export default function UniversalPage({
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
       >
-        Hello, World!
+        <ContactZoo />
       </Layout>
     </>
   );
