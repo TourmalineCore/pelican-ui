@@ -17,6 +17,10 @@
     @include tablet {
       margin-bottom: 16px;
     }
+
+    @include tablet-xl {
+      margin-bottom: 24px;
+    }
   }
 
   &__description {
@@ -27,5 +31,13 @@
     @include tablet {
       color: $color-white;
     }
+
+    @include tablet-xl {
+      @include text-medium;
+    }
+  }
+
+  @include tablet-xl {
+    padding: 24px 32px;
   }
 }

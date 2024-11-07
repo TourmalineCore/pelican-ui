@@ -13,6 +13,10 @@
 
       color: $color-black;
     }
+
+    @include tablet-xl {
+      @include caption-1-medium;
+    }
   }
 
   &__time {

@@ -40,6 +40,20 @@
   }
 }
 
+@mixin text-medium {
+  @include tablet-xl {
+    @include medium-font;
+
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  @include desktop-xl {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+}
+
 @mixin body-1-medium {
   @include medium-font;
 
