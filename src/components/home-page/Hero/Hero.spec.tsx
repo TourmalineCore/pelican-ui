@@ -77,10 +77,10 @@ async function desktopXlTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 955
+    height: 955,
   });
 
-  hideHeader({ page })
+  hideHeader({ page });
 
   await expect(getHeroByTestId({ page }))
     .toHaveScreenshot(`hero-desktop-xl.png`);
