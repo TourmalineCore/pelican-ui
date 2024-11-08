@@ -56,6 +56,13 @@
       padding-bottom: 42px;
       grid-template-columns: 1.42fr 1fr;
     }
+
+    @include desktop-xl {
+      column-gap: 32px;
+      padding-top: 104px;
+      padding-bottom: 120px;
+      grid-template-rows: auto 68px;
+    }
   }
 
   &__text {
@@ -73,6 +80,10 @@
 
     @include desktop {
       margin-bottom: 210px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 275px;
     }
   }
 
@@ -98,6 +109,10 @@
 
     @include tablet-xl {
       @include text-medium;
+    }
+
+    @include desktop-xl {
+      @include text-regular;
     }
   }
 
@@ -167,6 +182,12 @@
         width: 209px;
         height: 135px;
       }
+
+      @include desktop-xl {
+        top: -147px;
+        width: 281px;
+        height: 181px;
+      }
     }
 
     @include tablet {
@@ -186,5 +207,9 @@
 
   @include desktop {
     padding-top: 40px;
+  }
+
+  @include desktop-xl {
+    padding-top: 88px;
   }
 }

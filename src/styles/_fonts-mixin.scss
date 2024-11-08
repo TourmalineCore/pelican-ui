@@ -3,6 +3,11 @@
   font-weight: 500;
 }
 
+@mixin regular-font {
+  font-family: inherit;
+  font-weight: 400;
+}
+
 @mixin caption-1-medium {
   @include medium-font;
 
@@ -86,6 +91,18 @@
 
 @mixin text-medium {
   @include medium-font;
+
+  font-size: 20px;
+  line-height: 1.4;
+
+  @include desktop-xl {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+}
+
+@mixin text-regular {
+  @include regular-font;
 
   font-size: 20px;
   line-height: 1.4;
