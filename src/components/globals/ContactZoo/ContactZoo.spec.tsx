@@ -34,7 +34,7 @@ async function tabletXlTest({
   });
 
   await expect(getContactZooByTestId({ page }))
-    .toHaveScreenshot(`contact-zoo-tablet.png`);
+    .toHaveScreenshot(`contact-zoo-tablet-xl.png`);
 }
 
 async function desktopTest({
