@@ -12,7 +12,7 @@
       content: "";
       position: absolute;
       z-index: -1;
-      border-radius: 32px 32px 0 0;
+      border-radius: 32px;
       height: calc(100% + 24px);
       background-image: url("../../../../public/images/contact-zoo/footsteps.png");
       background-position: -230px -25px;
@@ -21,16 +21,29 @@
       inset: 0;
 
       @include tablet {
-        border-radius: 40px 40px 0 0;
+        border-radius: 40px;
         height: calc(100% + 80px);
+      }
+
+      @include tablet-xl {
+        border-radius: 64px;
+        height: calc(100% + 96px);
       }
     }
 
     @include tablet {
       display: grid;
       column-gap: 12px;
+      padding-bottom: 64px;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto 47px;
+    }
+
+    @include tablet-xl {
+      column-gap: 16px;
+      padding-top: 48px;
+      padding-bottom: 48px;
+      grid-template-rows: auto 49px;
     }
   }
 
@@ -41,6 +54,10 @@
       margin-bottom: 95px;
       grid-column: 2 / 3;
       grid-row: 1 / 2;
+    }
+
+    @include tablet-xl {
+      margin-bottom: 136px;
     }
   }
 
@@ -53,12 +70,20 @@
     @include tablet {
       @include h2-text;
     }
+
+    @include tablet-xl {
+      margin-bottom: 16px;
+    }
   }
 
   &__description {
     @include caption-1-medium;
 
     color: rgb(0 0 0 / 60%);
+
+    @include tablet-xl {
+      @include text-medium;
+    }
   }
 
   &__images {
@@ -110,13 +135,26 @@
         width: 140px;
         height: 93px;
       }
+
+      @include tablet-xl {
+        top: -110px;
+        width: 209px;
+        height: 135px;
+      }
     }
 
     @include tablet {
       padding: 12px 136.5px;
-      padding-top: 40px;
       grid-column: 2 / 3;
       grid-row: 2 / 3;
     }
+  }
+
+  @include tablet {
+    padding-top: 40px;
+  }
+
+  @include tablet-xl {
+    padding-top: 0;
   }
 }
