@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import { ContactZoo } from '@/src/components/globals/ContactZoo/ContactZoo';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps } from '../common/types';
 import {
   EMAIL, NAVIGATION_LINKS, PHONE, POPUP_TICKET_BUY_TEXT,
 } from '../common/mocks/globals-mock';
+import { ContactZooPreview } from '../components/home-page/ContactZooPreview/ContactZooPreview';
 
 export default function UniversalPage({
   email,
@@ -24,7 +24,7 @@ export default function UniversalPage({
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
       >
-        <ContactZoo />
+        <ContactZooPreview />
       </Layout>
     </>
   );
