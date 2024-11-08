@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { GlobalComponentProps } from '@/src/common/types';
-import { Header } from '../Header/Header';
+import { Footer } from '../Footer/Footer';
+// import { Header } from '../Header/Header';
 
 type LayoutProps = GlobalComponentProps & PropsWithChildren;
 
@@ -9,20 +10,30 @@ export function Layout({
   email,
   phone,
   navigationLinks,
+  officialLinks,
+  footerUserLinks,
+  footerAboutLinks,
   popupTicketBuyText,
 }: {
 } & LayoutProps) {
   return (
     <div className="layout">
-      <Header
+      {/* <Header
         navigationLinks={navigationLinks}
         email={email}
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
       />
-      <main>
+      <main className="main">
         {children}
-      </main>
+      </main> */}
+      <Footer
+        officialLinks={officialLinks}
+        footerUserLinks={footerUserLinks}
+        footerAboutLinks={footerAboutLinks}
+        email={email}
+        phone={phone}
+      />
     </div>
   );
 }

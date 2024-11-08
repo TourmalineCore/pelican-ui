@@ -1,0 +1,143 @@
+.footer {
+  background-color: #f6f5f5;
+
+  &__inner {
+    border-radius: 32px;
+    padding: 32px 16px 16px;
+    background-color: #fff;
+  }
+
+  &__top {
+    @include tablet {
+      display: flex;
+    }
+  }
+
+  &__cols {
+    display: flex;
+  }
+
+  &__col {
+    width: 50%;
+
+    &--left {
+      padding-right: 10px;
+    }
+  }
+
+  &__nav-item {
+    margin-top: 5px;
+  }
+
+  &__nav-link {
+    @include caption-1-medium;
+
+    display: block;
+    color: $color-black-60;
+    transition: color ease-out 0.2s;
+    animation: fade-in 1s;
+
+    &:focus,
+    &:hover {
+      color: $color-green;
+    }
+
+    @include tablet-xl {
+      // TODO: fix font-size after redesigned
+      font-size: 20px;
+      line-height: 1.4;
+    }
+  }
+
+  &__official-link-item {
+    & + & {
+      margin-top: 12px;
+    }
+
+    @include tablet {
+      padding-right: 6px;
+      width: 33.33%;
+
+      &:last-child {
+        padding-right: 0;
+      }
+
+      & + & {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__official-link {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.45;
+    color: $color-black-60;
+
+    img {
+      filter: grayscale(1);
+    }
+  }
+
+  &__official-link-name {
+    margin-left: 12px;
+    max-width: 212px;
+  }
+
+  &__contacts {
+    margin-top: 66px;
+  }
+
+  &__social-media {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__official-name {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
+
+  &__middle {
+    margin-top: 18px;
+  }
+
+  &__copyright {
+    margin-top: 16px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.46;
+    color: $color-black-60;
+  }
+
+  &__copyright-link {
+    margin-left: 4px;
+    background: linear-gradient(90deg, #ff8fd2 0%, #c38cff 54%, #9abfff 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__bottom {
+    padding: 24px 16px 16px;
+  }
+
+  &__title,
+  &__contact-link {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.45;
+    color: $color-green-dark;
+  }
+
+  &__middle,
+  &__official-links {
+    @include tablet {
+      display: flex;
+    }
+  }
+}

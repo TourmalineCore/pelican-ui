@@ -7,6 +7,15 @@ body {
   background-color: $color-background-page;
 }
 
+// .main {
+//   position: static;
+//   min-height: calc(100vh - 105px);
+
+//   @include desktop {
+//     min-height: calc(100vh - 135px);
+//   }
+// }
+
 .container {
   padding-right: 16px;
   padding-left: 16px;

@@ -1,8 +1,10 @@
 import { GlobalComponentProps } from "../types";
+import iconAdministration1 from '../../../public/images/svg/administration-1.svg';
+import iconAdministration2 from '../../../public/images/svg/administration-2.svg';
 
 export const EMAIL = `metodist@chelzoo.ru`;
 export const PHONE = `+7 (351) 263-18-64`;
-export const POPUP_TICKET_BUY_TEXT = `Купить билет`;
+export const POPUP_TICKET_BUY_TEXT = `Билеты`;
 
 export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
@@ -29,5 +31,70 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
     id: 5,
     name: `Документация`,
     link: `#`,
+  },
+];
+
+export const FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [
+  {
+    id: 1,
+    name: `Услуги`,
+    link: `#`,
+  },
+  {
+    id: 2,
+    name: `Билеты`,
+    link: `#`,
+  },
+  {
+    id: 3,
+    name: `Льготы`,
+    link: `#`,
+  },
+];
+
+export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
+  {
+    id: 1,
+    name: `Новости`,
+    link: `#`,
+  },
+  {
+    id: 2,
+    name: `Документы`,
+    link: `#`,
+  },
+  {
+    id: 3,
+    name: `Правила посещения`,
+    link: `#`,
+  },
+  {
+    id: 4,
+    name: `Оставить отзыв`,
+    link: `#`,
+  },
+];
+
+export const OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
+  {
+    id: 1,
+    name: `Управление культуры администрации г.\u00A0Челябинска`,
+    link: `#`,
+    icon: iconAdministration1,
+    alt: `Иконка`,
+  },
+  {
+    id: 2,
+    name: `Министерство культуры Челябинской области`,
+    link: `#`,
+    icon: iconAdministration2,
+    alt: `Иконка`,
+  },
+  {
+    id: 3,
+    name: `Администрация г.\u00A0Челябинска`,
+    link: `#`,
+    icon: iconAdministration1,
+    alt: `Иконка`,
   },
 ];

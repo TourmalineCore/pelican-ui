@@ -20,7 +20,7 @@ export function Header({
   email,
   phone,
   popupTicketBuyText,
-}: GlobalComponentProps) {
+}: Pick<GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText">) {
   const [isActive, setIsActive] = useState(false);
   const windowWidth = useWindowWidth();
 
