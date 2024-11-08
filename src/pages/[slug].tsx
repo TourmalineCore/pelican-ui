@@ -1,15 +1,13 @@
 import Head from 'next/head';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps, HomePageProps } from '../common/types';
-import {
-  EMAIL, NAVIGATION_LINKS, PHONE, POPUP_TICKET_BUY_TEXT,
-} from '../common/mocks/globals-mock';
+import { EMAIL, NAVIGATION_LINKS, PHONE, POPUP_TICKET_BUY_TEXT } from '../common/mocks/globals-mock';
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 import { getMockPageData } from '../common/utils/getMockPageData';
 
 type UniversalProps = {
   globalData: GlobalComponentProps,
-  pageData: HomePageProps;
+  pageData: HomePageProps,
 };
 
 export default function UniversalPage({
@@ -24,12 +22,17 @@ export default function UniversalPage({
   const {
     navigationLinks, email, phone, popupTicketBuyText,
   } = globalData;
-  const { title, blocks } = pageData;
+  const {
+    title, blocks,
+  } = pageData;
 
   return (
     <>
       <Head>
-        <meta name="description" content="Сайт зоопарка" />
+        <meta
+          name="description"
+          content="Сайт зоопарка"
+        />
         <title>{title}</title>
       </Head>
       <Layout
@@ -53,8 +56,8 @@ export async function getServerSideProps({
   query,
 }: {
   query: {
-    slug: string;
-  }
+    slug: string,
+  },
 }) {
   // TODO Uncomment when the api appears, there will be static data here
   // if (process.env.APP_ENV === `test`) {
@@ -74,7 +77,9 @@ export async function getServerSideProps({
         phone: PHONE,
         navigationLinks: NAVIGATION_LINKS,
       },
-      pageData: getMockPageData({ slug: query.slug }),
+      pageData: getMockPageData({
+        slug: query.slug,
+      }),
     },
   };
 }

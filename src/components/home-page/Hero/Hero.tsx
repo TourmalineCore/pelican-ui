@@ -3,6 +3,8 @@ import { HeroComponentProps } from "@/src/common/types";
 import { Button } from "@/src/components/globals/Button/Button";
 import { HeroSchedule } from "./components/HeroSchedule/HeroSchedule";
 import { HeroInfoCard } from "./components/HeroInfoCard/HeroInfoCard";
+import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
+import { Breakpoint } from "@/src/common/enum";
 
 export function Hero({
   title,
@@ -12,12 +14,16 @@ export function Hero({
   infoCardDescription,
   image,
 }: Omit<HeroComponentProps, 'id' | '__component'>) {
+  const windowWidth = useWindowWidth();
+  
+  const isDesktop = windowWidth >= Breakpoint.DESKTOP;
+
   return (
     <section
       className="hero container"
       data-testid="hero"
     >
-      <div className="hero__title">{title}</div>
+      {isDesktop && <div className="hero__title">{title}</div>}
       <div className="hero__image-wrapper">
         <Image
           src={image.url}
@@ -34,20 +40,22 @@ export function Hero({
           infoCardDescription={infoCardDescription}
         />
       </div>
-      <div className="hero__buttons">
-        <Button
-          className="hero__contact-button"
-          theme="secondary"
-        >
-          Связаться
-        </Button>
-        <Button
-          className="hero__ticket-button"
-          theme="primary"
-        >
-          Билеты
-        </Button>
-      </div>
+      {!isDesktop &&
+        <div className="hero__buttons">
+          <Button
+            className="hero__contact-button"
+            theme="secondary"
+          >
+            Связаться
+          </Button>
+          <Button
+            className="hero__ticket-button"
+            theme="primary"
+          >
+            Билеты
+          </Button>
+        </div>
+      }
     </section>
   );
 }

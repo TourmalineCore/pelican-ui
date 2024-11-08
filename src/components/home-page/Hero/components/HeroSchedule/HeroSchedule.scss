@@ -14,6 +14,14 @@
       margin-bottom: 16px;
       color: $color-green-dark;
     }
+
+    @include desktop {
+      margin-bottom: 24px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 32px;
+    }
   }
 
   &__list {
@@ -24,6 +32,14 @@
     @include tablet {
       gap: 12px;
     }
+
+    @include desktop {
+      gap: 16px;
+    }
+
+    @include desktop-xl {
+      gap: 24px;
+    }
   }
 
   @include tablet {
@@ -32,6 +48,16 @@
   }
 
   @include tablet-xl {
+    border-radius: 32px;
     padding: 24px 32px;
+  }
+
+  @include desktop {
+    padding: 24px;
+    width: 55.8%;
+  }
+
+  @include desktop-xl {
+    padding: 32px;
   }
 }

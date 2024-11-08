@@ -5,6 +5,7 @@
   &__days {
     @include caption-1-medium;
 
+
     margin-bottom: 6px;
     color: $color-black-75;
 
@@ -16,6 +17,10 @@
 
     @include tablet-xl {
       @include caption-1-medium;
+    }
+
+    @include desktop-xl {
+      @include caption-2-medium;
     }
   }
 
@@ -30,6 +35,10 @@
     @include caption-2-regular;
 
     color: $color-black-75;
+
+    @include desktop-xl {
+      @include caption-3-regular;
+    }
   }
 
   @include tablet {

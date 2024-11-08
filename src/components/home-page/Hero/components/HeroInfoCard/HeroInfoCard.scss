@@ -1,4 +1,5 @@
 .hero-info-card {
+  flex-grow: 1;
   border-radius: 24px;
   padding: 16px;
   box-shadow: 0 2px 16px 0 rgb(53 53 53 / 4%);
@@ -21,6 +22,16 @@
     @include tablet-xl {
       margin-bottom: 24px;
     }
+
+    @include desktop {
+      @include body-2-medium;
+
+      margin-bottom: 58px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 87px;
+    }
   }
 
   &__description {
@@ -35,9 +46,24 @@
     @include tablet-xl {
       @include text-medium;
     }
+
+    @include desktop-xl {
+      @include caption-1-medium;
+    }
   }
 
   @include tablet-xl {
+    border-radius: 32px;
     padding: 24px 32px;
+  }
+
+  @include desktop {
+    padding: 24px;
+    width: 41%;
+  }
+
+  @include desktop-xl {
+    border-radius: 40px;
+    padding: 32px;
   }
 }
