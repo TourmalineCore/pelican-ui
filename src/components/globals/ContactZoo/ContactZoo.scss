@@ -29,6 +29,10 @@
         border-radius: 64px;
         height: calc(100% + 96px);
       }
+
+      @include desktop {
+        height: calc(100% + 82px);
+      }
     }
 
     @include tablet {
@@ -45,6 +49,13 @@
       padding-bottom: 48px;
       grid-template-rows: auto 49px;
     }
+
+    @include desktop {
+      column-gap: 24px;
+      padding-top: 64px;
+      padding-bottom: 42px;
+      grid-template-columns: 1.42fr 1fr;
+    }
   }
 
   &__text {
@@ -58,6 +69,10 @@
 
     @include tablet-xl {
       margin-bottom: 136px;
+    }
+
+    @include desktop {
+      margin-bottom: 210px;
     }
   }
 
@@ -106,6 +121,17 @@
 
     &:nth-child(1) {
       flex-grow: 1;
+    }
+
+    &:nth-child(2) {
+      @include desktop {
+        margin-left: 24px;
+        min-width: 40.9%;
+      }
+    }
+
+    @include tablet {
+      border-radius: 32px;
     }
   }
 
@@ -156,5 +182,9 @@
 
   @include tablet-xl {
     padding-top: 0;
+  }
+
+  @include desktop {
+    padding-top: 40px;
   }
 }
