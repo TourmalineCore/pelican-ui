@@ -10,7 +10,7 @@ export type GlobalComponentProps = {
   }[],
   email: string;
   phone: string;
-  popupTicketBuyText?: string;
+  popupTicketBuyText: string;
 };
 
 export type HomePageProps = {

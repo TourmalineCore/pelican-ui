@@ -5,8 +5,6 @@
   background-color: $color-white;
 
   &__title {
-    display: none;
-
     @include tablet {
       @include h2-text;
 

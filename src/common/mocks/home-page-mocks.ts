@@ -20,5 +20,4 @@ export const HOME_PAGE: HomePageProps = {
     infoCardTitle: INFO_CARD_TITLE,
     infoCardDescription: INFO_CARD_DESCRIPTION,
   }],
-
 };
