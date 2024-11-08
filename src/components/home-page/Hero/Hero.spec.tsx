@@ -1,5 +1,5 @@
 import { Breakpoint } from '@/src/common/enum';
-import { setViewportSizeAndGoToPage } from '@/test/helpers';
+import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`HeroComponentTests`, () => {
@@ -77,7 +77,10 @@ async function desktopXlTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.DESKTOP_XL,
+    height: 955
   });
+
+  hideHeader({ page })
 
   await expect(getHeroByTestId({ page }))
     .toHaveScreenshot(`hero-desktop-xl.png`);
