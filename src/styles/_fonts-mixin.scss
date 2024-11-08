@@ -1,11 +1,21 @@
-@mixin medium-font {
-  font-family: inherit;
+@font-face {
+  src: url("../../public/fonts/Inter-Medium.otf");
+  font-family: Inter-medium;
   font-weight: 500;
 }
 
-@mixin regular-font {
-  font-family: inherit;
+@font-face {
+  src: url("../../public/fonts/Inter-Regular.otf");
+  font-family: Inter-regular;
   font-weight: 400;
+}
+
+@mixin medium-font {
+  font-family: Inter-medium, sans-serif;
+}
+
+@mixin regular-font {
+  font-family: Inter-regular, sans-serif;
 }
 
 @mixin caption-1-medium {
@@ -82,6 +92,19 @@
 
   @include desktop-xl {
     font-size: 34px;
+  }
+}
+
+@mixin h-text {
+  @include desktop {
+    font-family: Inter-medium, sans-serif;
+    font-weight: 600;
+    font-size: 96px;
+    line-height: 1;
+  }
+
+  @include desktop-xl {
+    font-size: 128px;
   }
 }
 
