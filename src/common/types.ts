@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export type GlobalComponentProps = {
   navigationLinks: {
     id: number;
@@ -9,4 +11,25 @@ export type GlobalComponentProps = {
   email: string;
   phone: string;
   popupTicketBuyText: string;
+};
+
+export type HomePageProps = {
+  id: number,
+  title: string;
+  blocks: ContactZooPreviewComponentProps[];
+};
+
+export type ContactZooPreviewComponentProps = {
+  id: number
+  __component: "home.contact-zoo-preview",
+  title: string,
+  description: string,
+  largeImage: {
+    url: StaticImageData;
+    alt: string;
+  },
+  smallImage: {
+    url: StaticImageData;
+    alt: string;
+  },
 };
