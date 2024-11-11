@@ -52,6 +52,7 @@ export function Hero({
             <Button
               className="hero__ticket-button"
               theme="primary"
+              isFeatured
             >
               Билеты
             </Button>

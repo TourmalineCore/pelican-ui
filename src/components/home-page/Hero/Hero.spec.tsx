@@ -21,7 +21,10 @@ async function mobileTest({
 }) {
   await setViewportSizeAndGoToPage({
     page,
+    width: 378,
   });
+
+  hideHeader({ page });
 
   await expect(getHeroByTestId({ page }))
     .toHaveScreenshot(`hero-mobile.png`);
@@ -37,6 +40,8 @@ async function tabletTest({
     width: Breakpoint.TABLET,
   });
 
+  hideHeader({ page });
+
   await expect(getHeroByTestId({ page }))
     .toHaveScreenshot(`hero-tablet.png`);
 }
@@ -51,6 +56,8 @@ async function tabletXlTest({
     width: Breakpoint.TABLET_XL,
   });
 
+  hideHeader({ page });
+
   await expect(getHeroByTestId({ page }))
     .toHaveScreenshot(`hero-tablet-xl.png`);
 }
@@ -64,6 +71,8 @@ async function desktopTest({
     page,
     width: Breakpoint.DESKTOP,
   });
+
+  hideHeader({ page });
 
   await expect(getHeroByTestId({ page }))
     .toHaveScreenshot(`hero-desktop.png`);

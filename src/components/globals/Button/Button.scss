@@ -35,6 +35,83 @@
     }
   }
 
+  &--featured {
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      right: 1.5px;
+      bottom: 0;
+      width: 82px;
+      height: 67px;
+
+      @include tablet {
+        right: 12px;
+      }
+
+      @include tablet-xl {
+        right: 6px;
+        width: 100px;
+        height: 81px;
+      }
+
+      @include desktop {
+        right: 0;
+        width: 82px;
+        height: 67px;
+      }
+
+      @include desktop-xl {
+        width: 121px;
+        height: 99px;
+      }
+    }
+
+    &::before {
+      background-image: url("../../../../public/images/buttons/parrot-closed-eye.svg");
+      visibility: hidden;
+
+      @include tablet-xl {
+        background-image: url("../../../../public/images/buttons/parrot-closed-eye-tablet-xl.svg");
+      }
+
+      @include desktop {
+        background-image: url("../../../../public/images/buttons/parrot-closed-eye.svg");
+      }
+
+      @include desktop-xl {
+        background-image: url("../../../../public/images/buttons/parrot-closed-eye-desktop-xl.svg");
+      }
+    }
+
+    &::after {
+      background-image: url("../../../../public/images/buttons/parrot-open-eye.svg");
+
+      @include tablet-xl {
+        background-image: url("../../../../public/images/buttons/parrot-open-eye-tablet-xl.svg");
+      }
+
+      @include desktop {
+        background-image: url("../../../../public/images/buttons/parrot-open-eye.svg");
+      }
+
+      @include desktop-xl {
+        background-image: url("../../../../public/images/buttons/parrot-open-eye-desktop-xl.svg");
+      }
+    }
+
+    &:hover,
+    &:focus {
+      &::before {
+        visibility: visible;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
   @include desktop-xl {
     border-radius: 20px;
   }
