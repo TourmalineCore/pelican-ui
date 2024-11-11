@@ -81,6 +81,7 @@ export function Header({
               <Button
                 className="header__ticket-button"
                 theme="primary"
+                isFeatured
               >
                 Билеты
               </Button>
