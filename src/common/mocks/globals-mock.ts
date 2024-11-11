@@ -29,7 +29,7 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   },
   {
     id: 5,
-    name: `Документация`,
+    name: `Документы`,
     link: `#`,
   },
 ];

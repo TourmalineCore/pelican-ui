@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Layout } from '../components/globals/Layout/Layout';
-import { GlobalComponentProps } from '../common/types';
+import { GlobalComponentProps, HomePageProps } from '../common/types';
 import {
   EMAIL,
   FOOTER_ABOUT_LINKS,
@@ -10,21 +10,44 @@ import {
   PHONE,
   POPUP_TICKET_BUY_TEXT,
 } from '../common/mocks/globals-mock';
+import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
+import { getMockPageData } from '../common/utils/getMockPageData';
+
+type UniversalProps = {
+  globalData: GlobalComponentProps,
+  pageData: HomePageProps,
+};
 
 export default function UniversalPage({
-  email,
-  navigationLinks,
-  officialLinks,
-  footerAboutLinks,
-  footerUserLinks,
-  phone,
-  popupTicketBuyText,
-}: GlobalComponentProps) {
+  globalData,
+  pageData,
+}: UniversalProps) {
+  // TODO: Редирект на 404 в будущем будет внутри getServerSideProps
+  if (!pageData) {
+    return <div>404</div>;
+  }
+
+  const {
+    navigationLinks,
+    email,
+    phone,
+    popupTicketBuyText,
+    footerAboutLinks,
+    footerUserLinks,
+    officialLinks,
+  } = globalData;
+  const {
+    title, blocks,
+  } = pageData;
+
   return (
     <>
       <Head>
-        <meta name="description" content="Сайт зоопарка" />
-        <title>Главная</title>
+        <meta
+          name="description"
+          content="Сайт зоопарка"
+        />
+        <title>{title}</title>
       </Head>
       <Layout
         navigationLinks={navigationLinks}
@@ -35,13 +58,24 @@ export default function UniversalPage({
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
       >
-        Hello, World!
+        {blocks.map((block) => (
+          <BlockRenderer
+            key={block.id}
+            block={block}
+          />
+        ))}
       </Layout>
     </>
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({
+  query,
+}: {
+  query: {
+    slug: string,
+  },
+}) {
   // TODO Uncomment when the api appears, there will be static data here
   // if (process.env.APP_ENV === `test`) {
   //   return {
@@ -54,13 +88,18 @@ export async function getServerSideProps() {
   // TODO there will be a request in the Strapi api here
   return {
     props: {
-      popupTicketBuyText: POPUP_TICKET_BUY_TEXT,
-      email: EMAIL,
-      phone: PHONE,
-      navigationLinks: NAVIGATION_LINKS,
-      officialLinks: OFFICIAL_LINKS,
-      footerUserLinks: FOOTER_USER_LINKS,
-      footerAboutLinks: FOOTER_ABOUT_LINKS,
+      globalData: {
+        popupTicketBuyText: POPUP_TICKET_BUY_TEXT,
+        email: EMAIL,
+        phone: PHONE,
+        navigationLinks: NAVIGATION_LINKS,
+        footerAboutLinks: FOOTER_ABOUT_LINKS,
+        footerUserLinks: FOOTER_USER_LINKS,
+        officialLinks: OFFICIAL_LINKS,
+      },
+      pageData: getMockPageData({
+        slug: query.slug,
+      }),
     },
   };
 }

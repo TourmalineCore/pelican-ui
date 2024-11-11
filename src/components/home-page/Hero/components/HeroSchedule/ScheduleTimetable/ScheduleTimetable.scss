@@ -1,0 +1,45 @@
+.schedule-timetable {
+  border-left: 2px solid $color-green-dark;
+  padding-left: 12px;
+
+  &__days {
+    @include caption-1-medium;
+
+    margin-bottom: 6px;
+    color: $color-black-75;
+
+    @include tablet {
+      @include body-2-medium;
+    }
+
+    @include tablet-xl {
+      @include caption-1-medium;
+    }
+
+    @include desktop-xl {
+      @include caption-2-medium;
+    }
+  }
+
+  &__time {
+    @include body-2-medium;
+
+    margin-right: 8px;
+    color: $color-green-dark;
+  }
+
+  &__tickets-office-time {
+    @include caption-2-regular;
+
+    color: $color-black-75;
+
+    @include desktop-xl {
+      @include caption-3-regular;
+    }
+  }
+
+  @include tablet {
+    border-left: none;
+    padding-left: 0;
+  }
+}
