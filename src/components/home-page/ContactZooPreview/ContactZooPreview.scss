@@ -17,7 +17,7 @@
       background-image: url("../../../../public/images/contact-zoo/footsteps.png");
       background-position: -230px -25px;
       background-size: cover;
-      background-color: rgb(240 232 224 / 100%);
+      background-color: $color-yellow;
       inset: 0;
 
       @include tablet {
@@ -91,7 +91,7 @@
     @include h1-text;
 
     margin-bottom: 12px;
-    color: rgb(0 0 0 / 75%);
+    color: $color-black-75;
 
     @include tablet {
       @include h2-text;
@@ -105,7 +105,7 @@
   &__description {
     @include caption-1-medium;
 
-    color: rgb(0 0 0 / 60%);
+    color: $color-black-60;
 
     @include tablet-xl {
       @include text-medium;
