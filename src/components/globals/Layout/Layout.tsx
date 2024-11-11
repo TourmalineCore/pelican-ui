@@ -20,7 +20,7 @@ export function Layout({
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
       />
-      <main>
+      <main className="main">
         {children}
       </main>
     </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { GlobalComponentProps } from "@/src/common/types";
 import { Breakpoint } from "@/src/common/enum";
@@ -23,6 +23,18 @@ export function Header({
 }: GlobalComponentProps) {
   const [isActive, setIsActive] = useState(false);
   const windowWidth = useWindowWidth();
+
+  useEffect(() => {
+    const mainElement = document.querySelector(`.main`)!;
+
+    if (isActive) {
+      mainElement.classList.add(`blur`);
+    }
+
+    return () => {
+      mainElement.classList.remove(`blur`);
+    };
+  }, [isActive]);
 
   if (windowWidth === 0) {
     return null;

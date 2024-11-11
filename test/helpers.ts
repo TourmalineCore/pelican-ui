@@ -16,3 +16,11 @@ export async function setViewportSizeAndGoToPage({
   });
   await page.goto(`/`);
 }
+
+export function hideHeader({
+  page,
+}: {
+  page: Page,
+}) {
+  return page.getByTestId('header').evaluate((element) => element.style.visibility = 'hidden');  
+}

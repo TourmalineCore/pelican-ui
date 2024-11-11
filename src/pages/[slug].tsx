@@ -16,6 +16,7 @@ export default function UniversalPage({
   globalData,
   pageData,
 }: UniversalProps) {
+  // TODO: Редирект на 404 в будущем будет внутри getServerSideProps
   if (!pageData) {
     return <div>404</div>;
   }
@@ -30,7 +31,10 @@ export default function UniversalPage({
   return (
     <>
       <Head>
-        <meta name="description" content="Сайт зоопарка" />
+        <meta
+          name="description"
+          content="Сайт зоопарка"
+        />
         <title>{title}</title>
       </Head>
       <Layout

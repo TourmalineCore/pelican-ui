@@ -1,10 +1,33 @@
+@font-face {
+  src: url("../../public/fonts/Inter-Medium.otf");
+  font-family: Inter;
+  font-weight: 500;
+}
+
+@font-face {
+  src: url("../../public/fonts/Inter-Regular.otf");
+  font-family: Inter;
+  font-weight: 400;
+}
+
+@font-face {
+  src: url("../../public/fonts/Inter-SemiBold.otf");
+  font-family: Inter;
+  font-weight: 600;
+}
+
+@mixin semi-bold-font {
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+}
+
 @mixin medium-font {
-  font-family: inherit;
+  font-family: Inter, sans-serif;
   font-weight: 500;
 }
 
 @mixin regular-font {
-  font-family: inherit;
+  font-family: Inter, sans-serif;
   font-weight: 400;
 }
 
@@ -21,6 +44,47 @@
 
   @include desktop-xl {
     font-size: 26px;
+  }
+}
+
+@mixin caption-2-medium {
+  @include medium-font;
+
+  font-size: 14px;
+  line-height: 1.45;
+
+  @include tablet-xl {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  @include desktop-xl {
+    font-size: 24px;
+  }
+}
+
+@mixin caption-2-regular {
+  @include regular-font;
+
+  font-size: 14px;
+  line-height: 1.45;
+
+  @include tablet-xl {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  @include desktop-xl {
+    font-size: 24px;
+  }
+}
+
+@mixin caption-3-regular {
+  @include regular-font;
+
+  @include desktop-xl {
+    font-size: 22px;
+    line-height: 1.4;
   }
 }
 
@@ -52,6 +116,18 @@
 
   @include desktop-xl {
     font-size: 34px;
+  }
+}
+
+@mixin h-text {
+  @include desktop {
+    font-family: Inter-semi-bold, sans-serif;
+    font-size: 96px;
+    line-height: 1;
+  }
+
+  @include desktop-xl {
+    font-size: 128px;
   }
 }
 
