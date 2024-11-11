@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import { BlockTypes } from "./enum";
 
 export type GlobalComponentProps = {
   navigationLinks: {
@@ -45,7 +46,7 @@ export type HomePageProps = {
 
 export type HeroComponentProps = {
   id: number
-  __component: "home.hero",
+  __component: BlockTypes.HERO,
   title: string,
   image: {
     url: StaticImageData;
