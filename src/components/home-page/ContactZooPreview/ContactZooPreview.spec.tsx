@@ -19,6 +19,8 @@ async function mobileTest({
     page,
   });
 
+  await page.getByTestId(`header`).evaluate((element) => element.style.visibility = `hidden`);
+
   await expect(getContactZooByTestId({ page }))
     .toHaveScreenshot(`contact-zoo-mobile.png`);
 }
@@ -33,6 +35,8 @@ async function tabletXlTest({
     width: Breakpoint.TABLET_XL,
   });
 
+  page.getByTestId(`header`).evaluate((element) => element.style.visibility = `hidden`);
+
   await expect(getContactZooByTestId({ page }))
     .toHaveScreenshot(`contact-zoo-tablet-xl.png`);
 }
@@ -46,6 +50,8 @@ async function desktopTest({
     page,
     width: Breakpoint.DESKTOP,
   });
+
+  page.getByTestId(`header`).evaluate((element) => element.style.visibility = `hidden`);
 
   await expect(getContactZooByTestId({ page }))
     .toHaveScreenshot(`contact-zoo-desktop.png`);
