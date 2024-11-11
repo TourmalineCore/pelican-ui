@@ -21,6 +21,7 @@ async function mobileTest({
 }) {
   await setViewportSizeAndGoToPage({
     page,
+    width: 378,
   });
 
   hideHeader({ page });
