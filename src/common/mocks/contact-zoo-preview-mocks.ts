@@ -1,5 +1,5 @@
-import LargeImageSrc from "@/public/images/contact-zoo/contact-zoo-image1.png";
-import SmallImageSrc from "@/public/images/contact-zoo/contact-zoo-image2.png";
+import LargeImageSrc from "@/public/images/contact-zoo/contact-zoo-large.png";
+import SmallImageSrc from "@/public/images/contact-zoo/contact-zoo-small.png";
 import { ContactZooPreviewComponentProps } from "../types";
 
 export const CONTACT_ZOO_PREVIEW_TITLE: ContactZooPreviewComponentProps['title'] = `Один из первых и самых больших контактных зоопарков`;
