@@ -1,5 +1,5 @@
 import { Breakpoint } from '@/src/common/enum';
-import { setViewportSizeAndGoToPage } from '@/test/helpers';
+import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`ContactZooComponentTests`, () => {
@@ -21,7 +21,7 @@ async function mobileTest({
     page,
   });
 
-  await page.getByTestId(`header`).evaluate((element) => element.style.visibility = `hidden`);
+  hideHeader({ page });
 
   await expect(getContactZooByTestId({ page }))
     .toHaveScreenshot(`contact-zoo-mobile.png`);
@@ -37,7 +37,7 @@ async function tabletTest({
     width: Breakpoint.TABLET,
   });
 
-  page.getByTestId(`header`).evaluate((element) => element.style.visibility = `hidden`);
+  hideHeader({ page });
 
   await expect(getContactZooByTestId({ page }))
     .toHaveScreenshot(`contact-zoo-tablet.png`);
@@ -53,7 +53,7 @@ async function tabletXlTest({
     width: Breakpoint.TABLET_XL,
   });
 
-  page.getByTestId(`header`).evaluate((element) => element.style.visibility = `hidden`);
+  hideHeader({ page });
 
   await expect(getContactZooByTestId({ page }))
     .toHaveScreenshot(`contact-zoo-tablet-xl.png`);
@@ -69,7 +69,7 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
-  page.getByTestId(`header`).evaluate((element) => element.style.visibility = `hidden`);
+  hideHeader({ page });
 
   await expect(getContactZooByTestId({ page }))
     .toHaveScreenshot(`contact-zoo-desktop.png`);
