@@ -2,7 +2,7 @@ import { GlobalComponentProps } from "../types";
 
 export const EMAIL = `metodist@chelzoo.ru`;
 export const PHONE = `+7 (351) 263-18-64`;
-export const POPUP_TICKET_BUY_TEXT = `Купить билет`;
+export const POPUP_TICKET_BUY_TEXT = `Билеты`;
 
 export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
@@ -27,7 +27,7 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   },
   {
     id: 5,
-    name: `Документация`,
+    name: `Документы`,
     link: `#`,
   },
 ];
