@@ -10,8 +10,6 @@
 
     @include tablet {
       @include body-2-medium;
-
-      color: $color-black;
     }
 
     @include tablet-xl {
