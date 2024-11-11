@@ -1,27 +1,16 @@
-@font-face {
-  src: url("../../public/fonts/Inter-Medium.otf");
-  font-family: Inter-medium;
-  font-weight: 500;
-}
-
-@font-face {
-  src: url("../../public/fonts/Inter-Regular.otf");
-  font-family: Inter-regular;
-  font-weight: 400;
-}
-
-@font-face {
-  src: url("../../public/fonts/Inter-SemiBold.otf");
-  font-family: Inter-semi-bold;
+@mixin semi-bold-font {
+  font-family: var(--font-inter), sans-serif;
   font-weight: 600;
 }
 
 @mixin medium-font {
-  font-family: Inter-medium, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
 }
 
 @mixin regular-font {
-  font-family: Inter-regular, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 400;
 }
 
 @mixin caption-1-medium {
@@ -128,7 +117,8 @@
 
 @mixin h-text {
   @include desktop {
-    font-family: Inter-semi-bold, sans-serif;
+    @include semi-bold-font;
+
     font-size: 96px;
     line-height: 1;
   }
