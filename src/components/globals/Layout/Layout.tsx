@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useRef } from 'react';
 import { GlobalComponentProps } from '@/src/common/types';
 import { Header } from '../Header/Header';
 
@@ -12,6 +12,8 @@ export function Layout({
   popupTicketBuyText,
 }: {
 } & LayoutProps) {
+  const mainElementRef = useRef<null | HTMLElement>(null);
+
   return (
     <div className="layout">
       <Header
@@ -19,8 +21,12 @@ export function Layout({
         email={email}
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
+        mainElementRef={mainElementRef}
       />
-      <main className="main">
+      <main
+        className="main"
+        ref={mainElementRef}
+      >
         {children}
       </main>
     </div>

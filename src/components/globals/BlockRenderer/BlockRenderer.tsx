@@ -1,9 +1,11 @@
+import { BlockTypes } from '@/src/common/enum';
 import { HeroComponentProps } from '@/src/common/types';
-import { Hero } from '../../home-page/Hero/Hero';
+import dynamic from 'next/dynamic';
 
-enum BlockTypes {
-  HERO = `home.hero`,
-}
+const Hero = dynamic(
+  () => import(`../../home-page/Hero/Hero`).then((component) => component.Hero),
+  { ssr: false },
+);
 
 export const BlockRenderer = ({
   block,
