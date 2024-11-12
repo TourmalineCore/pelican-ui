@@ -15,7 +15,7 @@ export type GlobalComponentProps = {
 
     // TODO: in the future change string to enum AppRoute
     link: string;
-    icon: string;
+    icon: StaticImageData,
     alt: string;
   }[];
   footerUserLinks?: {
@@ -35,7 +35,6 @@ export type GlobalComponentProps = {
   email: string;
   phone: string;
   popupTicketBuyText: string;
-
 };
 
 export type HomePageProps = {

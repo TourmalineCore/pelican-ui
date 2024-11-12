@@ -71,7 +71,7 @@ export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
   {
     id: 4,
     name: `Оставить отзыв`,
-    link: `#`,
+    link: `https://docs.google.com/forms/d/11AMCo0nMCon6-_VX07lrWRhniSAd0Dei-gl1m_DS1Y0/viewform?hl=ru&hl=ru&edit_requested=true`,
   },
 ];
 

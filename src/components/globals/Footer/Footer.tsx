@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from 'next/image';
 import { GlobalComponentProps } from "@/src/common/types";
+import { Breakpoint } from "@/src/common/enum";
+import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 
 export function Footer({
@@ -10,6 +12,9 @@ export function Footer({
   email,
   phone,
 }: Omit<GlobalComponentProps, "navigationLinks" | "popupTicketBuyText" >) {
+  const windowWidth = useWindowWidth();
+  const isDesktop = windowWidth >= Breakpoint.DESKTOP;
+
   return (
     <div
       className="footer"
@@ -83,10 +88,15 @@ export function Footer({
           </ul>
         </div>
         <div className="footer__middle">
-          <div className="footer__official-name footer__official-name--mobile">МБУК «Зоопарк»</div>
-          <div className="footer__official-name footer__official-name--desktop">
-            <p>Муниципальное Бюджетное Учреждение Культуры «Зоопарк»</p>
-          </div>
+          {
+            isDesktop
+              ? (
+                <div className="footer__official-name">
+                  <p>Муниципальное Бюджетное Учреждение Культуры «Зоопарк»</p>
+                </div>
+              )
+              : <div className="footer__official-name"><p>МБУК «Зоопарк»</p></div>
+          }
           <div className="footer__social-media">
             <SocialMedia />
           </div>
