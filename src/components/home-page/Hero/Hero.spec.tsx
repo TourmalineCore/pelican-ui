@@ -24,9 +24,13 @@ async function mobileTest({
     width: 378,
   });
 
-  hideHeader({ page });
+  hideHeader({
+    page,
+  });
 
-  await expect(getHeroByTestId({ page }))
+  await expect(getHeroByTestId({
+    page,
+  }))
     .toHaveScreenshot(`hero-mobile.png`);
 }
 
@@ -40,9 +44,13 @@ async function tabletTest({
     width: Breakpoint.TABLET,
   });
 
-  hideHeader({ page });
+  hideHeader({
+    page,
+  });
 
-  await expect(getHeroByTestId({ page }))
+  await expect(getHeroByTestId({
+    page,
+  }))
     .toHaveScreenshot(`hero-tablet.png`);
 }
 
@@ -56,9 +64,13 @@ async function tabletXlTest({
     width: Breakpoint.TABLET_XL,
   });
 
-  hideHeader({ page });
+  hideHeader({
+    page,
+  });
 
-  await expect(getHeroByTestId({ page }))
+  await expect(getHeroByTestId({
+    page,
+  }))
     .toHaveScreenshot(`hero-tablet-xl.png`);
 }
 
@@ -72,9 +84,13 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
-  hideHeader({ page });
+  hideHeader({
+    page,
+  });
 
-  await expect(getHeroByTestId({ page }))
+  await expect(getHeroByTestId({
+    page,
+  }))
     .toHaveScreenshot(`hero-desktop.png`);
 }
 
@@ -89,12 +105,18 @@ async function desktopXlTest({
     height: 955,
   });
 
-  hideHeader({ page });
+  hideHeader({
+    page,
+  });
 
-  await expect(getHeroByTestId({ page }))
+  await expect(getHeroByTestId({
+    page,
+  }))
     .toHaveScreenshot(`hero-desktop-xl.png`);
 }
 
-function getHeroByTestId({ page }: { page: Page }) {
+function getHeroByTestId({
+  page,
+}: { page: Page }) {
   return page.getByTestId(`hero`);
 }

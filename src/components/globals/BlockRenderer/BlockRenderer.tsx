@@ -4,7 +4,9 @@ import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
   () => import(`../../home-page/Hero/Hero`).then((component) => component.Hero),
-  { ssr: false },
+  {
+    ssr: false,
+  },
 );
 
 export const BlockRenderer = ({
