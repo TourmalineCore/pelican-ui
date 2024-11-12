@@ -23,7 +23,9 @@ async function mobileTest({
     page,
   });
 
-  await expect(getFooterByTestId({ page }))
+  await expect(getFooterByTestId({
+    page,
+  }))
     .toHaveScreenshot(`footer-mobile.png`);
 }
 
@@ -37,7 +39,9 @@ async function tabletTest({
     width: Breakpoint.TABLET,
   });
 
-  await expect(getFooterByTestId({ page }))
+  await expect(getFooterByTestId({
+    page,
+  }))
     .toHaveScreenshot(`footer-tablet.png`);
 }
 
@@ -51,7 +55,9 @@ async function tabletXlTest({
     width: Breakpoint.TABLET_XL,
   });
 
-  await expect(getFooterByTestId({ page }))
+  await expect(getFooterByTestId({
+    page,
+  }))
     .toHaveScreenshot(`footer-tablet-xl.png`);
 }
 
@@ -65,7 +71,9 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
-  await expect(getFooterByTestId({ page }))
+  await expect(getFooterByTestId({
+    page,
+  }))
     .toHaveScreenshot(`footer-desktop.png`);
 }
 
@@ -79,10 +87,14 @@ async function desktopXlTest({
     width: Breakpoint.DESKTOP_XL,
   });
 
-  await expect(getFooterByTestId({ page }))
+  await expect(getFooterByTestId({
+    page,
+  }))
     .toHaveScreenshot(`footer-desktop-xl.png`);
 }
 
-function getFooterByTestId({ page }: { page: Page }) {
+function getFooterByTestId({
+  page,
+}: { page: Page }) {
   return page.getByTestId(`footer`);
 }

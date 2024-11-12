@@ -1,7 +1,7 @@
 import { PropsWithChildren, useRef } from 'react';
 import { GlobalComponentProps } from '@/src/common/types';
 import { Footer } from '../Footer/Footer';
-// import { Header } from '../Header/Header';
+import { Header } from '../Header/Header';
 
 type LayoutProps = GlobalComponentProps & PropsWithChildren;
 
@@ -20,13 +20,13 @@ export function Layout({
 
   return (
     <div className="layout">
-      {/* <Header
+      <Header
         navigationLinks={navigationLinks}
         email={email}
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
         mainElementRef={mainElementRef}
-      /> */}
+      />
       <main
         className="main"
         ref={mainElementRef}

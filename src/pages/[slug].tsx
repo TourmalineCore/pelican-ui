@@ -8,7 +8,7 @@ import {
   NAVIGATION_LINKS,
   OFFICIAL_LINKS,
   PHONE,
-  POPUP_TICKET_BUY_TEXT,
+  POPUP_TICKET_BUY_TEXT
 } from '../common/mocks/globals-mock';
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 import { getMockPageData } from '../common/utils/getMockPageData';
