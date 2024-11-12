@@ -83,7 +83,10 @@ export function Footer({
           </ul>
         </div>
         <div className="footer__middle">
-          <div className="footer__official-name">МБУК «Зоопарк»</div>
+          <div className="footer__official-name footer__official-name--mobile">МБУК «Зоопарк»</div>
+          <div className="footer__official-name footer__official-name--desktop">
+            <p>Муниципальное Бюджетное Учреждение Культуры «Зоопарк»</p>
+          </div>
           <div className="footer__social-media">
             <SocialMedia />
           </div>
@@ -93,7 +96,8 @@ export function Footer({
               href="#"
               className="footer__copyright-link"
             >
-              Tourmaline Core ❤️
+              Tourmaline Core
+              <span className="footer__heart">❤️</span>
             </Link>
           </div>
         </div>

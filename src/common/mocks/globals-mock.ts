@@ -1,6 +1,6 @@
 import { GlobalComponentProps } from "../types";
-import iconAdministration1 from '../../../public/images/svg/administration-1.svg';
-import iconAdministration2 from '../../../public/images/svg/administration-2.svg';
+import iconAdministration1 from '../../../public/images/footer/adm1.png';
+import iconAdministration2 from '../../../public/images/footer/adm2.png';
 
 export const EMAIL = `metodist@chelzoo.ru`;
 export const PHONE = `+7 (351) 263-18-64`;
@@ -78,7 +78,7 @@ export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
 export const OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
   {
     id: 1,
-    name: `Управление культуры администрации г.\u00A0Челябинска`,
+    name: `Управление культуры администрации\u00A0г.\u00A0Челябинска`,
     link: `#`,
     icon: iconAdministration1,
     alt: `Иконка`,
