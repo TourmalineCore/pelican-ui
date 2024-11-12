@@ -1,0 +1,44 @@
+.services {
+  padding-top: 52px;
+  padding-bottom: 52px;
+
+  &__title {
+    @include h1-text;
+
+    margin-bottom: 24px;
+    color: $color-black-75;
+
+    @include desktop {
+      margin-bottom: 32px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    overflow: auto;
+    padding-left: 16px;
+    gap: 12px;
+
+    // TODO: fix column count
+    grid-template-columns: repeat(4, 304px);
+  }
+
+  @include tablet {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  @include desktop {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  @include desktop-xl {
+    padding-top: 88px;
+    padding-bottom: 88px;
+  }
+}

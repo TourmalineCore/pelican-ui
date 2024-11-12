@@ -35,7 +35,12 @@ export const BlockRenderer = ({
       );
     case BlockTypes.SERVICES:
       return (
-        <Services />
+        <Services
+          title={block.title}
+          cards={block.cards}
+          phoneText={block.phoneText}
+          emailText={block.phoneText}
+        />
       );
     default:
       return null;

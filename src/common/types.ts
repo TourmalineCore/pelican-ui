@@ -45,12 +45,12 @@ export type ServicesComponentProps = {
   id: number,
   __component: BlockTypes.SERVICES,
   title: string,
-  cards: ServicesCard[],
+  cards: ServicesCardProps[],
   phoneText: string,
   emailText: string,
 };
 
-export type ServicesCard = {
+export type ServicesCardProps = {
   id: number,
   image: {
     url: StaticImageData;
