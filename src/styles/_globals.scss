@@ -33,11 +33,6 @@ img {
   }
 }
 
-.blur {
-  background-color: $color-black-20;
-  filter: blur(16px);
-}
-
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -45,5 +40,23 @@ img {
 
   to {
     opacity: 100;
+  }
+}
+
+.overlay {
+  position: fixed;
+  z-index: $overlay;
+  background-color: $color-black-20;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateZ(0);
+  transition: opacity 0.3s linear, visibility 0.3s linear;
+  backdrop-filter: blur(4px);
+  inset: 0;
+  will-change: transform;
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
   }
 }

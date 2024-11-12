@@ -16,7 +16,7 @@ export function Layout({
   popupTicketBuyText,
 }: {
 } & LayoutProps) {
-  const mainElementRef = useRef<null | HTMLElement>(null);
+  const overlayElementRef = useRef<null | HTMLElement>(null);
 
   return (
     <div className="layout">
@@ -25,14 +25,17 @@ export function Layout({
         email={email}
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
-        mainElementRef={mainElementRef}
+        overlayElementRef={overlayElementRef}
       />
       <main
         className="main"
-        ref={mainElementRef}
       >
         {children}
       </main>
+      <div
+        ref={overlayElementRef}
+        className="overlay"
+      />
       <Footer
         officialLinks={officialLinks}
         footerUserLinks={footerUserLinks}

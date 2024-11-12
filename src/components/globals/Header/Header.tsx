@@ -22,21 +22,21 @@ export function Header({
   email,
   phone,
   popupTicketBuyText,
-  mainElementRef,
+  overlayElementRef,
 }: Pick<GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
-  mainElementRef: MutableRefObject<null | HTMLElement>
+  overlayElementRef: MutableRefObject<null | HTMLElement>
 }) {
   const [isActive, setIsActive] = useState(false);
   const windowWidth = useWindowWidth();
   useEffect(() => {
-    const mainElement = mainElementRef.current!;
+    const mainElement = overlayElementRef.current!;
 
     if (isActive) {
-      mainElement.classList.add(`blur`);
+      mainElement.classList.add(`is-visible`);
     }
 
     return () => {
-      mainElement.classList.remove(`blur`);
+      mainElement.classList.remove(`is-visible`);
     };
   }, [isActive]);
 
