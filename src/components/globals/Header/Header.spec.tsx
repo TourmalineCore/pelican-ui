@@ -1,6 +1,9 @@
 import { Breakpoint } from '@/src/common/enum';
 import { setViewportSizeAndGoToPage } from '@/test/helpers';
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test'; // Убедитесь, что тип Page импортируется из playwright
+import {
+  injectAxe, checkA11y, getViolations,
+} from 'axe-playwright';
 
 test.describe(`HeaderComponentTests`, () => {
   test(`MobileTest`, mobileTest);
@@ -42,15 +45,34 @@ async function tabletTest({
 async function desktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.DESKTOP,
   });
 
-  await expect(getHeaderByTestId({ page }))
-    .toHaveScreenshot(`header-desktop.png`);
+  await expect(getHeaderByTestId({ page })).toHaveScreenshot(`header-desktop.png`);
+
+  await injectAxe(page);
+  await checkA11y(page, null, {
+    detailedReport: true,
+    detailedReportOptions: { html: true },
+    runOnly: {
+      type: `tag`,
+      values: [`wcag2a`],
+    },
+  });
+
+  const violations = await getViolations(page, {
+
+    runOnly: {
+      type: `tag`,
+      values: [`wcag2a`],
+    },
+  });
+
+  expect(violations.length).toBe(0);
 }
 
 async function desktopXlTest({
