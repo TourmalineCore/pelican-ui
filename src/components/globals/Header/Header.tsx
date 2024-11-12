@@ -12,7 +12,9 @@ import { HeaderPopupButton } from "./components/HeaderPopupButton/HeaderPopupBut
 
 const HeaderPopup = dynamic(
   () => import(`../Header/components/HeaderPopup/HeaderPopup`).then((component) => component.HeaderPopup),
-  { ssr: false },
+  {
+    ssr: false,
+  },
 );
 
 export function Header({
@@ -26,7 +28,6 @@ export function Header({
 }) {
   const [isActive, setIsActive] = useState(false);
   const windowWidth = useWindowWidth();
-
   useEffect(() => {
     const mainElement = mainElementRef.current!;
 
@@ -56,9 +57,7 @@ export function Header({
         <div className="header__left">
           <HeaderLogo />
           {isDesktop && (
-            <HeaderNavigation
-              navigationLinks={navigationLinks}
-            />
+            <HeaderNavigation navigationLinks={navigationLinks} />
           )}
         </div>
 

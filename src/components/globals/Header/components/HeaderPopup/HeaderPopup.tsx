@@ -33,7 +33,9 @@ export function HeaderPopup({
             >
               {popupTicketBuyText}
             </button>
-            <HeaderNavigationPopup navigationLinks={navigationLinks} />
+            <HeaderNavigationPopup
+              navigationLinks={navigationLinks}
+            />
 
             <div className="header-popup__footer">
               <div className="header-popup__contact">

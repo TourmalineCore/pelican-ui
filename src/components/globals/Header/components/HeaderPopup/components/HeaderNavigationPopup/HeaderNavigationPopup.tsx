@@ -4,7 +4,7 @@ import { HeaderNavigation } from "../../../HeaderNavigation/HeaderNavigation";
 export function HeaderNavigationPopup({
   navigationLinks,
 }:{
-  navigationLinks: GlobalComponentProps['navigationLinks']
+  navigationLinks: GlobalComponentProps['navigationLinks'],
 }) {
   return (
     <HeaderNavigation
