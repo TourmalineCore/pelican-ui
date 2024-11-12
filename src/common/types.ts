@@ -17,7 +17,7 @@ export type GlobalComponentProps = {
 export type HomePageProps = {
   id: number,
   title: string;
-  blocks: HeroComponentProps[];
+  blocks: (HeroComponentProps | ServicesComponentProps)[];
 };
 
 export type HeroComponentProps = {
@@ -39,4 +39,24 @@ export type Timetable = {
   days: string,
   time: string,
   ticketsOfficeTime: string,
+};
+
+export type ServicesComponentProps = {
+  id: number,
+  __component: BlockTypes.SERVICES,
+  title: string,
+  cards: ServicesCard[],
+  phoneText: string,
+  emailText: string,
+};
+
+export type ServicesCard = {
+  id: number,
+  image: {
+    url: StaticImageData;
+    alt: string;
+  },
+  labels: string[],
+  title: string,
+  description: string,
 };

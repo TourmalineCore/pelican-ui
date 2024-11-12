@@ -1,5 +1,5 @@
 import { BlockTypes } from '@/src/common/enum';
-import { HeroComponentProps } from '@/src/common/types';
+import { HeroComponentProps, ServicesComponentProps } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
@@ -9,10 +9,17 @@ const Hero = dynamic(
   },
 );
 
+const Services = dynamic(
+  () => import(`../../home-page/Services/Services`).then((component) => component.Services),
+  {
+    ssr: false,
+  },
+);
+
 export const BlockRenderer = ({
   block,
 }: {
-  block: HeroComponentProps
+  block: HeroComponentProps | ServicesComponentProps
 }) => {
   switch (block.__component) {
     case BlockTypes.HERO:
@@ -25,6 +32,10 @@ export const BlockRenderer = ({
           infoCardTitle={block.infoCardTitle}
           infoCardDescription={block.infoCardDescription}
         />
+      );
+    case BlockTypes.SERVICES:
+      return (
+        <Services />
       );
     default:
       return null;
