@@ -15,11 +15,12 @@ export function Services({
 }) {
   return (
     <section
-      className="services "
+      className="services"
       data-testid="services"
     >
       <h2 className="services__title container">{title}</h2>
       <ul className="services__cards">
+      <ul className="services__cards container">
         {cards.map((card) => (
           <ServicesCard
             className="services__card"
@@ -34,6 +35,7 @@ export function Services({
           <a
             href={`tel:${phone}`}
             className="services__phone-link"
+            tabIndex={-1}
           >
             <Button
               className="services__phone-button"
@@ -43,11 +45,11 @@ export function Services({
               {` `}
               {phone}
             </Button>
-
           </a>
           <a
             href={`mailto:${email}`}
             className="services__email-link"
+            tabIndex={-1}
           >
             <Button
               className="services__email-button"

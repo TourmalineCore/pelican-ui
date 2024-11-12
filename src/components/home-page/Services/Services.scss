@@ -20,29 +20,43 @@
   &__cards {
     display: grid;
     overflow: auto;
-    padding-left: 16px;
     gap: 12px;
 
     // TODO: fix column count
     grid-template-columns: repeat(5, 304px);
 
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
     @include tablet {
-      padding-right: 16px;
       gap: 16px;
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(5, 522px);
+    }
+
+    @include desktop-xl {
+      grid-template-columns: repeat(5, 727px);
     }
   }
 
   &__info-cards {
     display: flex;
     flex-direction: column;
-    height: 100%;
     gap: 12px;
 
     @include tablet {
       flex-direction: row;
       grid-column: span 2;
-      grid-row: 3/4;
+    }
+
+    @include desktop {
+      flex-direction: column;
+      gap: 24px;
+      grid-column: auto;
     }
   }
 
@@ -64,10 +78,14 @@
 
     @include tablet-xl {
       @include caption-1-medium;
+
+      border-radius: 24px;
     }
 
     @include desktop {
       @include body-1-regular;
+
+      border-radius: 32px;
     }
 
     @include desktop-xl {
