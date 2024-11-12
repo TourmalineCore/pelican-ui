@@ -45,6 +45,8 @@ export default function UniversalPage({
           <BlockRenderer
             key={block.id}
             block={block}
+            phone={phone}
+            email={email}
           />
         ))}
       </Layout>

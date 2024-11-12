@@ -9,8 +9,8 @@ export const SERVICES: ServicesComponentProps = {
   id: 3,
   __component: BlockTypes.SERVICES,
   title: `Наши услуги`,
-  phoneText: `Уточнить вопросы можно по телефону:`,
-  emailText: `Запись осуществляется по почте:`,
+  phoneText: `Уточнить вопросы можно\n по телефону:`,
+  emailText: `Запись осуществляется\n по почте:`,
   cards: [
     {
       id: 0,

@@ -1,5 +1,5 @@
 import { BlockTypes } from '@/src/common/enum';
-import { HeroComponentProps, ServicesComponentProps } from '@/src/common/types';
+import { GlobalComponentProps, HeroComponentProps, ServicesComponentProps } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
@@ -18,8 +18,12 @@ const Services = dynamic(
 
 export const BlockRenderer = ({
   block,
+  phone,
+  email,
 }: {
-  block: HeroComponentProps | ServicesComponentProps
+  block: HeroComponentProps | ServicesComponentProps,
+  phone: GlobalComponentProps['phone'],
+  email: GlobalComponentProps['email']
 }) => {
   switch (block.__component) {
     case BlockTypes.HERO:
@@ -39,7 +43,9 @@ export const BlockRenderer = ({
           title={block.title}
           cards={block.cards}
           phoneText={block.phoneText}
-          emailText={block.phoneText}
+          emailText={block.emailText}
+          phone={phone}
+          email={email}
         />
       );
     default:
