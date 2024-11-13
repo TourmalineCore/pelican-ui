@@ -103,7 +103,7 @@ export function Footer({
           <div className="footer__copyright">
             Сайт разработан
             <Link
-              href="#"
+              href="https://www.tourmalinecore.com/"
               className="footer__copyright-link"
             >
               Tourmaline Core
@@ -131,6 +131,7 @@ export function Footer({
                 className="footer__official-link"
               >
                 <Image
+                  className="footer__official-link-logo"
                   src={icon}
                   alt={alt}
                 />
