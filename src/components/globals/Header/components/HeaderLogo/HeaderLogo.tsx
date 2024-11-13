@@ -12,13 +12,19 @@ export function HeaderLogo() {
     <Link href={AppRoute.HOME}>
       <Image
         className="header-logo"
-        src={getLogo({ windowsSize: windowWidth })}
+        src={getLogo({
+          windowsSize: windowWidth,
+        })}
         alt="Логотип челябинского зоопарка"
       />
     </Link>
   );
 
-  function getLogo({ windowsSize }: { windowsSize: number }) {
+  function getLogo({
+    windowsSize,
+  }: {
+    windowsSize: number
+  }) {
     if (windowsSize >= Breakpoint.DESKTOP) {
       return LogoDesktop;
     }

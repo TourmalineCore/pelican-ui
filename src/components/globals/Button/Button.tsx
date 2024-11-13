@@ -19,7 +19,9 @@ export function Button({
       className={clsx(
         `button button--${theme}`,
         className,
-        { 'button--featured': isFeatured },
+        {
+          'button--featured': isFeatured,
+        },
       )}
       {...props}
     >

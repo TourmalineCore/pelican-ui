@@ -3,7 +3,8 @@
   "ignorePatterns": [
       "sw-*.js",
       "next.*",
-      "postcss.config.js"
+      "postcss.config.js",
+      "playwright-report"
     ],
   "env": {
     "browser": true,
@@ -54,7 +55,7 @@
     "@stylistic/object-property-newline": "error",
     "@stylistic/explicit-function-return-type": "off",
     "@stylistic/no-var-requires": "off",
-    "@typescript-eslint/no-use-before-define": [
+    "@typescript-eslint/no-use-before-define": [  
       "error",
       { "functions": false, "classes": true, "variables": true, "typedefs": true }
     ],
@@ -63,6 +64,19 @@
       "backtick",
       { 
         "avoidEscape": true
+      }
+    ],
+    "react/jsx-max-props-per-line": [
+      1,
+      {
+        "maximum": 1
+      }
+    ],
+    "react/jsx-curly-spacing": [
+      2,
+      {
+        "when": "never",
+        "children": true
       }
     ],
     "react/require-default-props": 0,
@@ -91,6 +105,7 @@
     "unicorn/no-array-for-each": "off",
     "no-underscore-dangle": 0,
     "func-names": 0,
+    "no-console": "error",
     "no-plusplus": 0,
     "no-return-assign": 0,
     "no-param-reassign": 0,
@@ -99,6 +114,50 @@
     "class-methods-use-this": 0,
     "default-param-last": "off",
     // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
-    "no-prototype-builtins": "off"
+    "no-prototype-builtins": "off",
+    "object-curly-newline": [
+      "error", {
+        "ObjectExpression": {
+          "multiline": true,
+          "minProperties": 1
+        },
+        "ObjectPattern": {
+          "multiline": true,
+          "minProperties": 1
+        },
+        "ImportDeclaration": "never",
+        "ExportDeclaration": {
+          "multiline": true,
+          "minProperties": 1
+        }
+      }
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0
+      }
+    ],
+    "array-element-newline": [
+      "error",
+      {
+        "multiline": true,
+        "minItems": 3
+      }
+    ],
+    "array-bracket-newline": [
+      "error",
+      {
+        "multiline": true,
+        "minItems": 3
+      }
+    ],
+    "newline-per-chained-call": [
+      "error",
+      {
+        "ignoreChainWithDepth": 1
+      }
+    ]
   }
 }
