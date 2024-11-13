@@ -84,5 +84,16 @@ export type ContactZooPreviewComponentProps = {
 export type TicketsComponentProps = {
   id: number
   __component: BlockTypes.TICKETS,
-  title: string,
+  generalTicketsTitle: string,
+  subsidizedTicketsTitle:string,
+  generalTickets: Ticket[],
+  subsidizedTickets: Ticket[],
+};
+
+export type Ticket = {
+  id: number,
+  category: string,
+  description?: string,
+  price: string,
+  frequency?: string,
 };

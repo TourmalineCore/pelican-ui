@@ -52,7 +52,11 @@ export const BlockRenderer = ({
     case BlockTypes.TICKETS:
       return (
         <Tickets
-          title={block.title}
+          generalTicketsTitle={block.generalTicketsTitle}
+          subsidizedTicketsTitle={block.subsidizedTicketsTitle}
+          generalTickets={block.generalTickets}
+          subsidizedTickets={block.subsidizedTickets}
+
         />
       );
     default:
