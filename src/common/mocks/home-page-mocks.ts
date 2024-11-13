@@ -5,12 +5,5 @@ import { HERO } from "./hero-mocks";
 export const HOME_PAGE: HomePageProps = {
   id: 1,
   title: `Домашняя страница`,
-  blocks: [
-    {
-      ...HERO,
-    },
-    {
-      ...CONTACT_ZOO_PREVIEW,
-    },
-  ],
+  blocks: [HERO, CONTACT_ZOO_PREVIEW],
 };
