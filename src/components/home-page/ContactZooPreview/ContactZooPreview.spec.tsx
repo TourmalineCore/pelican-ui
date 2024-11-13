@@ -21,9 +21,13 @@ async function mobileTest({
     page,
   });
 
-  hideHeader({ page });
+  hideHeader({
+    page,
+  });
 
-  await expect(getContactZooByTestId({ page }))
+  await expect(getContactZooByTestId({
+    page,
+  }))
     .toHaveScreenshot(`contact-zoo-mobile.png`);
 }
 
@@ -37,9 +41,13 @@ async function tabletTest({
     width: Breakpoint.TABLET,
   });
 
-  hideHeader({ page });
+  hideHeader({
+    page,
+  });
 
-  await expect(getContactZooByTestId({ page }))
+  await expect(getContactZooByTestId({
+    page,
+  }))
     .toHaveScreenshot(`contact-zoo-tablet.png`);
 }
 
@@ -53,9 +61,13 @@ async function tabletXlTest({
     width: Breakpoint.TABLET_XL,
   });
 
-  hideHeader({ page });
+  hideHeader({
+    page,
+  });
 
-  await expect(getContactZooByTestId({ page }))
+  await expect(getContactZooByTestId({
+    page,
+  }))
     .toHaveScreenshot(`contact-zoo-tablet-xl.png`);
 }
 
@@ -69,12 +81,18 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
-  hideHeader({ page });
+  hideHeader({
+    page,
+  });
 
-  await expect(getContactZooByTestId({ page }))
+  await expect(getContactZooByTestId({
+    page,
+  }))
     .toHaveScreenshot(`contact-zoo-desktop.png`);
 }
 
-function getContactZooByTestId({ page }: { page: Page }) {
+function getContactZooByTestId({
+  page,
+}: { page: Page }) {
   return page.getByTestId(`contact-zoo`);
 }

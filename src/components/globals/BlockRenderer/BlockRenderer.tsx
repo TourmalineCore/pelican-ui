@@ -4,12 +4,16 @@ import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
   () => import(`../../home-page/Hero/Hero`).then((component) => component.Hero),
-  { ssr: false },
+  {
+    ssr: false,
+  },
 );
 
 const ContactZooPreview = dynamic(
   () => import(`../../home-page/ContactZooPreview/ContactZooPreview`).then((component) => component.ContactZooPreview),
-  { ssr: false },
+  {
+    ssr: false,
+  },
 );
 
 export const BlockRenderer = ({
