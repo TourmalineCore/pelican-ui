@@ -3,15 +3,7 @@ import { BlockRenderer } from '@/src/components/globals/BlockRenderer/BlockRende
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps, HomePageProps } from '../common/types';
-import {
-  EMAIL,
-  FOOTER_ABOUT_LINKS,
-  FOOTER_USER_LINKS,
-  NAVIGATION_LINKS,
-  OFFICIAL_LINKS,
-  PHONE,
-  POPUP_TICKET_BUY_TEXT
-} from '../common/mocks/globals-mock';
+import { EMAIL, FOOTER_ABOUT_LINKS, FOOTER_USER_LINKS, NAVIGATION_LINKS, OFFICIAL_LINKS, PHONE, POPUP_TICKET_BUY_TEXT } from '../common/mocks/globals-mock';
 
 type UniversalProps = {
   globalData: GlobalComponentProps,
