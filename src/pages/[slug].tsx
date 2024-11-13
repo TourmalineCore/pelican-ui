@@ -3,7 +3,8 @@ import { BlockRenderer } from '@/src/components/globals/BlockRenderer/BlockRende
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps, HomePageProps } from '../common/types';
-import { EMAIL, NAVIGATION_LINKS, PHONE, POPUP_TICKET_BUY_TEXT } from '../common/mocks/globals-mock';
+// eslint-disable-next-line @stylistic/max-len
+import { EMAIL, FOOTER_ABOUT_LINKS, FOOTER_USER_LINKS, NAVIGATION_LINKS, OFFICIAL_LINKS, PHONE, POPUP_TICKET_BUY_TEXT, FOOTER_NAV_TITLE_LEFT, FOOTER_NAV_TITLE_RIGHT } from '../common/mocks/globals-mock';
 
 type UniversalProps = {
   globalData: GlobalComponentProps,
@@ -20,7 +21,15 @@ export default function UniversalPage({
   }
 
   const {
-    navigationLinks, email, phone, popupTicketBuyText,
+    navigationLinks,
+    email,
+    phone,
+    popupTicketBuyText,
+    footerAboutLinks,
+    footerUserLinks,
+    officialLinks,
+    footerNavTitleLeft,
+    footerNavTitleRight,
   } = globalData;
   const {
     title, blocks,
@@ -37,9 +46,14 @@ export default function UniversalPage({
       </Head>
       <Layout
         navigationLinks={navigationLinks}
+        officialLinks={officialLinks}
+        footerAboutLinks={footerAboutLinks}
+        footerUserLinks={footerUserLinks}
         email={email}
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
+        footerNavTitleLeft={footerNavTitleLeft}
+        footerNavTitleRight={footerNavTitleRight}
       >
         {blocks.map((block) => (
           <BlockRenderer
@@ -78,6 +92,11 @@ export async function getServerSideProps({
         email: EMAIL,
         phone: PHONE,
         navigationLinks: NAVIGATION_LINKS,
+        footerAboutLinks: FOOTER_ABOUT_LINKS,
+        footerUserLinks: FOOTER_USER_LINKS,
+        officialLinks: OFFICIAL_LINKS,
+        footerNavTitleLeft: FOOTER_NAV_TITLE_LEFT,
+        footerNavTitleRight: FOOTER_NAV_TITLE_RIGHT,
       },
       pageData: getMockPageData({
         slug: query.slug,

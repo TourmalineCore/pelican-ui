@@ -1,5 +1,6 @@
 import { PropsWithChildren, useRef } from 'react';
 import { GlobalComponentProps } from '@/src/common/types';
+import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 
 type LayoutProps = GlobalComponentProps & PropsWithChildren;
@@ -9,10 +10,15 @@ export function Layout({
   email,
   phone,
   navigationLinks,
+  officialLinks,
+  footerUserLinks,
+  footerAboutLinks,
   popupTicketBuyText,
+  footerNavTitleLeft,
+  footerNavTitleRight,
 }: {
 } & LayoutProps) {
-  const mainElementRef = useRef<null | HTMLElement>(null);
+  const overlayElementRef = useRef<null | HTMLElement>(null);
 
   return (
     <div className="layout">
@@ -21,14 +27,26 @@ export function Layout({
         email={email}
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
-        mainElementRef={mainElementRef}
+        overlayElementRef={overlayElementRef}
       />
       <main
         className="main"
-        ref={mainElementRef}
       >
         {children}
       </main>
+      <div
+        ref={overlayElementRef}
+        className="overlay"
+      />
+      <Footer
+        officialLinks={officialLinks}
+        footerUserLinks={footerUserLinks}
+        footerAboutLinks={footerAboutLinks}
+        email={email}
+        phone={phone}
+        footerNavTitleLeft={footerNavTitleLeft}
+        footerNavTitleRight={footerNavTitleRight}
+      />
     </div>
   );
 }
