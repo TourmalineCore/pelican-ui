@@ -35,10 +35,12 @@
     }
 
     @include desktop {
+      gap: 24px;
       grid-template-columns: repeat(5, 522px);
     }
 
     @include desktop-xl {
+      gap: 32px;
       grid-template-columns: repeat(5, 727px);
     }
   }
@@ -50,6 +52,7 @@
 
     @include tablet {
       flex-direction: row;
+      gap: 16px;
       grid-column: span 2;
     }
 
@@ -70,11 +73,15 @@
     @include caption-1-medium;
 
     justify-content: flex-start;
-    padding: 24px;
+    padding: 16px;
     width: 100%;
     height: 100%;
     white-space: pre-line;
     text-align: left;
+
+    @include tablet {
+      padding: 24px;
+    }
 
     @include tablet-xl {
       border-radius: 24px;

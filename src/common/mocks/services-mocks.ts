@@ -9,8 +9,8 @@ export const SERVICES: ServicesComponentProps = {
   id: 3,
   __component: BlockTypes.SERVICES,
   title: `Наши услуги`,
-  phoneText: `Уточнить вопросы можно\n по телефону:`,
-  emailText: `Запись осуществляется\n по почте:`,
+  phoneText: `Уточнить вопросы можно\nпо телефону:`,
+  emailText: `Запись осуществляется\nпо почте:`,
   cards: [
     {
       id: 0,
@@ -20,7 +20,7 @@ export const SERVICES: ServicesComponentProps = {
       },
       labels: [`Запись за 5 дней`, `От 10 человек`],
       title: `Экскурсии`,
-      description: `Увидите основные экспозиции и узнаете много интересных фактов об обитателях нашего зоопарка.`,
+      description: `Увидите основные экспозиции и\u00A0узнаете много интересных фактов об\u00A0обитателях нашего зоопарка.`,
     },
     {
       id: 1,
@@ -50,7 +50,7 @@ export const SERVICES: ServicesComponentProps = {
       },
       labels: [`Запись за 5 дней`],
       title: `Выездные лекции`,
-      description: `Прикоснетесь к миру природы с помощью натуральных образцов.`,
+      description: `Прикоснетесь к миру природы с\u00A0помощью натуральных образцов.`,
     },
   ],
 };

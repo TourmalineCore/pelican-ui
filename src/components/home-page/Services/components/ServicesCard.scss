@@ -53,6 +53,8 @@
     gap: 6px;
 
     @include tablet-xl {
+      left: 24px;
+      top: 24px;
       flex-direction: row;
       gap: 8px;
     }
