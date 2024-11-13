@@ -103,6 +103,10 @@
     padding-bottom: 56px;
   }
 
+  @include tablet-xl {
+    padding-bottom: 28px;
+  }
+
   @include desktop {
     padding-top: 64px;
     padding-bottom: 64px;

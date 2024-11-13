@@ -41,6 +41,7 @@ async function tabletTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.TABLET,
+    height: 1012,
   });
 
   hideHeader({
@@ -61,6 +62,7 @@ async function tabletXlTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.TABLET_XL,
+    height: 1346,
   });
 
   hideHeader({
@@ -101,6 +103,7 @@ async function desktopXlTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.DESKTOP_XL,
+    height: 1068,
   });
 
   hideHeader({
