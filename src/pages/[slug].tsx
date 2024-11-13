@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import { BlockRenderer } from '@/src/components/globals/BlockRenderer/BlockRenderer';
+import { getMockPageData } from '@/src/common/utils/getMockPageData';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps, HomePageProps } from '../common/types';
 import {
@@ -10,8 +12,6 @@ import {
   PHONE,
   POPUP_TICKET_BUY_TEXT
 } from '../common/mocks/globals-mock';
-import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
-import { getMockPageData } from '../common/utils/getMockPageData';
 
 type UniversalProps = {
   globalData: GlobalComponentProps,

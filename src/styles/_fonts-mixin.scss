@@ -70,20 +70,6 @@
   }
 }
 
-@mixin text-medium {
-  @include tablet-xl {
-    @include medium-font;
-
-    font-size: 20px;
-    line-height: 1.4;
-  }
-
-  @include desktop-xl {
-    font-size: 30px;
-    line-height: 1.5;
-  }
-}
-
 @mixin body-1-medium {
   @include medium-font;
 
@@ -159,5 +145,29 @@
   @include desktop-xl {
     font-size: 44px;
     line-height: 1.35;
+  }
+}
+
+@mixin text-medium {
+  @include medium-font;
+
+  font-size: 20px;
+  line-height: 1.4;
+
+  @include desktop-xl {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+}
+
+@mixin text-regular {
+  @include regular-font;
+
+  font-size: 20px;
+  line-height: 1.4;
+
+  @include desktop-xl {
+    font-size: 30px;
+    line-height: 1.5;
   }
 }
