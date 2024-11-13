@@ -1,12 +1,9 @@
 import { HomePageProps } from "../types";
+import { CONTACT_ZOO_PREVIEW } from "./contact-zoo-preview-mocks";
 import { HERO } from "./hero-mocks";
 
 export const HOME_PAGE: HomePageProps = {
   id: 1,
   title: `Домашняя страница`,
-  blocks: [
-    {
-      ...HERO,
-    },
-  ],
+  blocks: [HERO, CONTACT_ZOO_PREVIEW],
 };

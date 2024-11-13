@@ -1,5 +1,5 @@
 import { BlockTypes } from '@/src/common/enum';
-import { HeroComponentProps } from '@/src/common/types';
+import { HeroComponentProps, ContactZooPreviewComponentProps } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
@@ -9,10 +9,17 @@ const Hero = dynamic(
   },
 );
 
+const ContactZooPreview = dynamic(
+  () => import(`../../home-page/ContactZooPreview/ContactZooPreview`).then((component) => component.ContactZooPreview),
+  {
+    ssr: false,
+  },
+);
+
 export const BlockRenderer = ({
   block,
 }: {
-  block: HeroComponentProps
+  block: (HeroComponentProps | ContactZooPreviewComponentProps)
 }) => {
   switch (block.__component) {
     case BlockTypes.HERO:
@@ -24,6 +31,15 @@ export const BlockRenderer = ({
           scheduleTimetables={block.scheduleTimetables}
           infoCardTitle={block.infoCardTitle}
           infoCardDescription={block.infoCardDescription}
+        />
+      );
+    case BlockTypes.CONTACT_ZOO_PREVIEW:
+      return (
+        <ContactZooPreview
+          title={block.title}
+          description={block.description}
+          largeImage={block.largeImage}
+          smallImage={block.smallImage}
         />
       );
     default:
