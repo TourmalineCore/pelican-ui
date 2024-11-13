@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import { BlockTypes } from "./enum";
 
 export type GlobalComponentProps = {
   navigationLinks: {
@@ -21,7 +22,7 @@ export type HomePageProps = {
 
 export type HeroComponentProps = {
   id: number
-  __component: "home.hero",
+  __component: BlockTypes.HERO,
   title: string,
   image: {
     url: StaticImageData;
@@ -38,19 +39,18 @@ export type Timetable = {
   days: string,
   time: string,
   ticketsOfficeTime: string,
-  blocks: ContactZooPreviewComponentProps[];
 };
 
 export type ContactZooPreviewComponentProps = {
   id: number
-  __component: "home.contact-zoo-preview",
+  __component: BlockTypes.CONTACT_ZOO_PREVIEW,
   title: string,
   description: string,
   largeImage: {
     url: StaticImageData;
     alt: string;
   },
-  smallImage: {
+  smallImage?: {
     url: StaticImageData;
     alt: string;
   },

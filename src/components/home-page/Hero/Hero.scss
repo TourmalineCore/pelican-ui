@@ -1,4 +1,7 @@
 .hero {
+  $buttons-gap-mobile: 12px;
+  $buttons-gap-tablet-xl: 16px;
+
   position: relative;
   display: grid;
   padding-top: 16px;
@@ -84,85 +87,32 @@
 
   &__buttons {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
+
+    @include tablet {
+      flex-wrap: nowrap;
+    }
 
     @include tablet-xl {
       gap: 16px;
     }
   }
 
-  &__contact-button {
-    padding: 12px 24px;
-
-    @include tablet-xl {
-      padding: 16px 24px;
-    }
-  }
-
-  &__ticket-button {
-    padding: 12px 56px;
-
-    &::after,
-    &::before {
-      content: "";
-      position: absolute;
-      right: 1.5px;
-      bottom: 0;
-      width: 82px;
-      height: 67px;
-
-      @include tablet {
-        right: 12px;
-      }
-
-      @include tablet-xl {
-        right: 6px;
-        width: 100px;
-        height: 81px;
-      }
-    }
-
-    &::before {
-      background-image: url("../../../../public/images/hero/parrot-closed-eye.svg");
-      visibility: hidden;
-
-      @include tablet-xl {
-        background-image: url("../../../../public/images/hero/parrot-closed-eye-xl.svg");
-      }
-    }
-
-    &::after {
-      background-image: url("../../../../public/images/hero/parrot-open-eye.svg");
-
-      @include tablet-xl {
-        background-image: url("../../../../public/images/hero/parrot-open-eye-xl.svg");
-      }
-    }
-
-    &:hover,
-    &:focus {
-      &::before {
-        visibility: visible;
-      }
-
-      &::after {
-        display: none;
-      }
-    }
-
-    @include tablet-xl {
-      padding: 16px 24px;
-    }
-  }
-
-  /* stylelint-disable-next-line no-descending-specificity */
   &__contact-button,
   &__ticket-button {
     @include caption-1-medium;
 
     flex-grow: 1;
+    padding: 12px 24px;
+    width: calc(50% - $buttons-gap-mobile / 2);
     height: 47px;
     min-width: 165px;
+
+    @include tablet-xl {
+      padding: 16px 24px;
+      width: calc(50% - $buttons-gap-tablet-xl / 2);
+    }
 
     @include tablet {
       min-width: 175px;

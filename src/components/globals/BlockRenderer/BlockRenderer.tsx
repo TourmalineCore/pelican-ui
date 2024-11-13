@@ -1,11 +1,16 @@
+import { BlockTypes } from '@/src/common/enum';
 import { HeroComponentProps, ContactZooPreviewComponentProps } from '@/src/common/types';
-import { ContactZooPreview } from '@/src/components/home-page/ContactZooPreview/ContactZooPreview';
-import { Hero } from '../../home-page/Hero/Hero';
+import dynamic from 'next/dynamic';
 
-enum BlockTypes {
-  HERO = `home.hero`,
-  CONTACT_ZOO_PREVIEW = `home.contact-zoo-preview`,
-}
+const Hero = dynamic(
+  () => import(`../../home-page/Hero/Hero`).then((component) => component.Hero),
+  { ssr: false },
+);
+
+const ContactZooPreview = dynamic(
+  () => import(`../../home-page/ContactZooPreview/ContactZooPreview`).then((component) => component.ContactZooPreview),
+  { ssr: false },
+);
 
 export const BlockRenderer = ({
   block,

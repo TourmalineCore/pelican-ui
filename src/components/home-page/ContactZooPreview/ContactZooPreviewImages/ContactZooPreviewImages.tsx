@@ -30,7 +30,7 @@ export function ContactZooPreviewImages({
           fill
         />
       </div>
-      {isDesktop && (
+      {isDesktop && smallImage && (
         <div className="contact-zoo-images__wrapper">
           <Image
             className="contact-zoo-images__image"

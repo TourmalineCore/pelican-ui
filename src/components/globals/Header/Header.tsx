@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useState } from "react";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { GlobalComponentProps } from "@/src/common/types";
 import { Breakpoint } from "@/src/common/enum";
@@ -20,12 +20,15 @@ export function Header({
   email,
   phone,
   popupTicketBuyText,
-}: GlobalComponentProps) {
+  mainElementRef,
+}: GlobalComponentProps & {
+  mainElementRef: MutableRefObject<null | HTMLElement>
+}) {
   const [isActive, setIsActive] = useState(false);
   const windowWidth = useWindowWidth();
 
   useEffect(() => {
-    const mainElement = document.querySelector(`.main`)!;
+    const mainElement = mainElementRef.current!;
 
     if (isActive) {
       mainElement.classList.add(`blur`);
@@ -78,6 +81,7 @@ export function Header({
               <Button
                 className="header__ticket-button"
                 theme="primary"
+                isFeatured
               >
                 Билеты
               </Button>

@@ -53,6 +53,12 @@
   }
 
   @include tablet-xl {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @include tablet-xl {
     border-radius: 32px;
     padding: 24px 32px;
   }
