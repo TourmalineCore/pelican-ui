@@ -19,7 +19,6 @@ export function Services({
       data-testid="services"
     >
       <h2 className="services__title container">{title}</h2>
-      <ul className="services__cards">
       <ul className="services__cards container">
         {cards.map((card) => (
           <ServicesCard

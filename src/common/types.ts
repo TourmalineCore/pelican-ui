@@ -17,7 +17,7 @@ export type GlobalComponentProps = {
 export type HomePageProps = {
   id: number,
   title: string;
-  blocks: (HeroComponentProps | ServicesComponentProps)[];
+  blocks: (HeroComponentProps | ServicesComponentProps | ContactZooPreviewComponentProps)[];
 };
 
 export type HeroComponentProps = {
@@ -59,4 +59,19 @@ export type ServicesCardProps = {
   labels: string[],
   title: string,
   description: string,
+};
+
+export type ContactZooPreviewComponentProps = {
+  id: number
+  __component: BlockTypes.CONTACT_ZOO_PREVIEW,
+  title: string,
+  description: string,
+  largeImage: {
+    url: StaticImageData;
+    alt: string;
+  },
+  smallImage?: {
+    url: StaticImageData;
+    alt: string;
+  },
 };

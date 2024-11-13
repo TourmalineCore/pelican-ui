@@ -1,5 +1,5 @@
 import { BlockTypes } from '@/src/common/enum';
-import { GlobalComponentProps, HeroComponentProps, ServicesComponentProps } from '@/src/common/types';
+import { GlobalComponentProps, HeroComponentProps, ServicesComponentProps, ContactZooPreviewComponentProps } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
@@ -16,12 +16,19 @@ const Services = dynamic(
   },
 );
 
+const ContactZooPreview = dynamic(
+  () => import(`../../home-page/ContactZooPreview/ContactZooPreview`).then((component) => component.ContactZooPreview),
+  {
+    ssr: false,
+  },
+);
+
 export const BlockRenderer = ({
   block,
   phone,
   email,
 }: {
-  block: HeroComponentProps | ServicesComponentProps,
+  block: HeroComponentProps | ServicesComponentProps | ContactZooPreviewComponentProps,
   phone: GlobalComponentProps['phone'],
   email: GlobalComponentProps['email']
 }) => {
@@ -37,6 +44,7 @@ export const BlockRenderer = ({
           infoCardDescription={block.infoCardDescription}
         />
       );
+
     case BlockTypes.SERVICES:
       return (
         <Services
@@ -46,6 +54,16 @@ export const BlockRenderer = ({
           emailText={block.emailText}
           phone={phone}
           email={email}
+        />
+      );
+
+    case BlockTypes.CONTACT_ZOO_PREVIEW:
+      return (
+        <ContactZooPreview
+          title={block.title}
+          description={block.description}
+          largeImage={block.largeImage}
+          smallImage={block.smallImage}
         />
       );
     default:
