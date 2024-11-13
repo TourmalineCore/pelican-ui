@@ -1,5 +1,5 @@
 import { Breakpoint } from '@/src/common/enum';
-import { setViewportSizeAndGoToPage } from '@/test/helpers';
+import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`FooterTests`, () => {
@@ -23,6 +23,10 @@ async function mobileTest({
     page,
   });
 
+  hideHeader({
+    page,
+  });
+
   await expect(getFooterByTestId({
     page,
   }))
@@ -38,7 +42,9 @@ async function tabletTest({
     page,
     width: Breakpoint.TABLET,
   });
-
+  hideHeader({
+    page,
+  });
   await expect(getFooterByTestId({
     page,
   }))
@@ -54,7 +60,9 @@ async function tabletXlTest({
     page,
     width: Breakpoint.TABLET_XL,
   });
-
+  hideHeader({
+    page,
+  });
   await expect(getFooterByTestId({
     page,
   }))
@@ -69,6 +77,9 @@ async function desktopTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.DESKTOP,
+  });
+  hideHeader({
+    page,
   });
 
   await expect(getFooterByTestId({
@@ -85,6 +96,10 @@ async function desktopXlTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.DESKTOP_XL,
+  });
+
+  hideHeader({
+    page,
   });
 
   await expect(getFooterByTestId({
