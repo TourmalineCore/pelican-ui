@@ -16,24 +16,30 @@
 
   &__image-wrapper {
     position: relative;
-  }
-
-  &__image {
     margin-bottom: 12px;
-    border-radius: 16px;
-    max-height: 227px;
-    object-fit: cover;
+    height: 227px;
+
+    img {
+      border-radius: 16px;
+      object-fit: cover;
+
+      @include tablet-xl {
+        border-radius: 32px;
+      }
+
+      @include desktop-xl {
+        border-radius: 40px;
+      }
+    }
 
     @include tablet-xl {
       margin-bottom: 24px;
-      border-radius: 32px;
-      max-height: 340px;
+      height: 340px;
     }
 
     @include desktop-xl {
       margin-bottom: 32px;
-      border-radius: 40px;
-      max-height: 474px;
+      height: 474px;
     }
   }
 
@@ -41,6 +47,7 @@
     position: absolute;
     left: 8px;
     top: 12px;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: 6px;

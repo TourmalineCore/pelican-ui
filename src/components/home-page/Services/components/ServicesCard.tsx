@@ -27,7 +27,6 @@ export function ServicesCard({
             </ul>
           )}
           <Image
-            className="services-card__image"
             src={image.url}
             alt={image.alt}
           />

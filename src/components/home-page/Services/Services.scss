@@ -67,7 +67,7 @@
 
   &__phone-button,
   &__email-button {
-    @include caption-2-medium;
+    @include caption-1-medium;
 
     justify-content: flex-start;
     padding: 24px;
@@ -77,8 +77,6 @@
     text-align: left;
 
     @include tablet-xl {
-      @include caption-1-medium;
-
       border-radius: 24px;
     }
 
