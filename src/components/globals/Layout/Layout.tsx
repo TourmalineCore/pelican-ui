@@ -14,6 +14,8 @@ export function Layout({
   footerUserLinks,
   footerAboutLinks,
   popupTicketBuyText,
+  footerNavTitleLeft,
+  footerNavTitleRight,
 }: {
 } & LayoutProps) {
   const overlayElementRef = useRef<null | HTMLElement>(null);
@@ -42,6 +44,8 @@ export function Layout({
         footerAboutLinks={footerAboutLinks}
         email={email}
         phone={phone}
+        footerNavTitleLeft={footerNavTitleLeft}
+        footerNavTitleRight={footerNavTitleRight}
       />
     </div>
   );

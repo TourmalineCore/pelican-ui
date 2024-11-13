@@ -11,9 +11,12 @@ export function Footer({
   footerUserLinks,
   email,
   phone,
+  footerNavTitleLeft,
+  footerNavTitleRight,
 }: Omit<GlobalComponentProps, "navigationLinks" | "popupTicketBuyText" >) {
   const windowWidth = useWindowWidth();
   const isDesktop = windowWidth >= Breakpoint.DESKTOP;
+  const isTablet = windowWidth >= Breakpoint.TABLET;
 
   return (
     <div
@@ -24,9 +27,9 @@ export function Footer({
         <div className="footer__top">
           <div className="footer__cols">
             <div className="footer__col footer__col--left">
-              <h3 className="footer__title">Посетителям</h3>
+              <h3 className="footer__title">{footerNavTitleLeft}</h3>
               <ul className="footer__nav">
-                {footerUserLinks!.map(({
+                {footerUserLinks.map(({
                   id,
                   name,
                   link,
@@ -46,9 +49,9 @@ export function Footer({
               </ul>
             </div>
             <div className="footer__col">
-              <h3 className="footer__title">О зоопарке</h3>
+              <h3 className="footer__title">{footerNavTitleRight}</h3>
               <ul className="footer__nav">
-                {footerAboutLinks!.map(({
+                {footerAboutLinks.map(({
                   id,
                   name,
                   link,
@@ -71,7 +74,7 @@ export function Footer({
           <ul className="footer__contacts">
             <li className="footer__contact">
               <Link
-                href="#"
+                href={`tel:${phone}`}
                 className="footer__contact-link"
               >
                 {phone}
@@ -79,7 +82,7 @@ export function Footer({
             </li>
             <li className="footer__contact">
               <Link
-                href="#"
+                href={`mailto:${email}`}
                 className="footer__contact-link"
               >
                 {email}
@@ -89,13 +92,23 @@ export function Footer({
         </div>
         <div className="footer__middle">
           {
-            isDesktop
-              ? (
-                <div className="footer__official-name">
-                  <p>Муниципальное Бюджетное Учреждение Культуры «Зоопарк»</p>
-                </div>
-              )
-              : <div className="footer__official-name"><p>МБУК «Зоопарк»</p></div>
+            isTablet && (
+              isDesktop
+                ? (
+                  <div className="footer__official-name">
+                    <p className="footer__official-name-text">
+                      Муниципальное Бюджетное Учреждение Культуры «Зоопарк»
+                    </p>
+                  </div>
+                )
+                : (
+                  <div className="footer__official-name">
+                    <p className="footer__official-name-text">
+                      МБУК «Зоопарк»
+                    </p>
+                  </div>
+                )
+            )
           }
           <div className="footer__social-media">
             <SocialMedia />
@@ -115,7 +128,7 @@ export function Footer({
 
       <div className="container footer__bottom">
         <ul className="footer__official-links">
-          {officialLinks!.map(({
+          {officialLinks.map(({
             id,
             name,
             link,

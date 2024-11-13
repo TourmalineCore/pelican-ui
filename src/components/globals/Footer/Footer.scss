@@ -205,34 +205,34 @@
   &__official-name {
     display: none;
 
-    p {
-      @include tablet {
-        @include medium-font;
-
-        font-size: 14px;
-      }
-
-      @include tablet-xl {
-        font-size: 16px;
-      }
-
-      @include desktop {
-        max-width: 300px;
-        line-height: 1.4;
-      }
-
-      @include desktop-xl {
-        max-width: 420px;
-        font-size: 24px;
-      }
-    }
-
     @include tablet {
       display: block;
     }
 
     @include tablet {
       width: 33.8%;
+    }
+  }
+
+  &__official-name-text {
+    @include tablet {
+      @include medium-font;
+
+      font-size: 14px;
+    }
+
+    @include tablet-xl {
+      font-size: 16px;
+    }
+
+    @include desktop {
+      max-width: 300px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      max-width: 420px;
+      font-size: 24px;
     }
   }
 

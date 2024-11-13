@@ -110,6 +110,8 @@ async function desktopXlTest({
 
 function getFooterByTestId({
   page,
-}: { page: Page }) {
+}: {
+  page: Page
+}) {
   return page.getByTestId(`footer`);
 }

@@ -9,7 +9,7 @@ export type GlobalComponentProps = {
     // TODO: in the future change string to enum AppRoute
     link: string;
   }[];
-  officialLinks?: {
+  officialLinks: {
     id: number;
     name: string;
 
@@ -18,14 +18,14 @@ export type GlobalComponentProps = {
     icon: StaticImageData,
     alt: string;
   }[];
-  footerUserLinks?: {
+  footerUserLinks: {
     id: number;
     name: string;
 
     // TODO: in the future change string to enum AppRoute
     link: string;
   }[];
-  footerAboutLinks?: {
+  footerAboutLinks: {
     id: number;
     name: string;
 
@@ -35,6 +35,8 @@ export type GlobalComponentProps = {
   email: string;
   phone: string;
   popupTicketBuyText: string;
+  footerNavTitleLeft: string;
+  footerNavTitleRight: string;
 };
 
 export type HomePageProps = {
