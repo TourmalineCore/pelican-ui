@@ -1,5 +1,5 @@
 import { BlockTypes } from '@/src/common/enum';
-import { HeroComponentProps, ContactZooPreviewComponentProps } from '@/src/common/types';
+import { HeroComponentProps, ContactZooPreviewComponentProps, TicketsComponentProps } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
@@ -16,10 +16,17 @@ const ContactZooPreview = dynamic(
   },
 );
 
+const Tickets = dynamic(
+  () => import(`../../home-page/Tickets/Tickets`).then((component) => component.Tickets),
+  {
+    ssr: false,
+  },
+);
+
 export const BlockRenderer = ({
   block,
 }: {
-  block: (HeroComponentProps | ContactZooPreviewComponentProps)
+  block: (HeroComponentProps | ContactZooPreviewComponentProps | TicketsComponentProps)
 }) => {
   switch (block.__component) {
     case BlockTypes.HERO:
@@ -40,6 +47,12 @@ export const BlockRenderer = ({
           description={block.description}
           largeImage={block.largeImage}
           smallImage={block.smallImage}
+        />
+      );
+    case BlockTypes.TICKETS:
+      return (
+        <Tickets
+          title={block.title}
         />
       );
     default:
