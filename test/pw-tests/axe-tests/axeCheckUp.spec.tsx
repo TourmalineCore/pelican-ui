@@ -28,7 +28,9 @@ test(`ContrastTest`, async ({ page }) => {
     `focusable-element`,
   ];
 
-  const violationsToCheck = results.violations.filter((violation) => violationIdsToCheck.includes(violation.id));
+  const violationsToCheck = results
+    .violations
+    .filter((violation) => violationIdsToCheck.includes(violation.id));
 
   if (violationsToCheck.length > 0) {
     console.table(violationsToCheck.map((violation) => ({
