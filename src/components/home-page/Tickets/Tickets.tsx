@@ -15,6 +15,7 @@ export function Tickets({
   const windowWidth = useWindowWidth();
   const isTablet = windowWidth >= Breakpoint.TABLET;
   const isMobile = windowWidth < Breakpoint.TABLET;
+  const isTabletXl = windowWidth >= Breakpoint.TABLET_XL;
 
   return (
     <div
@@ -32,7 +33,7 @@ export function Tickets({
               isGeneral
             />
           ))}
-          {isTablet && (
+          {isTablet && !isTabletXl && (
             <li className="tickets__item tickets__item--button">
               <Button
                 className="tickets__ticket-button"

@@ -1,5 +1,6 @@
 .tickets {
   $gap-tablet: 12px;
+  $gap-tablet-xl: 16px;
 
   @include medium-font;
 
@@ -50,10 +51,13 @@
       flex-wrap: wrap;
       gap: $gap-tablet;
     }
+
+    // @include tablet-xl {
+    //   gap: $gap-tablet-xl;
+    // }
   }
 
   &__item {
-    width: 343px;
     height: 160px;
 
     &--link {
@@ -63,9 +67,14 @@
     }
 
     &--button {
+      & + & {
+        @include tablet-xl {
+          margin-left: $gap-tablet-xl;
+        }
+      }
+
       @include tablet {
         display: flex;
-        max-width: 362px;
       }
     }
 
@@ -81,6 +90,10 @@
       width: 362px;
       width: calc(50% - $gap-tablet / 2);
       height: 160px;
+    }
+
+    @include tablet-xl {
+      width: calc(100% / 3 - $gap-tablet-xl / 2);
     }
   }
 
