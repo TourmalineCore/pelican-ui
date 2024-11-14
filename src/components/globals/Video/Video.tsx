@@ -3,7 +3,7 @@ import { Options, Source, Track } from 'plyr';
 import 'plyr-react/plyr.css';
 
 type VideoProps = {
-  className: string,
+  className?: string,
   title?: string,
   sources: Source[],
   poster?: string,
