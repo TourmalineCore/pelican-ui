@@ -1,8 +1,12 @@
+import { TextAndMediaComponentProps } from "@/src/common/types";
 import { MarkdownText } from "@/src/components/globals/MarkdownText/MarkdownText";
 import { Video } from "@/src/components/globals/Video/Video";
-import VideoSrc from "@/public/video/text-and-media-video.mp4";
 
-export function TextAndMedia() {
+export function TextAndMedia({
+  title,
+  description,
+  video,
+}: Omit<TextAndMediaComponentProps, 'id' | '__component'>) {
   return (
     <section
       className="text-and-media container"
@@ -11,19 +15,17 @@ export function TextAndMedia() {
       <div className="text-and-media__text">
         <MarkdownText
           className="text-and-media__title"
-          text={`В зоопарке\n141 вид животных`}
+          text={title}
         />
-        <p className="text-and-media__description">
-          Снежные барсы, ленивцы, росомахи, гепард и другие редкие животные, которые вас удивят.
-        </p>
+        <p className="text-and-media__description">{description}</p>
       </div>
       <Video
         className="text-and-media__video"
-        title="Видео о зоопарке"
+        title={video.title}
         sources={[
           {
-            src: VideoSrc,
-            type: `video/mp4`,
+            src: video.src,
+            type: video.type,
           },
         ]}
         options={{

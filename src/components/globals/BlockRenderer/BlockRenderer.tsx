@@ -1,5 +1,5 @@
 import { BlockTypes } from '@/src/common/enum';
-import { HeroComponentProps, ContactZooPreviewComponentProps } from '@/src/common/types';
+import { HeroComponentProps, ContactZooPreviewComponentProps, TextAndMediaComponentProps } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
@@ -16,10 +16,17 @@ const ContactZooPreview = dynamic(
   },
 );
 
+const TextAndMedia = dynamic(
+  () => import(`../../home-page/TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
+  {
+    ssr: false,
+  },
+);
+
 export const BlockRenderer = ({
   block,
 }: {
-  block: (HeroComponentProps | ContactZooPreviewComponentProps)
+  block: (HeroComponentProps | ContactZooPreviewComponentProps | TextAndMediaComponentProps)
 }) => {
   switch (block.__component) {
     case BlockTypes.HERO:
@@ -40,6 +47,14 @@ export const BlockRenderer = ({
           description={block.description}
           largeImage={block.largeImage}
           smallImage={block.smallImage}
+        />
+      );
+    case BlockTypes.TEXT_AND_MEDIA:
+      return (
+        <TextAndMedia
+          title={block.title}
+          description={block.description}
+          video={block.video}
         />
       );
     default:

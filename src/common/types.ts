@@ -42,7 +42,7 @@ export type GlobalComponentProps = {
 export type HomePageProps = {
   id: number,
   title: string;
-  blocks: (HeroComponentProps | ContactZooPreviewComponentProps)[];
+  blocks: (HeroComponentProps | ContactZooPreviewComponentProps | TextAndMediaComponentProps)[];
 };
 
 export type HeroComponentProps = {
@@ -78,5 +78,17 @@ export type ContactZooPreviewComponentProps = {
   smallImage?: {
     url: StaticImageData;
     alt: string;
+  },
+};
+
+export type TextAndMediaComponentProps = {
+  id: number
+  __component: BlockTypes.TEXT_AND_MEDIA,
+  title: string,
+  description: string,
+  video: {
+    title: string,
+    src: string,
+    type: string,
   },
 };
