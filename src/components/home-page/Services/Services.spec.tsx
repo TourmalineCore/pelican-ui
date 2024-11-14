@@ -21,6 +21,7 @@ async function mobileTest({
 }) {
   await setViewportSizeAndGoToPage({
     page,
+    height: 1783,
   });
 
   hideHeader({
@@ -83,6 +84,7 @@ async function desktopTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.DESKTOP,
+    height: 1386,
   });
 
   hideHeader({
@@ -103,7 +105,7 @@ async function desktopXlTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 1068,
+    height: 1987,
   });
 
   hideHeader({

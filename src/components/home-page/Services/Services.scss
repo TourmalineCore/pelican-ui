@@ -19,15 +19,10 @@
 
   &__cards {
     display: grid;
-    overflow: auto;
     gap: 12px;
 
-    // TODO: fix column count
-    grid-template-columns: repeat(5, 304px);
-
-    &::-webkit-scrollbar {
-      width: 0;
-    }
+    // TODO: remove if card stay one column
+    // grid-template-columns: repeat(5, 304px);
 
     @include tablet {
       gap: 16px;
@@ -36,12 +31,14 @@
 
     @include desktop {
       gap: 24px;
-      grid-template-columns: repeat(5, 522px);
+
+      // grid-template-columns: repeat(5, 522px);
     }
 
     @include desktop-xl {
       gap: 32px;
-      grid-template-columns: repeat(5, 727px);
+
+      // grid-template-columns: repeat(5, 727px);
     }
   }
 
@@ -57,9 +54,10 @@
     }
 
     @include desktop {
-      flex-direction: column;
+      // flex-direction: column;
       gap: 24px;
-      grid-column: auto;
+
+      // grid-column: auto;
     }
   }
 

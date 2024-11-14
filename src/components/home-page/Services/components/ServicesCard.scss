@@ -102,7 +102,7 @@
   }
 
   &__description {
-    @include caption-2-medium;
+    @include caption-2-regular;
 
     @include tablet-xl {
       @include text-regular;
