@@ -3,14 +3,19 @@ import AxePuppeteer from '@axe-core/playwright';
 import { writeFileSync, mkdirSync } from 'fs';
 import { dirname } from 'path';
 
-test(`ContrastTest`, async ({ page }) => {
+test(`ContrastTest`, async ({
+  page,
+}) => {
   await page.setViewportSize({
     width: 1920,
     height: 1080,
   });
   await page.goto(`/home`);
 
-  const results = await new AxePuppeteer({ page } as any).analyze();
+  const results = await new AxePuppeteer({
+    page,
+  } as any)
+    .analyze();
 
   const violationIdsToCheck = [
     `color-contrast`,
@@ -45,6 +50,8 @@ test(`ContrastTest`, async ({ page }) => {
 
   const filePath = `./test/playwright-report/axeReport/axe-report.json`;
 
-  mkdirSync(dirname(filePath), { recursive: true });
+  mkdirSync(dirname(filePath), {
+    recursive: true,
+  });
   writeFileSync(filePath, JSON.stringify(violationsToCheck, null, 2));
 });
