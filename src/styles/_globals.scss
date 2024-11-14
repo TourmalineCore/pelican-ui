@@ -43,6 +43,10 @@ img {
   }
 }
 
+a {
+  color: inherit;
+}
+
 .overlay {
   position: fixed;
   z-index: $overlay;

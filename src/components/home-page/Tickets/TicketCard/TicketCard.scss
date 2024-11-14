@@ -3,7 +3,6 @@
 
   padding: 16px 24px;
   color: $color-white;
-  background-image: url("../../../../../public/images/tickets/ticket-mobile-leopard.png");
   background-size: contain;
   background-repeat: no-repeat;
 
@@ -43,6 +42,18 @@
     color: $color-white-80;
   }
 
+  &--general {
+    background-image: url("../../../../../public/images/tickets/ticket-mobile-leopard.png");
+
+    @include tablet {
+      background-image: url("../../../../../public/images/tickets/ticket-tablet-leopard.png");
+    }
+
+    @include tablet-xl {
+      background-image: url("../../../../../public/images/tickets/ticket-tablet-xl-leopard.png");
+    }
+  }
+
   &--subsidized {
     background-image: url("../../../../../public/images/tickets/ticket-mobile-zebra.png");
 
@@ -52,6 +63,14 @@
       @include tablet {
         display: block;
       }
+    }
+
+    @include tablet {
+      background-image: url("../../../../../public/images/tickets/ticket-tablet-zebra.png");
+    }
+
+    @include tablet-xl {
+      background-image: url("../../../../../public/images/tickets/ticket-tablet-xl-zebra.png");
     }
   }
 }

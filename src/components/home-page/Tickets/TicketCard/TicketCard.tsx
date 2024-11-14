@@ -5,10 +5,12 @@ export function TicketCard({
   className,
   ticket,
   isSubsidized,
+  isGeneral,
 }: {
   className: string,
   ticket: Ticket,
-  isSubsidized: boolean,
+  isSubsidized?: boolean,
+  isGeneral?: boolean,
 }) {
   return (
     <li
@@ -16,6 +18,7 @@ export function TicketCard({
         `ticket-card`,
         className,
         {
+          'ticket-card--general': isGeneral,
           'ticket-card--subsidized': isSubsidized,
         },
       )}

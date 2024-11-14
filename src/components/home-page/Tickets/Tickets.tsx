@@ -14,6 +14,7 @@ export function Tickets({
 }: Omit<TicketsComponentProps, 'id' | '__component'>) {
   const windowWidth = useWindowWidth();
   const isTablet = windowWidth >= Breakpoint.TABLET;
+  const isMobile = windowWidth < Breakpoint.TABLET;
 
   return (
     <div
@@ -28,17 +29,28 @@ export function Tickets({
               className="tickets__item"
               key={el.id}
               ticket={el}
-              isSubsidized={false}
+              isGeneral
             />
           ))}
+          {isTablet && (
+            <li className="tickets__item tickets__item--button">
+              <Button
+                className="tickets__ticket-button"
+                theme="primary"
+              >
+                Купить билет
+              </Button>
+            </li>
+          )}
         </ul>
-        <Button
-          className="tickets__ticket-button"
-          theme="primary"
-          isFeatured={isTablet}
-        >
-          Купить билет
-        </Button>
+        {isMobile && (
+          <Button
+            className="tickets__ticket-button"
+            theme="primary"
+          >
+            Купить билет
+          </Button>
+        )}
       </div>
       <div className="tickets__group">
         <h3 className="tickets__title">{subsidizedTicketsTitle}</h3>
@@ -52,13 +64,34 @@ export function Tickets({
               isSubsidized
             />
           ))}
+          {
+            isTablet && (
+              <li className="tickets__item tickets__item--link">
+                <p>
+                  С остальными льготными категориями, вы можете ознакомиться
+                  <Link
+                    className="tickets__link"
+                    href="#"
+                  >
+                    по ссылке.
+                  </Link>
+                </p>
+              </li>
+
+            )
+          }
         </ul>
-        <Link
-          href="#"
-          className="tickets__ticket-button button button--primary"
-        >
-          Другие льготы
-        </Link>
+        {
+          isMobile
+             && (
+               <Link
+                 href="#"
+                 className="tickets__ticket-button button button--primary"
+               >
+                 Другие льготы
+               </Link>
+             )
+        }
       </div>
     </div>
   );
