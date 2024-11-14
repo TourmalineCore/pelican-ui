@@ -38,6 +38,7 @@ test(`ContrastTest`, async ({
     .filter((violation) => violationIdsToCheck.includes(violation.id));
 
   if (violationsToCheck.length > 0) {
+    /* eslint-disable no-console */
     console.table(violationsToCheck.map((violation) => ({
       id: violation.id,
       impact: violation.impact,
@@ -46,6 +47,7 @@ test(`ContrastTest`, async ({
     })));
   } else {
     console.log(`No accessibility violations found.`);
+    /* eslint-enable no-console */
   }
 
   const filePath = `./test/playwright-report/axeReport/axe-report.json`;

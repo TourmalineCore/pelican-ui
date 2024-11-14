@@ -95,6 +95,11 @@ export function Header({
           phone={phone}
           navigationLinks={navigationLinks}
           popupTicketBuyText={popupTicketBuyText}
+          officialLinks={[]}
+          footerUserLinks={[]}
+          footerAboutLinks={[]}
+          footerNavTitleLeft=""
+          footerNavTitleRight=""
         />
       )}
     </div>

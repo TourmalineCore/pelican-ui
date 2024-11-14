@@ -53,7 +53,6 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
-
   await expect(getHeaderByTestId({
     page,
   }))
