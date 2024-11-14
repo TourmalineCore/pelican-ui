@@ -9,3 +9,8 @@ export enum Breakpoint {
   DESKTOP = 1366,
   DESKTOP_XL = 1920,
 }
+
+export enum BlockTypes {
+  HERO = `home.hero`,
+  CONTACT_ZOO_PREVIEW = `home.contact-zoo-preview`,
+}

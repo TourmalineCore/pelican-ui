@@ -1,14 +1,23 @@
 @import "reset";
 @import "media";
-@import "fonts";
+@import "fonts-mixin";
 @import "variables";
 @import "globals";
 
 // Component
 @import "../components/globals/Layout/Layout";
 @import "../components/globals/Header/Header";
-@import "../components/globals/Header/components/HeaderMobileButton/HeaderMobileButton";
+@import "../components/globals/Header/components/HeaderPopupButton/HeaderPopupButton";
 @import "../components/globals/Header/components/HeaderLogo/HeaderLogo";
 @import "../components/globals/Header/components/HeaderEye/HeaderEye";
 @import "../components/globals/Header/components/HeaderNavigation/HeaderNavigation";
+@import "../components/globals/Header/components/HeaderPopup/HeaderPopup";
+@import "../components/globals/Header/components/HeaderPopup/components/HeaderNavigationPopup/HeaderNavigationPopup";
 @import "../components/globals/Button/Button";
+@import "../components/globals/Footer/Footer";
+@import "../components/home-page/Hero/components/HeroSchedule/ScheduleTimetable/ScheduleTimetable";
+@import "../components/home-page/Hero/components/HeroSchedule/HeroSchedule";
+@import "../components/home-page/Hero/components/HeroInfoCard/HeroInfoCard";
+@import "../components/home-page/Hero/Hero";
+@import "../components/home-page/ContactZooPreview/ContactZooPreviewImages/ContactZooPreviewImages";
+@import "../components/home-page/ContactZooPreview/ContactZooPreview";

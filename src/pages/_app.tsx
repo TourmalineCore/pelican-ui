@@ -1,16 +1,33 @@
-/* eslint-disable @typescript-eslint/quotes */
+/* eslint-disable */
 import '../styles/index.scss';
 import type { AppProps } from 'next/app';
-import { Inter } from 'next/font/google';
 
-const inter = Inter({
-  weight: ['400', '500', '600'],
-  subsets: ['latin', 'cyrillic'],
+import localFont from "next/font/local";
+
+const inter = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Inter-SemiBold.otf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Inter-Medium.otf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Inter-Regular.otf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-inter',
 });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={inter.className}>
+    <div className={inter.variable}>
       <Component {...pageProps} />
     </div>
   );

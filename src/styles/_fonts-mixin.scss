@@ -1,0 +1,173 @@
+@mixin semi-bold-font {
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 600;
+}
+
+@mixin medium-font {
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
+}
+
+@mixin regular-font {
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 400;
+}
+
+@mixin caption-1-medium {
+  @include medium-font;
+
+  font-size: 16px;
+  line-height: 1.45;
+
+  @include tablet-xl {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  @include desktop-xl {
+    font-size: 26px;
+  }
+}
+
+@mixin caption-2-medium {
+  @include medium-font;
+
+  font-size: 14px;
+  line-height: 1.45;
+
+  @include tablet-xl {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  @include desktop-xl {
+    font-size: 24px;
+  }
+}
+
+@mixin caption-2-regular {
+  @include regular-font;
+
+  font-size: 14px;
+  line-height: 1.45;
+
+  @include tablet-xl {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  @include desktop-xl {
+    font-size: 24px;
+  }
+}
+
+@mixin caption-3-regular {
+  @include regular-font;
+
+  @include desktop-xl {
+    font-size: 22px;
+    line-height: 1.4;
+  }
+}
+
+@mixin body-1-medium {
+  @include medium-font;
+
+  font-size: 20px;
+  line-height: 1.4;
+
+  @include tablet-xl {
+    font-size: 28px;
+  }
+
+  @include desktop-xl {
+    font-size: 40px;
+  }
+}
+
+@mixin body-2-medium {
+  @include medium-font;
+
+  font-size: 18px;
+  line-height: 1.45;
+
+  @include tablet-xl {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+
+  @include desktop-xl {
+    font-size: 34px;
+  }
+}
+
+@mixin h-text {
+  @include desktop {
+    @include semi-bold-font;
+
+    font-size: 96px;
+    line-height: 1;
+  }
+
+  @include desktop-xl {
+    font-size: 128px;
+  }
+}
+
+@mixin h1-text {
+  @include medium-font;
+
+  font-size: 28px;
+  line-height: 1.3;
+
+  @include tablet-xl {
+    font-size: 40px;
+    line-height: 1.25;
+  }
+
+  @include desktop-xl {
+    font-size: 64px;
+    line-height: 1.35;
+  }
+}
+
+@mixin h2-text {
+  @include medium-font;
+
+  font-size: 24px;
+  line-height: 1.3;
+
+  @include tablet-xl {
+    font-size: 32px;
+    line-height: 1.25;
+  }
+
+  @include desktop-xl {
+    font-size: 44px;
+    line-height: 1.35;
+  }
+}
+
+@mixin text-medium {
+  @include medium-font;
+
+  font-size: 20px;
+  line-height: 1.4;
+
+  @include desktop-xl {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+}
+
+@mixin text-regular {
+  @include regular-font;
+
+  font-size: 20px;
+  line-height: 1.4;
+
+  @include desktop-xl {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+}

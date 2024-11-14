@@ -1,14 +1,20 @@
 .header {
   position: sticky;
   top: 0;
+  z-index: $mobile-nav;
   border-radius: 0 0 16px 16px;
-  padding: 12px 0;
+  padding-top: 12px;
   height: 64px;
   box-shadow: 0 2px 16px 0 $color-black-10;
   background: $color-white;
+  transition: border-radius 0.3s ease-in;
 
   &__wrapper {
     justify-content: space-between;
+  }
+
+  &.active {
+    border-radius: 0;
   }
 
   &__wrapper,
@@ -25,6 +31,8 @@
     height: 97px;
 
     &__contact-button {
+      @include caption-1-medium;
+
       margin-right: 16px;
       padding: 12px 24px;
       height: 49px;
@@ -32,40 +40,12 @@
     }
 
     &__ticket-button {
+      @include caption-1-medium;
+
       padding: 12px 56px;
       height: 49px;
       min-width: 180px;
       transition: all ease-out 0.6s;
-
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 82px;
-        height: 67px;
-      }
-
-      &::before {
-        background-image: url("../../../../public/images/header/parrot-close-eye.svg");
-        visibility: hidden;
-      }
-
-      &::after {
-        background-image: url("../../../../public/images/header/parrot-open-eye.svg");
-      }
-
-      &:focus,
-      &:hover {
-        &::before {
-          visibility: visible;
-        }
-
-        &::after {
-          display: none;
-        }
-      }
     }
   }
 
@@ -85,20 +65,6 @@
       padding: 16px 72px;
       width: 242px;
       min-height: 68px;
-
-      &::before,
-      &::after {
-        width: 121px;
-        height: 99px;
-      }
-
-      &::before {
-        background-image: url("../../../../public/images/header/parrot-close-eye-xl.svg");
-      }
-
-      &::after {
-        background-image: url("../../../../public/images/header/parrot-open-eye-xl.svg");
-      }
     }
   }
 }

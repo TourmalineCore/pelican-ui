@@ -12,7 +12,8 @@
   "ignoreFiles": [
     "**/public/**/*",
     "**/dist/**/*",
-    "**/node_modules/**/*"
+    "**/node_modules/**/*",
+		"**/playwright-report/**"
   ],
 	"rules": {
 		"keyframes-name-pattern": null,

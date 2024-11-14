@@ -21,7 +21,9 @@ async function mobileTest({
     page,
   });
 
-  await expect(getHeaderByTestId({ page }))
+  await expect(getHeaderByTestId({
+    page,
+  }))
     .toHaveScreenshot(`header-mobile.png`);
 }
 
@@ -35,7 +37,9 @@ async function tabletTest({
     width: Breakpoint.TABLET,
   });
 
-  await expect(getHeaderByTestId({ page }))
+  await expect(getHeaderByTestId({
+    page,
+  }))
     .toHaveScreenshot(`header-tablet.png`);
 }
 
@@ -49,7 +53,11 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
-  await expect(getHeaderByTestId({ page })).toHaveScreenshot(`header-desktop.png`);
+
+  await expect(getHeaderByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`header-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -62,10 +70,14 @@ async function desktopXlTest({
     width: Breakpoint.DESKTOP_XL,
   });
 
-  await expect(getHeaderByTestId({ page }))
+  await expect(getHeaderByTestId({
+    page,
+  }))
     .toHaveScreenshot(`header-desktop-xl.png`);
 }
 
-function getHeaderByTestId({ page }: { page: Page }) {
+function getHeaderByTestId({
+  page,
+}: { page: Page }) {
   return page.getByTestId(`header`);
 }

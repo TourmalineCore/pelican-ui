@@ -1,0 +1,46 @@
+.header-popup-button {
+  position: relative;
+  display: block;
+  width: 29px;
+  height: 21px;
+  cursor: pointer;
+
+  &::before,
+  &::after,
+  span {
+    content: "";
+    position: absolute;
+    left: 0;
+    border-radius: 2px;
+    width: 100%;
+    height: 3px;
+    background-image: $color-green-gradient;
+    transition: all 0.4s ease 0s;
+  }
+
+  &::before {
+    top: -2px;
+  }
+
+  &::after {
+    bottom: 4px;
+  }
+
+  span {
+    top: 6px;
+  }
+
+  &.active span {
+    transform: scale(0);
+  }
+
+  &.active::before {
+    top: 5px;
+    transform: rotate(45deg);
+  }
+
+  &.active::after {
+    bottom: 13px;
+    transform: rotate(-45deg);
+  }
+}
