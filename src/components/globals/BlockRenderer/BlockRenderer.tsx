@@ -54,6 +54,7 @@ export const BlockRenderer = ({
         <Tickets
           generalTicketsTitle={block.generalTicketsTitle}
           subsidizedTicketsTitle={block.subsidizedTicketsTitle}
+          subsidizedTicketsSubtitle={block.subsidizedTicketsSubtitle}
           generalTickets={block.generalTickets}
           subsidizedTickets={block.subsidizedTickets}
 

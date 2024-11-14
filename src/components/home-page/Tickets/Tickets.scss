@@ -1,6 +1,50 @@
 .tickets {
+  @include medium-font;
+
   border-radius: 32px;
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: $color-white;
+
+  &__group {
+    & + & {
+      margin-top: 40px;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  &__subtitle {
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 1.45;
+    color: $color-black-60;
+  }
+
+  &__list {
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__item {
+    width: 343px;
+    height: 160px;
+
+    & + & {
+      margin-top: 16px;
+    }
+  }
+
+  &__ticket-button {
+    @include medium-font;
+
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.45;
+  }
 }
