@@ -16,6 +16,17 @@
       @include tablet {
         margin-top: 32px;
       }
+
+      @include tablet-xl {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  &__head {
+    @include tablet-xl {
+      display: flex;
+      align-items: flex-end;
     }
   }
 
@@ -26,6 +37,10 @@
 
     @include tablet {
       font-size: 29px;
+    }
+
+    @include tablet-xl {
+      font-size: 32px;
     }
   }
 
@@ -38,6 +53,11 @@
     @include tablet {
       margin-top: 4px;
       max-width: 320px;
+    }
+
+    @include tablet-xl {
+      margin-left: 8px;
+      max-width: none;
     }
   }
 
@@ -52,9 +72,9 @@
       gap: $gap-tablet;
     }
 
-    // @include tablet-xl {
-    //   gap: $gap-tablet-xl;
-    // }
+    @include tablet-xl {
+      margin-top: 21px;
+    }
   }
 
   &__item {

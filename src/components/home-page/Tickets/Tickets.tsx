@@ -54,8 +54,11 @@ export function Tickets({
         )}
       </div>
       <div className="tickets__group">
-        <h3 className="tickets__title">{subsidizedTicketsTitle}</h3>
-        <p className="tickets__subtitle">{subsidizedTicketsSubtitle}</p>
+        <div className="tickets__head">
+          <h3 className="tickets__title">{subsidizedTicketsTitle}</h3>
+          <p className="tickets__subtitle">{subsidizedTicketsSubtitle}</p>
+        </div>
+
         <ul className="tickets__list">
           {subsidizedTickets.map((el) => (
             <TicketCard
