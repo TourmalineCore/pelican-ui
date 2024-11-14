@@ -5,8 +5,14 @@ import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TicketsComponentTests`, () => {
   test(`MobileTest`, mobileTest);
+
   test(`TabletTest`, tabletTest);
-  test(`TabletXlTest`, tabletTestXl);
+
+  test(`TabletXlTest`, tabletXlTest);
+
+  test(`DesktopTest`, desktopTest);
+
+  // test(`DesktopXlTest`, desktopXlTest);
 });
 
 async function mobileTest({
@@ -50,7 +56,7 @@ async function tabletTest({
     .toHaveScreenshot(`tickets-tablet.png`);
 }
 
-async function tabletTestXl({
+async function tabletXlTest({
   page,
 }: {
   page: Page,
@@ -69,6 +75,27 @@ async function tabletTestXl({
     page,
   }))
     .toHaveScreenshot(`tickets-tablet-xl.png`);
+}
+
+async function desktopTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSizeAndGoToPage({
+    page,
+    width: Breakpoint.DESKTOP,
+    height: 770,
+  });
+
+  hideHeader({
+    page,
+  });
+
+  await expect(getTicketsByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`tickets-desktop.png`);
 }
 
 function getTicketsByTestId({
