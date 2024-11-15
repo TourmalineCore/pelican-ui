@@ -1,5 +1,5 @@
 import { BlockTypes } from '@/src/common/enum';
-import { GlobalComponentProps, HeroComponentProps, ServicesComponentProps, ContactZooPreviewComponentProps } from '@/src/common/types';
+import { GlobalComponentProps, HeroComponentProps, TextAndMediaComponentProps, ServicesComponentProps, ContactZooPreviewComponentProps } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
@@ -35,7 +35,11 @@ export const BlockRenderer = ({
   phone,
   email,
 }: {
-  block: HeroComponentProps | ServicesComponentProps | ContactZooPreviewComponentProps,
+  block:
+  HeroComponentProps
+  | TextAndMediaComponentProps
+  | ServicesComponentProps
+  | ContactZooPreviewComponentProps,
   phone: GlobalComponentProps['phone'],
   email: GlobalComponentProps['email']
 }) => {

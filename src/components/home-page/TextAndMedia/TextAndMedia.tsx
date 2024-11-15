@@ -21,13 +21,13 @@ export function TextAndMedia({
       </div>
       <Video
         className="text-and-media__video"
-        title={video.title}
-        sources={[
+        title={video.alt}
+        sources={
           {
-            src: video.src,
-            type: video.type,
-          },
-        ]}
+            src: video.url,
+            type: video.mime,
+          }
+        }
         options={{
           loop: {
             active: true,

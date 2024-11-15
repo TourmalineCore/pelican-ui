@@ -1,13 +1,11 @@
 import Plyr from 'plyr-react';
-import { Options, Source, Track } from 'plyr';
+import { Options, Source } from 'plyr';
 import 'plyr-react/plyr.css';
 
 type VideoProps = {
   className?: string,
   title?: string,
-  sources: Source[],
-  poster?: string,
-  tracks?: Track[],
+  sources: Source,
   options?: Options,
 };
 
@@ -15,8 +13,6 @@ export function Video({
   className,
   title,
   sources,
-  poster,
-  tracks,
   options,
 }: VideoProps) {
   return (
@@ -27,9 +23,7 @@ export function Video({
         source={{
           type: `video`,
           title,
-          sources,
-          poster,
-          tracks,
+          sources: [sources],
         }}
         options={options}
       />

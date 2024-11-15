@@ -112,8 +112,8 @@ export type TextAndMediaComponentProps = {
   title: string,
   description: string,
   video: {
-    title: string,
-    src: string,
-    type: string,
+    alt?: string,
+    url: string,
+    mime: string,
   },
 };
