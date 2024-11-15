@@ -70,6 +70,34 @@
   }
 }
 
+@mixin text-medium {
+  @include tablet-xl {
+    @include medium-font;
+
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  @include desktop-xl {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+}
+
+@mixin text-regular {
+  @include tablet-xl {
+    @include regular-font;
+
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  @include desktop-xl {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+}
+
 @mixin body-1-medium {
   @include medium-font;
 
@@ -78,6 +106,19 @@
 
   @include tablet-xl {
     font-size: 28px;
+  }
+
+  @include desktop-xl {
+    font-size: 40px;
+  }
+}
+
+@mixin body-1-regular {
+  @include tablet-xl {
+    @include regular-font;
+
+    font-size: 28px;
+    line-height: 1.4;
   }
 
   @include desktop-xl {
@@ -145,29 +186,5 @@
   @include desktop-xl {
     font-size: 44px;
     line-height: 1.35;
-  }
-}
-
-@mixin text-medium {
-  @include medium-font;
-
-  font-size: 20px;
-  line-height: 1.4;
-
-  @include desktop-xl {
-    font-size: 30px;
-    line-height: 1.5;
-  }
-}
-
-@mixin text-regular {
-  @include regular-font;
-
-  font-size: 20px;
-  line-height: 1.4;
-
-  @include desktop-xl {
-    font-size: 30px;
-    line-height: 1.5;
   }
 }
