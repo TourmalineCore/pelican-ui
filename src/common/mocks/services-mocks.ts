@@ -1,6 +1,6 @@
 import { BlockTypes } from "../enum";
 import { ServicesComponentProps } from "../types";
-import excurtionImage from "../../../public/images/services/excursion.png";
+import excursionImage from "../../../public/images/services/excursion.png";
 import questImage from "../../../public/images/services/quest.png";
 import contactLessonImage from "../../../public/images/services/contact-lesson.png";
 import exitLecturesImage from "../../../public/images/services/exit-lectures.png";
@@ -15,7 +15,7 @@ export const SERVICES: ServicesComponentProps = {
     {
       id: 0,
       image: {
-        url: excurtionImage,
+        url: excursionImage,
         alt: `Фотография процесса проведения экскурсии`,
       },
       labels: [`Запись за 5 дней`, `От 10 человек`],

@@ -11,7 +11,7 @@ export function ServicesCard({
   className: string
 }) {
   return (
-    <div className={`services-card ${className}`}>
+    <li className={`services-card ${className}`}>
       <div className="services-card__wrapper">
         <div className="services-card__image-wrapper">
           {labels && (
@@ -36,6 +36,6 @@ export function ServicesCard({
           <p className="services-card__description">{description}</p>
         </div>
       </div>
-    </div>
+    </li>
   );
 }
