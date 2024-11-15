@@ -72,7 +72,7 @@ export function Tickets({
             isTablet && (
               <li className="tickets__item tickets__item--link">
                 <p>
-                  С остальными льготными категориями, вы можете ознакомиться
+                  С остальными льготными категориями вы можете ознакомиться
                   <Link
                     className="tickets__link"
                     href="#"
