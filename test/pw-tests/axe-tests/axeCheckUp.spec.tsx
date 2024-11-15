@@ -3,7 +3,7 @@ import AxePuppeteer from '@axe-core/playwright';
 import { writeFileSync, mkdirSync } from 'fs';
 import { dirname } from 'path';
 
-test(`ContrastTest`, async ({
+test(`axeCheckUp`, async ({
   page,
 }) => {
   await page.setViewportSize({
