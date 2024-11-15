@@ -46,7 +46,7 @@ async function tabletTest({
 async function desktopTest({
   page,
 }: {
-  page: Page;
+  page: Page,
 }) {
   await setViewportSizeAndGoToPage({
     page,
