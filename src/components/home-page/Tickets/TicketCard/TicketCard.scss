@@ -3,7 +3,6 @@
 
   position: relative;
   border-radius: 24px 0 0 24px;
-  padding: 16px 24px;
   color: $color-white;
   background-size: cover;
   background-repeat: no-repeat;
@@ -31,6 +30,11 @@
       right: 70px;
       width: 47px;
     }
+
+    @include desktop-xl {
+      right: 96px;
+      width: 67px;
+    }
   }
 
   &::after {
@@ -42,20 +46,32 @@
     @include desktop {
       width: 14px;
     }
+
+    @include desktop-xl {
+      width: 20px;
+    }
   }
 
   &__inner {
     display: flex;
     flex-direction: column;
+    padding: 16px 24px;
     height: 100%;
-    max-width: 230px;
+    min-height: inherit;
+    max-width: 280px;
 
     @include tablet-xl {
-      max-width: 210px;
+      max-width: 260px;
     }
 
     @include desktop {
-      max-width: 300px;
+      padding: 24px;
+      max-width: 338px;
+    }
+
+    @include desktop-xl {
+      padding: 32px;
+      max-width: 460px;
     }
   }
 
@@ -72,6 +88,10 @@
     @include desktop {
       font-size: 24px;
     }
+
+    @include desktop-xl {
+      font-size: 34px;
+    }
   }
 
   &__description {
@@ -83,6 +103,10 @@
       margin-top: 8px;
       font-size: 18px;
       line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      font-size: 26px;
     }
   }
 
@@ -101,6 +125,10 @@
     @include desktop {
       font-size: 28px;
     }
+
+    @include desktop-xl {
+      font-size: 40px;
+    }
   }
 
   &__frequency {
@@ -109,8 +137,16 @@
     line-height: 1.45;
     color: $color-white-80;
 
+    @include tablet-xl {
+      font-size: 12px;
+    }
+
     @include desktop {
       font-size: 16px;
+    }
+
+    @include desktop-xl {
+      font-size: 24px;
     }
   }
 
@@ -142,6 +178,9 @@
 
   @include desktop {
     border-radius: 30px 0 0 30px;
-    padding: 24px;
+  }
+
+  @include desktop-xl {
+    border-radius: 40px 0 0 40px;
   }
 }

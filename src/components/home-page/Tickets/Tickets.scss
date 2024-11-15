@@ -5,10 +5,73 @@
 
   @include medium-font;
 
+  position: relative;
   border-radius: 32px;
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: $color-white;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background-repeat: no-repeat;
+  }
+
+  &::before {
+    right: 47px;
+    bottom: 0;
+    width: 65px;
+    height: 65px;
+    background-image: url("../../../../public/images/tickets/pink-paw-left.svg");
+
+    @include tablet {
+      right: 38px;
+      bottom: -16px;
+    }
+
+    @include desktop {
+      right: 72px;
+      bottom: 0;
+      width: 95px;
+      height: 113px;
+      background-image: url("../../../../public/images/tickets/pink-paw-left-desktop.svg");
+    }
+
+    @include desktop-xl {
+      right: 110px;
+      bottom: -27px;
+      width: 182px;
+      height: 195px;
+    }
+  }
+
+  &::after {
+    right: -10px;
+    bottom: 70px;
+    width: 65px;
+    height: 90px;
+    background-image: url("../../../../public/images/tickets/pink-paw-right.svg");
+
+    @include tablet {
+      right: -20px;
+      bottom: 52px;
+    }
+
+    @include desktop {
+      bottom: 120px;
+      width: 110px;
+      height: 120px;
+      background-image: url("../../../../public/images/tickets/pink-paw-right-desktop.svg");
+    }
+
+    @include desktop-xl {
+      right: -51px;
+      bottom: 154px;
+      width: 191px;
+      height: 215px;
+    }
+  }
 
   &__group {
     & + & {
@@ -52,6 +115,11 @@
       font-size: 40px;
       line-height: 1.25;
     }
+
+    @include desktop-xl {
+      font-size: 64px;
+      line-height: 1.35;
+    }
   }
 
   &__subtitle {
@@ -73,6 +141,10 @@
     @include desktop {
       margin-left: 16px;
     }
+
+    @include desktop-xl {
+      font-size: 24px;
+    }
   }
 
   &__list {
@@ -83,6 +155,7 @@
       display: flex;
       align-items: end;
       flex-wrap: wrap;
+      margin-bottom: 0;
       gap: $gap-tablet;
     }
 
@@ -106,6 +179,10 @@
 
       @include desktop {
         font-size: 24px;
+      }
+
+      @include desktop-xl {
+        font-size: 34px;
       }
     }
 
@@ -131,14 +208,10 @@
       }
     }
 
-    @include desktop {
-      min-height: 219px;
-    }
-
     @include tablet {
       width: 362px;
       width: calc(50% - $gap-tablet / 2);
-      height: 160px;
+      min-height: 160px;
     }
 
     @include tablet-xl {
@@ -147,8 +220,17 @@
     }
 
     @include desktop {
+      min-height: 219px;
+    }
+
+    @include desktop {
       width: calc(100% / 3 - $gap-desktop);
       min-width: 413px;
+    }
+
+    @include desktop-xl {
+      min-width: 580px;
+      min-height: 309px;
     }
   }
 
@@ -186,5 +268,10 @@
   @include desktop {
     border-radius: 64px;
     padding: 64px 39px;
+  }
+
+  @include desktop-xl {
+    border-radius: 64px;
+    padding: 80px 64px;
   }
 }
