@@ -129,7 +129,7 @@
   @include tablet {
     padding-top: 32px;
     padding-bottom: 56px;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 49.2% 49.2%;
     grid-template-rows: repeat(1, 1fr);
   }
 
