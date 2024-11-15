@@ -10,7 +10,7 @@ export const TICKETS: TicketsComponentProps = {
   generalTickets: [
     {
       id: 0,
-      category: `Взрослые, дети от 14 лет`,
+      category: `Взрослые, дети\u00A0от\u00A014\u00A0лет`,
       price: `400  ₽ / чел`,
     },
     {

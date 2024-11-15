@@ -1,6 +1,7 @@
 .tickets {
   $gap-tablet: 12px;
   $gap-tablet-xl: 16px;
+  $gap-desktop: 24px;
 
   @include medium-font;
 
@@ -28,6 +29,10 @@
       display: flex;
       align-items: flex-end;
     }
+
+    @include desktop {
+      align-items: baseline;
+    }
   }
 
   &__title {
@@ -41,6 +46,11 @@
 
     @include tablet-xl {
       font-size: 32px;
+    }
+
+    @include desktop {
+      font-size: 40px;
+      line-height: 1.25;
     }
   }
 
@@ -59,6 +69,10 @@
       margin-left: 8px;
       max-width: none;
     }
+
+    @include desktop {
+      margin-left: 16px;
+    }
   }
 
   &__list {
@@ -74,25 +88,28 @@
 
     @include tablet-xl {
       margin-top: 21px;
+      gap: 0;
+    }
+
+    @include desktop {
+      margin-top: 31px;
     }
   }
 
   &__item {
-    height: 160px;
+    min-height: 160px;
 
     &--link {
       font-size: 20px;
       line-height: 1.4;
       color: $color-black-75;
+
+      @include desktop {
+        font-size: 24px;
+      }
     }
 
     &--button {
-      & + & {
-        @include tablet-xl {
-          margin-left: $gap-tablet-xl;
-        }
-      }
-
       @include tablet {
         display: flex;
       }
@@ -104,6 +121,18 @@
       @include tablet {
         margin-top: 0;
       }
+
+      @include tablet-xl {
+        margin-left: $gap-tablet-xl;
+      }
+
+      @include desktop {
+        margin-left: $gap-desktop;
+      }
+    }
+
+    @include desktop {
+      min-height: 219px;
     }
 
     @include tablet {
@@ -113,7 +142,13 @@
     }
 
     @include tablet-xl {
-      width: calc(100% / 3 - $gap-tablet-xl / 2);
+      width: calc(33.33% - $gap-tablet-xl);
+      min-width: 309px;
+    }
+
+    @include desktop {
+      width: calc(100% / 3 - $gap-desktop);
+      min-width: 413px;
     }
   }
 
@@ -146,5 +181,10 @@
     margin-left: 4px;
     text-decoration: underline;
     color: $color-green;
+  }
+
+  @include desktop {
+    border-radius: 64px;
+    padding: 64px 39px;
   }
 }

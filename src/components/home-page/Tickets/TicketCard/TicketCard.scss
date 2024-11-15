@@ -26,6 +26,11 @@
     @include tablet-xl {
       right: 47px;
     }
+
+    @include desktop {
+      right: 70px;
+      width: 47px;
+    }
   }
 
   &::after {
@@ -33,6 +38,10 @@
     top: 0;
     width: 10px;
     background-image: url("../../../../../public/images/tickets/ticket-edge.svg");
+
+    @include desktop {
+      width: 14px;
+    }
   }
 
   &__inner {
@@ -43,6 +52,10 @@
 
     @include tablet-xl {
       max-width: 210px;
+    }
+
+    @include desktop {
+      max-width: 300px;
     }
   }
 
@@ -55,12 +68,22 @@
     @include tablet-xl {
       font-size: 18px;
     }
+
+    @include desktop {
+      font-size: 24px;
+    }
   }
 
   &__description {
     margin-top: 4px;
     font-size: 14px;
     line-height: 1.45;
+
+    @include desktop {
+      margin-top: 8px;
+      font-size: 18px;
+      line-height: 1.4;
+    }
   }
 
   &__bottom {
@@ -74,6 +97,10 @@
     @include tablet-xl {
       font-size: 20px;
     }
+
+    @include desktop {
+      font-size: 28px;
+    }
   }
 
   &__frequency {
@@ -81,6 +108,10 @@
     font-size: 14px;
     line-height: 1.45;
     color: $color-white-80;
+
+    @include desktop {
+      font-size: 16px;
+    }
   }
 
   &--general {
@@ -107,5 +138,10 @@
         display: none;
       }
     }
+  }
+
+  @include desktop {
+    border-radius: 30px 0 0 30px;
+    padding: 24px;
   }
 }
