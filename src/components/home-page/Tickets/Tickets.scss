@@ -13,19 +13,23 @@
 
   &::before,
   &::after {
-    content: "";
-    position: absolute;
-    background-repeat: no-repeat;
+    @include tablet {
+      content: "";
+      position: absolute;
+      background-repeat: no-repeat;
+    }
   }
 
   &::before {
-    right: 47px;
-    bottom: 0;
-    width: 65px;
-    height: 65px;
-    background-image: url("../../../../public/images/tickets/pink-paw-left.svg");
-
     @include tablet {
+      right: 47px;
+      bottom: 0;
+      width: 65px;
+      height: 65px;
+      background-image: url("../../../../public/images/tickets/pink-paw-left.svg");
+    }
+
+    @include tablet-xl {
       right: 38px;
       bottom: -16px;
     }
@@ -47,13 +51,15 @@
   }
 
   &::after {
-    right: -10px;
-    bottom: 70px;
-    width: 65px;
-    height: 90px;
-    background-image: url("../../../../public/images/tickets/pink-paw-right.svg");
-
     @include tablet {
+      right: -10px;
+      bottom: 70px;
+      width: 65px;
+      height: 90px;
+      background-image: url("../../../../public/images/tickets/pink-paw-right.svg");
+    }
+
+    @include tablet-xl {
       right: -20px;
       bottom: 52px;
     }
