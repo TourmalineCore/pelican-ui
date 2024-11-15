@@ -1,6 +1,9 @@
 .map {
   position: relative;
   z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   overflow: hidden;
   min-height: 605px;
 
@@ -23,6 +26,8 @@
   }
 
   &__address {
+    position: relative;
+    margin-bottom: 64px;
     border-radius: 24px;
     padding: 24px 16px;
     background-color: $color-white;
@@ -41,8 +46,28 @@
     color: $color-black-60;
   }
 
+  &__flower {
+    position: absolute;
+    right: -7px;
+    bottom: -17px;
+    width: 71px;
+    height: 68px;
+    animation: rotate 2.5s linear infinite;
+    animation-direction: alternate;
+  }
+
   @include tablet {
     overflow: visible;
     min-height: 512px;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(114deg);
   }
 }

@@ -2,6 +2,7 @@ import { Breakpoint } from "@/src/common/enum";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { MapComponentProps } from "@/src/common/types";
 import Image from "next/image";
+import flower from "../../../../public/images/map/flower.svg";
 
 export function Map({
   title,
@@ -11,7 +12,7 @@ export function Map({
 }: Omit<MapComponentProps, 'id' | '__component'>) {
   const windowWidth = useWindowWidth();
 
-  const isMobile = windowWidth >= Breakpoint.MOBILE;
+  const isTablet = windowWidth >= Breakpoint.TABLET;
 
   return (
     <section
@@ -21,7 +22,7 @@ export function Map({
       <div className="map__address">
         <div className="map__address-inner">
           <div className="map__address-info">
-            {!isMobile && (
+            {isTablet && (
               <p className="map__address-note">
                 {note}
               </p>
@@ -33,7 +34,7 @@ export function Map({
               {description}
             </p>
           </div>
-          {!isMobile && (
+          {isTablet && (
             <div className="map__address-image-wrapper">
               <Image
                 src={image.url}
@@ -41,6 +42,11 @@ export function Map({
               />
             </div>
           )}
+          <Image
+            className="map__flower"
+            src={flower}
+            alt="Изображение цветка"
+          />
         </div>
       </div>
     </section>
