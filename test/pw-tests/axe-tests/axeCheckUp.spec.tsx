@@ -2,12 +2,13 @@ import { test } from '@playwright/test';
 import AxePuppeteer from '@axe-core/playwright';
 import { writeFileSync, mkdirSync } from 'fs';
 import { dirname } from 'path';
+import { Breakpoint } from '@/src/common/enum';
 
 test(`axeCheckUp`, async ({
   page,
 }) => {
   await page.setViewportSize({
-    width: 1920,
+    width: Breakpoint.DESKTOP_XL,
     height: 1080,
   });
   await page.goto(`/home`);
