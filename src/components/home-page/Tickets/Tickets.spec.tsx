@@ -12,7 +12,7 @@ test.describe(`TicketsComponentTests`, () => {
 
   test(`DesktopTest`, desktopTest);
 
-  // test(`DesktopXlTest`, desktopXlTest);
+  test(`DesktopXlTest`, desktopXlTest);
 });
 
 async function mobileTest({
@@ -96,6 +96,27 @@ async function desktopTest({
     page,
   }))
     .toHaveScreenshot(`tickets-desktop.png`);
+}
+
+async function desktopXlTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSizeAndGoToPage({
+    page,
+    width: Breakpoint.DESKTOP_XL,
+    height: 1054,
+  });
+
+  hideHeader({
+    page,
+  });
+
+  await expect(getTicketsByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`tickets-desktop-xl.png`);
 }
 
 function getTicketsByTestId({
