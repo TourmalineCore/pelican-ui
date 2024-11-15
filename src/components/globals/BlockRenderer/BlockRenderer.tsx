@@ -1,5 +1,10 @@
 import { BlockTypes } from '@/src/common/enum';
-import { GlobalComponentProps, HeroComponentProps, ServicesComponentProps, ContactZooPreviewComponentProps } from '@/src/common/types';
+import {
+  GlobalComponentProps,
+  HeroComponentProps,
+  ServicesComponentProps,
+  ContactZooPreviewComponentProps,
+} from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
