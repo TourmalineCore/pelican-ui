@@ -12,5 +12,6 @@ export enum Breakpoint {
 
 export enum BlockTypes {
   HERO = `home.hero`,
+  SERVICES = `home.services`,
   CONTACT_ZOO_PREVIEW = `home.contact-zoo-preview`,
 }
