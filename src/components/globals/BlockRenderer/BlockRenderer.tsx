@@ -1,5 +1,5 @@
 import { BlockTypes } from '@/src/common/enum';
-import { GlobalComponentProps, HeroComponentProps, ServicesComponentProps, ContactZooPreviewComponentProps } from '@/src/common/types';
+import { GlobalComponentProps, HeroComponentProps, ServicesComponentProps, ContactZooPreviewComponentProps, MapComponentProps } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
@@ -23,12 +23,24 @@ const ContactZooPreview = dynamic(
   },
 );
 
+const Map = dynamic(
+  () => import(`../../home-page/Map/Map`).then((Component) => Component.Map),
+  {
+    ssr: false,
+  },
+);
+
+type Block = HeroComponentProps
+| ServicesComponentProps
+| ContactZooPreviewComponentProps
+| MapComponentProps;
+
 export const BlockRenderer = ({
   block,
   phone,
   email,
 }: {
-  block: HeroComponentProps | ServicesComponentProps | ContactZooPreviewComponentProps,
+  block: Block,
   phone: GlobalComponentProps['phone'],
   email: GlobalComponentProps['email']
 }) => {
@@ -64,6 +76,16 @@ export const BlockRenderer = ({
           description={block.description}
           largeImage={block.largeImage}
           smallImage={block.smallImage}
+        />
+      );
+
+    case BlockTypes.MAP:
+      return (
+        <Map
+          title={block.title}
+          description={block.description}
+          note={block.note}
+          image={block.image}
         />
       );
     default:

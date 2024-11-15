@@ -42,7 +42,12 @@ export type GlobalComponentProps = {
 export type HomePageProps = {
   id: number,
   title: string;
-  blocks: (HeroComponentProps | ServicesComponentProps | ContactZooPreviewComponentProps)[];
+  blocks: (
+    HeroComponentProps
+    | ServicesComponentProps
+    | ContactZooPreviewComponentProps
+    | MapComponentProps
+  )[];
 };
 
 export type HeroComponentProps = {
@@ -96,6 +101,18 @@ export type ContactZooPreviewComponentProps = {
     alt: string;
   },
   smallImage?: {
+    url: StaticImageData;
+    alt: string;
+  },
+};
+
+export type MapComponentProps = {
+  id: number
+  __component: BlockTypes.MAP,
+  title: string,
+  description: string,
+  note: string,
+  image: {
     url: StaticImageData;
     alt: string;
   },
