@@ -20,6 +20,13 @@
       background-repeat: no-repeat;
       aspect-ratio: 517 / 306;
     }
+
+    @include tablet-xl {
+      left: 15%;
+      top: 60.5%;
+      width: 50.5%;
+      aspect-ratio: 517 / 309;
+    }
   }
 
   &__text {
@@ -39,6 +46,10 @@
     @include tablet {
       max-width: 95%;
     }
+
+    @include tablet-xl {
+      margin-bottom: 16px;
+    }
   }
 
   &__description {
@@ -48,6 +59,10 @@
 
     @include tablet {
       max-width: 95%;
+    }
+
+    @include tablet-xl {
+      @include body-2-medium;
     }
   }
 
@@ -59,6 +74,10 @@
     @include tablet {
       aspect-ratio: 362 / 267;
     }
+
+    @include tablet-xl {
+      aspect-ratio: 472 / 267;
+    }
   }
 
   @include tablet {
@@ -68,5 +87,10 @@
     gap: 12px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(1, 1fr);
+  }
+
+  @include tablet-xl {
+    padding-bottom: 196px;
+    gap: 16px;
   }
 }
