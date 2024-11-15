@@ -42,7 +42,7 @@ export type GlobalComponentProps = {
 export type HomePageProps = {
   id: number,
   title: string;
-  blocks: (HeroComponentProps | ContactZooPreviewComponentProps | TicketsComponentProps)[];
+  blocks: (HeroComponentProps | ServicesComponentProps | ContactZooPreviewComponentProps | TicketsComponentProps)[];
 };
 
 export type HeroComponentProps = {
@@ -64,6 +64,26 @@ export type Timetable = {
   days: string,
   time: string,
   ticketsOfficeTime: string,
+};
+
+export type ServicesComponentProps = {
+  id: number,
+  __component: BlockTypes.SERVICES,
+  title: string,
+  cards: ServicesCardProps[],
+  phoneText: string,
+  emailText: string,
+};
+
+export type ServicesCardProps = {
+  id: number,
+  image: {
+    url: StaticImageData;
+    alt: string;
+  },
+  labels: string[],
+  title: string,
+  description: string,
 };
 
 export type ContactZooPreviewComponentProps = {
