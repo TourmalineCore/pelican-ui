@@ -27,6 +27,13 @@
       width: 50.5%;
       aspect-ratio: 517 / 309;
     }
+
+    @include desktop {
+      left: 11.9%;
+      top: 57.9%;
+      width: 38%;
+      aspect-ratio: 518 / 309;
+    }
   }
 
   &__text {
@@ -78,6 +85,10 @@
     @include tablet-xl {
       aspect-ratio: 472 / 267;
     }
+
+    @include desktop {
+      aspect-ratio: 740 / 403;
+    }
   }
 
   @include tablet {
@@ -92,5 +103,12 @@
   @include tablet-xl {
     padding-bottom: 196px;
     gap: 16px;
+  }
+
+  @include desktop {
+    padding-top: 136.5px;
+    padding-bottom: 136.5px;
+    gap: 24px;
+    grid-template-columns: 40.6% auto;
   }
 }
