@@ -34,6 +34,13 @@
       width: 38%;
       aspect-ratio: 518 / 309;
     }
+
+    @include desktop-xl {
+      left: 11.25%;
+      top: 67.3%;
+      width: 39.5%;
+      aspect-ratio: 759 / 454;
+    }
   }
 
   &__text {
@@ -57,6 +64,10 @@
     @include tablet-xl {
       margin-bottom: 16px;
     }
+
+    @include desktop-xl {
+      margin-bottom: 24px;
+    }
   }
 
   &__description {
@@ -79,6 +90,7 @@
     aspect-ratio: 343 / 240;
 
     @include tablet {
+      border-radius: 32px;
       aspect-ratio: 362 / 267;
     }
 
@@ -88,6 +100,11 @@
 
     @include desktop {
       aspect-ratio: 740 / 403;
+    }
+
+    @include desktop-xl {
+      border-radius: 40px;
+      aspect-ratio: 1032 / 562;
     }
   }
 
@@ -110,5 +127,11 @@
     padding-bottom: 136.5px;
     gap: 24px;
     grid-template-columns: 40.6% auto;
+  }
+
+  @include desktop-xl {
+    padding-top: 88px;
+    padding-bottom: 88px;
+    gap: 32px;
   }
 }
