@@ -166,12 +166,14 @@
     }
 
     @include tablet-xl {
+      flex-wrap: nowrap;
       margin-top: 21px;
-      gap: 0;
+      gap: $gap-tablet-xl;
     }
 
     @include desktop {
       margin-top: 31px;
+      gap: $gap-desktop;
     }
   }
 
@@ -204,14 +206,6 @@
       @include tablet {
         margin-top: 0;
       }
-
-      @include tablet-xl {
-        margin-left: $gap-tablet-xl;
-      }
-
-      @include desktop {
-        margin-left: $gap-desktop;
-      }
     }
 
     @include tablet {
@@ -221,8 +215,7 @@
     }
 
     @include tablet-xl {
-      width: calc(33.33% - $gap-tablet-xl);
-      min-width: 309px;
+      width: calc(100% / 3);
     }
 
     @include desktop {
@@ -230,12 +223,10 @@
     }
 
     @include desktop {
-      width: calc(100% / 3 - $gap-desktop);
-      min-width: 413px;
+      width: calc(100% / 3);
     }
 
     @include desktop-xl {
-      min-width: 580px;
       min-height: 309px;
     }
   }

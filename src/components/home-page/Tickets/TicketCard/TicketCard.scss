@@ -38,9 +38,9 @@
   }
 
   &::after {
-    right: 0;
+    right: -1px;
     top: 0;
-    width: 10px;
+    width: 11px;
     background-image: url("../../../../../public/images/tickets/ticket-edge.svg");
 
     @include desktop {
