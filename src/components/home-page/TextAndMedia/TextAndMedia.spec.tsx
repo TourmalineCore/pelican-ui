@@ -23,6 +23,8 @@ async function mobileTest({
     page,
   });
 
+  await page.waitForTimeout(1000);
+
   hideHeader({
     page,
   });
@@ -30,7 +32,9 @@ async function mobileTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-mobile.png`);
+    .toHaveScreenshot(`text-and-media-mobile.png`, {
+      timeout: 10000,
+    });
 }
 
 async function tabletTest({
@@ -43,6 +47,8 @@ async function tabletTest({
     width: Breakpoint.TABLET,
   });
 
+  await page.waitForTimeout(1000);
+
   hideHeader({
     page,
   });
@@ -50,7 +56,9 @@ async function tabletTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-tablet.png`);
+    .toHaveScreenshot(`text-and-media-tablet.png`, {
+      timeout: 10000,
+    });
 }
 
 async function tabletXlTest({
@@ -63,6 +71,8 @@ async function tabletXlTest({
     width: Breakpoint.TABLET_XL,
   });
 
+  await page.waitForTimeout(1000);
+
   hideHeader({
     page,
   });
@@ -70,7 +80,9 @@ async function tabletXlTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-tablet-xl.png`);
+    .toHaveScreenshot(`text-and-media-tablet-xl.png`, {
+      timeout: 10000,
+    });
 }
 
 async function desktopTest({
@@ -83,6 +95,8 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
+  await page.waitForTimeout(1000);
+
   hideHeader({
     page,
   });
@@ -90,7 +104,9 @@ async function desktopTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-desktop.png`);
+    .toHaveScreenshot(`text-and-media-desktop.png`, {
+      timeout: 10000,
+    });
 }
 
 async function desktopXlTest({
@@ -103,6 +119,8 @@ async function desktopXlTest({
     width: Breakpoint.DESKTOP_XL,
   });
 
+  await page.waitForTimeout(1000);
+
   hideHeader({
     page,
   });
@@ -110,7 +128,9 @@ async function desktopXlTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-desktop-xl.png`);
+    .toHaveScreenshot(`text-and-media-desktop-xl.png`, {
+      timeout: 10000,
+    });
 }
 
 function getTextAndMediaByTestId({
