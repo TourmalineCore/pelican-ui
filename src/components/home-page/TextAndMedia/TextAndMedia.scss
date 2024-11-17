@@ -18,21 +18,19 @@
       background-image: url("../../../../public/images/svg/duck-footsteps\(pink\).svg");
       background-size: cover;
       background-repeat: no-repeat;
-      aspect-ratio: 517 / 306;
+      aspect-ratio: 517 / 310;
     }
 
     @include tablet-xl {
       left: 15%;
       top: 60.5%;
       width: 50.5%;
-      aspect-ratio: 517 / 309;
     }
 
     @include desktop {
       left: 11.9%;
       top: 57.9%;
       width: 38%;
-      aspect-ratio: 518 / 309;
     }
 
     @include desktop-xl {
