@@ -30,9 +30,7 @@ async function mobileTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-mobile.png`, {
-      timeout: 10000,
-    });
+    .toHaveScreenshot(`text-and-media-mobile.png`);
 }
 
 async function tabletTest({
@@ -52,9 +50,7 @@ async function tabletTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-tablet.png`, {
-      timeout: 10000,
-    });
+    .toHaveScreenshot(`text-and-media-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -74,9 +70,7 @@ async function tabletXlTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-tablet-xl.png`, {
-      timeout: 10000,
-    });
+    .toHaveScreenshot(`text-and-media-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -96,9 +90,7 @@ async function desktopTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-desktop.png`, {
-      timeout: 10000,
-    });
+    .toHaveScreenshot(`text-and-media-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -118,9 +110,7 @@ async function desktopXlTest({
   await expect(getTextAndMediaByTestId({
     page,
   }))
-    .toHaveScreenshot(`text-and-media-desktop-xl.png`, {
-      timeout: 10000,
-    });
+    .toHaveScreenshot(`text-and-media-desktop-xl.png`);
 }
 
 function getTextAndMediaByTestId({
