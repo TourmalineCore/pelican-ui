@@ -3,6 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
   output: "standalone",
 
+  env: {
+    APP_ENV: process.env.APP_ENV,
+  },
+
   async redirects() {
     return [
       {

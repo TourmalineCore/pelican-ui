@@ -34,7 +34,7 @@ export function TextAndMedia({
           },
           muted: true,
           controls: [],
-          autoplay: true,
+          autoplay: process.env.APP_ENV !== `test`,
         }}
       />
     </section>
