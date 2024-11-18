@@ -23,8 +23,6 @@ async function mobileTest({
     page,
   });
 
-  await page.waitForTimeout(1000);
-
   hideHeader({
     page,
   });
@@ -46,8 +44,6 @@ async function tabletTest({
     page,
     width: Breakpoint.TABLET,
   });
-
-  await page.waitForTimeout(1000);
 
   hideHeader({
     page,
@@ -71,8 +67,6 @@ async function tabletXlTest({
     width: Breakpoint.TABLET_XL,
   });
 
-  await page.waitForTimeout(1000);
-
   hideHeader({
     page,
   });
@@ -95,8 +89,6 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
-  await page.waitForTimeout(1000);
-
   hideHeader({
     page,
   });
@@ -118,8 +110,6 @@ async function desktopXlTest({
     page,
     width: Breakpoint.DESKTOP_XL,
   });
-
-  await page.waitForTimeout(1000);
 
   hideHeader({
     page,
