@@ -3,6 +3,14 @@ import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`ContactZooComponentTests`, () => {
+  test.beforeEach(({
+    page,
+  }) => {
+    hideHeader({
+      page,
+    });
+  });
+
   test(`MobileTest`, mobileTest);
 
   test(`TabletTest`, tabletTest);
@@ -18,10 +26,6 @@ async function mobileTest({
   page: Page,
 }) {
   await setViewportSizeAndGoToPage({
-    page,
-  });
-
-  hideHeader({
     page,
   });
 
@@ -41,10 +45,6 @@ async function tabletTest({
     width: Breakpoint.TABLET,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getContactZooByTestId({
     page,
   }))
@@ -59,10 +59,6 @@ async function tabletXlTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.TABLET_XL,
-  });
-
-  hideHeader({
-    page,
   });
 
   await expect(getContactZooByTestId({
@@ -81,10 +77,6 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getContactZooByTestId({
     page,
   }))
@@ -93,6 +85,8 @@ async function desktopTest({
 
 function getContactZooByTestId({
   page,
-}: { page: Page }) {
+}: {
+  page: Page
+}) {
   return page.getByTestId(`contact-zoo`);
 }
