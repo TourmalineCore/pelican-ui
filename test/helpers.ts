@@ -22,5 +22,6 @@ export function hideHeader({
 }: {
   page: Page,
 }) {
-  return page.getByTestId('header').evaluate((element) => element.style.visibility = 'hidden');  
+  return page.getByTestId(`header`)
+    .evaluate((element) => element.style.visibility = `hidden`);
 }

@@ -3,6 +3,14 @@ import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`ServicesComponentTests`, () => {
+  test.beforeEach(({
+    page,
+  }) => {
+    hideHeader({
+      page,
+    });
+  });
+
   test(`MobileTest`, mobileTest);
 
   test(`TabletTest`, tabletTest);
@@ -24,10 +32,6 @@ async function mobileTest({
     height: 1783,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getServicesByTestId({
     page,
   }))
@@ -43,10 +47,6 @@ async function tabletTest({
     page,
     width: Breakpoint.TABLET,
     height: 1012,
-  });
-
-  hideHeader({
-    page,
   });
 
   await expect(getServicesByTestId({
@@ -66,10 +66,6 @@ async function tabletXlTest({
     height: 1346,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getServicesByTestId({
     page,
   }))
@@ -87,10 +83,6 @@ async function desktopTest({
     height: 1386,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getServicesByTestId({
     page,
   }))
@@ -106,10 +98,6 @@ async function desktopXlTest({
     page,
     width: Breakpoint.DESKTOP_XL,
     height: 1987,
-  });
-
-  hideHeader({
-    page,
   });
 
   await expect(getServicesByTestId({
