@@ -20,6 +20,7 @@
     top: 0;
     bottom: 0;
     width: 40px;
+    height: calc(100% + 2px);
     background-image: url("../../../../../public/images/tickets/ticket-breakline.svg");
 
     @include tablet-xl {
