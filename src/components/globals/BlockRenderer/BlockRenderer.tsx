@@ -4,7 +4,7 @@ import {
   HeroComponentProps,
   ServicesComponentProps,
   ContactZooPreviewComponentProps,
-  TicketsComponentProps
+  TicketsComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
@@ -41,7 +41,12 @@ export const BlockRenderer = ({
   phone,
   email,
 }: {
-  block: HeroComponentProps | ServicesComponentProps | ContactZooPreviewComponentProps | TicketsComponentProps,
+  block: (
+    HeroComponentProps |
+    ServicesComponentProps |
+    ContactZooPreviewComponentProps |
+    TicketsComponentProps
+  ),
   phone: GlobalComponentProps['phone'],
   email: GlobalComponentProps['email']
 }) => {
