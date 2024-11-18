@@ -110,7 +110,7 @@ export type MapComponentProps = {
   id: number
   __component: BlockTypes.MAP,
   title: string,
-  description: string,
+  subtitle: string,
   note: string,
   image: {
     url: StaticImageData;

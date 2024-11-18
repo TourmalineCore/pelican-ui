@@ -6,7 +6,7 @@ import flower from "../../../../public/images/map/flower.svg";
 
 export function Map({
   title,
-  description,
+  subtitle,
   note,
   image,
 }: Omit<MapComponentProps, 'id' | '__component'>) {
@@ -19,37 +19,47 @@ export function Map({
       className="map container"
       data-testid="map"
     >
-      <div className="map__address">
-        <div className="map__address-inner">
-          <div className="map__address-info">
+      <div className="map__address-card map-address-card">
+        <div className="map-address-card__inner">
+          <div className="map-address-card__info">
             {isTablet && (
-              <p className="map__address-note">
+              <p className="map-address-card__note">
                 {note}
               </p>
             )}
-            <h2 className="map__address-title">
-              {title}
-            </h2>
-            <p className="map__address-description">
-              {description}
-            </p>
+            <div className="map-address-card__description">
+              <h2 className="map-address-card__title">
+                {title}
+              </h2>
+              <p className="map-address-card__subtitle">
+                {subtitle}
+              </p>
+            </div>
           </div>
           {isTablet && (
-            <div className="map__address-image-wrapper">
+            <div className="map-address-card__image-wrapper">
               <Image
                 src={image.url}
                 alt={image.alt}
               />
+              {isTablet && (
+                <Image
+                  className="map__flower"
+                  src={flower}
+                  alt="Изображение цветка"
+                />
+              )}
             </div>
           )}
-          <Image
-            className="map__flower"
-            src={flower}
-            alt="Изображение цветка"
-          />
+          {!isTablet && (
+            <Image
+              className="map__flower"
+              src={flower}
+              alt="Изображение цветка"
+            />
+          )}
         </div>
       </div>
     </section>
-
   );
 }

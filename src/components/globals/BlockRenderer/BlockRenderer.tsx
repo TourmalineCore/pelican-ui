@@ -83,7 +83,7 @@ export const BlockRenderer = ({
       return (
         <Map
           title={block.title}
-          description={block.description}
+          subtitle={block.subtitle}
           note={block.note}
           image={block.image}
         />
