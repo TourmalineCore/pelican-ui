@@ -21,10 +21,10 @@ async function actionTest({
     page,
   });
 
-  getHeaderPopupButtonByTestId({
+  await getHeaderPopupButtonByTestId({
     page,
   })
-    .click();
+    .then((button) => button.click());
 
   await expect(page.getByTestId(`header-popup`))
     .toContainText(`Услуги`);
@@ -39,10 +39,10 @@ async function mobilePopupTest({
     page,
   });
 
-  getHeaderPopupButtonByTestId({
+  await getHeaderPopupButtonByTestId({
     page,
   })
-    .click();
+    .then((button) => button.click());
 
   await compareWithScreenshot({
     page,
@@ -62,10 +62,10 @@ async function tabletPopupTest({
     width: Breakpoint.TABLET,
   });
 
-  getHeaderPopupButtonByTestId({
+  await getHeaderPopupButtonByTestId({
     page,
   })
-    .click();
+    .then((button) => button.click());
 
   await compareWithScreenshot({
     page,
@@ -85,10 +85,10 @@ async function tabletXlPopupTest({
     width: Breakpoint.TABLET_XL,
   });
 
-  getHeaderPopupButtonByTestId({
+  await getHeaderPopupButtonByTestId({
     page,
   })
-    .click();
+    .then((button) => button.click());
 
   await compareWithScreenshot({
     page,
@@ -98,9 +98,11 @@ async function tabletXlPopupTest({
   });
 }
 
-function getHeaderPopupButtonByTestId({
+async function getHeaderPopupButtonByTestId({
   page,
-}: { page: Page }) {
+}: {
+  page: Page
+}) {
   return page.getByTestId(`header-popup-button`);
 }
 
