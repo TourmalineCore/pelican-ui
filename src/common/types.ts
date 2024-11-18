@@ -42,7 +42,12 @@ export type GlobalComponentProps = {
 export type HomePageProps = {
   id: number,
   title: string;
-  blocks: (HeroComponentProps | ServicesComponentProps | ContactZooPreviewComponentProps | TicketsComponentProps)[];
+  blocks: (
+    HeroComponentProps |
+    ServicesComponentProps |
+    ContactZooPreviewComponentProps |
+    TicketsComponentProps
+  )[];
 };
 
 export type HeroComponentProps = {
