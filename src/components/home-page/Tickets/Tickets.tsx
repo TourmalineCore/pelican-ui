@@ -73,7 +73,7 @@ export function Tickets({
                 <p>
                   С остальными льготными категориями вы можете ознакомиться
                   <Link
-                    className="tickets__link"
+                    className="tickets__link text-link"
                     href="#"
                   >
                     по ссылке.

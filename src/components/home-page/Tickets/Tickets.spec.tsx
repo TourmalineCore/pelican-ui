@@ -4,6 +4,14 @@ import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TicketsComponentTests`, () => {
+  test.beforeEach(({
+    page,
+  }) => {
+    hideHeader({
+      page,
+    });
+  });
+
   test(`MobileTest`, mobileTest);
 
   test(`TabletTest`, tabletTest);
@@ -25,10 +33,6 @@ async function mobileTest({
     height: 1268,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getTicketsByTestId({
     page,
   }))
@@ -44,10 +48,6 @@ async function tabletTest({
     page,
     width: Breakpoint.TABLET,
     height: 946,
-  });
-
-  hideHeader({
-    page,
   });
 
   await expect(getTicketsByTestId({
@@ -67,10 +67,6 @@ async function tabletXlTest({
     height: 568,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getTicketsByTestId({
     page,
   }))
@@ -86,10 +82,6 @@ async function desktopTest({
     page,
     width: Breakpoint.DESKTOP,
     height: 770,
-  });
-
-  hideHeader({
-    page,
   });
 
   await expect(getTicketsByTestId({
@@ -109,10 +101,6 @@ async function desktopXlTest({
     height: 1054,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getTicketsByTestId({
     page,
   }))
@@ -121,6 +109,8 @@ async function desktopXlTest({
 
 function getTicketsByTestId({
   page,
-}: { page: Page }) {
+}: {
+  page: Page
+}) {
   return page.getByTestId(`tickets`);
 }

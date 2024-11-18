@@ -64,3 +64,12 @@ a {
     visibility: visible;
   }
 }
+
+.text-link {
+  transition: color ease-out 0.2s;
+
+  &:focus,
+    &:hover {
+      color: $color-pink-bright;
+    }
+}
