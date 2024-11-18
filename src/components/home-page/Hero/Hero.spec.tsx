@@ -3,6 +3,14 @@ import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`HeroComponentTests`, () => {
+  test.beforeEach(({
+    page,
+  }) => {
+    hideHeader({
+      page,
+    });
+  });
+
   test(`MobileTest`, mobileTest);
 
   test(`TabletTest`, tabletTest);
@@ -24,10 +32,6 @@ async function mobileTest({
     width: 378,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getHeroByTestId({
     page,
   }))
@@ -42,10 +46,6 @@ async function tabletTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.TABLET,
-  });
-
-  hideHeader({
-    page,
   });
 
   await expect(getHeroByTestId({
@@ -64,10 +64,6 @@ async function tabletXlTest({
     width: Breakpoint.TABLET_XL,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getHeroByTestId({
     page,
   }))
@@ -82,10 +78,6 @@ async function desktopTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.DESKTOP,
-  });
-
-  hideHeader({
-    page,
   });
 
   await expect(getHeroByTestId({
@@ -105,10 +97,6 @@ async function desktopXlTest({
     height: 955,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getHeroByTestId({
     page,
   }))
@@ -117,6 +105,8 @@ async function desktopXlTest({
 
 function getHeroByTestId({
   page,
-}: { page: Page }) {
+}: {
+  page: Page
+}) {
   return page.getByTestId(`hero`);
 }

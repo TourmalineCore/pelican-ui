@@ -11,7 +11,7 @@ export const FOOTER_NAV_TITLE_RIGHT = `О зоопарке`;
 export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
     id: 1,
-    name: `Услуги`,
+    name: `Льготы`,
     link: `#`,
   },
   {
@@ -26,7 +26,7 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   },
   {
     id: 4,
-    name: `Льготы`,
+    name: `Услуги`,
     link: `#`,
   },
   {
