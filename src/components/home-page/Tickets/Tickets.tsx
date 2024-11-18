@@ -23,7 +23,7 @@ export function Tickets({
       data-testid="tickets"
     >
       <div className="tickets__group">
-        <h3 className="tickets__title">{generalTicketsTitle}</h3>
+        <h2 className="tickets__title">{generalTicketsTitle}</h2>
         <ul className="tickets__list">
           {generalTickets.map((el) => (
             <TicketCard
@@ -55,10 +55,9 @@ export function Tickets({
       </div>
       <div className="tickets__group">
         <div className="tickets__head">
-          <h3 className="tickets__title">{subsidizedTicketsTitle}</h3>
+          <h2 className="tickets__title">{subsidizedTicketsTitle}</h2>
           <p className="tickets__subtitle">{subsidizedTicketsSubtitle}</p>
         </div>
-
         <ul className="tickets__list">
           {subsidizedTickets.map((el) => (
             <TicketCard
