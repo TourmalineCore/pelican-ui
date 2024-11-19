@@ -43,6 +43,10 @@ img {
   }
 }
 
+a {
+  color: inherit;
+}
+
 .overlay {
   position: fixed;
   z-index: $overlay;
@@ -58,5 +62,14 @@ img {
   &.is-visible {
     opacity: 1;
     visibility: visible;
+  }
+}
+
+.text-link {
+  transition: color ease-out 0.2s;
+
+  &:focus,
+  &:hover {
+    color: $color-pink-bright;
   }
 }

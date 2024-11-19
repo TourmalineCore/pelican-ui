@@ -47,6 +47,7 @@ export type HomePageProps = {
     | ServicesComponentProps
     | ContactZooPreviewComponentProps
     | MapComponentProps
+    | TicketsComponentProps
   )[];
 };
 
@@ -105,8 +106,23 @@ export type MapComponentProps = {
   title: string,
   subtitle: string,
   note: string,
-  image: {
-    url: StaticImageData;
-    alt: string;
-  },
+  image: Image,
+};
+
+export type TicketsComponentProps = {
+  id: number
+  __component: BlockTypes.TICKETS,
+  generalTicketsTitle: string,
+  subsidizedTicketsTitle: string,
+  subsidizedTicketsSubtitle: string,
+  generalTickets: Ticket[],
+  subsidizedTickets: Ticket[],
+};
+
+export type Ticket = {
+  id: number,
+  category: string,
+  description?: string,
+  price: string,
+  frequency?: string,
 };
