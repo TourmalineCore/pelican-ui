@@ -47,6 +47,7 @@ export function Map({
           {isTablet && (
             <div className="map-address-card__image-wrapper">
               <Image
+                loading="lazy"
                 src={image.url}
                 alt={image.alt}
               />
@@ -61,6 +62,7 @@ export function Map({
           )}
           {!isTablet && (
             <Image
+              loading="lazy"
               className="map__flower"
               src={flower}
               alt="Изображение цветка"
