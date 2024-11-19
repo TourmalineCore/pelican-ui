@@ -1,6 +1,6 @@
 
 import { Breakpoint } from '@/src/common/enum';
-import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
+import { hideHeader, hideMap, setViewportSizeAndGoToPage } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TicketsComponentTests`, () => {
@@ -8,6 +8,10 @@ test.describe(`TicketsComponentTests`, () => {
     page,
   }) => {
     hideHeader({
+      page,
+    });
+
+    hideMap({
       page,
     });
   });

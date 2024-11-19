@@ -17,29 +17,38 @@ export async function setViewportSizeAndGoToPage({
   await page.goto(`/`);
 }
 
-export function hideHeader({
+export async function hideHeader({
   page,
 }: {
   page: Page,
 }) {
-  return page.getByTestId(`header`)
+  await page.getByTestId(`header`)
     .evaluate((element) => element.style.visibility = `hidden`);
 }
 
-export function hideFooter({
+export async function hideFooter({
   page,
 }: {
   page: Page,
 }) {
-  return page.getByTestId(`footer`)
+  await page.getByTestId(`footer`)
     .evaluate((element) => element.style.visibility = `hidden`);
 }
 
-export function hideTickets({
+export async function hideTickets({
   page,
 }: {
   page: Page,
 }) {
-  return page.getByTestId(`tickets`)
+  await page.getByTestId(`tickets`)
+    .evaluate((element) => element.style.visibility = `hidden`);
+}
+
+export async function hideMap({
+  page,
+}: {
+  page: Page,
+}) {
+  await page.getByTestId(`map`)
     .evaluate((element) => element.style.visibility = `hidden`);
 }
