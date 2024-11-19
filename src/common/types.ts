@@ -42,7 +42,12 @@ export type GlobalComponentProps = {
 export type HomePageProps = {
   id: number,
   title: string;
-  blocks: (HeroComponentProps | ServicesComponentProps | ContactZooPreviewComponentProps)[];
+  blocks: (
+    HeroComponentProps |
+    ServicesComponentProps |
+    ContactZooPreviewComponentProps |
+    TicketsComponentProps
+  )[];
 };
 
 export type HeroComponentProps = {
@@ -92,4 +97,22 @@ export type ContactZooPreviewComponentProps = {
 type Image = {
   url: StaticImageData | string;
   alt: string;
+};
+
+export type TicketsComponentProps = {
+  id: number
+  __component: BlockTypes.TICKETS,
+  generalTicketsTitle: string,
+  subsidizedTicketsTitle: string,
+  subsidizedTicketsSubtitle: string,
+  generalTickets: Ticket[],
+  subsidizedTickets: Ticket[],
+};
+
+export type Ticket = {
+  id: number,
+  category: string,
+  description?: string,
+  price: string,
+  frequency?: string,
 };

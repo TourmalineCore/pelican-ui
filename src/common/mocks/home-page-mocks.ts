@@ -2,6 +2,7 @@ import { HomePageProps } from "../types";
 import { CONTACT_ZOO_PREVIEW } from "./contact-zoo-preview-mocks";
 import { HERO } from "./hero-mocks";
 import { SERVICES } from "./services-mocks";
+import { TICKETS } from "./tickets-mocks";
 
 export const HOME_PAGE: HomePageProps = {
   id: 1,
@@ -10,5 +11,6 @@ export const HOME_PAGE: HomePageProps = {
     HERO,
     SERVICES,
     CONTACT_ZOO_PREVIEW,
+    TICKETS,
   ],
 };

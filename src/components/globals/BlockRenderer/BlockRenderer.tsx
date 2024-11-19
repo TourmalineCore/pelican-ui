@@ -4,6 +4,7 @@ import {
   HeroComponentProps,
   ServicesComponentProps,
   ContactZooPreviewComponentProps,
+  TicketsComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
@@ -28,12 +29,24 @@ const ContactZooPreview = dynamic(
   },
 );
 
+const Tickets = dynamic(
+  () => import(`../../home-page/Tickets/Tickets`).then((component) => component.Tickets),
+  {
+    ssr: false,
+  },
+);
+
 export const BlockRenderer = ({
   block,
   phone,
   email,
 }: {
-  block: HeroComponentProps | ServicesComponentProps | ContactZooPreviewComponentProps,
+  block: (
+    HeroComponentProps |
+    ServicesComponentProps |
+    ContactZooPreviewComponentProps |
+    TicketsComponentProps
+  ),
   phone: GlobalComponentProps['phone'],
   email: GlobalComponentProps['email']
 }) => {
@@ -69,6 +82,17 @@ export const BlockRenderer = ({
           description={block.description}
           largeImage={block.largeImage}
           smallImage={block.smallImage}
+        />
+      );
+    case BlockTypes.TICKETS:
+      return (
+        <Tickets
+          generalTicketsTitle={block.generalTicketsTitle}
+          subsidizedTicketsTitle={block.subsidizedTicketsTitle}
+          subsidizedTicketsSubtitle={block.subsidizedTicketsSubtitle}
+          generalTickets={block.generalTickets}
+          subsidizedTickets={block.subsidizedTickets}
+
         />
       );
     default:
