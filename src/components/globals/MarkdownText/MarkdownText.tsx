@@ -2,10 +2,10 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
 export function MarkdownText({
-  text,
+  children,
   className,
 }: {
-  text: string,
+  children: string,
   className: string,
 }) {
   return (
@@ -13,7 +13,7 @@ export function MarkdownText({
       rehypePlugins={[rehypeRaw]}
       className={className}
     >
-      {formatTextWithLineBreaks(text)}
+      {formatTextWithLineBreaks(children)}
     </ReactMarkdown>
   );
 }
