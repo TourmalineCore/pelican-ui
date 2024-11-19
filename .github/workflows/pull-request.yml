@@ -51,6 +51,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - name: Run CI command
+      run: npm ci
+
     - name: Run dev server
       run: |
         npm run test &
