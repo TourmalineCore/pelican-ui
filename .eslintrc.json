@@ -11,7 +11,8 @@
     "es2024": true,
     "es6": true
   },
-  "plugins": [
+  "plugins": [  
+    "import-newlines",
     "@typescript-eslint",
     "react",
     "@stylistic/eslint-plugin"
@@ -125,7 +126,6 @@
           "multiline": true,
           "minProperties": 1
         },
-        "ImportDeclaration": "never",
         "ExportDeclaration": {
           "multiline": true,
           "minProperties": 1
@@ -157,6 +157,13 @@
       "error",
       {
         "ignoreChainWithDepth": 1
+      }
+    ],
+    // https://www.npmjs.com/package/eslint-plugin-import-newlines
+    "import-newlines/enforce": [
+      "error",
+      {
+        "items": 3
       }
     ]
   }

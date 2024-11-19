@@ -54,10 +54,7 @@ export type HeroComponentProps = {
   id: number
   __component: BlockTypes.HERO,
   title: string,
-  image: {
-    url: StaticImageData;
-    alt: string;
-  }
+  image: Image,
   scheduleTitle: string,
   scheduleTimetables: Timetable[],
   infoCardTitle: string,
@@ -82,10 +79,7 @@ export type ServicesComponentProps = {
 
 export type ServicesCardProps = {
   id: number,
-  image: {
-    url: StaticImageData;
-    alt: string;
-  },
+  image: Image,
   labels: string[],
   title: string,
   description: string,
@@ -96,14 +90,13 @@ export type ContactZooPreviewComponentProps = {
   __component: BlockTypes.CONTACT_ZOO_PREVIEW,
   title: string,
   description: string,
-  largeImage: {
-    url: StaticImageData;
-    alt: string;
-  },
-  smallImage?: {
-    url: StaticImageData;
-    alt: string;
-  },
+  largeImage: Image,
+  smallImage?: Image
+};
+
+type Image = {
+  url: StaticImageData | string;
+  alt: string;
 };
 
 export type TextAndMediaComponentProps = {

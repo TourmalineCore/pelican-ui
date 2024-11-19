@@ -3,6 +3,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    "types": ["axe-playwright"],
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,

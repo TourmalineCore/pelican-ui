@@ -133,3 +133,4 @@ dist
 /test/pw-test-results/
 /blob-report/
 /playwright/.cache/
+/test/playwright-report/axeReport/
