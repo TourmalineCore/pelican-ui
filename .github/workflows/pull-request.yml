@@ -70,9 +70,9 @@ jobs:
         retention-days: 1
 
     merge-reports: 
+      runs-on: ubuntu-22.04 
+       
       if: always()
-      runs-on: ubuntu-22.04            
-
       needs: [run-tests]
 
       steps:
