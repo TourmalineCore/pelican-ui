@@ -47,9 +47,7 @@ async function mobileTest({
   await expect(getMapByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-mobile.png`, {
-      timeout: 10000,
-    });
+    .toHaveScreenshot(`map-mobile.png`);
 }
 
 async function tabletTest({
@@ -65,9 +63,7 @@ async function tabletTest({
   await expect(getMapByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-tablet.png`, {
-      timeout: 10000,
-    });
+    .toHaveScreenshot(`map-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -84,9 +80,7 @@ async function tabletXlTest({
   await expect(getMapByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-tablet-xl.png`, {
-      timeout: 10000,
-    });
+    .toHaveScreenshot(`map-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -103,9 +97,7 @@ async function desktopTest({
   await expect(getMapByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-desktop.png`, {
-      timeout: 10000,
-    });
+    .toHaveScreenshot(`map-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -122,9 +114,7 @@ async function desktopXlTest({
   await expect(getMapByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-desktop-xl.png`, {
-      timeout: 10000,
-    });
+    .toHaveScreenshot(`map-desktop-xl.png`);
 }
 
 function getMapByTestId({
