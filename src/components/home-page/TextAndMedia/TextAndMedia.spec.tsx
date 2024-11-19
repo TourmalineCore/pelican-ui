@@ -3,6 +3,14 @@ import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TextAndMediaComponentTests`, () => {
+  test.beforeEach(({ 
+    page 
+  }) => {
+    hideHeader({
+      page,
+    });
+  })
+
   test(`MobileTest`, mobileTest);
 
   test(`TabletTest`, tabletTest);
@@ -23,10 +31,6 @@ async function mobileTest({
     page,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getTextAndMediaByTestId({
     page,
   }))
@@ -41,10 +45,6 @@ async function tabletTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.TABLET,
-  });
-
-  hideHeader({
-    page,
   });
 
   await expect(getTextAndMediaByTestId({
@@ -63,10 +63,6 @@ async function tabletXlTest({
     width: Breakpoint.TABLET_XL,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getTextAndMediaByTestId({
     page,
   }))
@@ -81,10 +77,6 @@ async function desktopTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.DESKTOP,
-  });
-
-  hideHeader({
-    page,
   });
 
   await expect(getTextAndMediaByTestId({
@@ -103,10 +95,6 @@ async function desktopXlTest({
     width: Breakpoint.DESKTOP_XL,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getTextAndMediaByTestId({
     page,
   }))
@@ -115,6 +103,8 @@ async function desktopXlTest({
 
 function getTextAndMediaByTestId({
   page,
-}: { page: Page }) {
+}: { 
+  page: Page,
+}) {
   return page.getByTestId(`text-and-media`);
 }
