@@ -30,7 +30,7 @@ export function TextAndMedia({
             active: true,
           },
           muted: true,
-          controls: ['play-large'],
+          controls: [`play-large`],
           autoplay: process.env.APP_ENV !== `test`,
           fullscreen: {
             enabled: false,
