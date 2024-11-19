@@ -3,13 +3,13 @@ import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TextAndMediaComponentTests`, () => {
-  test.beforeEach(({ 
-    page 
+  test.beforeEach(({
+    page,
   }) => {
     hideHeader({
       page,
     });
-  })
+  });
 
   test(`MobileTest`, mobileTest);
 
@@ -103,7 +103,7 @@ async function desktopXlTest({
 
 function getTextAndMediaByTestId({
   page,
-}: { 
+}: {
   page: Page,
 }) {
   return page.getByTestId(`text-and-media`);
