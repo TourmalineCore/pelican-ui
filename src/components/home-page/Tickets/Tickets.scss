@@ -6,6 +6,8 @@
   @include medium-font;
 
   position: relative;
+  z-index: $tickets;
+  overflow: hidden;
   border-radius: 32px;
   padding-top: 40px;
   padding-bottom: 40px;

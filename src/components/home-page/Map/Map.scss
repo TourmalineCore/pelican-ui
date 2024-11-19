@@ -1,32 +1,35 @@
 .map {
   position: relative;
-  z-index: 0;
+  z-index: $map;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 605px;
+  min-height: 504px;
 
   &__backgound-image {
     position: absolute;
     z-index: -1;
     height: 100%;
     object-fit: cover;
-    object-position: -120px 74px;
-    transform: scale(1.1);
+    object-position: -72px 32px;
+    transform: scale(1.2);
     inset: 0;
 
     @include tablet {
-      object-position: 0 84px;
+      object-position: 0 32px;
     }
 
     @include tablet-xl {
-      object-position: 0 124px;
-      transform: scale(1.2);
+      object-position: 0 44px;
     }
 
     @include desktop {
-      object-position: 0 50px;
-      transform: scale(1);
+      object-position: 0 30px;
+    }
+
+    @include desktop-xl {
+      object-position: 0 24px;
+      transform: scale(1.1);
     }
   }
 
@@ -70,7 +73,11 @@
   }
 
   @include desktop {
-    min-height: 880px;
+    min-height: 734px;
+  }
+
+  @include desktop-xl {
+    min-height: 1108px;
   }
 }
 
