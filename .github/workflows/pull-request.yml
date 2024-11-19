@@ -69,11 +69,11 @@ jobs:
         path: blob-reports
         retention-days: 1
 
-    merge-reports:             
+    merge-reports: 
       if: always()
+      runs-on: ubuntu-22.04            
+
       needs: [run-tests]
-          
-      runs-on: ubuntu-22.04
 
       steps:
       - name: Checkout repository
