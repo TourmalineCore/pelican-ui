@@ -11,8 +11,11 @@ jobs:
     runs-on: ubuntu-22.04
 
     strategy:
+      fail-fast: false
       matrix:
         node-version: [20.18.0]
+        shardIndex: [1, 2, 3, 4, 5, 6 ]
+        shardTotal: [6]
 
     steps:
     - name: Checkout repository
@@ -38,7 +41,7 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
