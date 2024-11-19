@@ -13,10 +13,7 @@ export function TextAndMedia({
       data-testid="text-and-media"
     >
       <div className="text-and-media__text">
-        <MarkdownText
-          className="text-and-media__title"
-          text={title}
-        />
+        <MarkdownText className="text-and-media__title">{title}</MarkdownText>
         <p className="text-and-media__description">{description}</p>
       </div>
       <Video
@@ -33,8 +30,11 @@ export function TextAndMedia({
             active: true,
           },
           muted: true,
-          controls: [],
+          controls: ['play-large'],
           autoplay: process.env.APP_ENV !== `test`,
+          fullscreen: {
+            enabled: false,
+          },
         }}
       />
     </section>
