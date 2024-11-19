@@ -1,6 +1,6 @@
 .text-and-media {
   position: relative;
-  z-index: 10;
+  z-index: 0;
   padding-top: 52px;
   padding-bottom: 52px;
 
@@ -15,7 +15,8 @@
       z-index: -1;
       display: block;
       width: 67.3%;
-      background-image: url("../../../../public/images/svg/duck-footsteps\(pink\).svg");
+      max-width: 517px;
+      background-image: url("../../../../public/images/text-and-media/duck-footsteps-pink.svg");
       background-size: cover;
       background-repeat: no-repeat;
       aspect-ratio: 517 / 310;
@@ -25,18 +26,21 @@
       left: 15%;
       top: 60.5%;
       width: 50.5%;
+      max-width: 560px;
     }
 
     @include desktop {
       left: 11.9%;
       top: 57.9%;
       width: 38%;
+      max-width: 730px;
     }
 
     @include desktop-xl {
       left: 11.25%;
       top: 67.3%;
       width: 39.5%;
+      max-width: 759px;
       aspect-ratio: 759 / 454;
     }
   }
