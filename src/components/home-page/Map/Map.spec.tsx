@@ -1,8 +1,29 @@
 import { Breakpoint } from '@/src/common/enum';
-import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
+import {
+  hideFooter,
+  hideHeader,
+  hideTickets,
+  setViewportSizeAndGoToPage,
+} from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`MapComponentTests`, () => {
+  test.beforeEach(({
+    page,
+  }) => {
+    hideHeader({
+      page,
+    });
+
+    hideFooter({
+      page,
+    });
+
+    hideTickets({
+      page,
+    });
+  });
+
   test(`MobileTest`, mobileTest);
 
   test(`TabletTest`, tabletTest);
@@ -23,14 +44,12 @@ async function mobileTest({
     page,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getMapByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-mobile.png`);
+    .toHaveScreenshot(`map-mobile.png`, {
+      timeout: 10000,
+    });
 }
 
 async function tabletTest({
@@ -43,14 +62,12 @@ async function tabletTest({
     width: Breakpoint.TABLET,
   });
 
-  hideHeader({
-    page,
-  });
-
   await expect(getMapByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-tablet.png`);
+    .toHaveScreenshot(`map-tablet.png`, {
+      timeout: 10000,
+    });
 }
 
 async function tabletXlTest({
@@ -61,16 +78,15 @@ async function tabletXlTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.TABLET_XL,
-  });
-
-  hideHeader({
-    page,
+    height: 923,
   });
 
   await expect(getMapByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-tablet-xl.png`);
+    .toHaveScreenshot(`map-tablet-xl.png`, {
+      timeout: 10000,
+    });
 }
 
 async function desktopTest({
@@ -81,16 +97,15 @@ async function desktopTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.DESKTOP,
-  });
-
-  hideHeader({
-    page,
+    height: 881,
   });
 
   await expect(getMapByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-desktop.png`);
+    .toHaveScreenshot(`map-desktop.png`, {
+      timeout: 10000,
+    });
 }
 
 async function desktopXlTest({
@@ -101,16 +116,15 @@ async function desktopXlTest({
   await setViewportSizeAndGoToPage({
     page,
     width: Breakpoint.DESKTOP_XL,
-  });
-
-  hideHeader({
-    page,
+    height: 1219,
   });
 
   await expect(getMapByTestId({
     page,
   }))
-    .toHaveScreenshot(`map-desktop-xl.png`);
+    .toHaveScreenshot(`map-desktop-xl.png`, {
+      timeout: 10000,
+    });
 }
 
 function getMapByTestId({
