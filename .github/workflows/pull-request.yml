@@ -1,4 +1,4 @@
-name: Check linting
+name: Check linting and run tests
 
 on: 
   push:
@@ -36,7 +36,7 @@ jobs:
       fail-fast: false
       matrix:
         node-version: [20.18.0]
-        shardIndex: [1, 2, 3, 4, 5, 6 ]
+        shardIndex: [1, 2, 3, 4, 5, 6]
         shardTotal: [6]
 
     steps:
@@ -48,7 +48,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Run CI command
+    - name: Install dependencies
       run: npm ci
 
     - name: Install Playwright Browsers
@@ -63,8 +63,43 @@ jobs:
       run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
     - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
+      if: always()
       with:
         name: blob-report-${{ matrix.shardIndex }}
-        path: playwright-report
+        path: blob-reports
         retention-days: 1
+
+    merge-reports:             
+      if: always()
+      needs: [run-tests]
+          
+      runs-on: ubuntu-22.04
+
+      steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm ci
+          
+      - name: Download blob reports from GitHub Actions Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: all-blob-reports 
+          pattern: blob-report-*
+          merge-multiple: true
+          
+      - name: Merge into HTML Report
+        run: npx playwright merge-reports --reporter html ./all-blob-reports 
+          
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-report--attempt-${{ github.run_attempt }}
+          path: playwright-report
+          retention-days: 1
