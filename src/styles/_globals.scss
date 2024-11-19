@@ -69,7 +69,7 @@ a {
   transition: color ease-out 0.2s;
 
   &:focus,
-    &:hover {
-      color: $color-pink-bright;
-    }
+  &:hover {
+    color: $color-pink-bright;
+  }
 }
