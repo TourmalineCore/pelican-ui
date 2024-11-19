@@ -30,7 +30,7 @@ export function Services({
             description={card.description}
           />
         ))}
-        <div className="services__info-cards">
+        <li className="services__info-cards">
           <a
             href={`tel:${phone}`}
             className="services__phone-link"
@@ -59,7 +59,7 @@ export function Services({
               {email}
             </Button>
           </a>
-        </div>
+        </li>
       </ul>
     </section>
   );

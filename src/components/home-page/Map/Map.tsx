@@ -3,6 +3,8 @@ import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { MapComponentProps } from "@/src/common/types";
 import Image from "next/image";
 import flower from "../../../../public/images/map/flower.svg";
+import { MarkdownText } from "../../globals/MarkdownText/MarkdownText";
+import mapBackgroundImage from '../../../../public/images/map/map.png';
 
 export function Map({
   title,
@@ -19,6 +21,12 @@ export function Map({
       className="map container"
       data-testid="map"
     >
+      <Image
+        loading="lazy"
+        className="map__backgound-image"
+        src={mapBackgroundImage}
+        alt="Карта"
+      />
       <div className="map__address-card map-address-card">
         <div className="map-address-card__inner">
           <div className="map-address-card__info">
@@ -31,9 +39,9 @@ export function Map({
               <h2 className="map-address-card__title">
                 {title}
               </h2>
-              <p className="map-address-card__subtitle">
+              <MarkdownText className="map-address-card__subtitle">
                 {subtitle}
-              </p>
+              </MarkdownText>
             </div>
           </div>
           {isTablet && (
