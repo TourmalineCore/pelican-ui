@@ -1,0 +1,187 @@
+.ticket-card {
+  @include medium-font;
+
+  position: relative;
+  border-radius: 24px 0 0 24px;
+  color: $color-white;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    background-repeat: no-repeat;
+  }
+
+  &::before {
+    right: 54px;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    height: calc(100% + 2px);
+    background-image: url("../../../../../public/images/tickets/ticket-breakline.svg");
+
+    @include tablet-xl {
+      right: 47px;
+    }
+
+    @include desktop {
+      right: 70px;
+      width: 47px;
+    }
+
+    @include desktop-xl {
+      right: 96px;
+      width: 67px;
+    }
+  }
+
+  &::after {
+    right: -1px;
+    top: 0;
+    width: 11px;
+    background-image: url("../../../../../public/images/tickets/ticket-edge.svg");
+
+    @include desktop {
+      width: 14px;
+    }
+
+    @include desktop-xl {
+      width: 20px;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 24px;
+    height: 100%;
+    min-height: inherit;
+    max-width: 280px;
+
+    @include tablet-xl {
+      max-width: 260px;
+    }
+
+    @include desktop {
+      padding: 24px;
+      max-width: 338px;
+    }
+
+    @include desktop-xl {
+      padding: 32px;
+      max-width: 460px;
+    }
+  }
+
+  &__category {
+    @include medium-font;
+
+    font-size: 20px;
+    line-height: 1.4;
+
+    @include tablet-xl {
+      font-size: 18px;
+    }
+
+    @include desktop {
+      font-size: 24px;
+    }
+
+    @include desktop-xl {
+      font-size: 34px;
+    }
+  }
+
+  &__description {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.45;
+
+    @include desktop {
+      margin-top: 8px;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      font-size: 26px;
+    }
+  }
+
+  &__bottom {
+    margin-top: auto;
+  }
+
+  &__price {
+    font-size: 24px;
+    line-height: 1.3;
+
+    @include tablet-xl {
+      font-size: 20px;
+    }
+
+    @include desktop {
+      font-size: 28px;
+    }
+
+    @include desktop-xl {
+      font-size: 40px;
+    }
+  }
+
+  &__frequency {
+    margin-left: 8px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: $color-white-80;
+
+    @include tablet-xl {
+      font-size: 12px;
+    }
+
+    @include desktop {
+      font-size: 16px;
+    }
+
+    @include desktop-xl {
+      font-size: 24px;
+    }
+  }
+
+  &--general {
+    background-image: url("../../../../../public/images/tickets/bg-leopard-green.png");
+
+    @include tablet {
+      background-image: url("../../../../../public/images/tickets/bg-leopard-brown.png");
+    }
+  }
+
+  &--subsidized {
+    background-image: url("../../../../../public/images/tickets/bg-zebra.png");
+
+    &:last-child {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+
+    &:nth-child(3) {
+      @include tablet-xl {
+        display: none;
+      }
+    }
+  }
+
+  @include desktop {
+    border-radius: 30px 0 0 30px;
+  }
+
+  @include desktop-xl {
+    border-radius: 40px 0 0 40px;
+  }
+}

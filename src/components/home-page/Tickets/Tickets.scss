@@ -1,0 +1,274 @@
+.tickets {
+  $gap-tablet: 12px;
+  $gap-tablet-xl: 16px;
+  $gap-desktop: 24px;
+
+  @include medium-font;
+
+  position: relative;
+  border-radius: 32px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: $color-white;
+
+  &::before,
+  &::after {
+    @include tablet {
+      content: "";
+      position: absolute;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &::before {
+    @include tablet {
+      right: 47px;
+      bottom: 0;
+      width: 65px;
+      height: 65px;
+      background-image: url("../../../../public/images/tickets/pink-paw-left.svg");
+    }
+
+    @include tablet-xl {
+      right: 38px;
+      bottom: -16px;
+    }
+
+    @include desktop {
+      right: 72px;
+      bottom: 0;
+      width: 95px;
+      height: 113px;
+      background-image: url("../../../../public/images/tickets/pink-paw-left-desktop.svg");
+    }
+
+    @include desktop-xl {
+      right: 110px;
+      bottom: -27px;
+      width: 182px;
+      height: 195px;
+    }
+  }
+
+  &::after {
+    @include tablet {
+      right: -10px;
+      bottom: 70px;
+      width: 65px;
+      height: 90px;
+      background-image: url("../../../../public/images/tickets/pink-paw-right.svg");
+    }
+
+    @include tablet-xl {
+      right: -20px;
+      bottom: 52px;
+    }
+
+    @include desktop {
+      bottom: 120px;
+      width: 110px;
+      height: 120px;
+      background-image: url("../../../../public/images/tickets/pink-paw-right-desktop.svg");
+    }
+
+    @include desktop-xl {
+      right: -51px;
+      bottom: 154px;
+      width: 191px;
+      height: 215px;
+    }
+  }
+
+  &__group {
+    & + & {
+      margin-top: 40px;
+
+      @include tablet {
+        margin-top: 32px;
+      }
+
+      @include tablet-xl {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  &__head {
+    @include tablet-xl {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    @include desktop {
+      align-items: baseline;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.3;
+
+    @include tablet {
+      font-size: 29px;
+    }
+
+    @include tablet-xl {
+      font-size: 32px;
+    }
+
+    @include desktop {
+      font-size: 40px;
+      line-height: 1.25;
+    }
+
+    @include desktop-xl {
+      font-size: 64px;
+      line-height: 1.35;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 1.45;
+    color: $color-black-75;
+
+    @include tablet {
+      margin-top: 4px;
+      max-width: 320px;
+    }
+
+    @include tablet-xl {
+      margin-left: 8px;
+      max-width: none;
+    }
+
+    @include desktop {
+      margin-left: 16px;
+    }
+
+    @include desktop-xl {
+      font-size: 24px;
+    }
+  }
+
+  &__list {
+    margin-top: 24px;
+    margin-bottom: 16px;
+
+    @include tablet {
+      display: flex;
+      align-items: end;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+      gap: $gap-tablet;
+    }
+
+    @include tablet-xl {
+      flex-wrap: nowrap;
+      margin-top: 21px;
+      gap: $gap-tablet-xl;
+    }
+
+    @include desktop {
+      margin-top: 31px;
+      gap: $gap-desktop;
+    }
+  }
+
+  &__item {
+    min-height: 160px;
+
+    &--link {
+      font-size: 20px;
+      line-height: 1.4;
+      color: $color-black-75;
+
+      @include desktop {
+        font-size: 24px;
+      }
+
+      @include desktop-xl {
+        font-size: 34px;
+      }
+    }
+
+    &--button {
+      @include tablet {
+        display: flex;
+      }
+    }
+
+    & + & {
+      margin-top: 16px;
+
+      @include tablet {
+        margin-top: 0;
+      }
+    }
+
+    @include tablet {
+      width: 362px;
+      width: calc(50% - $gap-tablet / 2);
+      min-height: 160px;
+    }
+
+    @include tablet-xl {
+      width: calc(100% / 3);
+    }
+
+    @include desktop {
+      min-height: 219px;
+    }
+
+    @include desktop {
+      width: calc(100% / 3);
+    }
+
+    @include desktop-xl {
+      min-height: 309px;
+    }
+  }
+
+  &__ticket-button {
+    @include medium-font;
+
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.45;
+
+    @include tablet {
+      margin-top: auto;
+
+      &::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 88%;
+        width: 124px;
+        height: 114px;
+        background-image: url("../../../../public/images/tickets/parrot.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  &__link {
+    margin-left: 4px;
+    text-decoration: underline;
+    color: $color-green;
+  }
+
+  @include desktop {
+    border-radius: 64px;
+    padding: 64px 39px;
+  }
+
+  @include desktop-xl {
+    border-radius: 64px;
+    padding: 80px 64px;
+  }
+}

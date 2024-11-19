@@ -2,14 +2,22 @@ import { BlockTypes } from '@/src/common/enum';
 import {
   GlobalComponentProps,
   HeroComponentProps,
+  TextAndMediaComponentProps,
   ServicesComponentProps,
   ContactZooPreviewComponentProps,
-  TextAndMediaComponentProps,
+  TicketsComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
   () => import(`../../home-page/Hero/Hero`).then((component) => component.Hero),
+  {
+    ssr: false,
+  },
+);
+
+const TextAndMedia = dynamic(
+  () => import(`../../home-page/TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
   {
     ssr: false,
   },
@@ -29,8 +37,8 @@ const ContactZooPreview = dynamic(
   },
 );
 
-const TextAndMedia = dynamic(
-  () => import(`../../home-page/TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
+const Tickets = dynamic(
+  () => import(`../../home-page/Tickets/Tickets`).then((component) => component.Tickets),
   {
     ssr: false,
   },
@@ -41,11 +49,13 @@ export const BlockRenderer = ({
   phone,
   email,
 }: {
-  block:
-  HeroComponentProps
-  | TextAndMediaComponentProps
-  | ServicesComponentProps
-  | ContactZooPreviewComponentProps,
+  block: (
+    HeroComponentProps |
+    TextAndMediaComponentProps |
+    ServicesComponentProps |
+    ContactZooPreviewComponentProps |
+    TicketsComponentProps
+  ),
   phone: GlobalComponentProps['phone'],
   email: GlobalComponentProps['email']
 }) => {
@@ -61,7 +71,14 @@ export const BlockRenderer = ({
           infoCardDescription={block.infoCardDescription}
         />
       );
-
+    case BlockTypes.TEXT_AND_MEDIA:
+      return (
+        <TextAndMedia
+          title={block.title}
+          description={block.description}
+          video={block.video}
+        />
+      );
     case BlockTypes.SERVICES:
       return (
         <Services
@@ -83,12 +100,14 @@ export const BlockRenderer = ({
           smallImage={block.smallImage}
         />
       );
-    case BlockTypes.TEXT_AND_MEDIA:
+    case BlockTypes.TICKETS:
       return (
-        <TextAndMedia
-          title={block.title}
-          description={block.description}
-          video={block.video}
+        <Tickets
+          generalTicketsTitle={block.generalTicketsTitle}
+          subsidizedTicketsTitle={block.subsidizedTicketsTitle}
+          subsidizedTicketsSubtitle={block.subsidizedTicketsSubtitle}
+          generalTickets={block.generalTickets}
+          subsidizedTickets={block.subsidizedTickets}
         />
       );
     default:
