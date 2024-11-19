@@ -66,5 +66,5 @@ jobs:
       if: ${{ !cancelled() }}
       with:
         name: blob-report-${{ matrix.shardIndex }}
-        path: playwright-report/
+        path: playwright-report
         retention-days: 1
