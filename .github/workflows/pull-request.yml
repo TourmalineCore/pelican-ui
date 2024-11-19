@@ -6,7 +6,7 @@ on:
       - feature/*
 
 jobs:
-  lint-and-build:
+  check-lint:
     runs-on: ubuntu-22.04
 
     strategy:
@@ -28,12 +28,9 @@ jobs:
     - name: Check linting
       run: npm run lint
 
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-
   run-tests:
     runs-on: ubuntu-22.04
-    needs: [lint-and-build]
+    needs: [check-lint]
 
     strategy:
       fail-fast: false
@@ -53,6 +50,9 @@ jobs:
 
     - name: Run CI command
       run: npm ci
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
 
     - name: Run dev server
       run: |
