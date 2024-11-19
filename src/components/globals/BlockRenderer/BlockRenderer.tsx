@@ -4,6 +4,7 @@ import {
   HeroComponentProps,
   ServicesComponentProps,
   ContactZooPreviewComponentProps,
+  TextAndMediaComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
