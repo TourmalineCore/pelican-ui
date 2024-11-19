@@ -6,8 +6,18 @@ on:
       - feature/*
 
 jobs:
-  build:
+  lint-and-build:
+    - name: Check linting
+      run: npm run lint
 
+    - name: Run CI command
+      run: npm ci
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+  run-tests:
+    needs: [lint-and-build]
     runs-on: ubuntu-22.04
 
     strategy:
@@ -26,19 +36,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Run CI command
-      run: npm ci
-
-    - name: Check linting
-      run: npm run lint
-
     - name: Run dev server
       run: |
         npm run test &
         npx --yes wait-on http://localhost:3000
-
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
 
     - name: Run Playwright tests
       run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
@@ -46,6 +47,6 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
-        name: playwright-report
+        name: blob-report-${{ matrix.shardIndex }}
         path: playwright-report/
         retention-days: 1
