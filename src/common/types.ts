@@ -116,3 +116,21 @@ export type Ticket = {
   price: string,
   frequency?: string,
 };
+
+export type NotFoundPageProps = {
+  id: number,
+  title: string;
+  blocks: (
+    NotFoundComponentProps
+  )[];
+};
+
+export type NotFoundComponentProps = {
+  id: number,
+  __component: BlockTypes.NOT_FOUND,
+  title: string,
+  subtitle: string,
+  note: string,
+  largeImage: Image,
+  smallImage: Image,
+};

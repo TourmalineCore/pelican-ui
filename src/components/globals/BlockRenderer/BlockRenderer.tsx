@@ -5,6 +5,7 @@ import {
   ServicesComponentProps,
   ContactZooPreviewComponentProps,
   TicketsComponentProps,
+  NotFoundComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
@@ -36,6 +37,13 @@ const Tickets = dynamic(
   },
 );
 
+const NotFound = dynamic(
+  () => import(`../../globals/NotFound/NotFound`).then((component) => component.NotFound),
+  {
+    ssr: false,
+  },
+);
+
 export const BlockRenderer = ({
   block,
   phone,
@@ -45,7 +53,8 @@ export const BlockRenderer = ({
     HeroComponentProps |
     ServicesComponentProps |
     ContactZooPreviewComponentProps |
-    TicketsComponentProps
+    TicketsComponentProps |
+    NotFoundComponentProps
   ),
   phone: GlobalComponentProps['phone'],
   email: GlobalComponentProps['email']
@@ -93,6 +102,17 @@ export const BlockRenderer = ({
           generalTickets={block.generalTickets}
           subsidizedTickets={block.subsidizedTickets}
 
+        />
+      );
+
+    case BlockTypes.NOT_FOUND:
+      return (
+        <NotFound
+          title={block.title}
+          subtitle={block.subtitle}
+          note={block.note}
+          largeImage={block.largeImage}
+          smallImage={block.smallImage}
         />
       );
     default:
