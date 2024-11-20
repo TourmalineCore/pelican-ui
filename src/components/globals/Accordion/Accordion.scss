@@ -1,0 +1,23 @@
+.accordion {
+  $this: &;
+
+  &__trigger {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 145%;
+
+    // #{$this}--ticket-card & {
+    //   color: $color-green;
+    // }
+  }
+
+  &__content {
+    margin-top: 4px;
+  }
+
+  &--ticket-card {
+    #{$this}__trigger {
+      color: $color-green;
+    }
+  }
+}
