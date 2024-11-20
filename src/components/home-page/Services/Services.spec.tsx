@@ -1,12 +1,14 @@
-import { Breakpoint } from '@/src/common/enum';
-import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
+import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { hideHeader, setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`ServicesComponentTests`, () => {
-  test.beforeEach(({
+  test.beforeEach(async ({
     page,
   }) => {
-    hideHeader({
+    await page.goto(AppRoute.HOME);
+
+    await hideHeader({
       page,
     });
   });
@@ -27,7 +29,7 @@ async function mobileTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     height: 1783,
   });
@@ -43,7 +45,7 @@ async function tabletTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.TABLET,
     height: 1012,
@@ -60,7 +62,7 @@ async function tabletXlTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
     height: 1346,
@@ -77,7 +79,7 @@ async function desktopTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
     height: 1386,
@@ -94,7 +96,7 @@ async function desktopXlTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
     height: 1987,

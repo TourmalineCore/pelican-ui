@@ -1,16 +1,18 @@
-import { Breakpoint } from '@/src/common/enum';
-import { hideHeader, hideMap, setViewportSizeAndGoToPage } from '@/test/helpers';
+import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { hideHeader, hideMap, setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`FooterTests`, () => {
-  test.beforeEach(({
+  test.beforeEach(async ({
     page,
   }) => {
-    hideHeader({
+    await page.goto(AppRoute.HOME);
+
+    await hideHeader({
       page,
     });
 
-    hideMap({
+    await hideMap({
       page,
     });
   });
@@ -31,7 +33,7 @@ async function mobileTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
   });
 
@@ -46,7 +48,7 @@ async function tabletTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.TABLET,
   });
@@ -62,7 +64,7 @@ async function tabletXlTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
   });
@@ -78,7 +80,7 @@ async function desktopTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
   });
@@ -94,7 +96,7 @@ async function desktopXlTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
   });
