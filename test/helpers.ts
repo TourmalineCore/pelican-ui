@@ -5,16 +5,18 @@ export async function setViewportSizeAndGoToPage({
   page,
   width = Breakpoint.MOBILE,
   height = 768,
+  path = `/`,
 }: {
   page: Page,
   width?: number,
-  height?: number
+  height?: number,
+  path?: string,
 }) {
   await page.setViewportSize({
     width,
     height,
   });
-  await page.goto(`/`);
+  await page.goto(`${path}`);
 }
 
 export function hideHeader({
