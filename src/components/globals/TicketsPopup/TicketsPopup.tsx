@@ -1,12 +1,10 @@
 import Image from 'next/image';
 import { POPUP_TICKET_BUY_TEXT } from "@/src/common/mocks/globals-mock";
 import { GlobalComponentProps } from "@/src/common/types";
-import { HeaderPopupButton } from "../Header/components/HeaderPopupButton/HeaderPopupButton";
+import { useTicketPopup } from '@/src/common/hooks/useTicketPopup';
 import { Accordion } from "../Accordion/Accordion";
 
 export function TicketsPopup({
-  isActive,
-  handleToggle,
   ticketsPopupGeneral,
   ticketsPopupSubsidized,
   ticketsPopupRulesImages,
@@ -14,11 +12,12 @@ export function TicketsPopup({
 "ticketsPopupGeneral" |
 "ticketsPopupSubsidized" |
 "ticketsPopupRulesImages" |
-"popupTicketBuyText">
-& {
-  isActive: boolean,
-  handleToggle: () => void,
-}) {
+"popupTicketBuyText">) {
+  const {
+    isActive,
+    handleToggle,
+  } = useTicketPopup();
+
   return (
     <div>
       {isActive && (
@@ -28,10 +27,12 @@ export function TicketsPopup({
         >
           <div className="container tickets-popup__inner">
             <div className=" tickets-popup__head">{POPUP_TICKET_BUY_TEXT}</div>
-            <HeaderPopupButton
-              isActive={isActive}
-              handleToggle={handleToggle}
-            />
+            <button
+              type="button"
+              onClick={handleToggle}
+            >
+              х
+            </button>
             <ul>
               {ticketsPopupGeneral.map(({
                 category, price, description,

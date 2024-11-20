@@ -1,5 +1,6 @@
-import { PropsWithChildren, useRef, useState } from 'react';
+import { PropsWithChildren, useRef } from 'react';
 import { GlobalComponentProps } from '@/src/common/types';
+import { TicketPopupProvider } from '@/src/common/providers/TicketPopupProvider';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import { TicketsPopup } from '../TicketsPopup/TicketsPopup';
@@ -22,49 +23,43 @@ export function Layout({
   ticketsPopupRulesImages,
 }: {
 } & LayoutProps) {
-  const overlayElementRef = useRef<null | HTMLElement>(null);
-
-  const [isActive, setIsActive] = useState(false);
+  const overlayElementRef = useRef<null | HTMLDivElement>(null);
 
   return (
-    <div className="layout">
-      <Header
-        navigationLinks={navigationLinks}
-        email={email}
-        phone={phone}
-        popupTicketBuyText={popupTicketBuyText}
-        overlayElementRef={overlayElementRef}
-      />
-      <TicketsPopup
-        ticketsPopupGeneral={ticketsPopupGeneral}
-        ticketsPopupSubsidized={ticketsPopupSubsidized}
-        ticketsPopupRulesImages={ticketsPopupRulesImages}
-        isActive
-        phone={phone}
-        handleToggle={handleToggle}
-      />
-      <main
-        className="main"
-      >
-        {children}
-      </main>
-      <div
-        ref={overlayElementRef}
-        className="overlay"
-      />
-      <Footer
-        officialLinks={officialLinks}
-        footerUserLinks={footerUserLinks}
-        footerAboutLinks={footerAboutLinks}
-        email={email}
-        phone={phone}
-        footerNavTitleLeft={footerNavTitleLeft}
-        footerNavTitleRight={footerNavTitleRight}
-      />
-    </div>
+    <TicketPopupProvider>
+      <div className="layout">
+        <Header
+          navigationLinks={navigationLinks}
+          email={email}
+          phone={phone}
+          popupTicketBuyText={popupTicketBuyText}
+          overlayElementRef={overlayElementRef}
+        />
+        <TicketsPopup
+          ticketsPopupGeneral={ticketsPopupGeneral}
+          ticketsPopupSubsidized={ticketsPopupSubsidized}
+          ticketsPopupRulesImages={ticketsPopupRulesImages}
+          phone={phone}
+        />
+        <main
+          className="main"
+        >
+          {children}
+        </main>
+        <div
+          ref={overlayElementRef}
+          className="overlay"
+        />
+        <Footer
+          officialLinks={officialLinks}
+          footerUserLinks={footerUserLinks}
+          footerAboutLinks={footerAboutLinks}
+          email={email}
+          phone={phone}
+          footerNavTitleLeft={footerNavTitleLeft}
+          footerNavTitleRight={footerNavTitleRight}
+        />
+      </div>
+    </TicketPopupProvider>
   );
-
-  function handleToggle() {
-    setIsActive((prevState) => !prevState);
-  }
 }
