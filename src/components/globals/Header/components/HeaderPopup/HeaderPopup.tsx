@@ -9,7 +9,7 @@ export function HeaderPopup({
   email,
   phone,
   popupTicketBuyText,
-}: GlobalComponentProps & {
+}: Pick <GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
   isActive: boolean
 }) {
   return (
