@@ -1,3 +1,69 @@
 .not-found {
-  height: 100vh;
+  position: relative;
+  padding-top: 177px;
+  padding-bottom: 40px;
+  height: calc(100vh - 64px);
+
+  &__title {
+    @include extra-bold-font;
+
+    font-size: 160px;
+    line-height: 1;
+    text-align: center;
+    color: $color-green-dark;
+  }
+
+  &__subtitle {
+    @include h2-text;
+
+    text-align: center;
+    color: $color-green-dark;
+  }
+
+  &__note {
+    @include caption-2-medium;
+
+    margin-bottom: 111px;
+    text-align: center;
+    color: $color-black-60;
+  }
+
+  &__image {
+    &:nth-of-type(1) {
+      position: absolute;
+      left: -110px;
+      top: -108px;
+      width: 335px;
+      height: 324px;
+      transform: rotate(113deg);
+    }
+
+    &:nth-of-type(2) {
+
+    }
+  }
+
+  &__btn {
+    @include caption-1-medium;
+
+    position: relative;
+    padding: 12px;
+    width: 100%;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -72px;
+      width: 139px;
+      height: 81px;
+      background-image: url("../../../../public/images/contact-zoo/contact-zoo-geese.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      @include tablet {
+        display: none;
+      }
+    }
+  }
 }
