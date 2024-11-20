@@ -43,10 +43,11 @@ export type HomePageProps = {
   id: number,
   title: string;
   blocks: (
-    HeroComponentProps |
-    ServicesComponentProps |
-    ContactZooPreviewComponentProps |
-    TicketsComponentProps
+    HeroComponentProps
+    | ServicesComponentProps
+    | ContactZooPreviewComponentProps
+    | MapComponentProps
+    | TicketsComponentProps
   )[];
 };
 
@@ -97,6 +98,15 @@ export type ContactZooPreviewComponentProps = {
 type Image = {
   url: StaticImageData | string;
   alt: string;
+};
+
+export type MapComponentProps = {
+  id: number
+  __component: BlockTypes.MAP,
+  title: string,
+  subtitle: string,
+  note: string,
+  image: Image,
 };
 
 export type TicketsComponentProps = {

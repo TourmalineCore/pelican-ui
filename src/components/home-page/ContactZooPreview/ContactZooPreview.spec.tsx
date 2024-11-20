@@ -1,12 +1,14 @@
-import { Breakpoint } from '@/src/common/enum';
-import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
+import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { hideHeader, setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`ContactZooComponentTests`, () => {
-  test.beforeEach(({
+  test.beforeEach(async ({
     page,
   }) => {
-    hideHeader({
+    await page.goto(AppRoute.HOME);
+
+    await hideHeader({
       page,
     });
   });
@@ -25,7 +27,7 @@ async function mobileTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
   });
 
@@ -40,7 +42,7 @@ async function tabletTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.TABLET,
   });
@@ -56,7 +58,7 @@ async function tabletXlTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
   });
@@ -72,7 +74,7 @@ async function desktopTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
   });

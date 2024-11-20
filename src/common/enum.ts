@@ -15,4 +15,5 @@ export enum BlockTypes {
   SERVICES = `home.services`,
   CONTACT_ZOO_PREVIEW = `home.contact-zoo-preview`,
   TICKETS = `home.tickets`,
+  MAP = `home.map`,
 }
