@@ -1,7 +1,8 @@
-import { PropsWithChildren, useRef } from 'react';
+import { PropsWithChildren, useRef, useState } from 'react';
 import { GlobalComponentProps } from '@/src/common/types';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
+import { TicketsPopup } from '../TicketsPopup/TicketsPopup';
 
 type LayoutProps = GlobalComponentProps & PropsWithChildren;
 
@@ -16,9 +17,14 @@ export function Layout({
   popupTicketBuyText,
   footerNavTitleLeft,
   footerNavTitleRight,
+  ticketsPopupGeneral,
+  ticketsPopupSubsidized,
+  ticketsPopupRulesImages,
 }: {
 } & LayoutProps) {
   const overlayElementRef = useRef<null | HTMLElement>(null);
+
+  const [isActive, setIsActive] = useState(false);
 
   return (
     <div className="layout">
@@ -28,6 +34,14 @@ export function Layout({
         phone={phone}
         popupTicketBuyText={popupTicketBuyText}
         overlayElementRef={overlayElementRef}
+      />
+      <TicketsPopup
+        ticketsPopupGeneral={ticketsPopupGeneral}
+        ticketsPopupSubsidized={ticketsPopupSubsidized}
+        ticketsPopupRulesImages={ticketsPopupRulesImages}
+        isActive
+        phone={phone}
+        handleToggle={handleToggle}
       />
       <main
         className="main"
@@ -49,4 +63,8 @@ export function Layout({
       />
     </div>
   );
+
+  function handleToggle() {
+    setIsActive((prevState) => !prevState);
+  }
 }

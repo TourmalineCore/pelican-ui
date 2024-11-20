@@ -32,6 +32,9 @@ export type GlobalComponentProps = {
     // TODO: in the future change string to enum AppRoute
     link: string;
   }[];
+  ticketsPopupGeneral: Ticket[];
+  ticketsPopupSubsidized: Ticket[];
+  ticketsPopupRulesImages: Image[];
   email: string;
   phone: string;
   popupTicketBuyText: string;

@@ -13,6 +13,9 @@ import {
   POPUP_TICKET_BUY_TEXT,
   FOOTER_NAV_TITLE_LEFT,
   FOOTER_NAV_TITLE_RIGHT,
+  TICKETS_POPUP_GENERAL,
+  TICKETS_POPUP_SUBSIDIZED,
+  TICKETS_POPUP_RULES_IMAGES,
 } from '../common/mocks/globals-mock';
 
 type UniversalProps = {
@@ -39,6 +42,9 @@ export default function UniversalPage({
     officialLinks,
     footerNavTitleLeft,
     footerNavTitleRight,
+    ticketsPopupGeneral,
+    ticketsPopupSubsidized,
+    ticketsPopupRulesImages,
   } = globalData;
   const {
     title, blocks,
@@ -63,6 +69,9 @@ export default function UniversalPage({
         popupTicketBuyText={popupTicketBuyText}
         footerNavTitleLeft={footerNavTitleLeft}
         footerNavTitleRight={footerNavTitleRight}
+        ticketsPopupGeneral={ticketsPopupGeneral}
+        ticketsPopupSubsidized={ticketsPopupSubsidized}
+        ticketsPopupRulesImages={ticketsPopupRulesImages}
       >
         {blocks.map((block) => (
           <BlockRenderer
@@ -106,6 +115,9 @@ export async function getServerSideProps({
         officialLinks: OFFICIAL_LINKS,
         footerNavTitleLeft: FOOTER_NAV_TITLE_LEFT,
         footerNavTitleRight: FOOTER_NAV_TITLE_RIGHT,
+        ticketsPopupGeneral: TICKETS_POPUP_GENERAL,
+        ticketsPopupSubsidized: TICKETS_POPUP_SUBSIDIZED,
+        ticketsPopupRulesImages: TICKETS_POPUP_RULES_IMAGES,
       },
       pageData: getMockPageData({
         slug: query.slug,
