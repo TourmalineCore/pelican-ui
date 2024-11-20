@@ -1,10 +1,7 @@
-import { Breakpoint } from "@/src/common/enum";
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { MapComponentProps } from "@/src/common/types";
 import Image from "next/image";
-import flower from "../../../../public/images/map/flower.svg";
-import { MarkdownText } from "../../globals/MarkdownText/MarkdownText";
 import mapBackgroundImage from '../../../../public/images/map/map.png';
+import { MapAddressCard } from "./components/MapAddressCard";
 
 export function Map({
   title,
@@ -12,10 +9,6 @@ export function Map({
   note,
   image,
 }: Omit<MapComponentProps, 'id' | '__component'>) {
-  const windowWidth = useWindowWidth();
-
-  const isTablet = windowWidth >= Breakpoint.TABLET;
-
   return (
     <section
       className="map container"
@@ -27,49 +20,13 @@ export function Map({
         src={mapBackgroundImage}
         alt="Карта"
       />
-      <div className="map__address-card map-address-card">
-        <div className="map-address-card__inner">
-          <div className="map-address-card__info">
-            {isTablet && (
-              <p className="map-address-card__note">
-                {note}
-              </p>
-            )}
-            <div className="map-address-card__description">
-              <h2 className="map-address-card__title">
-                {title}
-              </h2>
-              <MarkdownText className="map-address-card__subtitle">
-                {subtitle}
-              </MarkdownText>
-            </div>
-          </div>
-          {isTablet && (
-            <div className="map-address-card__image-wrapper">
-              <Image
-                loading="lazy"
-                src={image.url}
-                alt={image.alt}
-              />
-              {isTablet && (
-                <Image
-                  className="map__flower"
-                  src={flower}
-                  alt="Изображение цветка"
-                />
-              )}
-            </div>
-          )}
-          {!isTablet && (
-            <Image
-              loading="lazy"
-              className="map__flower"
-              src={flower}
-              alt="Изображение цветка"
-            />
-          )}
-        </div>
-      </div>
+      <MapAddressCard
+        className="map__address-card"
+        title={title}
+        subtitle={subtitle}
+        note={note}
+        image={image}
+      />
     </section>
   );
 }
