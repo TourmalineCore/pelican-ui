@@ -11,6 +11,11 @@
     line-height: 1;
     text-align: center;
     color: $color-green-dark;
+
+    @include tablet {
+      padding-bottom: 2px;
+      font-size: 280px;
+    }
   }
 
   &__subtitle {
@@ -18,6 +23,14 @@
 
     text-align: center;
     color: $color-green-dark;
+
+    @include tablet {
+      @include medium-font;
+
+      padding-bottom: 8px;
+      font-size: 40px;
+      line-height: 1.25;
+    }
   }
 
   &__note {
@@ -26,6 +39,12 @@
     margin-bottom: 111px;
     text-align: center;
     color: $color-black-60;
+
+    @include tablet {
+      @include body-1-medium;
+
+      margin-bottom: 64px;
+    }
   }
 
   &__image {
@@ -36,6 +55,14 @@
       width: 335px;
       height: 324px;
       transform: rotate(113deg);
+
+      @include tablet {
+        left: -240px;
+        top: 340px;
+        width: 435px;
+        height: 400px;
+        transform: rotate(30deg);
+      }
     }
 
     &:nth-of-type(2) {
@@ -65,5 +92,10 @@
         display: none;
       }
     }
+  }
+
+  @include tablet {
+    padding-top: 82px;
+    padding-bottom: 182px;
   }
 }
