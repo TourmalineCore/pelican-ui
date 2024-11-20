@@ -1,5 +1,7 @@
 import { NotFoundComponentProps } from "@/src/common/types";
 import Image from "next/image";
+import { Breakpoint } from "@/src/common/enum";
+import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { Button } from "../Button/Button";
 
 export function NotFound({
@@ -9,6 +11,14 @@ export function NotFound({
   largeImage,
   smallImage,
 }: Omit<NotFoundComponentProps, 'id' | '__component'>) {
+  const windowWidth = useWindowWidth();
+
+  if (windowWidth === 0) {
+    return null;
+  }
+
+  const isTablet = windowWidth >= Breakpoint.TABLET;
+
   return (
     <section
       className="not-found container"
@@ -22,11 +32,13 @@ export function NotFound({
         src={largeImage.url}
         alt={largeImage.alt}
       />
-      <Image
-        className="not-found__image"
-        src={smallImage.url}
-        alt={smallImage.alt}
-      />
+      {isTablet && (
+        <Image
+          className="not-found__image"
+          src={smallImage.url}
+          alt={smallImage.alt}
+        />
+      )}
       <Button
         className="not-found__btn"
         theme="primary"
