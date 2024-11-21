@@ -18,7 +18,7 @@ export function Layout({
   footerNavTitleRight,
 }: {
 } & LayoutProps) {
-  const overlayElementRef = useRef<null | HTMLElement>(null);
+  const overlayElementRef = useRef<null | HTMLDivElement>(null);
 
   return (
     <div className="layout">

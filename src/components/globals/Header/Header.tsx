@@ -17,15 +17,17 @@ const HeaderPopup = dynamic(
   },
 );
 
+type HeaderProps = Pick<GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
+  overlayElementRef: MutableRefObject<null | HTMLElement>
+};
+
 export function Header({
   navigationLinks,
   email,
   phone,
   popupTicketBuyText,
   overlayElementRef,
-}: Pick<GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
-  overlayElementRef: MutableRefObject<null | HTMLElement>
-}) {
+}: HeaderProps) {
   const [isActive, setIsActive] = useState(false);
   const windowWidth = useWindowWidth();
   useEffect(() => {
@@ -95,11 +97,6 @@ export function Header({
           phone={phone}
           navigationLinks={navigationLinks}
           popupTicketBuyText={popupTicketBuyText}
-          officialLinks={[]}
-          footerUserLinks={[]}
-          footerAboutLinks={[]}
-          footerNavTitleLeft=""
-          footerNavTitleRight=""
         />
       )}
     </div>

@@ -1,8 +1,14 @@
-import { Breakpoint } from '@/src/common/enum';
-import { setViewportSizeAndGoToPage } from '@/test/helpers';
+import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`HeaderPopupTests`, () => {
+  test.beforeEach(async ({
+    page,
+  }) => {
+    await page.goto(AppRoute.HOME);
+  });
+
   test(`ActionTest`, actionTest);
 
   test(`MobilePopupTest`, mobilePopupTest);
@@ -17,7 +23,7 @@ async function actionTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
   });
 
@@ -35,7 +41,7 @@ async function mobilePopupTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
   });
 
@@ -57,7 +63,7 @@ async function tabletPopupTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.TABLET,
   });
@@ -80,7 +86,7 @@ async function tabletXlPopupTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
   });
