@@ -14,8 +14,6 @@ export async function setViewportSize({
     width,
     height,
   });
-
-  await page.waitForLoadState(`domcontentloaded`);
 }
 
 export async function hideHeader({
