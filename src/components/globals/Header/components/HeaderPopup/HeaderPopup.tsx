@@ -1,5 +1,6 @@
 import { GlobalComponentProps } from "@/src/common/types";
 import { CSSTransition } from 'react-transition-group';
+import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { HeaderNavigationPopup } from "./components/HeaderNavigationPopup/HeaderNavigationPopup";
 import { SocialMedia } from "../../../SocialNetwork/SocialMedia";
 
@@ -12,6 +13,10 @@ export function HeaderPopup({
 }: Pick <GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
   isActive: boolean
 }) {
+  const {
+    handleTicketPopupToggle,
+  } = useTicketPopup();
+
   return (
     <CSSTransition
       in={isActive}
@@ -30,6 +35,7 @@ export function HeaderPopup({
             <button
               type="button"
               className="header-popup__ticket-button"
+              onClick={handleTicketPopupToggle}
             >
               {popupTicketBuyText}
             </button>

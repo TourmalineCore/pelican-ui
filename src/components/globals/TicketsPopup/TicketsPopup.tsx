@@ -17,7 +17,7 @@ export function TicketsPopup({
 "popupTicketBuyText">) {
   const {
     isActive,
-    handleToggle,
+    handleTicketPopupToggle,
   } = useTicketPopup();
 
   return (
@@ -32,7 +32,7 @@ export function TicketsPopup({
             <button
               type="button"
               className="button tickets-popup__close-btn"
-              onClick={handleToggle}
+              onClick={handleTicketPopupToggle}
             >
               <Image
                 priority

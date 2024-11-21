@@ -7,12 +7,12 @@ import {
 
 type TicketPopup = {
   isActive: boolean,
-  handleToggle:() => void,
+  handleTicketPopupToggle:() => void,
 };
 
 export const TicketPopupContext = createContext<TicketPopup>({
   isActive: false,
-  handleToggle: () => {},
+  handleTicketPopupToggle: () => {},
 });
 
 export function TicketPopupProvider({
@@ -20,13 +20,13 @@ export function TicketPopupProvider({
 }: PropsWithChildren) {
   const [isActive, setIsActive] = useState(false);
 
-  function handleToggle() {
+  function handleTicketPopupToggle() {
     setIsActive((prevState) => !prevState);
   }
 
   const ticketPopupState = useMemo(() => ({
     isActive,
-    handleToggle,
+    handleTicketPopupToggle,
   }), [isActive]);
 
   return (

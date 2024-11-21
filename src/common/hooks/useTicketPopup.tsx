@@ -3,11 +3,11 @@ import { TicketPopupContext } from "../providers/TicketPopupProvider";
 
 export function useTicketPopup() {
   const {
-    isActive, handleToggle,
+    isActive, handleTicketPopupToggle,
   } = useContext(TicketPopupContext);
 
   return {
     isActive,
-    handleToggle,
+    handleTicketPopupToggle,
   };
 }

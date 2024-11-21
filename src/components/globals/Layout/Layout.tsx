@@ -58,6 +58,7 @@ export function Layout({
           phone={phone}
           footerNavTitleLeft={footerNavTitleLeft}
           footerNavTitleRight={footerNavTitleRight}
+          popupTicketBuyText={popupTicketBuyText}
         />
       </div>
     </TicketPopupProvider>

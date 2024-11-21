@@ -20,7 +20,7 @@ export function Hero({
   const isDesktop = windowWidth >= Breakpoint.DESKTOP;
 
   const {
-    handleToggle,
+    handleTicketPopupToggle,
   } = useTicketPopup();
 
   return (
@@ -59,7 +59,7 @@ export function Hero({
               className="hero__ticket-button"
               theme="primary"
               isFeatured
-              onClick={handleToggle}
+              onClick={handleTicketPopupToggle}
             >
               Билеты
             </Button>

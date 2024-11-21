@@ -47,17 +47,12 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
 export const FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [
   {
     id: 1,
-    name: `Услуги`,
+    name: `Льготы`,
     link: `#`,
   },
   {
     id: 2,
-    name: `Билеты`,
-    link: `#`,
-  },
-  {
-    id: 3,
-    name: `Льготы`,
+    name: `Услуги`,
     link: `#`,
   },
 ];
