@@ -47,6 +47,7 @@ async function tabletTest({
     page,
     path: `/not-found`,
     width: Breakpoint.TABLET,
+    height: 807,
   });
 
   await expect(getNotFoundByTestId({
@@ -64,6 +65,7 @@ async function tabletXlTest({
     page,
     path: `/not-found`,
     width: Breakpoint.TABLET_XL,
+    height: 807,
   });
 
   await expect(getNotFoundByTestId({
@@ -81,6 +83,7 @@ async function desktopTest({
     page,
     path: `/not-found`,
     width: Breakpoint.DESKTOP,
+    height: 797,
   });
 
   await expect(getNotFoundByTestId({
@@ -98,6 +101,7 @@ async function desktopXlTest({
     page,
     path: `/not-found`,
     width: Breakpoint.DESKTOP_XL,
+    height: 1105,
   });
 
   await expect(getNotFoundByTestId({
