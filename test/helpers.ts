@@ -14,6 +14,8 @@ export async function setViewportSize({
     width,
     height,
   });
+
+  await page.waitForLoadState(`networkidle`);
 }
 
 export async function hideHeader({
