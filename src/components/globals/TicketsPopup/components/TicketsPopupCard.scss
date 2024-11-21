@@ -1,0 +1,52 @@
+.tickets-popup-card {
+  $this: &;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-radius: 16px;
+  padding: 16px 12px;
+  color: $color-black;
+  background-color: $color-white;
+  transition: background-color ease-out 0.2s;
+
+  &__price {
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  &__wrapper {
+    max-width: 176px;
+  }
+
+  &__category {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.45;
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 145%;
+    color: $color-black-75;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $color-yellow;
+  }
+
+  &--with-accordion {
+    flex-direction: column;
+
+    #{$this}__wrapper {
+      width: 100%;
+      max-width: none;
+    }
+
+    #{$this}__description {
+      margin-bottom: 16px;
+    }
+  }
+}

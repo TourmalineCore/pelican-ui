@@ -4,6 +4,7 @@ import { GlobalComponentProps } from "@/src/common/types";
 import { useTicketPopup } from '@/src/common/hooks/useTicketPopup';
 import { Accordion } from "../Accordion/Accordion";
 import crossIcon from "../../../../public/images/tickets-popup/icon-cross.svg";
+import { TicketsPopupCard } from './components/TicketsPopupCard';
 
 export function TicketsPopup({
   ticketsPopupGeneral,
@@ -44,44 +45,40 @@ export function TicketsPopup({
             {ticketsPopupGeneral.map(({
               category, price, description,
             }) => (
-              <li
+              <TicketsPopupCard
                 key={category}
                 className="tickets-popup__card"
-              >
-                <div className="tickets-popup__wrapper">
-                  <div className="tickets-popup__category">{category}</div>
-                  <div className="tickets-popup__description">{description}</div>
-                </div>
-                <div className="tickets-popup__price">{price}</div>
-              </li>
+                category={category}
+                price={price}
+                description={description}
+              />
             ))}
-            <li className="tickets-popup__card">
-              <div className="tickets-popup__wrapper tickets-popup__wrapper--accordion">
-                <h3 className="tickets-popup__category">Льготный</h3>
-                <div className="tickets-popup__description tickets-popup__description--accordion">
-                  Требуется подтверждающий льготу оригинал документа, покупка только на кассе
-                </div>
-                <Accordion
-                  triggerText="Подробнее"
-                  triggerHideText="Скрыть"
-                  className="accordion--ticket-card"
-                >
-                  <ul className="tickets-popup__prices-table">
-                    {ticketsPopupSubsidized.map(({
-                      id, category, price,
-                    }) => (
-                      <li
-                        className="tickets-popup__prices-table-row"
-                        key={id}
-                      >
-                        <span className="tickets-popup__prices-table-category">{category}</span>
-                        <span>{price}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Accordion>
-              </div>
-            </li>
+            <TicketsPopupCard
+              key="tickets-popup-card-with-accodion"
+              className="tickets-popup__card tickets-popup-card--with-accordion"
+              category="Льготный"
+              description="Требуется подтверждающий льготу оригинал документа, покупка только на кассе"
+            >
+              <Accordion
+                triggerText="Подробнее"
+                triggerHideText="Скрыть"
+                className="accordion--ticket-card"
+              >
+                <ul className="tickets-popup__prices-table">
+                  {ticketsPopupSubsidized.map(({
+                    id, category, price,
+                  }) => (
+                    <li
+                      className="tickets-popup__prices-table-row"
+                      key={id}
+                    >
+                      <span className="tickets-popup__prices-table-category">{category}</span>
+                      <span>{price}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Accordion>
+            </TicketsPopupCard>
           </ul>
           <Accordion
             triggerText="Правила посещения"
