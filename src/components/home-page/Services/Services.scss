@@ -21,9 +21,6 @@
     display: grid;
     gap: 12px;
 
-    // TODO: remove if card stay one column
-    // grid-template-columns: repeat(5, 304px);
-
     @include tablet {
       gap: 16px;
       grid-template-columns: repeat(2, 1fr);
@@ -31,14 +28,11 @@
 
     @include desktop {
       gap: 24px;
-
-      // grid-template-columns: repeat(5, 522px);
+      grid-template-columns: repeat(3, minmax(413px, 617px));
     }
 
     @include desktop-xl {
       gap: 32px;
-
-      // grid-template-columns: repeat(5, 727px);
     }
   }
 
@@ -54,10 +48,11 @@
     }
 
     @include desktop {
-      // flex-direction: column;
       gap: 24px;
+    }
 
-      // grid-column: auto;
+    @include desktop {
+      gap: 32px;
     }
   }
 
