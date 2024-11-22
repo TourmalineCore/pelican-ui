@@ -1,11 +1,13 @@
 import { Breakpoint } from '@/src/common/enum';
-import { hideHeader, setViewportSizeAndGoToPage } from '@/test/helpers';
+import { hideHeader, setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`NotFoundComponentTests`, () => {
-  test.beforeEach(({
+  test.beforeEach(async ({
     page,
   }) => {
+    await page.goto(`/notfound`);
+
     hideHeader({
       page,
     });
@@ -27,9 +29,8 @@ async function mobileTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
-    path: `/not-found`,
   });
 
   await expect(getNotFoundByTestId({
@@ -43,9 +44,8 @@ async function tabletTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
-    path: `/not-found`,
     width: Breakpoint.TABLET,
     height: 807,
   });
@@ -61,9 +61,8 @@ async function tabletXlTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
-    path: `/not-found`,
     width: Breakpoint.TABLET_XL,
     height: 807,
   });
@@ -79,9 +78,8 @@ async function desktopTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
-    path: `/not-found`,
     width: Breakpoint.DESKTOP,
     height: 797,
   });
@@ -97,9 +95,8 @@ async function desktopXlTest({
 }: {
   page: Page,
 }) {
-  await setViewportSizeAndGoToPage({
+  await setViewportSize({
     page,
-    path: `/not-found`,
     width: Breakpoint.DESKTOP_XL,
     height: 1105,
   });

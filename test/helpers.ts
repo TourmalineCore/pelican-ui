@@ -5,7 +5,6 @@ export async function setViewportSize({
   page,
   width = Breakpoint.MOBILE,
   height = 768,
-  path = `/`,
 }: {
   page: Page,
   width?: number,
