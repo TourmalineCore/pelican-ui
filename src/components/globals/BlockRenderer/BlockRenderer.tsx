@@ -38,7 +38,7 @@ const Tickets = dynamic(
 );
 
 const NotFound = dynamic(
-  () => import(`../../globals/NotFound/NotFound`).then((component) => component.NotFound),
+  () => import(`../../not-found-page/NotFound/NotFound`).then((component) => component.NotFound),
   {
     ssr: false,
   },

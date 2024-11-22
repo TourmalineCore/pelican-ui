@@ -2,7 +2,7 @@ import { NotFoundComponentProps } from "@/src/common/types";
 import Image from "next/image";
 import { Breakpoint } from "@/src/common/enum";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
-import { Button } from "../Button/Button";
+import Link from "next/link";
 
 export function NotFound({
   title,
@@ -39,12 +39,12 @@ export function NotFound({
           alt={smallImage.alt}
         />
       )}
-      <Button
-        className="not-found__btn"
-        theme="primary"
+      <Link
+        href="/"
+        className="not-found__button button button--primary"
       >
         Главная страница
-      </Button>
+      </Link>
     </section>
   );
 }
