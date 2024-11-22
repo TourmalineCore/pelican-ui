@@ -1,5 +1,5 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { hideHeader, setViewportSize } from '@/test/helpers';
+import { hideHeader, hideTextAndMedia, setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`ServicesComponentTests`, () => {
@@ -9,6 +9,10 @@ test.describe(`ServicesComponentTests`, () => {
     await page.goto(AppRoute.HOME);
 
     await hideHeader({
+      page,
+    });
+
+    await hideTextAndMedia({
       page,
     });
   });
@@ -82,7 +86,7 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
-    height: 1386,
+    height: 1218,
   });
 
   await expect(getServicesByTestId({
@@ -99,7 +103,7 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 1987,
+    height: 1628,
   });
 
   await expect(getServicesByTestId({
