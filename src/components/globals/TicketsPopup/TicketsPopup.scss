@@ -1,4 +1,6 @@
 .tickets-popup {
+  $this: &;
+
   &__inner {
     @include medium-font;
 
@@ -106,7 +108,53 @@
     color: $color-black;
   }
 
-  &__refund {
+  &__return {
     margin-top: 24px;
+    line-height: 1.45;
+  }
+
+  &__return-text {
+    margin-left: 8px;
+  }
+
+  &__return-reason {
+    display: flex;
+
+    &:first-child {
+      #{$this}__return-text {
+        margin-left: 10px;
+      }
+    }
+
+    & + & {
+      margin-top: 4px;
+    }
+  }
+
+  &__return-reasons {
+    counter-reset: reason;
+    margin-top: 5px;
+    font-size: 16px;
+    color: $color-white-80;
+  }
+
+  &__return-counter {
+    &::before {
+      counter-increment: reason;
+      content: counter(reason) ".";
+      margin-left: 4px;
+    }
+  }
+
+  &__refund-btn {
+    @include medium-font;
+
+    margin-top: 24px;
+    border-radius: 62px;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.45;
+    color: $color-black;
   }
 }

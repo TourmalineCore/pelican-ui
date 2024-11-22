@@ -35,6 +35,7 @@ export type GlobalComponentProps = {
   ticketsPopupGeneral: Ticket[];
   ticketsPopupSubsidized: Ticket[];
   ticketsPopupRulesImages: Image[];
+  ticketsPopupReturnReasons: { id: number, returnReason: string }[]
   email: string;
   phone: string;
   popupTicketBuyText: string;

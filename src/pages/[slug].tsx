@@ -16,6 +16,7 @@ import {
   TICKETS_POPUP_GENERAL,
   TICKETS_POPUP_SUBSIDIZED,
   TICKETS_POPUP_RULES_IMAGES,
+  TICKETS_POPUP_RETURN_REASONS,
 } from '../common/mocks/globals-mock';
 
 type UniversalProps = {
@@ -45,6 +46,7 @@ export default function UniversalPage({
     ticketsPopupGeneral,
     ticketsPopupSubsidized,
     ticketsPopupRulesImages,
+    ticketsPopupReturnReasons,
   } = globalData;
   const {
     title, blocks,
@@ -72,6 +74,7 @@ export default function UniversalPage({
         ticketsPopupGeneral={ticketsPopupGeneral}
         ticketsPopupSubsidized={ticketsPopupSubsidized}
         ticketsPopupRulesImages={ticketsPopupRulesImages}
+        ticketsPopupReturnReasons={ticketsPopupReturnReasons}
       >
         {blocks.map((block) => (
           <BlockRenderer
@@ -118,6 +121,7 @@ export async function getServerSideProps({
         ticketsPopupGeneral: TICKETS_POPUP_GENERAL,
         ticketsPopupSubsidized: TICKETS_POPUP_SUBSIDIZED,
         ticketsPopupRulesImages: TICKETS_POPUP_RULES_IMAGES,
+        ticketsPopupReturnReasons: TICKETS_POPUP_RETURN_REASONS,
       },
       pageData: getMockPageData({
         slug: query.slug,

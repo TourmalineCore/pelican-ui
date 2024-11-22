@@ -14,10 +14,12 @@ export function TicketsPopup({
   ticketsPopupGeneral,
   ticketsPopupSubsidized,
   ticketsPopupRulesImages,
+  ticketsPopupReturnReasons,
 }: Pick<GlobalComponentProps,
 "ticketsPopupGeneral" |
 "ticketsPopupSubsidized" |
 "ticketsPopupRulesImages" |
+"ticketsPopupReturnReasons" |
 "popupTicketBuyText">) {
   const {
     isActive,
@@ -121,8 +123,27 @@ export function TicketsPopup({
               icon={iconChevron}
 
             >
-              <div className="tickets-popup__refund">
-                Возврат билета осуществляется в следующих случаях:
+              <div className="tickets-popup__return">
+                Возврат билета осуществляется в&nbsp;следующих случаях:
+                <ul className="tickets-popup__return-reasons">
+                  {ticketsPopupReturnReasons.map(({
+                    id, returnReason,
+                  }) => (
+                    <li
+                      className="tickets-popup__return-reason"
+                      key={id}
+                    >
+                      <span className="tickets-popup__return-counter" />
+                      <span className="tickets-popup__return-text">{returnReason}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="#"
+                  className="tickets-popup__refund-btn button button--secondary"
+                >
+                  Подробнее о возврате билетов
+                </Link>
               </div>
             </Accordion>
           </div>
