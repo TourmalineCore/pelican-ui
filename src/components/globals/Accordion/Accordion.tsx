@@ -1,10 +1,12 @@
 import clsx from 'clsx';
+import Image from 'next/image';
 import { PropsWithChildren, useState } from 'react';
 
  type AccordionComponentProps = PropsWithChildren & {
    triggerText: string;
-   triggerHideText: string;
+   triggerHideText?: string;
    className?: string;
+   icon: string;
  };
 
 export function Accordion({
@@ -12,6 +14,7 @@ export function Accordion({
   triggerHideText,
   children,
   className,
+  icon,
 }: AccordionComponentProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,6 +23,9 @@ export function Accordion({
       className={clsx(
         `accordion`,
         className,
+        {
+          'is-active': isOpen,
+        },
       )}
       data-testid="accordion"
     >
@@ -31,7 +37,15 @@ export function Accordion({
         className="accordion__trigger button"
         data-testid="accordion-trigger"
       >
-        {isOpen ? triggerHideText : triggerText}
+        {isOpen ? triggerHideText || triggerText : triggerText}
+
+        <span className="accordion__icon">
+          <Image
+            className="accordion__chevron"
+            src={icon}
+            alt={isOpen ? `Hide accordion content` : `Open accordion content`}
+          />
+        </span>
       </button>
       {isOpen && (
         <div
