@@ -1,0 +1,139 @@
+.text-and-media {
+  position: relative;
+  z-index: 0;
+  padding-top: 52px;
+  padding-bottom: 52px;
+
+  &::before {
+    content: "";
+    display: none;
+
+    @include tablet {
+      position: absolute;
+      left: 18%;
+      top: 55%;
+      z-index: -1;
+      display: block;
+      width: 67.3%;
+      max-width: 517px;
+      background-image: url("../../../../public/images/text-and-media/duck-footsteps-pink.svg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      aspect-ratio: 517 / 310;
+    }
+
+    @include tablet-xl {
+      left: 15%;
+      top: 60.5%;
+      width: 50.5%;
+      max-width: 560px;
+    }
+
+    @include desktop {
+      left: 11.9%;
+      top: 57.9%;
+      width: 38%;
+      max-width: 730px;
+    }
+
+    @include desktop-xl {
+      left: 11.25%;
+      top: 67.3%;
+      width: 39.5%;
+      max-width: 759px;
+      aspect-ratio: 759 / 454;
+    }
+  }
+
+  &__text {
+    margin-bottom: 24px;
+
+    @include tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    @include h1-text;
+
+    margin-bottom: 12px;
+    color: $color-black-75;
+
+    @include tablet {
+      max-width: 95%;
+    }
+
+    @include tablet-xl {
+      margin-bottom: 16px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__description {
+    @include caption-1-medium;
+
+    color: $color-black-60;
+
+    @include tablet {
+      max-width: 95%;
+    }
+
+    @include tablet-xl {
+      @include body-2-medium;
+    }
+  }
+
+  &__video {
+    overflow: hidden;
+    border-radius: 24px;
+    aspect-ratio: 343 / 240;
+
+    @include tablet {
+      border-radius: 32px;
+      aspect-ratio: 362 / 267;
+    }
+
+    @include tablet-xl {
+      aspect-ratio: 472 / 267;
+    }
+
+    @include desktop {
+      aspect-ratio: 740 / 403;
+    }
+
+    @include desktop-xl {
+      border-radius: 40px;
+      aspect-ratio: 1032 / 562;
+    }
+  }
+
+  @include tablet {
+    display: grid;
+    padding-top: 56px;
+    padding-bottom: 131px;
+    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  @include tablet-xl {
+    padding-bottom: 196px;
+    gap: 16px;
+  }
+
+  @include desktop {
+    padding-top: 136.5px;
+    padding-bottom: 136.5px;
+    gap: 24px;
+    grid-template-columns: 40.6% auto;
+  }
+
+  @include desktop-xl {
+    padding-top: 88px;
+    padding-bottom: 88px;
+    gap: 32px;
+  }
+}

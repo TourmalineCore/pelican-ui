@@ -44,6 +44,7 @@ export type HomePageProps = {
   title: string;
   blocks: (
     HeroComponentProps
+    | TextAndMediaComponentProps
     | ServicesComponentProps
     | ContactZooPreviewComponentProps
     | MapComponentProps
@@ -67,6 +68,18 @@ export type Timetable = {
   days: string,
   time: string,
   ticketsOfficeTime: string,
+};
+
+export type TextAndMediaComponentProps = {
+  id: number
+  __component: BlockTypes.TEXT_AND_MEDIA,
+  title: string,
+  description: string,
+  video: {
+    alt: string,
+    url: string,
+    mime: string,
+  },
 };
 
 export type ServicesComponentProps = {

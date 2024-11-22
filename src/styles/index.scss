@@ -5,6 +5,7 @@
 @import "globals";
 
 // Component
+@import "../components/globals/Video/Video";
 @import "../components/globals/Layout/Layout";
 @import "../components/globals/Header/Header";
 @import "../components/globals/Header/components/HeaderPopupButton/HeaderPopupButton";
@@ -27,3 +28,4 @@
 @import "../components/home-page/Tickets/TicketCard/TicketCard";
 @import "../components/home-page/Map/Map";
 @import "../components/home-page/Map/components/MapAddressCard";
+@import "../components/home-page/TextAndMedia/TextAndMedia";

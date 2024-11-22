@@ -2,6 +2,7 @@ import { BlockTypes } from '@/src/common/enum';
 import {
   GlobalComponentProps,
   HeroComponentProps,
+  TextAndMediaComponentProps,
   ServicesComponentProps,
   ContactZooPreviewComponentProps,
   MapComponentProps,
@@ -11,6 +12,13 @@ import dynamic from 'next/dynamic';
 
 const Hero = dynamic(
   () => import(`../../home-page/Hero/Hero`).then((component) => component.Hero),
+  {
+    ssr: false,
+  },
+);
+
+const TextAndMedia = dynamic(
+  () => import(`../../home-page/TextAndMedia/TextAndMedia`).then((component) => component.TextAndMedia),
   {
     ssr: false,
   },
@@ -45,6 +53,7 @@ const Tickets = dynamic(
 );
 
 type Block = HeroComponentProps
+| TextAndMediaComponentProps
 | ServicesComponentProps
 | ContactZooPreviewComponentProps
 | MapComponentProps
@@ -71,7 +80,14 @@ export const BlockRenderer = ({
           infoCardDescription={block.infoCardDescription}
         />
       );
-
+    case BlockTypes.TEXT_AND_MEDIA:
+      return (
+        <TextAndMedia
+          title={block.title}
+          description={block.description}
+          video={block.video}
+        />
+      );
     case BlockTypes.SERVICES:
       return (
         <Services
