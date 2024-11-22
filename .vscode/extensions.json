@@ -6,6 +6,7 @@
     "vscode-icons-team.vscode-icons",
     "k--kato.intellij-idea-keybindings",
     "eamodio.gitlens",
+    "ms-playwright.playwright",
     
     // Use code-spell-checker plugins only in open-source projects
     "streetsidesoftware.code-spell-checker",

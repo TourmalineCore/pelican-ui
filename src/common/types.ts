@@ -43,10 +43,12 @@ export type HomePageProps = {
   id: number,
   title: string;
   blocks: (
-    HeroComponentProps |
-    ServicesComponentProps |
-    ContactZooPreviewComponentProps |
-    TicketsComponentProps
+    HeroComponentProps
+    | TextAndMediaComponentProps
+    | ServicesComponentProps
+    | ContactZooPreviewComponentProps
+    | MapComponentProps
+    | TicketsComponentProps
   )[];
 };
 
@@ -66,6 +68,18 @@ export type Timetable = {
   days: string,
   time: string,
   ticketsOfficeTime: string,
+};
+
+export type TextAndMediaComponentProps = {
+  id: number
+  __component: BlockTypes.TEXT_AND_MEDIA,
+  title: string,
+  description: string,
+  video: {
+    alt: string,
+    url: string,
+    mime: string,
+  },
 };
 
 export type ServicesComponentProps = {
@@ -97,6 +111,15 @@ export type ContactZooPreviewComponentProps = {
 type Image = {
   url: StaticImageData | string;
   alt: string;
+};
+
+export type MapComponentProps = {
+  id: number
+  __component: BlockTypes.MAP,
+  title: string,
+  subtitle: string,
+  note: string,
+  image: Image,
 };
 
 export type TicketsComponentProps = {
