@@ -1,6 +1,5 @@
 .map-address-card {
   position: relative;
-  margin-bottom: 64px;
   border-radius: 24px;
   padding: 24px 16px;
   background-color: $color-white;
@@ -175,22 +174,18 @@
   }
 
   @include tablet {
-    margin-bottom: 32px;
     padding: 24px;
   }
 
   @include tablet-xl {
-    margin-bottom: 60px;
     border-radius: 32px;
   }
 
   @include desktop {
-    margin-bottom: 64px;
     padding: 40px 32px;
   }
 
   @include desktop-xl {
-    margin-bottom: 96px;
     border-radius: 56px;
     padding: 56px;
   }

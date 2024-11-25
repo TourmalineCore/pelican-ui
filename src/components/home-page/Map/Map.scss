@@ -33,6 +33,26 @@
     }
   }
 
+  &__address-card {
+    margin-bottom: 64px;
+
+    @include tablet {
+      margin-bottom: 32px;
+    }
+
+    @include tablet-xl {
+      margin-bottom: 60px;
+    }
+
+    @include desktop {
+      margin-bottom: 64px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 96px;
+    }
+  }
+
   @include tablet {
     min-height: 577px;
   }

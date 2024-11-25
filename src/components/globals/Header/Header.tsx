@@ -57,7 +57,9 @@ export function Header({
     >
       <div className="container header__wrapper">
         <div className="header__left">
-          <HeaderLogo />
+          <HeaderLogo
+            className="header__logo"
+          />
           {isDesktop && (
             <HeaderNavigation navigationLinks={navigationLinks} />
           )}
@@ -66,6 +68,7 @@ export function Header({
         <div className="header__right">
           {!isDesktop && (
             <HeaderPopupButton
+              className="header__popup-button"
               isActive={isActive}
               handleToggle={handleToggle}
             />
@@ -91,6 +94,7 @@ export function Header({
       </div>
       {!isDesktop && (
         <HeaderPopup
+          className="header__popup"
           isActive={isActive}
           email={email}
           phone={phone}
