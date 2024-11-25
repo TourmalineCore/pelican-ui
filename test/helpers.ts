@@ -52,3 +52,12 @@ export async function hideMap({
   await page.getByTestId(`map`)
     .evaluate((element) => element.style.visibility = `hidden`);
 }
+
+export async function hideTextAndMedia({
+  page,
+}: {
+  page: Page,
+}) {
+  await page.getByTestId(`text-and-media`)
+    .evaluate((element) => element.style.visibility = `hidden`);
+}

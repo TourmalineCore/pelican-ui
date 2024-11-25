@@ -120,7 +120,7 @@ export function Footer({
               className="footer__copyright-link"
             >
               Tourmaline Core
-              <span className="footer__heart">❤️</span>
+              <span className="footer__heart">❤</span>
             </Link>
           </div>
         </div>
