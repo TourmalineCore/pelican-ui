@@ -4,13 +4,15 @@ import { HeaderNavigationPopup } from "./components/HeaderNavigationPopup/Header
 import { SocialMedia } from "../../../SocialNetwork/SocialMedia";
 
 export function HeaderPopup({
+  className,
   isActive,
   navigationLinks,
   email,
   phone,
   popupTicketBuyText,
 }: Pick<GlobalComponentProps, 'email' | 'phone' | 'navigationLinks' | 'popupTicketBuyText'> & {
-  isActive: boolean
+  className: string,
+  isActive: boolean,
 }) {
   return (
     <CSSTransition
@@ -22,7 +24,7 @@ export function HeaderPopup({
       unmountOnExit
     >
       <div
-        className="container header-popup"
+        className={`${className} container header-popup`}
         data-testId="header-popup"
       >
         {isActive && (
@@ -34,6 +36,7 @@ export function HeaderPopup({
               {popupTicketBuyText}
             </button>
             <HeaderNavigationPopup
+              className="header-popup__nav"
               navigationLinks={navigationLinks}
             />
 
@@ -54,7 +57,9 @@ export function HeaderPopup({
               </div>
 
               <div className="header-popup__social-media">
-                <SocialMedia />
+                <SocialMedia
+                  className="header-popup__social-icon"
+                />
               </div>
 
             </div>

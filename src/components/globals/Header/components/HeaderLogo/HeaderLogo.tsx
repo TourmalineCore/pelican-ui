@@ -5,13 +5,19 @@ import { AppRoute, Breakpoint } from "@/src/common/enum";
 import Logo from '../../../../../../public/images/header/logo.svg';
 import LogoDesktop from '../../../../../../public/images/header/logo-desktop.svg';
 
-export function HeaderLogo() {
+export function HeaderLogo({
+  className,
+}: {
+  className: string,
+}) {
   const windowWidth = useWindowWidth();
 
   return (
-    <Link href={AppRoute.HOME}>
+    <Link
+      className={`${className} header-logo`}
+      href={AppRoute.HOME}
+    >
       <Image
-        className="header-logo"
         src={getLogo({
           windowsSize: windowWidth,
         })}
