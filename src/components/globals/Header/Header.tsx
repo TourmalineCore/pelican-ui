@@ -5,7 +5,6 @@ import { Breakpoint } from "@/src/common/enum";
 import dynamic from "next/dynamic";
 import clsx from "clsx";
 import { HeaderLogo } from "./components/HeaderLogo/HeaderLogo";
-import { HeaderEye } from "./components/HeaderEye/HeaderEye";
 import { Button } from "../Button/Button";
 import { HeaderNavigation } from "./components/HeaderNavigation/HeaderNavigation";
 import { HeaderPopupButton } from "./components/HeaderPopupButton/HeaderPopupButton";
@@ -30,6 +29,7 @@ export function Header({
 }: HeaderProps) {
   const [isActive, setIsActive] = useState(false);
   const windowWidth = useWindowWidth();
+
   useEffect(() => {
     const mainElement = overlayElementRef.current!;
 
@@ -64,7 +64,6 @@ export function Header({
         </div>
 
         <div className="header__right">
-          <HeaderEye />
           {!isDesktop && (
             <HeaderPopupButton
               isActive={isActive}
