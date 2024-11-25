@@ -42,6 +42,7 @@ export function Layout({
           ticketsPopupRulesImages={ticketsPopupRulesImages}
           ticketsPopupReturnReasons={ticketsPopupReturnReasons}
           phone={phone}
+          overlayElementRef={overlayElementRef}
         />
         <main
           className="main"

@@ -3,6 +3,7 @@ import { POPUP_TICKET_BUY_TEXT } from "@/src/common/mocks/globals-mock";
 import { GlobalComponentProps } from "@/src/common/types";
 import { useTicketPopup } from '@/src/common/hooks/useTicketPopup';
 import Link from 'next/link';
+import { MutableRefObject, useEffect } from 'react';
 import { Accordion } from "../Accordion/Accordion";
 import crossIcon from "../../../../public/images/tickets-popup/icon-cross.svg";
 import { TicketsPopupCard } from './components/TicketsPopupCard';
@@ -15,16 +16,33 @@ export function TicketsPopup({
   ticketsPopupSubsidized,
   ticketsPopupRulesImages,
   ticketsPopupReturnReasons,
+  overlayElementRef,
 }: Pick<GlobalComponentProps,
 "ticketsPopupGeneral" |
 "ticketsPopupSubsidized" |
 "ticketsPopupRulesImages" |
 "ticketsPopupReturnReasons" |
-"popupTicketBuyText">) {
+"popupTicketBuyText"> & {
+  overlayElementRef: MutableRefObject<null | HTMLElement>
+}) {
   const {
     isActive,
     handleTicketPopupToggle,
   } = useTicketPopup();
+
+  useEffect(() => {
+    const mainElement = overlayElementRef.current!;
+
+    if (isActive) {
+      mainElement.classList.add(`is-visible`);
+      mainElement.classList.add(`is-header-hidden`);
+    }
+
+    return () => {
+      mainElement.classList.remove(`is-visible`);
+      mainElement.classList.remove(`is-header-hidden`);
+    };
+  }, [isActive]);
 
   return (
     <div className="tickets-popup">
@@ -80,10 +98,16 @@ export function TicketsPopup({
                       key={id}
                     >
                       <span className="tickets-popup__prices-table-category">{category}</span>
-                      <span>{price}</span>
+                      <span className="tickets-popup__prices-table-price">{price}</span>
                     </li>
                   ))}
                 </ul>
+                <Link
+                  href="#"
+                  className="tickets-popup__link button button--secondary"
+                >
+                  Остальные льготные категории
+                </Link>
               </Accordion>
             </TicketsPopupCard>
           </ul>
@@ -111,7 +135,7 @@ export function TicketsPopup({
                 ))}
               </ul>
               <Button
-                className="tickets-popup__more-rules"
+                className="tickets-popup__more-link"
                 theme="secondary"
               >
                 Подробнее о правилах посещения
@@ -140,7 +164,7 @@ export function TicketsPopup({
                 </ul>
                 <Link
                   href="#"
-                  className="tickets-popup__refund-btn button button--secondary"
+                  className="tickets-popup__more-link button button--secondary"
                 >
                   Подробнее о возврате билетов
                 </Link>
@@ -153,7 +177,7 @@ export function TicketsPopup({
           >
             Купить билет
           </Link>
-          <p className="tickets-popup__disclaimer">Покупая билет, вы соглашаетесь с правилами посещения</p>
+          <p className="tickets-popup__disclaimer">Покупая билет, вы соглашаетесь с&nbsp;правилами посещения</p>
         </div>
       )}
     </div>
