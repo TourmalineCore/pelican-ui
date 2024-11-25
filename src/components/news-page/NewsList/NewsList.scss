@@ -1,0 +1,39 @@
+.news-list {
+  &__wrapper {
+    padding-top: 24px;
+    padding-bottom: 32px;
+
+    @include tablet {
+      padding-top: 32px;
+    }
+
+    @include tablet-xl {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    @include desktop-xl {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+  }
+
+  &__title {
+    @include h1-text;
+
+    margin-bottom: 16px;
+    color: $color-black-75;
+
+    @include tablet {
+      margin-bottom: 24px;
+    }
+
+    @include tablet-xl {
+      margin-bottom: 32px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 56px;
+    }
+  }
+}

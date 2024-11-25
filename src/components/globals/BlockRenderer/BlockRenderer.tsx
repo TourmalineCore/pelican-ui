@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { BlockTypes } from '@/src/common/enum';
 import {
   GlobalComponentProps,
@@ -7,8 +8,10 @@ import {
   ContactZooPreviewComponentProps,
   MapComponentProps,
   TicketsComponentProps,
+  NewsListComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
+import { NewsList } from '../../news-page/NewsList/NewsList';
 
 const Hero = dynamic(
   () => import(`../../home-page/Hero/Hero`).then((component) => component.Hero),
@@ -53,11 +56,12 @@ const Tickets = dynamic(
 );
 
 type Block = HeroComponentProps
-| TextAndMediaComponentProps
-| ServicesComponentProps
-| ContactZooPreviewComponentProps
-| MapComponentProps
-| TicketsComponentProps;
+  | TextAndMediaComponentProps
+  | ServicesComponentProps
+  | ContactZooPreviewComponentProps
+  | MapComponentProps
+  | TicketsComponentProps
+  | NewsListComponentProps;
 
 export const BlockRenderer = ({
   block,
@@ -128,6 +132,14 @@ export const BlockRenderer = ({
           subsidizedTicketsSubtitle={block.subsidizedTicketsSubtitle}
           generalTickets={block.generalTickets}
           subsidizedTickets={block.subsidizedTickets}
+        />
+      );
+
+    case BlockTypes.NEWS_LIST:
+      return (
+        <NewsList
+          title={block.title}
+          cards={block.cards}
         />
       );
     default:

@@ -91,12 +91,15 @@ export type ServicesComponentProps = {
   emailText: string,
 };
 
-export type ServicesCardProps = {
+export type CardProps = {
   id: number,
   image: Image,
-  labels: string[],
   title: string,
   description: string,
+};
+
+export type ServicesCardProps = CardProps & {
+  labels: string[],
 };
 
 export type ContactZooPreviewComponentProps = {
@@ -138,4 +141,19 @@ export type Ticket = {
   description?: string,
   price: string,
   frequency?: string,
+};
+
+export type NewsPageProps = {
+  id: number,
+  title: string;
+  blocks: [
+    NewsListComponentProps,
+  ];
+};
+
+export type NewsListComponentProps = {
+  id: number,
+  __component: BlockTypes.NEWS_LIST,
+  title: string,
+  cards: CardProps[],
 };

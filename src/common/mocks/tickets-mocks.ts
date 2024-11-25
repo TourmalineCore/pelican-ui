@@ -2,7 +2,7 @@ import { BlockTypes } from "../enum";
 import { TicketsComponentProps } from '../types';
 
 export const TICKETS: TicketsComponentProps = {
-  id: 1,
+  id: 5,
   __component: BlockTypes.TICKETS,
   generalTicketsTitle: `Входные билеты`,
   subsidizedTicketsTitle: `Льготные билеты`,

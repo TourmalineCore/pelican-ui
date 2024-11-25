@@ -1,6 +1,7 @@
 import { GlobalComponentProps } from "../types";
 import iconAdministration1 from '../../../public/images/footer/adm1.png';
 import iconAdministration2 from '../../../public/images/footer/adm2.png';
+import { AppRoute } from "../enum";
 
 export const EMAIL = `metodist@chelzoo.ru`;
 export const PHONE = `+7 (351) 263-18-64`;
@@ -58,7 +59,7 @@ export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
   {
     id: 1,
     name: `Новости`,
-    link: `#`,
+    link: AppRoute.NEWS,
   },
   {
     id: 2,

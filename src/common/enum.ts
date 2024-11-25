@@ -1,5 +1,6 @@
 export enum AppRoute {
   HOME = `/home`,
+  NEWS = `/news`,
 }
 
 export enum Breakpoint {
@@ -17,4 +18,5 @@ export enum BlockTypes {
   TICKETS = `home.tickets`,
   MAP = `home.map`,
   TEXT_AND_MEDIA = `home.text-and-media`,
+  NEWS_LIST = `news.news-list`,
 }
