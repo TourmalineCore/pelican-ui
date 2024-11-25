@@ -111,7 +111,9 @@ export function Footer({
             )
           }
           <div className="footer__social-media">
-            <SocialMedia />
+            <SocialMedia
+              className="footer__social-icon"
+            />
           </div>
           <div className="footer__copyright">
             Сайт разработан

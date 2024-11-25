@@ -19,4 +19,5 @@ export enum BlockTypes {
   MAP = `home.map`,
   TEXT_AND_MEDIA = `home.text-and-media`,
   NEWS_LIST = `news.news-list`,
+  NOT_FOUND = `not-found.not-found`,
 }

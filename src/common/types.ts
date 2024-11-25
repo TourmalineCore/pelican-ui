@@ -157,3 +157,16 @@ export type NewsListComponentProps = {
   title: string,
   cards: CardProps[],
 };
+
+export type NotFoundPageProps = {
+  id: number,
+  title: string;
+  blocks: (
+    NotFoundComponentProps
+  )[];
+};
+
+export type NotFoundComponentProps = {
+  id: number,
+  __component: BlockTypes.NOT_FOUND,
+};

@@ -9,6 +9,7 @@ import {
   MapComponentProps,
   TicketsComponentProps,
   NewsListComponentProps,
+  NotFoundComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 import { NewsList } from '../../news-page/NewsList/NewsList';
@@ -55,13 +56,21 @@ const Tickets = dynamic(
   },
 );
 
+const NotFound = dynamic(
+  () => import(`../../not-found-page/NotFound/NotFound`).then((component) => component.NotFound),
+  {
+    ssr: false,
+  },
+);
+
 type Block = HeroComponentProps
   | TextAndMediaComponentProps
   | ServicesComponentProps
   | ContactZooPreviewComponentProps
   | MapComponentProps
   | TicketsComponentProps
-  | NewsListComponentProps;
+  | NewsListComponentProps
+  | NotFoundComponentProps;
 
 export const BlockRenderer = ({
   block,
@@ -142,6 +151,12 @@ export const BlockRenderer = ({
           cards={block.cards}
         />
       );
+
+    case BlockTypes.NOT_FOUND:
+      return (
+        <NotFound />
+      );
+
     default:
       return null;
   }

@@ -8,7 +8,7 @@ export async function setViewportSize({
 }: {
   page: Page,
   width?: number,
-  height?: number
+  height?: number,
 }) {
   await page.setViewportSize({
     width,
