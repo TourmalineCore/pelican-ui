@@ -1,16 +1,11 @@
-import { NotFoundComponentProps } from "@/src/common/types";
 import Image from "next/image";
 import { Breakpoint } from "@/src/common/enum";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import Link from "next/link";
+import BearImageSrc from "@/public/images/not-found/bear.svg";
+import GeeseImageSrc from "@/public/images/contact-zoo/contact-zoo-geese.svg";
 
-export function NotFound({
-  title,
-  subtitle,
-  note,
-  largeImage,
-  smallImage,
-}: Omit<NotFoundComponentProps, 'id' | '__component'>) {
+export function NotFound() {
   const windowWidth = useWindowWidth();
 
   if (windowWidth === 0) {
@@ -24,19 +19,19 @@ export function NotFound({
       className="not-found container"
       data-testid="not-found"
     >
-      <h1 className="not-found__title">{title}</h1>
-      <h2 className="not-found__subtitle">{subtitle}</h2>
-      <p className="not-found__note">{note}</p>
+      <h1 className="not-found__title">404</h1>
+      <h2 className="not-found__subtitle">Ой, что-то пошло не так</h2>
+      <p className="not-found__note">Страница не найдена или не существует</p>
       <Image
         className="not-found__image"
-        src={largeImage.url}
-        alt={largeImage.alt}
+        src={BearImageSrc}
+        alt="Медведь"
       />
       {isTablet && (
         <Image
           className="not-found__image"
-          src={smallImage.url}
-          alt={smallImage.alt}
+          src={GeeseImageSrc}
+          alt="Гуси"
         />
       )}
       <Link

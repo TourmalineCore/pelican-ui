@@ -142,13 +142,7 @@ export const BlockRenderer = ({
 
     case BlockTypes.NOT_FOUND:
       return (
-        <NotFound
-          title={block.title}
-          subtitle={block.subtitle}
-          note={block.note}
-          largeImage={block.largeImage}
-          smallImage={block.smallImage}
-        />
+        <NotFound />
       );
     default:
       return null;

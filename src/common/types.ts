@@ -151,9 +151,4 @@ export type NotFoundPageProps = {
 export type NotFoundComponentProps = {
   id: number,
   __component: BlockTypes.NOT_FOUND,
-  title: string,
-  subtitle: string,
-  note: string,
-  largeImage: Image,
-  smallImage: Image,
 };
