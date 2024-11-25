@@ -7,6 +7,7 @@ import {
   ContactZooPreviewComponentProps,
   MapComponentProps,
   TicketsComponentProps,
+  NotFoundComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
@@ -52,12 +53,20 @@ const Tickets = dynamic(
   },
 );
 
+const NotFound = dynamic(
+  () => import(`../../not-found-page/NotFound/NotFound`).then((component) => component.NotFound),
+  {
+    ssr: false,
+  },
+);
+
 type Block = HeroComponentProps
 | TextAndMediaComponentProps
 | ServicesComponentProps
 | ContactZooPreviewComponentProps
 | MapComponentProps
-| TicketsComponentProps;
+| TicketsComponentProps
+| NotFoundComponentProps;
 
 export const BlockRenderer = ({
   block,
@@ -129,6 +138,11 @@ export const BlockRenderer = ({
           generalTickets={block.generalTickets}
           subsidizedTickets={block.subsidizedTickets}
         />
+      );
+
+    case BlockTypes.NOT_FOUND:
+      return (
+        <NotFound />
       );
     default:
       return null;

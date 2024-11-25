@@ -7,6 +7,11 @@ import localFont from "next/font/local";
 const inter = localFont({
   src: [
     {
+      path: '../../public/fonts/Inter-ExtraBold.otf',
+      weight: '800',
+      style: 'normal',
+    },
+    {
       path: '../../public/fonts/Inter-SemiBold.otf',
       weight: '600',
       style: 'normal',
