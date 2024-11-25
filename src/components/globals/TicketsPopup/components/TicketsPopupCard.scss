@@ -13,24 +13,61 @@
   &__price {
     flex-shrink: 0;
     font-size: 18px;
+
+    @include tablet {
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      font-size: 26px;
+    }
   }
 
   &__wrapper {
     max-width: 176px;
+
+    @include tablet {
+      max-width: 200px;
+    }
+
+    @include desktop-xl {
+      max-width: none;
+    }
   }
 
   &__category {
     font-weight: 500;
     font-size: 18px;
     line-height: 1.45;
+
+    @include tablet {
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      max-width: 300px;
+      font-size: 26px;
+    }
   }
 
   &__description {
     margin-top: 4px;
     font-weight: 500;
     font-size: 14px;
-    line-height: 145%;
+    line-height: 1.45;
     color: $color-black-75;
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      max-width: 510px;
+      font-size: 22px;
+    }
   }
 
   &:hover,
@@ -48,6 +85,28 @@
 
     #{$this}__description {
       margin-bottom: 16px;
+
+      @include tablet {
+        margin-bottom: 22px;
+        max-width: 450px;
+      }
+
+      @include tablet-xl {
+        margin-bottom: 24px;
+      }
+
+      @include desktop-xl {
+        margin-bottom: 26px;
+      }
     }
+  }
+
+  @include tablet {
+    padding: 16px;
+  }
+
+  @include desktop-xl {
+    border-radius: 24px;
+    padding: 24px;
   }
 }
