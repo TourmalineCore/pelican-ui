@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Breakpoint } from "@/src/common/enum";
+import { AppRoute, Breakpoint } from "@/src/common/enum";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import Link from "next/link";
 import BearImageSrc from "@/public/images/not-found/bear.svg";
@@ -35,7 +35,7 @@ export function NotFound() {
         />
       )}
       <Link
-        href="/"
+        href={AppRoute.HOME}
         className="not-found__button button button--primary"
       >
         Главная страница
