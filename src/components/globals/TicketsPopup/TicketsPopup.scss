@@ -99,6 +99,10 @@
 
   &__prices-table {
     margin-bottom: 16px;
+
+    @include tablet {
+      margin-bottom: 24px;
+    }
   }
 
   &__prices-table-row {
@@ -109,6 +113,10 @@
     border-bottom: 1px solid #c1bfbf;
     padding: 10px 0;
     font-size: 16px;
+
+    @include tablet {
+      align-items: flex-start;
+    }
   }
 
   &__prices-table-category {
@@ -118,13 +126,24 @@
     line-height: 1.45;
 
     @include tablet {
+      max-width: 163px;
       font-size: 16px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      max-width: 225px;
+      font-size: 22px;
     }
   }
 
   &__prices-table-price {
     @include tablet {
       font-size: 18px;
+    }
+
+    @include desktop-xl {
+      font-size: 24px;
     }
   }
 
@@ -158,8 +177,12 @@
       font-size: 18px;
     }
 
-    @include desktop-xl {
+    @include desktop {
       margin-top: 15px;
+    }
+
+    @include desktop-xl {
+      margin-top: 24px;
       padding: 16px;
       font-size: 26px;
       line-height: 1.4;
@@ -197,6 +220,18 @@
 
   &__rule {
     max-width: 25%;
+
+    @include tablet {
+      width: 70px;
+    }
+
+    @include tablet-xl {
+      width: 80px;
+    }
+
+    @include desktop-xl {
+      width: 96px;
+    }
   }
 
   &__return {
@@ -220,13 +255,22 @@
     & + & {
       margin-top: 4px;
     }
+
+    @include desktop-xl {
+      font-size: 22px;
+    }
   }
 
   &__return-reasons {
     counter-reset: reason;
     margin-top: 5px;
     font-size: 16px;
+    line-height: 1.45;
     color: $color-white-80;
+
+    @include tablet-xl {
+      line-height: 1.4;
+    }
   }
 
   &__return-counter {
@@ -247,9 +291,41 @@
     font-size: 16px;
     line-height: 1.45;
     color: $color-black;
+
+    @include tablet {
+      font-size: 18px;
+    }
+
+    @include desktop {
+      border-radius: 16px;
+    }
+
+    @include desktop-xl {
+      font-size: 22px;
+    }
   }
 
   &__link {
     padding: 12px;
+
+    @include tablet {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      font-size: 22px;
+    }
+  }
+
+  &__return-head {
+    @include tablet {
+      max-width: 300px;
+    }
+
+    @include desktop-xl {
+      max-width: 400px;
+      font-size: 22px;
+    }
   }
 }

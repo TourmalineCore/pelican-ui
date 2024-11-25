@@ -148,7 +148,7 @@ export function TicketsPopup({
 
             >
               <div className="tickets-popup__return">
-                Возврат билета осуществляется в&nbsp;следующих случаях:
+                <div className="tickets-popup__return-head">Возврат билета осуществляется в&nbsp;следующих случаях:</div>
                 <ul className="tickets-popup__return-reasons">
                   {ticketsPopupReturnReasons.map(({
                     id, returnReason,

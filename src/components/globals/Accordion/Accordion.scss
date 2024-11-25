@@ -38,6 +38,10 @@
     @include tablet {
       margin-top: 8px;
     }
+
+    @include tablet-xl {
+      margin-top: 0;
+    }
   }
 
   &.is-active {
