@@ -1,5 +1,5 @@
-import { BlockTypes } from "../enum";
-import { TicketsComponentProps } from '../types';
+import { BlockTypes } from "../../enum";
+import { TicketsComponentProps } from '../../types';
 
 export const TICKETS: TicketsComponentProps = {
   id: 5,

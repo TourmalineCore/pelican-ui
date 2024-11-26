@@ -36,4 +36,60 @@
       margin-bottom: 56px;
     }
   }
+
+  &__cards {
+    display: grid;
+    gap: 16px;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tablet-xl {
+      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(3, minmax(413px, 617px));
+    }
+
+    @include desktop-xl {
+      gap: 32px;
+    }
+  }
+
+  &__button-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    @include caption-1-medium;
+
+    flex-grow: 1;
+    margin-top: 16px;
+    padding: 12px 24px;
+    max-width: 360px;
+
+    @include tablet {
+      margin-top: 24px;
+    }
+
+    @include tablet-xl {
+      margin-top: 32px;
+      max-width: 468px;
+    }
+
+    @include desktop {
+      margin-top: 40px;
+      max-width: 414px;
+    }
+
+    @include desktop-xl {
+      margin-top: 56px;
+      padding: 16px 24px;
+      max-width: 576px;
+    }
+  }
 }

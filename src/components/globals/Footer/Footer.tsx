@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { GlobalComponentProps } from "@/src/common/types";
 import { Breakpoint } from "@/src/common/enum";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
+import { useRouter } from "next/router";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 
 export function Footer({
@@ -13,10 +14,11 @@ export function Footer({
   phone,
   footerNavTitleLeft,
   footerNavTitleRight,
-}: Omit<GlobalComponentProps, "navigationLinks" | "popupTicketBuyText" >) {
+}: Omit<GlobalComponentProps, "navigationLinks" | "popupTicketBuyText">) {
   const windowWidth = useWindowWidth();
   const isDesktop = windowWidth >= Breakpoint.DESKTOP;
   const isTablet = windowWidth >= Breakpoint.TABLET;
+  const router = useRouter();
 
   return (
     <div
@@ -63,6 +65,12 @@ export function Footer({
                     <Link
                       href={link}
                       className="footer__nav-link"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (router.pathname !== link) {
+                          router.push(link);
+                        }
+                      }}
                     >
                       {name}
                     </Link>

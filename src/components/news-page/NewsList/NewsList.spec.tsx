@@ -1,4 +1,4 @@
-import { AppRoute } from '@/src/common/enum';
+import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { hideHeader, setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
@@ -13,16 +13,20 @@ test.describe(`ContactZooComponentTests`, () => {
     });
   });
 
+  test(`PaginationTest`, paginationTest);
+
   test(`MobileTest`, mobileTest);
 
-  // test(`TabletTest`, tabletTest);
+  test(`TabletTest`, tabletTest);
 
-  // test(`TabletXlTest`, tabletXlTest);
+  test(`TabletXlTest`, tabletXlTest);
 
-  // test(`DesktopTest`, desktopTest);
+  test(`DesktopTest`, desktopTest);
+
+  test(`DesktopXlTest`, desktopXlTest);
 });
 
-async function mobileTest({
+async function paginationTest({
   page,
 }: {
   page: Page,
@@ -31,59 +35,103 @@ async function mobileTest({
     page,
   });
 
+  await expect(getNewsCardByTestId({
+    page,
+  }))
+    .toHaveCount(6);
+
+  await page.getByTestId(`news-list-button`)
+    .click();
+
+  await expect(getNewsCardByTestId({
+    page,
+  }))
+    .toHaveCount(7);
+}
+
+async function mobileTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    height: 2434,
+  });
+
   await expect(getNewsListByTestId({
     page,
   }))
     .toHaveScreenshot(`news-list-mobile.png`);
 }
 
-// async function tabletTest({
-//   page,
-// }: {
-//   page: Page,
-// }) {
-//   await setViewportSize({
-//     page,
-//     width: Breakpoint.TABLET,
-//   });
+async function tabletTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.TABLET,
+    height: 1319,
+  });
 
-//   await expect(getNewsListByTestId({
-//     page,
-//   }))
-//     .toHaveScreenshot(`contact-zoo-tablet.png`);
-// }
+  await expect(getNewsListByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`news-list-tablet.png`);
+}
 
-// async function tabletXlTest({
-//   page,
-// }: {
-//   page: Page,
-// }) {
-//   await setViewportSize({
-//     page,
-//     width: Breakpoint.TABLET_XL,
-//   });
+async function tabletXlTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.TABLET_XL,
+    height: 1760,
+  });
 
-//   await expect(getNewsListByTestId({
-//     page,
-//   }))
-//     .toHaveScreenshot(`contact-zoo-tablet-xl.png`);
-// }
+  await expect(getNewsListByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`news-list-tablet-xl.png`);
+}
 
-// async function desktopTest({
-//   page,
-// }: {
-//   page: Page,
-// }) {
-//   await setViewportSize({
-//     page,
-//     width: Breakpoint.DESKTOP,
-//   });
+async function desktopTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+    height: 1314,
+  });
 
-//   await expect(getNewsListByTestId({
-//     page,
-//   }))
-//     .toHaveScreenshot(`contact-zoo-desktop.png`);
-// }
+  await expect(getNewsListByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`news-list-desktop.png`);
+}
+
+async function desktopXlTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP_XL,
+    height: 1695,
+  });
+
+  await expect(getNewsListByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`news-list-desktop-xl.png`);
+}
 
 function getNewsListByTestId({
   page,
@@ -91,4 +139,12 @@ function getNewsListByTestId({
   page: Page
 }) {
   return page.getByTestId(`news-list`);
+}
+
+function getNewsCardByTestId({
+  page,
+}: {
+  page: Page
+}) {
+  return page.getByTestId(`news-list-card`);
 }

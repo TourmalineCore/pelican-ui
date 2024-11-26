@@ -143,17 +143,8 @@ export type Ticket = {
   frequency?: string,
 };
 
-export type NewsPageProps = {
-  id: number,
-  title: string;
-  blocks: [
-    NewsListComponentProps,
-  ];
-};
-
 export type NewsListComponentProps = {
   id: number,
-  __component: BlockTypes.NEWS_LIST,
   title: string,
   cards: CardProps[],
 };

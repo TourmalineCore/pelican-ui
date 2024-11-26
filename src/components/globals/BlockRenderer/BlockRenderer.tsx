@@ -8,11 +8,9 @@ import {
   ContactZooPreviewComponentProps,
   MapComponentProps,
   TicketsComponentProps,
-  NewsListComponentProps,
   NotFoundComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
-import { NewsList } from '../../news-page/NewsList/NewsList';
 
 const Hero = dynamic(
   () => import(`../../home-page/Hero/Hero`).then((component) => component.Hero),
@@ -69,7 +67,6 @@ type Block = HeroComponentProps
   | ContactZooPreviewComponentProps
   | MapComponentProps
   | TicketsComponentProps
-  | NewsListComponentProps
   | NotFoundComponentProps;
 
 export const BlockRenderer = ({
@@ -141,14 +138,6 @@ export const BlockRenderer = ({
           subsidizedTicketsSubtitle={block.subsidizedTicketsSubtitle}
           generalTickets={block.generalTickets}
           subsidizedTickets={block.subsidizedTickets}
-        />
-      );
-
-    case BlockTypes.NEWS_LIST:
-      return (
-        <NewsList
-          title={block.title}
-          cards={block.cards}
         />
       );
 

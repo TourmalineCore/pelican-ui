@@ -1,5 +1,5 @@
-import { BlockTypes } from "../enum";
-import { TextAndMediaComponentProps } from "../types";
+import { BlockTypes } from "../../enum";
+import { TextAndMediaComponentProps } from "../../types";
 
 export const TEXT_AND_MEDIA: TextAndMediaComponentProps = {
   id: 2,

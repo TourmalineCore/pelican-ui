@@ -1,4 +1,4 @@
-import { HomePageProps } from "../types";
+import { HomePageProps } from "../../types";
 import { CONTACT_ZOO_PREVIEW } from "./contact-zoo-preview-mocks";
 import { HERO } from "./hero-mocks";
 import { MAP } from "./map-mocks";

@@ -1,7 +1,7 @@
 import LargeImageSrc from "@/public/images/contact-zoo/contact-zoo-large.png";
 import SmallImageSrc from "@/public/images/contact-zoo/contact-zoo-small.png";
-import { ContactZooPreviewComponentProps } from "../types";
-import { BlockTypes } from "../enum";
+import { ContactZooPreviewComponentProps } from "../../types";
+import { BlockTypes } from "../../enum";
 
 export const CONTACT_ZOO_PREVIEW: ContactZooPreviewComponentProps = {
   id: 4,

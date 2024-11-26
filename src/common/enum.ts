@@ -18,6 +18,5 @@ export enum BlockTypes {
   TICKETS = `home.tickets`,
   MAP = `home.map`,
   TEXT_AND_MEDIA = `home.text-and-media`,
-  NEWS_LIST = `news.news-list`,
   NOT_FOUND = `not-found.not-found`,
 }

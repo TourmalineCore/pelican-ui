@@ -1,6 +1,6 @@
-import { BlockTypes } from "../enum";
-import { MapComponentProps } from "../types";
-import lamaImage from '../../../public/images/map/lama.png';
+import lamaImage from '@/public/images/map/lama.png';
+import { BlockTypes } from "../../enum";
+import { MapComponentProps } from "../../types";
 
 export const MAP: MapComponentProps = {
   id: 6,
