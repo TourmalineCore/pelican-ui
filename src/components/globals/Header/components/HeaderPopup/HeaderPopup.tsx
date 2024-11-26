@@ -6,6 +6,7 @@ import { HeaderNavigationPopup } from "./components/HeaderNavigationPopup/Header
 import { SocialMedia } from "../../../SocialNetwork/SocialMedia";
 
 export function HeaderPopup({
+  className,
   isActive,
   navigationLinks,
   email,
@@ -14,6 +15,7 @@ export function HeaderPopup({
   onTicketPopupOpen,
 }: Pick <GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
   isActive: boolean,
+  className: string,
   onTicketPopupOpen: MouseEventHandler<HTMLButtonElement>;
 }) {
   const {
@@ -30,7 +32,7 @@ export function HeaderPopup({
       unmountOnExit
     >
       <div
-        className="container header-popup"
+        className={`${className} container header-popup`}
         data-testId="header-popup"
       >
         {isActive && (
@@ -46,6 +48,7 @@ export function HeaderPopup({
               {popupTicketBuyText}
             </button>
             <HeaderNavigationPopup
+              className="header-popup__nav"
               navigationLinks={navigationLinks}
             />
 
@@ -66,7 +69,9 @@ export function HeaderPopup({
               </div>
 
               <div className="header-popup__social-media">
-                <SocialMedia />
+                <SocialMedia
+                  className="header-popup__social-icon"
+                />
               </div>
 
             </div>

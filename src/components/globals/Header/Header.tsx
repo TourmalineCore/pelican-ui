@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 import clsx from "clsx";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { HeaderLogo } from "./components/HeaderLogo/HeaderLogo";
-import { HeaderEye } from "./components/HeaderEye/HeaderEye";
 import { Button } from "../Button/Button";
 import { HeaderNavigation } from "./components/HeaderNavigation/HeaderNavigation";
 import { HeaderPopupButton } from "./components/HeaderPopupButton/HeaderPopupButton";
@@ -18,13 +17,17 @@ const HeaderPopup = dynamic(
   },
 );
 
+type HeaderProps = Pick<GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
+  overlayElementRef: MutableRefObject<null | HTMLElement>
+};
+
 export function Header({
   navigationLinks,
   email,
   phone,
   popupTicketBuyText,
   overlayElementRef,
-}: Pick<GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
+}: HeaderProps & {
   overlayElementRef: MutableRefObject<null | HTMLElement>
 }) {
   const {
@@ -33,6 +36,7 @@ export function Header({
 
   const [isActive, setIsActive] = useState(false);
   const windowWidth = useWindowWidth();
+
   useEffect(() => {
     const mainElement = overlayElementRef.current!;
 
@@ -60,16 +64,18 @@ export function Header({
     >
       <div className="container header__wrapper">
         <div className="header__left">
-          <HeaderLogo />
+          <HeaderLogo
+            className="header__logo"
+          />
           {isDesktop && (
             <HeaderNavigation navigationLinks={navigationLinks} />
           )}
         </div>
 
         <div className="header__right">
-          <HeaderEye />
           {!isDesktop && (
             <HeaderPopupButton
+              className="header__popup-button"
               isActive={isActive}
               handleToggle={handleToggle}
             />
@@ -96,6 +102,7 @@ export function Header({
       </div>
       {!isDesktop && (
         <HeaderPopup
+          className="header__popup"
           isActive={isActive}
           email={email}
           phone={phone}

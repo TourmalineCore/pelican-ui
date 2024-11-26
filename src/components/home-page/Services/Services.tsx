@@ -1,6 +1,5 @@
 import { GlobalComponentProps, ServicesComponentProps } from "@/src/common/types";
 import { ServicesCard } from "./components/ServicesCard";
-import { Button } from "../../globals/Button/Button";
 
 export function Services({
   title,
@@ -30,36 +29,34 @@ export function Services({
             description={card.description}
           />
         ))}
-        <div className="services__info-cards">
+        <li className="services__info-cards">
           <a
             href={`tel:${phone}`}
             className="services__phone-link"
             tabIndex={-1}
           >
-            <Button
-              className="services__phone-button"
-              theme="secondary"
+            <span
+              className="services__phone-button button button--secondary"
             >
               {phoneText}
               {` `}
               {phone}
-            </Button>
+            </span>
           </a>
           <a
             href={`mailto:${email}`}
             className="services__email-link"
             tabIndex={-1}
           >
-            <Button
-              className="services__email-button"
-              theme="primary"
+            <span
+              className="services__email-button button button--primary"
             >
               {emailText}
               {` `}
               {email}
-            </Button>
+            </span>
           </a>
-        </div>
+        </li>
       </ul>
     </section>
   );

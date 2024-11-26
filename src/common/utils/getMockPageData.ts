@@ -1,5 +1,6 @@
 import { AppRoute } from "../enum";
 import { HOME_PAGE } from "../mocks/home-page-mocks";
+import { NOT_FOUND_PAGE } from "../mocks/not-found-page-mocks";
 
 export function getMockPageData({
   slug,
@@ -11,6 +12,6 @@ export function getMockPageData({
       return HOME_PAGE;
 
     default:
-      return null;
+      return NOT_FOUND_PAGE;
   }
 }

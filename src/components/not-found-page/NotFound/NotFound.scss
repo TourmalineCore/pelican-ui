@@ -1,0 +1,232 @@
+.not-found {
+  position: relative;
+  padding-top: 177px;
+  padding-bottom: 40px;
+  height: calc(100vh - 64px);
+  min-height: 587px;
+
+  &__title {
+    @include extra-bold-font;
+
+    font-size: 160px;
+    line-height: 1;
+    text-align: center;
+    color: $color-green-dark;
+
+    @include tablet {
+      padding-bottom: 2px;
+      font-size: 280px;
+    }
+
+    @include tablet-xl {
+      padding-bottom: 4px;
+      font-size: 320px;
+    }
+
+    @include desktop {
+      margin-bottom: -26px;
+      padding-bottom: 0;
+      font-size: 400px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: -43px;
+      font-size: 560px;
+    }
+  }
+
+  &__subtitle {
+    @include h2-text;
+
+    text-align: center;
+    color: $color-green-dark;
+
+    @include tablet {
+      @include medium-font;
+
+      padding-bottom: 8px;
+      font-size: 40px;
+      line-height: 1.25;
+    }
+
+    @include tablet-xl {
+      @include h1-text;
+    }
+
+    @include desktop {
+      @include semi-bold-font;
+
+      font-size: 40px;
+      line-height: 1.25;
+    }
+
+    @include desktop-xl {
+      padding-bottom: 0;
+      font-size: 64px;
+      line-height: 1.45;
+    }
+  }
+
+  &__note {
+    @include caption-2-medium;
+
+    margin-bottom: 111px;
+    text-align: center;
+    color: $color-black-60;
+
+    @include tablet {
+      @include body-1-medium;
+
+      margin-bottom: 64px;
+    }
+
+    @include tablet-xl {
+      @include text-medium;
+
+      margin-bottom: 96px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 89px;
+    }
+  }
+
+  &__image {
+    &:nth-of-type(1) {
+      position: absolute;
+      left: -150px;
+      top: -170px;
+      width: 335px;
+      height: 424px;
+      transform: rotate(110deg);
+
+      @include tablet {
+        left: -270px;
+        top: 310px;
+        width: 435px;
+        height: 535px;
+        transform: rotate(30deg);
+      }
+
+      @include tablet-xl {
+        top: 190px;
+        width: 502px;
+        height: 602px;
+        transform: rotate(36deg);
+      }
+
+      @include desktop {
+        left: -300px;
+        top: 20px;
+        width: 632px;
+        height: 732px;
+        transform: rotate(33deg);
+      }
+
+      @include desktop-xl {
+        left: -385px;
+        top: 66px;
+        width: 42vw;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    &:nth-of-type(2) {
+      position: absolute;
+      right: 16px;
+      bottom: 43px;
+      width: 209px;
+      height: 135px;
+      transform: scaleX(-1);
+
+      @include tablet-xl {
+        right: 32px;
+        bottom: 32px;
+      }
+
+      @include desktop {
+        right: 40px;
+        bottom: 69px;
+      }
+
+      @include desktop-xl {
+        right: 64px;
+        bottom: 96px;
+        width: 14.5vw;
+        height: auto;
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__button {
+    @include caption-1-medium;
+
+    position: relative;
+    padding: 12px;
+    width: 100%;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -72px;
+      width: 139px;
+      height: 81px;
+      background-image: url("../../../../public/images/contact-zoo/contact-zoo-geese.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    @include tablet {
+      padding: 12px 109px;
+      width: auto;
+    }
+
+    @include tablet-xl {
+      padding: 12px 155px;
+    }
+
+    @include desktop {
+      padding: 12px 180px;
+    }
+
+    @include desktop-xl {
+      padding: 16px 322.5px;
+    }
+  }
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 82px;
+    padding-bottom: 182px;
+    min-height: 743px;
+  }
+
+  @include tablet-xl {
+    padding-top: 50px;
+    padding-bottom: 138px;
+  }
+
+  @include desktop {
+    padding-top: 20px;
+    padding-bottom: 109px;
+    height: calc(100vh - 97px);
+    min-height: 733px;
+  }
+
+  @include desktop-xl {
+    padding-top: 78px;
+    padding-bottom: 152px;
+    height: calc(100vh - 135px);
+    min-height: 1041px;
+  }
+}

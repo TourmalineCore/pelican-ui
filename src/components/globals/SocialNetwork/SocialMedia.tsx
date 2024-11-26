@@ -28,7 +28,11 @@ const ICONS = [
   },
 ];
 
-export function SocialMedia() {
+export function SocialMedia({
+  className,
+}: {
+  className: string,
+}) {
   return (
     <>
       {ICONS.map(({
@@ -37,6 +41,7 @@ export function SocialMedia() {
         link,
       }) => (
         <a
+          className={`${className}`}
           href={link}
           key={alt}
         >

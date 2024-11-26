@@ -1,6 +1,6 @@
 .contact-zoo {
   position: relative;
-  z-index: 0;
+  z-index: $contact-zoo;
   padding-top: 52px;
 
   &__wrapper {
@@ -13,7 +13,7 @@
       position: absolute;
       z-index: -1;
       border-radius: 32px;
-      height: calc(100% + 24px);
+      height: calc(100% + 56px);
       background-image: url("../../../../public/images/contact-zoo/contact-zoo-footsteps.png");
       background-position: -230px -25px;
       background-size: cover;

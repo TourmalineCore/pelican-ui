@@ -129,7 +129,9 @@ export function Footer({
             )
           }
           <div className="footer__social-media">
-            <SocialMedia />
+            <SocialMedia
+              className="footer__social-icon"
+            />
           </div>
           <div className="footer__copyright">
             Сайт разработан
@@ -138,7 +140,7 @@ export function Footer({
               className="footer__copyright-link"
             >
               Tourmaline Core
-              <span className="footer__heart">❤️</span>
+              <span className="footer__heart">❤</span>
             </Link>
           </div>
         </div>

@@ -3,21 +3,7 @@ import { BlockRenderer } from '@/src/components/globals/BlockRenderer/BlockRende
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
 import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps, HomePageProps } from '../common/types';
-import {
-  EMAIL,
-  FOOTER_ABOUT_LINKS,
-  FOOTER_USER_LINKS,
-  NAVIGATION_LINKS,
-  OFFICIAL_LINKS,
-  PHONE,
-  POPUP_TICKET_BUY_TEXT,
-  FOOTER_NAV_TITLE_LEFT,
-  FOOTER_NAV_TITLE_RIGHT,
-  TICKETS_POPUP_GENERAL,
-  TICKETS_POPUP_SUBSIDIZED,
-  TICKETS_POPUP_RULES_IMAGES,
-  TICKETS_POPUP_RETURN_REASONS,
-} from '../common/mocks/globals-mock';
+import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 
 type UniversalProps = {
   globalData: GlobalComponentProps,
@@ -28,9 +14,8 @@ export default function UniversalPage({
   globalData,
   pageData,
 }: UniversalProps) {
-  // TODO: Редирект на 404 в будущем будет внутри getServerSideProps
-  if (!pageData) {
-    return <div>404</div>;
+  if (!pageData || !globalData) {
+    return <NotFound />;
   }
 
   const {
@@ -108,21 +93,6 @@ export async function getServerSideProps({
   // TODO there will be a request in the Strapi api here
   return {
     props: {
-      globalData: {
-        popupTicketBuyText: POPUP_TICKET_BUY_TEXT,
-        email: EMAIL,
-        phone: PHONE,
-        navigationLinks: NAVIGATION_LINKS,
-        footerAboutLinks: FOOTER_ABOUT_LINKS,
-        footerUserLinks: FOOTER_USER_LINKS,
-        officialLinks: OFFICIAL_LINKS,
-        footerNavTitleLeft: FOOTER_NAV_TITLE_LEFT,
-        footerNavTitleRight: FOOTER_NAV_TITLE_RIGHT,
-        ticketsPopupGeneral: TICKETS_POPUP_GENERAL,
-        ticketsPopupSubsidized: TICKETS_POPUP_SUBSIDIZED,
-        ticketsPopupRulesImages: TICKETS_POPUP_RULES_IMAGES,
-        ticketsPopupReturnReasons: TICKETS_POPUP_RETURN_REASONS,
-      },
       pageData: getMockPageData({
         slug: query.slug,
       }),

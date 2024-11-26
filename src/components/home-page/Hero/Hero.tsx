@@ -37,10 +37,12 @@ export function Hero({
       </div>
       <div className="hero__cards">
         <HeroSchedule
+          className="hero__schedule-card"
           scheduleTitle={scheduleTitle}
           scheduleTimetables={scheduleTimetables}
         />
         <HeroInfoCard
+          className="hero__info-card"
           infoCardTitle={infoCardTitle}
           infoCardDescription={infoCardDescription}
         />
