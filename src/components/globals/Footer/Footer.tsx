@@ -48,6 +48,7 @@ export function Footer({
                     type="button"
                     className="button footer__nav-link"
                     onClick={handleTicketPopupToggle}
+                    data-testid="footer-tickets-popup-button"
                   >
                     {popupTicketBuyText}
                   </button>

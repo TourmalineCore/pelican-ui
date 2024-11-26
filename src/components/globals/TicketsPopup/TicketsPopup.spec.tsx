@@ -13,6 +13,8 @@ test.describe(`TicketsPopupComponentTests`, () => {
   });
 
   test(`ActionTest`, actionTest);
+
+  test(`MobileTest`, mobileTest);
 });
 
 async function actionTest({
@@ -36,6 +38,22 @@ async function actionTest({
     page,
   }))
     .toBeHidden;
+}
+
+async function mobileTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    height: 812,
+  });
+
+  await expect(getTicketsPopupByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`tickets-popup-mobile.png`);
 }
 
 function getTicketsPopupByTestId({
