@@ -101,6 +101,7 @@ export function Header({
           phone={phone}
           navigationLinks={navigationLinks}
           popupTicketBuyText={popupTicketBuyText}
+          onTicketPopupOpen={() => handleToggle()}
         />
       )}
     </div>
