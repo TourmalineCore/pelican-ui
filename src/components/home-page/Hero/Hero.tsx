@@ -62,6 +62,7 @@ export function Hero({
               theme="primary"
               isFeatured
               onClick={handleTicketPopupToggle}
+              data-testid="hero-tickets-popup-button"
             >
               Билеты
             </Button>

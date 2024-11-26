@@ -56,6 +56,7 @@ export function TicketsPopup({
               type="button"
               className="button tickets-popup__close-btn"
               onClick={handleTicketPopupToggle}
+              data-testid="tickets-popup-close-button"
             >
               <Image
                 priority
