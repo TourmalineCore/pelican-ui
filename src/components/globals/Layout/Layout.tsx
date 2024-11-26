@@ -41,7 +41,6 @@ export function Layout({
           ticketsPopupSubsidized={ticketsPopupSubsidized}
           ticketsPopupRulesImages={ticketsPopupRulesImages}
           ticketsPopupReturnReasons={ticketsPopupReturnReasons}
-          phone={phone}
           overlayElementRef={overlayElementRef}
         />
         <main

@@ -21,8 +21,7 @@ export function TicketsPopup({
 "ticketsPopupGeneral" |
 "ticketsPopupSubsidized" |
 "ticketsPopupRulesImages" |
-"ticketsPopupReturnReasons" |
-"popupTicketBuyText"> & {
+"ticketsPopupReturnReasons"> & {
   overlayElementRef: MutableRefObject<null | HTMLElement>
 }) {
   const {

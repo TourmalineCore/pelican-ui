@@ -15,7 +15,12 @@ export function Footer({
   footerNavTitleLeft,
   footerNavTitleRight,
   popupTicketBuyText,
-}: Omit<GlobalComponentProps, "navigationLinks" >) {
+}: Omit<GlobalComponentProps,
+"navigationLinks" |
+"ticketsPopupGeneral" |
+"ticketsPopupSubsidized" |
+"ticketsPopupRulesImages" |
+"ticketsPopupReturnReasons" >) {
   const windowWidth = useWindowWidth();
   const isDesktop = windowWidth >= Breakpoint.DESKTOP;
   const isTablet = windowWidth >= Breakpoint.TABLET;
