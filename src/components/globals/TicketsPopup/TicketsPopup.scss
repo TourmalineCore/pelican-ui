@@ -168,6 +168,13 @@
     margin-top: 24px;
     padding: 12px;
     font-size: 18px;
+    transition: all ease-out 0.3s;
+
+    &:hover,
+    &:active {
+      color: $color-black;
+      background-color: $color-white;
+    }
 
     @include tablet {
       font-size: 16px;
@@ -234,20 +241,20 @@
     }
   }
 
-  &__return {
+  &__refund {
     margin-top: 24px;
     line-height: 1.45;
   }
 
-  &__return-text {
+  &__refund-text {
     margin-left: 8px;
   }
 
-  &__return-reason {
+  &__refund-reason {
     display: flex;
 
     &:first-child {
-      #{$this}__return-text {
+      #{$this}__refund-text {
         margin-left: 10px;
       }
     }
@@ -261,7 +268,7 @@
     }
   }
 
-  &__return-reasons {
+  &__refund-reasons {
     counter-reset: reason;
     margin-top: 5px;
     font-size: 16px;
@@ -273,7 +280,7 @@
     }
   }
 
-  &__return-counter {
+  &__refund-counter {
     &::before {
       counter-increment: reason;
       content: counter(reason) ".";
@@ -318,7 +325,7 @@
     }
   }
 
-  &__return-head {
+  &__refund-head {
     @include tablet {
       max-width: 300px;
     }

@@ -20,7 +20,7 @@ export function Footer({
 "ticketsPopupGeneral" |
 "ticketsPopupSubsidized" |
 "ticketsPopupRulesImages" |
-"ticketsPopupReturnReasons" >) {
+"ticketsPopupRefundReasons" >) {
   const windowWidth = useWindowWidth();
   const isDesktop = windowWidth >= Breakpoint.DESKTOP;
   const isTablet = windowWidth >= Breakpoint.TABLET;

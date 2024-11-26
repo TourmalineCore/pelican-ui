@@ -79,16 +79,12 @@
     flex-direction: column;
 
     #{$this}__wrapper {
+      margin-bottom: 16px;
       width: 100%;
       max-width: none;
-    }
-
-    #{$this}__description {
-      margin-bottom: 16px;
 
       @include tablet {
         margin-bottom: 22px;
-        max-width: 450px;
       }
 
       @include tablet-xl {
@@ -97,6 +93,14 @@
 
       @include desktop-xl {
         margin-bottom: 26px;
+      }
+    }
+    #{$this}__description {
+      @include tablet {
+        max-width: 450px;
+      }
+
+      @include desktop-xl {
         max-width: 510px;
       }
     }

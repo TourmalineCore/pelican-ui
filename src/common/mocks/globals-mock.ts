@@ -187,18 +187,18 @@ export const TICKETS_POPUP_RULES_IMAGES: GlobalComponentProps['ticketsPopupRules
   },
 ];
 
-export const TICKETS_POPUP_RETURN_REASONS: GlobalComponentProps['ticketsPopupReturnReasons'] = [
+export const TICKETS_POPUP_REFUND_REASONS: GlobalComponentProps['ticketsPopupRefundReasons'] = [
   {
     id: 0,
-    returnReason: `отмены, замены либо переноса оказания услуги по инициативе Зоопарка;`,
+    refundReason: `отмены, замены либо переноса оказания услуги по инициативе Зоопарка;`,
   },
   {
     id: 1,
     // eslint-disable-next-line @stylistic/max-len
-    returnReason: `отказа от оказания услуг посетителем по уважительным причинам (болезнь, смерть члена семьи или близкого родственника, и т.п.), при предъявлении подтверждающих документов;`,
+    refundReason: `отказа от оказания услуг посетителем по уважительным причинам (болезнь, смерть члена семьи или близкого родственника, и т.п.), при предъявлении подтверждающих документов;`,
   },
   {
     id: 2,
-    returnReason: `в иных случаях по решению директора.`,
+    refundReason: `в иных случаях по решению директора.`,
   },
 ];

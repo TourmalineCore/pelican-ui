@@ -13,7 +13,7 @@ import {
   PHONE,
   POPUP_TICKET_BUY_TEXT,
   TICKETS_POPUP_GENERAL,
-  TICKETS_POPUP_RETURN_REASONS,
+  TICKETS_POPUP_REFUND_REASONS,
   TICKETS_POPUP_RULES_IMAGES,
   TICKETS_POPUP_SUBSIDIZED,
 } from '../common/mocks/globals-mock';
@@ -79,7 +79,7 @@ App.getInitialProps = async () => ({
       ticketsPopupGeneral: TICKETS_POPUP_GENERAL,
       ticketsPopupSubsidized: TICKETS_POPUP_SUBSIDIZED,
       ticketsPopupRulesImages: TICKETS_POPUP_RULES_IMAGES,
-      ticketsPopupReturnReasons: TICKETS_POPUP_RETURN_REASONS,
+      ticketsPopupRefundReasons: TICKETS_POPUP_REFUND_REASONS,
     },
   },
 });

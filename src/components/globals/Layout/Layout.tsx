@@ -21,7 +21,7 @@ export function Layout({
   ticketsPopupGeneral,
   ticketsPopupSubsidized,
   ticketsPopupRulesImages,
-  ticketsPopupReturnReasons,
+  ticketsPopupRefundReasons,
 }: {
 } & LayoutProps) {
   const overlayElementRef = useRef<null | HTMLDivElement>(null);
@@ -40,7 +40,7 @@ export function Layout({
           ticketsPopupGeneral={ticketsPopupGeneral}
           ticketsPopupSubsidized={ticketsPopupSubsidized}
           ticketsPopupRulesImages={ticketsPopupRulesImages}
-          ticketsPopupReturnReasons={ticketsPopupReturnReasons}
+          ticketsPopupRefundReasons={ticketsPopupRefundReasons}
           overlayElementRef={overlayElementRef}
         />
         <main

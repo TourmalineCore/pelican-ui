@@ -15,13 +15,13 @@ export function TicketsPopup({
   ticketsPopupGeneral,
   ticketsPopupSubsidized,
   ticketsPopupRulesImages,
-  ticketsPopupReturnReasons,
+  ticketsPopupRefundReasons,
   overlayElementRef,
 }: Pick<GlobalComponentProps,
 "ticketsPopupGeneral" |
 "ticketsPopupSubsidized" |
 "ticketsPopupRulesImages" |
-"ticketsPopupReturnReasons"> & {
+"ticketsPopupRefundReasons"> & {
   overlayElementRef: MutableRefObject<null | HTMLElement>
 }) {
   const {
@@ -146,18 +146,18 @@ export function TicketsPopup({
               icon={iconChevron}
 
             >
-              <div className="tickets-popup__return">
-                <div className="tickets-popup__return-head">Возврат билета осуществляется в&nbsp;следующих случаях:</div>
-                <ul className="tickets-popup__return-reasons">
-                  {ticketsPopupReturnReasons.map(({
-                    id, returnReason,
+              <div className="tickets-popup__refund">
+                <div className="tickets-popup__refund-head">Возврат билета осуществляется в&nbsp;следующих случаях:</div>
+                <ul className="tickets-popup__refund-reasons">
+                  {ticketsPopupRefundReasons.map(({
+                    id, refundReason,
                   }) => (
                     <li
-                      className="tickets-popup__return-reason"
+                      className="tickets-popup__refund-reason"
                       key={id}
                     >
-                      <span className="tickets-popup__return-counter" />
-                      <span className="tickets-popup__return-text">{returnReason}</span>
+                      <span className="tickets-popup__refund-counter" />
+                      <span className="tickets-popup__refund-text">{refundReason}</span>
                     </li>
                   ))}
                 </ul>

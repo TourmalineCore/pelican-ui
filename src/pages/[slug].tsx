@@ -31,7 +31,7 @@ export default function UniversalPage({
     ticketsPopupGeneral,
     ticketsPopupSubsidized,
     ticketsPopupRulesImages,
-    ticketsPopupReturnReasons,
+    ticketsPopupRefundReasons,
   } = globalData;
   const {
     title, blocks,
@@ -59,7 +59,7 @@ export default function UniversalPage({
         ticketsPopupGeneral={ticketsPopupGeneral}
         ticketsPopupSubsidized={ticketsPopupSubsidized}
         ticketsPopupRulesImages={ticketsPopupRulesImages}
-        ticketsPopupReturnReasons={ticketsPopupReturnReasons}
+        ticketsPopupRefundReasons={ticketsPopupRefundReasons}
       >
         {blocks.map((block) => (
           <BlockRenderer
