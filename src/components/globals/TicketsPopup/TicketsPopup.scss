@@ -124,6 +124,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 1.45;
+    color: $color-black-75;
 
     @include tablet {
       max-width: 163px;
@@ -167,7 +168,7 @@
   &__buy-button {
     margin-top: 24px;
     padding: 12px;
-    font-size: 18px;
+    font-size: 16px;
     transition: all ease-out 0.3s;
 
     &:hover,
@@ -226,11 +227,8 @@
   }
 
   &__rule {
+    width: 71px;
     max-width: 25%;
-
-    @include tablet {
-      width: 70px;
-    }
 
     @include tablet-xl {
       width: 80px;

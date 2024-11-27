@@ -15,6 +15,8 @@ test.describe(`TicketsPopupComponentTests`, () => {
   test(`ActionTest`, actionTest);
 
   test(`MobileTest`, mobileTest);
+
+  test(`MobileClickedTest`, mobileClickedTest);
 });
 
 async function actionTest({
@@ -54,6 +56,40 @@ async function mobileTest({
     page,
   }))
     .toHaveScreenshot(`tickets-popup-mobile.png`);
+}
+
+async function mobileClickedTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    height: 1780,
+  });
+
+  await page.getByTestId(`accordion-trigger`)
+    .filter({
+      hasText: `Подробнее`,
+    })
+    .click();
+
+  await page.getByTestId(`accordion-trigger`)
+    .filter({
+      hasText: `Правила посещения`,
+    })
+    .click();
+
+  await page.getByTestId(`accordion-trigger`)
+    .filter({
+      hasText: `Возврат билетов`,
+    })
+    .click();
+
+  await expect(getTicketsPopupByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`tickets-popup-mobile-clicked.png`);
 }
 
 function getTicketsPopupByTestId({
