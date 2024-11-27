@@ -24,7 +24,7 @@ export const NEWS_LIST: NewsListComponentProps = {
       id: 1,
       image: {
         url: employeeImage,
-        alt: `Сотрудник зоопарка с животным`,
+        alt: `Фотография рычащего льва`,
       },
       title: `Приглашаем на встречу с\u00A0сотрудником зоопарка`,
       description: `Завтра празднуется два замечательных праздника, которые напрямую связаны с зоопарком...`,
@@ -33,7 +33,7 @@ export const NEWS_LIST: NewsListComponentProps = {
       id: 2,
       image: {
         url: sanitaryDayImage,
-        alt: `Фотография процесса проведения контактного занятия`,
+        alt: `Фотография леопарда`,
       },
       title: `30 сентября — санитарный день`,
       description: `Завтра, 30 сентября, Челябинский зоопарк ЗАКРЫТ на санитарный день.`,
@@ -42,7 +42,7 @@ export const NEWS_LIST: NewsListComponentProps = {
       id: 3,
       image: {
         url: winterModeImage,
-        alt: `Фотография процесса проведения выездной лекции`,
+        alt: `Фотография лося`,
       },
       title: `Переходим на зимний режим`,
       description: `Внимание! С 1 октября зоопарк переходит на зимний режим работы!`,
@@ -51,7 +51,7 @@ export const NEWS_LIST: NewsListComponentProps = {
       id: 4,
       image: {
         url: vacancyImage,
-        alt: `Фотография процесса проведения выездной лекции`,
+        alt: `Фотография убирающегося сотрудника`,
       },
       title: `Вакансия`,
       description: `Открыта вакансия уборщика территории.`,
@@ -60,7 +60,7 @@ export const NEWS_LIST: NewsListComponentProps = {
       id: 5,
       image: {
         url: zooDayImage,
-        alt: `Фотография процесса проведения выездной лекции`,
+        alt: `Фотография рычащего льва`,
       },
       title: `Приглашаем на День рождения зоопарка`,
       description: `14 сентября будем праздновать День рождения зоопарка.Приглашаем...`,
@@ -69,7 +69,7 @@ export const NEWS_LIST: NewsListComponentProps = {
       id: 6,
       image: {
         url: alpacaDayImage,
-        alt: `Фотография процесса проведения выездной лекции`,
+        alt: `Фотография женщины с альпакой`,
       },
       title: `Всемирный день альпака`,
       description: `10 сентября отмечается день альпака.`,
