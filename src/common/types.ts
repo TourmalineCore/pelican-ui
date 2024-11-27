@@ -143,12 +143,6 @@ export type Ticket = {
   frequency?: string,
 };
 
-export type NewsListComponentProps = {
-  id: number,
-  title: string,
-  cards: CardProps[],
-};
-
 export type NotFoundPageProps = {
   id: number,
   title: string;
