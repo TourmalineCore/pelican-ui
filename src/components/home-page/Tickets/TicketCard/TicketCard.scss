@@ -154,8 +154,17 @@
   &--general {
     background-image: url("../../../../../public/images/tickets/bg-leopard-green.png");
 
+
     @include tablet {
       background-image: url("../../../../../public/images/tickets/bg-leopard-brown.png");
+    }
+
+    @include tablet-xl {
+      &:focus,
+      &:hover {
+        background-image: url("../../../../../public/images/tickets/bg-leopard-green.png");
+        transition: background-image ease-out 0.4s;
+      }
     }
   }
 
