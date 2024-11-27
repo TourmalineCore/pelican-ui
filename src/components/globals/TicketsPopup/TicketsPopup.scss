@@ -45,7 +45,7 @@
     }
 
     @include tablet-xl {
-      padding: 22px 0 20px;
+      padding: 24px 0;
     }
 
     @include desktop-xl {
@@ -77,6 +77,10 @@
 
   &__cards {
     margin-top: 10px;
+
+    @include desktop {
+      margin-top: 8px;
+    }
 
     @include desktop-xl {
       margin-top: 32px;
@@ -163,7 +167,7 @@
 
     &--refund {
       @include desktop-xl {
-        padding: 16px 24px;
+        padding: 16px 16px 16px 24px;
       }
     }
   }

@@ -116,7 +116,7 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
-    height: 829,
+    height: 781,
   });
 
   await expect(getTicketsPopupByTestId({
@@ -133,7 +133,7 @@ async function tabletClickedTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
-    height: 1600,
+    height: 1556,
   });
 
   await page.getByTestId(`accordion-trigger`)
@@ -157,7 +157,7 @@ async function tabletClickedTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-clicked-tablet.png`);
+    .toHaveScreenshot(`tickets-popup-tablet-clicked.png`);
 }
 
 async function tabletXlTest({
@@ -209,7 +209,7 @@ async function tabletXlClickedTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`aaa.png`);
+    .toHaveScreenshot(`tickets-popup-tablet-xl-clicked.png`);
 }
 
 async function desktopTest({

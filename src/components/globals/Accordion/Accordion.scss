@@ -61,6 +61,15 @@
   &--ticket-card {
     #{$this}__trigger {
       color: $color-green;
+
+      @include tablet {
+        font-size: 18px;
+        line-height: 1.4;
+      }
+
+      @include desktop-xl {
+        font-size: 24px;
+      }
     }
 
     @include tablet {
