@@ -31,6 +31,10 @@
       max-width: 200px;
     }
 
+    @include tablet-xl {
+      max-width: 260px;
+    }
+
     @include desktop-xl {
       max-width: none;
     }
@@ -44,6 +48,10 @@
     @include tablet {
       font-size: 20px;
       line-height: 1.4;
+    }
+
+    @include tablet-xl {
+      max-width: 200px;
     }
 
     @include desktop-xl {
