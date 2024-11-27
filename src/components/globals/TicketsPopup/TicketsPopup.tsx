@@ -143,7 +143,7 @@ export function TicketsPopup({
             </Accordion>
             <Accordion
               triggerText="Возврат билетов"
-              className="tickets-popup__accordion accordion--ticket-rules"
+              className="tickets-popup__accordion tickets-popup__accordion--refund accordion--ticket-rules"
               icon={iconChevron}
 
             >

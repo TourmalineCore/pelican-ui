@@ -19,6 +19,10 @@
 
   &__content {
     margin-top: 4px;
+
+    @include desktop-xl {
+      margin-top: 8px;
+    }
   }
 
   &__icon {
@@ -41,6 +45,10 @@
 
     @include tablet-xl {
       margin-top: 0;
+    }
+
+    @include desktop-xl {
+      width: 19px;
     }
   }
 
