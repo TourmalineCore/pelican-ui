@@ -1,5 +1,6 @@
 export enum AppRoute {
   HOME = `/home`,
+  NEWS = `/news`,
 }
 
 export enum Breakpoint {
