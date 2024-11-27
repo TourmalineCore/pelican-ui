@@ -84,23 +84,9 @@ async function mobileClickedTest({
     height: 1780,
   });
 
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Подробнее`,
-    })
-    .click();
-
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Правила посещения`,
-    })
-    .click();
-
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Возврат билетов`,
-    })
-    .click();
+  openTicketsPopupAccordions({
+    page,
+  });
 
   await expect(getTicketsPopupByTestId({
     page,
@@ -136,23 +122,9 @@ async function tabletClickedTest({
     height: 1556,
   });
 
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Подробнее`,
-    })
-    .click();
-
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Правила посещения`,
-    })
-    .click();
-
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Возврат билетов`,
-    })
-    .click();
+  openTicketsPopupAccordions({
+    page,
+  });
 
   await expect(getTicketsPopupByTestId({
     page,
@@ -188,23 +160,9 @@ async function tabletXlClickedTest({
     height: 1747,
   });
 
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Подробнее`,
-    })
-    .click();
-
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Правила посещения`,
-    })
-    .click();
-
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Возврат билетов`,
-    })
-    .click();
+  openTicketsPopupAccordions({
+    page,
+  });
 
   await expect(getTicketsPopupByTestId({
     page,
@@ -240,23 +198,9 @@ async function desktopClickedTest({
     height: 1704,
   });
 
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Подробнее`,
-    })
-    .click();
-
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Правила посещения`,
-    })
-    .click();
-
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Возврат билетов`,
-    })
-    .click();
+  openTicketsPopupAccordions({
+    page,
+  });
 
   await expect(getTicketsPopupByTestId({
     page,
@@ -292,6 +236,29 @@ async function desktopXlClickedTest({
     height: 2170,
   });
 
+  openTicketsPopupAccordions({
+    page,
+  });
+
+  await expect(getTicketsPopupByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`tickets-popup-desktop-xl-clicked.png`);
+}
+
+function getTicketsPopupByTestId({
+  page,
+}: {
+  page: Page
+}) {
+  return page.getByTestId(`tickets-popup`);
+}
+
+async function openTicketsPopupAccordions({
+  page,
+}: {
+  page: Page
+}) {
   await page.getByTestId(`accordion-trigger`)
     .filter({
       hasText: `Подробнее`,
@@ -309,17 +276,4 @@ async function desktopXlClickedTest({
       hasText: `Возврат билетов`,
     })
     .click();
-
-  await expect(getTicketsPopupByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`tickets-popup-desktop-xl-clicked.png`);
-}
-
-function getTicketsPopupByTestId({
-  page,
-}: {
-  page: Page
-}) {
-  return page.getByTestId(`tickets-popup`);
 }
