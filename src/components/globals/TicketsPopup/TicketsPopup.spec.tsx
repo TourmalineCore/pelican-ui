@@ -1,4 +1,4 @@
-import { AppRoute } from '@/src/common/enum';
+import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
@@ -17,6 +17,10 @@ test.describe(`TicketsPopupComponentTests`, () => {
   test(`MobileTest`, mobileTest);
 
   test(`MobileClickedTest`, mobileClickedTest);
+
+  test(`TabletTest`, tabletTest);
+
+  test(`TabletClickedTest`, tabletClickedTest);
 });
 
 async function actionTest({
@@ -90,6 +94,58 @@ async function mobileClickedTest({
     page,
   }))
     .toHaveScreenshot(`tickets-popup-mobile-clicked.png`);
+}
+
+async function tabletTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.TABLET,
+    height: 829,
+  });
+
+  await expect(getTicketsPopupByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`tickets-popup-tablet.png`);
+}
+
+async function tabletClickedTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.TABLET,
+    height: 1600,
+  });
+
+  await page.getByTestId(`accordion-trigger`)
+    .filter({
+      hasText: `Подробнее`,
+    })
+    .click();
+
+  await page.getByTestId(`accordion-trigger`)
+    .filter({
+      hasText: `Правила посещения`,
+    })
+    .click();
+
+  await page.getByTestId(`accordion-trigger`)
+    .filter({
+      hasText: `Возврат билетов`,
+    })
+    .click();
+
+  await expect(getTicketsPopupByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`tickets-popup-clicked-tablet.png`);
 }
 
 function getTicketsPopupByTestId({

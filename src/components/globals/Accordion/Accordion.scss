@@ -7,8 +7,9 @@
     font-size: 16px;
     line-height: 1.45;
 
-    @include tablet {
+    @include tablet-xl {
       font-size: 18px;
+      line-height: 1.4;
     }
 
     @include desktop-xl {

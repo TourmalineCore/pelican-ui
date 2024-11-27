@@ -41,7 +41,7 @@
     padding: 12px 16px;
 
     @include tablet {
-      padding: 34px 40px 24px;
+      padding: 24px 40px;
     }
 
     @include tablet-xl {
@@ -77,10 +77,6 @@
 
   &__cards {
     margin-top: 10px;
-
-    @include tablet {
-      margin-top: 12px;
-    }
 
     @include desktop-xl {
       margin-top: 32px;
@@ -224,6 +220,10 @@
     flex-wrap: wrap;
     margin-top: 24px;
     gap: 8px;
+
+    @include tablet {
+      margin-top: 22px;
+    }
   }
 
   &__rule {
@@ -297,7 +297,7 @@
     line-height: 1.45;
     color: $color-black;
 
-    @include tablet {
+    @include tablet-xl {
       font-size: 18px;
     }
 
