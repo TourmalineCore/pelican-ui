@@ -2,12 +2,23 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
 	"name": "A NextJS application",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
-	"updateContentCommand": "npm install",
+ 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+ 	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
+ 	"updateContentCommand": "npm install",
+	"features": {
+  	// https://github.com/cypress-io/cypress-documentation/issues/2956#issuecomment-1691335689
+  	"ghcr.io/devcontainers/features/desktop-lite:1": {}
+	 },
+	"postCreateCommand": "apt-get update && apt-get install -y xvfb x11vnc",
+ 	"postStartCommand": "xvfb-run -n 99 x11vnc -display :99 -nopw &",
 	"forwardPorts": [
-		3000
+		6080,
+  		3000
 	],
+	"containerEnv": {
+  	// https://stackoverflow.com/questions/76555858/how-to-run-cypress-in-interactive-mode-in-a-devcontainer-on-windows-with-docker
+  	"CHOKIDAR_USEPOLLING": "true"
+ },
 	"customizations": {
 		"vscode": {
 			"extensions": [
