@@ -1,11 +1,11 @@
 /* eslint-disable @stylistic/max-len */
-import amurTigerImage from "@/public/images/news-list/amur-tiger.png";
-import employeeImage from "@/public/images/news-list/employee.png";
-import sanitaryDayImage from "@/public/images/news-list/sanitary-day.png";
-import winterModeImage from "@/public/images/news-list/winter-mode.png";
-import vacancyImage from "@/public/images/news-list/vacancy.png";
-import zooDayImage from "@/public/images/news-list/zoo-day.png";
-import alpacaDayImage from "@/public/images/news-list/alpaca-day.png";
+import amurTigerImage from "@/public/images/news/amur-tiger.png";
+import employeeImage from "@/public/images/news/employee.png";
+import sanitaryDayImage from "@/public/images/news/sanitary-day.png";
+import winterModeImage from "@/public/images/news/winter-mode.png";
+import vacancyImage from "@/public/images/news/vacancy.png";
+import zooDayImage from "@/public/images/news/zoo-day.png";
+import alpacaDayImage from "@/public/images/news/alpaca-day.png";
 import { CardProps } from "../../types";
 
 export type NewsProps = CardProps & {
@@ -24,7 +24,7 @@ export const NEWS: NewsProps[] = [
     publishedAt: `27.11.2024`,
     description: `Сегодня на Дальнем Востоке, да\u00A0и\u00A0во\u00A0всей России, отмечают День тигра.`,
     articleContent: `<p>Завтра празднуется два замечательных праздника, которые напрямую связаны с зоопарком: день защиты животных и день кипера – специалистов, которые как раз-таки оберегают зверей и заботятся о них ежедневно: кормят, развлекают, делают уборку.</p>
-      <p><img src='http://localhost:3000/public/images/news-list/amur-tiger.png' /></p>
+      <img src='/images/news/amur-tiger.png' />
       <p>По этому случаю мы приглашаем вас на встречу с кипером детского контактного зоопарка. Вы сможете узнать больше про эту профессию, задать интересующие вопросы и ближе познакомиться с некоторыми питомцами этой секции. При желании поделимся гусиными сплетнями (там целая Санта-Барбара).</p>
       <p>В комментариях можете написать вопросы, ответы на которые хотели бы услышать завтра, чтобы наш кипер заранее знал, что вам интереснее.</p>
       <p>Встречаемся 4 октября в 14:00 около декоративного пруда с карпами, напротив детского контактного зоопарка.</p>
