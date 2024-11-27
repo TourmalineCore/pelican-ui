@@ -2,21 +2,19 @@ import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideHeader, setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`NewsListComponentTest`, () => {
+test.describe(`NewsArticleComponentTest`, () => {
   test.beforeEach(async ({
     page,
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.NEWS,
+      url: `${AppRoute.NEWS}/1`,
     });
 
     await hideHeader({
       page,
     });
   });
-
-  test(`PaginationTest`, paginationTest);
 
   test(`MobileTest`, mobileTest);
 
@@ -29,29 +27,6 @@ test.describe(`NewsListComponentTest`, () => {
   test(`DesktopXlTest`, desktopXlTest);
 });
 
-async function paginationTest({
-  page,
-}: {
-  page: Page,
-}) {
-  await setViewportSize({
-    page,
-  });
-
-  await expect(getNewsCardByTestId({
-    page,
-  }))
-    .toHaveCount(6);
-
-  await page.getByTestId(`news-list-button`)
-    .click();
-
-  await expect(getNewsCardByTestId({
-    page,
-  }))
-    .toHaveCount(7);
-}
-
 async function mobileTest({
   page,
 }: {
@@ -59,13 +34,13 @@ async function mobileTest({
 }) {
   await setViewportSize({
     page,
-    height: 2434,
+    height: 1236,
   });
 
-  await expect(getNewsListByTestId({
+  await expect(getNewsArticleByTestId({
     page,
   }))
-    .toHaveScreenshot(`news-list-mobile.png`);
+    .toHaveScreenshot(`news-article-mobile.png`);
 }
 
 async function tabletTest({
@@ -76,13 +51,13 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
-    height: 1319,
+    height: 1085,
   });
 
-  await expect(getNewsListByTestId({
+  await expect(getNewsArticleByTestId({
     page,
   }))
-    .toHaveScreenshot(`news-list-tablet.png`);
+    .toHaveScreenshot(`news-article-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -93,13 +68,13 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
-    height: 1760,
+    height: 1423,
   });
 
-  await expect(getNewsListByTestId({
+  await expect(getNewsArticleByTestId({
     page,
   }))
-    .toHaveScreenshot(`news-list-tablet-xl.png`);
+    .toHaveScreenshot(`news-article-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -110,13 +85,13 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
-    height: 1314,
+    height: 1470,
   });
 
-  await expect(getNewsListByTestId({
+  await expect(getNewsArticleByTestId({
     page,
   }))
-    .toHaveScreenshot(`news-list-desktop.png`);
+    .toHaveScreenshot(`news-article-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -127,27 +102,19 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 1695,
+    height: 1932,
   });
 
-  await expect(getNewsListByTestId({
+  await expect(getNewsArticleByTestId({
     page,
   }))
-    .toHaveScreenshot(`news-list-desktop-xl.png`);
+    .toHaveScreenshot(`news-article-desktop-xl.png`);
 }
 
-function getNewsListByTestId({
+function getNewsArticleByTestId({
   page,
 }: {
   page: Page
 }) {
-  return page.getByTestId(`news-list`);
-}
-
-function getNewsCardByTestId({
-  page,
-}: {
-  page: Page
-}) {
-  return page.getByTestId(`news-list-card`);
+  return page.getByTestId(`news-article`);
 }

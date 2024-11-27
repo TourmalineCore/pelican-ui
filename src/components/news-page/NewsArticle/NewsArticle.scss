@@ -46,9 +46,40 @@
       height: auto;
       max-width: 100%;
 
+      @include tablet-xl {
+        margin-top: 32px;
+        margin-bottom: 32px;
+      }
+
       @include desktop-xl {
+        margin-top: 40px;
+        margin-bottom: 40px;
         border-radius: 64px;
       }
+    }
+
+    br {
+      content: "";
+      display: block;
+      margin-top: 12px;
+
+      @include tablet {
+        margin-top: 16px;
+      }
+
+      @include tablet-xl {
+        margin-top: 20px;
+      }
+
+      @include desktop {
+        margin-top: 24px;
+      }
+    }
+
+    li {
+      list-style: disc;
+      list-style-position: inside;
+      padding-left: 12px;
     }
   }
 

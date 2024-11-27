@@ -10,7 +10,10 @@ export function NewsArticle({
   articleContent: any
 }) {
   return (
-    <div className="news-article">
+    <div
+      className="news-article"
+      data-testid="news-article"
+    >
       <span className="news-article__date">{date}</span>
       <h2 className="news-article__title">{title}</h2>
       <MarkdownText className="news-article__content">
