@@ -25,6 +25,10 @@ test.describe(`TicketsPopupComponentTests`, () => {
   test(`TabletXlTest`, tabletXlTest);
 
   test(`TabletXlClickedTest`, tabletXlClickedTest);
+
+  test(`DesktopTest`, desktopTest);
+
+  test(`DesktopClickedTest`, desktopClickedTest);
 });
 
 async function actionTest({
@@ -202,6 +206,58 @@ async function tabletXlClickedTest({
     page,
   }))
     .toHaveScreenshot(`aaa.png`);
+}
+
+async function desktopTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+    height: 787,
+  });
+
+  await expect(getTicketsPopupByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`tickets-popup-desktop.png`);
+}
+
+async function desktopClickedTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+    height: 1704,
+  });
+
+  await page.getByTestId(`accordion-trigger`)
+    .filter({
+      hasText: `Подробнее`,
+    })
+    .click();
+
+  await page.getByTestId(`accordion-trigger`)
+    .filter({
+      hasText: `Правила посещения`,
+    })
+    .click();
+
+  await page.getByTestId(`accordion-trigger`)
+    .filter({
+      hasText: `Возврат билетов`,
+    })
+    .click();
+
+  await expect(getTicketsPopupByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`tickets-popup-desktop-clicked.png`);
 }
 
 function getTicketsPopupByTestId({

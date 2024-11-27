@@ -182,11 +182,10 @@
     }
 
     @include desktop {
-      margin-top: 15px;
+      margin-top: 24px;
     }
 
     @include desktop-xl {
-      margin-top: 24px;
       padding: 16px;
       font-size: 26px;
       line-height: 1.4;
@@ -207,6 +206,10 @@
 
     @include tablet-xl {
       margin-top: 10px;
+    }
+
+    @include desktop {
+      max-width: none;
     }
 
     @include desktop-xl {
