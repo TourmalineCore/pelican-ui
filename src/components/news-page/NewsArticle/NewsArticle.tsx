@@ -16,7 +16,7 @@ export function NewsArticle({
       data-testid="news-article"
     >
       <span className="news-article__date">{date}</span>
-      <h2 className="news-article__title">{title}</h2>
+      <h1 className="news-article__title">{title}</h1>
       <MarkdownText className="news-article__content">
         {articleContent}
       </MarkdownText>

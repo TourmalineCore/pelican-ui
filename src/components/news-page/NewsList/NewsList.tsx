@@ -34,7 +34,7 @@ export function NewsList({
       data-testid="news-list"
     >
       <div className="news-list__wrapper container">
-        <h2 className="news-list__title">{title}</h2>
+        <h1 className="news-list__title">{title}</h1>
         <ul className="news-list__cards">
           {news.map((newsCard) => (
             <NewsCard
