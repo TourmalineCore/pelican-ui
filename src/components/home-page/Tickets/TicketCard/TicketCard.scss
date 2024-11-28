@@ -152,10 +152,23 @@
   }
 
   &--general {
+    position: relative;
     background-image: url("../../../../../public/images/tickets/bg-leopard-green.png");
+    cursor: pointer;
 
     @include tablet {
-      background-image: url("../../../../../public/images/tickets/bg-leopard-brown.png");
+      background-image:
+        url("../../../../../public/images/tickets/bg-leopard-brown.png"),
+        url("../../../../../public/images/tickets/bg-leopard-green.png");
+    }
+
+    @include tablet-xl {
+      transition: background-image ease-out 0.4s;
+
+      &:focus,
+      &:hover {
+        background-image: url("../../../../../public/images/tickets/bg-leopard-green.png");
+      }
     }
   }
 
