@@ -236,26 +236,10 @@
   }
 
   &__rules-list {
-    display: flex;
-    flex-wrap: wrap;
     margin-top: 24px;
-    gap: 8px;
 
     @include tablet {
       margin-top: 22px;
-    }
-  }
-
-  &__rule {
-    width: 71px;
-    max-width: 25%;
-
-    @include tablet-xl {
-      width: 80px;
-    }
-
-    @include desktop-xl {
-      width: 96px;
     }
   }
 

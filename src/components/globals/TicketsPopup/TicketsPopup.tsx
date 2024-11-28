@@ -6,10 +6,11 @@ import Link from 'next/link';
 import { MutableRefObject, useEffect } from 'react';
 import { Accordion } from "../Accordion/Accordion";
 import crossIcon from "../../../../public/images/tickets-popup/icon-cross.svg";
-import { TicketsPopupCard } from './components/TicketsPopupCard';
+import { TicketsPopupCard } from './components/TicketsPopupCard/TicketsPopupCard';
 import iconChevron from "../../../../public/images/svg/icon-chevron.svg";
 import iconChevronGreen from "../../../../public/images/svg/icon-chevron-green.svg";
 import { Button } from '../Button/Button';
+import { TicketsPopupRulesList } from './components/TicketsPopupRulesList/TicketsPopupRulesList';
 
 export function TicketsPopup({
   ticketsPopupGeneral,
@@ -118,22 +119,10 @@ export function TicketsPopup({
               icon={iconChevron}
 
             >
-              <ul className="tickets-popup__rules-list">
-                {ticketsPopupRulesImages.map(({
-                  alt, url,
-                }) => (
-                  <li
-                    className="tickets-popup__rule"
-                    key={alt}
-                  >
-                    <Image
-                      className="tickets-popup__rule-img"
-                      src={url}
-                      alt={alt}
-                    />
-                  </li>
-                ))}
-              </ul>
+              <TicketsPopupRulesList
+                className="tickets-popup__rules-list"
+                ticketsPopupRulesImages={ticketsPopupRulesImages}
+              />
               <Button
                 className="tickets-popup__more-link"
                 theme="secondary"
