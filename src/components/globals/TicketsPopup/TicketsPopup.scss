@@ -164,7 +164,7 @@
 
   &__accordion {
     border-bottom: 1px solid $color-white;
-    padding: 16px;
+    padding: 16px 16px 15px;
 
     &--refund {
       @include desktop-xl {
