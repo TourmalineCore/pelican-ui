@@ -11,6 +11,7 @@ import iconChevron from "../../../../public/images/svg/icon-chevron.svg";
 import iconChevronGreen from "../../../../public/images/svg/icon-chevron-green.svg";
 import { Button } from '../Button/Button';
 import { TicketsPopupRulesList } from './components/TicketsPopupRulesList/TicketsPopupRulesList';
+import { TicketsPopupRefundReasons } from './components/TicketsPopupRefundReasons/TicketsPopupRefundReasons';
 
 export function TicketsPopup({
   ticketsPopupGeneral,
@@ -138,19 +139,11 @@ export function TicketsPopup({
             >
               <div className="tickets-popup__refund">
                 <div className="tickets-popup__refund-head">Возврат билета осуществляется в&nbsp;следующих случаях:</div>
-                <ul className="tickets-popup__refund-reasons">
-                  {ticketsPopupRefundReasons.map(({
-                    id, refundReason,
-                  }) => (
-                    <li
-                      className="tickets-popup__refund-reason"
-                      key={id}
-                    >
-                      <span className="tickets-popup__refund-counter" />
-                      <span className="tickets-popup__refund-text">{refundReason}</span>
-                    </li>
-                  ))}
-                </ul>
+
+                <TicketsPopupRefundReasons
+                  ticketsPopupRefundReasons={ticketsPopupRefundReasons}
+                  className="tickets-popup__refund-reasons"
+                />
                 <Link
                   href="#"
                   className="tickets-popup__more-link button button--secondary"
