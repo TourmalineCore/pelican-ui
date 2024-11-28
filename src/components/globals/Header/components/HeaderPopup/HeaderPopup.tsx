@@ -33,7 +33,7 @@ export function HeaderPopup({
     >
       <div
         className={`${className} container header-popup`}
-        data-testId="header-popup"
+        data-testid="header-popup"
       >
         {isActive && (
           <>

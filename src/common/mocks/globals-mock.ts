@@ -9,6 +9,7 @@ import noScooterImage from '../../../public/images/tickets-popup/no-scooter.png'
 import noSmokingImage from '../../../public/images/tickets-popup/no-smoking.png';
 import noTouchingImage from '../../../public/images/tickets-popup/no-touching.png';
 import noTeasingImage from '../../../public/images/tickets-popup/no-teasing.png';
+import { AppRoute } from "../enum";
 
 export const EMAIL = `metodist@chelzoo.ru`;
 export const PHONE = `+7 (351) 263-18-64`;
@@ -61,7 +62,7 @@ export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
   {
     id: 1,
     name: `Новости`,
-    link: `#`,
+    link: AppRoute.NEWS,
   },
   {
     id: 2,

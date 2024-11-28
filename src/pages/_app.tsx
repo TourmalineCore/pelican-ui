@@ -2,6 +2,8 @@
 import '../styles/index.scss';
 import type { AppProps } from 'next/app';
 import localFont from "next/font/local";
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import {
   EMAIL,
   FOOTER_ABOUT_LINKS,
@@ -47,6 +49,16 @@ const inter = localFont({
 export default function App({
   Component, pageProps,
 }: AppProps) {
+  const {
+    pathname,
+  } = useRouter();
+
+  useEffect(() => {
+    document.body.scroll({
+      top: 0,
+    });
+  }, [pathname]);
+
   return (
     <div className={inter.variable}>
       <Component {...pageProps} />

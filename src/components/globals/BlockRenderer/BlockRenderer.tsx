@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import { BlockTypes } from '@/src/common/enum';
 import {
   GlobalComponentProps,
@@ -61,12 +62,12 @@ const NotFound = dynamic(
 );
 
 type Block = HeroComponentProps
-| TextAndMediaComponentProps
-| ServicesComponentProps
-| ContactZooPreviewComponentProps
-| MapComponentProps
-| TicketsComponentProps
-| NotFoundComponentProps;
+  | TextAndMediaComponentProps
+  | ServicesComponentProps
+  | ContactZooPreviewComponentProps
+  | MapComponentProps
+  | TicketsComponentProps
+  | NotFoundComponentProps;
 
 export const BlockRenderer = ({
   block,
@@ -144,6 +145,7 @@ export const BlockRenderer = ({
       return (
         <NotFound />
       );
+
     default:
       return null;
   }

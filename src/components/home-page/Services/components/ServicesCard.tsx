@@ -1,5 +1,5 @@
 import { ServicesCardProps } from "@/src/common/types";
-import Image from "next/image";
+import { Card } from "@/src/components/globals/Card/Card";
 
 export function ServicesCard({
   className,
@@ -11,31 +11,13 @@ export function ServicesCard({
   className: string
 }) {
   return (
-    <li className={`services-card ${className}`}>
-      <div className="services-card__wrapper">
-        <div className="services-card__image-wrapper">
-          {labels && (
-            <ul className="services-card__labels">
-              {labels.map((label) => (
-                <li
-                  className="services-card__label"
-                  key={label}
-                >
-                  {label}
-                </li>
-              ))}
-            </ul>
-          )}
-          <Image
-            src={image.url}
-            alt={image.alt}
-          />
-        </div>
-        <div className="services-card__info">
-          <h3 className="services-card__title">{title}</h3>
-          <p className="services-card__description">{description}</p>
-        </div>
-      </div>
-    </li>
+    <Card
+      image={image}
+      title={title}
+      description={description}
+      labels={labels}
+      isService
+      className={`services-card ${className}`}
+    />
   );
 }

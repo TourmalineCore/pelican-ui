@@ -14,11 +14,11 @@ export function Services({
 }) {
   return (
     <section
-      className="services"
+      className="services container"
       data-testid="services"
     >
-      <h2 className="services__title container">{title}</h2>
-      <ul className="services__cards container">
+      <h2 className="services__title">{title}</h2>
+      <ul className="services__cards">
         {cards.map((card) => (
           <ServicesCard
             className="services__card"
