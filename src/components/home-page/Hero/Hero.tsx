@@ -28,6 +28,7 @@ export function Hero({
         <Image
           src={image.url}
           alt={image.alt}
+          priority
         />
       </div>
       <div className="hero__cards">

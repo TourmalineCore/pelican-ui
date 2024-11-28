@@ -10,7 +10,7 @@ import { CardProps } from "../../types";
 
 export type NewsProps = CardProps & {
   publishedAt: string;
-  articleContent: any;
+  articleContent: string;
 };
 
 export const NEWS: NewsProps[] = [
