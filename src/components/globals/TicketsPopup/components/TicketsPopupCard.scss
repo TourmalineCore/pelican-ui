@@ -73,7 +73,9 @@
 
   &:hover,
   &:focus {
-    background-color: $color-yellow;
+    @include desktop {
+      background-color: $color-yellow;
+    }
   }
 
   &--with-accordion {
