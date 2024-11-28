@@ -1,0 +1,16 @@
+.icon-dzen {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  path {
+    transition: 0.3s ease-out;
+  }
+
+  &:hover {
+    path {
+      fill: rgb(135 187 149 / 100%);
+      transition: 0.3s ease-out;
+    }
+  }
+}
