@@ -4,6 +4,7 @@ import { GlobalComponentProps } from "@/src/common/types";
 import { Breakpoint } from "@/src/common/enum";
 import dynamic from "next/dynamic";
 import clsx from "clsx";
+import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { HeaderLogo } from "./components/HeaderLogo/HeaderLogo";
 import { Button } from "../Button/Button";
 import { HeaderNavigation } from "./components/HeaderNavigation/HeaderNavigation";
@@ -26,7 +27,13 @@ export function Header({
   phone,
   popupTicketBuyText,
   overlayElementRef,
-}: HeaderProps) {
+}: HeaderProps & {
+  overlayElementRef: MutableRefObject<null | HTMLElement>
+}) {
+  const {
+    handleTicketPopupToggle,
+  } = useTicketPopup();
+
   const [isActive, setIsActive] = useState(false);
   const windowWidth = useWindowWidth();
 
@@ -85,6 +92,7 @@ export function Header({
                 className="header__ticket-button"
                 theme="primary"
                 isFeatured
+                onClick={handleTicketPopupToggle}
               >
                 Билеты
               </Button>
@@ -100,6 +108,7 @@ export function Header({
           phone={phone}
           navigationLinks={navigationLinks}
           popupTicketBuyText={popupTicketBuyText}
+          onTicketPopupOpen={() => handleToggle()}
         />
       )}
     </div>

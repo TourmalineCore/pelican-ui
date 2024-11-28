@@ -1,0 +1,86 @@
+.accordion {
+  $this: &;
+
+  &__trigger {
+    @include medium-font;
+
+    font-size: 16px;
+    line-height: 1.45;
+
+    @include tablet-xl {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      font-size: 24px;
+    }
+  }
+
+  &__content {
+    margin-top: 4px;
+
+    @include desktop-xl {
+      margin-top: 8px;
+    }
+  }
+
+  &__icon {
+    margin-left: auto;
+
+    #{$this}--ticket-card & {
+      margin-left: 8px;
+      color: $color-green;
+
+      @include tablet {
+        margin-top: 3px;
+        margin-left: 12px;
+        width: 19px;
+      }
+    }
+
+    @include tablet {
+      margin-top: 8px;
+    }
+
+    @include tablet-xl {
+      margin-top: 0;
+    }
+
+    @include desktop-xl {
+      width: 19px;
+    }
+  }
+
+  &.is-active {
+    #{$this}__chevron {
+      rotate: 180deg;
+    }
+  }
+
+  &--ticket-card {
+    #{$this}__trigger {
+      color: $color-green;
+
+      @include tablet {
+        font-size: 18px;
+        line-height: 1.4;
+      }
+
+      @include desktop-xl {
+        font-size: 24px;
+      }
+    }
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &--ticket-rules {
+    #{$this}__trigger {
+      width: 100%;
+      color: $color-white;
+    }
+  }
+}
