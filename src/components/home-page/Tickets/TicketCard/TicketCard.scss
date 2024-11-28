@@ -163,10 +163,11 @@
     }
 
     @include tablet-xl {
+      transition: background-image ease-out 0.4s;
+
       &:focus,
       &:hover {
         background-image: url("../../../../../public/images/tickets/bg-leopard-green.png");
-        transition: background-image ease-out 0.4s;
       }
     }
   }
