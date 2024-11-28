@@ -1,3 +1,4 @@
+import { NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
 import { MarkdownText } from "../../globals/MarkdownText/MarkdownText";
 
 export function NewsArticle({
@@ -5,9 +6,9 @@ export function NewsArticle({
   date,
   articleContent,
 }: {
-  title: string,
-  date: string,
-  articleContent: any
+  title: NewsProps['title'],
+  date: NewsProps['publishedAt'],
+  articleContent: NewsProps['articleContent']
 }) {
   return (
     <div

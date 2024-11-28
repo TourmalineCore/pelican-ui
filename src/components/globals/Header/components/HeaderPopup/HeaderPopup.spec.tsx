@@ -53,12 +53,10 @@ async function mobilePopupTest({
   })
     .then((button) => button.click());
 
-  await compareWithScreenshot({
+  await expect(getHeaderPopupByTestId({
     page,
-    screenName: `header-mobile-popup.png`,
-    clipWidth: Breakpoint.MOBILE,
-    clipHeight: 408,
-  });
+  }))
+    .toHaveScreenshot(`header-mobile-popup.png`);
 }
 
 async function tabletPopupTest({
@@ -76,12 +74,10 @@ async function tabletPopupTest({
   })
     .then((button) => button.click());
 
-  await compareWithScreenshot({
+  await expect(getHeaderPopupByTestId({
     page,
-    screenName: `header-tablet-popup.png`,
-    clipWidth: Breakpoint.TABLET,
-    clipHeight: 448,
-  });
+  }))
+    .toHaveScreenshot(`header-tablet-popup.png`);
 }
 
 async function tabletXlPopupTest({
@@ -99,12 +95,10 @@ async function tabletXlPopupTest({
   })
     .then((button) => button.click());
 
-  await compareWithScreenshot({
+  await expect(getHeaderPopupByTestId({
     page,
-    screenName: `header-tablet-xl-popup.png`,
-    clipWidth: Breakpoint.TABLET_XL,
-    clipHeight: 460,
-  });
+  }))
+    .toHaveScreenshot(`header-tablet-xl-popup.png`);
 }
 
 async function getHeaderPopupButtonByTestId({
@@ -115,24 +109,10 @@ async function getHeaderPopupButtonByTestId({
   return page.getByTestId(`header-popup-button`);
 }
 
-async function compareWithScreenshot({
+function getHeaderPopupByTestId({
   page,
-  screenName,
-  clipWidth,
-  clipHeight,
 }: {
-  page: Page,
-  screenName: string;
-  clipWidth: number;
-  clipHeight: number;
+  page: Page
 }) {
-  return expect(page)
-    .toHaveScreenshot(screenName, {
-      clip: {
-        width: clipWidth,
-        height: clipHeight,
-        x: 0,
-        y: 0,
-      },
-    });
+  return page.getByTestId(`header-popup`);
 }
