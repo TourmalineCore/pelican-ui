@@ -6,7 +6,7 @@ export function IconVk() {
       height="48"
       fill="none"
       viewBox="0 0 48 48"
-      className="icon-vk"
+      className="social-link__icon social-icon"
     >
       <rect
         width="48"

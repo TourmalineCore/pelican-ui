@@ -1,0 +1,31 @@
+.social-link {
+  .social-icon {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    path,
+    rect {
+      transition: 0.3s ease-out;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    .social-icon {
+      path {
+        fill: $color-white;
+      }
+
+      rect {
+        fill-opacity: 1;
+      }
+
+      &--dzen {
+        path {
+          fill: rgb(135 187 149 / 100%);
+        }
+      }
+    }
+  }
+}

@@ -42,7 +42,7 @@ export function SocialMedia({
         link,
       }) => (
         <Link
-          className={`${className}`}
+          className={`${className} social-link`}
           href={link}
           key={id}
         >
