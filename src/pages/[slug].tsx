@@ -28,6 +28,10 @@ export default function UniversalPage({
     officialLinks,
     footerNavTitleLeft,
     footerNavTitleRight,
+    ticketsPopupGeneral,
+    ticketsPopupSubsidized,
+    ticketsPopupRulesImages,
+    ticketsPopupRefundReasons,
   } = globalData;
   const {
     title, blocks,
@@ -52,6 +56,10 @@ export default function UniversalPage({
         popupTicketBuyText={popupTicketBuyText}
         footerNavTitleLeft={footerNavTitleLeft}
         footerNavTitleRight={footerNavTitleRight}
+        ticketsPopupGeneral={ticketsPopupGeneral}
+        ticketsPopupSubsidized={ticketsPopupSubsidized}
+        ticketsPopupRulesImages={ticketsPopupRulesImages}
+        ticketsPopupRefundReasons={ticketsPopupRefundReasons}
       >
         {blocks.map((block) => (
           <BlockRenderer

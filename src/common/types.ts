@@ -32,6 +32,10 @@ export type GlobalComponentProps = {
     // TODO: in the future change string to enum AppRoute
     link: string;
   }[];
+  ticketsPopupGeneral: Ticket[];
+  ticketsPopupSubsidized: Ticket[];
+  ticketsPopupRulesImages: Image[];
+  ticketsPopupRefundReasons: { id: number, refundReason: string }[]
   email: string;
   phone: string;
   popupTicketBuyText: string;
@@ -91,12 +95,15 @@ export type ServicesComponentProps = {
   emailText: string,
 };
 
-export type ServicesCardProps = {
+export type CardProps = {
   id: number,
   image: Image,
-  labels: string[],
   title: string,
   description: string,
+};
+
+export type ServicesCardProps = CardProps & {
+  labels: string[],
 };
 
 export type ContactZooPreviewComponentProps = {
@@ -138,6 +145,12 @@ export type Ticket = {
   description?: string,
   price: string,
   frequency?: string,
+};
+
+export type NewsListComponentProps = {
+  id: number,
+  title: string,
+  cards: CardProps[],
 };
 
 export type NotFoundPageProps = {

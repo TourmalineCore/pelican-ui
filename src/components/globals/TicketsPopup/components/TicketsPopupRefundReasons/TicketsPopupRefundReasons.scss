@@ -1,0 +1,43 @@
+.tickets-popup-refund-reasons {
+  $this: &;
+
+  counter-reset: reason;
+  margin-top: 5px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: $color-white-80;
+
+  &__text {
+    margin-left: 8px;
+  }
+
+  &__reason {
+    display: flex;
+
+    &:first-child {
+      #{$this}__text {
+        margin-left: 10px;
+      }
+    }
+
+    & + & {
+      margin-top: 4px;
+    }
+
+    @include desktop-xl {
+      font-size: 22px;
+    }
+  }
+
+  &__counter {
+    &::before {
+      counter-increment: reason;
+      content: counter(reason) ".";
+      margin-left: 4px;
+    }
+  }
+
+  @include tablet-xl {
+    line-height: 1.4;
+  }
+}

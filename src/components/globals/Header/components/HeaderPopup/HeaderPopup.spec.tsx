@@ -1,12 +1,15 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { setViewportSize } from '@/test/helpers';
+import { gotoPage, setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`HeaderPopupTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(AppRoute.HOME);
+    await gotoPage({
+      page,
+      url: AppRoute.HOME,
+    });
   });
 
   test(`ActionTest`, actionTest);
@@ -117,7 +120,7 @@ async function compareWithScreenshot({
   screenName,
   clipWidth,
   clipHeight,
-}:{
+}: {
   page: Page,
   screenName: string;
   clipWidth: number;

@@ -1,5 +1,6 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import {
+  gotoPage,
   hideFooter,
   hideHeader,
   hideTickets,
@@ -11,7 +12,10 @@ test.describe(`MapComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(AppRoute.HOME);
+    await gotoPage({
+      page,
+      url: AppRoute.HOME,
+    });
 
     await hideHeader({
       page,

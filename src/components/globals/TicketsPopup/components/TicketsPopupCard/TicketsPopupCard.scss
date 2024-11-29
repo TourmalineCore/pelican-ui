@@ -1,0 +1,120 @@
+.tickets-popup-card {
+  $this: &;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-radius: 16px;
+  padding: 16px 12px;
+  color: $color-black;
+  background-color: $color-white;
+  transition: background-color ease-out 0.2s;
+
+  &__price {
+    flex-shrink: 0;
+    font-size: 18px;
+
+    @include tablet {
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      font-size: 26px;
+    }
+  }
+
+  &__wrapper {
+    max-width: 176px;
+
+    @include tablet {
+      max-width: 260px;
+    }
+
+    @include desktop-xl {
+      max-width: none;
+    }
+  }
+
+  &__category {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.45;
+
+    @include tablet {
+      max-width: 200px;
+      font-size: 20px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      max-width: 300px;
+      font-size: 26px;
+    }
+  }
+
+  &__description {
+    margin-top: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.45;
+    color: $color-black-75;
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      max-width: 510px;
+      font-size: 22px;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    @include desktop {
+      background-color: $color-yellow;
+    }
+  }
+
+  &--with-accordion {
+    flex-direction: column;
+
+    #{$this}__wrapper {
+      margin-bottom: 16px;
+      width: 100%;
+      max-width: none;
+
+      @include tablet {
+        margin-bottom: 22px;
+      }
+
+      @include tablet-xl {
+        margin-bottom: 24px;
+      }
+
+      @include desktop-xl {
+        margin-bottom: 26px;
+      }
+    }
+    #{$this}__description {
+      @include tablet {
+        max-width: 450px;
+      }
+
+      @include desktop-xl {
+        max-width: 510px;
+      }
+    }
+  }
+
+  @include tablet {
+    padding: 16px;
+  }
+
+  @include desktop-xl {
+    border-radius: 24px;
+    padding: 24px;
+  }
+}

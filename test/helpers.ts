@@ -1,5 +1,17 @@
-import { Breakpoint } from "@/src/common/enum";
+import { AppRoute, Breakpoint } from "@/src/common/enum";
 import { Page } from "@playwright/test";
+
+export async function gotoPage({
+  page,
+  url,
+}: {
+  page: Page,
+  url: AppRoute | '/notfound'
+}) {
+  await page.goto(url, {
+    waitUntil: `networkidle`,
+  });
+}
 
 export async function setViewportSize({
   page,

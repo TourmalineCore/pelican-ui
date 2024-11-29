@@ -2,6 +2,8 @@
 import '../styles/index.scss';
 import type { AppProps } from 'next/app';
 import localFont from "next/font/local";
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import {
   EMAIL,
   FOOTER_ABOUT_LINKS,
@@ -12,6 +14,10 @@ import {
   OFFICIAL_LINKS,
   PHONE,
   POPUP_TICKET_BUY_TEXT,
+  TICKETS_POPUP_GENERAL,
+  TICKETS_POPUP_REFUND_REASONS,
+  TICKETS_POPUP_RULES_IMAGES,
+  TICKETS_POPUP_SUBSIDIZED,
 } from '../common/mocks/globals-mock';
 
 const inter = localFont({
@@ -43,6 +49,16 @@ const inter = localFont({
 export default function App({
   Component, pageProps,
 }: AppProps) {
+  const {
+    pathname,
+  } = useRouter();
+
+  useEffect(() => {
+    document.body.scroll({
+      top: 0,
+    });
+  }, [pathname]);
+
   return (
     <div className={inter.variable}>
       <Component {...pageProps} />
@@ -72,6 +88,10 @@ App.getInitialProps = async () => ({
       officialLinks: OFFICIAL_LINKS,
       footerNavTitleLeft: FOOTER_NAV_TITLE_LEFT,
       footerNavTitleRight: FOOTER_NAV_TITLE_RIGHT,
+      ticketsPopupGeneral: TICKETS_POPUP_GENERAL,
+      ticketsPopupSubsidized: TICKETS_POPUP_SUBSIDIZED,
+      ticketsPopupRulesImages: TICKETS_POPUP_RULES_IMAGES,
+      ticketsPopupRefundReasons: TICKETS_POPUP_REFUND_REASONS,
     },
   },
 });

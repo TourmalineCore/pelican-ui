@@ -1,5 +1,7 @@
 import { GlobalComponentProps } from "@/src/common/types";
 import { CSSTransition } from 'react-transition-group';
+import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
+import { MouseEventHandler } from "react";
 import { HeaderNavigationPopup } from "./components/HeaderNavigationPopup/HeaderNavigationPopup";
 import { SocialMedia } from "../../../SocialNetwork/SocialMedia";
 
@@ -10,10 +12,16 @@ export function HeaderPopup({
   email,
   phone,
   popupTicketBuyText,
-}: Pick<GlobalComponentProps, 'email' | 'phone' | 'navigationLinks' | 'popupTicketBuyText'> & {
-  className: string,
+  onTicketPopupOpen,
+}: Pick <GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
   isActive: boolean,
+  className: string,
+  onTicketPopupOpen: MouseEventHandler<HTMLButtonElement>;
 }) {
+  const {
+    handleTicketPopupToggle,
+  } = useTicketPopup();
+
   return (
     <CSSTransition
       in={isActive}
@@ -25,13 +33,17 @@ export function HeaderPopup({
     >
       <div
         className={`${className} container header-popup`}
-        data-testId="header-popup"
+        data-testid="header-popup"
       >
         {isActive && (
           <>
             <button
               type="button"
               className="header-popup__ticket-button"
+              onClick={(e) => {
+                handleTicketPopupToggle();
+                onTicketPopupOpen(e);
+              }}
             >
               {popupTicketBuyText}
             </button>

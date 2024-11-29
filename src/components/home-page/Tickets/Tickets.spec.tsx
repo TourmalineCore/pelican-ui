@@ -1,13 +1,21 @@
 
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { hideHeader, hideMap, setViewportSize } from '@/test/helpers';
+import {
+  gotoPage,
+  hideHeader,
+  hideMap,
+  setViewportSize,
+} from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TicketsComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(AppRoute.HOME);
+    await gotoPage({
+      page,
+      url: AppRoute.HOME,
+    });
 
     await hideHeader({
       page,

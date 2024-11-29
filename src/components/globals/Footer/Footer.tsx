@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { GlobalComponentProps } from "@/src/common/types";
 import { Breakpoint } from "@/src/common/enum";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
+import { useRouter } from "next/router";
+import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 
 export function Footer({
@@ -13,10 +15,22 @@ export function Footer({
   phone,
   footerNavTitleLeft,
   footerNavTitleRight,
-}: Omit<GlobalComponentProps, "navigationLinks" | "popupTicketBuyText" >) {
+  popupTicketBuyText,
+}: Omit<GlobalComponentProps,
+"navigationLinks" |
+"popupTicketBuyText" |
+"ticketsPopupGeneral" |
+"ticketsPopupSubsidized" |
+"ticketsPopupRulesImages" |
+"ticketsPopupRefundReasons" >) {
   const windowWidth = useWindowWidth();
   const isDesktop = windowWidth >= Breakpoint.DESKTOP;
   const isTablet = windowWidth >= Breakpoint.TABLET;
+  const router = useRouter();
+
+  const {
+    handleTicketPopupToggle,
+  } = useTicketPopup();
 
   return (
     <div
@@ -29,6 +43,19 @@ export function Footer({
             <div className="footer__col footer__col--left">
               <h3 className="footer__title">{footerNavTitleLeft}</h3>
               <ul className="footer__nav">
+                <li
+                  className="footer__nav-item"
+                  key={popupTicketBuyText}
+                >
+                  <button
+                    type="button"
+                    className="button footer__nav-link"
+                    onClick={handleTicketPopupToggle}
+                    data-testid="footer-tickets-popup-button"
+                  >
+                    {popupTicketBuyText}
+                  </button>
+                </li>
                 {footerUserLinks.map(({
                   id,
                   name,
@@ -63,6 +90,12 @@ export function Footer({
                     <Link
                       href={link}
                       className="footer__nav-link"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (router.pathname !== link) {
+                          router.push(link);
+                        }
+                      }}
                     >
                       {name}
                     </Link>
