@@ -142,11 +142,15 @@
     }
 
     @include tablet-xl {
+      @include regular-font;
+
       margin-left: 8px;
       max-width: none;
     }
 
     @include desktop {
+      @include medium-font;
+
       margin-left: 16px;
     }
 
