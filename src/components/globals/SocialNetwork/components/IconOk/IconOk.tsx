@@ -6,7 +6,7 @@ export function IconOk() {
       height="48"
       fill="none"
       viewBox="0 0 48 48"
-      className="social-link__icon social-icon"
+      className="social-link__icon"
     >
       <rect
         width="48"

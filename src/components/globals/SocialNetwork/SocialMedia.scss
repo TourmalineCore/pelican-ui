@@ -1,5 +1,7 @@
 .social-link {
-  .social-icon {
+  $this: &;
+
+  &__icon {
     display: block;
     width: 100%;
     height: auto;
@@ -12,7 +14,7 @@
 
   &:hover,
   &:focus {
-    .social-icon {
+    #{$this}__icon {
       path {
         fill: $color-white;
       }
