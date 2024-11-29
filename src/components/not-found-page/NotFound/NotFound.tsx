@@ -1,18 +1,14 @@
 import Image from "next/image";
-import { AppRoute, Breakpoint } from "@/src/common/enum";
+import { AppRoute } from "@/src/common/enum";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import Link from "next/link";
 import BearImageSrc from "@/public/images/not-found/bear.svg";
 import GeeseImageSrc from "@/public/images/contact-zoo/contact-zoo-geese.svg";
 
 export function NotFound() {
-  const windowWidth = useWindowWidth();
-
-  if (windowWidth === 0) {
-    return null;
-  }
-
-  const isTablet = windowWidth >= Breakpoint.TABLET;
+  const {
+    isTablet,
+  } = useWindowWidth();
 
   return (
     <section

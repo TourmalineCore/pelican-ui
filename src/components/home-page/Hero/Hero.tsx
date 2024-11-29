@@ -2,7 +2,6 @@ import Image from "next/image";
 import { HeroComponentProps } from "@/src/common/types";
 import { Button } from "@/src/components/globals/Button/Button";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
-import { Breakpoint } from "@/src/common/enum";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { HeroSchedule } from "./components/HeroSchedule/HeroSchedule";
 import { HeroInfoCard } from "./components/HeroInfoCard/HeroInfoCard";
@@ -15,9 +14,9 @@ export function Hero({
   infoCardDescription,
   image,
 }: Omit<HeroComponentProps, 'id' | '__component'>) {
-  const windowWidth = useWindowWidth();
-
-  const isDesktop = windowWidth >= Breakpoint.DESKTOP;
+  const {
+    isDesktop,
+  } = useWindowWidth();
 
   const {
     handleTicketPopupToggle,

@@ -1,11 +1,20 @@
+
 import Link from "next/link";
 import Image from 'next/image';
 import { GlobalComponentProps } from "@/src/common/types";
-import { Breakpoint } from "@/src/common/enum";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useRouter } from "next/router";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
+
+type FooterProps =
+  Omit<GlobalComponentProps,
+  "navigationLinks"
+  | "ticketsPopupGeneral"
+  | "ticketsPopupSubsidized"
+  | "ticketsPopupRulesImages"
+  | "ticketsPopupRefundReasons"
+  >;
 
 export function Footer({
   officialLinks,
@@ -16,17 +25,13 @@ export function Footer({
   footerNavTitleLeft,
   footerNavTitleRight,
   popupTicketBuyText,
-}: Omit<GlobalComponentProps,
-"navigationLinks" |
-"popupTicketBuyText" |
-"ticketsPopupGeneral" |
-"ticketsPopupSubsidized" |
-"ticketsPopupRulesImages" |
-"ticketsPopupRefundReasons" >) {
-  const windowWidth = useWindowWidth();
-  const isDesktop = windowWidth >= Breakpoint.DESKTOP;
-  const isTablet = windowWidth >= Breakpoint.TABLET;
+}: FooterProps) {
   const router = useRouter();
+
+  const {
+    isDesktop,
+    isTablet,
+  } = useWindowWidth();
 
   const {
     handleTicketPopupToggle,

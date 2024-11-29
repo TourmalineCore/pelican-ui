@@ -1,4 +1,3 @@
-import { Breakpoint } from "@/src/common/enum";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { MapComponentProps } from "@/src/common/types";
 import { MarkdownText } from "@/src/components/globals/MarkdownText/MarkdownText";
@@ -14,9 +13,9 @@ export function MapAddressCard({
 }: Omit<MapComponentProps, 'id' | '__component'> & {
   className: string
 }) {
-  const windowWidth = useWindowWidth();
-
-  const isTablet = windowWidth >= Breakpoint.TABLET;
+  const {
+    isTablet,
+  } = useWindowWidth();
 
   return (
     <div className={`map-address-card ${className}`}>

@@ -1,10 +1,9 @@
 import { MutableRefObject, useEffect, useState } from "react";
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { GlobalComponentProps } from "@/src/common/types";
-import { Breakpoint } from "@/src/common/enum";
 import dynamic from "next/dynamic";
 import clsx from "clsx";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
+import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { HeaderLogo } from "./components/HeaderLogo/HeaderLogo";
 import { Button } from "../Button/Button";
 import { HeaderNavigation } from "./components/HeaderNavigation/HeaderNavigation";
@@ -30,12 +29,13 @@ export function Header({
 }: HeaderProps & {
   overlayElementRef: MutableRefObject<null | HTMLElement>
 }) {
+  const [isActive, setIsActive] = useState(false);
   const {
     handleTicketPopupToggle,
   } = useTicketPopup();
-
-  const [isActive, setIsActive] = useState(false);
-  const windowWidth = useWindowWidth();
+  const {
+    isDesktop,
+  } = useWindowWidth();
 
   useEffect(() => {
     const mainElement = overlayElementRef.current!;
@@ -48,12 +48,6 @@ export function Header({
       mainElement.classList.remove(`is-visible`);
     };
   }, [isActive]);
-
-  if (windowWidth === 0) {
-    return null;
-  }
-
-  const isDesktop = windowWidth >= Breakpoint.DESKTOP;
 
   return (
     <div
