@@ -1,19 +1,16 @@
 import Head from 'next/head';
-import { BlockRenderer } from '@/src/components/globals/BlockRenderer/BlockRenderer';
-import { getMockPageData } from '@/src/common/utils/getMockPageData';
-import { Layout } from '../components/globals/Layout/Layout';
-import { GlobalComponentProps, HomePageProps, DocumentsPageProps } from '../common/types';
-import { NotFound } from '../components/not-found-page/NotFound/NotFound';
+import { GlobalComponentProps } from '@/src/common/types';
+import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
+import { Layout } from '@/src/components/globals/Layout/Layout';
+import { DOCUMENTS_PAGE, DocumentsPageProps } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
 
-type UniversalProps = {
-  globalData: GlobalComponentProps,
-  pageData: HomePageProps | DocumentsPageProps
-};
-
-export default function UniversalPage({
+export default function DocumentsPage({
   globalData,
   pageData,
-}: UniversalProps) {
+}: {
+  globalData: GlobalComponentProps,
+  pageData: DocumentsPageProps,
+}) {
   if (!pageData || !globalData) {
     return <NotFound />;
   }
@@ -33,8 +30,10 @@ export default function UniversalPage({
     ticketsPopupRulesImages,
     ticketsPopupRefundReasons,
   } = globalData;
+
   const {
-    title, blocks,
+    title,
+    documentsTitle,
   } = pageData;
 
   return (
@@ -61,14 +60,7 @@ export default function UniversalPage({
         ticketsPopupRulesImages={ticketsPopupRulesImages}
         ticketsPopupRefundReasons={ticketsPopupRefundReasons}
       >
-        {blocks.map((block) => (
-          <BlockRenderer
-            key={block.id}
-            block={block}
-            phone={phone}
-            email={email}
-          />
-        ))}
+        <DocumentsCategoriesList />
       </Layout>
     </>
   );
@@ -78,8 +70,8 @@ export async function getServerSideProps({
   query,
 }: {
   query: {
-    slug: string,
-  },
+    pageSize: number
+  }
 }) {
   // TODO Uncomment when the api appears, there will be static data here
   // if (process.env.APP_ENV === `test`) {
@@ -93,9 +85,7 @@ export async function getServerSideProps({
   // TODO there will be a request in the Strapi api here
   return {
     props: {
-      pageData: getMockPageData({
-        slug: query.slug,
-      }),
+      pageData: DOCUMENTS_PAGE,
     },
   };
 }

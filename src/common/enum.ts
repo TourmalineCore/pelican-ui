@@ -1,6 +1,7 @@
 export enum AppRoute {
   HOME = `/home`,
   NEWS = `/news`,
+  DOCUMENTS = `/documents`,
 }
 
 export enum Breakpoint {
@@ -19,4 +20,5 @@ export enum BlockTypes {
   MAP = `home.map`,
   TEXT_AND_MEDIA = `home.text-and-media`,
   NOT_FOUND = `not-found.not-found`,
+  DOCUMENTS_CATEGORIES = `documents.documents-categories`,
 }
