@@ -2,12 +2,12 @@ import Head from 'next/head';
 import { BlockRenderer } from '@/src/components/globals/BlockRenderer/BlockRenderer';
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
 import { Layout } from '../components/globals/Layout/Layout';
-import { GlobalComponentProps, HomePageProps, DocumentsPageProps } from '../common/types';
+import { GlobalComponentProps, HomePageProps } from '../common/types';
 import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 
 type UniversalProps = {
   globalData: GlobalComponentProps,
-  pageData: HomePageProps | DocumentsPageProps
+  pageData: HomePageProps,
 };
 
 export default function UniversalPage({
