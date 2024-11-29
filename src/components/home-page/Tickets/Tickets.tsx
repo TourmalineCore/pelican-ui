@@ -3,6 +3,7 @@ import { Button } from "@/src/components/globals/Button/Button";
 import Link from "next/link";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { Breakpoint } from "@/src/common/enum";
+import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { TicketCard } from "./TicketCard/TicketCard";
 
 export function Tickets({
@@ -16,6 +17,10 @@ export function Tickets({
   const isTablet = windowWidth >= Breakpoint.TABLET;
   const isMobile = windowWidth < Breakpoint.TABLET;
   const isTabletXl = windowWidth >= Breakpoint.TABLET_XL;
+
+  const {
+    handleTicketPopupToggle,
+  } = useTicketPopup();
 
   return (
     <div
@@ -38,6 +43,7 @@ export function Tickets({
               <Button
                 className="tickets__ticket-button"
                 theme="primary"
+                onClick={handleTicketPopupToggle}
               >
                 Купить билет
               </Button>
@@ -48,6 +54,7 @@ export function Tickets({
           <Button
             className="tickets__ticket-button"
             theme="primary"
+            onClick={handleTicketPopupToggle}
           >
             Купить билет
           </Button>

@@ -1,0 +1,302 @@
+.tickets-popup {
+  $this: &;
+
+  z-index: $tickets-popup;
+
+  &__inner {
+    @include medium-font;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    overflow-y: auto;
+    padding-bottom: 16px;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+    color: $color-white;
+    background-color: $color-green-dark;
+
+    @include tablet-xl {
+      padding-right: 40px;
+      padding-left: 40px;
+      max-width: 504px;
+      box-shadow: 0 3px 14px 0 rgb(0 0 0 / 15%);
+    }
+
+    @include desktop {
+      max-width: 562px;
+    }
+
+    @include desktop-xl {
+      max-width: 728px;
+    }
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+
+    @include tablet {
+      padding: 24px 40px;
+    }
+
+    @include tablet-xl {
+      padding: 24px 0;
+    }
+
+    @include desktop-xl {
+      padding-top: 32px;
+    }
+  }
+
+  &__close-btn {
+    @include desktop-xl {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.3;
+
+    @include tablet {
+      font-size: 32px;
+      line-height: 1.25;
+    }
+
+    @include desktop-xl {
+      font-size: 40px;
+    }
+  }
+
+  &__cards {
+    margin-top: 10px;
+
+    @include desktop {
+      margin-top: 8px;
+    }
+
+    @include desktop-xl {
+      margin-top: 32px;
+    }
+  }
+
+  &__card {
+    & + & {
+      margin-top: 8px;
+
+      @include desktop-xl {
+        margin-top: 12px;
+      }
+    }
+  }
+
+  &__prices-table {
+    margin-bottom: 16px;
+
+    @include tablet {
+      margin-bottom: 24px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 22px;
+    }
+  }
+
+  &__prices-table-row {
+    display: flex;
+    align-items: center;
+    flex-basis: 50%;
+    justify-content: space-between;
+    border-bottom: 1px solid #c1bfbf;
+    padding: 10px 0 9px;
+    font-size: 16px;
+
+    @include tablet {
+      align-items: flex-start;
+    }
+
+    @include desktop {
+      font-size: 22px;
+      line-height: 1.4;
+    }
+  }
+
+  &__prices-table-category {
+    max-width: 45%;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.45;
+    color: $color-black-75;
+
+    @include tablet {
+      max-width: 163px;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      max-width: 225px;
+      font-size: 22px;
+    }
+  }
+
+  &__prices-table-price {
+    @include tablet {
+      font-size: 18px;
+    }
+
+    @include desktop-xl {
+      font-size: 24px;
+    }
+  }
+
+  &__accordions {
+    margin-top: 8px;
+  }
+
+  &__accordion {
+    border-bottom: 1px solid $color-white;
+    padding: 16px 16px 15px;
+
+    &--refund {
+      @include desktop-xl {
+        padding: 16px 16px 16px 24px;
+      }
+    }
+  }
+
+  &__trigger-button {
+    color: $color-white;
+  }
+
+  &__buy-button {
+    margin-top: 24px;
+    padding: 12px;
+    font-size: 16px;
+    transition: all ease-out 0.3s;
+
+    &:hover,
+    &:active {
+      color: $color-black;
+      background-color: $color-white;
+    }
+
+    @include tablet {
+      font-size: 16px;
+    }
+
+    @include tablet-xl {
+      font-size: 18px;
+    }
+
+    @include desktop {
+      margin-top: 24px;
+    }
+
+    @include desktop-xl {
+      margin-top: 40px;
+      padding: 16px;
+      font-size: 26px;
+      line-height: 1.4;
+    }
+  }
+
+  &__disclaimer {
+    margin: 8px auto 0;
+    max-width: 70%;
+    font-size: 14px;
+    line-height: 1.45;
+    text-align: center;
+
+    @include tablet {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    @include tablet-xl {
+      margin-top: 10px;
+    }
+
+    @include desktop {
+      max-width: none;
+    }
+
+    @include desktop-xl {
+      margin-top: 12px;
+      font-size: 20px;
+    }
+  }
+
+  &__rules-list {
+    margin-top: 24px;
+
+    @include tablet {
+      margin-top: 22px;
+    }
+  }
+
+  &__refund {
+    margin-top: 24px;
+    line-height: 1.45;
+
+    @include desktop-xl {
+      line-height: 1.4;
+    }
+  }
+
+  &__more-link {
+    @include medium-font;
+
+    margin-top: 24px;
+    border-radius: 12px;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.45;
+    color: $color-black;
+
+    @include tablet-xl {
+      font-size: 18px;
+    }
+
+    @include desktop {
+      border-radius: 16px;
+    }
+
+    @include desktop-xl {
+      font-size: 22px;
+    }
+  }
+
+  &__link {
+    padding: 12px;
+
+    @include tablet {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    @include desktop-xl {
+      font-size: 22px;
+    }
+  }
+
+  &__refund-head {
+    @include tablet {
+      max-width: 300px;
+    }
+
+    @include desktop-xl {
+      max-width: 400px;
+      font-size: 22px;
+    }
+  }
+}

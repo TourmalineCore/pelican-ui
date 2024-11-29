@@ -1,6 +1,14 @@
 import { GlobalComponentProps } from "../types";
 import iconAdministration1 from '../../../public/images/footer/adm1.png';
 import iconAdministration2 from '../../../public/images/footer/adm2.png';
+import noFoodImage from '../../../public/images/tickets-popup/no-food.png';
+import noBreakingImage from '../../../public/images/tickets-popup/no-breaking.png';
+import noClimbingImage from '../../../public/images/tickets-popup/no-climbing.png';
+import noPetsImage from '../../../public/images/tickets-popup/no-pets.png';
+import noScooterImage from '../../../public/images/tickets-popup/no-scooter.png';
+import noSmokingImage from '../../../public/images/tickets-popup/no-smoking.png';
+import noTouchingImage from '../../../public/images/tickets-popup/no-touching.png';
+import noTeasingImage from '../../../public/images/tickets-popup/no-teasing.png';
 import { AppRoute } from "../enum";
 
 export const EMAIL = `metodist@chelzoo.ru`;
@@ -45,17 +53,12 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
 export const FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [
   {
     id: 1,
-    name: `Услуги`,
+    name: `Льготы`,
     link: `#`,
   },
   {
     id: 2,
-    name: `Билеты`,
-    link: `#`,
-  },
-  {
-    id: 3,
-    name: `Льготы`,
+    name: `Услуги`,
     link: `#`,
   },
 ];
@@ -104,5 +107,104 @@ export const OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
     link: `#`,
     icon: iconAdministration1,
     alt: `Иконка`,
+  },
+];
+
+export const TICKETS_POPUP_GENERAL: GlobalComponentProps['ticketsPopupGeneral'] = [
+  {
+    id: 0,
+    category: `Взрослые, дети\u00A0от\u00A014\u00A0лет`,
+    price: `400  ₽ / чел`,
+  },
+  {
+    id: 1,
+    category: `Дети от 5 до 13 лет`,
+    description: ` Требуется оригинал документа`,
+    price: `200  ₽ / чел`,
+  },
+  {
+    id: 2,
+    category: `Дети до 4 лет`,
+    description: `Требуется оригинал документа`,
+    price: `Бесплатно`,
+  },
+];
+
+export const TICKETS_POPUP_SUBSIDIZED: GlobalComponentProps['ticketsPopupSubsidized'] = [
+  {
+    id: 0,
+    category: `Студенты`,
+    price: `200  ₽ / чел`,
+  },
+  {
+    id: 1,
+    category: `Пенсионеры`,
+    price: `200  ₽ / чел`,
+  },
+  {
+    id: 2,
+    category: `Многодетные семьи (1 раз в месяц)`,
+    price: `Бесплатно`,
+  },
+  {
+    id: 3,
+    category: `Инвалиды I группы с сопровождающим`,
+    price: `Бесплатно`,
+  },
+  {
+    id: 4,
+    category: `Инвалиды II группы`,
+    price: `Бесплатно`,
+  },
+];
+
+export const TICKETS_POPUP_RULES_IMAGES: GlobalComponentProps['ticketsPopupRulesImages'] = [
+  {
+    url: noFoodImage,
+    alt: `Нельзя кормить животных`,
+  },
+  {
+    url: noPetsImage,
+    alt: `Нельзя с домашними животными`,
+  },
+  {
+    url: noSmokingImage,
+    alt: `Нельзя курить`,
+  },
+  {
+    url: noScooterImage,
+    alt: `Нельзя ездить на самокате`,
+  },
+  {
+    url: noClimbingImage,
+    alt: `Нельзя перелезать через ограждение`,
+  },
+  {
+    url: noTouchingImage,
+    alt: `Нельзя трогать животных`,
+  },
+  {
+    url: noTeasingImage,
+    alt: `Нельзя дразнить животных`,
+  },
+  {
+    url: noBreakingImage,
+    alt: `Нельзя ломать деревья`,
+  },
+];
+
+export const TICKETS_POPUP_REFUND_REASONS: GlobalComponentProps['ticketsPopupRefundReasons'] = [
+  {
+    id: 0,
+    refundReason: `отмены, замены либо переноса оказания услуги по инициативе Зоопарка;`,
+  },
+  {
+    id: 1,
+    // eslint-disable-next-line @stylistic/max-len
+    refundReason: `отказа от оказания услуг посетителем по уважительным причинам (болезнь, смерть члена семьи или близкого родственника, и т.п.), при предъявлении подтверждающих документов;`,
+  },
+  {
+    id: 2,
+    refundReason: `в иных случаях по решению директора.`,
   },
 ];
