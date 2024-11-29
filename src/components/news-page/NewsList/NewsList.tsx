@@ -1,6 +1,6 @@
-import { NewsListComponentProps } from "@/src/common/types";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
 import { NewsCard } from "./components/NewsCard";
 import { Button } from "../../globals/Button/Button";
 
@@ -8,9 +8,11 @@ export const NEWS_LIMIT = 6;
 
 export function NewsList({
   title,
-  cards,
+  news,
   total,
-}: Omit<NewsListComponentProps, 'id' | '__component'> & {
+}: {
+  news: NewsProps[]
+  title: string,
   total: number;
 }) {
   const [pageSize, setPageSize] = useState(NEWS_LIMIT);
@@ -32,16 +34,17 @@ export function NewsList({
       data-testid="news-list"
     >
       <div className="news-list__wrapper container">
-        <h2 className="news-list__title">{title}</h2>
+        <h1 className="news-list__title">{title}</h1>
         <ul className="news-list__cards">
-          {cards.map((card) => (
+          {news.map((newsCard) => (
             <NewsCard
+              id={newsCard.id}
               className="news-list__card"
               dataTestId="news-list-card"
-              key={card.id}
-              image={card.image}
-              title={card.title}
-              description={card.description}
+              key={newsCard.id}
+              image={newsCard.image}
+              title={newsCard.title}
+              description={newsCard.description}
             />
           ))}
         </ul>

@@ -43,6 +43,11 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
     name: `Документы`,
     link: `#`,
   },
+  {
+    id: 6,
+    name: `Новости`,
+    link: AppRoute.NEWS,
+  },
 ];
 
 export const FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [

@@ -1,23 +1,18 @@
-import Head from 'next/head';
-import { GlobalComponentProps } from '@/src/common/types';
-import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
-import { Layout } from '@/src/components/globals/Layout/Layout';
-import { NEWS_PAGE, NewsPageProps } from '@/src/common/mocks/news-page-mock/news-page-mock';
-import { NEWS_LIMIT, NewsList } from '@/src/components/news-page/NewsList/NewsList';
-import { NEWS, NewsProps } from '@/src/common/mocks/news-page-mock/news-mock';
+import { NEWS, NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
+import { GlobalComponentProps } from "@/src/common/types";
+import { Layout } from "@/src/components/globals/Layout/Layout";
+import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle";
+import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
+import Head from "next/head";
 
-export default function NewsPage({
+export default function News({
   globalData,
-  pageData,
   news,
-  totalNews,
 }: {
   globalData: GlobalComponentProps,
-  pageData: NewsPageProps,
-  news: NewsProps[],
-  totalNews: number,
+  news: NewsProps
 }) {
-  if (!pageData || !globalData) {
+  if (!globalData) {
     return <NotFound />;
   }
 
@@ -37,11 +32,6 @@ export default function NewsPage({
     ticketsPopupRefundReasons,
   } = globalData;
 
-  const {
-    title,
-    newsTitle,
-  } = pageData;
-
   return (
     <>
       <Head>
@@ -49,7 +39,7 @@ export default function NewsPage({
           name="description"
           content="Сайт зоопарка"
         />
-        <title>{title}</title>
+        <title>{news.title}</title>
       </Head>
       <Layout
         navigationLinks={navigationLinks}
@@ -66,10 +56,10 @@ export default function NewsPage({
         ticketsPopupRulesImages={ticketsPopupRulesImages}
         ticketsPopupRefundReasons={ticketsPopupRefundReasons}
       >
-        <NewsList
-          title={newsTitle}
-          news={news}
-          total={totalNews}
+        <NewsArticle
+          title={news.title}
+          date={news.publishedAt}
+          articleContent={news.articleContent}
         />
       </Layout>
     </>
@@ -80,24 +70,15 @@ export async function getServerSideProps({
   query,
 }: {
   query: {
-    pageSize: number
+    id: string
   }
 }) {
-  // TODO Uncomment when the api appears, there will be static data here
-  // if (process.env.APP_ENV === `test`) {
-  //   return {
-  //     props: {
-  //       navigationLinks: NAVIGATION_LINKS,
-  //     },
-  //   };
-  // }
-
   // TODO there will be a request in the Strapi api here
   return {
     props: {
-      pageData: NEWS_PAGE,
-      news: NEWS.slice(0, query.pageSize || NEWS_LIMIT),
-      totalNews: NEWS.length,
+      news: NEWS.find(({
+        id,
+      }) => id === +query.id),
     },
   };
 }

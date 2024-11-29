@@ -1,4 +1,4 @@
-import { AppRoute, Breakpoint } from "@/src/common/enum";
+import { Breakpoint } from "@/src/common/enum";
 import { Page } from "@playwright/test";
 
 export async function gotoPage({
@@ -6,7 +6,7 @@ export async function gotoPage({
   url,
 }: {
   page: Page,
-  url: AppRoute | '/notfound'
+  url: string
 }) {
   await page.goto(url, {
     waitUntil: `networkidle`,
