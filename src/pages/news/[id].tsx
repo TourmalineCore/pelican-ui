@@ -26,6 +26,10 @@ export default function News({
     officialLinks,
     footerNavTitleLeft,
     footerNavTitleRight,
+    ticketsPopupGeneral,
+    ticketsPopupSubsidized,
+    ticketsPopupRulesImages,
+    ticketsPopupRefundReasons,
   } = globalData;
 
   return (
@@ -47,6 +51,10 @@ export default function News({
         popupTicketBuyText={popupTicketBuyText}
         footerNavTitleLeft={footerNavTitleLeft}
         footerNavTitleRight={footerNavTitleRight}
+        ticketsPopupGeneral={ticketsPopupGeneral}
+        ticketsPopupSubsidized={ticketsPopupSubsidized}
+        ticketsPopupRulesImages={ticketsPopupRulesImages}
+        ticketsPopupRefundReasons={ticketsPopupRefundReasons}
       >
         <NewsArticle
           title={news.title}

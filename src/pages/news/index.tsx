@@ -31,6 +31,10 @@ export default function NewsPage({
     officialLinks,
     footerNavTitleLeft,
     footerNavTitleRight,
+    ticketsPopupGeneral,
+    ticketsPopupSubsidized,
+    ticketsPopupRulesImages,
+    ticketsPopupRefundReasons,
   } = globalData;
 
   const {
@@ -57,6 +61,10 @@ export default function NewsPage({
         popupTicketBuyText={popupTicketBuyText}
         footerNavTitleLeft={footerNavTitleLeft}
         footerNavTitleRight={footerNavTitleRight}
+        ticketsPopupGeneral={ticketsPopupGeneral}
+        ticketsPopupSubsidized={ticketsPopupSubsidized}
+        ticketsPopupRulesImages={ticketsPopupRulesImages}
+        ticketsPopupRefundReasons={ticketsPopupRefundReasons}
       >
         <NewsList
           title={newsTitle}
