@@ -3,6 +3,7 @@ import { GlobalComponentProps } from '@/src/common/types';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { Layout } from '@/src/components/globals/Layout/Layout';
 import { DOCUMENTS_PAGE, DocumentsPageProps } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
+import { DocumentsCategoriesList } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategoriesList';
 
 export default function DocumentsPage({
   globalData,
@@ -34,6 +35,7 @@ export default function DocumentsPage({
   const {
     title,
     documentsTitle,
+    documentCategories,
   } = pageData;
 
   return (
@@ -60,19 +62,16 @@ export default function DocumentsPage({
         ticketsPopupRulesImages={ticketsPopupRulesImages}
         ticketsPopupRefundReasons={ticketsPopupRefundReasons}
       >
-        <DocumentsCategoriesList />
+        <DocumentsCategoriesList
+          documentsTitle={documentsTitle}
+          documentsCategories={documentCategories}
+        />
       </Layout>
     </>
   );
 }
 
-export async function getServerSideProps({
-  query,
-}: {
-  query: {
-    pageSize: number
-  }
-}) {
+export async function getServerSideProps() {
   // TODO Uncomment when the api appears, there will be static data here
   // if (process.env.APP_ENV === `test`) {
   //   return {
