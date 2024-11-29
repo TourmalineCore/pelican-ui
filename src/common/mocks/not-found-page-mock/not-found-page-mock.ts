@@ -1,5 +1,6 @@
-import { NotFoundPageProps } from "../types";
-import { NOT_FOUND } from "./not-found-mocks";
+
+import { NotFoundPageProps } from "../../types";
+import { NOT_FOUND } from "./not-found-mock";
 
 export const NOT_FOUND_PAGE: NotFoundPageProps = {
   id: 1,

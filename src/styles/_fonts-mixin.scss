@@ -163,6 +163,22 @@
   }
 }
 
+@mixin body-2-regular {
+  @include regular-font;
+
+  font-size: 18px;
+  line-height: 1.45;
+
+  @include tablet-xl {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+
+  @include desktop-xl {
+    font-size: 34px;
+  }
+}
+
 @mixin h-text {
   @include desktop {
     @include semi-bold-font;

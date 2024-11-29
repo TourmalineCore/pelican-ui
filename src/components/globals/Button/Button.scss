@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
   border-radius: 16px;
   background-color: initial;
   cursor: pointer;
@@ -48,8 +49,8 @@
       background-repeat: no-repeat;
 
       @include tablet-xl {
-        width: 82px;
-        height: 84px;
+        width: 74px;
+        height: 74px;
       }
 
       @include desktop {

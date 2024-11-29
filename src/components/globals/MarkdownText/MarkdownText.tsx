@@ -6,7 +6,7 @@ export function MarkdownText({
   className,
 }: {
   children: string,
-  className: string,
+  className?: string,
 }) {
   return (
     <ReactMarkdown

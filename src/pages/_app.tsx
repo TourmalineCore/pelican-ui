@@ -14,6 +14,10 @@ import {
   OFFICIAL_LINKS,
   PHONE,
   POPUP_TICKET_BUY_TEXT,
+  TICKETS_POPUP_GENERAL,
+  TICKETS_POPUP_REFUND_REASONS,
+  TICKETS_POPUP_RULES_IMAGES,
+  TICKETS_POPUP_SUBSIDIZED,
 } from '../common/mocks/globals-mock';
 
 const inter = localFont({
@@ -84,6 +88,10 @@ App.getInitialProps = async () => ({
       officialLinks: OFFICIAL_LINKS,
       footerNavTitleLeft: FOOTER_NAV_TITLE_LEFT,
       footerNavTitleRight: FOOTER_NAV_TITLE_RIGHT,
+      ticketsPopupGeneral: TICKETS_POPUP_GENERAL,
+      ticketsPopupSubsidized: TICKETS_POPUP_SUBSIDIZED,
+      ticketsPopupRulesImages: TICKETS_POPUP_RULES_IMAGES,
+      ticketsPopupRefundReasons: TICKETS_POPUP_REFUND_REASONS,
     },
   },
 });

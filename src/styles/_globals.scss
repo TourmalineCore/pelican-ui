@@ -63,6 +63,10 @@ a {
     opacity: 1;
     visibility: visible;
   }
+
+  &.is-header-hidden {
+    z-index: $overlay-with-hidden-header;
+  }
 }
 
 .text-link {
