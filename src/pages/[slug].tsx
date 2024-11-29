@@ -13,7 +13,7 @@ export default function UniversalPage({
   globalData,
   pageData,
 }: UniversalProps) {
-  if (!pageData || !globalData) {
+  if (!pageData) {
     return <NotFound />;
   }
 
