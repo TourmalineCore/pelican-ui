@@ -87,7 +87,7 @@ jobs:
 
     - name: Install Playwright Browsers
       if: steps.cache-playwrightbrowsers.outputs.cache-hit != 'true'
-      run: npx playwright install chromium --with-deps --only-shell
+      run: npx playwright install --with-deps chromium --only-shell
 
     - name: Run dev server
       run: |
