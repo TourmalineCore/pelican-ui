@@ -47,7 +47,7 @@ jobs:
 
   run-tests:
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.48.2-noble
+    # container: mcr.microsoft.com/playwright:v1.48.2-noble
 
     strategy:
       fail-fast: false
@@ -99,7 +99,7 @@ jobs:
         retention-days: 1
 
   merge-reports:
-    if: always() 
+    if: failure()
     runs-on: ubuntu-22.04 
     needs: [check-lint,run-tests]
 
