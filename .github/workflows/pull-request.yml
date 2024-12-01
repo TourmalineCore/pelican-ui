@@ -46,7 +46,8 @@ jobs:
       run: npm run lint
 
   run-tests:
-    runs-on: mcr.microsoft.com/playwright:v1.48.2-noble
+    runs-on: ubuntu-22.04
+    container: mcr.microsoft.com/playwright:v1.48.2-noble
 
     strategy:
       fail-fast: false
