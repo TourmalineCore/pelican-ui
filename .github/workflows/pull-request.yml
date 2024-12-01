@@ -1,5 +1,7 @@
 name: Check linting and run tests
 
+# ToDo should it be triggered only as part of an open PR?
+# currently it triggers for any commit in a FB
 on: 
   push:
     branches:
@@ -19,6 +21,8 @@ jobs:
 
     # https://gist.github.com/rupeshtiwari/44ebec690f2c01bf1df9b1d215a0e723
     # this one doesn't support node_modules caching which is the most important to cache https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#example-using-the-cache-action 
+    # cache is not shared among different feature/a and feature/b branches 
+    # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#restrictions-for-accessing-a-cache
     - name: Cache node modules
       id: cache-nodemodules
       uses: actions/cache@v4
