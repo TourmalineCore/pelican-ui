@@ -27,6 +27,8 @@ jobs:
       with:
         # caching node_modules
         path: node_modules
+        # the most important bit is the dependency on hash of package-lock.json file content
+        # thus if dependencies graph is changed cache is no longer valid
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
     - name: Set up Node.js ${{ matrix.node-version }}
@@ -35,6 +37,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Install Dependencies
+      # we don't re-install deps and if cache exists and hit
       if: steps.cache-nodemodules.outputs.cache-hit != 'true'
       run: npm ci
 
@@ -43,12 +46,14 @@ jobs:
 
   run-tests:
     runs-on: ubuntu-22.04
-    # container: mcr.microsoft.com/playwright:v1.48.2-noble
 
     strategy:
       fail-fast: false
       matrix:
         node-version: [20.18.0]
+        # it is 14 because it looks like that for each shard 4 workers are used
+        # since the "ideal" number of tests per worker should be 1 we need to devide our nuber of tests on 4
+        # currently there are 54 tests / 4 workers ~ 14 shards (should cover up to 56 tests according to this logic) 
         shardIndex: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
         shardTotal: [14]
 
@@ -56,16 +61,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    # we need to declare the same cache that they are shared among different jobs (path and key are the most important)
+    # https://stackoverflow.com/a/71895573
     - name: Cache node modules
       id: cache-nodemodules
       uses: actions/cache@v4
       env:
         cache-name: cache-node-modules
       with:
-        # caching node_modules
         path: node_modules
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
  
+    # let's cache the binaries of installed browsers that we don't re-install them every time from scratch
     - name: Cache playwright browsers
       id: cache-playwrightbrowsers
       uses: actions/cache@v4
@@ -73,6 +80,7 @@ jobs:
         cache-name: cache-playwright-browsers
       with:
         # caching browsers binaries
+        # this path is taken from here https://playwright.dev/docs/browsers#managing-browser-binaries
         path: ~/.cache/ms-playwright
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
@@ -98,6 +106,7 @@ jobs:
       run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
     - uses: actions/upload-artifact@v4
+      # we don't really need successful runs reports
       if: failure()
       with:
         name: blob-report-${{ matrix.shardIndex }}
@@ -105,6 +114,7 @@ jobs:
         retention-days: 7
 
   merge-reports:
+    # we don't really need successful runs reports
     if: failure()
     runs-on: ubuntu-22.04 
     needs: [check-lint,run-tests]
@@ -119,7 +129,6 @@ jobs:
       env:
         cache-name: cache-node-modules
       with:
-        # caching node_modules
         path: node_modules
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
