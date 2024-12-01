@@ -30,7 +30,6 @@ jobs:
 
   run-tests:
     runs-on: ubuntu-22.04
-    needs: [check-lint]
 
     strategy:
       fail-fast: false
@@ -72,7 +71,7 @@ jobs:
   merge-reports:
     if: always() 
     runs-on: ubuntu-22.04 
-    needs: [run-tests]
+    needs: [check-lint,run-tests]
 
     steps:
     - name: Checkout repository
