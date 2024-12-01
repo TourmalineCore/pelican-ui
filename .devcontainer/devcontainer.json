@@ -3,6 +3,8 @@
 {
 	"name": "A NextJS application",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	// this is using playwright docker image with pre-installed browsers and their deps
+	// this image doesn't contain playwright itself
 	"image": "mcr.microsoft.com/playwright:v1.48.2-noble",
 	"features": {
 		// https://github.com/cypress-io/cypress-documentation/issues/2956#issuecomment-1691335689
@@ -12,18 +14,6 @@
 		6080,
 		5901
 	],
-	"runArgs": [
-		"--network=host"
-	],
-	"containerEnv": {
-		// https://stackoverflow.com/questions/76555858/how-to-run-cypress-in-interactive-mode-in-a-devcontainer-on-windows-with-docker
-		"CHOKIDAR_USEPOLLING": "true"
-	},
-	"remoteEnv": {
-		// https://stackoverflow.com/q/65343518
-		// the original host directory which is needed for volume mount commands to access src
-		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
-	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
