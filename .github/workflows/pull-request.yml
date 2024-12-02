@@ -115,7 +115,7 @@ jobs:
       with:
         name: blob-report-${{ matrix.shardIndex }}
         path: blob-report
-        retention-days: 7
+        retention-days: 1
 
   merge-reports:
     # we don't really need successful runs reports
