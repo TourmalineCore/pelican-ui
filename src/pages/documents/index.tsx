@@ -1,36 +1,16 @@
 import Head from 'next/head';
-import { GlobalComponentProps } from '@/src/common/types';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
-import { Layout } from '@/src/components/globals/Layout/Layout';
 import { DOCUMENTS_PAGE, DocumentsPageProps } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
 import { DocumentsCategoriesList } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategoriesList';
 
 export default function DocumentsPage({
-  globalData,
   pageData,
 }: {
-  globalData: GlobalComponentProps,
   pageData: DocumentsPageProps,
 }) {
-  if (!pageData || !globalData) {
+  if (!pageData) {
     return <NotFound />;
   }
-
-  const {
-    navigationLinks,
-    email,
-    phone,
-    popupTicketBuyText,
-    footerAboutLinks,
-    footerUserLinks,
-    officialLinks,
-    footerNavTitleLeft,
-    footerNavTitleRight,
-    ticketsPopupGeneral,
-    ticketsPopupSubsidized,
-    ticketsPopupRulesImages,
-    ticketsPopupRefundReasons,
-  } = globalData;
 
   const {
     title,
@@ -47,26 +27,10 @@ export default function DocumentsPage({
         />
         <title>{title}</title>
       </Head>
-      <Layout
-        navigationLinks={navigationLinks}
-        officialLinks={officialLinks}
-        footerAboutLinks={footerAboutLinks}
-        footerUserLinks={footerUserLinks}
-        email={email}
-        phone={phone}
-        popupTicketBuyText={popupTicketBuyText}
-        footerNavTitleLeft={footerNavTitleLeft}
-        footerNavTitleRight={footerNavTitleRight}
-        ticketsPopupGeneral={ticketsPopupGeneral}
-        ticketsPopupSubsidized={ticketsPopupSubsidized}
-        ticketsPopupRulesImages={ticketsPopupRulesImages}
-        ticketsPopupRefundReasons={ticketsPopupRefundReasons}
-      >
-        <DocumentsCategoriesList
-          documentsTitle={documentsTitle}
-          documentsCategories={documentCategories}
-        />
-      </Layout>
+      <DocumentsCategoriesList
+        documentsTitle={documentsTitle}
+        documentsCategories={documentCategories}
+      />
     </>
   );
 }
