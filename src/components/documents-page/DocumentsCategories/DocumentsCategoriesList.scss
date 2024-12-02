@@ -1,11 +1,28 @@
 .documents-categories-list {
   padding-top: 24px;
   padding-bottom: 40px;
+  min-height: calc(100vh - 64px);
 
   &__title {
     @include h1-text;
 
     margin-bottom: 24px;
     color: $color-black-75;
+
+    @include tablet {
+      width: 56%;
+    }
+  }
+
+  &__list {
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @include tablet {
+      max-width: 800px;
+    }
   }
 }

@@ -6,6 +6,14 @@
     justify-content: space-between;
     border-bottom: 1px solid $color-green-15;
     padding: 16px 0 15px;
+
+    @include tablet {
+      align-items: center;
+      border: none;
+      border-radius: 20px;
+      padding: 12px 16px;
+      background-color: $color-green-10;
+    }
   }
 
   &__title {
@@ -13,6 +21,11 @@
 
     max-width: 88%;
     color: $color-black-75;
+
+    @include tablet {
+      margin-right: 16px;
+      max-width: 100%;
+    }
   }
 
   &__arrow {
@@ -24,12 +37,32 @@
     width: 32px;
     height: 32px;
     background-color: $color-green-10;
+
+    @include tablet {
+      background-color: $color-white;
+    }
+  }
+
+  &__icon-arrow {
+    transition: 0.3s ease-out;
   }
 
   &:hover,
   &:focus {
     #{$this}__title {
       color: $color-green;
+    }
+
+    #{$this}__wrapper {
+      background-color: $color-green-15;
+    }
+
+    #{$this}__icon-arrow {
+      transform: rotate(45deg);
+
+      path {
+        stroke: $color-green;
+      }
     }
   }
 }
