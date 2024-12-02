@@ -2,7 +2,7 @@ import Image from "next/image";
 import { HeroComponentProps } from "@/src/common/types";
 import { Button } from "@/src/components/globals/Button/Button";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
-import { Breakpoint } from "@/src/common/enum";
+import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { HeroSchedule } from "./components/HeroSchedule/HeroSchedule";
 import { HeroInfoCard } from "./components/HeroInfoCard/HeroInfoCard";
 
@@ -14,9 +14,13 @@ export function Hero({
   infoCardDescription,
   image,
 }: Omit<HeroComponentProps, 'id' | '__component'>) {
-  const windowWidth = useWindowWidth();
+  const {
+    isDesktop,
+  } = useWindowWidth();
 
-  const isDesktop = windowWidth >= Breakpoint.DESKTOP;
+  const {
+    handleTicketPopupToggle,
+  } = useTicketPopup();
 
   return (
     <section
@@ -28,6 +32,7 @@ export function Hero({
         <Image
           src={image.url}
           alt={image.alt}
+          priority
         />
       </div>
       <div className="hero__cards">
@@ -48,6 +53,7 @@ export function Hero({
             <Button
               className="hero__contact-button"
               theme="secondary"
+
             >
               Связаться
             </Button>
@@ -55,6 +61,8 @@ export function Hero({
               className="hero__ticket-button"
               theme="primary"
               isFeatured
+              onClick={handleTicketPopupToggle}
+              data-testid="hero-tickets-popup-button"
             >
               Билеты
             </Button>

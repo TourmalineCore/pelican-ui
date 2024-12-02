@@ -1,44 +1,25 @@
 import Head from 'next/head';
-import { GlobalComponentProps, NewsListComponentProps } from '@/src/common/types';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
-import { Layout } from '@/src/components/globals/Layout/Layout';
 import { NEWS_PAGE, NewsPageProps } from '@/src/common/mocks/news-page-mock/news-page-mock';
 import { NEWS_LIMIT, NewsList } from '@/src/components/news-page/NewsList/NewsList';
-import { NEWS_LIST } from '@/src/common/mocks/news-page-mock/news-list-mock';
-
-type NewsProps = {
-  globalData: GlobalComponentProps,
-  pageData: NewsPageProps,
-  news: {
-    cards: NewsListComponentProps['cards'],
-    title: NewsListComponentProps['title'],
-    total: number,
-  },
-};
+import { NEWS, NewsProps } from '@/src/common/mocks/news-page-mock/news-mock';
 
 export default function NewsPage({
-  globalData,
   pageData,
   news,
-}: NewsProps) {
-  if (!pageData || !globalData) {
+  totalNews,
+}: {
+  pageData: NewsPageProps,
+  news: NewsProps[],
+  totalNews: number,
+}) {
+  if (!pageData) {
     return <NotFound />;
   }
 
   const {
-    navigationLinks,
-    email,
-    phone,
-    popupTicketBuyText,
-    footerAboutLinks,
-    footerUserLinks,
-    officialLinks,
-    footerNavTitleLeft,
-    footerNavTitleRight,
-  } = globalData;
-
-  const {
     title,
+    newsTitle,
   } = pageData;
 
   return (
@@ -50,23 +31,11 @@ export default function NewsPage({
         />
         <title>{title}</title>
       </Head>
-      <Layout
-        navigationLinks={navigationLinks}
-        officialLinks={officialLinks}
-        footerAboutLinks={footerAboutLinks}
-        footerUserLinks={footerUserLinks}
-        email={email}
-        phone={phone}
-        popupTicketBuyText={popupTicketBuyText}
-        footerNavTitleLeft={footerNavTitleLeft}
-        footerNavTitleRight={footerNavTitleRight}
-      >
-        <NewsList
-          title={news.title}
-          cards={news.cards}
-          total={news.total}
-        />
-      </Layout>
+      <NewsList
+        title={newsTitle}
+        news={news}
+        total={totalNews}
+      />
     </>
   );
 }
@@ -91,11 +60,8 @@ export async function getServerSideProps({
   return {
     props: {
       pageData: NEWS_PAGE,
-      news: {
-        cards: NEWS_LIST.cards.slice(0, query.pageSize || NEWS_LIMIT),
-        title: NEWS_LIST.title,
-        total: NEWS_LIST.cards.length,
-      },
+      news: NEWS.slice(0, query.pageSize || NEWS_LIMIT),
+      totalNews: NEWS.length,
     },
   };
 }

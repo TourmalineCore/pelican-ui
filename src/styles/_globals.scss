@@ -7,6 +7,10 @@ body {
   background-color: $color-background-page;
 }
 
+.main {
+  flex-grow: 1;
+}
+
 img {
   display: block;
   width: 100%;
@@ -62,6 +66,10 @@ a {
   &.is-visible {
     opacity: 1;
     visibility: visible;
+  }
+
+  &.is-header-hidden {
+    z-index: $overlay-with-hidden-header;
   }
 }
 

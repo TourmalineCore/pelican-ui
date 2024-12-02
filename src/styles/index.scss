@@ -6,6 +6,7 @@
 
 // Component
 @import "../components/globals/Video/Video";
+@import "../components/globals/SocialNetwork/SocialMedia";
 @import "../components/globals/Layout/Layout";
 @import "../components/globals/Header/Header";
 @import "../components/globals/Header/components/HeaderPopupButton/HeaderPopupButton";
@@ -30,4 +31,10 @@
 @import "../components/home-page/Map/components/MapAddressCard";
 @import "../components/home-page/TextAndMedia/TextAndMedia";
 @import "../components/news-page/NewsList/NewsList";
+@import "../components/news-page/NewsArticle/NewsArticle";
 @import "../components/not-found-page/NotFound/NotFound";
+@import "../components/globals/TicketsPopup/TicketsPopup";
+@import "../components/globals/TicketsPopup/components/TicketsPopupCard/TicketsPopupCard";
+@import "../components/globals/TicketsPopup/components/TicketsPopupRulesList/TicketsPopupRulesList";
+@import "../components/globals/TicketsPopup/components/TicketsPopupRefundReasons/TicketsPopupRefundReasons";
+@import "../components/globals/Accordion/Accordion";

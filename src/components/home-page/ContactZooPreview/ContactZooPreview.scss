@@ -14,24 +14,30 @@
       z-index: -1;
       border-radius: 32px;
       height: calc(100% + 56px);
-      background-image: url("../../../../public/images/contact-zoo/contact-zoo-footsteps.png");
-      background-position: -230px -25px;
-      background-size: cover;
+      background-image: url("../../../../public/images/contact-zoo/contact-zoo-footsteps.svg");
+      background-size: 588px;
       background-color: $color-yellow;
       inset: 0;
 
       @include tablet {
         border-radius: 40px;
         height: calc(100% + 80px);
+        background-size: 450px;
       }
 
       @include tablet-xl {
         border-radius: 64px;
         height: calc(100% + 96px);
+        background-size: 572px;
       }
 
       @include desktop {
         height: calc(100% + 82px);
+        background-size: 731px;
+      }
+
+      @include desktop-xl {
+        background-size: 918px;
       }
     }
 

@@ -2,7 +2,7 @@ import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideHeader, setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`ContactZooComponentTests`, () => {
+test.describe(`NewsListComponentTest`, () => {
   test.beforeEach(async ({
     page,
   }) => {

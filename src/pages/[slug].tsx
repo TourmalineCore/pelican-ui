@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import { BlockRenderer } from '@/src/components/globals/BlockRenderer/BlockRenderer';
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
-import { Layout } from '../components/globals/Layout/Layout';
 import { GlobalComponentProps, HomePageProps } from '../common/types';
 import { NotFound } from '../components/not-found-page/NotFound/NotFound';
+import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 
 type UniversalProps = {
   globalData: GlobalComponentProps,
@@ -14,21 +13,15 @@ export default function UniversalPage({
   globalData,
   pageData,
 }: UniversalProps) {
-  if (!pageData || !globalData) {
+  if (!pageData) {
     return <NotFound />;
   }
 
   const {
-    navigationLinks,
     email,
     phone,
-    popupTicketBuyText,
-    footerAboutLinks,
-    footerUserLinks,
-    officialLinks,
-    footerNavTitleLeft,
-    footerNavTitleRight,
   } = globalData;
+
   const {
     title, blocks,
   } = pageData;
@@ -42,26 +35,14 @@ export default function UniversalPage({
         />
         <title>{title}</title>
       </Head>
-      <Layout
-        navigationLinks={navigationLinks}
-        officialLinks={officialLinks}
-        footerAboutLinks={footerAboutLinks}
-        footerUserLinks={footerUserLinks}
-        email={email}
-        phone={phone}
-        popupTicketBuyText={popupTicketBuyText}
-        footerNavTitleLeft={footerNavTitleLeft}
-        footerNavTitleRight={footerNavTitleRight}
-      >
-        {blocks.map((block) => (
-          <BlockRenderer
-            key={block.id}
-            block={block}
-            phone={phone}
-            email={email}
-          />
-        ))}
-      </Layout>
+      {blocks.map((block) => (
+        <BlockRenderer
+          key={block.id}
+          block={block}
+          phone={phone}
+          email={email}
+        />
+      ))}
     </>
   );
 }
