@@ -13,8 +13,8 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: `./`,
-  outputDir: `./test/pw-test-results/e2e-tests`,
-  snapshotDir: `./test/pw-tests/screenshots/e2e-tests/base`,
+  outputDir: `./playwright-tests/playwright-test-results/e2e-tests`,
+  snapshotDir: `./playwright-tests/screenshots/e2e-tests/base`,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
