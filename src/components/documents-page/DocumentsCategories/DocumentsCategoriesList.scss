@@ -1,0 +1,11 @@
+.documents-categories-list {
+  padding-top: 24px;
+  padding-bottom: 40px;
+
+  &__title {
+    @include h1-text;
+
+    margin-bottom: 24px;
+    color: $color-black-75;
+  }
+}
