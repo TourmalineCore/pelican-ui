@@ -1,6 +1,5 @@
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { DocumentsCategoriesProps } from "@/src/common/mocks/documents-page-mock/documents-categories-mock";
-import Link from "next/link";
+import { DocumentsCategoriesCard } from "@/src/components/documents-page/DocumentsCategories/DocumentsCategoriesCard/DocumentsCategoriesCard";
 
 export function DocumentsCategoriesList({
   documentsTitle,
@@ -9,12 +8,6 @@ export function DocumentsCategoriesList({
   documentsTitle: string,
   documentsCategories: DocumentsCategoriesProps[],
 }) {
-  const windowWidth = useWindowWidth();
-
-  if (windowWidth === 0) {
-    return null;
-  }
-
   return (
     <section
       className="documents-categories-list container"
@@ -27,14 +20,12 @@ export function DocumentsCategoriesList({
           title,
           link,
         }) => (
-          <Link
+          <DocumentsCategoriesCard
             key={id}
-            href={link}
-          >
-            <li className="documents-categories-list__list-item">
-              <span>{title}</span>
-            </li>
-          </Link>
+            className="documents-categories-list__list-item"
+            link={link}
+            title={title}
+          />
         ))}
       </ul>
     </section>
