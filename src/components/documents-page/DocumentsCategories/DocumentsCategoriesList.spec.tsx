@@ -55,7 +55,7 @@ async function tabletTest({
   await expect(getDocumentsCategoriesListByTestId({
     page,
   }))
-    .toHaveScreenshot(`document-categories-list-tablet.png`);
+    .toHaveScreenshot(`documents-categories-list-tablet.png`);
 }
 
 async function tabletXlTest({
