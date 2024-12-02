@@ -58,8 +58,8 @@ jobs:
         # it is 14 because it looks like that for each shard 4 workers are used
         # since the "ideal" number of tests per worker should be 1 we need to devide our nuber of tests on 4
         # currently there are 54 tests / 4 workers ~ 14 shards (should cover up to 56 tests according to this logic) 
-        shardIndex: [1, 2, 3, 4]
-        shardTotal: [4]
+        shardIndex: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+        shardTotal: [16]
 
     steps:
     - name: Checkout repository
@@ -104,7 +104,7 @@ jobs:
     - name: Log Browser Version
       run: du -hs ~/.cache/ms-playwright/*
 
-    - name: Run dev server
+    - name: Run Playwright Tests
       run: |
         npm run test &
         npx --yes wait-on http://localhost:3000 & 
