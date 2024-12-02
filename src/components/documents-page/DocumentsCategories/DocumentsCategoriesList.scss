@@ -12,6 +12,12 @@
     @include tablet {
       width: 56%;
     }
+
+    @include tablet-xl {
+      @include body-1-medium;
+
+      width: 100%;
+    }
   }
 
   &__list {
@@ -23,6 +29,11 @@
 
     @include tablet {
       max-width: 800px;
+    }
+
+    @include tablet-xl {
+      max-width: 1000px;
+      gap: 16px;
     }
   }
 }
