@@ -7,6 +7,10 @@ body {
   background-color: $color-background-page;
 }
 
+.main {
+  flex-grow: 1;
+}
+
 img {
   display: block;
   width: 100%;

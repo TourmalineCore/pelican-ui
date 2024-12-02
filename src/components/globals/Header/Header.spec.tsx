@@ -86,6 +86,8 @@ async function desktopXlTest({
 
 function getHeaderByTestId({
   page,
-}: { page: Page }) {
+}: {
+  page: Page
+}) {
   return page.getByTestId(`header`);
 }

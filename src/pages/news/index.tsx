@@ -1,41 +1,21 @@
 import Head from 'next/head';
-import { GlobalComponentProps } from '@/src/common/types';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
-import { Layout } from '@/src/components/globals/Layout/Layout';
 import { NEWS_PAGE, NewsPageProps } from '@/src/common/mocks/news-page-mock/news-page-mock';
 import { NEWS_LIMIT, NewsList } from '@/src/components/news-page/NewsList/NewsList';
 import { NEWS, NewsProps } from '@/src/common/mocks/news-page-mock/news-mock';
 
 export default function NewsPage({
-  globalData,
   pageData,
   news,
   totalNews,
 }: {
-  globalData: GlobalComponentProps,
   pageData: NewsPageProps,
   news: NewsProps[],
   totalNews: number,
 }) {
-  if (!pageData || !globalData) {
+  if (!pageData) {
     return <NotFound />;
   }
-
-  const {
-    navigationLinks,
-    email,
-    phone,
-    popupTicketBuyText,
-    footerAboutLinks,
-    footerUserLinks,
-    officialLinks,
-    footerNavTitleLeft,
-    footerNavTitleRight,
-    ticketsPopupGeneral,
-    ticketsPopupSubsidized,
-    ticketsPopupRulesImages,
-    ticketsPopupRefundReasons,
-  } = globalData;
 
   const {
     title,
@@ -51,27 +31,11 @@ export default function NewsPage({
         />
         <title>{title}</title>
       </Head>
-      <Layout
-        navigationLinks={navigationLinks}
-        officialLinks={officialLinks}
-        footerAboutLinks={footerAboutLinks}
-        footerUserLinks={footerUserLinks}
-        email={email}
-        phone={phone}
-        popupTicketBuyText={popupTicketBuyText}
-        footerNavTitleLeft={footerNavTitleLeft}
-        footerNavTitleRight={footerNavTitleRight}
-        ticketsPopupGeneral={ticketsPopupGeneral}
-        ticketsPopupSubsidized={ticketsPopupSubsidized}
-        ticketsPopupRulesImages={ticketsPopupRulesImages}
-        ticketsPopupRefundReasons={ticketsPopupRefundReasons}
-      >
-        <NewsList
-          title={newsTitle}
-          news={news}
-          total={totalNews}
-        />
-      </Layout>
+      <NewsList
+        title={newsTitle}
+        news={news}
+        total={totalNews}
+      />
     </>
   );
 }

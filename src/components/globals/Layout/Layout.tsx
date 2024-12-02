@@ -1,9 +1,15 @@
-import { PropsWithChildren, useRef } from 'react';
+import {
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useRef,
+} from 'react';
 import { GlobalComponentProps } from '@/src/common/types';
 import { TicketPopupProvider } from '@/src/common/providers/TicketPopupProvider';
-import { Footer } from '../Footer/Footer';
+import { WindowWidthContext } from '@/src/common/providers/WindowWidthProvider';
 import { Header } from '../Header/Header';
 import { TicketsPopup } from '../TicketsPopup/TicketsPopup';
+import { Footer } from '../Footer/Footer';
 
 type LayoutProps = GlobalComponentProps & PropsWithChildren;
 
@@ -25,6 +31,26 @@ export function Layout({
 }: {
 } & LayoutProps) {
   const overlayElementRef = useRef<null | HTMLDivElement>(null);
+  const {
+    windowWidth,
+    handleSetWindowWidth,
+  } = useContext(WindowWidthContext);
+
+  useEffect(() => {
+    if (windowWidth === 0) {
+      handleSetWindowWidth();
+    }
+
+    window.addEventListener(`resize`, handleSetWindowWidth);
+
+    return () => {
+      window.removeEventListener(`resize`, handleSetWindowWidth);
+    };
+  }, [windowWidth]);
+
+  if (windowWidth === 0) {
+    return null;
+  }
 
   return (
     <TicketPopupProvider>
