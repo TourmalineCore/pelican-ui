@@ -101,6 +101,9 @@ jobs:
       if: steps.cache-playwrightbrowsers.outputs.cache-hit != 'true'
       run: npx playwright install chromium --with-deps
 
+    - name: Log Browser Version
+      run: du -hs ~/.cache/ms-playwright/*
+
     - name: Run dev server
       run: |
         npm run test &
