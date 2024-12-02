@@ -19,6 +19,11 @@
       border-radius: 28px;
       padding: 16px 24px;
     }
+
+    @include desktop {
+      border-radius: 32px;
+      padding: 24px;
+    }
   }
 
   &__title {
@@ -37,6 +42,12 @@
 
       margin-right: 24px;
       color: $color-black;
+    }
+
+    @include desktop {
+      @include body-2-medium;
+
+      margin-right: 32px;
     }
   }
 

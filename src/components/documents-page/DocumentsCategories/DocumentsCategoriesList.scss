@@ -18,6 +18,12 @@
 
       width: 100%;
     }
+
+    @include desktop {
+      @include h1-text;
+
+      margin-bottom: 40px;
+    }
   }
 
   &__list {
@@ -35,5 +41,13 @@
       max-width: 1000px;
       gap: 16px;
     }
+
+    @include desktop {
+      max-width: 1250px;
+    }
+  }
+
+  @include desktop {
+    padding-bottom: 120px;
   }
 }
