@@ -7,7 +7,7 @@ export type DocumentsCategoriesProps = {
 export const DOCUMENTS_CATEGORIES: DocumentsCategoriesProps[] = [
   {
     id: 1,
-    title: `Муниципальные задания и отчёты по\u00A0выполнению муниципального задания`,
+    title: `Отчеты`,
     link: `#`,
   },
   {
@@ -17,12 +17,12 @@ export const DOCUMENTS_CATEGORIES: DocumentsCategoriesProps[] = [
   },
   {
     id: 3,
-    title: `Отчеты`,
+    title: `Учредительные документы и\u00A0реквизиты`,
     link: `#`,
   },
   {
     id: 4,
-    title: `Учредительные документы и\u00A0реквизиты`,
+    title: `Муниципальные задания и отчёты по\u00A0выполнению муниципального задания`,
     link: `#`,
   },
   {
@@ -37,12 +37,12 @@ export const DOCUMENTS_CATEGORIES: DocumentsCategoriesProps[] = [
   },
   {
     id: 7,
-    title: `Планы Финансово-Хозяйственной Деятельности`,
+    title: `О деятельности учреждения`,
     link: `#`,
   },
   {
     id: 8,
-    title: `О деятельности учреждения`,
+    title: `Планы Финансово-Хозяйственной Деятельности`,
     link: `#`,
   },
 ];
