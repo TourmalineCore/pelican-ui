@@ -18,6 +18,5 @@ export function IconArrow({
         stroke-width="2"
       />
     </svg>
-
   );
 }
