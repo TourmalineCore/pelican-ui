@@ -57,6 +57,18 @@ npx playwright test --update-snapshots
 
 It will change only those that are no longer the same. After visual verification by your own eyes you can commit new base snapshots.
 
+## See Tests Report Locally in Dev Container
+
+After you execute `npx playwright test` you can see the tests run report. For instance, if retries occured for a test or several of them. If a tests run failed report is going to be hosted for you automatically. If a test run succeeded you need to ask to host the report using the following script:
+```bash
+npx playwright show-report
+```
+
+To see the hosted report you need to run the following command and then look through VNC:
+```bash
+npx playwright open localhost:9323
+```
+
 ## Playwright Version Upgrade
 
 Playwright version has to be fixed to be compatible with Dev Containers workflow.
