@@ -18,7 +18,7 @@ export function DocumentsCategoriesCard({
       <li className="documents-categories-card__wrapper">
         <h2 className="documents-categories-card__title">{title}</h2>
         <span className="documents-categories-card__arrow">
-          <IconArrow />
+          <IconArrow className="documents-categories-card__icon-arrow" />
         </span>
       </li>
     </Link>
