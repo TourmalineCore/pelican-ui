@@ -24,6 +24,10 @@
       border-radius: 32px;
       padding: 24px;
     }
+
+    @include desktop-xl {
+      padding: 32px;
+    }
   }
 
   &__title {
@@ -49,6 +53,12 @@
 
       margin-right: 32px;
     }
+
+    @include desktop {
+      @include text-medium;
+
+      margin-right: 40px;
+    }
   }
 
   &__arrow {
@@ -69,10 +79,20 @@
       width: 40px;
       height: 40px;
     }
+
+    @include desktop-xl {
+      width: 48px;
+      height: 48px;
+    }
   }
 
   &__icon-arrow {
     transition: 0.3s ease-out;
+
+    @include desktop-xl {
+      width: 15px;
+      height: 13.75px;
+    }
   }
 
   &:hover,

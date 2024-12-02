@@ -43,11 +43,19 @@
     }
 
     @include desktop {
-      max-width: 1250px;
+      max-width: 1280px;
+    }
+
+    @include desktop-xl {
+      max-width: 1850px;
     }
   }
 
   @include desktop {
     padding-bottom: 120px;
+  }
+
+  @include desktop-xl {
+    padding-top: 64px;
   }
 }
