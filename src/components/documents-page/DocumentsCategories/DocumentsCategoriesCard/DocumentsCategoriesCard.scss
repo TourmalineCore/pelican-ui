@@ -1,0 +1,35 @@
+.documents-categories-card {
+  $this: &;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $color-green-15;
+    padding: 16px 0 15px;
+  }
+
+  &__title {
+    @include caption-1-medium;
+
+    max-width: 88%;
+    color: $color-black-75;
+  }
+
+  &__arrow {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    width: 32px;
+    height: 32px;
+    background-color: $color-green-10;
+  }
+
+  &:hover,
+  &:focus {
+    #{$this}__title {
+      color: $color-green;
+    }
+  }
+}
