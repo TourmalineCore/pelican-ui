@@ -19,7 +19,6 @@
     "test-e2e-ui": "npx playwright test --ui"
   },
   "dependencies": {
-    "@axe-core/playwright": "^4.10.1",
     "axios": "^1.7.7",
     "clsx": "^2.1.0",
     "cookies-next": "^4.1.1",
@@ -38,6 +37,7 @@
     "sharp": "^0.33.3"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
     "@commitlint/cli": "^19.0.3",
     "@commitlint/config-conventional": "^19.0.3",
     "@playwright/test": "^1.49.0",

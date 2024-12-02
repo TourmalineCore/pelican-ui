@@ -4,20 +4,23 @@ import type { AppProps } from 'next/app';
 import localFont from "next/font/local";
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { Layout } from '../components/globals/Layout/Layout';
+import { NotFound } from '../components/not-found-page/NotFound/NotFound';
+import { WindowWidthProvider } from '../common/providers/WindowWidthProvider';
 import {
+  POPUP_TICKET_BUY_TEXT,
   EMAIL,
+  PHONE,
+  NAVIGATION_LINKS,
   FOOTER_ABOUT_LINKS,
+  FOOTER_USER_LINKS,
+  OFFICIAL_LINKS,
   FOOTER_NAV_TITLE_LEFT,
   FOOTER_NAV_TITLE_RIGHT,
-  FOOTER_USER_LINKS,
-  NAVIGATION_LINKS,
-  OFFICIAL_LINKS,
-  PHONE,
-  POPUP_TICKET_BUY_TEXT,
   TICKETS_POPUP_GENERAL,
-  TICKETS_POPUP_REFUND_REASONS,
-  TICKETS_POPUP_RULES_IMAGES,
   TICKETS_POPUP_SUBSIDIZED,
+  TICKETS_POPUP_RULES_IMAGES,
+  TICKETS_POPUP_REFUND_REASONS,
 } from '../common/mocks/globals-mock';
 
 const inter = localFont({
@@ -47,7 +50,8 @@ const inter = localFont({
 });
 
 export default function App({
-  Component, pageProps,
+  Component,
+  pageProps,
 }: AppProps) {
   const {
     pathname,
@@ -59,10 +63,52 @@ export default function App({
     });
   }, [pathname]);
 
+  if (!pageProps.globalData) {
+    return (
+      <div className={inter.variable}>
+        <NotFound />
+      </div>
+    );
+  }
+
+  const {
+    navigationLinks,
+    email,
+    phone,
+    popupTicketBuyText,
+    footerAboutLinks,
+    footerUserLinks,
+    officialLinks,
+    footerNavTitleLeft,
+    footerNavTitleRight,
+    ticketsPopupGeneral,
+    ticketsPopupSubsidized,
+    ticketsPopupRulesImages,
+    ticketsPopupRefundReasons,
+  } = pageProps.globalData;
+
   return (
-    <div className={inter.variable}>
-      <Component {...pageProps} />
-    </div>
+    <WindowWidthProvider>
+      <div className={inter.variable}>
+        <Layout
+          navigationLinks={navigationLinks}
+          officialLinks={officialLinks}
+          footerAboutLinks={footerAboutLinks}
+          footerUserLinks={footerUserLinks}
+          email={email}
+          phone={phone}
+          popupTicketBuyText={popupTicketBuyText}
+          footerNavTitleLeft={footerNavTitleLeft}
+          footerNavTitleRight={footerNavTitleRight}
+          ticketsPopupGeneral={ticketsPopupGeneral}
+          ticketsPopupSubsidized={ticketsPopupSubsidized}
+          ticketsPopupRulesImages={ticketsPopupRulesImages}
+          ticketsPopupRefundReasons={ticketsPopupRefundReasons}
+        >
+          <Component {...pageProps} />
+        </Layout>
+      </div>
+    </WindowWidthProvider>
   );
 }
 

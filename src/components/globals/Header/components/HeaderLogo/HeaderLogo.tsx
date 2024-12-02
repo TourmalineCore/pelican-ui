@@ -1,7 +1,7 @@
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import Image from "next/image";
 import Link from "next/link";
-import { AppRoute, Breakpoint } from "@/src/common/enum";
+import { AppRoute } from "@/src/common/enum";
 import Logo from '../../../../../../public/images/header/logo.svg';
 import LogoDesktop from '../../../../../../public/images/header/logo-desktop.svg';
 
@@ -10,7 +10,9 @@ export function HeaderLogo({
 }: {
   className: string,
 }) {
-  const windowWidth = useWindowWidth();
+  const {
+    isDesktop,
+  } = useWindowWidth();
 
   return (
     <Link
@@ -19,7 +21,7 @@ export function HeaderLogo({
     >
       <Image
         src={getLogo({
-          windowsSize: windowWidth,
+          isDesktopSize: isDesktop,
         })}
         alt="Логотип челябинского зоопарка"
       />
@@ -27,11 +29,11 @@ export function HeaderLogo({
   );
 
   function getLogo({
-    windowsSize,
+    isDesktopSize,
   }: {
-    windowsSize: number
+    isDesktopSize: boolean
   }) {
-    if (windowsSize >= Breakpoint.DESKTOP) {
+    if (isDesktopSize) {
       return LogoDesktop;
     }
 

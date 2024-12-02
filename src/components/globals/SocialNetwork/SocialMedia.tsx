@@ -1,29 +1,30 @@
-import Image from 'next/image';
-import iconVk from '../../../../public/images/social-media/vk.svg';
-import iconTg from '../../../../public/images/social-media/tg.svg';
-import iconOk from '../../../../public/images/social-media/ok.svg';
-import iconDzen from '../../../../public/images/social-media/dzen.svg';
+import Link from "next/link";
+import React from "react";
+import { IconVk } from "./components/IconVk/IconVk";
+import { IconTg } from "./components/IconTg/IconTg";
+import { IconOk } from "./components/IconOk/IconOk";
+import { IconDzen } from "./components/IconDzen/IconDzen";
 
 // TODO: get link from api
 const ICONS = [
   {
-    icon: iconVk,
-    alt: `Иконка ВК`,
+    id: 1,
+    icon: IconVk,
     link: `#`,
   },
   {
-    icon: iconTg,
-    alt: `Иконка телеграмма`,
+    id: 2,
+    icon: IconTg,
     link: `#`,
   },
   {
-    icon: iconOk,
-    alt: `Иконка одноклассников`,
+    id: 3,
+    icon: IconOk,
     link: `#`,
   },
   {
-    icon: iconDzen,
-    alt: `Иконка яндекс дзен`,
+    id: 4,
+    icon: IconDzen,
     link: `#`,
   },
 ];
@@ -36,20 +37,17 @@ export function SocialMedia({
   return (
     <>
       {ICONS.map(({
+        id,
         icon,
-        alt,
         link,
       }) => (
-        <a
-          className={`${className}`}
+        <Link
+          className={`${className} social-link`}
           href={link}
-          key={alt}
+          key={id}
         >
-          <Image
-            src={icon}
-            alt={alt}
-          />
-        </a>
+          {React.createElement(icon)}
+        </Link>
       ))}
     </>
   );

@@ -1,5 +1,6 @@
 .footer {
   z-index: $footer;
+  flex-shrink: 0;
   color: $color-black-60;
 
   &__inner {

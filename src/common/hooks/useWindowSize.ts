@@ -1,23 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { Breakpoint } from "../enum";
+import { WindowWidthContext } from "../providers/WindowWidthProvider";
 
 export function useWindowWidth() {
-  const [windowWidth, setWindowWidth] = useState(0);
+  const {
+    windowWidth,
+  } = useContext(WindowWidthContext);
 
-  useEffect(() => {
-    const handleSetWindowWidth = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    if (windowWidth === 0) {
-      handleSetWindowWidth();
-    }
-
-    window.addEventListener(`resize`, handleSetWindowWidth);
-
-    return () => {
-      window.removeEventListener(`resize`, handleSetWindowWidth);
-    };
-  }, [windowWidth]);
-
-  return windowWidth;
+  return {
+    windowWidth,
+    isMobile: windowWidth < Breakpoint.TABLET,
+    isTablet: windowWidth >= Breakpoint.TABLET,
+    isTabletXl: windowWidth >= Breakpoint.TABLET_XL,
+    isDesktop: windowWidth >= Breakpoint.DESKTOP,
+  };
 }

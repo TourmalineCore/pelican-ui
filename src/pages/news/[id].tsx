@@ -1,37 +1,12 @@
 import { NEWS, NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
-import { GlobalComponentProps } from "@/src/common/types";
-import { Layout } from "@/src/components/globals/Layout/Layout";
 import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle";
-import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
 
 export default function News({
-  globalData,
   news,
 }: {
-  globalData: GlobalComponentProps,
   news: NewsProps
 }) {
-  if (!globalData) {
-    return <NotFound />;
-  }
-
-  const {
-    navigationLinks,
-    email,
-    phone,
-    popupTicketBuyText,
-    footerAboutLinks,
-    footerUserLinks,
-    officialLinks,
-    footerNavTitleLeft,
-    footerNavTitleRight,
-    ticketsPopupGeneral,
-    ticketsPopupSubsidized,
-    ticketsPopupRulesImages,
-    ticketsPopupRefundReasons,
-  } = globalData;
-
   return (
     <>
       <Head>
@@ -41,27 +16,11 @@ export default function News({
         />
         <title>{news.title}</title>
       </Head>
-      <Layout
-        navigationLinks={navigationLinks}
-        officialLinks={officialLinks}
-        footerAboutLinks={footerAboutLinks}
-        footerUserLinks={footerUserLinks}
-        email={email}
-        phone={phone}
-        popupTicketBuyText={popupTicketBuyText}
-        footerNavTitleLeft={footerNavTitleLeft}
-        footerNavTitleRight={footerNavTitleRight}
-        ticketsPopupGeneral={ticketsPopupGeneral}
-        ticketsPopupSubsidized={ticketsPopupSubsidized}
-        ticketsPopupRulesImages={ticketsPopupRulesImages}
-        ticketsPopupRefundReasons={ticketsPopupRefundReasons}
-      >
-        <NewsArticle
-          title={news.title}
-          date={news.publishedAt}
-          articleContent={news.articleContent}
-        />
-      </Layout>
+      <NewsArticle
+        title={news.title}
+        date={news.publishedAt}
+        articleContent={news.articleContent}
+      />
     </>
   );
 }

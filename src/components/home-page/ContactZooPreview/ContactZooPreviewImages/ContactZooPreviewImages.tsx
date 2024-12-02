@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
-import { Breakpoint } from "@/src/common/enum";
 import { ContactZooPreviewComponentProps } from "@/src/common/types";
 
 export function ContactZooPreviewImages({
@@ -12,13 +11,9 @@ export function ContactZooPreviewImages({
   largeImage: ContactZooPreviewComponentProps["largeImage"],
   smallImage: ContactZooPreviewComponentProps["smallImage"],
 }) {
-  const windowWidth = useWindowWidth();
-
-  if (windowWidth === 0) {
-    return null;
-  }
-
-  const isDesktop = windowWidth >= Breakpoint.DESKTOP;
+  const {
+    isDesktop,
+  } = useWindowWidth();
 
   return (
     <div className={`${className} contact-zoo-images`}>
