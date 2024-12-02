@@ -48,6 +48,15 @@ If you want to work purely inside your Dev Container you have to connect the the
 npx playwright test --ui
 ```
 
+## Update Base Visual Regression Tests Snapshots
+
+When you need to update no longer actual snapshots you can do it using the following command:
+```bash
+npx playwright test --update-snapshots
+```
+
+It will change only those that are no longer the same. After visual verification by your own eyes you can commit new base snapshots.
+
 ## Playwright Version Upgrade
 
 Playwright version has to be fixed to be compatible with Dev Containers workflow.
