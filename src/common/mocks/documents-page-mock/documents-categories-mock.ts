@@ -7,7 +7,7 @@ export type DocumentsCategoriesProps = {
 export const DOCUMENTS_CATEGORIES: DocumentsCategoriesProps[] = [
   {
     id: 1,
-    title: `Муниципальные задания и отчёты по выполнению муниципального задания`,
+    title: `Муниципальные задания и отчёты по\u00A0выполнению муниципального задания`,
     link: `#`,
   },
   {
@@ -22,7 +22,7 @@ export const DOCUMENTS_CATEGORIES: DocumentsCategoriesProps[] = [
   },
   {
     id: 4,
-    title: `Учредительные документы и реквизиты`,
+    title: `Учредительные документы и\u00A0реквизиты`,
     link: `#`,
   },
   {
