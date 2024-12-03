@@ -48,10 +48,13 @@ async function routeTest({
 
     await page.waitForURL(`**/documents/${id}`);
     expect(page.url())
-      .toBe(`http://localhost:3000/documents/${id}`);
+      .toBe(`http://localhost:3000/${AppRoute.DOCUMENTS}/${id}`);
 
     await page.goBack();
   }
+
+  await page.goto(`http://localhost:3000/${AppRoute.DOCUMENTS}/100`);
+  await page.getByTestId(`not-found`);
 }
 
 async function mobileTest({
