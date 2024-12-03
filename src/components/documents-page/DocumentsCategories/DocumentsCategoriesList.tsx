@@ -18,12 +18,11 @@ export function DocumentsCategoriesList({
         {documentsCategories.map(({
           id,
           title,
-          link,
         }) => (
           <DocumentsCategoriesCard
             key={id}
             className="documents-categories-list__list-item"
-            link={link}
+            id={id}
             title={title}
           />
         ))}

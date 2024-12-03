@@ -1,19 +1,20 @@
 import Link from "next/link";
+import { AppRoute } from "@/src/common/enum";
 import { IconArrow } from "./IconArrow/IconArrow";
 
 export function DocumentsCategoriesCard({
   className,
-  link,
+  id,
   title,
 }: {
   className: string,
-  link: string,
+  id: number,
   title: string,
 }) {
   return (
     <Link
       className={`${className} documents-categories-card`}
-      href={link}
+      href={`${AppRoute.DOCUMENTS}/${id}`}
     >
       <li className="documents-categories-card__wrapper">
         <h2 className="documents-categories-card__title">{title}</h2>
