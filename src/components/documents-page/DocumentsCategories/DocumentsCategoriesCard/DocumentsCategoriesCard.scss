@@ -6,6 +6,7 @@
     justify-content: space-between;
     border-bottom: 1px solid $color-green-15;
     padding: 16px 0 15px;
+    transition: 0.3s ease-out;
 
     @include tablet {
       align-items: center;
@@ -35,6 +36,7 @@
 
     max-width: 88%;
     color: $color-black-75;
+    transition: 0.3s ease-out;
 
     @include tablet {
       margin-right: 16px;
