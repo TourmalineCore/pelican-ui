@@ -1,5 +1,5 @@
 import { DocumentsCategoriesProps } from "@/src/common/mocks/documents-page-mock/documents-categories-mock";
-import { DocumentsCategoriesCard } from "@/src/components/documents-page/DocumentsCategories/DocumentsCategoriesCard/DocumentsCategoriesCard";
+import { DocumentsCategory } from "@/src/components/documents-page/DocumentsCategories/DocumentsCategory/DocumentsCategory";
 
 export function DocumentsCategoriesList({
   documentsTitle,
@@ -10,19 +10,19 @@ export function DocumentsCategoriesList({
 }) {
   return (
     <section
-      className="documents-categories-list container"
-      data-testid="documents-categories-list"
+      className="documents-categories container"
+      data-testid="documents-categories"
     >
-      <h1 className="documents-categories-list__title">{documentsTitle}</h1>
-      <ul className="documents-categories-list__list">
+      <h1 className="documents-categories__title">{documentsTitle}</h1>
+      <ul className="documents-categories__list">
         {documentsCategories.map(({
           id,
           title,
         }) => (
-          <DocumentsCategoriesCard
+          <DocumentsCategory
             key={id}
-            className="documents-categories-list__list-item"
-            data-testid="documents-category-card"
+            className="documents-categories__item"
+            data-testid="documents-category"
             id={id}
             title={title}
           />
