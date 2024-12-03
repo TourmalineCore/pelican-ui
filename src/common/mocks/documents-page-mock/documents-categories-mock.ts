@@ -1,48 +1,39 @@
 export type DocumentsCategoriesProps = {
   id: number,
   title: string,
-  link: string,
 };
 
 export const DOCUMENTS_CATEGORIES: DocumentsCategoriesProps[] = [
   {
-    id: 1,
+    id: 0,
     title: `Отчеты`,
-    link: `#`,
+  },
+  {
+    id: 1,
+    title: `Торги`,
   },
   {
     id: 2,
-    title: `Торги`,
-    link: `#`,
+    title: `Учредительные документы и\u00A0реквизиты`,
   },
   {
     id: 3,
-    title: `Учредительные документы и\u00A0реквизиты`,
-    link: `#`,
+    title: `Муниципальные задания и отчёты по\u00A0выполнению муниципального задания`,
   },
   {
     id: 4,
-    title: `Муниципальные задания и отчёты по\u00A0выполнению муниципального задания`,
-    link: `#`,
+    title: `Закупки`,
   },
   {
     id: 5,
-    title: `Закупки`,
-    link: `#`,
+    title: `Приказы`,
   },
   {
     id: 6,
-    title: `Приказы`,
-    link: `#`,
+    title: `О деятельности учреждения`,
   },
   {
     id: 7,
-    title: `О деятельности учреждения`,
-    link: `#`,
-  },
-  {
-    id: 8,
     title: `Планы Финансово-Хозяйственной Деятельности`,
-    link: `#`,
   },
 ];
