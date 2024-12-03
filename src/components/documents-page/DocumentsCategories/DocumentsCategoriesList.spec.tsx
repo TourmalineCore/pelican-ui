@@ -46,7 +46,7 @@ async function routeTest({
     await links.nth(id)
       .click();
 
-    await page.waitForURL(`**/documents/${id}`);
+    await page.waitForURL(`**/${AppRoute.DOCUMENTS}/${id}`);
     expect(page.url())
       .toBe(`http://localhost:3000/${AppRoute.DOCUMENTS}/${id}`);
 
