@@ -8,3 +8,5 @@ export const api = axios.create({
       : `/api`,
   ),
 });
+
+api.interceptors.response.use((response) => response.data);

@@ -117,7 +117,7 @@ export type ContactZooPreviewComponentProps = {
 
 type Image = {
   url: StaticImageData | string;
-  alt: string;
+  alternativeText: string;
 };
 
 export type MapComponentProps = {
@@ -158,4 +158,13 @@ export type NotFoundPageProps = {
 export type NotFoundComponentProps = {
   id: number,
   __component: BlockTypes.NOT_FOUND,
+};
+
+export type Meta = {
+  pagination: {
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number
+  }
 };

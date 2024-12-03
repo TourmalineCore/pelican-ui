@@ -8,6 +8,9 @@
 	"forwardPorts": [
 		3000
 	],
+	"runArgs": [
+		"--network=host"
+	],
 	"customizations": {
 		"vscode": {
 			"extensions": [

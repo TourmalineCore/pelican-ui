@@ -31,7 +31,7 @@ export function Hero({
       <div className="hero__image-wrapper">
         <Image
           src={image.url}
-          alt={image.alt}
+          alt={image.alternativeText}
           priority
         />
       </div>

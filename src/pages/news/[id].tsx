@@ -1,5 +1,6 @@
 import { NEWS, NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
 import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle";
+import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
 
 export default function News({
@@ -7,6 +8,10 @@ export default function News({
 }: {
   news: NewsProps
 }) {
+  if (!news) {
+    return <NotFound />;
+  }
+
   return (
     <>
       <Head>
@@ -19,7 +24,7 @@ export default function News({
       <NewsArticle
         title={news.title}
         date={news.publishedAt}
-        articleContent={news.articleContent}
+        innerContent={news.innerContent}
       />
     </>
   );
@@ -37,7 +42,7 @@ export async function getServerSideProps({
     props: {
       news: NEWS.find(({
         id,
-      }) => id === +query.id),
+      }) => id === +query.id) || null,
     },
   };
 }

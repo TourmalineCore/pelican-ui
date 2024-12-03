@@ -19,16 +19,16 @@ export function TicketsPopupRulesList({
       )}
     >
       {ticketsPopupRulesImages.map(({
-        alt, url,
+        alternativeText, url,
       }) => (
         <li
           className="tickets-popup-rules-list__rule"
-          key={alt}
+          key={alternativeText}
         >
           <Image
             className="tickets-popup-rules-list__rule-img"
             src={url}
-            alt={alt}
+            alt={alternativeText}
           />
         </li>
       ))}

@@ -21,7 +21,7 @@ export function ContactZooPreviewImages({
         <Image
           className="contact-zoo-images__image"
           src={largeImage.url}
-          alt={largeImage.alt}
+          alt={largeImage.alternativeText}
           fill
         />
       </div>
@@ -30,7 +30,7 @@ export function ContactZooPreviewImages({
           <Image
             className="contact-zoo-images__image"
             src={smallImage.url}
-            alt={smallImage.alt}
+            alt={smallImage.alternativeText}
             fill
           />
         </div>

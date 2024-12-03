@@ -4,11 +4,11 @@ import { MarkdownText } from "../../globals/MarkdownText/MarkdownText";
 export function NewsArticle({
   title,
   date,
-  articleContent,
+  innerContent,
 }: {
   title: NewsProps['title'],
   date: NewsProps['publishedAt'],
-  articleContent: NewsProps['articleContent']
+  innerContent: NewsProps['innerContent']
 }) {
   return (
     <div
@@ -18,7 +18,7 @@ export function NewsArticle({
       <span className="news-article__date">{date}</span>
       <h1 className="news-article__title">{title}</h1>
       <MarkdownText className="news-article__content">
-        {articleContent}
+        {innerContent}
       </MarkdownText>
     </div>
   );

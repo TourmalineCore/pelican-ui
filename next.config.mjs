@@ -7,6 +7,10 @@ const nextConfig = {
     APP_ENV: process.env.APP_ENV,
   },
 
+  images: {
+    domains: ['127.0.0.1', 'pelican-local-env.hb.ru-msk.vkcloud-storage.ru']
+  },
+
   async redirects() {
     return [
       {

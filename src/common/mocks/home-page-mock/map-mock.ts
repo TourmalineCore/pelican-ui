@@ -11,6 +11,6 @@ export const MAP: MapComponentProps = {
   note: `Единственный государственный\nзоопарк на Южном Урале`,
   image: {
     url: lamaImage,
-    alt: `Изображение ламы`,
+    alternativeText: `Изображение ламы`,
   },
 };

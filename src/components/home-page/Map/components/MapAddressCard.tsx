@@ -40,7 +40,7 @@ export function MapAddressCard({
             <Image
               loading="lazy"
               src={image.url}
-              alt={image.alt}
+              alt={image.alternativeText}
             />
             {isTablet && (
               <Image

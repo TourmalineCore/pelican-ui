@@ -59,7 +59,8 @@ export function Card({
             )}
             <Image
               src={image.url}
-              alt={image.alt}
+              fill
+              alt={image.alternativeText}
             />
           </div>
           <div className={clsx(`card__info`, {
