@@ -22,6 +22,7 @@ export function DocumentsCategoriesList({
           <DocumentsCategoriesCard
             key={id}
             className="documents-categories-list__list-item"
+            data-testid="documents-category-card"
             id={id}
             title={title}
           />

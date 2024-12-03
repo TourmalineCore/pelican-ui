@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideHeader, setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
@@ -16,6 +17,8 @@ test.describe(`DocumentsCategoriesListComponentTests`, () => {
     });
   });
 
+  test(`RouteTest`, routeTest);
+
   test(`MobileTest`, mobileTest);
 
   test(`TabletTest`, tabletTest);
@@ -26,6 +29,30 @@ test.describe(`DocumentsCategoriesListComponentTests`, () => {
 
   test(`DesktopXlTest`, desktopXlTest);
 });
+
+async function routeTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+  });
+
+  const links = page.locator(`[data-testid="documents-category-card"]`);
+  const count = await links.count();
+
+  for (let id = 0; id < count; id++) {
+    await links.nth(id)
+      .click();
+
+    await page.waitForURL(`**/documents/${id}`);
+    expect(page.url())
+      .toBe(`http://localhost:3000/documents/${id}`);
+
+    await page.goBack();
+  }
+}
 
 async function mobileTest({
   page,
@@ -113,3 +140,11 @@ function getDocumentsCategoriesListByTestId({
 }) {
   return page.getByTestId(`documents-categories-list`);
 }
+
+// function getDocumentsCategoryCardByTestId({
+//   page,
+// }: {
+//   page: Page
+// }) {
+//   return page.getByTestId(`documents-category-card`);
+// }
