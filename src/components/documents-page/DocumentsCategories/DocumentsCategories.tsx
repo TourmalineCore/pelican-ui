@@ -1,7 +1,7 @@
 import { DocumentsCategoriesProps } from "@/src/common/mocks/documents-page-mock/documents-categories-mock";
 import { DocumentsCategory } from "@/src/components/documents-page/DocumentsCategories/DocumentsCategory/DocumentsCategory";
 
-export function DocumentsCategoriesList({
+export function DocumentsCategories({
   documentsTitle,
   documentsCategories,
 }: {

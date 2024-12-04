@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { DOCUMENTS_PAGE, DocumentsPageProps } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
-import { DocumentsCategoriesList } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategoriesList';
+import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
 
 export default function DocumentsPage({
   pageData,
@@ -27,7 +27,7 @@ export default function DocumentsPage({
         />
         <title>{title}</title>
       </Head>
-      <DocumentsCategoriesList
+      <DocumentsCategories
         documentsTitle={documentsTitle}
         documentsCategories={documentCategories}
       />

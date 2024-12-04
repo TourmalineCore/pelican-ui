@@ -66,7 +66,7 @@ async function mobileTest({
   await expect(getDocumentsCategoriesListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-categories-list-mobile.png`);
+    .toHaveScreenshot(`documents-categories-mobile.png`);
 }
 
 async function tabletTest({
@@ -82,7 +82,7 @@ async function tabletTest({
   await expect(getDocumentsCategoriesListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-categories-list-tablet.png`);
+    .toHaveScreenshot(`documents-categories-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -98,7 +98,7 @@ async function tabletXlTest({
   await expect(getDocumentsCategoriesListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-categories-list-tablet-xl.png`);
+    .toHaveScreenshot(`documents-categories-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -114,7 +114,7 @@ async function desktopTest({
   await expect(getDocumentsCategoriesListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-categories-list-desktop.png`);
+    .toHaveScreenshot(`documents-categories-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -130,7 +130,7 @@ async function desktopXlTest({
   await expect(getDocumentsCategoriesListByTestId({
     page,
   }))
-    .toHaveScreenshot(`documents-categories-list-desktop-xl.png`);
+    .toHaveScreenshot(`documents-categories-desktop-xl.png`);
 }
 
 function getDocumentsCategoriesListByTestId({
@@ -138,5 +138,5 @@ function getDocumentsCategoriesListByTestId({
 }: {
   page: Page
 }) {
-  return page.getByTestId(`documents-categories-list`);
+  return page.getByTestId(`documents-categories`);
 }
