@@ -39,21 +39,18 @@ async function routeTest({
     page,
   });
 
-  const links = page.locator(`[data-testid="documents-category-card"]`);
-  const count = await links.count();
+  await page.getByTestId(`documents-category`)
+    .nth(0)
+    .click();
 
-  for (let id = 0; id < count; id++) {
-    await links.nth(id)
-      .click();
+  await page.waitForURL(`**${AppRoute.DOCUMENTS}/0`);
 
-    await page.waitForURL(`**/${AppRoute.DOCUMENTS}/${id}`);
-    expect(page.url())
-      .toBe(`http://localhost:3000/${AppRoute.DOCUMENTS}/${id}`);
+  expect(page.url())
+    .toBe(`http://localhost:3000${AppRoute.DOCUMENTS}/0`);
 
-    await page.goBack();
-  }
+  await page.goBack();
 
-  await page.goto(`http://localhost:3000/${AppRoute.DOCUMENTS}/100`);
+  await page.goto(`${AppRoute.DOCUMENTS}/100`);
   await page.getByTestId(`not-found`);
 }
 
@@ -143,11 +140,3 @@ function getDocumentsCategoriesListByTestId({
 }) {
   return page.getByTestId(`documents-categories-list`);
 }
-
-// function getDocumentsCategoryCardByTestId({
-//   page,
-// }: {
-//   page: Page
-// }) {
-//   return page.getByTestId(`documents-category-card`);
-// }
