@@ -8,6 +8,25 @@
     padding: 16px 0 15px;
     transition: 0.3s ease-out;
 
+    &:hover,
+    &:focus {
+      #{$this}__title {
+        color: $color-green;
+      }
+
+      #{$this}__icon-arrow {
+        transform: rotate(45deg);
+
+        path {
+          stroke: $color-green;
+        }
+      }
+
+      @include tablet {
+        background-color: $color-green-15;
+      }
+    }
+
     @include tablet {
       align-items: center;
       border: none;
@@ -94,25 +113,6 @@
     @include desktop-xl {
       width: 15px;
       height: 13.75px;
-    }
-  }
-
-  &:hover,
-  &:focus {
-    #{$this}__title {
-      color: $color-green;
-    }
-
-    #{$this}__wrapper {
-      background-color: $color-green-15;
-    }
-
-    #{$this}__icon-arrow {
-      transform: rotate(45deg);
-
-      path {
-        stroke: $color-green;
-      }
     }
   }
 }

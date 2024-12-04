@@ -12,16 +12,17 @@ export function DocumentsCategory({
   title: string,
 }) {
   return (
-    <Link
-      className={`${className} documents-category`}
-      href={`${AppRoute.DOCUMENTS}/${id}`}
-    >
-      <li className="documents-category__wrapper">
+    <li className={`${className} documents-category`}>
+      <Link
+        className="documents-category__wrapper"
+        href={`${AppRoute.DOCUMENTS}/${id}`}
+        data-testid="documents-category"
+      >
         <h2 className="documents-category__title">{title}</h2>
         <span className="documents-category__arrow">
           <IconArrow className="documents-category__icon-arrow" />
         </span>
-      </li>
-    </Link>
+      </Link>
+    </li>
   );
 }
