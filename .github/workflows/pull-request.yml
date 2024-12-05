@@ -1,5 +1,7 @@
 name: Check linting and run tests
 
+# ToDo should it be triggered only as part of an open PR?
+# currently it triggers for any commit in a FB
 on: 
   push:
     branches:
@@ -7,7 +9,7 @@ on:
 
 jobs:
   check-lint:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     strategy:
       matrix:
@@ -17,75 +19,133 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    # https://gist.github.com/rupeshtiwari/44ebec690f2c01bf1df9b1d215a0e723
+    # this one doesn't support node_modules caching which is the most important to cache https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#example-using-the-cache-action 
+    # cache is not shared among different feature/a and feature/b branches 
+    # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#restrictions-for-accessing-a-cache
+    - name: Cache node modules
+      id: cache-nodemodules
+      uses: actions/cache@v4
+      env:
+        cache-name: cache-node-modules
+      with:
+        # caching node_modules
+        path: node_modules
+        # the most important bit is the dependency on hash of package-lock.json file content
+        # thus if dependencies graph is changed cache is no longer valid
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Run CI command
+    - name: Install Dependencies
+      # we don't re-install deps and if cache exists and hit
+      if: steps.cache-nodemodules.outputs.cache-hit != 'true'
       run: npm ci
 
     - name: Check linting
       run: npm run lint
 
   run-tests:
-    runs-on: ubuntu-22.04
-    needs: [check-lint]
+    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
       matrix:
         node-version: [20.18.0]
-        shardIndex: [1, 2, 3, 4, 5, 6]
-        shardTotal: [6]
+        # it is 14 because it looks like that for each shard 4 workers are used
+        # since the "ideal" number of tests per worker should be 1 we need to devide our nuber of tests on 4
+        # currently there are 54 tests / 4 workers ~ 14 shards (should cover up to 56 tests according to this logic) 
+        shardIndex: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+        shardTotal: [16]
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+
+    # we need to declare the same cache that they are shared among different jobs (path and key are the most important)
+    # https://stackoverflow.com/a/71895573
+    - name: Cache node modules
+      id: cache-nodemodules
+      uses: actions/cache@v4
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+ 
+    # let's cache the binaries of installed browsers that we don't re-install them every time from scratch
+    - name: Cache playwright browsers
+      id: cache-playwrightbrowsers
+      uses: actions/cache@v4
+      env:
+        cache-name: cache-playwright-browsers
+      with:
+        # caching browsers binaries
+        # this path is taken from here https://playwright.dev/docs/browsers#managing-browser-binaries
+        path: ~/.cache/ms-playwright
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Install dependencies
+    - name: Install Dependencies
+      if: steps.cache-nodemodules.outputs.cache-hit != 'true'
       run: npm ci
 
     - name: Install Playwright Browsers
+      if: steps.cache-playwrightbrowsers.outputs.cache-hit != 'true'
       run: npx playwright install chromium --with-deps
 
-    - name: Run dev server
+    - name: Log Browser Version
+      run: du -hs ~/.cache/ms-playwright/*
+
+    - name: Run Playwright Tests
       run: |
         npm run test &
-        npx --yes wait-on http://localhost:3000
-
-    - name: Run Playwright tests
-      run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+        npx --yes wait-on http://localhost:3000 & 
+        npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
     - uses: actions/upload-artifact@v4
-      if: always()
+      # we don't really need successful runs reports
+      if: failure()
       with:
         name: blob-report-${{ matrix.shardIndex }}
         path: blob-report
         retention-days: 1
 
   merge-reports:
-    if: always() 
-    runs-on: ubuntu-22.04 
-    needs: [run-tests]
+    # we don't really need successful runs reports
+    if: failure()
+    runs-on: ubuntu-24.04 
+    needs: [check-lint,run-tests]
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+
+    - name: Cache node modules
+      id: cache-nodemodules
+      uses: actions/cache@v4
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
 
     - name: Set up Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Install dependencies
+    - name: Install Dependencies
+      if: steps.cache-nodemodules.outputs.cache-hit != 'true'
       run: npm ci
-        
+ 
     - name: Download blob reports from GitHub Actions Artifacts
       uses: actions/download-artifact@v4
       with:
@@ -101,4 +161,4 @@ jobs:
       with:
         name: html-report--attempt-${{ github.run_attempt }}
         path: playwright-report
-        retention-days: 1
+        retention-days: 7
