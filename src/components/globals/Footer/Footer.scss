@@ -1,20 +1,19 @@
 .footer {
   z-index: $footer;
   flex-shrink: 0;
+  border-radius: 32px;
   color: $color-black-60;
+  background-color: $color-white;
 
   &__inner {
-    border-radius: 32px;
     padding-top: 32px;
     padding-bottom: 16px;
-    background-color: $color-white;
 
     @include desktop {
       padding: 40px;
     }
 
     @include desktop-xl {
-      border-radius: 80px;
       padding: 64px;
     }
   }
@@ -409,5 +408,9 @@
     @include tablet {
       display: flex;
     }
+  }
+
+  @include desktop-xl {
+    border-radius: 80px;
   }
 }

@@ -32,8 +32,10 @@ img {
   }
 
   @include desktop-xl {
+    margin: 0 auto;
     padding-right: 64px;
     padding-left: 64px;
+    max-width: 1920px;
   }
 }
 
