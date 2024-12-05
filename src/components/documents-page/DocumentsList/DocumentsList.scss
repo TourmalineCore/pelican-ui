@@ -1,0 +1,17 @@
+.documents {
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  &__title {
+    @include h1-text;
+
+    margin-bottom: 24px;
+    color: $color-black-75;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

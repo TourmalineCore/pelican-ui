@@ -1,0 +1,39 @@
+.document-card {
+  border-radius: 32px;
+  padding: 16px;
+  background-color: $color-white;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__date {
+    @include caption-1-medium;
+
+    color: $color-black-60;
+  }
+
+  &__title {
+    @include h2-text;
+
+    color: $color-black-75;
+  }
+
+  &__accordion {
+    margin-top: 32px;
+  }
+
+  &__accordion-inner {
+    border-radius: 24px;
+    padding: 24px 16px;
+    background-color: $color-green-5;
+  }
+}
