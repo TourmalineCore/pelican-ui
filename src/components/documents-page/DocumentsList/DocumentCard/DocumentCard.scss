@@ -27,13 +27,38 @@
     color: $color-black-75;
   }
 
+  &__open-document {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    width: 32px;
+    height: 32px;
+    background-color: $color-green-5;
+  }
+
   &__accordion {
     margin-top: 32px;
   }
 
   &__accordion-inner {
+    margin-top: 16px;
     border-radius: 24px;
     padding: 24px 16px;
     background-color: $color-green-5;
+  }
+
+  &__subtitle {
+    @include body-1-medium;
+
+    padding-bottom: 8px;
+    color: $color-black-60;
+  }
+
+  &__description {
+    @include caption-1-medium;
+
+    color: $color-black-60;
   }
 }

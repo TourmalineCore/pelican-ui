@@ -28,6 +28,10 @@
   &__icon {
     margin-left: auto;
 
+    #{$this}--document-card & {
+      margin-left: 8px;
+    }
+
     #{$this}--ticket-card & {
       margin-left: 8px;
       color: $color-green;
@@ -81,6 +85,12 @@
     #{$this}__trigger {
       width: 100%;
       color: $color-white;
+    }
+  }
+
+  &--document-card {
+    #{$this}__trigger {
+      color: $color-black-75;
     }
   }
 }
