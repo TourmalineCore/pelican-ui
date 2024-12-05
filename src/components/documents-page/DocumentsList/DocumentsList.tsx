@@ -9,7 +9,10 @@ export function DocumentsList({
   documents: DocumentsListComponentProps[],
 }) {
   return (
-    <section className="documents">
+    <section
+      className="documents container"
+      data-testid="documents"
+    >
       <h1 className="documents__title">{categoryTitle}</h1>
       <ul className="documents__list">
         {documents?.map(({

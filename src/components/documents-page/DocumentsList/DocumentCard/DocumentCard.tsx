@@ -1,4 +1,6 @@
+import { Accordion } from "@/src/components/globals/Accordion/Accordion";
 import Link from "next/link";
+import iconChevron from "@/public/images/svg/icon-chevron.svg";
 
 export function DocumentCard({
   className,
@@ -26,6 +28,21 @@ export function DocumentCard({
         </div>
         {files.length === 1 ? <Link href="#">Icon</Link> : ``}
       </div>
+      {(subtitle !== null || files.length !== 1)
+        ? (
+          <Accordion
+            triggerText="Подробнее"
+            triggerHideText="Скрыть"
+            className="document-card__accordion"
+            icon={iconChevron}
+          >
+            <div className="document-card__accordion-inner">
+              <p className="document-card__subtitle">{subtitle}</p>
+              <p className="document-card__description">{description}</p>
+              {files.length !== 1 ? <Link href="#">Icon</Link> : ``}
+            </div>
+          </Accordion>
+        ) : ``}
     </li>
   );
 }
