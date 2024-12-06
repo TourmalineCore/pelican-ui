@@ -27,7 +27,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
   {
     id: 1,
     date: `07.07.2019`,
-    showDate: false,
+    showDate: true,
     title: `Договор №350474`,
     subtitle: `Договор на поставку продукции животноводства (мясо говядина) для нужд муниципального бюджетного 
     учреждения культуры «зоопарк»`,
@@ -42,7 +42,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
   {
     id: 2,
     date: `07.07.2019`,
-    showDate: false,
+    showDate: true,
     title: `Отчёт о выполнении муниципального задания за 2022г.`,
     subtitle: `Отчёт о выполнении муниципального задания по предоставлению муниципальных услуг 
     (выполнению работ за 2022 год.`,
@@ -55,7 +55,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
   {
     id: 3,
     date: `07.07.2019`,
-    showDate: false,
+    showDate: true,
     title: `Протоколы закупки №31907985526`,
     subtitle: null,
     description: null,
