@@ -41,7 +41,7 @@ export const NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
     id: 5,
     name: `Документы`,
-    link: `#`,
+    link: AppRoute.DOCUMENTS,
   },
   {
     id: 6,
@@ -72,7 +72,7 @@ export const FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] = [
   {
     id: 2,
     name: `Документы`,
-    link: `#`,
+    link: AppRoute.DOCUMENTS,
   },
   {
     id: 3,

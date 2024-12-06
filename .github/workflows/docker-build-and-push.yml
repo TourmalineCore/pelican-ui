@@ -30,4 +30,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
+          # ToDo it should be tagged not only with latest but with the commit sha as well
           tags: ghcr.io/tourmalinecore/pelican-ui:latest

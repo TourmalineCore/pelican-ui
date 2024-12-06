@@ -1,0 +1,61 @@
+.documents-categories {
+  padding-top: 24px;
+  padding-bottom: 40px;
+  min-height: calc(100vh - 64px);
+
+  &__title {
+    @include h1-text;
+
+    margin-bottom: 24px;
+    color: $color-black-75;
+
+    @include tablet {
+      width: 56%;
+    }
+
+    @include tablet-xl {
+      @include body-1-medium;
+
+      width: 100%;
+    }
+
+    @include desktop {
+      @include h1-text;
+
+      margin-bottom: 40px;
+    }
+  }
+
+  &__list {
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @include tablet {
+      max-width: 800px;
+    }
+
+    @include tablet-xl {
+      max-width: 1000px;
+      gap: 16px;
+    }
+
+    @include desktop {
+      max-width: 1280px;
+    }
+
+    @include desktop-xl {
+      max-width: 1850px;
+    }
+  }
+
+  @include desktop {
+    padding-bottom: 120px;
+  }
+
+  @include desktop-xl {
+    padding-top: 64px;
+  }
+}
