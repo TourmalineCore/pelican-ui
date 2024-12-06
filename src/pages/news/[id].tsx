@@ -1,12 +1,15 @@
 import { NEWS, NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
+import { api } from "@/src/common/utils/HttpClient";
 import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
 
+type OneNewsProps = Pick<NewsProps, 'innerContent' | 'publishedAt' | 'title'>;
+
 export default function News({
   news,
 }: {
-  news: NewsProps
+  news: OneNewsProps
 }) {
   if (!news) {
     return <NotFound />;
@@ -30,6 +33,10 @@ export default function News({
   );
 }
 
+type OneNewsResponse = {
+  data: OneNewsProps;
+};
+
 export async function getServerSideProps({
   query,
 }: {
@@ -37,12 +44,29 @@ export async function getServerSideProps({
     id: string
   }
 }) {
-  // TODO there will be a request in the Strapi api here
-  return {
-    props: {
-      news: NEWS.find(({
-        id,
-      }) => id === +query.id) || null,
-    },
-  };
+  if (process.env.APP_ENV === `test`) {
+    return {
+      props: {
+        news: NEWS.find(({
+          id,
+        }) => id === +query.id) || null,
+      },
+    };
+  }
+
+  try {
+    const news: OneNewsResponse = await api.get(`/news/${query.id}?fields[0]=title&fields[1]=innerContent&fields[2]=publishedAt`);
+
+    return {
+      props: {
+        news: news.data,
+      },
+    };
+  } catch {
+    return {
+      props: {
+        news: null,
+      },
+    };
+  }
 }
