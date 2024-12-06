@@ -46,7 +46,7 @@ export function TicketsPopup({
   }, [isActive]);
 
   return (
-    <div className="tickets-popup container">
+    <div className="tickets-popup">
       {isActive && (
         <div
           className="container tickets-popup__inner"

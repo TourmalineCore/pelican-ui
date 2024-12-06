@@ -1,16 +1,14 @@
 .tickets-popup {
   $this: &;
 
-  position: relative;
   z-index: $tickets-popup;
-  width: 100%;
 
   &__inner {
     @include medium-font;
 
     position: absolute;
     right: 0;
-    top: -$header-height-mobile;
+    top: 0;
     z-index: 100;
     overflow-y: auto;
     padding-bottom: 16px;
@@ -29,12 +27,10 @@
     }
 
     @include desktop {
-      top: -$header-height-desktop;
       max-width: 562px;
     }
 
     @include desktop-xl {
-      top: -$header-height-desktop-xl;
       max-width: 728px;
     }
   }
