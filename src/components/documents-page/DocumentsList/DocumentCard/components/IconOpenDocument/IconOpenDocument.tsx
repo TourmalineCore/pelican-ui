@@ -31,7 +31,7 @@ export function IconOpenDocument({
         8.05211 5.23989 8.146 5.146L12.293 1H8.5C8.36739 1 8.24021 0.947321 8.14645 0.853553C8.05268
         0.759785 8 0.632608 8 0.5Z"
         fill="black"
-        fill-opacity="0.75"
+        fillOpacity="0.75"
       />
     </svg>
   );
