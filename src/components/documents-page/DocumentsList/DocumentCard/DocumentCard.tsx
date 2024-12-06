@@ -24,10 +24,16 @@ export function DocumentCard({
     <li className={`${className} document-card`}>
       <div className="document-card__header">
         <div className="document-card__info">
-          <span className="document-card__date">{date}</span>
+          {showDate ? (<span className="document-card__date">{date}</span>) : ``}
           <h2 className="document-card__title">{title}</h2>
         </div>
-        {files.length === 1 ? <Link href="#"><span className="document-card__open-document"><IconOpenDocument className="documents-card__icon-open-document" /></span></Link> : ``}
+        {files.length === 1 ? (
+          <Link href="#">
+            <span className="document-card__open-document  document-card__open-document--primary">
+              <IconOpenDocument className="documents-card__icon-open-document" />
+            </span>
+          </Link>
+        ) : ``}
       </div>
       {(subtitle !== null || files.length !== 1)
         ? (
@@ -40,12 +46,27 @@ export function DocumentCard({
             <div className="document-card__accordion-inner">
               <p className="document-card__subtitle">{subtitle}</p>
               <p className="document-card__description">{description}</p>
-              {files.length !== 1 ? (
-                <Link href="#">
-                  {files}
-                  <IconOpenDocument className="documents-card__icon-open-document" />
-                </Link>
-              ) : ``}
+              <ul className="document-card__list">
+                {files.length !== 1 ? (
+                  files.map((file) => (
+                    <li
+                      className="document-card__item"
+                      key={file}
+                    >
+                      <Link
+                        className="document-card__link"
+                        href="#"
+                      >
+                        {file}
+                        <span className="document-card__open-document document-card__open-document--secondary">
+                          <IconOpenDocument className="documents-card__icon-open-document" />
+                        </span>
+                      </Link>
+                    </li>
+                  ))
+
+                ) : ``}
+              </ul>
             </div>
           </Accordion>
         ) : ``}
