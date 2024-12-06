@@ -29,7 +29,8 @@
 
     @include desktop {
       right: 70px;
-      width: 47px;
+      top: -1px;
+      width: 48px;
     }
 
     @include desktop-xl {
@@ -49,7 +50,11 @@
     }
 
     @include desktop-xl {
-      width: 20px;
+      right: -2px;
+      top: -1px;
+      width: 30px;
+      height: calc(100% + 2px);
+      background-image: url("../../../../../public/images/tickets/ticket-edge-wide-screen.svg");
     }
   }
 
