@@ -8,7 +8,7 @@ const nextConfig = {
   },
 
   images: {
-    domains: ['127.0.0.1', 'pelican-local-env.hb.ru-msk.vkcloud-storage.ru']
+    domains: ['127.0.0.1', 'pelican-local-env.hb.ru-msk.vkcloud-storage.ru', 'minio-s3.pelican.local.tourmalinecore.internal']
   },
 
   async redirects() {
