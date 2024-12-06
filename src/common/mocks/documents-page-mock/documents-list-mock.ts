@@ -1,3 +1,10 @@
+export type DocumentFileProps = {
+  id: number,
+  name: string,
+  url: string,
+  ext: string,
+};
+
 export type DocumentsListComponentProps = {
   id: number,
   date: string,
@@ -5,7 +12,7 @@ export type DocumentsListComponentProps = {
   title: string,
   subtitle: string | null,
   description: string | null,
-  files: string[],
+  files: DocumentFileProps[],
   category: {
     id: number,
   }
@@ -19,7 +26,14 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     title: `Протокол закупки  №31907985526`,
     subtitle: null,
     description: null,
-    files: [`file`],
+    files: [
+      {
+        id: 1,
+        name: `test.pdf`,
+        url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
+        ext: `.pdf`,
+      },
+    ],
     category: {
       id: 3,
     },
@@ -34,7 +48,14 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     description: `Контракт заключен по результатам электронного аукциона в рамках 223-ФЗ.\nИзвещение №31907985126 
     в электронной форме размещены на сайте по адресу в сети Интернет: www.zakupki.gov.ru и на электронной площадке 
     tender.otc.ru процедура № 4442641 лот № 7816638.Протокол №U4442641-7816638-3 от 07.07.2019 г.`,
-    files: [`file`],
+    files: [
+      {
+        id: 2,
+        name: `test.pdf`,
+        url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
+        ext: `.pdf`,
+      },
+    ],
     category: {
       id: 3,
     },
@@ -47,7 +68,14 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     subtitle: `Отчёт о выполнении муниципального задания по предоставлению муниципальных услуг 
     (выполнению работ за 2022 год.`,
     description: null,
-    files: [`file`],
+    files: [
+      {
+        id: 3,
+        name: `test.pdf`,
+        url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
+        ext: `.pdf`,
+      },
+    ],
     category: {
       id: 3,
     },
@@ -60,9 +88,24 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     subtitle: null,
     description: null,
     files: [
-      `Протокол 1`,
-      `Протокол закупки (копия)`,
-      `Скрин`,
+      {
+        id: 4,
+        name: `test.pdf`,
+        url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
+        ext: `.pdf`,
+      },
+      {
+        id: 5,
+        name: `test.pdf`,
+        url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
+        ext: `.pdf`,
+      },
+      {
+        id: 6,
+        name: `test.pdf`,
+        url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
+        ext: `.pdf`,
+      },
     ],
     category: {
       id: 3,
