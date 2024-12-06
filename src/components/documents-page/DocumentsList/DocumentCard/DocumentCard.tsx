@@ -1,7 +1,7 @@
 import { Accordion } from "@/src/components/globals/Accordion/Accordion";
-import Link from "next/link";
 import iconChevronBlack from "@/public/images/svg/icon-chevron-black.svg";
-import { IconOpenDocument } from "./IconOpenDocument/IconOpenDocument";
+import { DocumentsListComponentProps } from "@/src/common/mocks/documents-page-mock/documents-list-mock";
+import { DocumentFile } from "./components/DocumentFile/DocumentFile";
 
 export function DocumentCard({
   className,
@@ -11,14 +11,8 @@ export function DocumentCard({
   subtitle,
   description,
   files,
-}: {
+}: Omit<DocumentsListComponentProps, 'id' | 'category'> & {
   className: string,
-  date: string,
-  showDate: boolean,
-  title: string,
-  subtitle: string | null,
-  description: string | null,
-  files: string[],
 }) {
   return (
     <li className={`${className} document-card`}>
@@ -28,11 +22,11 @@ export function DocumentCard({
           <h2 className="document-card__title">{title}</h2>
         </div>
         {files.length === 1 ? (
-          <Link href="#">
-            <span className="document-card__open-document  document-card__open-document--primary">
-              <IconOpenDocument className="documents-card__icon-open-document" />
-            </span>
-          </Link>
+          <DocumentFile
+            className="document-card__document-file"
+            url={files[0].url}
+            ext={files[0].ext}
+          />
         ) : ``}
       </div>
       {(subtitle !== null || files.length !== 1)
@@ -51,17 +45,14 @@ export function DocumentCard({
                   files.map((file) => (
                     <li
                       className="document-card__item"
-                      key={file}
+                      key={file.id}
                     >
-                      <Link
-                        className="document-card__link"
-                        href="#"
-                      >
-                        {file}
-                        <span className="document-card__open-document document-card__open-document--secondary">
-                          <IconOpenDocument className="documents-card__icon-open-document" />
-                        </span>
-                      </Link>
+                      <DocumentFile
+                        className="document-card__document-file"
+                        name={file.name}
+                        url={file.url}
+                        ext={file.ext}
+                      />
                     </li>
                   ))
 
