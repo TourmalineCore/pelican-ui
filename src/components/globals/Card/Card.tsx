@@ -14,7 +14,8 @@ export function Card({
   isNews,
   isService,
   dataTestId,
-}: CardProps & {
+}: Omit<CardProps, 'id'> & {
+  id?: number;
   className: string;
   isNews?: boolean;
   isService?: boolean;
