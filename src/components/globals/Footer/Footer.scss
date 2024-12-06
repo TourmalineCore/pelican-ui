@@ -10,12 +10,12 @@
     background-color: $color-white;
 
     @include desktop {
-      padding: 40px;
+      padding: 40px 0;
     }
 
     @include desktop-xl {
       border-radius: 80px;
-      padding: 64px;
+      padding: 64px 0;
     }
   }
 
