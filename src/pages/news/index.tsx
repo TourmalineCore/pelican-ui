@@ -48,7 +48,7 @@ export async function getServerSideProps({
   }
 }) {
   // TODO Uncomment when the api appears, there will be static data here
-  // if (process.env.APP_ENV === `test`) {
+  // if (process.env.APP_ENV === `static`) {
   //   return {
   //     props: {
   //       navigationLinks: NAVIGATION_LINKS,
