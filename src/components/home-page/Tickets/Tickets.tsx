@@ -3,7 +3,7 @@ import { Button } from "@/src/components/globals/Button/Button";
 import Link from "next/link";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
-import { TicketCard } from "./TicketCard/TicketCard";
+import { TicketCard } from "./components/TicketCard/TicketCard";
 
 export function Tickets({
   generalTicketsTitle,
@@ -24,75 +24,76 @@ export function Tickets({
 
   return (
     <div
-      className="tickets container"
+      className="tickets"
       data-testid="tickets"
     >
-      <div className="tickets__group">
-        <h2 className="tickets__title">{generalTicketsTitle}</h2>
-        <ul className="tickets__list">
-          {generalTickets.map((el) => (
-            <TicketCard
-              className="tickets__item"
-              key={el.id}
-              ticket={el}
-              isGeneral
-            />
-          ))}
-          {isTablet && !isTabletXl && (
-            <li className="tickets__item tickets__item--button">
-              <Button
-                className="tickets__ticket-button"
-                theme="primary"
-                onClick={handleTicketPopupToggle}
-              >
-                Купить билет
-              </Button>
-            </li>
-          )}
-        </ul>
-        {isMobile && (
-          <Button
-            className="tickets__ticket-button"
-            theme="primary"
-            onClick={handleTicketPopupToggle}
-          >
-            Купить билет
-          </Button>
-        )}
-      </div>
-      <div className="tickets__group">
-        <div className="tickets__head">
-          <h2 className="tickets__title">{subsidizedTicketsTitle}</h2>
-          <p className="tickets__subtitle">{subsidizedTicketsSubtitle}</p>
-        </div>
-        <ul className="tickets__list">
-          {subsidizedTickets.map((el) => (
-            <TicketCard
-              className="tickets__item"
-              key={el.id}
-              ticket={el}
-              isSubsidized
-            />
-          ))}
-          {
-            isTablet && (
-              <li className="tickets__item tickets__item--link">
-                <p>
-                  С остальными льготными категориями вы можете ознакомиться
-                  <Link
-                    className="tickets__link text-link"
-                    href="#"
-                  >
-                    по ссылке.
-                  </Link>
-                </p>
+      <div className="tickets__inner container">
+        <div className="tickets__group">
+          <h2 className="tickets__title">{generalTicketsTitle}</h2>
+          <ul className="tickets__list">
+            {generalTickets.map((el) => (
+              <TicketCard
+                className="tickets__item"
+                key={el.id}
+                ticket={el}
+                isGeneral
+              />
+            ))}
+            {isTablet && !isTabletXl && (
+              <li className="tickets__item tickets__item--button">
+                <Button
+                  className="tickets__ticket-button"
+                  theme="primary"
+                  onClick={handleTicketPopupToggle}
+                >
+                  Купить билет
+                </Button>
               </li>
+            )}
+          </ul>
+          {isMobile && (
+            <Button
+              className="tickets__ticket-button"
+              theme="primary"
+              onClick={handleTicketPopupToggle}
+            >
+              Купить билет
+            </Button>
+          )}
+        </div>
+        <div className="tickets__group">
+          <div className="tickets__head">
+            <h2 className="tickets__title">{subsidizedTicketsTitle}</h2>
+            <p className="tickets__subtitle">{subsidizedTicketsSubtitle}</p>
+          </div>
+          <ul className="tickets__list">
+            {subsidizedTickets.map((el) => (
+              <TicketCard
+                className="tickets__item"
+                key={el.id}
+                ticket={el}
+                isSubsidized
+              />
+            ))}
+            {
+              isTablet && (
+                <li className="tickets__item tickets__item--link">
+                  <p>
+                    С остальными льготными категориями вы можете ознакомиться
+                    <Link
+                      className="tickets__link text-link"
+                      href="#"
+                    >
+                      по ссылке.
+                    </Link>
+                  </p>
+                </li>
 
-            )
-          }
-        </ul>
-        {
-          isMobile
+              )
+            }
+          </ul>
+          {
+            isMobile
              && (
                <Link
                  href="#"
@@ -101,8 +102,10 @@ export function Tickets({
                  Другие льготы
                </Link>
              )
-        }
+          }
+        </div>
       </div>
+
     </div>
   );
 }

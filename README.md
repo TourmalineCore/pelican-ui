@@ -34,7 +34,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 To run the tests you need to run the website dev server executing the following script with test content with **no** backend interaction:
 ```bash
-npm run test
+npm run dev:static
 ```
 
 When you see that the website dev server is started successfully and you can open it at http://localhost:3000 while keeping the first terminal alive in a separate terminal you can run the tests in headless mode (no browser UI) executing:

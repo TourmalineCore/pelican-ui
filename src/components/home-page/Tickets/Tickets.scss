@@ -270,11 +270,11 @@
 
   @include desktop {
     border-radius: 64px;
-    padding: 64px 39px;
+    padding: 64px 0;
   }
 
   @include desktop-xl {
     border-radius: 64px;
-    padding: 80px 64px;
+    padding: 80px 0;
   }
 }
