@@ -4,11 +4,13 @@ import { IconOpenDocument } from "../IconOpenDocument/IconOpenDocument";
 
 export function DocumentFile({
   className,
+  buttonTheme,
   name,
   url,
   ext,
 } : {
   className: string,
+  buttonTheme: "primary" | "secondary",
   name?: DocumentFileProps['name'],
   url: DocumentFileProps['url'],
   ext: DocumentFileProps['ext'],
@@ -19,8 +21,8 @@ export function DocumentFile({
       href={url}
     >
       {name?.replace(`${ext}`, ``)}
-      <span className="document-card__open-document document-card__open-document--secondary">
-        <IconOpenDocument className="documents-card__icon-open-document" />
+      <span className={`document-card__open-document document-card__open-document--${buttonTheme}`}>
+        <IconOpenDocument className="document-card__icon-open-document" />
       </span>
     </Link>
   );

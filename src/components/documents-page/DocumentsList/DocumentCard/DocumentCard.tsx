@@ -24,6 +24,7 @@ export function DocumentCard({
         {files.length === 1 ? (
           <DocumentFile
             className="document-card__document-file"
+            buttonTheme="primary"
             url={files[0].url}
             ext={files[0].ext}
           />
@@ -49,6 +50,7 @@ export function DocumentCard({
                     >
                       <DocumentFile
                         className="document-card__document-file"
+                        buttonTheme="secondary"
                         name={file.name}
                         url={file.url}
                         ext={file.ext}
