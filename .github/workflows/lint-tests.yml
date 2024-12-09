@@ -106,7 +106,7 @@ jobs:
 
     - name: Run Playwright Tests
       run: |
-        npm run test &
+        npm run dev:static &
         npx --yes wait-on http://localhost:3000 & 
         npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 

@@ -32,16 +32,16 @@ export function TicketsPopup({
   } = useTicketPopup();
 
   useEffect(() => {
-    const mainElement = overlayElementRef.current!;
+    const overlayElement = overlayElementRef.current!;
 
     if (isActive) {
-      mainElement.classList.add(`is-visible`);
-      mainElement.classList.add(`is-header-hidden`);
+      overlayElement.classList.add(`is-visible`);
+      overlayElement.classList.add(`is-header-hidden`);
     }
 
     return () => {
-      mainElement.classList.remove(`is-visible`);
-      mainElement.classList.remove(`is-header-hidden`);
+      overlayElement.classList.remove(`is-visible`);
+      overlayElement.classList.remove(`is-header-hidden`);
     };
   }, [isActive]);
 

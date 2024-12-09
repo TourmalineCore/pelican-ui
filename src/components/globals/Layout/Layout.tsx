@@ -1,8 +1,12 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import {
   PropsWithChildren,
+  useCallback,
   useContext,
   useEffect,
   useRef,
+  useState,
 } from 'react';
 import { GlobalComponentProps } from '@/src/common/types';
 import { TicketPopupProvider } from '@/src/common/providers/TicketPopupProvider';
@@ -36,6 +40,8 @@ export function Layout({
     handleSetWindowWidth,
   } = useContext(WindowWidthContext);
 
+  const [isMobileMenuOpen, setIsMobileMenuActive] = useState(false);
+
   useEffect(() => {
     if (windowWidth === 0) {
       handleSetWindowWidth();
@@ -47,6 +53,10 @@ export function Layout({
       window.removeEventListener(`resize`, handleSetWindowWidth);
     };
   }, [windowWidth]);
+
+  const handleMobileMenuToggle = useCallback(() => {
+    setIsMobileMenuActive((prevState) => !prevState);
+  }, []);
 
   if (windowWidth === 0) {
     return null;
@@ -61,6 +71,8 @@ export function Layout({
           phone={phone}
           popupTicketBuyText={popupTicketBuyText}
           overlayElementRef={overlayElementRef}
+          handleMobileMenuToggle={handleMobileMenuToggle}
+          isMobileMenuOpen={isMobileMenuOpen}
         />
         <TicketsPopup
           ticketsPopupGeneral={ticketsPopupGeneral}
@@ -77,6 +89,11 @@ export function Layout({
         <div
           ref={overlayElementRef}
           className="overlay"
+          onClick={() => {
+            if (isMobileMenuOpen) {
+              handleMobileMenuToggle();
+            }
+          }}
         />
         <Footer
           officialLinks={officialLinks}

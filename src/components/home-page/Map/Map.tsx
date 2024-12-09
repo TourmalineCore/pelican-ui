@@ -1,7 +1,7 @@
 import { MapComponentProps } from "@/src/common/types";
 import Image from "next/image";
 import mapBackgroundImage from '../../../../public/images/map/map.png';
-import { MapAddressCard } from "./components/MapAddressCard";
+import { MapAddressCard } from "./components/MapAddressCard/MapAddressCard";
 
 export function Map({
   title,

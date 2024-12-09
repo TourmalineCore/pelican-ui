@@ -3,7 +3,7 @@ import { Button } from "@/src/components/globals/Button/Button";
 import Link from "next/link";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
-import { TicketCard } from "./TicketCard/TicketCard";
+import { TicketCard } from "./components/TicketCard/TicketCard";
 
 export function Tickets({
   generalTicketsTitle,

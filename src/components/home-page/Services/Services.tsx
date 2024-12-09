@@ -1,5 +1,5 @@
 import { GlobalComponentProps, ServicesComponentProps } from "@/src/common/types";
-import { ServicesCard } from "./components/ServicesCard";
+import { ServicesCard } from "./components/ServicesCard/ServicesCard";
 
 export function Services({
   title,

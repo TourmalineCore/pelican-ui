@@ -1,6 +1,6 @@
 import { HeroComponentProps } from "@/src/common/types";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
-import { ScheduleTimetable } from "./ScheduleTimetable/ScheduleTimetable";
+import { ScheduleTimetable } from "./components/ScheduleTimetable/ScheduleTimetable";
 
 export function HeroSchedule({
   className,
