@@ -50,11 +50,29 @@ export async function authenticate({
   })
     .fill(PASSWORD);
 
-  await page.getByText(`Remember me`)
-    .click();
-
   await page.getByText(`Login`)
     .click();
+}
+
+function getPasswordInput({
+  page,
+}: {
+  page: Page
+}) {
+  return page.getByRole(`textbox`, {
+    name: `password`,
+  });
+}
+
+async function fillEmailInput({
+  page,
+}: {
+  page: Page
+}) {
+  await page.getByRole(`textbox`, {
+    name: `email`,
+  })
+    .fill(EMAIL);
 }
 
 export async function enableApi({
@@ -143,72 +161,3 @@ export async function clickByCheckboxAndDeleteWithConfirm({
   })
     .click();
 }
-
-function getPasswordInput({
-  page,
-}: {
-  page: Page
-}) {
-  return page.getByRole(`textbox`, {
-    name: `password`,
-  });
-}
-
-async function fillEmailInput({
-  page,
-}: {
-  page: Page
-}) {
-  await page.getByRole(`textbox`, {
-    name: `email`,
-  })
-    .fill(EMAIL);
-}
-
-// export async function verifyNewsUpdated(
-//   page: Page,
-//   expectedTitle: string,
-//   expectedDescription: string,
-// ) {
-//   await gotoNewsList(page);
-
-//   const newsCards = await page.$$(`.li.news-list_card`);
-//   expect(newsCards.length)
-//     .toBeGreaterThan(0);
-
-//   const firstNewsCard = newsCards[0];
-
-//   const imageWrapper = await firstNewsCard.$(`.card_image-wrapper`);
-//   const img = await imageWrapper.$(`img`);
-//   expect(img)
-//     .toBeTruthy();
-//   expect(await img.getAttribute(`src`)).not.toBeNull();
-
-//   const title = await firstNewsCard.$(`.card_title`);
-//   expect(await title.textContent())
-//     .toBe(expectedTitle);
-
-//   const description = await firstNewsCard.$(`.card_description`);
-//   expect(await description.textContent())
-//     .toBe(expectedDescription);
-// }
-
-// export async function checkNewsDeletion(page: Page, invalidTitles: string[], invalidDescriptions: string[]) {
-//   await gotoNewsList(page);
-
-//   const response = await page.goto(`http://pelican.local.tourmalinecore.internal:40110/_next/data/J96IRHdXP1_K0yksdS1tA/news.json?pageSize=12`);
-//   const jsonResponse = await response.json();
-
-//   const {
-//     cards,
-//   } = jsonResponse.news;
-
-//   const titleCheck = cards.every((card) => !invalidTitles.includes(card.title));
-//   const descriptionCheck = cards.every((card) => !invalidDescriptions.includes(card.description));
-
-//   if (titleCheck && descriptionCheck) {
-//     console.log(`Все проверки прошли успешно. Новости не содержат удаленных заголовков или описаний.`);
-//   } else {
-//     console.log(`Некоторые новости содержат удаленные заголовки или описания.`);
-//   }
-// }

@@ -7,13 +7,15 @@ import {
   register,
   uploadImage,
 } from '../strapi-helpers';
+import { gotoPage } from '../helpers';
 
-test.describe(`Create, Edit, and Check News`, () => {
+test.describe(`News E2E tests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(`http://pelican.local.tourmalinecore.internal:40110/cms/admin/`, {
-      waitUntil: `networkidle`,
+    await gotoPage({
+      page,
+      url: `http://pelican.local.tourmalinecore.internal:40110/cms/admin/`,
     });
 
     const isRegistrationPage = await page.getByRole(`textbox`, {
@@ -48,7 +50,11 @@ test.describe(`Create, Edit, and Check News`, () => {
     });
   });
 
-  test(`Create, Edit, and Verify News Deletion`, async ({
+  test(`
+    GIVEN strapi admin panel and frontend UI without news
+    WHEN user creates and publishes a news item
+    SHOULD news is displayed on the frontend UI with all fields
+    `, async ({
     page,
   }) => {
     const title = `В зоопарке появился амурский тигр`;
@@ -69,18 +75,6 @@ test.describe(`Create, Edit, and Check News`, () => {
       description,
       innerContent,
     });
-
-    // await verifyNewsUpdated(page, `Тестовый заголовок`, `На фотографии изображен амурский тигр!`);
-
-    // await editNews({
-    //   page,
-    //   newTitle: `Отредактированный заголовок`,
-    //   newDescription: `Тут вы можете увидеть тигра амурского.`,
-    // });
-
-    // await verifyNewsUpdated(page, `Отредактированный заголовок`, `Тут вы можете увидеть тигра амурского.`);
-
-    // await checkNewsDeletion(page, [`Тестовый заголовок`, `Отредактированный заголовок`], [`На фотографии изображен амурский тигр!`, `Тут вы можете увидеть тигра амурского.`]);
   });
 });
 
@@ -141,7 +135,10 @@ async function checkNewsPageOnFront({
   description: string,
   innerContent: string
 }) {
-  await page.goto(`http://localhost:3000/news`);
+  await gotoPage({
+    page,
+    url: `http://localhost:3000/news`,
+  });
 
   await expect(page.getByText(title))
     .toBeVisible();
@@ -162,9 +159,10 @@ async function deleteNews({
 }: {
   page: Page
 }) {
-  await page.goto(
-    `http://pelican.local.tourmalinecore.internal:40110/cms/admin/content-manager/collection-types/api::news-collection.news-collection`,
-  );
+  await gotoPage({
+    page,
+    url: `http://pelican.local.tourmalinecore.internal:40110/cms/admin/content-manager/collection-types/api::news-collection.news-collection`,
+  });
 
   await clickByCheckboxAndDeleteWithConfirm({
     page,
