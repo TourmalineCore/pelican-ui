@@ -13,6 +13,10 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    @include desktop-xl {
+      gap: 12px;
+    }
   }
 
   &__date {
@@ -47,17 +51,31 @@
       width: 40px;
       height: 40px;
     }
+
+    @include desktop-xl {
+      width: 64px;
+      height: 64px;
+    }
   }
 
   &__icon-open-document {
     @include tablet-xl {
-      width: 24px;
-      height: 24px;
+      width: 17px;
+      height: 17px;
+    }
+
+    @include desktop-xl {
+      width: 28px;
+      height: 28px;
     }
   }
 
   &__accordion {
     margin-top: 32px;
+
+    @include desktop-xl {
+      margin-top: 40px;
+    }
   }
 
   &__accordion-inner {
@@ -78,6 +96,10 @@
       margin-top: 24px;
       padding: 40px 32px;
     }
+
+    @include desktop-xl {
+      margin-top: 40px;
+    }
   }
 
   &__subtitle {
@@ -97,6 +119,7 @@
   &__description {
     @include caption-1-medium;
 
+    white-space: pre-line;
     color: $color-black-60;
 
     @include tablet-xl {
@@ -106,13 +129,16 @@
     }
   }
 
+  &__item {
+    padding: 8px 12px;
+  }
+
   &__link {
     @include body-2-medium;
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 8px 12px;
     color: $color-black-75;
   }
 
@@ -122,5 +148,10 @@
 
   @include tablet-xl {
     padding: 32px 24px;
+  }
+
+  @include desktop-xl {
+    border-radius: 40px;
+    padding: 40px 32px;
   }
 }
