@@ -1,7 +1,7 @@
 import { MapComponentProps } from "@/src/common/types";
 import Image from "next/image";
 import mapBackgroundImage from '../../../../public/images/map/map.png';
-import { MapAddressCard } from "./components/MapAddressCard";
+import { MapAddressCard } from "./components/MapAddressCard/MapAddressCard";
 
 export function Map({
   title,
@@ -11,7 +11,7 @@ export function Map({
 }: Omit<MapComponentProps, 'id' | '__component'>) {
   return (
     <section
-      className="map container"
+      className="map"
       data-testid="map"
     >
       <Image
@@ -20,13 +20,15 @@ export function Map({
         src={mapBackgroundImage}
         alt="Карта"
       />
-      <MapAddressCard
-        className="map__address-card"
-        title={title}
-        subtitle={subtitle}
-        note={note}
-        image={image}
-      />
+      <div className="map__inner container">
+        <MapAddressCard
+          className="map__address-card"
+          title={title}
+          subtitle={subtitle}
+          note={note}
+          image={image}
+        />
+      </div>
     </section>
   );
 }

@@ -1,6 +1,6 @@
 import { Button } from "@/src/components/globals/Button/Button";
 import { ContactZooPreviewComponentProps } from "@/src/common/types";
-import { ContactZooPreviewImages } from "./ContactZooPreviewImages/ContactZooPreviewImages";
+import { ContactZooPreviewImages } from "./components/ContactZooPreviewImages/ContactZooPreviewImages";
 
 export function ContactZooPreview({
   title,

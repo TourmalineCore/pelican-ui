@@ -165,35 +165,6 @@ async function fillEmailInput({
     .fill(EMAIL);
 }
 
-// export async function editNews({
-//   page,
-//   newTitle,
-//   newDescription,
-// }: {
-//   page: Page,
-//   newTitle: string,
-//   newDescription: string
-// }) {
-//   await gotoNewsList(page);
-
-//   const newsItem = await page.locator(`selector-for-news-item`);
-//   await newsItem.click();
-
-//   await page.getByRole(`textbox`, {
-//     name: `title`,
-//   })
-//     .fill(newTitle);
-
-//   await page.locator(`#description`)
-//     .fill(newDescription);
-
-//   await page.getByText(`Save`)
-//     .click();
-
-//   await page.getByText(`Publish`)
-//     .click();
-// }
-
 // export async function verifyNewsUpdated(
 //   page: Page,
 //   expectedTitle: string,

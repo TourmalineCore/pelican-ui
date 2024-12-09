@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useState } from "react";
+import { MutableRefObject, useEffect } from "react";
 import { GlobalComponentProps } from "@/src/common/types";
 import dynamic from "next/dynamic";
 import clsx from "clsx";
@@ -17,7 +17,9 @@ const HeaderPopup = dynamic(
 );
 
 type HeaderProps = Pick<GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
-  overlayElementRef: MutableRefObject<null | HTMLElement>
+  overlayElementRef: MutableRefObject<null | HTMLElement>,
+  isMobileMenuOpen: boolean,
+  handleMobileMenuToggle: () => void,
 };
 
 export function Header({
@@ -26,10 +28,11 @@ export function Header({
   phone,
   popupTicketBuyText,
   overlayElementRef,
+  isMobileMenuOpen,
+  handleMobileMenuToggle,
 }: HeaderProps & {
   overlayElementRef: MutableRefObject<null | HTMLElement>
 }) {
-  const [isActive, setIsActive] = useState(false);
   const {
     handleTicketPopupToggle,
   } = useTicketPopup();
@@ -38,21 +41,21 @@ export function Header({
   } = useWindowWidth();
 
   useEffect(() => {
-    const mainElement = overlayElementRef.current!;
+    const overlayElement = overlayElementRef.current!;
 
-    if (isActive) {
-      mainElement.classList.add(`is-visible`);
+    if (isMobileMenuOpen) {
+      overlayElement.classList.add(`is-visible`);
     }
 
     return () => {
-      mainElement.classList.remove(`is-visible`);
+      overlayElement.classList.remove(`is-visible`);
     };
-  }, [isActive]);
+  }, [isMobileMenuOpen]);
 
   return (
     <div
       className={clsx(`header`, {
-        active: isActive,
+        active: isMobileMenuOpen,
       })}
       data-testid="header"
     >
@@ -70,8 +73,8 @@ export function Header({
           {!isDesktop && (
             <HeaderPopupButton
               className="header__popup-button"
-              isActive={isActive}
-              handleToggle={handleToggle}
+              isActive={isMobileMenuOpen}
+              handleToggle={handleMobileMenuToggle}
             />
           )}
           {isDesktop && (
@@ -97,18 +100,14 @@ export function Header({
       {!isDesktop && (
         <HeaderPopup
           className="header__popup"
-          isActive={isActive}
+          isActive={isMobileMenuOpen}
           email={email}
           phone={phone}
           navigationLinks={navigationLinks}
           popupTicketBuyText={popupTicketBuyText}
-          onTicketPopupOpen={() => handleToggle()}
+          onTicketPopupOpen={() => handleMobileMenuToggle()}
         />
       )}
     </div>
   );
-
-  function handleToggle() {
-    setIsActive((prevState) => !prevState);
-  }
 }

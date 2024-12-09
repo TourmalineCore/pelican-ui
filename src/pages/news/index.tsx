@@ -54,7 +54,7 @@ export async function getServerSideProps({
     pageSize: number
   }
 }) {
-  if (process.env.APP_ENV === `test`) {
+  if (process.env.APP_ENV === `static`) {
     return {
       props: {
         pageData: NEWS_PAGE,

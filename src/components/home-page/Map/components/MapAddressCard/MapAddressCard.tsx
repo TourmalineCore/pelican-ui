@@ -2,7 +2,7 @@ import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { MapComponentProps } from "@/src/common/types";
 import { MarkdownText } from "@/src/components/globals/MarkdownText/MarkdownText";
 import Image from "next/image";
-import flower from '../../../../../public/images/map/flower.svg';
+import flower from '@/public/images/map/flower.svg';
 
 export function MapAddressCard({
   className,
