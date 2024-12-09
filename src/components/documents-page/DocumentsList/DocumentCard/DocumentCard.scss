@@ -39,6 +39,11 @@
     width: 32px;
     height: 32px;
 
+    &:hover,
+    &:focus {
+      background-color: $color-green-15;
+    }
+
     &--primary {
       background-color: $color-green-5;
     }
@@ -130,8 +135,32 @@
   }
 
   &__item {
+    border-radius: 32px;
     padding: 8px 12px;
+
+    &:hover,
+    &:focus {
+      background-color: $color-green-10;
+    }
+
+    // &:hover,
+    // &:focus {
+    //   path {
+    //     color: $color-green-10;
+    //   }
+
+    //   // path {
+    //   //   stroke: $color-green;
+    //   // }
+    // }
   }
+
+  // &__document-file {
+  //   &:hover,
+  //   &:focus {
+  //     background-color: $color-green-10;
+  //   }
+  // }
 
   &__link {
     @include body-2-medium;
