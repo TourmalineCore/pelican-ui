@@ -90,19 +90,19 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     files: [
       {
         id: 4,
-        name: `test.pdf`,
+        name: `Протокол 1.pdf`,
         url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
         ext: `.pdf`,
       },
       {
         id: 5,
-        name: `test.pdf`,
+        name: `Протокол закупки (копия).pdf`,
         url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
         ext: `.pdf`,
       },
       {
         id: 6,
-        name: `test.pdf`,
+        name: `Скрин.pdf`,
         url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
         ext: `.pdf`,
       },
