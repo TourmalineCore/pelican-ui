@@ -44,7 +44,7 @@ export async function getServerSideProps({
     id: string
   }
 }) {
-  if (process.env.APP_ENV === `test`) {
+  if (process.env.APP_ENV === `static`) {
     return {
       props: {
         news: NEWS.find(({

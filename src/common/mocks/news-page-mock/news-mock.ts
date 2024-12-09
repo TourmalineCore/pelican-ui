@@ -13,6 +13,9 @@ export type NewsProps = CardProps & {
   innerContent: string;
 };
 
+const staticDate = new Date(`03.10.24`)
+  .toJSON();
+
 export const NEWS: NewsProps[] = [
   {
     id: 0,
@@ -21,7 +24,8 @@ export const NEWS: NewsProps[] = [
       alternativeText: `Фотография амурского тигра`,
     },
     title: `Амурский тигр\u00A0и\u00A0какие у\u00A0него есть проблемы`,
-    publishedAt: `29.09.2024`,
+    publishedAt: new Date(`09.29.2024`)
+      .toJSON(),
     description: `Сегодня на Дальнем Востоке, да\u00A0и\u00A0во\u00A0всей России, отмечают День тигра.`,
     innerContent: `<p>Сегодня на Дальнем Востоке, да и во всей России, отмечают День тигра. Этот праздник имеет экологическую направленность и призван обратить внимание людей на проблемы популяции уссурийского (или как нам привычнее – амурского) тигра.</p>
       <img src='/images/news/amur-tiger.png' />
@@ -49,7 +53,8 @@ export const NEWS: NewsProps[] = [
     },
     title: `Приглашаем на встречу с\u00A0сотрудником зоопарка`,
     description: `Завтра празднуется два замечательных праздника, которые напрямую связаны с зоопарком...`,
-    publishedAt: `03.10.2024`,
+    publishedAt: new Date(`10.03.24`)
+      .toJSON(),
     innerContent: `<p>Завтра празднуется два замечательных праздника, которые напрямую связаны с зоопарком: день защиты животных и день кипера – специалистов, которые как раз-таки оберегают зверей и заботятся о них ежедневно: кормят, развлекают, делают уборку.</p>
       <img src='/images/news/employee.png' />
       <p>По этому случаю мы приглашаем вас на встречу с кипером детского контактного зоопарка. Вы сможете узнать больше про эту профессию, задать интересующие вопросы и ближе познакомиться с некоторыми питомцами этой секции. При желании поделимся гусиными сплетнями (там целая Санта-Барбара).</p>
@@ -66,7 +71,7 @@ export const NEWS: NewsProps[] = [
     },
     title: `30 сентября — санитарный день`,
     description: `Завтра, 30 сентября, Челябинский зоопарк ЗАКРЫТ на санитарный день.`,
-    publishedAt: `27.11.2024`,
+    publishedAt: staticDate,
     innerContent: ``,
   },
   {
@@ -77,7 +82,7 @@ export const NEWS: NewsProps[] = [
     },
     title: `Переходим на зимний режим`,
     description: `Внимание! С 1 октября зоопарк переходит на зимний режим работы!`,
-    publishedAt: `27.11.2024`,
+    publishedAt: staticDate,
     innerContent: ``,
   },
   {
@@ -88,7 +93,7 @@ export const NEWS: NewsProps[] = [
     },
     title: `Вакансия`,
     description: `Открыта вакансия уборщика территории.`,
-    publishedAt: `27.11.2024`,
+    publishedAt: staticDate,
     innerContent: ``,
   },
   {
@@ -99,7 +104,7 @@ export const NEWS: NewsProps[] = [
     },
     title: `Приглашаем на День рождения зоопарка`,
     description: `14 сентября будем праздновать День рождения зоопарка.Приглашаем...`,
-    publishedAt: `27.11.2024`,
+    publishedAt: staticDate,
     innerContent: ``,
   },
   {
@@ -110,7 +115,7 @@ export const NEWS: NewsProps[] = [
     },
     title: `Всемирный день альпака`,
     description: `10 сентября отмечается день альпака.`,
-    publishedAt: `27.11.2024`,
+    publishedAt: staticDate,
     innerContent: ``,
   },
 ];
