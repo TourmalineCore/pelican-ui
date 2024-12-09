@@ -37,6 +37,16 @@ async function actionTest({
 
   await expect(page.getByTestId(`header-popup`))
     .toContainText(`Услуги`);
+
+  await gotoPage({
+    page,
+    url: AppRoute.NEWS,
+  });
+
+  await expect(getHeaderPopupByTestId({
+    page,
+  }))
+    .toBeHidden();
 }
 
 async function mobilePopupTest({
