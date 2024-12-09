@@ -14,22 +14,25 @@ export async function register({
   })
     .fill(`Test`);
 
-  await page.getByRole(`textbox`, {
-    name: `email`,
-  })
-    .fill(EMAIL);
+  await fillEmailInput({
+    page,
+  });
 
-  await page.getByRole(`textbox`, {
-    name: `Password`,
+  await getPasswordInput({
+    page,
   })
+    .first()
     .fill(PASSWORD);
 
-  await page.getByRole(`textbox`, {
-    name: `Confirm password`,
-  })
+  await (getPasswordInput({
+    page,
+  }))
+    .last()
     .fill(PASSWORD);
 
-  await page.getByText(`Let's start`)
+  await page.getByRole(`button`, {
+    name: `Let's start`,
+  })
     .click();
 }
 
@@ -38,13 +41,12 @@ export async function authenticate({
 }: {
   page: Page,
 }) {
-  await page.getByRole(`textbox`, {
-    name: `email`,
-  })
-    .fill(EMAIL);
+  await fillEmailInput({
+    page,
+  });
 
-  await page.getByRole(`textbox`, {
-    name: `password`,
+  await getPasswordInput({
+    page,
   })
     .fill(PASSWORD);
 
@@ -52,6 +54,31 @@ export async function authenticate({
     .click();
 
   await page.getByText(`Login`)
+    .click();
+}
+
+export async function enableApi({
+  page,
+}: {
+  page: Page
+}) {
+  await page.goto(`http://pelican.local.tourmalinecore.internal:40110/cms/admin/settings/users-permissions/roles/2`);
+
+  await page.getByText(`News-collection`)
+    .first()
+    .click();
+
+  await page.getByText(`find`, {
+    exact: true,
+  })
+    .check();
+
+  await page.getByText(`findOne`, {
+    exact: true,
+  })
+    .check();
+
+  await page.getByText(`Save`)
     .click();
 }
 
@@ -115,6 +142,27 @@ export async function clickByCheckboxAndDeleteWithConfirm({
     name: `Confirm`,
   })
     .click();
+}
+
+function getPasswordInput({
+  page,
+}: {
+  page: Page
+}) {
+  return page.getByRole(`textbox`, {
+    name: `password`,
+  });
+}
+
+async function fillEmailInput({
+  page,
+}: {
+  page: Page
+}) {
+  await page.getByRole(`textbox`, {
+    name: `email`,
+  })
+    .fill(EMAIL);
 }
 
 // export async function editNews({

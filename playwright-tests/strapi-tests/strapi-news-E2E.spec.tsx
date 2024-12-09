@@ -3,6 +3,7 @@ import {
   authenticate,
   clickByCheckboxAndDeleteWithConfirm,
   deleteImage,
+  enableApi,
   register,
   uploadImage,
 } from '../strapi-helpers';
@@ -11,11 +12,14 @@ test.describe(`Create, Edit, and Check News`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await page.goto(`http://pelican.local.tourmalinecore.internal:40110/cms/admin/`);
+    await page.goto(`http://pelican.local.tourmalinecore.internal:40110/cms/admin/`, {
+      waitUntil: `networkidle`,
+    });
 
-    const registrationTitle = await page.getByText(`Credentials are only used to authenticate in Strapi. All saved data will be stored in your database.`);
-
-    const isRegistrationPage = await registrationTitle.isVisible();
+    const isRegistrationPage = await page.getByRole(`textbox`, {
+      name: `First name`,
+    })
+      .isVisible();
 
     if (isRegistrationPage) {
       await register({
@@ -26,6 +30,10 @@ test.describe(`Create, Edit, and Check News`, () => {
         page,
       });
     }
+
+    await enableApi({
+      page,
+    });
   });
 
   test.afterEach(async ({
