@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { AppRoute } from "@/src/common/enum";
-import { IconArrow } from "./IconArrow/IconArrow";
+import { IconArrow } from "./components/IconArrow/IconArrow";
 
 export function DocumentsCategory({
   className,

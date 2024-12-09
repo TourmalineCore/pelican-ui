@@ -21,7 +21,7 @@
     bottom: 0;
     width: 40px;
     height: calc(100% + 2px);
-    background-image: url("../../../../../public/images/tickets/ticket-breakline.svg");
+    background-image: url("../../../../../../public/images/tickets/ticket-breakline.svg");
 
     @include tablet-xl {
       right: 47px;
@@ -43,7 +43,7 @@
     right: -1px;
     top: 0;
     width: 11px;
-    background-image: url("../../../../../public/images/tickets/ticket-edge.svg");
+    background-image: url("../../../../../../public/images/tickets/ticket-edge.svg");
 
     @include desktop {
       width: 14px;
@@ -54,7 +54,7 @@
       top: -1px;
       width: 30px;
       height: calc(100% + 2px);
-      background-image: url("../../../../../public/images/tickets/ticket-edge-wide-screen.svg");
+      background-image: url("../../../../../../public/images/tickets/ticket-edge-wide-screen.svg");
     }
   }
 
@@ -158,13 +158,13 @@
 
   &--general {
     position: relative;
-    background-image: url("../../../../../public/images/tickets/bg-leopard-green.png");
+    background-image: url("../../../../../../public/images/tickets/bg-leopard-green.png");
     cursor: pointer;
 
     @include tablet {
       background-image:
-        url("../../../../../public/images/tickets/bg-leopard-brown.png"),
-        url("../../../../../public/images/tickets/bg-leopard-green.png");
+        url("../../../../../../public/images/tickets/bg-leopard-brown.png"),
+        url("../../../../../../public/images/tickets/bg-leopard-green.png");
     }
 
     @include tablet-xl {
@@ -172,13 +172,13 @@
 
       &:focus,
       &:hover {
-        background-image: url("../../../../../public/images/tickets/bg-leopard-green.png");
+        background-image: url("../../../../../../public/images/tickets/bg-leopard-green.png");
       }
     }
   }
 
   &--subsidized {
-    background-image: url("../../../../../public/images/tickets/bg-zebra.png");
+    background-image: url("../../../../../../public/images/tickets/bg-zebra.png");
 
     &:last-child {
       display: none;
