@@ -8,6 +8,18 @@
     line-height: 1.45;
 
     #{$this}--document-card & {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      @include tablet {
+        align-items: start;
+      }
+
+      @include tablet-xl {
+        align-items: center;
+      }
+
       @include desktop {
         @include text-medium;
       }
