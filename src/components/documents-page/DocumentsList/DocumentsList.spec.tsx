@@ -19,6 +19,8 @@ test.describe(`DocumentsListComponentTests`, () => {
 
   test(`MobileTest`, mobileTest);
 
+  test(`MobileClickedTest`, mobileClickedTest);
+
   test(`TabletTest`, tabletTest);
 
   test(`TabletXlTest`, tabletXlTest);
@@ -41,6 +43,25 @@ async function mobileTest({
     page,
   }))
     .toHaveScreenshot(`documents-list-mobile.png`);
+}
+
+async function mobileClickedTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+  });
+
+  openDocumentsListPopupAccordions({
+    page,
+  });
+
+  await expect(getDocumentsListByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`documents-list-mobile-clicked.png`);
 }
 
 async function tabletTest({
@@ -113,4 +134,19 @@ function getDocumentsListByTestId({
   page: Page
 }) {
   return page.getByTestId(`documents-list`);
+}
+
+async function openDocumentsListPopupAccordions({
+  page,
+}: {
+  page: Page
+}) {
+  // for (.filter({hasText: `Подробнее`,})
+
+  await page.getByTestId(`accordion-trigger`)
+    .filter({
+      hasText: `Подробнее`,
+    })
+    .first()
+    .click();
 }
