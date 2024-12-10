@@ -1,13 +1,17 @@
 import { DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from "@/src/common/mocks/documents-page-mock/documents-categories-mock";
+import { DOCUMENTS_LIST, DocumentsListComponentProps } from "@/src/common/mocks/documents-page-mock/documents-list-mock";
+import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
 
 export default function DocumentsCategories({
-  documentsCategories,
+  category,
+  documents,
 }: {
-  documentsCategories: DocumentsCategoriesProps
+  category: DocumentsCategoriesProps,
+  documents: DocumentsListComponentProps[],
 }) {
-  if (!documentsCategories) {
+  if (!category) {
     return <NotFound />;
   }
 
@@ -18,9 +22,12 @@ export default function DocumentsCategories({
           name="description"
           content="Сайт зоопарка"
         />
-        <title>{documentsCategories.title}</title>
+        <title>{category.title}</title>
       </Head>
-      <h1>{documentsCategories.title}</h1>
+      <DocumentsList
+        categoryTitle={category.title}
+        documents={documents}
+      />
     </>
   );
 }
@@ -35,9 +42,12 @@ export async function getServerSideProps({
   // TODO there will be a request in the Strapi api here
   return {
     props: {
-      documentsCategories: DOCUMENTS_CATEGORIES.find(({
+      category: DOCUMENTS_CATEGORIES.find(({
         id,
       }) => id === +query.id) || null,
+      documents: DOCUMENTS_LIST.filter(({
+        category,
+      }) => category.id === +query.id),
     },
   };
 }
