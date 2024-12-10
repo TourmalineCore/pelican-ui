@@ -14,6 +14,8 @@ test.describe(`HeaderPopupTests`, () => {
 
   test(`ActionTest`, actionTest);
 
+  test(`NavigationTest`, navigationTest);
+
   test(`MobilePopupTest`, mobilePopupTest);
 
   test(`TabletPopupTest`, tabletPopupTest);
@@ -37,6 +39,33 @@ async function actionTest({
 
   await expect(page.getByTestId(`header-popup`))
     .toContainText(`Услуги`);
+}
+
+async function navigationTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await gotoPage({
+    page,
+    url: AppRoute.NEWS,
+  });
+
+  await getHeaderPopupButtonByTestId({
+    page,
+  })
+    .then((button) => button.click());
+
+  await page.locator(`.header-logo`)
+    .click();
+
+  await expect(getHeaderPopupByTestId({
+    page,
+  }))
+    .toBeHidden();
+
+  await expect(page)
+    .toHaveURL(AppRoute.HOME);
 }
 
 async function mobilePopupTest({

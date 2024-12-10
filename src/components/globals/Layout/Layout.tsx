@@ -11,6 +11,7 @@ import {
 import { GlobalComponentProps } from '@/src/common/types';
 import { TicketPopupProvider } from '@/src/common/providers/TicketPopupProvider';
 import { WindowWidthContext } from '@/src/common/providers/WindowWidthProvider';
+import { useRouter } from 'next/router';
 import { Header } from '../Header/Header';
 import { TicketsPopup } from '../TicketsPopup/TicketsPopup';
 import { Footer } from '../Footer/Footer';
@@ -34,6 +35,10 @@ export function Layout({
   ticketsPopupRefundReasons,
 }: {
 } & LayoutProps) {
+  const {
+    pathname,
+  } = useRouter();
+
   const overlayElementRef = useRef<null | HTMLDivElement>(null);
   const {
     windowWidth,
@@ -57,6 +62,12 @@ export function Layout({
   const handleMobileMenuToggle = useCallback(() => {
     setIsMobileMenuActive((prevState) => !prevState);
   }, []);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      setIsMobileMenuActive(false);
+    }
+  }, [pathname]);
 
   if (windowWidth === 0) {
     return null;
