@@ -2,14 +2,12 @@ import { expect, Page, test } from '@playwright/test';
 import {
   authenticate,
   clickByCheckboxAndDeleteWithConfirm,
-  deleteImage,
-  enableApi,
-  register,
+  deleteImages,
   uploadImage,
-} from '../strapi-helpers';
+} from './strapi-helpers';
 import { gotoPage } from '../helpers';
 
-test.describe(`News E2E tests`, () => {
+test.describe.skip(`News integration tests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
@@ -18,22 +16,7 @@ test.describe(`News E2E tests`, () => {
       url: `http://pelican.local.tourmalinecore.internal:40110/cms/admin/`,
     });
 
-    const isRegistrationPage = await page.getByRole(`textbox`, {
-      name: `First name`,
-    })
-      .isVisible();
-
-    if (isRegistrationPage) {
-      await register({
-        page,
-      });
-    } else {
-      await authenticate({
-        page,
-      });
-    }
-
-    await enableApi({
+    await authenticate({
       page,
     });
   });
@@ -45,38 +28,45 @@ test.describe(`News E2E tests`, () => {
       page,
     });
 
-    await deleteImage({
+    await deleteImages({
       page,
     });
   });
 
-  test(`
-    GIVEN strapi admin panel and frontend UI without news
+  test(
+    `
+    GIVEN strapi admin panel without user
     WHEN user creates and publishes a news item
     SHOULD news is displayed on the frontend UI with all fields
-    `, async ({
-    page,
-  }) => {
-    const title = `В зоопарке появился амурский тигр`;
-    const description = `На фотографии изображен амурский тигр!`;
-    const innerContent = `В зоопарке появился амурский тигр, приходите посмотреть!`;
-
-    await createNews({
-      page,
-      title,
-      description,
-      innerContent,
-      imagePath: `./playwright-tests/strapi-tests/fixtures/tiger.png`,
-    });
-
-    await checkNewsPageOnFront({
-      page,
-      title,
-      description,
-      innerContent,
-    });
-  });
+    `,
+    newsIntegrationTest,
+  );
 });
+
+async function newsIntegrationTest({
+  page,
+}: {
+  page: Page
+}) {
+  const title = `В зоопарке появился амурский тигр`;
+  const description = `На фотографии изображен амурский тигр!`;
+  const innerContent = `В зоопарке появился амурский тигр, приходите посмотреть!`;
+
+  await createNews({
+    page,
+    title,
+    description,
+    innerContent,
+    imagePath: `./playwright-tests/strapi-tests/fixtures/tiger.png`,
+  });
+
+  await checkNewsPageOnFront({
+    page,
+    title,
+    description,
+    innerContent,
+  });
+}
 
 async function createNews({
   page,

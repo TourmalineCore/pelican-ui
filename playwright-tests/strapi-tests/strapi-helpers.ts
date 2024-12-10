@@ -111,7 +111,7 @@ export async function uploadImage({
     .click();
 
   await page.getByRole(`button`, {
-    name: `Add new assets`,
+    name: `Add more assets`,
   })
     .click();
 
@@ -129,7 +129,7 @@ export async function uploadImage({
     .click();
 }
 
-export async function deleteImage({
+export async function deleteImages({
   page,
 }: {
   page: Page
