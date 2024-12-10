@@ -21,17 +21,17 @@ export function DocumentCard({
           {showDate ? (<span className="document-card__date">{date}</span>) : ``}
           <h2 className="document-card__title">{title}</h2>
         </div>
-        {files.length === 1 ? (
+        {files.length === 1 && (
           <DocumentFile
             className="document-card__document-file"
             buttonTheme="primary"
             url={files[0].url}
-            ext={files[0].ext}
+            extension={files[0].extension}
           />
-        ) : ``}
+        )}
       </div>
-      {(subtitle !== null || files.length !== 1)
-        ? (
+      {(subtitle || files.length !== 1)
+        && (
           <Accordion
             triggerText="Подробнее"
             triggerHideText="Скрыть"
@@ -42,7 +42,7 @@ export function DocumentCard({
               <p className="document-card__subtitle">{subtitle}</p>
               <p className="document-card__description">{description}</p>
               <ul className="document-card__list">
-                {files.length !== 1 ? (
+                {files.length !== 1 && (
                   files.map((file) => (
                     <li
                       className="document-card__item"
@@ -53,16 +53,16 @@ export function DocumentCard({
                         buttonTheme="secondary"
                         name={file.name}
                         url={file.url}
-                        ext={file.ext}
+                        extension={file.extension}
                       />
                     </li>
                   ))
 
-                ) : ``}
+                )}
               </ul>
             </div>
           </Accordion>
-        ) : ``}
+        )}
     </li>
   );
 }

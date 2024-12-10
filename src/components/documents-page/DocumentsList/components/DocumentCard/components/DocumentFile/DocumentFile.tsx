@@ -7,20 +7,22 @@ export function DocumentFile({
   buttonTheme,
   name,
   url,
-  ext,
+  extension,
 } : {
   className: string,
   buttonTheme: "primary" | "secondary",
   name?: DocumentFileProps['name'],
   url: DocumentFileProps['url'],
-  ext: DocumentFileProps['ext'],
+  extension: DocumentFileProps['extension'],
 }) {
   return (
     <Link
       className={`${className} document-card__link`}
       href={url}
     >
-      {name?.replace(`${ext}`, ``)}
+      <p className="document-card__file-name">
+        {name?.replace(`${extension}`, ``)}
+      </p>
       <span className={`document-card__open-document document-card__open-document--${buttonTheme}`}>
         <IconOpenDocument className="document-card__icon-open-document" />
       </span>

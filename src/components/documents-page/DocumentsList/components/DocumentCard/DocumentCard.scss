@@ -42,6 +42,7 @@
     &:hover,
     &:focus {
       background-color: $color-green-15;
+      transition: 0.3s ease-out;
     }
 
     &--primary {
@@ -141,26 +142,9 @@
     &:hover,
     &:focus {
       background-color: $color-green-10;
+      transition: 0.3s ease-out;
     }
-
-    // &:hover,
-    // &:focus {
-    //   path {
-    //     color: $color-green-10;
-    //   }
-
-    //   // path {
-    //   //   stroke: $color-green;
-    //   // }
-    // }
   }
-
-  // &__document-file {
-  //   &:hover,
-  //   &:focus {
-  //     background-color: $color-green-10;
-  //   }
-  // }
 
   &__link {
     @include body-2-medium;
@@ -169,6 +153,10 @@
     flex-direction: row;
     justify-content: space-between;
     color: $color-black-75;
+  }
+
+  &__file-name {
+    max-width: 80%;
   }
 
   @include tablet {

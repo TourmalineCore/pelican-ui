@@ -1,5 +1,5 @@
 import { DocumentsListComponentProps } from "@/src/common/mocks/documents-page-mock/documents-list-mock";
-import { DocumentCard } from "@/src/components/documents-page/DocumentsList/DocumentCard/DocumentCard";
+import { DocumentCard } from "@/src/components/documents-page/DocumentsList/components/DocumentCard/DocumentCard";
 
 export function DocumentsList({
   categoryTitle,
