@@ -2,7 +2,7 @@ export type DocumentFileProps = {
   id: number,
   name: string,
   url: string,
-  ext: string,
+  extension: string,
 };
 
 export type DocumentsListComponentProps = {
@@ -10,8 +10,8 @@ export type DocumentsListComponentProps = {
   date: string,
   showDate: boolean,
   title: string,
-  subtitle: string | null,
-  description: string | null,
+  subtitle?: string,
+  description?: string,
   files: DocumentFileProps[],
   category: {
     id: number,
@@ -24,14 +24,12 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     date: `07.07.2019`,
     showDate: false,
     title: `Протокол закупки  №31907985526`,
-    subtitle: null,
-    description: null,
     files: [
       {
         id: 1,
         name: `test.pdf`,
         url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
-        ext: `.pdf`,
+        extension: `.pdf`,
       },
     ],
     category: {
@@ -53,7 +51,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
         id: 2,
         name: `test.pdf`,
         url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
-        ext: `.pdf`,
+        extension: `.pdf`,
       },
     ],
     category: {
@@ -67,13 +65,12 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     title: `Отчёт о выполнении муниципального задания за 2022г.`,
     subtitle: `Отчёт о выполнении муниципального задания по предоставлению муниципальных услуг 
     (выполнению работ за 2022 год.`,
-    description: null,
     files: [
       {
         id: 3,
         name: `test.pdf`,
         url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
-        ext: `.pdf`,
+        extension: `.pdf`,
       },
     ],
     category: {
@@ -85,26 +82,24 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     date: `07.07.2019`,
     showDate: true,
     title: `Протоколы закупки №31907985526`,
-    subtitle: null,
-    description: null,
     files: [
       {
         id: 4,
         name: `Протокол 1.pdf`,
         url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
-        ext: `.pdf`,
+        extension: `.pdf`,
       },
       {
         id: 5,
         name: `Протокол закупки (копия).pdf`,
         url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
-        ext: `.pdf`,
+        extension: `.pdf`,
       },
       {
         id: 6,
         name: `Скрин.pdf`,
         url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
-        ext: `.pdf`,
+        extension: `.pdf`,
       },
     ],
     category: {
