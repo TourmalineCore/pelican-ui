@@ -16,16 +16,18 @@ export function DocumentFile({
   extension: DocumentFileProps['extension'],
 }) {
   return (
-    <Link
-      className={`${className} document-card__link`}
-      href={url}
-    >
-      <p className="document-card__file-name">
+    <div className="document-file">
+      <p className="document-file__name">
         {name?.replace(`${extension}`, ``)}
       </p>
-      <span className={`document-card__open-document document-card__open-document--${buttonTheme}`}>
-        <IconOpenDocument className="document-card__icon-open-document" />
-      </span>
-    </Link>
+      <Link
+        className={`${className} document-file__link`}
+        href={url}
+      >
+        <span className={`document-file__open-document document-file__open-document--${buttonTheme}`}>
+          <IconOpenDocument className="document-file__icon-open-document" />
+        </span>
+      </Link>
+    </div>
   );
 }
