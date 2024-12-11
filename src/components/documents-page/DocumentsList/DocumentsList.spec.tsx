@@ -23,11 +23,19 @@ test.describe(`DocumentsListComponentTests`, () => {
 
   test(`TabletTest`, tabletTest);
 
+  test(`TabletClickedTest`, tabletClickedTest);
+
   test(`TabletXlTest`, tabletXlTest);
+
+  test(`TabletXlClickedTest`, tabletXlClickedTest);
 
   test(`DesktopTest`, desktopTest);
 
+  test(`DesktopClickedTest`, desktopClickedTest);
+
   test(`DesktopXlTest`, desktopXlTest);
+
+  test(`DesktopXlClickedTest`, desktopXlClickedTest);
 });
 
 async function mobileTest({
@@ -52,6 +60,7 @@ async function mobileClickedTest({
 }) {
   await setViewportSize({
     page,
+    height: 1686,
   });
 
   openDocumentsListPopupAccordions({
@@ -80,6 +89,27 @@ async function tabletTest({
     .toHaveScreenshot(`documents-list-tablet.png`);
 }
 
+async function tabletClickedTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.TABLET,
+    height: 1285,
+  });
+
+  openDocumentsListPopupAccordions({
+    page,
+  });
+
+  await expect(getDocumentsListByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`documents-list-tablet-clicked.png`);
+}
+
 async function tabletXlTest({
   page,
 }: {
@@ -94,6 +124,27 @@ async function tabletXlTest({
     page,
   }))
     .toHaveScreenshot(`documents-list-tablet-xl.png`);
+}
+
+async function tabletXlClickedTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.TABLET_XL,
+    height: 1483,
+  });
+
+  openDocumentsListPopupAccordions({
+    page,
+  });
+
+  await expect(getDocumentsListByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`documents-list-tablet-xl-clicked.png`);
 }
 
 async function desktopTest({
@@ -112,6 +163,27 @@ async function desktopTest({
     .toHaveScreenshot(`documents-list-desktop.png`);
 }
 
+async function desktopClickedTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+    height: 1535,
+  });
+
+  openDocumentsListPopupAccordions({
+    page,
+  });
+
+  await expect(getDocumentsListByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`documents-list-desktop-clicked.png`);
+}
+
 async function desktopXlTest({
   page,
 }: {
@@ -128,6 +200,27 @@ async function desktopXlTest({
     .toHaveScreenshot(`documents-list-desktop-xl.png`);
 }
 
+async function desktopXlClickedTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP_XL,
+    height: 2100,
+  });
+
+  openDocumentsListPopupAccordions({
+    page,
+  });
+
+  await expect(getDocumentsListByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`documents-list-desktop-xl-clicked.png`);
+}
+
 function getDocumentsListByTestId({
   page,
 }: {
@@ -141,12 +234,6 @@ async function openDocumentsListPopupAccordions({
 }: {
   page: Page
 }) {
-  // for (.filter({hasText: `Подробнее`,})
-
-  await page.getByTestId(`accordion-trigger`)
-    .filter({
-      hasText: `Подробнее`,
-    })
-    .first()
-    .click();
+  for (const button of await page.getByTestId(`accordion-trigger`)
+    .all()) await button.click();
 }
