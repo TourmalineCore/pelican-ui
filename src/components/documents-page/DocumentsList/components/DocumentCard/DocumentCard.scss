@@ -31,51 +31,6 @@
     color: $color-black-75;
   }
 
-  &__open-document {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100px;
-    width: 32px;
-    height: 32px;
-
-    &:hover,
-    &:focus {
-      background-color: $color-green-15;
-      transition: 0.3s ease-out;
-    }
-
-    &--primary {
-      background-color: $color-green-5;
-    }
-
-    &--secondary {
-      background-color: $color-white;
-    }
-
-    @include tablet-xl {
-      width: 40px;
-      height: 40px;
-    }
-
-    @include desktop-xl {
-      width: 64px;
-      height: 64px;
-    }
-  }
-
-  &__icon-open-document {
-    @include tablet-xl {
-      width: 17px;
-      height: 17px;
-    }
-
-    @include desktop-xl {
-      width: 28px;
-      height: 28px;
-    }
-  }
-
   &__accordion {
     margin-top: 32px;
 
@@ -85,17 +40,16 @@
   }
 
   &__accordion-inner {
+    display: flex;
+    flex-direction: column;
     margin-top: 16px;
     border-radius: 24px;
     padding: 24px 16px;
     background-color: $color-green-5;
-
-    @include tablet {
-      margin-top: 8px;
-    }
+    gap: 8px;
 
     @include tablet-xl {
-      margin-top: 16px;
+      gap: 16px;
     }
 
     @include desktop {
@@ -105,58 +59,38 @@
 
     @include desktop-xl {
       margin-top: 40px;
+      gap: 24px;
     }
   }
 
   &__subtitle {
     @include body-1-medium;
 
-    padding-bottom: 8px;
     color: $color-black-60;
 
     @include tablet-xl {
       @include body-2-medium;
 
-      padding-bottom: 16px;
       color: $color-black-75;
     }
   }
 
   &__description {
-    @include caption-1-medium;
+    @include caption-1-regular;
 
     white-space: pre-line;
     color: $color-black-60;
 
+    @include tablet {
+      white-space: normal;
+    }
+
     @include tablet-xl {
       @include text-medium;
 
+      white-space: pre-line;
       color: $color-black-75;
     }
-  }
-
-  &__item {
-    border-radius: 32px;
-    padding: 8px 12px;
-
-    &:hover,
-    &:focus {
-      background-color: $color-green-10;
-      transition: 0.3s ease-out;
-    }
-  }
-
-  &__link {
-    @include body-2-medium;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    color: $color-black-75;
-  }
-
-  &__file-name {
-    max-width: 80%;
   }
 
   @include tablet {

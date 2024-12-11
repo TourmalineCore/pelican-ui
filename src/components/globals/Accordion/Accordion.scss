@@ -17,6 +17,8 @@
       }
 
       @include tablet-xl {
+        @include text-medium;
+
         align-items: center;
       }
 
