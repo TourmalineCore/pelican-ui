@@ -25,6 +25,7 @@ export function DocumentCard({
         {isFileOne && (
           <DocumentFile
             className="document-card__document-file"
+            numberOfFiles="one"
             buttonTheme="primary"
             url={files[0].url}
             extension={files[0].extension}
@@ -42,15 +43,17 @@ export function DocumentCard({
             <div className="document-card__accordion-inner">
               {subtitle && <p className="document-card__subtitle">{subtitle}</p>}
               {description && <p className="document-card__description">{description}</p>}
-              <ul className="document-card__list">
-                {!isFileOne && (
-                  files.map((file) => (
+              {!isFileOne
+              && (
+                <ul className="document-card__list">
+                  {(files.map((file) => (
                     <li
                       className="document-card__item"
                       key={file.id}
                     >
                       <DocumentFile
                         className="document-card__document-file"
+                        numberOfFiles="several"
                         buttonTheme="secondary"
                         name={file.name}
                         url={file.url}
@@ -58,9 +61,10 @@ export function DocumentCard({
                       />
                     </li>
                   ))
-                )}
-              </ul>
+                  )}
 
+                </ul>
+              )}
             </div>
           </Accordion>
         )}

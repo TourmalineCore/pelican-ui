@@ -4,22 +4,26 @@ import { IconOpenDocument } from "../IconOpenDocument/IconOpenDocument";
 
 export function DocumentFile({
   className,
+  numberOfFiles,
   buttonTheme,
   name,
   url,
   extension,
 } : {
   className: string,
+  numberOfFiles: "one" | "several",
   buttonTheme: "primary" | "secondary",
   name?: DocumentFileProps['name'],
   url: DocumentFileProps['url'],
   extension: DocumentFileProps['extension'],
 }) {
   return (
-    <div className="document-file">
-      <p className="document-file__name">
-        {name?.replace(`${extension}`, ``)}
-      </p>
+    <div className={`document-file document-file--${numberOfFiles}`}>
+      {name && (
+        <p className="document-file__name">
+          {name?.replace(`${extension}`, ``)}
+        </p>
+      )}
       <Link
         className={`${className} document-file__link`}
         href={url}
