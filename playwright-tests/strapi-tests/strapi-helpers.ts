@@ -1,78 +1,23 @@
 
 import { Page } from "@playwright/test";
 
-const EMAIL = `admin@test.ru`;
-const PASSWORD = `Admin1234`;
-
-export async function register({
-  page,
-}: {
-  page: Page
-}) {
-  await page.getByRole(`textbox`, {
-    name: `First name`,
-  })
-    .fill(`Test`);
-
-  await fillEmailInput({
-    page,
-  });
-
-  await getPasswordInput({
-    page,
-  })
-    .first()
-    .fill(PASSWORD);
-
-  await (getPasswordInput({
-    page,
-  }))
-    .last()
-    .fill(PASSWORD);
-
-  await page.getByRole(`button`, {
-    name: `Let's start`,
-  })
-    .click();
-}
-
 export async function authenticate({
   page,
 }: {
   page: Page,
 }) {
-  await fillEmailInput({
-    page,
-  });
-
-  await getPasswordInput({
-    page,
-  })
-    .fill(PASSWORD);
-
-  await page.getByText(`Login`)
-    .click();
-}
-
-function getPasswordInput({
-  page,
-}: {
-  page: Page
-}) {
-  return page.getByRole(`textbox`, {
-    name: `password`,
-  });
-}
-
-async function fillEmailInput({
-  page,
-}: {
-  page: Page
-}) {
   await page.getByRole(`textbox`, {
     name: `email`,
   })
-    .fill(EMAIL);
+    .fill(`admin@init-strapi-admin.strapi.io`);
+
+  await page.getByRole(`textbox`, {
+    name: `password`,
+  })
+    .fill(`admin`);
+
+  await page.getByText(`Login`)
+    .click();
 }
 
 export async function enableApi({
