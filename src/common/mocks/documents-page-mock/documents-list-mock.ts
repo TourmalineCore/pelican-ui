@@ -1,6 +1,6 @@
 export type DocumentFileProps = {
   id: number,
-  name: string,
+  name?: string,
   url: string,
   extension: string,
 };
@@ -27,8 +27,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     files: [
       {
         id: 1,
-        name: `test.pdf`,
-        url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
+        url: `/public/documents/Protocol.pdf`,
         extension: `.pdf`,
       },
     ],
@@ -50,7 +49,6 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     files: [
       {
         id: 2,
-        name: `test.pdf`,
         url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
         extension: `.pdf`,
       },
@@ -68,7 +66,6 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     files: [
       {
         id: 3,
-        name: `test.pdf`,
         url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
         extension: `.pdf`,
       },
