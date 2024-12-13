@@ -19,7 +19,7 @@ export function DocumentCard({
     <li className={`${className} document-card`}>
       <div className="document-card__header">
         <div className="document-card__info">
-          {showDate ? (<span className="document-card__date">{date}</span>) : ``}
+          {showDate && <span className="document-card__date">{date}</span>}
           <h2 className="document-card__title">{title}</h2>
         </div>
         {isFileOne && (
