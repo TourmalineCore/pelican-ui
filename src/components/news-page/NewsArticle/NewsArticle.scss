@@ -39,6 +39,7 @@
 
     color: $color-black-75;
 
+    .plyr,
     img {
       margin-top: 24px;
       margin-bottom: 24px;
@@ -82,7 +83,6 @@
     }
 
     li {
-      list-style: disc;
       list-style-position: inside;
       padding-left: 12px;
     }

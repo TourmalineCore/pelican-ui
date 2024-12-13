@@ -1,5 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import { Video } from '../Video/Video';
 
 export function MarkdownText({
   children,
@@ -12,6 +13,39 @@ export function MarkdownText({
     <ReactMarkdown
       rehypePlugins={[rehypeRaw]}
       className={className}
+      components={{
+        // eslint-disable-next-line react/no-unstable-nested-components
+        video(props: any) {
+          const sourceProps = props.children.find(({
+            type,
+          }: {
+            type: string
+          }) => type === `source`).props;
+
+          return (
+            <Video
+              sources={
+                {
+                  src: sourceProps.src,
+                  type: sourceProps.type,
+                }
+              }
+              options={{
+                muted: true,
+                controls: [
+                  `progress`,
+                  `play`,
+                  `current-time`,
+                  `play-large`,
+                ],
+                fullscreen: {
+                  enabled: false,
+                },
+              }}
+            />
+          );
+        },
+      }}
     >
       {formatTextWithLineBreaks(children)}
     </ReactMarkdown>
