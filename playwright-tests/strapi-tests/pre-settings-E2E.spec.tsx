@@ -2,6 +2,7 @@ import test, { Page } from "@playwright/test";
 import { gotoPage } from "../helpers";
 import { authenticate, enableApi } from "./strapi-helpers";
 
+// Todo skipped because it is not configured in the pipeline
 test.describe.skip(`Pre-settings`, () => {
   test(` Pre-settings script`, preSettings);
 });

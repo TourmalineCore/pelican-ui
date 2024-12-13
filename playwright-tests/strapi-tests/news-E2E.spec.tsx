@@ -7,6 +7,7 @@ import {
 } from './strapi-helpers';
 import { gotoPage } from '../helpers';
 
+// Todo skipped because it is not configured in the pipeline
 test.describe.skip(`News integration tests`, () => {
   test.beforeEach(async ({
     page,
