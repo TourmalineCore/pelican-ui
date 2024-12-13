@@ -1,4 +1,3 @@
-/* eslint-disable no-await-in-loop */
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideHeader, setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
@@ -118,6 +117,7 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
+    height: 810,
   });
 
   await expect(getDocumentsListByTestId({
@@ -192,6 +192,7 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
+    height: 1065,
   });
 
   await expect(getDocumentsListByTestId({
@@ -208,7 +209,7 @@ async function desktopXlClickedTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 2100,
+    height: 2150,
   });
 
   openDocumentsListPopupAccordions({
@@ -234,6 +235,11 @@ async function openDocumentsListPopupAccordions({
 }: {
   page: Page
 }) {
-  for (const button of await page.getByTestId(`accordion-trigger`)
-    .all()) await button.click();
+  const allAccordion = await page.getByTestId(`accordion-trigger`)
+    .all();
+
+  for (const button of allAccordion) {
+    // eslint-disable-next-line no-await-in-loop
+    await button.click();
+  }
 }
