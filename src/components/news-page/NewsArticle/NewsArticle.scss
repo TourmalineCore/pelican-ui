@@ -58,9 +58,14 @@
       }
     }
 
+
     br {
       content: "";
       display: block;
+    }
+
+    br,
+    p {
       margin-top: 12px;
 
       @include tablet {
