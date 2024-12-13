@@ -8,10 +8,19 @@ const nextConfig = {
   },
 
   images: {
-    domains: [
-      '127.0.0.1',
-      'pelican-local-env.hb.ru-msk.vkcloud-storage.ru',
-      'minio-s3.pelican.local.tourmalinecore.internal'
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+      },
+      {
+        protocol: 'http',
+        hostname: 'minio-s3.pelican.local.tourmalinecore.internal',
+      },
+      {
+        protocol: 'https',
+        hostname: '**'
+      },
     ]
   },
 
