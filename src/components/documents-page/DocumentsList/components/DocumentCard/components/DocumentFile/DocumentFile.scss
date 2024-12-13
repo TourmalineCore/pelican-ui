@@ -18,33 +18,7 @@
     color: $color-black-75;
   }
 
-  &--one {
-    padding: 0;
-  }
-
-  &--several {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    border-radius: 32px;
-    padding: 8px 12px;
-
-    &:hover {
-      background-color: $color-green-10;
-      transition: 0.3s ease-out;
-    }
-
-    @include tablet-xl {
-      padding: 12px 16px;
-    }
-
-    @include desktop-xl {
-      padding: 16px 24px;
-    }
-  }
-
-  & &__open-document {
+  &__open-document {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,14 +26,14 @@
     width: 32px;
     height: 32px;
 
-    &:hover,
-    &:focus {
-      background-color: $color-green-15;
-      transition: 0.3s ease-out;
-    }
-
     &--primary {
       background-color: $color-green-5;
+
+      &:hover,
+      &:focus {
+        background-color: $color-green-15;
+        transition: 0.3s ease-out;
+      }
     }
 
     &--secondary {
@@ -74,6 +48,34 @@
     @include desktop-xl {
       width: 64px;
       height: 64px;
+    }
+  }
+
+  &__link {
+    &--single-document {
+      padding: 0;
+    }
+
+    &--several-documents {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      border-radius: 32px;
+      padding: 8px 12px;
+
+      &:hover {
+        background-color: $color-green-10;
+        transition: 0.3s ease-out;
+      }
+
+      @include tablet-xl {
+        padding: 12px 16px;
+      }
+
+      @include desktop-xl {
+        padding: 16px 24px;
+      }
     }
   }
 }

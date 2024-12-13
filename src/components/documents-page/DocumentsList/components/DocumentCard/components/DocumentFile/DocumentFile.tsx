@@ -11,23 +11,23 @@ export function DocumentFile({
   extension,
 } : {
   className: string,
-  numberOfFiles: "one" | "several",
+  numberOfFiles: "single-document" | "several-documents",
   buttonTheme: "primary" | "secondary",
   name?: DocumentFileProps['name'],
   url: DocumentFileProps['url'],
   extension: DocumentFileProps['extension'],
 }) {
   return (
-    <div className={`document-file document-file--${numberOfFiles}`}>
-      {name && (
-        <p className="document-file__name">
-          {name?.replace(`${extension}`, ``)}
-        </p>
-      )}
+    <div className="document-file document-file">
       <Link
-        className={`${className} document-file__link`}
+        className={`${className} document-file__link--${numberOfFiles}`}
         href={url}
       >
+        {name && (
+          <p className="document-file__name">
+            {name?.replace(`${extension}`, ``)}
+          </p>
+        )}
         <span className={`document-file__open-document document-file__open-document--${buttonTheme}`}>
           <IconOpenDocument className="document-file__icon-open-document" />
         </span>
