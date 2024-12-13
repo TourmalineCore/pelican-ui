@@ -14,7 +14,7 @@ export function DocumentCard({
 }: Omit<DocumentsListComponentProps, 'id' | 'category'> & {
   className: string,
 }) {
-  const isFileOne = files.length === 1;
+  const isSingleDocument = files.length === 1;
   return (
     <li className={`${className} document-card`}>
       <div className="document-card__header">
@@ -22,17 +22,17 @@ export function DocumentCard({
           {showDate && <span className="document-card__date">{date}</span>}
           <h2 className="document-card__title">{title}</h2>
         </div>
-        {isFileOne && (
+        {isSingleDocument && (
           <DocumentFile
             className="document-card__document-file"
-            numberOfFiles="one"
+            numberOfFiles="single-document"
             buttonTheme="primary"
             url={files[0].url}
             extension={files[0].extension}
           />
         )}
       </div>
-      {(subtitle || !isFileOne)
+      {(subtitle || !isSingleDocument)
         && (
           <Accordion
             triggerText="Подробнее"
@@ -43,7 +43,7 @@ export function DocumentCard({
             <div className="document-card__accordion-inner">
               {subtitle && <p className="document-card__subtitle">{subtitle}</p>}
               {description && <p className="document-card__description">{description}</p>}
-              {!isFileOne
+              {!isSingleDocument
               && (
                 <ul className="document-card__list">
                   {(files.map((file) => (
@@ -53,7 +53,7 @@ export function DocumentCard({
                     >
                       <DocumentFile
                         className="document-card__document-file"
-                        numberOfFiles="several"
+                        numberOfFiles="several-documents"
                         buttonTheme="secondary"
                         name={file.name}
                         url={file.url}

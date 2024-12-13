@@ -235,10 +235,10 @@ async function openDocumentsListPopupAccordions({
 }: {
   page: Page
 }) {
-  const allAccordion = await page.getByTestId(`accordion-trigger`)
+  const allAccordions = await page.getByTestId(`accordion-trigger`)
     .all();
 
-  for (const button of allAccordion) {
+  for (const button of allAccordions) {
     // eslint-disable-next-line no-await-in-loop
     await button.click();
   }
