@@ -8,7 +8,7 @@ export const HERO: HeroComponentProps = {
   title: `Челябинский зоопарк`,
   image: {
     url: heroImage,
-    alt: `Изображение львов`,
+    alternativeText: `Изображение львов`,
   },
   scheduleTitle: `График работы`,
   scheduleTimetables: [

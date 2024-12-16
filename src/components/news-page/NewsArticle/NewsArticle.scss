@@ -45,7 +45,6 @@
       margin-bottom: 24px;
       border-radius: 32px;
       height: auto;
-      max-width: 100%;
 
       @include tablet-xl {
         margin-top: 32px;
@@ -59,9 +58,21 @@
       }
     }
 
+    ul {
+      list-style: disc;
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
+
     br {
       content: "";
       display: block;
+    }
+
+    br,
+    p {
       margin-top: 12px;
 
       @include tablet {

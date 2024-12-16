@@ -10,10 +10,10 @@ export const CONTACT_ZOO_PREVIEW: ContactZooPreviewComponentProps = {
   description: `В этой части зоопарка вы почувствуете себя вдали от городской суеты в компании кур, гусей, коз и многих других животных.`,
   largeImage: {
     url: LargeImageSrc,
-    alt: `Изображение кролика`,
+    alternativeText: `Изображение кролика`,
   },
   smallImage: {
     url: SmallImageSrc,
-    alt: `Изображение кролика`,
+    alternativeText: `Изображение кролика`,
   },
 };

@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
+import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, hideHeader, setViewportSize } from '@/test/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`DocumentsCategoriesListComponentTests`, () => {

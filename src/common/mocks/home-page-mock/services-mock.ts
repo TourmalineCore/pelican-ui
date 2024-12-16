@@ -16,7 +16,7 @@ export const SERVICES: ServicesComponentProps = {
       id: 0,
       image: {
         url: excursionImage,
-        alt: `Фотография процесса проведения экскурсии`,
+        alternativeText: `Фотография процесса проведения экскурсии`,
       },
       labels: [`Запись за 5 дней`, `От 10 человек`],
       title: `Экскурсии`,
@@ -26,7 +26,7 @@ export const SERVICES: ServicesComponentProps = {
       id: 1,
       image: {
         url: questImage,
-        alt: `Фотография процесса проведения квеста`,
+        alternativeText: `Фотография процесса проведения квеста`,
       },
       labels: [`Запись за 5 дней`, `От 10 человек`],
       title: `Квесты`,
@@ -36,7 +36,7 @@ export const SERVICES: ServicesComponentProps = {
       id: 2,
       image: {
         url: contactLessonImage,
-        alt: `Фотография процесса проведения контактного занятия`,
+        alternativeText: `Фотография процесса проведения контактного занятия`,
       },
       labels: [`Запись за 5 дней`, `От 5 человек`],
       title: `Контактные занятия`,
@@ -46,7 +46,7 @@ export const SERVICES: ServicesComponentProps = {
       id: 3,
       image: {
         url: exitLecturesImage,
-        alt: `Фотография процесса проведения выездной лекции`,
+        alternativeText: `Фотография процесса проведения выездной лекции`,
       },
       labels: [`Запись за 5 дней`],
       title: `Выездные лекции`,

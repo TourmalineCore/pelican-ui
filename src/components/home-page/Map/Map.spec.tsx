@@ -5,7 +5,7 @@ import {
   hideHeader,
   hideTickets,
   setViewportSize,
-} from '@/test/helpers';
+} from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`MapComponentTests`, () => {

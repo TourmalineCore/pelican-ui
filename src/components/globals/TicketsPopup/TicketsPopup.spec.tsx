@@ -1,5 +1,5 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { setViewportSize } from '@/test/helpers';
+import { setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TicketsPopupComponentTests`, () => {

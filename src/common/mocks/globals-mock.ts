@@ -161,35 +161,35 @@ export const TICKETS_POPUP_SUBSIDIZED: GlobalComponentProps['ticketsPopupSubsidi
 export const TICKETS_POPUP_RULES_IMAGES: GlobalComponentProps['ticketsPopupRulesImages'] = [
   {
     url: noFoodImage,
-    alt: `Нельзя кормить животных`,
+    alternativeText: `Нельзя кормить животных`,
   },
   {
     url: noPetsImage,
-    alt: `Нельзя с домашними животными`,
+    alternativeText: `Нельзя с домашними животными`,
   },
   {
     url: noSmokingImage,
-    alt: `Нельзя курить`,
+    alternativeText: `Нельзя курить`,
   },
   {
     url: noScooterImage,
-    alt: `Нельзя ездить на самокате`,
+    alternativeText: `Нельзя ездить на самокате`,
   },
   {
     url: noClimbingImage,
-    alt: `Нельзя перелезать через ограждение`,
+    alternativeText: `Нельзя перелезать через ограждение`,
   },
   {
     url: noTouchingImage,
-    alt: `Нельзя трогать животных`,
+    alternativeText: `Нельзя трогать животных`,
   },
   {
     url: noTeasingImage,
-    alt: `Нельзя дразнить животных`,
+    alternativeText: `Нельзя дразнить животных`,
   },
   {
     url: noBreakingImage,
-    alt: `Нельзя ломать деревья`,
+    alternativeText: `Нельзя ломать деревья`,
   },
 ];
 

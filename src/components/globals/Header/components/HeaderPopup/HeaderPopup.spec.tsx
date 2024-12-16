@@ -1,15 +1,12 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/test/helpers';
+import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`HeaderPopupTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.HOME,
-    });
+    await page.goto(AppRoute.HOME);
   });
 
   test(`ActionTest`, actionTest);

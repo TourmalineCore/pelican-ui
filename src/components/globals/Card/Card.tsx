@@ -60,7 +60,8 @@ export function Card({
             )}
             <Image
               src={image.url}
-              alt={image.alt}
+              fill
+              alt={image.alternativeText}
             />
           </div>
           <div className={clsx(`card__info`, {
@@ -75,13 +76,15 @@ export function Card({
             >
               {title}
             </h3>
-            <p className={clsx(`card__description`, {
-              'card__description--news': isNews,
-              'card__description--services': isService,
-            })}
-            >
-              {description}
-            </p>
+            {description && (
+              <p className={clsx(`card__description`, {
+                'card__description--news': isNews,
+                'card__description--services': isService,
+              })}
+              >
+                {description}
+              </p>
+            )}
           </div>
         </div>
       </Link>

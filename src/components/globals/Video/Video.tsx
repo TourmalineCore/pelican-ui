@@ -1,6 +1,10 @@
-import Plyr from 'plyr-react';
+import dynamic from 'next/dynamic';
 import { Options, Source } from 'plyr';
 import 'plyr-react/plyr.css';
+
+const Plyr = dynamic(() => import(`plyr-react`), {
+  ssr: false,
+});
 
 type VideoProps = {
   className?: string,

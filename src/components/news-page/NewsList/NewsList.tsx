@@ -26,7 +26,7 @@ export function NewsList({
     });
   }, [pageSize]);
 
-  const isPaginationAvailable = pageSize <= total;
+  const isPaginationAvailable = pageSize < total;
 
   return (
     <section
