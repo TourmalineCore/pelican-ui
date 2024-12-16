@@ -1,6 +1,6 @@
 export type DocumentFileProps = {
   id: number,
-  name?: string,
+  name: string,
   url: string,
   extension: string,
 };
@@ -27,6 +27,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     files: [
       {
         id: 1,
+        name: `Протокол закупки №31907985526`,
         url: `/public/documents/Protocol.pdf`,
         extension: `.pdf`,
       },
@@ -49,6 +50,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     files: [
       {
         id: 2,
+        name: `Договор №350474`,
         url: `/public/documents/Protocol.pdf`,
         extension: `.pdf`,
       },
@@ -66,6 +68,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     files: [
       {
         id: 3,
+        name: `Отчёт о выполнении муниципального задания за 2022г.`,
         url: `/public/documents/Protocol.pdf`,
         extension: `.pdf`,
       },
