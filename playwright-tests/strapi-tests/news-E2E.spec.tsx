@@ -38,7 +38,7 @@ test.describe.skip(`News integration tests`, () => {
     `
     GIVEN strapi admin panel without user
     WHEN user creates and publishes a news item
-    SHOULD news is displayed on the frontend UI with all fields
+    SHOULD display news on the frontend UI with all fields
     `,
     newsIntegrationTest,
   );

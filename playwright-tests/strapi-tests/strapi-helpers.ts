@@ -79,7 +79,8 @@ export async function deleteImages({
 }: {
   page: Page
 }) {
-  await page.goto(`http://pelican.local.tourmalinecore.internal:40110/cms/admin/plugins/upload`);
+  await page.getByText(`Media Library`)
+    .click();
 
   await clickByCheckboxAndDeleteWithConfirm({
     page,

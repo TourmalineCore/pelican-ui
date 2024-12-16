@@ -4,12 +4,12 @@ import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle"
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
 
-type OneNewsProps = Pick<NewsProps, 'innerContent' | 'publishedAt' | 'title'>;
+type SingleNewsProps = Pick<NewsProps, 'innerContent' | 'publishedAt' | 'title'>;
 
 export default function News({
   news,
 }: {
-  news: OneNewsProps
+  news: SingleNewsProps
 }) {
   if (!news) {
     return <NotFound />;
@@ -33,8 +33,8 @@ export default function News({
   );
 }
 
-type OneNewsResponse = {
-  data: OneNewsProps;
+type SingleNewsResponse = {
+  data: SingleNewsProps;
 };
 
 export async function getServerSideProps({
@@ -55,7 +55,7 @@ export async function getServerSideProps({
   }
 
   try {
-    const news: OneNewsResponse = await api.get(`/news/${query.id}?fields[0]=title&fields[1]=innerContent&fields[2]=publishedAt`);
+    const news: SingleNewsResponse = await api.get(`/news/${query.id}?fields[0]=title&fields[1]=innerContent&fields[2]=publishedAt`);
 
     return {
       props: {
