@@ -99,10 +99,11 @@ export type CardProps = {
   id: number,
   image: Image,
   title: string,
-  description: string,
+  description?: string,
 };
 
 export type ServicesCardProps = CardProps & {
+  description: string,
   labels: string[],
 };
 
