@@ -18,7 +18,7 @@ export function DocumentFile({
   extension: DocumentFileProps['extension'],
 }) {
   return (
-    <div className="document-file document-file">
+    <div className="document-file">
       <Link
         className={`${className} document-file__link--${numberOfFiles}`}
         href={url}

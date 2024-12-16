@@ -62,7 +62,6 @@ export function DocumentCard({
                     </li>
                   ))
                   )}
-
                 </ul>
               )}
             </div>
