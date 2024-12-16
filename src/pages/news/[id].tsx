@@ -1,3 +1,4 @@
+import qs from 'qs';
 import { NEWS, NewsProps } from "@/src/common/mocks/news-page-mock/news-mock";
 import { api } from "@/src/common/utils/HttpClient";
 import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle";
@@ -55,7 +56,14 @@ export async function getServerSideProps({
   }
 
   try {
-    const news: SingleNewsResponse = await api.get(`/news/${query.id}?fields[0]=title&fields[1]=innerContent&fields[2]=publishedAt`);
+    const queryParams = {
+      fields: [
+        `title`,
+        `innerContent`,
+        `publishedAt`,
+      ],
+    };
+    const news: SingleNewsResponse = await api.get(`/news/${query.id}?${qs.stringify(queryParams)}`);
 
     return {
       props: {

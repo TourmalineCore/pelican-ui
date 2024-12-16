@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import qs from 'qs';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { NEWS_PAGE, NewsPageProps } from '@/src/common/mocks/news-page-mock/news-page-mock';
 import { NEWS, NewsProps } from '@/src/common/mocks/news-page-mock/news-mock';
@@ -64,7 +65,18 @@ export async function getServerSideProps({
     };
   }
 
-  const news: NewsResponse = await api.get(`/news?fields[0]=title&fields[1]=description&populate[0]=image`);
+  const queryParams = {
+    populate: [`image`],
+    fields: [`title`, `description`],
+    sort: {
+      publishedAt: `desc`,
+    },
+    pagination: {
+      pageSize: query.pageSize,
+    },
+  };
+
+  const news: NewsResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
 
   return {
     props: {
