@@ -17,15 +17,16 @@ export function DocumentFile({
   url: DocumentFileProps['url'],
   extension: DocumentFileProps['extension'],
 }) {
+  const numberOfFilesStyle = numberOfFiles === 1 ? `single-document` : `several-documents`;
   return (
     <div className={`${className} document-file`}>
       <Link
-        className={`document-file__link--${numberOfFiles === 1 ? `single-document` : `several-documents`}`}
+        className={`document-file__link document-file__link--${numberOfFilesStyle}`}
         href={url}
         aria-label={`Открыть файл с документом ${name.replace(`${extension}`, ``)} в новой вкладке`}
       >
         {numberOfFiles > 1 && (
-          <p className={`document-file__name--${numberOfFiles === 1 ? `single-document` : `several-documents`}`}>
+          <p className={`document-file__name document-file__name--${numberOfFilesStyle}`}>
             {name.replace(`${extension}`, ``)}
           </p>
         )}
