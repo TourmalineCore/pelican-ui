@@ -12,10 +12,16 @@
   }
 
   &__name {
-    @include body-2-medium;
+    &--several-documents {
+      @include body-2-medium;
 
-    max-width: 80%;
-    color: $color-black-75;
+      max-width: 80%;
+      color: $color-black-75;
+    }
+
+    &--single-document {
+      display: none;
+    }
   }
 
   &__open-document {
@@ -64,7 +70,8 @@
       border-radius: 32px;
       padding: 8px 12px;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: $color-green-10;
         transition: 0.3s ease-out;
       }
