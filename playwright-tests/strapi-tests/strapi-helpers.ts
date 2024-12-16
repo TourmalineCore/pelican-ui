@@ -20,31 +20,6 @@ export async function authenticate({
     .click();
 }
 
-export async function enableApi({
-  page,
-}: {
-  page: Page
-}) {
-  await page.goto(`http://pelican.local.tourmalinecore.internal:40110/cms/admin/settings/users-permissions/roles/2`);
-
-  await page.getByText(`News-collection`)
-    .first()
-    .click();
-
-  await page.getByText(`find`, {
-    exact: true,
-  })
-    .check();
-
-  await page.getByText(`findOne`, {
-    exact: true,
-  })
-    .check();
-
-  await page.getByText(`Save`)
-    .click();
-}
-
 export async function uploadImage({
   page,
   imagePath,
