@@ -7,6 +7,26 @@
     font-size: 16px;
     line-height: 1.45;
 
+    #{$this}--document-card & {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      @include tablet {
+        align-items: start;
+      }
+
+      @include tablet-xl {
+        @include text-medium;
+
+        align-items: center;
+      }
+
+      @include desktop {
+        @include text-medium;
+      }
+    }
+
     @include tablet-xl {
       font-size: 18px;
       line-height: 1.4;
@@ -27,6 +47,15 @@
 
   &__icon {
     margin-left: auto;
+
+    #{$this}--document-card & {
+      margin-left: 8px;
+
+      @include desktop-xl {
+        margin-left: 12px;
+        width: 26px;
+      }
+    }
 
     #{$this}--ticket-card & {
       margin-left: 8px;
@@ -81,6 +110,12 @@
     #{$this}__trigger {
       width: 100%;
       color: $color-white;
+    }
+  }
+
+  &--document-card {
+    #{$this}__trigger {
+      color: $color-black-75;
     }
   }
 }
