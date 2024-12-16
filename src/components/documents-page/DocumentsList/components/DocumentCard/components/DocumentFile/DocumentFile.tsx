@@ -11,21 +11,22 @@ export function DocumentFile({
   extension,
 } : {
   className: string,
-  numberOfFiles: "single-document" | "several-documents",
+  numberOfFiles: number,
   buttonTheme: "primary" | "secondary",
-  name?: DocumentFileProps['name'],
+  name: DocumentFileProps['name'],
   url: DocumentFileProps['url'],
   extension: DocumentFileProps['extension'],
 }) {
   return (
-    <div className="document-file">
+    <div className={`${className} document-file`}>
       <Link
-        className={`${className} document-file__link--${numberOfFiles}`}
+        className={`document-file__link--${numberOfFiles === 1 ? `single-document` : `several-documents`}`}
         href={url}
+        aria-label={`Открыть файл с документом ${name.replace(`${extension}`, ``)} в новой вкладке`}
       >
-        {name && (
-          <p className="document-file__name">
-            {name?.replace(`${extension}`, ``)}
+        {numberOfFiles > 1 && (
+          <p className={`document-file__name--${numberOfFiles === 1 ? `single-document` : `several-documents`}`}>
+            {name.replace(`${extension}`, ``)}
           </p>
         )}
         <span className={`document-file__open-document document-file__open-document--${buttonTheme}`}>

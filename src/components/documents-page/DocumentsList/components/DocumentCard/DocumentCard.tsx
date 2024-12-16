@@ -25,8 +25,9 @@ export function DocumentCard({
         {isSingleDocument && (
           <DocumentFile
             className="document-card__document-file"
-            numberOfFiles="single-document"
+            numberOfFiles={files.length}
             buttonTheme="primary"
+            name={files[0].name}
             url={files[0].url}
             extension={files[0].extension}
           />
@@ -53,7 +54,7 @@ export function DocumentCard({
                     >
                       <DocumentFile
                         className="document-card__document-file"
-                        numberOfFiles="several-documents"
+                        numberOfFiles={files.length}
                         buttonTheme="secondary"
                         name={file.name}
                         url={file.url}
