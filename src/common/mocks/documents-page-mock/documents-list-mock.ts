@@ -49,7 +49,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     files: [
       {
         id: 2,
-        url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
+        url: `/public/documents/Protocol.pdf`,
         extension: `.pdf`,
       },
     ],
@@ -66,7 +66,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     files: [
       {
         id: 3,
-        url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
+        url: `/public/documents/Protocol.pdf`,
         extension: `.pdf`,
       },
     ],
@@ -83,19 +83,19 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
       {
         id: 4,
         name: `Протокол 1.pdf`,
-        url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
+        url: `/public/documents/Protocol.pdf`,
         extension: `.pdf`,
       },
       {
         id: 5,
         name: `Протокол закупки (копия).pdf`,
-        url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
+        url: `/public/documents/Protocol.pdf`,
         extension: `.pdf`,
       },
       {
         id: 6,
         name: `Скрин.pdf`,
-        url: `/uploads/Sammari_vstrechi_29_10_236ddfc2bf.pdf`,
+        url: `/public/documents/Protocol.pdf`,
         extension: `.pdf`,
       },
     ],
