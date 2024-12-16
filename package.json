@@ -45,6 +45,7 @@
     "@stylistic/eslint-plugin": "^1.6.3",
     "@stylistic/stylelint-config": "^1.0.1",
     "@types/node": "^20",
+    "@types/qs": "^6.9.17",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-plyr": "^2.1.4",
