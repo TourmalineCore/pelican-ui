@@ -15,7 +15,7 @@ export function DocumentFile({
   buttonTheme: "primary" | "secondary",
   name: DocumentFileProps['name'],
   url: DocumentFileProps['url'],
-  extension: DocumentFileProps['extension'],
+  extension: DocumentFileProps['ext'],
 }) {
   const numberOfFilesStyle = numberOfFiles === 1 ? `single-document` : `several-documents`;
   return (
@@ -23,6 +23,7 @@ export function DocumentFile({
       <Link
         className={`document-file__link document-file__link--${numberOfFilesStyle}`}
         href={url}
+        target="_blank"
         aria-label={`Открыть файл с документом ${name.replace(`${extension}`, ``)} в новой вкладке`}
       >
         {numberOfFiles > 1 && (

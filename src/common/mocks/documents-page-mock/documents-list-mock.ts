@@ -2,7 +2,7 @@ export type DocumentFileProps = {
   id: number,
   name: string,
   url: string,
-  extension: string,
+  ext: string,
 };
 
 export type DocumentsListComponentProps = {
@@ -29,7 +29,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
         id: 1,
         name: `Протокол закупки №31907985526`,
         url: `/public/documents/Protocol.pdf`,
-        extension: `.pdf`,
+        ext: `.pdf`,
       },
     ],
     category: {
@@ -52,7 +52,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
         id: 2,
         name: `Договор №350474`,
         url: `/public/documents/Protocol.pdf`,
-        extension: `.pdf`,
+        ext: `.pdf`,
       },
     ],
     category: {
@@ -70,7 +70,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
         id: 3,
         name: `Отчёт о выполнении муниципального задания за 2022г.`,
         url: `/public/documents/Protocol.pdf`,
-        extension: `.pdf`,
+        ext: `.pdf`,
       },
     ],
     category: {
@@ -87,19 +87,19 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
         id: 4,
         name: `Протокол 1.pdf`,
         url: `/public/documents/Protocol.pdf`,
-        extension: `.pdf`,
+        ext: `.pdf`,
       },
       {
         id: 5,
         name: `Протокол закупки (копия).pdf`,
         url: `/public/documents/Protocol.pdf`,
-        extension: `.pdf`,
+        ext: `.pdf`,
       },
       {
         id: 6,
         name: `Скрин.pdf`,
         url: `/public/documents/Protocol.pdf`,
-        extension: `.pdf`,
+        ext: `.pdf`,
       },
     ],
     category: {

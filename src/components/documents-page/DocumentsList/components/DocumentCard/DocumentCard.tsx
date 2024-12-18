@@ -29,7 +29,7 @@ export function DocumentCard({
             buttonTheme="primary"
             name={files[0].name}
             url={files[0].url}
-            extension={files[0].extension}
+            extension={files[0].ext}
           />
         )}
       </div>
@@ -58,7 +58,7 @@ export function DocumentCard({
                         buttonTheme="secondary"
                         name={file.name}
                         url={file.url}
-                        extension={file.extension}
+                        extension={file.ext}
                       />
                     </li>
                   ))
