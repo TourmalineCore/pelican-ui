@@ -243,7 +243,7 @@ export interface NewsCollectionListResponse {
       pageSize?: number;
       /** @max 1 */
       pageCount?: number;
-      // total?: number;
+      total?: number;
     };
   };
 }
