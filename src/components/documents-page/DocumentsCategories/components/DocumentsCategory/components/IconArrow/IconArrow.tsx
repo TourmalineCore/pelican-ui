@@ -15,7 +15,7 @@ export function IconArrow({
       <path
         d="M1.6 10.1L11 1V11M12 1H1"
         stroke="#0E6E34"
-        stroke-width="2"
+        strokeWidth="2"
       />
     </svg>
   );
