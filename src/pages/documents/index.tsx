@@ -1,12 +1,17 @@
 import Head from 'next/head';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { DOCUMENTS_PAGE, DocumentsPageProps } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
+import { api } from '@/src/common/utils/HttpClient';
+import { Meta } from '@/src/common/types';
+import { DOCUMENTS_CATEGORIES, DocumentsCategoriesProps } from '@/src/common/mocks/documents-page-mock/documents-categories-mock';
 import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
 
 export default function DocumentsPage({
   pageData,
+  documentCategories,
 }: {
   pageData: DocumentsPageProps,
+  documentCategories: DocumentsCategoriesProps[],
 }) {
   if (!pageData) {
     return <NotFound />;
@@ -15,7 +20,6 @@ export default function DocumentsPage({
   const {
     title,
     documentsTitle,
-    documentCategories,
   } = pageData;
 
   return (
@@ -35,20 +39,27 @@ export default function DocumentsPage({
   );
 }
 
-export async function getServerSideProps() {
-  // TODO Uncomment when the api appears, there will be static data here
-  // if (process.env.APP_ENV === `static`) {
-  //   return {
-  //     props: {
-  //       navigationLinks: NAVIGATION_LINKS,
-  //     },
-  //   };
-  // }
+type DocumentsCategoriesResponse = {
+  data: DocumentsCategoriesProps[];
+  meta: Meta;
+};
 
-  // TODO there will be a request in the Strapi api here
+export async function getServerSideProps() {
+  if (process.env.APP_ENV === `static`) {
+    return {
+      props: {
+        pageData: DOCUMENTS_PAGE,
+        categories: DOCUMENTS_CATEGORIES,
+      },
+    };
+  }
+
+  const documentsCategories: DocumentsCategoriesResponse = await api.get(`/documents-categories`);
+
   return {
     props: {
       pageData: DOCUMENTS_PAGE,
+      documentCategories: documentsCategories.data,
     },
   };
 }
