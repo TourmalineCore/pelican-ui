@@ -16,7 +16,8 @@
     "lint:ts:fix": "next lint -- --fix",
     "lint:scss:fix": "npm run lint:scss -- --fix",
     "prepare": "husky",
-    "test-e2e-ui": "npx playwright test --ui"
+    "test-e2e": "npx playwright test",
+    "test-e2e:ui": "npx playwright test --ui",
   },
   "dependencies": {
     "axios": "^1.7.7",
@@ -66,13 +67,13 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "file-loader": "^6.2.0",
     "husky": "^9.0.11",
-    "playwright": "1.49.0",
     "postcss-cli": "^11.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
     "sass": "^1.71.1",
     "stylelint": "^16.2.1",
     "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-order": "^6.0.4",
+    "swagger-typescript-api": "^13.0.23",
     "typescript": "^5"
   }
 }

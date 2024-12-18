@@ -15,6 +15,8 @@
 
 ## Local start
 
+Add a .env file based on .env.example
+
 Install the required dependencies
 
 ```bash
@@ -39,13 +41,13 @@ npm run dev:static
 
 When you see that the website dev server is started successfully and you can open it at http://localhost:3000 while keeping the first terminal alive in a separate terminal you can run the tests in headless mode (no browser UI) executing:
 ```bash
-npx playwright test
+npm run test-e2e
 ```
 
 If you want to work purely inside your Dev Container you have to connect the the Dev Container VNC server (remote desktop) here http://localhost:6080/. The password is `vscode`. Now you should be able to see Playwright GUI executing one of the available scripts from `package.json` e.g.
 
 ```bash
-npx playwright test --ui
+npm run test-e2e:ui
 ```
 
 ## Update Base Visual Regression Tests Snapshots
@@ -59,7 +61,7 @@ It will change only those that are no longer the same. After visual verification
 
 ## See Tests Report Locally in Dev Container
 
-After you execute `npx playwright test` you can see the tests run report. For instance, if retries occured for a test or several of them. If a tests run failed report is going to be hosted for you automatically. If a test run succeeded you need to ask to host the report using the following script:
+After you execute `npm run test-e2e` you can see the tests run report. For instance, if retries occured for a test or several of them. If a tests run failed report is going to be hosted for you automatically. If a test run succeeded you need to ask to host the report using the following script:
 ```bash
 npx playwright show-report
 ```
@@ -89,10 +91,8 @@ to
 - Uninstall previous version of plyawright packages executing the following commands
 ```bash
 npm uninstall @playwright/test
-npm uninstall playwright
 ```
 - Install the new **exact** and **fixed** version of playwright packages to dev deps executing the following commands (here the example is for 1.49.0 version, replace it with the needed one)
 ```bash
-npm install -D playwright@1.49.0 --save-exact
 npm install -D @playwright/test@1.49.0 --save-exact
 ```

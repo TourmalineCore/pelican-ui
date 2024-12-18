@@ -57,6 +57,7 @@ export function Layout({
     return () => {
       window.removeEventListener(`resize`, handleSetWindowWidth);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowWidth]);
 
   const handleMobileMenuToggle = useCallback(() => {
@@ -67,6 +68,7 @@ export function Layout({
     if (isMobileMenuOpen) {
       setIsMobileMenuActive(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   if (windowWidth === 0) {
