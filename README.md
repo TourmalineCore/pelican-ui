@@ -30,6 +30,10 @@ npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Run re-generate TypeScript types by strapi swagger documentation
+```bash
+npm run generate-api-types
+```
 
 
 ## Run Playwright Tests (Dev Containers only)
