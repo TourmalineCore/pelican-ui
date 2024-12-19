@@ -5,6 +5,7 @@ export const TICKETS: TicketsComponentProps = {
   id: 5,
   __component: BlockTypes.TICKETS,
   generalTicketsTitle: `Входные билеты`,
+  generalTicketsLink: `/`,
   subsidizedTicketsTitle: `Льготные билеты`,
   subsidizedTicketsSubtitle: `Купить льготный билет можно только на кассе зоопарка.`,
   generalTickets: [

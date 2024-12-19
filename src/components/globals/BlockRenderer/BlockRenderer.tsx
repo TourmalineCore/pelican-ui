@@ -134,6 +134,7 @@ export const BlockRenderer = ({
       return (
         <Tickets
           generalTicketsTitle={block.generalTicketsTitle}
+          generalTicketsLink={block.generalTicketsLink}
           subsidizedTicketsTitle={block.subsidizedTicketsTitle}
           subsidizedTicketsSubtitle={block.subsidizedTicketsSubtitle}
           generalTickets={block.generalTickets}

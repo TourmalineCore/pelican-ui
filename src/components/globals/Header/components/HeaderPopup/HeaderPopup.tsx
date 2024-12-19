@@ -2,8 +2,8 @@ import { GlobalComponentProps } from "@/src/common/types";
 import { CSSTransition } from 'react-transition-group';
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MouseEventHandler } from "react";
-import { HeaderNavigationPopup } from "./components/HeaderNavigationPopup/HeaderNavigationPopup";
 import { SocialMedia } from "../../../SocialNetwork/SocialMedia";
+import { HeaderNavigation } from "../HeaderNavigation/HeaderNavigation";
 
 export function HeaderPopup({
   className,
@@ -44,10 +44,11 @@ export function HeaderPopup({
                 handleTicketPopupToggle();
                 onTicketPopupOpen(e);
               }}
+              data-testid="header-popup-ticket-button"
             >
               {popupTicketBuyText}
             </button>
-            <HeaderNavigationPopup
+            <HeaderNavigation
               className="header-popup__nav"
               navigationLinks={navigationLinks}
             />
@@ -57,12 +58,14 @@ export function HeaderPopup({
                 <a
                   href={`tel:${phone}`}
                   className="header-popup__phone"
+                  data-testid="header-popup-phone"
                 >
                   {phone}
                 </a>
                 <a
                   href={`mailto:${email}`}
                   className="header-popup__email"
+                  data-testid="header-popup-email"
                 >
                   {email}
                 </a>

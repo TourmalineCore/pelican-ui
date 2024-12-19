@@ -5,6 +5,7 @@ import { GlobalComponentProps } from "@/src/common/types";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useRouter } from "next/router";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
+import { MutableRefObject } from "react";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 
 type FooterProps =
@@ -14,7 +15,9 @@ type FooterProps =
   | "ticketsPopupSubsidized"
   | "ticketsPopupRulesImages"
   | "ticketsPopupRefundReasons"
-  >;
+  > & {
+    footerElementRef: MutableRefObject<null> | HTMLElement
+  };
 
 export function Footer({
   officialLinks,
@@ -25,12 +28,14 @@ export function Footer({
   footerNavTitleLeft,
   footerNavTitleRight,
   popupTicketBuyText,
+  footerElementRef,
 }: FooterProps) {
   const router = useRouter();
 
   const {
-    isDesktop,
+    isMobile,
     isTablet,
+    isDesktop,
   } = useWindowWidth();
 
   const {
@@ -38,7 +43,8 @@ export function Footer({
   } = useTicketPopup();
 
   return (
-    <div
+    <footer
+      ref={footerElementRef}
       className="footer"
       data-testid="footer"
     >
@@ -74,6 +80,7 @@ export function Footer({
                       <Link
                         href={link}
                         className="footer__nav-link"
+                        data-testid="footer-nav-link"
                       >
                         {name}
                       </Link>
@@ -96,6 +103,7 @@ export function Footer({
                       <Link
                         href={link}
                         className="footer__nav-link"
+                        data-testid="footer-nav-link"
                         onClick={(e) => {
                           e.preventDefault();
                           if (router.pathname !== link) {
@@ -115,6 +123,7 @@ export function Footer({
                 <Link
                   href={`tel:${phone}`}
                   className="footer__contact-link"
+                  data-testid="footer-tel-link"
                 >
                   {phone}
                 </Link>
@@ -123,6 +132,7 @@ export function Footer({
                 <Link
                   href={`mailto:${email}`}
                   className="footer__contact-link"
+                  data-testid="footer-email-link"
                 >
                   {email}
                 </Link>
@@ -149,21 +159,42 @@ export function Footer({
                   )
               )
             }
+            {
+              isTablet && (
+                <div className="footer__copyright">
+                  Сайт разработан
+                  <Link
+                    href="https://www.tourmalinecore.com/"
+                    className="footer__copyright-link"
+                    data-testid="footer-copyright-link"
+                  >
+                    Tourmaline Core
+                    <span className="footer__heart">❤</span>
+                  </Link>
+                </div>
+              )
+            }
             <div className="footer__social-media">
               <SocialMedia
                 className="footer__social-icon"
               />
             </div>
-            <div className="footer__copyright">
-              Сайт разработан
-              <Link
-                href="https://www.tourmalinecore.com/"
-                className="footer__copyright-link"
-              >
-                Tourmaline Core
-                <span className="footer__heart">❤</span>
-              </Link>
-            </div>
+            {
+              isMobile && (
+                <div className="footer__copyright">
+                  Сайт разработан
+                  <Link
+                    href="https://www.tourmalinecore.com/"
+                    className="footer__copyright-link"
+                    data-testid="footer-copyright-link"
+                  >
+                    Tourmaline Core
+                    <span className="footer__heart">❤</span>
+                  </Link>
+                </div>
+              )
+            }
+
           </div>
         </div>
       </div>
@@ -184,6 +215,7 @@ export function Footer({
               <Link
                 href={link}
                 className="footer__official-link"
+                data-testid="footer-official-link"
               >
                 <Image
                   className="footer__official-link-logo"
@@ -196,6 +228,6 @@ export function Footer({
           ))}
         </ul>
       </div>
-    </div>
+    </footer>
   );
 }

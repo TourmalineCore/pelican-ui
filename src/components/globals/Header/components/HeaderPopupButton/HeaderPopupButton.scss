@@ -1,8 +1,11 @@
 .header-popup-button {
   position: relative;
   display: block;
+  border: none;
+  border-radius: 0;
   width: 29px;
   height: 21px;
+  background-color: initial;
   cursor: pointer;
 
   &::before,

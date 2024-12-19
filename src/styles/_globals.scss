@@ -76,6 +76,8 @@ a {
 }
 
 .text-link {
+  text-decoration: underline;
+  color: $color-green;
   transition: color ease-out 0.2s;
 
   &:focus,

@@ -18,6 +18,7 @@ export function HeaderLogo({
     <Link
       className={`${className} header-logo`}
       href={AppRoute.HOME}
+      data-testid="header-logo"
     >
       <Image
         src={getLogo({

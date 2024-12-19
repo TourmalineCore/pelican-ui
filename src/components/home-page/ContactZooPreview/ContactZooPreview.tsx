@@ -26,6 +26,7 @@ export function ContactZooPreview({
         <Button
           className="contact-zoo__btn"
           theme="primary"
+          data-testid="contact-zoo-btn"
         >
           Подробнее
         </Button>
