@@ -4,6 +4,7 @@ import { api } from "@/src/common/utils/HttpClient";
 import { NewsArticle } from "@/src/components/news-page/NewsArticle/NewsArticle";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
+import { NewsCollectionListResponseDataItem } from '@/src/common/api-types';
 
 type SingleNewsProps = Pick<NewsProps, 'innerContent' | 'publishedAt' | 'title'>;
 
@@ -34,10 +35,6 @@ export default function News({
   );
 }
 
-type SingleNewsResponse = {
-  data: SingleNewsProps;
-};
-
 export async function getServerSideProps({
   query,
 }: {
@@ -63,11 +60,17 @@ export async function getServerSideProps({
         `publishedAt`,
       ],
     };
-    const news: SingleNewsResponse = await api.get(`/news/${query.id}?${qs.stringify(queryParams)}`);
+    const newsResponse = await api.get<NewsCollectionListResponseDataItem>(`/news/${query.id}?${qs.stringify(queryParams)}`);
+
+    const news: SingleNewsProps = {
+      title: newsResponse.data.attributes!.title!,
+      innerContent: newsResponse.data.attributes!.innerContent!,
+      publishedAt: newsResponse.data.attributes?.publishedAt,
+    };
 
     return {
       props: {
-        news: news.data,
+        news,
       },
     };
   } catch {

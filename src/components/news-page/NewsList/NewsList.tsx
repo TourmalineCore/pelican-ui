@@ -24,6 +24,7 @@ export function NewsList({
         pageSize,
       },
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageSize]);
 
   const isPaginationAvailable = pageSize < total;

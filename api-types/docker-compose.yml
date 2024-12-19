@@ -1,0 +1,13 @@
+services:
+  ts_generator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # Hey, map this folder outside the container (everything before :) to the working directory inside the container
+      # it is also using default value if LOCAL_WORKSPACE_FOLDER doesn't exist (running not in Dev Container) then go for .. and then /src/blah-blah-blah
+      # https://stackoverflow.com/a/69830544
+      - ${LOCAL_WORKSPACE_FOLDER:-..}/src/common:/local/out
+
+    # Todo remove after setting up automation
+    network_mode: "host"
