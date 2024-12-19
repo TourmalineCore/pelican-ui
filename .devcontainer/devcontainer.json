@@ -8,7 +8,8 @@
 	"image": "mcr.microsoft.com/playwright:v1.49.0-noble",
 	"features": {
 		// https://github.com/cypress-io/cypress-documentation/issues/2956#issuecomment-1691335689
-		"ghcr.io/devcontainers/features/desktop-lite:1.1.0": {}
+		"ghcr.io/devcontainers/features/desktop-lite:1.1.0": {},
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1.6.0": {}
 	},
 	"forwardPorts": [
 		6080,
@@ -17,6 +18,11 @@
 	"runArgs": [
 		"--network=host"
 	],
+	"remoteEnv": {
+		// https://stackoverflow.com/q/65343518
+		// the original host directory which is needed for volume mount commands from inside the container (Docker in Docker)
+		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
