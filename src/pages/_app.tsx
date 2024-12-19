@@ -26,22 +26,22 @@ import {
 const inter = localFont({
   src: [
     {
-      path: '../../public/fonts/Inter-ExtraBold.otf',
+      path: '../../public/fonts/Inter-ExtraBold.woff',
       weight: '800',
       style: 'normal',
     },
     {
-      path: '../../public/fonts/Inter-SemiBold.otf',
+      path: '../../public/fonts/Inter-SemiBold.woff',
       weight: '600',
       style: 'normal',
     },
     {
-      path: '../../public/fonts/Inter-Medium.otf',
+      path: '../../public/fonts/Inter-Medium.woff',
       weight: '500',
       style: 'normal',
     },
     {
-      path: '../../public/fonts/Inter-Regular.otf',
+      path: '../../public/fonts/Inter-Regular.woff',
       weight: '400',
       style: 'normal',
     },
