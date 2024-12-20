@@ -19,6 +19,7 @@ export default function NewsPage({
   if (!pageData || !news) {
     return <NotFound />;
   }
+  // eslint-disable-next-line no-console
   console.log(news);
 
   const {
