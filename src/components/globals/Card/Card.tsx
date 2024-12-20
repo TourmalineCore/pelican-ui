@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 import { AppRoute } from "@/src/common/enum";
 import { CardProps } from "@/src/common/types";
 import clsx from "clsx";
-import Image from "next/image";
 import Link from "next/link";
 
 export function Card({
@@ -58,9 +59,13 @@ export function Card({
                 ))}
               </ul>
             )}
-            <Image
+            {/* <Image
               src={image.url}
               fill
+              alt={image.alternativeText}
+            /> */}
+            <img
+              src={image.url as string}
               alt={image.alternativeText}
             />
           </div>
