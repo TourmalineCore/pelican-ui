@@ -3,7 +3,7 @@ name: Publish Docker image
 on:
   push:
     branches:
-      - master
+      - feature/fix-image-url
 
 jobs:
   push_to_registry:

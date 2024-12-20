@@ -19,6 +19,7 @@ export default function NewsPage({
   if (!pageData || !news) {
     return <NotFound />;
   }
+  console.log(news);
 
   const {
     title,
