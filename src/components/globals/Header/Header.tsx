@@ -50,6 +50,7 @@ export function Header({
     return () => {
       overlayElement.classList.remove(`is-visible`);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobileMenuOpen]);
 
   return (

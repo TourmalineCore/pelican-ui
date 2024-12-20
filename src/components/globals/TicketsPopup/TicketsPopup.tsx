@@ -43,6 +43,7 @@ export function TicketsPopup({
       overlayElement.classList.remove(`is-visible`);
       overlayElement.classList.remove(`is-header-hidden`);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive]);
 
   return (
