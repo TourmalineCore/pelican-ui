@@ -16,7 +16,7 @@ export default function NewsPage({
   news: NewsProps[],
   totalNews: number,
 }) {
-  if (!pageData) {
+  if (!pageData || !news) {
     return <NotFound />;
   }
 
@@ -71,23 +71,31 @@ export async function getServerSideProps({
     },
   };
 
-  const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
+  try {
+    const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
 
-  const news: Omit<NewsProps, 'innerContent' | 'publishedAt'>[] = newsResponse.data!.map((newsItem) => ({
-    id: newsItem.id!,
-    image: {
-      url: newsItem?.attributes?.image.data?.attributes?.url!,
-      alternativeText: newsItem?.attributes?.image.data?.attributes?.alternativeText || ``,
-    },
-    title: newsItem?.attributes!.title,
-    description: newsItem?.attributes?.description,
-  }));
+    const news: Omit<NewsProps, 'innerContent' | 'publishedAt'>[] = newsResponse.data!.map((newsItem) => ({
+      id: newsItem.id!,
+      image: {
+        url: newsItem?.attributes?.image.data?.attributes?.url!,
+        alternativeText: newsItem?.attributes?.image.data?.attributes?.alternativeText || ``,
+      },
+      title: newsItem?.attributes!.title,
+      description: newsItem?.attributes?.description,
+    }));
 
-  return {
-    props: {
-      pageData: NEWS_PAGE,
-      news,
-      totalNews: newsResponse.meta!.pagination!.total!,
-    },
-  };
+    return {
+      props: {
+        pageData: NEWS_PAGE,
+        news,
+        totalNews: newsResponse.meta!.pagination!.total!,
+      },
+    };
+  } catch {
+    return {
+      props: {
+        news: null,
+      },
+    };
+  }
 }
