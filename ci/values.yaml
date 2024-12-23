@@ -54,3 +54,29 @@ serviceAccount:
 # not needed in this setup
 networkPolicy:
   enabled: false
+
+# CUSTOM: Here you store non secret env vars that will be passed to the pod's environment
+extraConfigMapEnvVars: {}
+
+# this is needed to tell the container to read extra env vars from the dedicated Config Map that we create in extraDeploy
+extraEnvVarsCM: "{{ include \"common.names.fullname\" . }}"
+
+extraDeploy:
+  # this creates Config Map from extraConfigMapEnvVars to be able to calculate checksum/config hash by env vars
+  - |
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: {{ include "common.names.fullname" . }}
+      namespace: {{ include "common.names.namespace" . | quote }}
+      labels: {{- include "common.labels.standard" . | nindent 6 }}
+        {{- if .Values.commonLabels }}
+        {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 6 }}
+        {{- end }}
+      {{- if .Values.commonAnnotations }}
+      annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 6 }}
+      {{- end }}
+    data:
+      {{- if .Values.extraConfigMapEnvVars }}
+      {{- include "common.tplvalues.render" ( dict "value" .Values.extraConfigMapEnvVars "context" $ ) | trim | nindent 6 }}
+      {{- end }}

@@ -9,7 +9,7 @@ import alpacaDayImage from "@/public/images/news/alpaca-day.png";
 import { CardProps } from "../../types";
 
 export type NewsProps = CardProps & {
-  publishedAt: string;
+  publishedAt?: string;
   innerContent: string;
 };
 
