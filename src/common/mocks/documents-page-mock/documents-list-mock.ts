@@ -33,7 +33,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
       },
     ],
     category: {
-      id: 3,
+      id: 1,
     },
   },
   {
@@ -56,7 +56,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
       },
     ],
     category: {
-      id: 3,
+      id: 1,
     },
   },
   {
@@ -74,7 +74,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
       },
     ],
     category: {
-      id: 3,
+      id: 1,
     },
   },
   {
@@ -103,7 +103,7 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
       },
     ],
     category: {
-      id: 3,
+      id: 1,
     },
   },
 ];
