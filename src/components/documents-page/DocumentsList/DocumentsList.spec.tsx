@@ -8,7 +8,7 @@ test.describe(`DocumentsListComponentTests`, () => {
   }) => {
     await gotoPage({
       page,
-      url: `${AppRoute.DOCUMENTS}/3`,
+      url: `${AppRoute.DOCUMENTS}/1`,
     });
 
     await hideHeader({
