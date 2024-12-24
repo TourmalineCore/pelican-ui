@@ -1,7 +1,8 @@
 import { Accordion } from "@/src/components/globals/Accordion/Accordion";
 import iconChevronBlack from "@/public/images/svg/icon-chevron-black.svg";
 import { DocumentsListComponentProps } from "@/src/common/mocks/documents-page-mock/documents-list-mock";
-import moment from "moment";
+import { MarkdownText } from "@/src/components/globals/MarkdownText/MarkdownText";
+import dayjs from "dayjs";
 import { DocumentFile } from "./components/DocumentFile/DocumentFile";
 
 export function DocumentCard({
@@ -22,8 +23,10 @@ export function DocumentCard({
         <div className="document-card__info">
           {showDate && (
             <span className="document-card__date">
-              {moment(date)
-                .format(`DD.MM.YYYY`)}
+              {
+                dayjs(date)
+                  .format(`DD.MM.YYYY`)
+              }
             </span>
           )}
           <h2 className="document-card__title">{title}</h2>
@@ -48,8 +51,16 @@ export function DocumentCard({
             icon={iconChevronBlack}
           >
             <div className="document-card__accordion-inner">
-              {subtitle && <p className="document-card__subtitle">{subtitle}</p>}
-              {description && <p className="document-card__description">{description}</p>}
+              {subtitle && (
+                <MarkdownText className="document-card__subtitle">
+                  {subtitle}
+                </MarkdownText>
+              )}
+              {description && (
+                <MarkdownText className="document-card__description">
+                  {description}
+                </MarkdownText>
+              )}
               {!isSingleDocument
               && (
                 <ul className="document-card__list">
