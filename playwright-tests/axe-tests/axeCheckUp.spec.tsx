@@ -34,27 +34,26 @@ test(`axeCheckUp`, async ({
     `focusable-element`,
   ];
 
-  const violationsToCheck = results
-    .violations
-    .filter((violation) => violationIdsToCheck.includes(violation.id));
+  const violationsToCheck = results.violations.filter((violation) => violationIdsToCheck
+    .includes(violation.id));
 
   if (violationsToCheck.length > 0) {
-    /* eslint-disable no-console */
     console.table(violationsToCheck.map((violation) => ({
       id: violation.id,
       impact: violation.impact,
       description: violation.description,
       nodes: violation.nodes.length,
     })));
+
+    throw new Error(`Accessibility violations found: ${violationsToCheck.length}`);
   } else {
     console.log(`No accessibility violations found.`);
-    /* eslint-enable no-console */
   }
 
   const filePath = `./test/playwright-report/axeReport/axe-report.json`;
-
   mkdirSync(dirname(filePath), {
     recursive: true,
   });
+
   writeFileSync(filePath, JSON.stringify(violationsToCheck, null, 2));
 });
