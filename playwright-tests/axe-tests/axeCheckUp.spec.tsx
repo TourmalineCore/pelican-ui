@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import AxePuppeteer from '@axe-core/playwright';
 import { writeFileSync, mkdirSync } from 'fs';
 import { dirname } from 'path';
-import { Breakpoint } from '@/src/common/enum';
+import { AppRoute, Breakpoint } from '@/src/common/enum';
 
 test(`axeCheckUp`, async ({
   page,
@@ -11,7 +11,7 @@ test(`axeCheckUp`, async ({
     width: Breakpoint.DESKTOP_XL,
     height: 1080,
   });
-  await page.goto(`/home`);
+  await page.goto(AppRoute.HOME);
 
   const results = await new AxePuppeteer({
     page,

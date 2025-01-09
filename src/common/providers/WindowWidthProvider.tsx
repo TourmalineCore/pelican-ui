@@ -24,13 +24,13 @@ export function WindowWidthProvider({
     setWindowWidth(window.innerWidth);
   };
 
-  const windowWidhtState = useMemo(() => ({
+  const windowWidthState = useMemo(() => ({
     windowWidth,
     handleSetWindowWidth,
   }), [windowWidth]);
 
   return (
-    <WindowWidthContext.Provider value={windowWidhtState}>
+    <WindowWidthContext.Provider value={windowWidthState}>
       {children}
     </WindowWidthContext.Provider>
   );
