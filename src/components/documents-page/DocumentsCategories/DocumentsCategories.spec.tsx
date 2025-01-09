@@ -43,10 +43,10 @@ async function routeTest({
     .nth(0)
     .click();
 
-  await page.waitForURL(`**${AppRoute.DOCUMENTS}/0`);
+  await page.waitForURL(`**${AppRoute.DOCUMENTS}/1`);
 
   expect(page.url())
-    .toBe(`http://localhost:3000${AppRoute.DOCUMENTS}/0`);
+    .toBe(`http://localhost:3000${AppRoute.DOCUMENTS}/1`);
 
   await page.goBack();
 

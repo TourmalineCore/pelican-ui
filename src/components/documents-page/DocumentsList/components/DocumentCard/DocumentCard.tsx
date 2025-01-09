@@ -1,6 +1,8 @@
 import { Accordion } from "@/src/components/globals/Accordion/Accordion";
 import iconChevronBlack from "@/public/images/svg/icon-chevron-black.svg";
 import { DocumentsListComponentProps } from "@/src/common/mocks/documents-page-mock/documents-list-mock";
+import { MarkdownText } from "@/src/components/globals/MarkdownText/MarkdownText";
+import dayjs from "dayjs";
 import { DocumentFile } from "./components/DocumentFile/DocumentFile";
 
 export function DocumentCard({
@@ -19,7 +21,14 @@ export function DocumentCard({
     <li className={`${className} document-card`}>
       <div className="document-card__header">
         <div className="document-card__info">
-          {showDate && <span className="document-card__date">{date}</span>}
+          {showDate && (
+            <span className="document-card__date">
+              {
+                dayjs(date)
+                  .format(`DD.MM.YYYY`)
+              }
+            </span>
+          )}
           <h2 className="document-card__title">{title}</h2>
         </div>
         {isSingleDocument && (
@@ -29,7 +38,7 @@ export function DocumentCard({
             buttonTheme="primary"
             name={files[0].name}
             url={files[0].url}
-            extension={files[0].extension}
+            extension={files[0].ext}
           />
         )}
       </div>
@@ -42,8 +51,16 @@ export function DocumentCard({
             icon={iconChevronBlack}
           >
             <div className="document-card__accordion-inner">
-              {subtitle && <p className="document-card__subtitle">{subtitle}</p>}
-              {description && <p className="document-card__description">{description}</p>}
+              {subtitle && (
+                <MarkdownText className="document-card__subtitle">
+                  {subtitle}
+                </MarkdownText>
+              )}
+              {description && (
+                <MarkdownText className="document-card__description">
+                  {description}
+                </MarkdownText>
+              )}
               {!isSingleDocument
               && (
                 <ul className="document-card__list">
@@ -58,7 +75,7 @@ export function DocumentCard({
                         buttonTheme="secondary"
                         name={file.name}
                         url={file.url}
-                        extension={file.extension}
+                        extension={file.ext}
                       />
                     </li>
                   ))

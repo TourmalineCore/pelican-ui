@@ -2,7 +2,7 @@ export type DocumentFileProps = {
   id: number,
   name: string,
   url: string,
-  extension: string,
+  ext: string,
 };
 
 export type DocumentsListComponentProps = {
@@ -29,11 +29,11 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
         id: 1,
         name: `Протокол закупки №31907985526`,
         url: `/public/documents/Protocol.pdf`,
-        extension: `.pdf`,
+        ext: `.pdf`,
       },
     ],
     category: {
-      id: 3,
+      id: 1,
     },
   },
   {
@@ -41,22 +41,20 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
     date: `07.07.2019`,
     showDate: true,
     title: `Договор №350474`,
-    subtitle: `Договор на поставку продукции животноводства (мясо говядина) для нужд муниципального бюджетного 
-    учреждения культуры «зоопарк»`,
-    description: `Контракт заключен по результатам электронного аукциона в рамках 223-ФЗ.
-    Извещение №31907985126 в электронной форме размещены на сайте по адресу в сети
-    Интернет: www.zakupki.gov.ru и на электронной площадке tender.otc.ru процедура № 4442641 лот № 7816638.
-    Протокол №U4442641-7816638-3 от 07.07.2019 г.`,
+    subtitle: `Договор на поставку продукции животноводства (мясо говядина) для нужд муниципального бюджетного учреждения культуры «зоопарк»`,
+    description: `Контракт заключен по результатам электронного аукциона в рамках 223-ФЗ. Извещение №31907985126 в \
+    электронной форме размещены на сайте по адресу в сети Интернет: www.zakupki.gov.ru и на электронной площадке \
+    tender.otc.ru процедура № 4442641 лот № 7816638. Протокол №U4442641-7816638-3 от 07.07.2019 г.`,
     files: [
       {
         id: 2,
         name: `Договор №350474`,
         url: `/public/documents/Protocol.pdf`,
-        extension: `.pdf`,
+        ext: `.pdf`,
       },
     ],
     category: {
-      id: 3,
+      id: 1,
     },
   },
   {
@@ -70,11 +68,11 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
         id: 3,
         name: `Отчёт о выполнении муниципального задания за 2022г.`,
         url: `/public/documents/Protocol.pdf`,
-        extension: `.pdf`,
+        ext: `.pdf`,
       },
     ],
     category: {
-      id: 3,
+      id: 1,
     },
   },
   {
@@ -87,23 +85,23 @@ export const DOCUMENTS_LIST: DocumentsListComponentProps[] = [
         id: 4,
         name: `Протокол 1.pdf`,
         url: `/public/documents/Protocol.pdf`,
-        extension: `.pdf`,
+        ext: `.pdf`,
       },
       {
         id: 5,
         name: `Протокол закупки (копия).pdf`,
         url: `/public/documents/Protocol.pdf`,
-        extension: `.pdf`,
+        ext: `.pdf`,
       },
       {
         id: 6,
         name: `Скрин.pdf`,
         url: `/public/documents/Protocol.pdf`,
-        extension: `.pdf`,
+        ext: `.pdf`,
       },
     ],
     category: {
-      id: 3,
+      id: 1,
     },
   },
 ];
