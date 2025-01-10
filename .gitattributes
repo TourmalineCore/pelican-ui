@@ -1,1 +1,2 @@
 * text=auto eol=lf
+playwright-tests/screenshots/**/*.png filter=lfs diff=lfs merge=lfs -text
