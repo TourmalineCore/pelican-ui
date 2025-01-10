@@ -23,6 +23,8 @@ export function HeaderLogo({
         src={getLogo({
           isDesktopSize: isDesktop,
         })}
+        priority
+        unoptimized
         alt="Логотип челябинского зоопарка"
       />
     </Link>

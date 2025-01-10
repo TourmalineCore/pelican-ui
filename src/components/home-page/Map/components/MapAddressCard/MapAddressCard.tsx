@@ -46,6 +46,7 @@ export function MapAddressCard({
               <Image
                 className="map-address-card__flower"
                 src={flower}
+                unoptimized
                 alt="Изображение цветка"
               />
             )}

@@ -43,6 +43,7 @@ export function Accordion({
           <Image
             className="accordion__chevron"
             src={icon}
+            unoptimized
             alt={isOpen ? `Hide accordion content` : `Open accordion content`}
           />
         </span>

@@ -1,5 +1,7 @@
+/* eslint-disable react/no-unstable-nested-components */
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import Image from 'next/image';
 import { Video } from '../Video/Video';
 
 export function MarkdownText({
@@ -14,7 +16,17 @@ export function MarkdownText({
       rehypePlugins={[rehypeRaw]}
       className={className}
       components={{
-        // eslint-disable-next-line react/no-unstable-nested-components
+        img(props: any) {
+          return (
+            <Image
+              src={props.src}
+              width="500"
+              height="500"
+              priority
+              alt={props.alt}
+            />
+          );
+        },
         video(props: any) {
           const sourceProps = props.children.find(({
             type,

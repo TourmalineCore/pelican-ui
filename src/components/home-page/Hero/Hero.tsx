@@ -32,6 +32,7 @@ export function Hero({
         <Image
           src={image.url}
           alt={image.alternativeText}
+          sizes="(min-width: 768px) 50vw, 100vw"
           priority
         />
       </div>

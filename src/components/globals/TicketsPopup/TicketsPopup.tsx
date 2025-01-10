@@ -51,7 +51,7 @@ export function TicketsPopup({
       {isActive && (
         <div
           className="container tickets-popup__inner"
-          data-testId="tickets-popup"
+          data-testid="tickets-popup"
         >
           <div className="tickets-popup__head">
             <span className="tickets-popup__title">{POPUP_TICKET_BUY_TEXT}</span>
@@ -81,7 +81,6 @@ export function TicketsPopup({
               />
             ))}
             <TicketsPopupCard
-              key="tickets-popup-card-with-accodion"
               className="tickets-popup__card tickets-popup-card--with-accordion"
               category="Льготный"
               description="Требуется подтверждающий льготу оригинал документа, покупка только на&nbsp;кассе"

@@ -21,12 +21,14 @@ export function NotFound() {
       <Image
         className="not-found__image"
         src={BearImageSrc}
+        unoptimized
         alt="Медведь"
       />
       {isTablet && (
         <Image
           className="not-found__image"
           src={GeeseImageSrc}
+          unoptimized
           alt="Гуси"
         />
       )}

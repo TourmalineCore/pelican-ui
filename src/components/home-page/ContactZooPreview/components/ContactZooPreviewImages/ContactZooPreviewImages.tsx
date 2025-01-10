@@ -23,6 +23,7 @@ export function ContactZooPreviewImages({
           src={largeImage.url}
           alt={largeImage.alternativeText}
           fill
+          sizes="(min-width: 768px) 50vw, (min-width: 1366px) 33vw, 100vw"
         />
       </div>
       {isDesktop && smallImage && (
@@ -32,6 +33,7 @@ export function ContactZooPreviewImages({
             src={smallImage.url}
             alt={smallImage.alternativeText}
             fill
+            sizes="33vw"
           />
         </div>
       )}

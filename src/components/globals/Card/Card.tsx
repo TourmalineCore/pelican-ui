@@ -61,6 +61,7 @@ export function Card({
             <Image
               src={image.url}
               fill
+              sizes="(min-width: 768px) 50vw, (min-width: 1366px) 33vw, 100vw"
               alt={image.alternativeText}
             />
           </div>
