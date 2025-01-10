@@ -70,7 +70,7 @@ jobs:
       with:
         lfs: true
     - name: Checkout LFS objects
-      run: git lfs checkout
+      run: git lfs pull
 
     # we need to declare the same cache that they are shared among different jobs (path and key are the most important)
     # https://stackoverflow.com/a/71895573
