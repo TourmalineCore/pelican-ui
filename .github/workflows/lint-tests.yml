@@ -68,8 +68,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Checkout LFS objects
-      run: git lfs checkout
+    - name: Fetch LFS objects
+      run: git lfs fetch
 
     - name: Pull LFS objects
       run: git lfs pull
