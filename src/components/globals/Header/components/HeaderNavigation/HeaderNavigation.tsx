@@ -12,30 +12,34 @@ export function HeaderNavigation({
   const router = useRouter();
 
   return (
-    <ul className={className || `header-navigation`}>
-      {navigationLinks.map(({
-        id,
-        name,
-        link,
-      }) => (
-        <li
-          key={id}
-          className={`${className || `header-navigation`}__item`}
-        >
-          <Link
-            href={link}
-            className={`${className || `header-navigation`}__link`}
-            onClick={(e) => {
-              e.preventDefault();
-              if (router.pathname !== link) {
-                router.push(link);
-              }
-            }}
+    <nav className={`${className} header-navigation`}>
+      <ul className="header-navigation__list">
+        {navigationLinks.map(({
+          id,
+          name,
+          link,
+        }) => (
+          <li
+            key={id}
+            className="header-navigation__item"
           >
-            {name}
-          </Link>
-        </li>
-      ))}
-    </ul>
+            <Link
+              href={link}
+              className="header-navigation__link"
+              onClick={(e) => {
+                e.preventDefault();
+                if (router.pathname !== link) {
+                  router.push(link);
+                }
+              }}
+              aria-label={`Перейти на страницу ${name}`}
+              data-testid="header-navigation-link"
+            >
+              {name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }

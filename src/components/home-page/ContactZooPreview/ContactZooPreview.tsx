@@ -1,5 +1,5 @@
-import { Button } from "@/src/components/globals/Button/Button";
 import { ContactZooPreviewComponentProps } from "@/src/common/types";
+import Link from "next/link";
 import { ContactZooPreviewImages } from "./components/ContactZooPreviewImages/ContactZooPreviewImages";
 
 export function ContactZooPreview({
@@ -23,12 +23,14 @@ export function ContactZooPreview({
           largeImage={largeImage}
           smallImage={smallImage}
         />
-        <Button
-          className="contact-zoo__btn"
-          theme="primary"
+        <Link
+          href="/"
+          className="contact-zoo__btn button button--primary"
+          aria-label="Перейти на страницу контактного зоопарка"
+          data-testid="contact-zoo-btn"
         >
           Подробнее
-        </Button>
+        </Link>
       </div>
     </section>
   );

@@ -40,6 +40,8 @@ export function Card({
             e.preventDefault();
           }
         }}
+        // remove when services pages are added
+        tabIndex={isService ? -1 : 0}
       >
         <div className={clsx(`card__wrapper`, {
           'card__wrapper--news': isNews,
@@ -69,13 +71,19 @@ export function Card({
             'card__info--services': isService,
           })}
           >
-            <h3 className={clsx(`card__title`, {
-              'card__title--news': isNews,
-              'card__title--services': isService,
-            })}
-            >
-              {title}
-            </h3>
+            {
+              isNews
+                ? (
+                  <h2 className="card__title card__title--news">
+                    {title}
+                  </h2>
+                )
+                : (
+                  <h3 className="card__title card__title--services">
+                    {title}
+                  </h3>
+                )
+            }
             {description && (
               <p className={clsx(`card__description`, {
                 'card__description--news': isNews,

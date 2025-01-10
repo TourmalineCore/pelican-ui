@@ -35,7 +35,7 @@ async function actionTest({
     .then((button) => button.click());
 
   await expect(page.getByTestId(`header-popup`))
-    .toContainText(`Услуги`);
+    .toContainText(`Льготы`);
 }
 
 async function navigationTest({

@@ -1,22 +1,52 @@
 .header-navigation {
-  display: flex;
-  align-items: center;
-  gap: 32px;
+  &__list {
+    @include desktop {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    @include desktop-xl {
+      gap: 40px;
+    }
+  }
+
+  &__item {
+    & + & {
+      margin-top: 8px;
+
+      @include desktop {
+        margin-top: 0;
+      }
+    }
+  }
 
   &__link {
     @include caption-1-medium;
 
     display: block;
-    color: $color-black-75;
+    border: none;
+    font-size: 18px;
+    color: $color-black-60;
+    background: none;
     transition: color ease-out 0.2s;
+    animation: fade-in 1s;
 
     &:focus,
     &:hover {
       color: $color-green;
     }
-  }
 
-  @include desktop-xl {
-    gap: 40px;
+    @include tablet-xl {
+      font-size: 20px;
+    }
+
+    @include desktop {
+      font-size: 18px;
+    }
+
+    @include desktop-xl {
+      font-size: 26px;
+    }
   }
 }

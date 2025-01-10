@@ -5,6 +5,7 @@ import { GlobalComponentProps } from "@/src/common/types";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useRouter } from "next/router";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
+import { MutableRefObject } from "react";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 
 type FooterProps =
@@ -14,7 +15,10 @@ type FooterProps =
   | "ticketsPopupSubsidized"
   | "ticketsPopupRulesImages"
   | "ticketsPopupRefundReasons"
-  >;
+  | "ticketBuyLink"
+  > & {
+    footerElementRef: MutableRefObject<HTMLDivElement | null>
+  };
 
 export function Footer({
   officialLinks,
@@ -25,12 +29,14 @@ export function Footer({
   footerNavTitleLeft,
   footerNavTitleRight,
   popupTicketBuyText,
+  footerElementRef,
 }: FooterProps) {
   const router = useRouter();
 
   const {
-    isDesktop,
+    isMobile,
     isTablet,
+    isDesktop,
   } = useWindowWidth();
 
   const {
@@ -38,7 +44,8 @@ export function Footer({
   } = useTicketPopup();
 
   return (
-    <div
+    <footer
+      ref={footerElementRef}
       className="footer"
       data-testid="footer"
     >
@@ -47,7 +54,7 @@ export function Footer({
           <div className="footer__top">
             <div className="footer__cols">
               <div className="footer__col footer__col--left">
-                <h3 className="footer__title">{footerNavTitleLeft}</h3>
+                <p className="footer__title">{footerNavTitleLeft}</p>
                 <ul className="footer__nav">
                   <li
                     className="footer__nav-item"
@@ -57,6 +64,7 @@ export function Footer({
                       type="button"
                       className="button footer__nav-link"
                       onClick={handleTicketPopupToggle}
+                      aria-label="Открыть модальное окно с билетами"
                       data-testid="footer-tickets-popup-button"
                     >
                       {popupTicketBuyText}
@@ -74,6 +82,8 @@ export function Footer({
                       <Link
                         href={link}
                         className="footer__nav-link"
+                        aria-label={`Перейти на страницу ${name}`}
+                        data-testid="footer-nav-link"
                       >
                         {name}
                       </Link>
@@ -82,7 +92,7 @@ export function Footer({
                 </ul>
               </div>
               <div className="footer__col">
-                <h3 className="footer__title">{footerNavTitleRight}</h3>
+                <p className="footer__title">{footerNavTitleRight}</p>
                 <ul className="footer__nav">
                   {footerAboutLinks.map(({
                     id,
@@ -96,12 +106,14 @@ export function Footer({
                       <Link
                         href={link}
                         className="footer__nav-link"
+                        data-testid="footer-nav-link"
                         onClick={(e) => {
                           e.preventDefault();
                           if (router.pathname !== link) {
                             router.push(link);
                           }
                         }}
+                        aria-label={`Перейти на страницу ${name}`}
                       >
                         {name}
                       </Link>
@@ -115,6 +127,8 @@ export function Footer({
                 <Link
                   href={`tel:${phone}`}
                   className="footer__contact-link"
+                  aria-label={`Связаться с нами по телефону ${phone}`}
+                  data-testid="footer-tel-link"
                 >
                   {phone}
                 </Link>
@@ -123,6 +137,8 @@ export function Footer({
                 <Link
                   href={`mailto:${email}`}
                   className="footer__contact-link"
+                  aria-label={`Связаться с нами по почте ${email}`}
+                  data-testid="footer-email-link"
                 >
                   {email}
                 </Link>
@@ -149,21 +165,51 @@ export function Footer({
                   )
               )
             }
+            {
+              isTablet && (
+                <div className="footer__copyright">
+                  Сайт разработан
+                  <Link
+                    href="https://www.tourmalinecore.com/"
+                    className="footer__copyright-link"
+                    target="_blank"
+                    aria-label="Перейти на сайт компании Tourmaline Core"
+                    data-testid="footer-copyright-link"
+                  >
+                    Tourmaline Core
+                    <span
+                      className="footer__heart"
+                      aria-hidden="true"
+                    >
+                      ❤
+                    </span>
+                  </Link>
+                </div>
+              )
+            }
             <div className="footer__social-media">
               <SocialMedia
                 className="footer__social-icon"
               />
             </div>
-            <div className="footer__copyright">
-              Сайт разработан
-              <Link
-                href="https://www.tourmalinecore.com/"
-                className="footer__copyright-link"
-              >
-                Tourmaline Core
-                <span className="footer__heart">❤</span>
-              </Link>
-            </div>
+            {
+              isMobile && (
+                <div className="footer__copyright">
+                  Сайт разработан
+                  <Link
+                    href="https://www.tourmalinecore.com/"
+                    className="footer__copyright-link"
+                    target="_blank"
+                    aria-label="Перейти на сайт компании Tourmaline Core"
+                    data-testid="footer-copyright-link"
+                  >
+                    Tourmaline Core
+                    <span className="footer__heart">❤</span>
+                  </Link>
+                </div>
+              )
+            }
+
           </div>
         </div>
       </div>
@@ -184,11 +230,13 @@ export function Footer({
               <Link
                 href={link}
                 className="footer__official-link"
+                data-testid="footer-official-link"
               >
                 <Image
                   className="footer__official-link-logo"
                   src={icon}
                   alt={alt}
+                  aria-hidden="true"
                 />
                 <span className="footer__official-link-name">{name}</span>
               </Link>
@@ -196,6 +244,6 @@ export function Footer({
           ))}
         </ul>
       </div>
-    </div>
+    </footer>
   );
 }

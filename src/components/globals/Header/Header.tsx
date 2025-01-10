@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import clsx from "clsx";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
+import Link from "next/link";
 import { HeaderLogo } from "./components/HeaderLogo/HeaderLogo";
 import { Button } from "../Button/Button";
 import { HeaderNavigation } from "./components/HeaderNavigation/HeaderNavigation";
@@ -18,6 +19,8 @@ const HeaderPopup = dynamic(
 
 type HeaderProps = Pick<GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
   overlayElementRef: MutableRefObject<null | HTMLElement>,
+  mainElementRef: MutableRefObject<null | HTMLElement>,
+  footerElementRef: MutableRefObject<null | HTMLElement>,
   isMobileMenuOpen: boolean,
   handleMobileMenuToggle: () => void,
 };
@@ -28,11 +31,11 @@ export function Header({
   phone,
   popupTicketBuyText,
   overlayElementRef,
+  mainElementRef,
+  footerElementRef,
   isMobileMenuOpen,
   handleMobileMenuToggle,
-}: HeaderProps & {
-  overlayElementRef: MutableRefObject<null | HTMLElement>
-}) {
+}: HeaderProps) {
   const {
     handleTicketPopupToggle,
   } = useTicketPopup();
@@ -42,19 +45,25 @@ export function Header({
 
   useEffect(() => {
     const overlayElement = overlayElementRef.current!;
+    const mainElement = mainElementRef.current!;
+    const footerElement = footerElementRef.current!;
 
     if (isMobileMenuOpen) {
       overlayElement.classList.add(`is-visible`);
+      mainElement.setAttribute(`inert`, `true`);
+      footerElement.setAttribute(`inert`, `true`);
     }
 
     return () => {
       overlayElement.classList.remove(`is-visible`);
+      mainElement.removeAttribute(`inert`);
+      footerElement.removeAttribute(`inert`);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobileMenuOpen]);
 
   return (
-    <div
+    <header
       className={clsx(`header`, {
         active: isMobileMenuOpen,
       })}
@@ -66,7 +75,10 @@ export function Header({
             className="header__logo"
           />
           {isDesktop && (
-            <HeaderNavigation navigationLinks={navigationLinks} />
+            <HeaderNavigation
+              className="header__navigation"
+              navigationLinks={navigationLinks}
+            />
           )}
         </div>
 
@@ -80,17 +92,21 @@ export function Header({
           )}
           {isDesktop && (
             <div className="header__buttons">
-              <Button
-                className="header__contact-button"
-                theme="secondary"
+              <Link
+                className="button button--secondary header__contact-button"
+                href={`mailto:${email}`}
+                aria-label="Связаться с нами по почте"
+                data-testid="header-contact-button"
               >
                 Связаться
-              </Button>
+              </Link>
               <Button
                 className="header__ticket-button"
                 theme="primary"
                 isFeatured
                 onClick={handleTicketPopupToggle}
+                aria-label="Открыть модальное окно  с билетами"
+                data-testid="header-tickets-popup-button"
               >
                 Билеты
               </Button>
@@ -109,6 +125,6 @@ export function Header({
           onTicketPopupOpen={() => handleMobileMenuToggle()}
         />
       )}
-    </div>
+    </header>
   );
 }

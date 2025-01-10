@@ -7,6 +7,7 @@ import { PropsWithChildren, useState } from 'react';
    triggerHideText?: string;
    className?: string;
    icon: string;
+   ariaLabel?: string;
  };
 
 export function Accordion({
@@ -15,6 +16,7 @@ export function Accordion({
   children,
   className,
   icon,
+  ariaLabel,
 }: AccordionComponentProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -35,6 +37,9 @@ export function Accordion({
           setIsOpen(!isOpen);
         }}
         className="accordion__trigger button"
+        aria-label={ariaLabel}
+        aria-expanded={`${!!isOpen}`}
+        aria-controls="accordion-content"
         data-testid="accordion-trigger"
       >
         {isOpen ? triggerHideText || triggerText : triggerText}
@@ -43,6 +48,7 @@ export function Accordion({
           <Image
             className="accordion__chevron"
             src={icon}
+            aria-hidden="true"
             alt={isOpen ? `Hide accordion content` : `Open accordion content`}
           />
         </span>
@@ -50,6 +56,7 @@ export function Accordion({
       {isOpen && (
         <div
           className="accordion__content"
+          id="accordion-content"
           data-testid="accordion-content"
         >
           {children}

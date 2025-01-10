@@ -18,12 +18,15 @@ export function HeaderLogo({
     <Link
       className={`${className} header-logo`}
       href={AppRoute.HOME}
+      aria-label="Ссылка на главную страницу"
+      data-testid="header-logo"
     >
       <Image
         src={getLogo({
           isDesktopSize: isDesktop,
         })}
         alt="Логотип челябинского зоопарка"
+        aria-hidden="true"
       />
     </Link>
   );

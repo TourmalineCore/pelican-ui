@@ -7,6 +7,7 @@ import { TicketCard } from "./components/TicketCard/TicketCard";
 
 export function Tickets({
   generalTicketsTitle,
+  generalTicketsLink,
   subsidizedTicketsTitle,
   generalTickets,
   subsidizedTickets,
@@ -37,6 +38,7 @@ export function Tickets({
                 key={el.id}
                 ticket={el}
                 isGeneral
+                link={generalTicketsLink}
               />
             ))}
             {isTablet && !isTabletXl && (
@@ -56,6 +58,7 @@ export function Tickets({
               className="tickets__ticket-button"
               theme="primary"
               onClick={handleTicketPopupToggle}
+              data-testid="tickets-buy-button"
             >
               Купить билет
             </Button>
@@ -73,6 +76,7 @@ export function Tickets({
                 key={el.id}
                 ticket={el}
                 isSubsidized
+                link=""
               />
             ))}
             {
@@ -83,6 +87,8 @@ export function Tickets({
                     <Link
                       className="tickets__link text-link"
                       href="#"
+                      aria-label="Перейти на страницу со списком льгот"
+                      data-testid="tickets-discounts-link"
                     >
                       по ссылке.
                     </Link>
@@ -98,6 +104,7 @@ export function Tickets({
                <Link
                  href="#"
                  className="tickets__ticket-button button button--primary"
+                 data-testid="tickets-all-discounts"
                >
                  Другие льготы
                </Link>

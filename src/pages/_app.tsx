@@ -9,6 +9,7 @@ import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 import { WindowWidthProvider } from '../common/providers/WindowWidthProvider';
 import {
   POPUP_TICKET_BUY_TEXT,
+  TICKET_BUY_LINK,
   EMAIL,
   PHONE,
   NAVIGATION_LINKS,
@@ -76,6 +77,7 @@ export default function App({
     email,
     phone,
     popupTicketBuyText,
+    ticketBuyLink,
     footerAboutLinks,
     footerUserLinks,
     officialLinks,
@@ -98,6 +100,7 @@ export default function App({
           email={email}
           phone={phone}
           popupTicketBuyText={popupTicketBuyText}
+          ticketBuyLink={ticketBuyLink}
           footerNavTitleLeft={footerNavTitleLeft}
           footerNavTitleRight={footerNavTitleRight}
           ticketsPopupGeneral={ticketsPopupGeneral}
@@ -126,6 +129,7 @@ App.getInitialProps = async () => ({
   pageProps: {
     globalData: {
       popupTicketBuyText: POPUP_TICKET_BUY_TEXT,
+      ticketBuyLink: TICKET_BUY_LINK,
       email: EMAIL,
       phone: PHONE,
       navigationLinks: NAVIGATION_LINKS,

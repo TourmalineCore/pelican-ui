@@ -11,18 +11,18 @@
   &--primary {
     border: none;
     color: $color-white;
-    background-color: $color-green;
+    background-color: $color-green-dark;
     transition: background-color ease-out 0.3s;
 
     &:focus,
     &:hover {
-      background-color: $color-green-dark;
+      background-color: $color-green;
     }
   }
 
   &--secondary {
-    border: 1px solid $color-green;
-    color: $color-green;
+    border: 1px solid $color-green-dark;
+    color: $color-green-dark;
     background-color: $color-white;
     transition: background-color ease-out 0.2s;
 
@@ -32,7 +32,7 @@
     }
 
     @include desktop-xl {
-      border: 1.5px solid $color-green;
+      border: 1.5px solid $color-green-dark;
     }
   }
 

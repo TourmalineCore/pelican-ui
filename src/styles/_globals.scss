@@ -76,10 +76,27 @@ a {
 }
 
 .text-link {
+  text-decoration: underline;
+  color: $color-green-dark;
   transition: color ease-out 0.2s;
 
   &:focus,
   &:hover {
     color: $color-pink-bright;
   }
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  word-wrap: normal;
+  white-space: nowrap;
+  user-select: none;
+  clip-path: inset(100%);
 }

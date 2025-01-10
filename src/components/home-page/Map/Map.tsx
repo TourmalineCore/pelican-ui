@@ -13,6 +13,7 @@ export function Map({
     <section
       className="map"
       data-testid="map"
+      id="map-section"
     >
       <Image
         loading="lazy"

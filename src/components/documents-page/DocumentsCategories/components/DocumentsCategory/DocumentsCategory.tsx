@@ -16,6 +16,7 @@ export function DocumentsCategory({
       <Link
         className="documents-category__wrapper"
         href={`${AppRoute.DOCUMENTS}/${id}`}
+        aria-label={`Перейти на страницу категории ${title}`}
         data-testid="documents-category"
       >
         <h2 className="documents-category__title">{title}</h2>

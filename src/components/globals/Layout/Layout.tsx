@@ -40,6 +40,9 @@ export function Layout({
   } = useRouter();
 
   const overlayElementRef = useRef<null | HTMLDivElement>(null);
+  const mainElementRef = useRef<null | HTMLDivElement>(null);
+  const footerElementRef = useRef<null | HTMLDivElement>(null);
+
   const {
     windowWidth,
     handleSetWindowWidth,
@@ -84,6 +87,8 @@ export function Layout({
           phone={phone}
           popupTicketBuyText={popupTicketBuyText}
           overlayElementRef={overlayElementRef}
+          mainElementRef={mainElementRef}
+          footerElementRef={footerElementRef}
           handleMobileMenuToggle={handleMobileMenuToggle}
           isMobileMenuOpen={isMobileMenuOpen}
         />
@@ -95,6 +100,7 @@ export function Layout({
           overlayElementRef={overlayElementRef}
         />
         <main
+          ref={mainElementRef}
           className="main"
         >
           {children}
@@ -109,6 +115,7 @@ export function Layout({
           }}
         />
         <Footer
+          footerElementRef={footerElementRef}
           officialLinks={officialLinks}
           footerUserLinks={footerUserLinks}
           footerAboutLinks={footerAboutLinks}

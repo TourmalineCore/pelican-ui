@@ -7,6 +7,7 @@ export function IconTg() {
       fill="none"
       viewBox="0 0 48 48"
       className="social-link__icon"
+      aria-hidden="true"
     >
       <rect
         width="48"
