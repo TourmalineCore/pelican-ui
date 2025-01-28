@@ -2,13 +2,13 @@ import Head from 'next/head';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { MOCK_DOCUMENTS_PAGE } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
 import { api } from '@/src/common/utils/HttpClient';
-import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
-import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
 import { DocumentListResponse, DocumentsCategoryListResponse } from '@/src/common/api-types';
-import { DocumentsCategoriesProps, DocumentsPageProps } from '@/src/common/types';
-import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
-import dayjs from 'dayjs';
 import qs from 'qs';
+import dayjs from 'dayjs';
+import { getDocumentsCategoriesQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
+import { DocumentsCategories } from '@/src/components/documents-page/DocumentsCategories/DocumentsCategories';
+import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
+import { DocumentsCategoriesProps, DocumentsPageProps } from '@/src/common/types';
 
 export default function DocumentsPage({
   pageData,
@@ -62,7 +62,7 @@ export async function getServerSideProps() {
     const documentsCategories: DocumentsCategoriesProps[] = (await Promise.all(
       documentsCategoriesResponse.data!
         .map(async (documentsCategoriesItem) => {
-          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
+          const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsCategoriesQueryParams({
             id: documentsCategoriesItem.id!,
             year,
             pageSize: 1,

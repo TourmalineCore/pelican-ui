@@ -16,7 +16,9 @@ export function DocumentsCategory({
     <li className={`${className} documents-category`}>
       <Link
         className="documents-category__wrapper"
-        href={`${AppRoute.DOCUMENTS}/${id}`}
+        href={{
+          pathname: `${AppRoute.DOCUMENTS}/${id}`,
+        }}
         aria-label={`Перейти на страницу категории ${title}`}
         data-testid="documents-category"
       >

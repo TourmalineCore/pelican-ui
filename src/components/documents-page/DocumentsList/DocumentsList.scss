@@ -35,6 +35,21 @@
     }
   }
 
+  &__tabs {
+    display: flex;
+    margin-bottom: 24px;
+    gap: 8px;
+
+    @include tablet-xl {
+      margin-bottom: 32px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 40px;
+      gap: 12px;
+    }
+  }
+
   @include tablet {
     padding-top: 32px;
     padding-bottom: 32px;

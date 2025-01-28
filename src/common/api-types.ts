@@ -53,8 +53,6 @@ export interface DocumentListResponse {
 export interface Document {
   showDate: boolean;
   title: string;
-  subtitle?: string;
-  description?: string;
   files: {
     data?: {
       id?: number;
@@ -308,6 +306,10 @@ export interface Document {
       };
     };
   };
+  subtitle?: string;
+  description?: string;
+  /** @format date */
+  date?: string;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */

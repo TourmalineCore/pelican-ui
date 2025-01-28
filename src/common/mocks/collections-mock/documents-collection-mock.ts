@@ -3,7 +3,7 @@ import { DocumentsProps } from "../../types";
 export const MOCK_DOCUMENTS: DocumentsProps[] = [
   {
     id: 0,
-    date: `07.07.2019`,
+    date: `2025-01-17`,
     showDate: false,
     title: `Протокол закупки  №31907985526`,
     files: [
@@ -20,7 +20,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
   },
   {
     id: 1,
-    date: `07.07.2019`,
+    date: `2025-01-17`,
     showDate: true,
     title: `Договор №350474`,
     subtitle: `Договор на поставку продукции животноводства (мясо говядина) для нужд муниципального бюджетного учреждения культуры «зоопарк»`,
@@ -41,7 +41,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
   },
   {
     id: 2,
-    date: `07.07.2019`,
+    date: `2025-01-17`,
     showDate: true,
     title: `Отчёт о выполнении муниципального задания за\u00A02022г.`,
     subtitle: `Отчёт о выполнении муниципального задания по предоставлению муниципальных услуг (выполнению работ) за 2022 год.`,
@@ -59,7 +59,7 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
   },
   {
     id: 3,
-    date: `07.07.2019`,
+    date: `2025-01-17`,
     showDate: true,
     title: `Протоколы закупки №31907985526`,
     files: [
@@ -78,6 +78,40 @@ export const MOCK_DOCUMENTS: DocumentsProps[] = [
       {
         id: 6,
         name: `Скрин.pdf`,
+        url: `/public/documents/Protocol.pdf`,
+        ext: `.pdf`,
+      },
+    ],
+    category: {
+      id: 1,
+    },
+  },
+  {
+    id: 4,
+    date: `2024-01-17`,
+    showDate: false,
+    title: `Протокол закупки №7731263`,
+    files: [
+      {
+        id: 7,
+        name: `Протокол закупки №7731263`,
+        url: `/public/documents/Protocol.pdf`,
+        ext: `.pdf`,
+      },
+    ],
+    category: {
+      id: 1,
+    },
+  },
+  {
+    id: 5,
+    date: `2023-01-17`,
+    showDate: true,
+    title: `Протокол закупки №55667788`,
+    files: [
+      {
+        id: 8,
+        name: `Протокол закупки №55667788`,
         url: `/public/documents/Protocol.pdf`,
         ext: `.pdf`,
       },

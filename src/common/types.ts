@@ -170,6 +170,11 @@ export type DocumentsPageProps = {
   documentsTitle: string;
 };
 
+export type DocumentsTabsProps = {
+  queryYear: string,
+  availableYears: number[],
+};
+
 export type DocumentsCategoriesProps = {
   id: number,
   title: string,

@@ -1,0 +1,31 @@
+.tab {
+  &__button {
+    @include caption-2-medium;
+
+    display: block;
+    border: 1px solid $color-black-75;
+    border-radius: 110px;
+    padding: 8px 32px;
+    color: $color-black-75;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:focus,
+    &:hover {
+      border-color: $color-green-dark;
+      color: $color-white;
+      background-color: $color-green-dark;
+    }
+
+    &--active {
+      border-color: $color-green-dark;
+      color: $color-white;
+      background-color: $color-green-dark;
+      pointer-events: none;
+    }
+
+    @include desktop-xl {
+      padding: 12px 40px;
+    }
+  }
+}

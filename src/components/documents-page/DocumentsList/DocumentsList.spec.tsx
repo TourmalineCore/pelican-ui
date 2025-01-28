@@ -16,6 +16,8 @@ test.describe(`DocumentsListComponentTests`, () => {
     });
   });
 
+  test(`TabActionTest`, tabAction);
+
   test(`MobileTest`, mobileTest);
 
   test(`MobileClickedTest`, mobileClickedTest);
@@ -37,6 +39,22 @@ test.describe(`DocumentsListComponentTests`, () => {
   test(`DesktopXlClickedTest`, desktopXlClickedTest);
 });
 
+async function tabAction({
+  page,
+}: {
+  page: Page,
+}) {
+  await page.locator(`li`, {
+    hasText: `2024`,
+  })
+    .click();
+
+  await expect(page.locator(`li`, {
+    hasText: `Протокол закупки №7731263`,
+  }))
+    .toBeVisible();
+}
+
 async function mobileTest({
   page,
 }: {
@@ -44,6 +62,7 @@ async function mobileTest({
 }) {
   await setViewportSize({
     page,
+    height: 850,
   });
 
   await expect(getDocumentsListByTestId({
@@ -59,7 +78,7 @@ async function mobileClickedTest({
 }) {
   await setViewportSize({
     page,
-    height: 1686,
+    height: 1854,
   });
 
   openDocumentsListPopupAccordions({
@@ -80,6 +99,7 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
+    height: 822,
   });
 
   await expect(getDocumentsListByTestId({
@@ -96,7 +116,7 @@ async function tabletClickedTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
-    height: 1285,
+    height: 1446,
   });
 
   openDocumentsListPopupAccordions({
@@ -117,7 +137,7 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
-    height: 810,
+    height: 1040,
   });
 
   await expect(getDocumentsListByTestId({
@@ -134,7 +154,7 @@ async function tabletXlClickedTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
-    height: 1483,
+    height: 1715,
   });
 
   openDocumentsListPopupAccordions({
@@ -155,6 +175,7 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
+    height: 999,
   });
 
   await expect(getDocumentsListByTestId({
@@ -171,7 +192,7 @@ async function desktopClickedTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
-    height: 1535,
+    height: 1767,
   });
 
   openDocumentsListPopupAccordions({
@@ -192,7 +213,7 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 1065,
+    height: 1408,
   });
 
   await expect(getDocumentsListByTestId({
@@ -209,7 +230,7 @@ async function desktopXlClickedTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 2150,
+    height: 2452,
   });
 
   openDocumentsListPopupAccordions({
@@ -227,7 +248,7 @@ function getDocumentsListByTestId({
 }: {
   page: Page
 }) {
-  return page.getByTestId(`documents-list`);
+  return page.getByTestId(`documents`);
 }
 
 async function openDocumentsListPopupAccordions({
