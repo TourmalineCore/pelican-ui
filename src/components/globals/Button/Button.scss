@@ -8,6 +8,10 @@
   background-color: initial;
   cursor: pointer;
 
+  @include desktop-xl {
+    border-radius: 20px;
+  }
+
   &--primary {
     border: none;
     color: $color-white;
@@ -83,9 +87,5 @@
         display: none;
       }
     }
-  }
-
-  @include desktop-xl {
-    border-radius: 20px;
   }
 }

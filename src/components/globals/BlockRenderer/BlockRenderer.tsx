@@ -12,8 +12,15 @@ import {
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
-const Hero = dynamic(
-  () => import(`../../home-page/Hero/Hero`).then((component) => component.Hero),
+const ContactZooHero = dynamic(
+  () => import(`../../contact-zoo-page/ContactZooHero/ContactZooHero`).then((component) => component.ContactZooHero),
+  {
+    ssr: false,
+  },
+);
+
+const HomepageHero = dynamic(
+  () => import(`../../home-page/HomepageHero/HomepageHero`).then((component) => component.HomepageHero),
   {
     ssr: false,
   },
@@ -67,7 +74,8 @@ type Block = HeroComponentProps
   | ContactZooPreviewComponentProps
   | MapComponentProps
   | TicketsComponentProps
-  | NotFoundComponentProps;
+  | NotFoundComponentProps
+  ;
 
 export const BlockRenderer = ({
   block,
@@ -81,7 +89,19 @@ export const BlockRenderer = ({
   switch (block.__component) {
     case BlockTypes.HERO:
       return (
-        <Hero
+        <HomepageHero
+          title={block.title}
+          image={block.image}
+          scheduleTitle={block.scheduleTitle}
+          scheduleTimetables={block.scheduleTimetables}
+          infoCardTitle={block.infoCardTitle}
+          infoCardDescription={block.infoCardDescription}
+        />
+      );
+    case BlockTypes.CONTACT_ZOO_HERO:
+      return (
+        <ContactZooHero
+          isContactZoo
           title={block.title}
           image={block.image}
           scheduleTitle={block.scheduleTitle}

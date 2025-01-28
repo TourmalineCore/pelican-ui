@@ -81,6 +81,28 @@
     }
   }
 
+  &__link,
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: inherit;
+    padding: 16px 12px;
+    background-color: $color-white;
+
+    @include tablet {
+      padding: 16px;
+    }
+
+    @include desktop-xl {
+      padding: 24px;
+    }
+  }
+
+  @include desktop-xl {
+    border-radius: 24px;
+  }
+
   &--with-accordion {
     #{$this}__inner {
       flex-direction: column;
@@ -112,27 +134,5 @@
         max-width: 510px;
       }
     }
-  }
-
-  &__link,
-  &__inner {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    border-radius: inherit;
-    padding: 16px 12px;
-    background-color: $color-white;
-
-    @include tablet {
-      padding: 16px;
-    }
-
-    @include desktop-xl {
-      padding: 24px;
-    }
-  }
-
-  @include desktop-xl {
-    border-radius: 24px;
   }
 }

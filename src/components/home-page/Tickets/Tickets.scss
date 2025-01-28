@@ -186,26 +186,6 @@
   &__item {
     min-height: 160px;
 
-    &--link {
-      font-size: 20px;
-      line-height: 1.4;
-      color: $color-black-75;
-
-      @include desktop {
-        font-size: 24px;
-      }
-
-      @include desktop-xl {
-        font-size: 34px;
-      }
-    }
-
-    &--button {
-      @include tablet {
-        display: flex;
-      }
-    }
-
     & + & {
       margin-top: 16px;
 
@@ -234,6 +214,26 @@
 
     @include desktop-xl {
       min-height: 309px;
+    }
+
+    &--link {
+      font-size: 20px;
+      line-height: 1.4;
+      color: $color-black-75;
+
+      @include desktop {
+        font-size: 24px;
+      }
+
+      @include desktop-xl {
+        font-size: 34px;
+      }
+    }
+
+    &--button {
+      @include tablet {
+        display: flex;
+      }
     }
   }
 

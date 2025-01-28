@@ -1,26 +1,17 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import {
-  gotoPage,
-  hideHeader,
-  hideSkipLink,
-  setViewportSize,
-} from '@/playwright-tests/helpers';
+import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`ContactZooComponentTests`, () => {
+test.describe(`ContactZooHeroComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.HOME,
+      url: AppRoute.CONTACT_ZOO,
     });
 
     await hideHeader({
-      page,
-    });
-
-    await hideSkipLink({
       page,
     });
   });
@@ -32,6 +23,8 @@ test.describe(`ContactZooComponentTests`, () => {
   test(`TabletXlTest`, tabletXlTest);
 
   test(`DesktopTest`, desktopTest);
+
+  test(`DesktopXlTest`, desktopXlTest);
 });
 
 async function mobileTest({
@@ -41,12 +34,14 @@ async function mobileTest({
 }) {
   await setViewportSize({
     page,
+    width: 378,
+    height: 672,
   });
 
-  await expect(getContactZooByTestId({
+  await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-mobile.png`);
+    .toHaveScreenshot(`contact-zoo-hero-mobile.png`);
 }
 
 async function tabletTest({
@@ -57,12 +52,13 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
+    height: 501,
   });
 
-  await expect(getContactZooByTestId({
+  await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-tablet.png`);
+    .toHaveScreenshot(`contact-zoo-hero-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -73,12 +69,13 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
+    height: 594,
   });
 
-  await expect(getContactZooByTestId({
+  await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-tablet-xl.png`);
+    .toHaveScreenshot(`contact-zoo-hero-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -89,18 +86,36 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
+    height: 700,
   });
 
-  await expect(getContactZooByTestId({
+  await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`contact-zoo-desktop.png`);
+    .toHaveScreenshot(`contact-zoo-hero-desktop.png`);
 }
 
-function getContactZooByTestId({
+async function desktopXlTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP_XL,
+    height: 1043,
+  });
+
+  await expect(getHeroByTestId({
+    page,
+  }))
+    .toHaveScreenshot(`contact-zoo-hero-desktop-xl.png`);
+}
+
+function getHeroByTestId({
   page,
 }: {
   page: Page
 }) {
-  return page.getByTestId(`contact-zoo`);
+  return page.getByTestId(`hero`);
 }

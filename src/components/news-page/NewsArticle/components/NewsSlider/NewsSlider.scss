@@ -99,14 +99,14 @@
       }
     }
 
-    &--prev {
-      transform: rotate(180deg);
-      transform-origin: center;
-    }
-
     @include desktop-xl {
       width: 64px;
       height: 64px;
+    }
+
+    &--prev {
+      transform: rotate(180deg);
+      transform-origin: center;
     }
   }
 

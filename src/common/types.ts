@@ -49,13 +49,16 @@ export type GlobalComponentProps = {
 
 export type HeroComponentProps = {
   id: number
-  __component: BlockTypes.HERO,
+  __component: BlockTypes.HERO | BlockTypes.CONTACT_ZOO_HERO,
   title: string,
   image: Image,
   scheduleTitle: string,
   scheduleTimetables: Timetable[],
-  infoCardTitle: string,
+  infoCardTitle?: string,
   infoCardDescription: string,
+
+  // todo move to component level?
+  isContactZoo?: boolean
 };
 
 export type Timetable = {
@@ -125,6 +128,15 @@ export type HomePageProps = {
     | ServicesComponentProps
     | ContactZooPreviewComponentProps
     | MapComponentProps
+    | TicketsComponentProps
+  )[];
+};
+
+export type ContactZooProps = {
+  id: number,
+  title: string;
+  blocks: (
+    HeroComponentProps
     | TicketsComponentProps
   )[];
 };

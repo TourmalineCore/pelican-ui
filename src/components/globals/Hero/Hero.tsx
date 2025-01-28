@@ -3,6 +3,7 @@ import { HeroComponentProps } from "@/src/common/types";
 import { Button } from "@/src/components/globals/Button/Button";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
+import clsx from "clsx";
 import { HeroSchedule } from "./components/HeroSchedule/HeroSchedule";
 import { HeroInfoCard } from "./components/HeroInfoCard/HeroInfoCard";
 
@@ -13,9 +14,11 @@ export function Hero({
   infoCardTitle,
   infoCardDescription,
   image,
+  isContactZoo,
 }: Omit<HeroComponentProps, 'id' | '__component'>) {
   const {
     isMobile,
+    isTablet,
     isDesktop,
   } = useWindowWidth();
 
@@ -25,12 +28,22 @@ export function Hero({
 
   return (
     <section
-      className="hero container"
+      className={clsx(
+        `hero container`,
+        {
+          'hero--contact-zoo': isContactZoo,
+        },
+      )}
       data-testid="hero"
     >
-      {((isMobile && !isDesktop)) && (
+      {(((isMobile || isTablet) && !isDesktop)) && (
         <h1
-          className="visually-hidden"
+          className={clsx(
+            `hero__title hero__title--contact-zoo`,
+            {
+              'visually-hidden': !isContactZoo,
+            },
+          )}
         >
           {title}
         </h1>
@@ -50,14 +63,16 @@ export function Hero({
           className="hero__schedule-card"
           scheduleTitle={scheduleTitle}
           scheduleTimetables={scheduleTimetables}
+          isContactZoo={isContactZoo}
         />
         <HeroInfoCard
           className="hero__info-card"
           infoCardTitle={infoCardTitle}
           infoCardDescription={infoCardDescription}
+          isContactZoo={isContactZoo}
         />
       </div>
-      {!isDesktop
+      {(!isDesktop && !isContactZoo)
         && (
           <div className="hero__buttons">
             <Button

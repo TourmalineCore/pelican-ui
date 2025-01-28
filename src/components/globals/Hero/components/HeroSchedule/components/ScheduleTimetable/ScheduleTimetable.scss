@@ -1,4 +1,6 @@
 .schedule-timetable {
+  $this: &;
+
   border-left: 2px solid $color-green-dark;
   padding-left: 12px;
 
@@ -41,5 +43,13 @@
   @include tablet {
     border-left: none;
     padding-left: 0;
+  }
+
+  &--contact-zoo {
+    border-left-color: $color-brown;
+
+    #{$this}__time {
+      color: $color-brown;
+    }
   }
 }

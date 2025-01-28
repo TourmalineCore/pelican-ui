@@ -106,6 +106,10 @@
     margin-bottom: 8px;
     color: $color-black-75;
 
+    @include desktop-xl {
+      margin-bottom: 16px;
+    }
+
     &--services {
       @include h2-text;
     }
@@ -116,10 +120,6 @@
       @include tablet-xl {
         @include body-2-medium;
       }
-    }
-
-    @include desktop-xl {
-      margin-bottom: 16px;
     }
   }
 

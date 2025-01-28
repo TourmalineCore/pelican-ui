@@ -2,6 +2,7 @@ export enum AppRoute {
   HOME = `/`,
   NEWS = `/news`,
   DOCUMENTS = `/documents`,
+  CONTACT_ZOO = `/contact-zoo`,
 }
 
 export enum Breakpoint {
@@ -20,4 +21,5 @@ export enum BlockTypes {
   MAP = `home.map`,
   TEXT_AND_MEDIA = `home.text-and-media`,
   NOT_FOUND = `not-found.not-found`,
+  CONTACT_ZOO_HERO = `contact-zoo.hero`,
 }

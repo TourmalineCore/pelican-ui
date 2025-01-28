@@ -2,7 +2,7 @@ import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`HeroComponentTests`, () => {
+test.describe(`HomepageHeroComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
@@ -51,6 +51,7 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
+    height: 437,
   });
 
   await expect(getHeroByTestId({
@@ -67,6 +68,7 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
+    height: 556,
   });
 
   await expect(getHeroByTestId({

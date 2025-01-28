@@ -158,16 +158,16 @@
 			},
 			{
 				"type": "rule",
-				"selector": "&--.+"
-			},
-			{
-				"type": "rule",
 				"selector": ".* &"
 			},
 			{
 				"type": "at-rule",
 				"name": "include",
 				"hasBlock": true
+			},
+			{
+				"type": "rule",
+				"selector": "&--.+"
 			},
 			"at-rules"
 		],

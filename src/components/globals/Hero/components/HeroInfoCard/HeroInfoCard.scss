@@ -1,4 +1,6 @@
 .hero-info-card {
+  $this: &;
+
   flex-grow: 1;
   border-radius: 24px;
   padding: 16px;
@@ -71,5 +73,29 @@
   @include desktop-xl {
     border-radius: 40px;
     padding: 32px;
+  }
+
+  &--contact-zoo {
+    #{$this}__description {
+      @include tablet {
+        font-size: 18px;
+      }
+
+      @include tablet-xl {
+        font-size: 20px;
+      }
+
+      @include desktop {
+        line-height: 1.55;
+      }
+
+      @include desktop-xl {
+        font-size: 30px;
+      }
+    }
+
+    @include desktop {
+      justify-content: center;
+    }
   }
 }

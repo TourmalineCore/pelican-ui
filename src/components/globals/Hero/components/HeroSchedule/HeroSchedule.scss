@@ -1,4 +1,6 @@
 .hero-schedule {
+  $this: &;
+
   border-radius: 24px;
   padding: 16px;
   box-shadow: 0 2px 16px 0 rgb(53 53 53 / 4%);
@@ -57,5 +59,13 @@
 
   @include desktop-xl {
     padding: 32px;
+  }
+
+  &--contact-zoo {
+    #{$this}__title {
+      @include tablet {
+        color: $color-brown;
+      }
+    }
   }
 }

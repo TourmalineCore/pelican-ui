@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
-import { GlobalComponentProps, HomePageProps } from '../common/types';
+import { ContactZooProps, GlobalComponentProps, HomePageProps } from '../common/types';
 import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 
 type UniversalProps = {
   globalData: GlobalComponentProps,
-  pageData: HomePageProps,
+  pageData: HomePageProps | ContactZooProps,
 };
 
 export default function UniversalPage({
