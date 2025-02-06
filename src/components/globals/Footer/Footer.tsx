@@ -52,8 +52,8 @@ export function Footer({
       <div className="footer__inner">
         <div className="container">
           <div className="footer__top">
-            <div className="footer__cols">
-              <div className="footer__col footer__col--left">
+            <div className="footer__cols grid">
+              <div className="footer__col col-tablet-4">
                 <p className="footer__title">{footerNavTitleLeft}</p>
                 <ul className="footer__nav">
                   <li
@@ -93,7 +93,7 @@ export function Footer({
                   ))}
                 </ul>
               </div>
-              <div className="footer__col">
+              <div className="footer__col col-tablet-4">
                 <p className="footer__title">{footerNavTitleRight}</p>
                 <ul className="footer__nav">
                   {footerAboutLinks.map(({
@@ -139,43 +139,69 @@ export function Footer({
                   </li>
                 </ul>
               </div>
+              {isTablet && (
+                <ul className="footer__col col-tablet-4">
+                  <li className="footer__contact">
+                    <Link
+                      href={`tel:${phone}`}
+                      className="footer__contact-link"
+                      aria-label={`Связаться с нами по телефону ${phone}`}
+                      data-testid="footer-tel-link"
+                    >
+                      {phone}
+                    </Link>
+                  </li>
+                  <li className="footer__contact">
+                    <Link
+                      href={`mailto:${email}`}
+                      className="footer__contact-link"
+                      aria-label={`Связаться с нами по почте ${email}`}
+                      data-testid="footer-email-link"
+                    >
+                      {email}
+                    </Link>
+                  </li>
+                </ul>
+              )}
             </div>
-            <ul className="footer__contacts">
-              <li className="footer__contact">
-                <Link
-                  href={`tel:${phone}`}
-                  className="footer__contact-link"
-                  aria-label={`Связаться с нами по телефону ${phone}`}
-                  data-testid="footer-tel-link"
-                >
-                  {phone}
-                </Link>
-              </li>
-              <li className="footer__contact">
-                <Link
-                  href={`mailto:${email}`}
-                  className="footer__contact-link"
-                  aria-label={`Связаться с нами по почте ${email}`}
-                  data-testid="footer-email-link"
-                >
-                  {email}
-                </Link>
-              </li>
-            </ul>
+            {!isTablet && (
+              <ul className="footer__contacts">
+                <li className="footer__contact">
+                  <Link
+                    href={`tel:${phone}`}
+                    className="footer__contact-link"
+                    aria-label={`Связаться с нами по телефону ${phone}`}
+                    data-testid="footer-tel-link"
+                  >
+                    {phone}
+                  </Link>
+                </li>
+                <li className="footer__contact">
+                  <Link
+                    href={`mailto:${email}`}
+                    className="footer__contact-link"
+                    aria-label={`Связаться с нами по почте ${email}`}
+                    data-testid="footer-email-link"
+                  >
+                    {email}
+                  </Link>
+                </li>
+              </ul>
+            )}
           </div>
-          <div className="footer__middle">
+          <div className="footer__middle grid">
             {
               isTablet && (
                 isDesktop
                   ? (
-                    <div className="footer__official-name">
+                    <div className="footer__official-name col-tablet-4">
                       <p className="footer__official-name-text">
                         Муниципальное Бюджетное Учреждение Культуры «Зоопарк»
                       </p>
                     </div>
                   )
                   : (
-                    <div className="footer__official-name">
+                    <div className="footer__official-name col-tablet-4">
                       <p className="footer__official-name-text">
                         МБУК «Зоопарк»
                       </p>
@@ -185,7 +211,7 @@ export function Footer({
             }
             {
               isTablet && (
-                <div className="footer__copyright">
+                <div className="footer__copyright col-tablet-4">
                   Сайт разработан
                   <Link
                     href="https://www.tourmalinecore.com/"
@@ -205,7 +231,7 @@ export function Footer({
                 </div>
               )
             }
-            <div className="footer__social-media">
+            <div className="footer__social-media col-tablet-4">
               <SocialMedia
                 className="footer__social-icon"
               />
@@ -233,7 +259,7 @@ export function Footer({
       </div>
 
       <div className="container footer__bottom">
-        <ul className="footer__official-links">
+        <ul className="footer__official-links grid">
           {officialLinks.map(({
             id,
             name,
@@ -243,7 +269,7 @@ export function Footer({
           }) => (
             <li
               key={id}
-              className="footer__official-link-item"
+              className="footer__official-link-item col-tablet-4"
             >
               <Link
                 href={link}

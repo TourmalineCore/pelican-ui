@@ -3,6 +3,7 @@ import {
   gotoPage,
   hideHeader,
   hideMap,
+  hideSkipLink,
   setViewportSize,
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
@@ -21,6 +22,10 @@ test.describe(`FooterTests`, () => {
     });
 
     await hideMap({
+      page,
+    });
+
+    await hideSkipLink({
       page,
     });
   });
@@ -43,6 +48,7 @@ async function mobileTest({
 }) {
   await setViewportSize({
     page,
+    height: 869,
   });
 
   await expect(getFooterByTestId({
@@ -59,6 +65,7 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
+    height: 488,
   });
 
   await expect(getFooterByTestId({
@@ -75,6 +82,7 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
+    height: 535,
   });
 
   await expect(getFooterByTestId({
@@ -91,6 +99,7 @@ async function desktopTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP,
+    height: 614,
   });
 
   await expect(getFooterByTestId({
@@ -107,6 +116,7 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
+    height: 943,
   });
 
   await expect(getFooterByTestId({

@@ -1,0 +1,42 @@
+/* general grid styles */
+$grid-gap: 12px;
+$grid-columns: 12;
+$col-sizes: 3, 4, 5, 6, 7, 8, 12;
+$available-breakpoints: ("tablet": 768px, "tablet-xl": 1024px, "desktop": 1366px, "desktop-xl": 1920px);
+
+.grid {
+  $this: &;
+
+  display: grid;
+  grid-gap: $grid-gap $grid-gap;
+  grid-template-columns: 1fr;
+
+  @include tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin grid($breakpoints) {
+  @each $size, $value in $breakpoints {
+    @media (min-width: $value) {
+
+      .grid > .row-start-#{$size}-1 {
+        grid-row-start: 1;
+      }
+
+      @each $column in $col-sizes {
+        .grid > .col-#{$size}-#{$column} {
+          grid-column-end: span $column;
+        }
+      }
+
+      @for $i from 1 through $grid-columns - 1 {
+        .grid > .col-start-#{$size}-#{$i} {
+          grid-column-start: $i;
+        }
+      }
+    }
+  }
+}
+
+@include grid($available-breakpoints);
