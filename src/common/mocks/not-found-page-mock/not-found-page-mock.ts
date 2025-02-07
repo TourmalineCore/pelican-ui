@@ -3,8 +3,9 @@ import { BlockTypes } from "../../enum";
 import { NotFoundComponentProps } from "../../types";
 
 type NotFoundPageProps = {
-  id: number,
-  title: string;
+  seo: {
+    metaTitle: string
+  },
   blocks: (
     NotFoundComponentProps
   )[];
@@ -16,7 +17,8 @@ const MOCK_NOT_FOUND: NotFoundComponentProps = {
 };
 
 export const MOCK_NOT_FOUND_PAGE: NotFoundPageProps = {
-  id: 1,
-  title: `Страница не найдена`,
+  seo: {
+    metaTitle: `Страница не найдена`,
+  },
   blocks: [MOCK_NOT_FOUND],
 };

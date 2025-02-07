@@ -1,4 +1,4 @@
-import { HeroComponentProps } from "@/src/common/types";
+import { GlobalComponentProps, HeroComponentProps } from "@/src/common/types";
 import { Hero } from "../../globals/Hero/Hero";
 
 export function HomepageHero({
@@ -8,7 +8,8 @@ export function HomepageHero({
   scheduleTimetables,
   infoCardTitle,
   infoCardDescription,
-}: Omit<HeroComponentProps, 'id' | '__component'>) {
+  email,
+}: Omit<HeroComponentProps, 'id' | '__component'> & Pick<GlobalComponentProps, 'email'>) {
   return (
     <Hero
       title={title}
@@ -17,6 +18,7 @@ export function HomepageHero({
       scheduleTimetables={scheduleTimetables}
       infoCardTitle={infoCardTitle}
       infoCardDescription={infoCardDescription}
+      email={email}
     />
   );
 }

@@ -1,9 +1,11 @@
 import { MOCK_CONTACT_ZOO_HERO } from "./blocks/hero-mock";
 import { MOCK_CONTACT_ZOO_TICKETS } from "./blocks/tickets-mock";
-import { ContactZooProps } from "../../types";
+import { ContactZooPageProps } from "../../types";
 
-export const MOCK_CONTACT_ZOO_PAGE: ContactZooProps = {
-  id: 1,
-  title: `Челябинский зоопарк: контактный зоопарк`,
+export const MOCK_CONTACT_ZOO_PAGE: ContactZooPageProps = {
+  seo: {
+    metaTitle: `Челябинский зоопарк: контактный зоопарк`,
+    metaDescription: `Описание страниц контактного зоопарка`,
+  },
   blocks: [MOCK_CONTACT_ZOO_HERO, MOCK_CONTACT_ZOO_TICKETS],
 };

@@ -21,7 +21,8 @@
   }
 
   &__image-wrapper {
-    max-height: 200px;
+    position: relative;
+    min-height: 200px;
     box-shadow: 0 2px 16px 0 rgb(53 53 53 / 4%);
 
     img {

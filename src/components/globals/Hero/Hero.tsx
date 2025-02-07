@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { HeroComponentProps } from "@/src/common/types";
+import { GlobalComponentProps, HeroComponentProps } from "@/src/common/types";
 import { Button } from "@/src/components/globals/Button/Button";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import clsx from "clsx";
+import Link from "next/link";
 import { HeroSchedule } from "./components/HeroSchedule/HeroSchedule";
 import { HeroInfoCard } from "./components/HeroInfoCard/HeroInfoCard";
 
@@ -15,7 +16,8 @@ export function Hero({
   infoCardDescription,
   image,
   isContactZoo,
-}: Omit<HeroComponentProps, 'id' | '__component'>) {
+  email,
+}: Omit<HeroComponentProps, 'id' | '__component'> & Partial<Pick<GlobalComponentProps, 'email'>>) {
   const {
     isMobile,
     isTablet,
@@ -55,6 +57,7 @@ export function Hero({
           src={image.url}
           alt={image.alternativeText}
           sizes="(min-width: 768px) 50vw, 100vw"
+          fill
           priority
         />
       </div>
@@ -75,13 +78,13 @@ export function Hero({
       {(!isDesktop && !isContactZoo)
         && (
           <div className="hero__buttons">
-            <Button
-              className="hero__contact-button"
-              theme="secondary"
+            <Link
+              href={`mailto:${email}`}
+              className="button button--secondary hero__contact-button"
               data-testid="hero-contact-button"
             >
               Связаться
-            </Button>
+            </Link>
             <Button
               className="hero__ticket-button"
               theme="primary"

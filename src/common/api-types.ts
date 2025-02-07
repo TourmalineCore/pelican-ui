@@ -23,11 +23,11 @@ export interface DocumentRequest {
   data: {
     showDate: boolean;
     title: string;
-    subtitle?: string;
-    description?: string;
     files: (number | string)[];
     /** @example "string or id" */
     category?: number | string;
+    subtitle?: string;
+    description?: string;
   };
 }
 
@@ -494,7 +494,8 @@ export interface DocumentsCategoryResponse {
 
 export interface HomeRequest {
   data: {
-    title: string;
+    seo: SharedSeoComponent;
+    blocks?: SharedHeroComponent[];
     versions?: (number | string)[];
     vuid?: string;
     versionNumber?: number;
@@ -523,7 +524,8 @@ export interface HomeListResponse {
 }
 
 export interface Home {
-  title: string;
+  seo: SharedSeoComponent;
+  blocks?: SharedHeroComponent[];
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
@@ -533,100 +535,7 @@ export interface Home {
   createdBy?: {
     data?: {
       id?: number;
-      attributes?: {
-        firstname?: string;
-        lastname?: string;
-        username?: string;
-        /** @format email */
-        email?: string;
-        resetPasswordToken?: string;
-        registrationToken?: string;
-        isActive?: boolean;
-        roles?: {
-          data?: {
-            id?: number;
-            attributes?: {
-              name?: string;
-              code?: string;
-              description?: string;
-              users?: {
-                data?: {
-                  id?: number;
-                  attributes?: object;
-                }[];
-              };
-              permissions?: {
-                data?: {
-                  id?: number;
-                  attributes?: {
-                    action?: string;
-                    actionParameters?: any;
-                    subject?: string;
-                    properties?: any;
-                    conditions?: any;
-                    role?: {
-                      data?: {
-                        id?: number;
-                        attributes?: object;
-                      };
-                    };
-                    /** @format date-time */
-                    createdAt?: string;
-                    /** @format date-time */
-                    updatedAt?: string;
-                    createdBy?: {
-                      data?: {
-                        id?: number;
-                        attributes?: object;
-                      };
-                    };
-                    updatedBy?: {
-                      data?: {
-                        id?: number;
-                        attributes?: object;
-                      };
-                    };
-                  };
-                }[];
-              };
-              /** @format date-time */
-              createdAt?: string;
-              /** @format date-time */
-              updatedAt?: string;
-              createdBy?: {
-                data?: {
-                  id?: number;
-                  attributes?: object;
-                };
-              };
-              updatedBy?: {
-                data?: {
-                  id?: number;
-                  attributes?: object;
-                };
-              };
-            };
-          }[];
-        };
-        blocked?: boolean;
-        preferedLanguage?: string;
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        createdBy?: {
-          data?: {
-            id?: number;
-            attributes?: object;
-          };
-        };
-        updatedBy?: {
-          data?: {
-            id?: number;
-            attributes?: object;
-          };
-        };
-      };
+      attributes?: object;
     };
   };
   updatedBy?: {
@@ -639,7 +548,195 @@ export interface Home {
     data?: {
       id?: number;
       attributes?: {
-        title?: string;
+        seo?: {
+          id?: number;
+          metaTitle?: string;
+          metaDescription?: string;
+          metaImage?: {
+            data?: {
+              id?: number;
+              attributes?: {
+                name?: string;
+                alternativeText?: string;
+                caption?: string;
+                width?: number;
+                height?: number;
+                formats?: any;
+                hash?: string;
+                ext?: string;
+                mime?: string;
+                /** @format float */
+                size?: number;
+                url?: string;
+                previewUrl?: string;
+                provider?: string;
+                provider_metadata?: any;
+                related?: {
+                  data?: {
+                    id?: number;
+                    attributes?: object;
+                  }[];
+                };
+                folder?: {
+                  data?: {
+                    id?: number;
+                    attributes?: object;
+                  };
+                };
+                folderPath?: string;
+                /** @format date-time */
+                createdAt?: string;
+                /** @format date-time */
+                updatedAt?: string;
+                createdBy?: {
+                  data?: {
+                    id?: number;
+                    attributes?: object;
+                  };
+                };
+                updatedBy?: {
+                  data?: {
+                    id?: number;
+                    attributes?: object;
+                  };
+                };
+              };
+            };
+          };
+          metaSocial?: {
+            id?: number;
+            socialNetwork?: "Facebook" | "Twitter";
+            title?: string;
+            description?: string;
+            image?: {
+              data?: {
+                id?: number;
+                attributes?: {
+                  name?: string;
+                  alternativeText?: string;
+                  caption?: string;
+                  width?: number;
+                  height?: number;
+                  formats?: any;
+                  hash?: string;
+                  ext?: string;
+                  mime?: string;
+                  /** @format float */
+                  size?: number;
+                  url?: string;
+                  previewUrl?: string;
+                  provider?: string;
+                  provider_metadata?: any;
+                  related?: {
+                    data?: {
+                      id?: number;
+                      attributes?: object;
+                    }[];
+                  };
+                  folder?: {
+                    data?: {
+                      id?: number;
+                      attributes?: object;
+                    };
+                  };
+                  folderPath?: string;
+                  /** @format date-time */
+                  createdAt?: string;
+                  /** @format date-time */
+                  updatedAt?: string;
+                  createdBy?: {
+                    data?: {
+                      id?: number;
+                      attributes?: object;
+                    };
+                  };
+                  updatedBy?: {
+                    data?: {
+                      id?: number;
+                      attributes?: object;
+                    };
+                  };
+                };
+              };
+            };
+          }[];
+          keywords?: string;
+          metaRobots?: string;
+          structuredData?: any;
+          metaViewport?: string;
+          canonicalURL?: string;
+        };
+        blocks?: {
+          id?: number;
+          __component?: string;
+          title?: string;
+          image?: {
+            data?: {
+              id?: number;
+              attributes?: {
+                name?: string;
+                alternativeText?: string;
+                caption?: string;
+                width?: number;
+                height?: number;
+                formats?: any;
+                hash?: string;
+                ext?: string;
+                mime?: string;
+                /** @format float */
+                size?: number;
+                url?: string;
+                previewUrl?: string;
+                provider?: string;
+                provider_metadata?: any;
+                related?: {
+                  data?: {
+                    id?: number;
+                    attributes?: object;
+                  }[];
+                };
+                folder?: {
+                  data?: {
+                    id?: number;
+                    attributes?: object;
+                  };
+                };
+                folderPath?: string;
+                /** @format date-time */
+                createdAt?: string;
+                /** @format date-time */
+                updatedAt?: string;
+                createdBy?: {
+                  data?: {
+                    id?: number;
+                    attributes?: object;
+                  };
+                };
+                updatedBy?: {
+                  data?: {
+                    id?: number;
+                    attributes?: object;
+                  };
+                };
+              };
+            };
+          };
+          infoCard?: {
+            id?: number;
+            title?: string;
+            description?: string;
+          };
+          sheduleCard?: {
+            id?: number;
+            title?: string;
+            timetable?: {
+              id?: number;
+              days?: string;
+              time?: string;
+              ticketsOfficeTime?: string;
+            }[];
+          };
+        }[];
         /** @format date-time */
         createdAt?: string;
         /** @format date-time */
@@ -685,6 +782,377 @@ export interface HomeResponseDataObject {
 export interface HomeResponse {
   data?: HomeResponseDataObject;
   meta?: object;
+}
+
+export interface SharedSeoComponent {
+  id?: number;
+  metaTitle?: string;
+  metaDescription?: string;
+  metaImage?: {
+    data?: {
+      id?: number;
+      attributes?: {
+        name?: string;
+        alternativeText?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+        formats?: any;
+        hash?: string;
+        ext?: string;
+        mime?: string;
+        /** @format float */
+        size?: number;
+        url?: string;
+        previewUrl?: string;
+        provider?: string;
+        provider_metadata?: any;
+        related?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          }[];
+        };
+        folder?: {
+          data?: {
+            id?: number;
+            attributes?: {
+              name?: string;
+              pathId?: number;
+              parent?: {
+                data?: {
+                  id?: number;
+                  attributes?: object;
+                };
+              };
+              children?: {
+                data?: {
+                  id?: number;
+                  attributes?: object;
+                }[];
+              };
+              files?: {
+                data?: {
+                  id?: number;
+                  attributes?: {
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: any;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** @format float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: any;
+                    related?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      }[];
+                    };
+                    folder?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                    folderPath?: string;
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: {
+                          firstname?: string;
+                          lastname?: string;
+                          username?: string;
+                          /** @format email */
+                          email?: string;
+                          resetPasswordToken?: string;
+                          registrationToken?: string;
+                          isActive?: boolean;
+                          roles?: {
+                            data?: {
+                              id?: number;
+                              attributes?: {
+                                name?: string;
+                                code?: string;
+                                description?: string;
+                                users?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  }[];
+                                };
+                                permissions?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: {
+                                      action?: string;
+                                      actionParameters?: any;
+                                      subject?: string;
+                                      properties?: any;
+                                      conditions?: any;
+                                      role?: {
+                                        data?: {
+                                          id?: number;
+                                          attributes?: object;
+                                        };
+                                      };
+                                      /** @format date-time */
+                                      createdAt?: string;
+                                      /** @format date-time */
+                                      updatedAt?: string;
+                                      createdBy?: {
+                                        data?: {
+                                          id?: number;
+                                          attributes?: object;
+                                        };
+                                      };
+                                      updatedBy?: {
+                                        data?: {
+                                          id?: number;
+                                          attributes?: object;
+                                        };
+                                      };
+                                    };
+                                  }[];
+                                };
+                                /** @format date-time */
+                                createdAt?: string;
+                                /** @format date-time */
+                                updatedAt?: string;
+                                createdBy?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  };
+                                };
+                                updatedBy?: {
+                                  data?: {
+                                    id?: number;
+                                    attributes?: object;
+                                  };
+                                };
+                              };
+                            }[];
+                          };
+                          blocked?: boolean;
+                          preferedLanguage?: string;
+                          /** @format date-time */
+                          createdAt?: string;
+                          /** @format date-time */
+                          updatedAt?: string;
+                          createdBy?: {
+                            data?: {
+                              id?: number;
+                              attributes?: object;
+                            };
+                          };
+                          updatedBy?: {
+                            data?: {
+                              id?: number;
+                              attributes?: object;
+                            };
+                          };
+                        };
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: object;
+                      };
+                    };
+                  };
+                }[];
+              };
+              path?: string;
+              /** @format date-time */
+              createdAt?: string;
+              /** @format date-time */
+              updatedAt?: string;
+              createdBy?: {
+                data?: {
+                  id?: number;
+                  attributes?: object;
+                };
+              };
+              updatedBy?: {
+                data?: {
+                  id?: number;
+                  attributes?: object;
+                };
+              };
+            };
+          };
+        };
+        folderPath?: string;
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        createdBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        updatedBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+      };
+    };
+  };
+  metaSocial?: {
+    id?: number;
+    socialNetwork?: "Facebook" | "Twitter";
+    title?: string;
+    description?: string;
+    image?: {
+      data?: {
+        id?: number;
+        attributes?: {
+          name?: string;
+          alternativeText?: string;
+          caption?: string;
+          width?: number;
+          height?: number;
+          formats?: any;
+          hash?: string;
+          ext?: string;
+          mime?: string;
+          /** @format float */
+          size?: number;
+          url?: string;
+          previewUrl?: string;
+          provider?: string;
+          provider_metadata?: any;
+          related?: {
+            data?: {
+              id?: number;
+              attributes?: object;
+            }[];
+          };
+          folder?: {
+            data?: {
+              id?: number;
+              attributes?: object;
+            };
+          };
+          folderPath?: string;
+          /** @format date-time */
+          createdAt?: string;
+          /** @format date-time */
+          updatedAt?: string;
+          createdBy?: {
+            data?: {
+              id?: number;
+              attributes?: object;
+            };
+          };
+          updatedBy?: {
+            data?: {
+              id?: number;
+              attributes?: object;
+            };
+          };
+        };
+      };
+    };
+  }[];
+  keywords?: string;
+  metaRobots?: string;
+  structuredData?: any;
+  metaViewport?: string;
+  canonicalURL?: string;
+}
+
+export interface HeroInfoCardComponent {
+  id?: number;
+  title?: string;
+  description?: string;
+}
+
+export interface HeroSheduleCardComponent {
+  id?: number;
+  title?: string;
+  timetable?: {
+    id?: number;
+    days?: string;
+    time?: string;
+    ticketsOfficeTime?: string;
+  }[];
+}
+
+export interface SharedHeroComponent {
+  id?: number;
+  __component?: string;
+  title?: string;
+  image?: {
+    data?: {
+      id?: number;
+      attributes?: {
+        name?: string;
+        alternativeText?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+        formats?: any;
+        hash?: string;
+        ext?: string;
+        mime?: string;
+        /** @format float */
+        size?: number;
+        url?: string;
+        previewUrl?: string;
+        provider?: string;
+        provider_metadata?: any;
+        related?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          }[];
+        };
+        folder?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        folderPath?: string;
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        createdBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+        updatedBy?: {
+          data?: {
+            id?: number;
+            attributes?: object;
+          };
+        };
+      };
+    };
+  };
+  infoCard?: HeroInfoCardComponent;
+  sheduleCard?: HeroSheduleCardComponent;
 }
 
 export interface NewsCollectionRequest {

@@ -14,13 +14,12 @@ export enum Breakpoint {
 }
 
 export enum BlockTypes {
-  HERO = `home.hero`,
+  SHARED_HERO = `shared.hero`,
   SERVICES = `home.services`,
   CONTACT_ZOO_PREVIEW = `home.contact-zoo-preview`,
   TICKETS = `home.tickets`,
   MAP = `home.map`,
   TEXT_AND_MEDIA = `home.text-and-media`,
   NOT_FOUND = `not-found.not-found`,
-  CONTACT_ZOO_HERO = `contact-zoo.hero`,
   CONTACT_ZOO_TICKETS = `contact-zoo.tickets`,
 }
