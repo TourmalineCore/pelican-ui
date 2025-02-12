@@ -5,7 +5,7 @@ import { mapContractByBlock } from "./mapContractByBlock";
 import { MOCK_CONTACT_ZOO_PREVIEW } from "../mocks/home-page-mock/blocks/contact-zoo-preview-mock";
 import { MOCK_MAP } from "../mocks/home-page-mock/blocks/map-mock";
 import { MOCK_SERVICES } from "../mocks/home-page-mock/blocks/services-mock";
-import { MOCK_TEXT_AND_MEDIA } from "../mocks/home-page-mock/blocks/text-and-media-mock";
+// import { MOCK_TEXT_AND_MEDIA } from "../mocks/home-page-mock/blocks/text-and-media-mock";
 import { MOCK_TICKETS } from "../mocks/home-page-mock/blocks/tickets-mock";
 import { MOCK_NOT_FOUND_PAGE } from "../mocks/not-found-page-mock/not-found-page-mock";
 import { MOCK_CONTACT_ZOO_TICKETS } from "../mocks/contact-zoo-page-mock/blocks/tickets-mock";
@@ -25,10 +25,11 @@ export async function getPageData({
           `blocks.scheduleCard`,
           `blocks.scheduleCard.timetable`,
           `blocks.image`,
+          `blocks.media`,
           `seo`,
         ],
         staticBlocks: [
-          MOCK_TEXT_AND_MEDIA,
+          // MOCK_TEXT_AND_MEDIA,
           MOCK_SERVICES,
           MOCK_CONTACT_ZOO_PREVIEW,
           MOCK_TICKETS,

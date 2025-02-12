@@ -71,14 +71,16 @@ export type Timetable = {
 
 export type TextAndMediaComponentProps = {
   id: number
-  __component: BlockTypes.TEXT_AND_MEDIA,
+  __component: BlockTypes.SHARED_TEXT_AND_MEDIA,
   title: string,
   description: string,
-  video: {
-    alt: string,
+  media: {
+    alternativeText: string,
     url: string,
     mime: string,
   },
+  contentOrder: "Текст слева, видео/изображение справа" | "Видео/изображение слева, текст справа",
+  viewFootsteps: boolean,
 };
 
 export type ServicesComponentProps = {

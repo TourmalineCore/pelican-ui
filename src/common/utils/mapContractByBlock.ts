@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-import { SharedHeroComponent } from "../api-types";
+import { SharedHeroComponent, SharedTextAndMediaComponent } from "../api-types";
 import { BlockTypes } from "../enum";
 import { Block } from "../types";
 
@@ -24,6 +24,22 @@ export function mapContractByBlock({
         scheduleTimetables: sharedHeroBlock?.scheduleCard?.timetable,
         infoCardTitle: sharedHeroBlock?.infoCard?.title,
         infoCardDescription: sharedHeroBlock?.infoCard?.description,
+      };
+    case BlockTypes.SHARED_TEXT_AND_MEDIA:
+      const sharedTextAndMediaBlock = block as SharedTextAndMediaComponent;
+
+      return {
+        id: sharedTextAndMediaBlock?.id,
+        __component: sharedTextAndMediaBlock.__component,
+        title: sharedTextAndMediaBlock?.title,
+        description: sharedTextAndMediaBlock?.description,
+        media: {
+          url: sharedTextAndMediaBlock?.media?.data?.attributes?.url,
+          alternativeText: sharedTextAndMediaBlock?.media?.data?.attributes?.alternativeText || ``,
+          mime: sharedTextAndMediaBlock?.media?.data?.attributes?.mime,
+        },
+        contentOrder: sharedTextAndMediaBlock?.contentOrder,
+        viewFootsteps: sharedTextAndMediaBlock?.viewFootsteps,
       };
 
     default:

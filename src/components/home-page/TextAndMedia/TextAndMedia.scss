@@ -1,4 +1,6 @@
 .text-and-media {
+  $this: &;
+
   position: relative;
   z-index: 0;
   padding-top: 52px;
@@ -51,6 +53,10 @@
     @include tablet {
       margin-bottom: 0;
     }
+
+    @include desktop {
+      width: 40.6%;
+    }
   }
 
   &__title {
@@ -86,10 +92,16 @@
     }
   }
 
-  &__video {
+  &__media {
+    position: relative;
     overflow: hidden;
     border-radius: 24px;
     aspect-ratio: 343 / 240;
+
+    img,
+    video {
+      object-fit: cover;
+    }
 
     @include tablet {
       border-radius: 32px;
@@ -101,6 +113,8 @@
     }
 
     @include desktop {
+      flex-grow: 1;
+      max-width: 57.6%;
       aspect-ratio: 740 / 403;
     }
 
@@ -116,7 +130,6 @@
     padding-bottom: 131px;
     gap: 12px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(1, 1fr);
   }
 
   @include tablet-xl {
@@ -125,15 +138,44 @@
   }
 
   @include desktop {
+    display: flex;
     padding-top: 136.5px;
     padding-bottom: 136.5px;
     gap: 24px;
-    grid-template-columns: 40.6% auto;
   }
 
   @include desktop-xl {
     padding-top: 88px;
     padding-bottom: 88px;
     gap: 32px;
+  }
+
+  &--inverse {
+    @include tablet {
+      #{$this}__text {
+        order: 1;
+      }
+    }
+  }
+
+  &--withoutFootsteps {
+    @include tablet {
+      padding-top: 56px;
+      padding-bottom: 56px;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    @include desktop {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    @include desktop-xl {
+      padding-top: 88px;
+      padding-bottom: 88px;
+    }
   }
 }
