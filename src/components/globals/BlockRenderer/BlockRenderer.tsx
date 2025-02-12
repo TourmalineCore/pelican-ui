@@ -4,11 +4,12 @@ import {
   GlobalComponentProps,
   HeroComponentProps,
   TextAndMediaComponentProps,
-  ServicesComponentProps,
+  CardsComponentProps,
   ContactZooPreviewComponentProps,
   MapComponentProps,
   TicketsComponentProps,
   NotFoundComponentProps,
+  ServicesComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 
@@ -77,6 +78,7 @@ const NotFound = dynamic(
 
 type Block = HeroComponentProps
   | TextAndMediaComponentProps
+  | CardsComponentProps
   | ServicesComponentProps
   | ContactZooPreviewComponentProps
   | MapComponentProps
@@ -132,7 +134,7 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.SERVICES) {
+  if (block.__component === BlockTypes.HOME_SERVICES) {
     return (
       <Services
         title={block.title}

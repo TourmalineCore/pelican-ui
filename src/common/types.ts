@@ -81,18 +81,17 @@ export type TextAndMediaComponentProps = {
   },
 };
 
-export type ServicesComponentProps = {
-  id: number,
-  __component: BlockTypes.SERVICES,
-  title: string,
-  cards: ServicesCardProps[],
+export type ServicesComponentProps = Omit<CardsComponentProps, '__component'> & {
+  __component: BlockTypes.HOME_SERVICES
   phoneText: string,
   emailText: string,
 };
 
-export type ServicesCardProps = CardProps & {
-  description: string,
-  labels: string[],
+export type CardsComponentProps = {
+  id: number,
+  __component: BlockTypes.SHARED_CARDS,
+  title: string,
+  cards: CardProps[],
 };
 
 export type CardProps = {
@@ -100,6 +99,8 @@ export type CardProps = {
   image: Image,
   title: string,
   description?: string,
+  link?: string,
+  labels?: string[]
 };
 
 export type ContactZooPreviewComponentProps = {

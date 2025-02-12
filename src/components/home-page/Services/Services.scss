@@ -1,68 +1,5 @@
 .services {
-  padding-top: 52px;
-  padding-bottom: 52px;
-
-  &__title {
-    @include h1-text;
-
-    margin-bottom: 24px;
-    color: $color-black-75;
-
-    @include desktop {
-      margin-bottom: 32px;
-    }
-
-    @include desktop-xl {
-      margin-bottom: 48px;
-    }
-  }
-
-  &__cards {
-    display: grid;
-    gap: 12px;
-
-    @include tablet {
-      gap: 16px;
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include desktop {
-      gap: 24px;
-      grid-template-columns: repeat(3, minmax(413px, 617px));
-    }
-
-    @include desktop-xl {
-      gap: 32px;
-    }
-  }
-
-  &__info-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    @include tablet {
-      flex-direction: row;
-      gap: 16px;
-      grid-column: span 2;
-    }
-
-    @include desktop {
-      gap: 24px;
-    }
-
-    @include desktop {
-      gap: 32px;
-    }
-  }
-
-  &__phone-link,
-  &__email-link {
-    flex-basis: 50%;
-  }
-
-  &__phone-button,
-  &__email-button {
+  &__button {
     @include caption-1-medium;
 
     justify-content: flex-start;
@@ -89,24 +26,5 @@
     @include desktop-xl {
       @include body-2-medium;
     }
-  }
-
-  @include tablet {
-    padding-top: 56px;
-    padding-bottom: 56px;
-  }
-
-  @include tablet-xl {
-    padding-bottom: 28px;
-  }
-
-  @include desktop {
-    padding-top: 64px;
-    padding-bottom: 64px;
-  }
-
-  @include desktop-xl {
-    padding-top: 88px;
-    padding-bottom: 88px;
   }
 }

@@ -7,7 +7,7 @@ import { BlockTypes } from "../../../enum";
 
 export const MOCK_SERVICES: ServicesComponentProps = {
   id: 3,
-  __component: BlockTypes.SERVICES,
+  __component: BlockTypes.HOME_SERVICES,
   title: `Наши услуги`,
   phoneText: `Уточнить вопросы можно\nпо телефону:`,
   emailText: `Запись осуществляется\nпо почте:`,

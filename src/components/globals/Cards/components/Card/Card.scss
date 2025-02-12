@@ -10,7 +10,7 @@
     }
 
     @include desktop {
-      &--news {
+      &--link {
         transition: all 0.2s ease-in;
 
         &:focus,
@@ -103,49 +103,31 @@
   }
 
   &__title {
+    @include body-1-medium;
+
     margin-bottom: 8px;
     color: $color-black-75;
+
+    @include tablet-xl {
+      @include body-2-medium;
+    }
 
     @include desktop-xl {
       margin-bottom: 16px;
     }
-
-    &--services {
-      @include h2-text;
-    }
-
-    &--news {
-      @include body-1-medium;
-
-      @include tablet-xl {
-        @include body-2-medium;
-      }
-    }
   }
 
   &__description {
-    &--services {
-      @include caption-2-regular;
+    @include caption-1-regular;
 
-      color: $color-black-75;
+    color: $color-black-60;
 
-      @include tablet-xl {
-        @include text-regular;
-      }
+    @include tablet-xl {
+      @include text-regular;
     }
 
-    &--news {
+    @include desktop-xl {
       @include caption-1-regular;
-
-      color: $color-black-60;
-
-      @include tablet-xl {
-        @include text-regular;
-      }
-
-      @include desktop-xl {
-        @include caption-1-regular;
-      }
     }
   }
 }

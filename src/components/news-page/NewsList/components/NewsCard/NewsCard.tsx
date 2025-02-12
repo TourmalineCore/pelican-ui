@@ -1,5 +1,6 @@
+import { AppRoute } from "@/src/common/enum";
 import { CardProps } from "@/src/common/types";
-import { Card } from "@/src/components/globals/Card/Card";
+import { Card } from "@/src/components/globals/Cards/components/Card/Card";
 
 export function NewsCard({
   id,
@@ -14,11 +15,10 @@ export function NewsCard({
 }) {
   return (
     <Card
-      id={id}
       image={image}
       title={title}
       description={description}
-      isNews
+      link={`${AppRoute.NEWS}/${id}`}
       dataTestId={dataTestId}
       className={`news-card ${className}`}
     />
