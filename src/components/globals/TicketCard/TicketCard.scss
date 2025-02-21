@@ -172,23 +172,7 @@
 
   &--general {
     position: relative;
-    background-image: url("../../../../public/images/tickets/bg-leopard-green.png");
     cursor: pointer;
-
-    @include tablet {
-      background-image:
-        url("../../../../public/images/tickets/bg-leopard-brown.png"),
-        url("../../../../public/images/tickets/bg-leopard-green.png");
-    }
-
-    @include tablet-xl {
-      transition: background-image ease-out 0.4s;
-
-      &:has(a:hover),
-      &:has(a:focus) {
-        background-image: url("../../../../public/images/tickets/bg-leopard-green.png");
-      }
-    }
   }
 
   &--subsidized {
@@ -211,9 +195,21 @@
 
   &--bg-green {
     background-image: url("../../../../public/images/tickets/bg-leopard-green.png");
+    transition: background-image ease-out 0.4s;
+
+    &:hover,
+    &:has(a:focus) {
+      background-image: url("../../../../public/images/tickets/bg-leopard-brown.png");
+    }
   }
 
   &--bg-brown {
     background-image: url("../../../../public/images/tickets/bg-leopard-brown.png");
+    transition: background-image ease-out 0.4s;
+
+    &:hover,
+    &:has(a:focus) {
+      background-image: url("../../../../public/images/tickets/bg-leopard-green.png");
+    }
   }
 }

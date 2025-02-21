@@ -1,27 +1,22 @@
-import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { TicketsComponentProps } from "@/src/common/types";
 import Link from "next/link";
-import { Button } from "../../globals/Button/Button";
 import { TicketCard } from "../../globals/TicketCard/TicketCard";
 
 export function HomepageTickets({
   generalTicketsTitle,
+  generalTickets,
   generalTicketsLink,
   subsidizedTicketsTitle,
-  generalTickets,
+  subsidizedTicketsDescription,
   subsidizedTickets,
-  subsidizedTicketsSubtitle,
+  subsidizedTicketsLink,
 }: Omit<TicketsComponentProps, 'id' | '__component'>) {
   const {
     isTablet,
     isMobile,
     isTabletXl,
   } = useWindowWidth();
-
-  const {
-    handleTicketPopupToggle,
-  } = useTicketPopup();
 
   return (
     <div
@@ -46,31 +41,34 @@ export function HomepageTickets({
               ))}
               {isTablet && !isTabletXl && (
                 <li className="tickets__item tickets__item--button">
-                  <Button
-                    className="tickets__ticket-button"
-                    theme="primary"
-                    onClick={handleTicketPopupToggle}
+                  <Link
+                    href={generalTicketsLink}
+                    className="tickets__ticket-button button button--primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid="tickets-buy-button"
                   >
                     Купить билет
-                  </Button>
+                  </Link>
                 </li>
               )}
             </ul>
             {isMobile && (
-              <Button
-                className="tickets__ticket-button"
-                theme="primary"
-                onClick={handleTicketPopupToggle}
+              <Link
+                href={generalTicketsLink}
+                className="tickets__ticket-button button button--primary"
+                target="_blank"
+                rel="noopener noreferrer"
                 data-testid="tickets-buy-button"
               >
                 Купить билет
-              </Button>
+              </Link>
             )}
           </div>
           <div className="tickets__group">
             <div className="tickets__head">
               <h2 className="tickets__title">{subsidizedTicketsTitle}</h2>
-              <p className="tickets__subtitle">{subsidizedTicketsSubtitle}</p>
+              <p className="tickets__description">{subsidizedTicketsDescription}</p>
             </div>
             <ul className="tickets__list">
               {subsidizedTickets?.map((el) => (
@@ -88,8 +86,7 @@ export function HomepageTickets({
                       С остальными льготными категориями вы можете ознакомиться
                       <Link
                         className="tickets__link text-link"
-                        // TODO: Remove when the page appears
-                        href="https://vk.com/topic-71671982_48253263"
+                        href={subsidizedTicketsLink}
                         aria-label="Перейти на страницу со списком льгот"
                         data-testid="tickets-discounts-link"
                         target="_blank"
@@ -106,8 +103,7 @@ export function HomepageTickets({
               isMobile
              && (
                <Link
-                 // TODO: Remove when the page appears
-                 href="https://vk.com/topic-71671982_48253263"
+                 href={subsidizedTicketsLink}
                  className="tickets__ticket-button button button--primary"
                  data-testid="tickets-all-discounts"
                  target="_blank"

@@ -20,7 +20,7 @@ export enum BlockTypes {
   SHARED_TICKETS = `shared.tickets`,
   HOME_SERVICES = `home.services`,
   SHARED_IMAGE_WITH_BUTTON_GRID = `shared.image-with-button-grid`,
-  TICKETS = `home.tickets`,
+  HOME_TICKETS = `home.tickets`,
   HOME_MAP = `home.map-card`,
   SHARED_TEXT_AND_MEDIA = `shared.text-and-media`,
   NOT_FOUND = `not-found.not-found`,
