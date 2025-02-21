@@ -92,7 +92,7 @@ export async function getServerSideProps() {
       documentsCategoriesResponse.data!
         .map(async (documentsCategoriesItem) => {
           const documentsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
-            documentId: documentsCategoriesItem.documentId!,
+            categoryDocumentId: documentsCategoriesItem.documentId!,
             ...((documentsCategoriesItem?.hasTabs) && {
               yearLessThanOrEqual: currentYear,
               yearGreaterThanOrEqual: currentYear - 2,
@@ -102,7 +102,8 @@ export async function getServerSideProps() {
 
           if (documentsResponse.meta?.pagination?.total) {
             return ({
-              id: documentsCategoriesItem.documentId!,
+              id: documentsCategoriesItem.id!,
+              slug: documentsCategoriesItem.slug!,
               title: documentsCategoriesItem!.title,
               pageUrl: `documents`,
             });

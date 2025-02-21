@@ -4,12 +4,12 @@ import { IconArrow } from "./components/IconArrow/IconArrow";
 
 export function Category({
   className,
-  id,
+  slug,
   pageUrl,
   title,
 }: {
   className: string,
-  id: CategoryProps['id'],
+  slug: CategoryProps['slug'],
   pageUrl: CategoryProps['pageUrl'],
   title: CategoryProps['title'],
 }) {
@@ -18,7 +18,7 @@ export function Category({
       <Link
         className="category__wrapper"
         href={{
-          pathname: `${pageUrl}/${id}`,
+          pathname: `${pageUrl}/${slug}`,
         }}
         aria-label={`Перейти на страницу категории ${title}`}
         data-testid="category"

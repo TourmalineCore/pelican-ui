@@ -1,6 +1,7 @@
 /* eslint-disable no-await-in-loop */
 import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
+import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`CategoriesListComponentTests`, () => {
@@ -43,10 +44,10 @@ async function routeTest({
     .nth(0)
     .click();
 
-  await page.waitForURL(`**${AppRoute.DOCUMENTS}/1`);
+  await page.waitForURL(`**${AppRoute.DOCUMENTS}/${MOCK_DOCUMENTS_CATEGORIES[0].slug}`);
 
   expect(page.url())
-    .toBe(`http://localhost:3000${AppRoute.DOCUMENTS}/1`);
+    .toBe(`http://localhost:3000${AppRoute.DOCUMENTS}/${MOCK_DOCUMENTS_CATEGORIES[0].slug}`);
 
   await page.goBack();
 

@@ -8,7 +8,7 @@ test.describe(`NewsSliderComponentTest`, () => {
   }) => {
     await gotoPage({
       page,
-      url: `${AppRoute.NEWS}/1`,
+      url: `${AppRoute.NEWS}/priglashaem-na-vstrechu-s-sotrudnikom-zooparka`,
     });
 
     await hideHeader({
@@ -39,7 +39,7 @@ async function navigationTest({
     .click();
 
   await expect(page)
-    .toHaveURL(`${AppRoute.NEWS}/0`);
+    .toHaveURL(`${AppRoute.NEWS}/amurskii-tigr-i-kakie-u-nego-yest-problemi`);
 }
 
 async function mobileTest({

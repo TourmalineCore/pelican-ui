@@ -1,6 +1,6 @@
 /* eslint-disable @stylistic/max-len */
-import amurTigerImage from "@/public/images/news/amur-tiger.png";
 import employeeImage from "@/public/images/news/employee.png";
+import amurTigerImage from "@/public/images/news/amur-tiger.png";
 import sanitaryDayImage from "@/public/images/news/sanitary-day.png";
 import winterModeImage from "@/public/images/news/winter-mode.png";
 import vacancyImage from "@/public/images/news/vacancy.png";
@@ -19,6 +19,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
       alternativeText: `Фотография амурского тигра`,
     },
     title: `Амурский тигр\u00A0и\u00A0какие у\u00A0него есть проблемы`,
+    slug: `amurskii-tigr-i-kakie-u-nego-yest-problemi`,
     publishedAt: new Date(`09.29.2024`)
       .toJSON(),
     description: `Сегодня на Дальнем Востоке, да\u00A0и\u00A0во\u00A0всей России, отмечают День тигра.`,
@@ -47,6 +48,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
       alternativeText: `Фотография рычащего льва`,
     },
     title: `Приглашаем на встречу с\u00A0сотрудником зоопарка`,
+    slug: `priglashaem-na-vstrechu-s-sotrudnikom-zooparka`,
     description: `Завтра празднуется два замечательных праздника, которые напрямую связаны с зоопарком...`,
     publishedAt: new Date(`10.03.24`)
       .toJSON(),
@@ -65,6 +67,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
       alternativeText: `Фотография леопарда`,
     },
     title: `30 сентября — санитарный день`,
+    slug: `30-sentyabrya-sanitarnii-den`,
     description: `Завтра, 30 сентября, Челябинский зоопарк ЗАКРЫТ на санитарный день.`,
     publishedAt: STATIC_DATE,
     innerContent: ``,
@@ -76,6 +79,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
       alternativeText: `Фотография лося`,
     },
     title: `Переходим на зимний режим`,
+    slug: `perekhodim-na-zimnii-rezhim`,
     description: `Внимание! С 1 октября зоопарк переходит на зимний режим работы!`,
     publishedAt: STATIC_DATE,
     innerContent: ``,
@@ -87,6 +91,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
       alternativeText: `Фотография убирающегося сотрудника`,
     },
     title: `Вакансия`,
+    slug: `vakansiya`,
     description: `Открыта вакансия уборщика территории.`,
     publishedAt: STATIC_DATE,
     innerContent: ``,
@@ -98,6 +103,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
       alternativeText: `Фотография рычащего льва`,
     },
     title: `Приглашаем на День рождения зоопарка`,
+    slug: `priglashaem-na-den-rozhdeniya-zooparka`,
     description: `14 сентября будем праздновать День рождения зоопарка.Приглашаем...`,
     publishedAt: STATIC_DATE,
     innerContent: ``,
@@ -109,6 +115,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
       alternativeText: `Фотография женщины с альпакой`,
     },
     title: `Всемирный день альпака`,
+    slug: `vsemirnii-den-alpaka`,
     description: `10 сентября отмечается день альпака.`,
     publishedAt: STATIC_DATE,
     innerContent: ``,

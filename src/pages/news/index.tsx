@@ -63,7 +63,11 @@ export async function getServerSideProps({
 
   const queryParams = {
     populate: [`image`],
-    fields: [`title`, `description`],
+    fields: [
+      `title`,
+      `description`,
+      `slug`,
+    ],
     sort: {
       publishedAt: `desc`,
     },
@@ -76,7 +80,8 @@ export async function getServerSideProps({
     const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
 
     const news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[] = newsResponse.data!.map((newsItem) => ({
-      id: newsItem.documentId!,
+      id: newsItem.id!,
+      slug: newsItem.slug!,
       image: {
         url: newsItem.image.url!,
         alternativeText: newsItem.image.alternativeText || ``,

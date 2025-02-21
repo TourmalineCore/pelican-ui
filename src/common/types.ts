@@ -198,6 +198,7 @@ export type NewsPageProps = {
 };
 
 export type NewsArticleProps = CardProps & {
+  slug: string;
   publishedAt?: string;
   innerContent: string;
   date?: string;
@@ -219,6 +220,7 @@ export type DocumentsTabsProps = {
 
 export type CategoryProps = {
   id: string | number,
+  slug: string,
   title: string,
   pageUrl: string,
   hasTabs: boolean,

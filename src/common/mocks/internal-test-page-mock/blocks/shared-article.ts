@@ -11,6 +11,7 @@ export const MOCK_SHARED_ARTICLE: ArticleComponentProps = {
     alternativeText: `Фотография рычащего льва`,
   },
   title: `Приглашаем на встречу с\u00A0сотрудником зоопарка`,
+  slug: `priglashaem-na-vstrechu-s-sotrudnikom-zooparka`,
   description: `Завтра празднуется два замечательных праздника, которые напрямую связаны с зоопарком...`,
   publishedAt: new Date(`10.03.24`)
     .toJSON(),

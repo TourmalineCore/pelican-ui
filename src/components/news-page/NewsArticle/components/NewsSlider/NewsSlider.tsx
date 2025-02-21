@@ -10,7 +10,7 @@ import 'glider-js/glider.min.css';
 export function NewsSlider({
   news,
 }: {
-  news: Pick<NewsArticleProps, 'id' | 'description' | 'title'>[]
+  news: Pick<NewsArticleProps, 'id' | 'description' | 'title' | 'slug'>[]
 }) {
   const gliderRef = useRef <GliderMethods>(null);
   const prevButtonRef = useRef<HTMLButtonElement>(null);
@@ -55,7 +55,7 @@ export function NewsSlider({
           {news.map((newsItem) => (
             <NewsSliderCard
               key={newsItem.id}
-              id={newsItem.id}
+              slug={newsItem.slug}
               title={newsItem.title}
               description={newsItem.description}
             />

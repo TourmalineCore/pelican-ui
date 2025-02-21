@@ -737,6 +737,7 @@ export interface Document {
     documentId?: string;
     title?: string;
     hasTabs?: boolean;
+    slug?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -867,6 +868,7 @@ export interface DocumentsCategoryRequest {
   data: {
     title: string;
     hasTabs?: boolean;
+    slug?: string;
     locale?: string;
     localizations?: (number | string)[];
   };
@@ -891,6 +893,7 @@ export interface DocumentsCategory {
   documentId?: string;
   title: string;
   hasTabs?: boolean;
+  slug?: string;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
@@ -1002,6 +1005,7 @@ export interface DocumentsCategory {
     documentId?: string;
     title?: string;
     hasTabs?: boolean;
+    slug?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -1091,14 +1095,14 @@ export interface Home {
   localizations?: {
     id?: number;
     documentId?: string;
-    blocks?: AbstractNull1 &
+    blocks?: InternalNull1 &
       (
-        | AbstractNull1ComponentMapping<"shared.hero", SharedHeroComponent>
-        | AbstractNull1ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
-        | AbstractNull1ComponentMapping<"home.services", HomeServicesComponent>
-        | AbstractNull1ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
-        | AbstractNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
-        | AbstractNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
+        | InternalNull1ComponentMapping<"shared.hero", SharedHeroComponent>
+        | InternalNull1ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+        | InternalNull1ComponentMapping<"home.services", HomeServicesComponent>
+        | InternalNull1ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
+        | InternalNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
+        | InternalNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
       );
     seo?: SharedSeoComponent;
     /** @format date-time */
@@ -1280,6 +1284,7 @@ export interface NewsCollectionRequest {
     /** @example "string or id" */
     image: number | string;
     innerContent: string;
+    slug?: string;
     locale?: string;
     localizations?: (number | string)[];
   };
@@ -1520,6 +1525,7 @@ export interface NewsCollection {
     }[];
   };
   innerContent: string;
+  slug?: string;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
@@ -1588,6 +1594,7 @@ export interface NewsCollection {
       }[];
     };
     innerContent?: string;
+    slug?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -1674,7 +1681,7 @@ type PolymorphNullComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type AbstractNull1 = (
+type InternalNull1 = (
   | SharedHeroComponent
   | SharedTextAndMediaComponent
   | HomeServicesComponent
@@ -1683,6 +1690,6 @@ type AbstractNull1 = (
   | HomeTicketsComponent
 )[];
 
-type AbstractNull1ComponentMapping<Key, Type> = {
+type InternalNull1ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;

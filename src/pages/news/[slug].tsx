@@ -4,14 +4,14 @@ import { api } from "@/src/common/utils/HttpClient";
 import { Article } from "@/src/components/globals/Article/Article";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import Head from "next/head";
-import { NewsCollectionListResponse, NewsCollection } from '@/src/common/api-types';
+import { NewsCollectionListResponse } from '@/src/common/api-types';
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
 import { NewsArticleProps } from '@/src/common/types';
 
 const NEWS_SLIDER_LIMIT = 4;
 
 type SingleNewsProps = Pick<NewsArticleProps, 'innerContent' | 'publishedAt' | 'title'>;
-type OtherNewsProps = Pick<NewsArticleProps, 'id' | 'description' | 'title'>[];
+type OtherNewsProps = Pick<NewsArticleProps, 'id' | 'description' | 'title' | 'slug'>[];
 
 export default function News({
   news,
@@ -50,13 +50,14 @@ export async function getServerSideProps({
   query,
 }: {
   query: {
-    id: string
+    slug: string
   }
 }) {
   if (process.env.APP_ENV === `static`) {
-    const otherNews = MOCK_NEWS.filter((news) => news.id !== +query.id)
+    const otherNews = MOCK_NEWS.filter((news) => news.slug !== query.slug)
       .map((news) => ({
         id: news.id,
+        slug: news.slug,
         title: news.title,
         description: news.description || null,
       }))
@@ -65,8 +66,8 @@ export async function getServerSideProps({
     return {
       props: {
         news: MOCK_NEWS.find(({
-          id,
-        }) => id === +query.id) || null,
+          slug,
+        }) => slug === query.slug) || null,
         otherNews,
       },
     };
@@ -78,16 +79,25 @@ export async function getServerSideProps({
       `innerContent`,
       `publishedAt`,
     ],
+    filters: {
+      slug: {
+        $eq: query.slug,
+      },
+    },
   };
 
   const otherNewsQueryParams = {
-    fields: [`title`, `description`],
+    fields: [
+      `title`,
+      `description`,
+      `slug`,
+    ],
     sort: {
       publishedAt: `desc`,
     },
     filters: {
-      documentId: {
-        $ne: query.id,
+      slug: {
+        $ne: query.slug,
       },
     },
     pagination: {
@@ -96,18 +106,19 @@ export async function getServerSideProps({
   };
 
   try {
-    const newsResponse = await api.get<NewsCollection>(`/news/${query.id}?${qs.stringify(newsQueryParams)}`);
+    const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(newsQueryParams)}`);
 
     const news: SingleNewsProps = {
-      title: newsResponse.data.title!,
-      innerContent: newsResponse.data.innerContent!,
-      publishedAt: newsResponse.data?.publishedAt,
+      title: newsResponse.data![0].title!,
+      innerContent: newsResponse.data![0].innerContent!,
+      publishedAt: newsResponse.data![0]?.publishedAt,
     };
 
     const otherNewsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(otherNewsQueryParams)}`);
 
     const otherNews: OtherNewsProps = otherNewsResponse.data!.map((otherNewsItem) => ({
-      id: otherNewsItem.documentId!,
+      id: otherNewsItem.id!,
+      slug: otherNewsItem.slug!,
       title: otherNewsItem!.title,
       description: otherNewsItem?.description,
     }));

@@ -1,10 +1,10 @@
 export function getDocumentsQueryParams({
-  documentId,
+  categoryDocumentId,
   yearLessThanOrEqual,
   yearGreaterThanOrEqual,
   pageSize = 100,
 }: {
-  documentId: string,
+  categoryDocumentId: string,
   yearLessThanOrEqual?: number,
   yearGreaterThanOrEqual?: number,
   pageSize?: number,
@@ -20,7 +20,7 @@ export function getDocumentsQueryParams({
       }),
       category: {
         documentId: {
-          $eq: documentId,
+          $eq: categoryDocumentId,
         },
       },
     },

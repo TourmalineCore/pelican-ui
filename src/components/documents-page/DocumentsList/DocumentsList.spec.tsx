@@ -1,5 +1,6 @@
 import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
 import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`DocumentsListComponentTests`, () => {
@@ -8,7 +9,7 @@ test.describe(`DocumentsListComponentTests`, () => {
   }) => {
     await gotoPage({
       page,
-      url: `${AppRoute.DOCUMENTS}/1`,
+      url: `${AppRoute.DOCUMENTS}/${MOCK_DOCUMENTS_CATEGORIES[0].slug}`,
     });
 
     await hideHeader({

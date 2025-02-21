@@ -38,7 +38,6 @@ export default function DocumentsCategories({
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   if (!category) {
     return <NotFound />;
   }
@@ -66,7 +65,7 @@ export async function getServerSideProps({
   query,
 }: {
   query: {
-    id: string,
+    slug: string,
     year: string,
   }
 }) {
@@ -74,17 +73,19 @@ export async function getServerSideProps({
     .year();
 
   if (process.env.APP_ENV === `static`) {
-    if (!MOCK_DOCUMENTS_CATEGORIES.find((item) => item.id === +query.id)?.hasTabs) {
+    const documentCategory = MOCK_DOCUMENTS_CATEGORIES.find(({
+      slug,
+    }) => slug === query.slug) || null;
+
+    if (!documentCategory?.hasTabs) {
       return {
         props: {
-          category: MOCK_DOCUMENTS_CATEGORIES.find(({
-            id,
-          }) => id === +query.id) || null,
+          category: documentCategory,
           queryYear: query.year || null,
           availableYears: [],
           documents: MOCK_DOCUMENTS.filter(({
             category,
-          }) => category.id === +query.id),
+          }) => category.id === documentCategory?.id),
         },
       };
     }
@@ -100,7 +101,7 @@ export async function getServerSideProps({
           date,
           category,
         }) => {
-          const isCategory = category.id === +query.id;
+          const isCategory = category.id === documentCategory?.id;
           const isYear = date.split(`-`)[0] === String(year);
 
           return isCategory && isYear;
@@ -124,7 +125,7 @@ export async function getServerSideProps({
       date,
       category,
     }) => {
-      const isCategory = category.id === +query.id;
+      const isCategory = category.id === documentCategory.id;
       const isYear = date.split(`-`)[0] === (query.year || lastYear);
 
       return isCategory && isYear;
@@ -132,9 +133,7 @@ export async function getServerSideProps({
 
     return {
       props: {
-        category: MOCK_DOCUMENTS_CATEGORIES.find(({
-          id,
-        }) => id === +query.id) || null,
+        category: documentCategory,
         queryYear: query.year || lastYear,
         availableYears,
         documents: filteredDocuments,
@@ -143,8 +142,7 @@ export async function getServerSideProps({
   }
 
   try {
-    const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?filters[documentId][$eq]=${query.id}`);
-
+    const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?filters[slug][$eq]=${query.slug}`);
     const availableYears: number[] = [];
 
     await Promise.all(
@@ -154,7 +152,7 @@ export async function getServerSideProps({
         .map(async (_, i) => {
           const year = currentYear - i;
           const yearsResponse: DocumentListResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
-            documentId: query.id,
+            categoryDocumentId: categoryResponse.data![0].documentId!,
             ...((categoryResponse.data![0]!.hasTabs) && {
               yearLessThanOrEqual: year,
               yearGreaterThanOrEqual: year,
@@ -184,13 +182,13 @@ export async function getServerSideProps({
 
     if (categoryResponse.data![0]!.hasTabs) {
       documentsResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
-        documentId: query.id,
+        categoryDocumentId: categoryResponse.data![0].documentId!,
         yearLessThanOrEqual: +query.year || lastYear,
         yearGreaterThanOrEqual: +query.year || lastYear,
       }))}`);
     } else {
       documentsResponse = await api.get(`/documents?${qs.stringify(getDocumentsQueryParams({
-        documentId: query.id,
+        categoryDocumentId: categoryResponse.data![0].documentId!,
       }))}`);
     }
 
@@ -209,14 +207,14 @@ export async function getServerSideProps({
           ext: file.ext!,
         })),
         category: {
-          id: documentsItem!.category.id!,
+          id: documentsItem!.category.documentId!,
         },
       }));
 
     return {
       props: {
         category: {
-          id: categoryResponse.data![0].id,
+          id: categoryResponse.data![0].documentId,
           title: categoryResponse.data![0].title,
           hasTabs: categoryResponse.data![0].hasTabs,
         },

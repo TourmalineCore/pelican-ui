@@ -14,12 +14,13 @@ export function Categories({
       <ul className="categories__list">
         {categories.map(({
           id,
+          slug,
           pageUrl,
           title,
         }) => (
           <Category
             key={id}
-            id={id}
+            slug={slug}
             className="categories__item"
             data-testid="category"
             pageUrl={pageUrl}

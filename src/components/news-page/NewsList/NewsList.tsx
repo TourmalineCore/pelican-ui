@@ -37,7 +37,7 @@ export function NewsList({
       title={newsTitle}
       cards={news.map((newsItem) => ({
         ...newsItem,
-        link: `${AppRoute.NEWS}/${newsItem.id}`,
+        link: `${AppRoute.NEWS}/${newsItem.slug}`,
       }))}
     >
       {isPaginationAvailable && (
