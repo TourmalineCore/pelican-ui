@@ -2,9 +2,7 @@ import qs from "qs";
 import { AppRoute } from "../enum";
 import { api } from "./HttpClient";
 import { mapContractByBlock } from "./mapContractByBlock";
-import { MOCK_TICKETS } from "../mocks/home-page-mock/blocks/tickets-mock";
 import { MOCK_NOT_FOUND_PAGE } from "../mocks/not-found-page-mock/not-found-page-mock";
-import { MOCK_CONTACT_ZOO_TICKETS } from "../mocks/contact-zoo-page-mock/blocks/tickets-mock";
 import { PageData } from "../types";
 
 export async function getPageData({
@@ -29,9 +27,10 @@ export async function getPageData({
           `blocks.button`,
           `blocks.largeImage`,
           `blocks.smallImage`,
+          `blocks.generalTickets`,
+          `blocks.subsidizedTickets.ticketsList`,
           `seo`,
         ],
-        staticBlocks: [MOCK_TICKETS],
       });
 
     case AppRoute.CONTACT_ZOO:
@@ -43,9 +42,9 @@ export async function getPageData({
           `blocks.scheduleCard.timetable`,
           `blocks.image`,
           `blocks.media`,
+          `blocks.subsidizedTickets`,
           `seo`,
         ],
-        staticBlocks: [MOCK_CONTACT_ZOO_TICKETS],
       });
 
     default:
@@ -56,12 +55,9 @@ export async function getPageData({
 async function getData({
   slug,
   populate,
-  // Todo: remove it when the CMS integration is completed
-  staticBlocks,
 }: {
-  slug: string;
-  populate: string[];
-  staticBlocks: object[]
+  slug: string,
+  populate: string[],
 }) {
   const pageResponse: PageData = await api.get(`/${slug}?${qs.stringify({
     populate,
@@ -72,7 +68,7 @@ async function getData({
   })));
 
   return {
-    blocks: [...blocks, ...staticBlocks],
+    blocks,
     ...(pageResponse.data.seo && {
       seo: {
         metaTitle: pageResponse.data?.seo.metaTitle,

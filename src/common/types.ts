@@ -163,7 +163,7 @@ export type SharedTicketsComponentProps = {
   id: number
   __component: BlockTypes.SHARED_TICKETS,
   title: string,
-  subtitle?: string,
+  description?: string,
   link?: string,
   tickets: Ticket[],
   note?: string,
@@ -171,14 +171,14 @@ export type SharedTicketsComponentProps = {
 
 export type TicketsComponentProps = {
   id: number
-  __component: BlockTypes.TICKETS,
+  __component: BlockTypes.HOME_TICKETS,
   generalTicketsTitle: string,
-  generalTicketsSubtitle?: string,
-  generalTicketsLink?: string,
-  subsidizedTicketsTitle?: string,
-  subsidizedTicketsSubtitle?: string,
   generalTickets: Ticket[],
-  subsidizedTickets?: Ticket[],
+  generalTicketsLink: string,
+  subsidizedTicketsTitle: string,
+  subsidizedTicketsDescription?: string,
+  subsidizedTickets: Ticket[],
+  subsidizedTicketsLink: string,
   isInternalPage?: boolean,
   contactZooNote?: string,
 };

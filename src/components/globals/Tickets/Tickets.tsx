@@ -5,7 +5,7 @@ import { MarkdownText } from "../MarkdownText/MarkdownText";
 
 export function Tickets({
   title,
-  subtitle,
+  description,
   link,
   tickets,
   note,
@@ -25,7 +25,7 @@ export function Tickets({
           <div className="tickets__group">
             <div className="tickets__head">
               <h2 className="tickets__title">{title}</h2>
-              {subtitle && <p className="tickets__subtitle">{subtitle}</p>}
+              {description && <p className="tickets__description">{description}</p>}
             </div>
             <ul className="tickets__list">
               {tickets.map((el) => (

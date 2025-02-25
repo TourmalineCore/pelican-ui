@@ -23,8 +23,8 @@ export function TicketCard({
         {
           'ticket-card--general': isGeneral,
           'ticket-card--subsidized': isSubsidized,
-          'ticket-card--bg-green': ticket.theme === `Зелёный`,
-          'ticket-card--bg-brown': ticket.theme === `Коричневый`,
+          'ticket-card--bg-green': ticket.theme === `Зелёный` && !isSubsidized,
+          'ticket-card--bg-brown': ticket.theme === `Коричневый` && !isSubsidized,
         },
       )}
     >

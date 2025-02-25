@@ -62,22 +62,22 @@
     display: flex;
     flex-direction: column;
     padding: 16px 24px;
+    padding-right: 110px;
     height: 100%;
     min-height: inherit;
-    max-width: 280px;
 
     @include tablet-xl {
-      max-width: 258px;
+      padding-right: 80px;
     }
 
     @include desktop {
       padding: 24px;
-      max-width: 330px;
+      padding-right: 110px;
     }
 
     @include desktop-xl {
       padding: 32px;
-      max-width: 460px;
+      padding-right: 155px;
     }
   }
 
@@ -86,6 +86,7 @@
 
     font-size: 20px;
     line-height: 1.4;
+    white-space: pre;
 
     @include tablet-xl {
       font-size: 18px;
@@ -172,23 +173,7 @@
 
   &--general {
     position: relative;
-    background-image: url("../../../../public/images/tickets/bg-leopard-green.png");
     cursor: pointer;
-
-    @include tablet {
-      background-image:
-        url("../../../../public/images/tickets/bg-leopard-brown.png"),
-        url("../../../../public/images/tickets/bg-leopard-green.png");
-    }
-
-    @include tablet-xl {
-      transition: background-image ease-out 0.4s;
-
-      &:has(a:hover),
-      &:has(a:focus) {
-        background-image: url("../../../../public/images/tickets/bg-leopard-green.png");
-      }
-    }
   }
 
   &--subsidized {
@@ -210,10 +195,26 @@
   }
 
   &--bg-green {
-    background-image: url("../../../../public/images/tickets/bg-leopard-green.png");
+    background-image:
+      url("../../../../public/images/tickets/bg-leopard-green.png"),
+      url("../../../../public/images/tickets/bg-leopard-brown.png");
+    transition: background-image ease-out 0.4s;
+
+    &:has(a:hover),
+    &:has(a:focus) {
+      background-image: url("../../../../public/images/tickets/bg-leopard-brown.png");
+    }
   }
 
   &--bg-brown {
-    background-image: url("../../../../public/images/tickets/bg-leopard-brown.png");
+    background-image:
+      url("../../../../public/images/tickets/bg-leopard-brown.png"),
+      url("../../../../public/images/tickets/bg-leopard-green.png");
+    transition: background-image ease-out 0.4s;
+
+    &:has(a:hover),
+    &:has(a:focus) {
+      background-image: url("../../../../public/images/tickets/bg-leopard-green.png");
+    }
   }
 }

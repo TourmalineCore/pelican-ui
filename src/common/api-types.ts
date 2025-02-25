@@ -357,7 +357,6 @@ export interface TicketsTicketComponent {
   price?: string;
   frequency?: string;
   theme?: "Зелёный" | "Коричневый";
-  link?: string;
 }
 
 export interface SharedTicketsComponent {
@@ -367,6 +366,7 @@ export interface SharedTicketsComponent {
   description?: string;
   subsidizedTickets?: TicketsTicketComponent[];
   note?: string;
+  link?: string;
 }
 
 export interface SharedMetaSocialComponent {
@@ -1274,6 +1274,7 @@ export interface HomeTicketsComponent {
   __component?: "home.tickets";
   title?: string;
   generalTickets?: TicketsTicketComponent[];
+  generalTicketsLink?: string;
   subsidizedTickets?: TicketsTicketsComponent;
 }
 

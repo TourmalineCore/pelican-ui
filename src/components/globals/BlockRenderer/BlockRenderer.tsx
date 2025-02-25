@@ -203,15 +203,16 @@ export const BlockRenderer = ({
     );
   }
 
-  if (block.__component === BlockTypes.TICKETS) {
+  if (block.__component === BlockTypes.HOME_TICKETS) {
     return (
       <HomepageTickets
         generalTicketsTitle={block.generalTicketsTitle}
+        generalTickets={block.generalTickets}
         generalTicketsLink={block.generalTicketsLink}
         subsidizedTicketsTitle={block.subsidizedTicketsTitle}
-        subsidizedTicketsSubtitle={block.subsidizedTicketsSubtitle}
-        generalTickets={block.generalTickets}
+        subsidizedTicketsDescription={block.subsidizedTicketsDescription}
         subsidizedTickets={block.subsidizedTickets}
+        subsidizedTicketsLink={block.subsidizedTicketsLink}
       />
     );
   }
@@ -220,7 +221,7 @@ export const BlockRenderer = ({
     return (
       <Tickets
         title={block.title}
-        subtitle={block.subtitle}
+        description={block.description}
         link={block.link}
         tickets={block.tickets}
         note={block.note}
