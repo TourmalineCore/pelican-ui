@@ -16,7 +16,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 0,
     image: {
       url: amurTigerImage,
-      alternativeText: `Фотография амурского тигра`,
+      alternativeText: ``,
     },
     title: `Амурский тигр\u00A0и\u00A0какие у\u00A0него есть проблемы`,
     slug: `amurskii-tigr-i-kakie-u-nego-yest-problemi`,
@@ -45,7 +45,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 1,
     image: {
       url: employeeImage,
-      alternativeText: `Фотография рычащего льва`,
+      alternativeText: ``,
     },
     title: `Приглашаем на встречу с\u00A0сотрудником зоопарка`,
     slug: `priglashaem-na-vstrechu-s-sotrudnikom-zooparka`,
@@ -64,7 +64,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 2,
     image: {
       url: sanitaryDayImage,
-      alternativeText: `Фотография леопарда`,
+      alternativeText: ``,
     },
     title: `30 сентября — санитарный день`,
     slug: `30-sentyabrya-sanitarnii-den`,
@@ -76,7 +76,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 3,
     image: {
       url: winterModeImage,
-      alternativeText: `Фотография лося`,
+      alternativeText: ``,
     },
     title: `Переходим на зимний режим`,
     slug: `perekhodim-na-zimnii-rezhim`,
@@ -88,7 +88,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 4,
     image: {
       url: vacancyImage,
-      alternativeText: `Фотография убирающегося сотрудника`,
+      alternativeText: ``,
     },
     title: `Вакансия`,
     slug: `vakansiya`,
@@ -100,7 +100,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 5,
     image: {
       url: zooDayImage,
-      alternativeText: `Фотография рычащего льва`,
+      alternativeText: ``,
     },
     title: `Приглашаем на День рождения зоопарка`,
     slug: `priglashaem-na-den-rozhdeniya-zooparka`,
@@ -112,7 +112,7 @@ export const MOCK_NEWS: NewsArticleProps[] = [
     id: 6,
     image: {
       url: alpacaDayImage,
-      alternativeText: `Фотография женщины с альпакой`,
+      alternativeText: ``,
     },
     title: `Всемирный день альпака`,
     slug: `vsemirnii-den-alpaka`,

@@ -11,6 +11,6 @@ export const MOCK_MAP: MapComponentProps = {
   note: `<p>Единственный государственный\nзоопарк на Южном Урале</p>`,
   image: {
     url: lamaImage,
-    alternativeText: `Изображение ламы`,
+    alternativeText: ``,
   },
 };

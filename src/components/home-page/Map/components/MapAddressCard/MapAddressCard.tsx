@@ -49,7 +49,7 @@ export function MapAddressCard({
                 className="map-address-card__flower"
                 src={flower}
                 unoptimized
-                alt="Изображение цветка"
+                alt=""
               />
             )}
           </div>
@@ -59,7 +59,7 @@ export function MapAddressCard({
             loading="lazy"
             className="map-address-card__flower"
             src={flower}
-            alt="Изображение цветка"
+            alt=""
           />
         )}
       </div>

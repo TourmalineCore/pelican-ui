@@ -61,6 +61,16 @@ function renderCardMarkup({
       'card__wrapper--link': isLink,
     })}
     >
+      <div className="card__info">
+        <h2 className="card__title">
+          {title}
+        </h2>
+        {description && (
+          <p className="card__description">
+            {description}
+          </p>
+        )}
+      </div>
       <div className="card__image-wrapper">
         {labels && (
           <ul className="card__labels">
@@ -83,16 +93,6 @@ function renderCardMarkup({
           sizes="(min-width: 768px) 50vw, (min-width: 1366px) 33vw, 100vw"
           alt={image.alternativeText}
         />
-      </div>
-      <div className="card__info">
-        <h2 className="card__title">
-          {title}
-        </h2>
-        {description && (
-          <p className="card__description">
-            {description}
-          </p>
-        )}
       </div>
     </div>
   );

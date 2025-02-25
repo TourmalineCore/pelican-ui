@@ -3,15 +3,15 @@ import { test } from '@playwright/test';
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { axeCheckAndWriteReport, setViewportSize } from '../helpers';
 
-test(`axeCheckUp Desktop XL`, async ({
+test(`axeCheckUp News Article Page Desktop`, async ({
   page,
 }) => {
   await setViewportSize({
     page,
-    width: Breakpoint.DESKTOP_XL,
+    width: Breakpoint.DESKTOP,
   });
 
-  await page.goto(AppRoute.HOME);
+  await page.goto(`${AppRoute.NEWS}/1`);
 
   await page.addScriptTag({
     path: require.resolve(`axe-core/axe.min.js`),
@@ -19,31 +19,11 @@ test(`axeCheckUp Desktop XL`, async ({
 
   await axeCheckAndWriteReport({
     page,
-    viewport: `desktop-xl`,
+    viewport: `desktop`,
   });
 });
 
-test(`axeCheckUp Tablet XL`, async ({
-  page,
-}) => {
-  await setViewportSize({
-    page,
-    width: Breakpoint.TABLET_XL,
-  });
-
-  await page.goto(AppRoute.HOME);
-
-  await page.addScriptTag({
-    path: require.resolve(`axe-core/axe.min.js`),
-  });
-
-  await axeCheckAndWriteReport({
-    page,
-    viewport: `tablet-xl`,
-  });
-});
-
-test(`axeCheckUp Mobile`, async ({
+test(`axeCheckUp News Article Page Mobile`, async ({
   page,
 }) => {
   await setViewportSize({
@@ -51,7 +31,7 @@ test(`axeCheckUp Mobile`, async ({
     width: Breakpoint.MOBILE,
   });
 
-  await page.goto(AppRoute.HOME);
+  await page.goto(`${AppRoute.NEWS}/1`);
 
   await page.addScriptTag({
     path: require.resolve(`axe-core/axe.min.js`),

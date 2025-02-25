@@ -20,7 +20,7 @@ export function Map({
         className="map__background-image"
         data-testid="map-image"
         src={mapBackgroundImage}
-        alt="Карта"
+        alt=""
       />
       <div className="map__inner container">
         <MapAddressCard
