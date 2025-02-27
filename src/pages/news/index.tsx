@@ -79,6 +79,7 @@ export async function getServerSideProps({
   try {
     const res = await fetch(`http://minio-s3.localhost:40110/pelican-local-env/alpaca_354f087dda.png`);
     if (!res.ok) {
+      // eslint-disable-next-line no-console
       console.log(`Ошибка`);
     }
 
