@@ -1,5 +1,5 @@
 import { CardsComponentProps } from "@/src/common/types";
-import { ReactNode } from "react";
+import { ReactNode, Ref } from "react";
 import clsx from "clsx";
 import { Card } from "./components/Card/Card";
 
@@ -10,11 +10,15 @@ export function Cards({
   dataTestId,
   children,
   childrenList,
+  firstCardRef,
+  currentPageSize,
 }: Omit<CardsComponentProps, 'id' | '__component'> & {
   children?: ReactNode
   childrenList?: ReactNode
   className?: string;
   dataTestId?: string;
+  firstCardRef?: Ref<HTMLAnchorElement>;
+  currentPageSize?: number
 }) {
   return (
     <section
@@ -26,7 +30,7 @@ export function Cards({
     >
       <h1 className="cards__title">{title}</h1>
       <ul className="cards__list">
-        {cards.map((card) => (
+        {cards.map((card, index) => (
           <Card
             key={card.id}
             className="cards__card"
@@ -36,6 +40,7 @@ export function Cards({
             description={card.description}
             labels={card.labels}
             link={card.link}
+            firstCardRef={currentPageSize === index ? firstCardRef : null}
           />
         ))}
         {childrenList}

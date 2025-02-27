@@ -2,6 +2,7 @@ import { CardProps } from "@/src/common/types";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import { Ref } from "react";
 
 export function Card({
   className,
@@ -11,9 +12,11 @@ export function Card({
   title,
   description,
   dataTestId,
+  firstCardRef,
 }: Omit<CardProps, 'id'> & {
   className: string;
   dataTestId?: string;
+  firstCardRef?: Ref<HTMLAnchorElement>
 }) {
   return (
     <li
@@ -23,6 +26,7 @@ export function Card({
       {link ? (
         <Link
           href={link}
+          ref={firstCardRef}
           tabIndex={0}
         >
           {renderCardMarkup({

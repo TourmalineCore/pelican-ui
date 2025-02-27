@@ -12,9 +12,11 @@ export default function NewsPage({
   pageData,
   news,
   totalNews,
+  pageSize,
 }: {
   pageData: NewsPageProps,
   news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[],
+  pageSize: number,
   totalNews: number,
 }) {
   if (!pageData || !news) {
@@ -39,6 +41,7 @@ export default function NewsPage({
         newsTitle={newsTitle}
         news={news}
         total={totalNews}
+        pageSize={pageSize}
       />
     </>
   );
@@ -56,6 +59,7 @@ export async function getServerSideProps({
       props: {
         pageData: MOCK_NEWS_PAGE,
         news: MOCK_NEWS.slice(0, query.pageSize || NEWS_LIMIT),
+        pageSize: +query.pageSize || NEWS_LIMIT,
         totalNews: MOCK_NEWS.length,
       },
     };
@@ -72,7 +76,7 @@ export async function getServerSideProps({
       publishedAt: `desc`,
     },
     pagination: {
-      pageSize: query.pageSize,
+      pageSize: query.pageSize || NEWS_LIMIT,
     },
   };
 
@@ -94,6 +98,7 @@ export async function getServerSideProps({
       props: {
         pageData: MOCK_NEWS_PAGE,
         news,
+        pageSize: newsResponse.meta!.pagination!.pageSize,
         totalNews: newsResponse.meta!.pagination!.total!,
       },
     };

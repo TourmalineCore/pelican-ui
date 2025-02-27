@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NewsArticleProps } from "@/src/common/types";
 import { AppRoute } from "@/src/common/enum";
 import { Cards } from "../../globals/Cards/Cards";
@@ -11,20 +11,27 @@ export function NewsList({
   newsTitle,
   news,
   total,
+  pageSize,
 }: {
   newsTitle: string,
   news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[]
   total: number;
+  pageSize: number
 }) {
-  const [pageSize, setPageSize] = useState(NEWS_LIMIT);
+  const [currentPageSize, setCurrentPageSize] = useState(pageSize);
+  const firstNewsRef = useRef<HTMLAnchorElement>(null);
   const router = useRouter();
 
   useEffect(() => {
-    router.replace({
-      query: {
-        pageSize,
-      },
-    });
+    setCurrentPageSize(pageSize);
+
+    if (firstNewsRef.current) {
+      firstNewsRef.current.focus();
+      firstNewsRef.current.scrollIntoView({
+        behavior: `smooth`,
+        block: `center`,
+      });
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageSize]);
 
@@ -39,6 +46,8 @@ export function NewsList({
         ...newsItem,
         link: `${AppRoute.NEWS}/${newsItem.slug}`,
       }))}
+      firstCardRef={firstNewsRef}
+      currentPageSize={currentPageSize}
     >
       {isPaginationAvailable && (
         <div className="news-list__button-container">
@@ -46,7 +55,7 @@ export function NewsList({
             className="news-list__button"
             data-testid="news-list-button"
             theme="primary"
-            onClick={() => setPageSize(pageSize + NEWS_LIMIT)}
+            onClick={loadMoreNews}
           >
             Загрузить ещё
           </Button>
@@ -54,4 +63,12 @@ export function NewsList({
       )}
     </Cards>
   );
+
+  function loadMoreNews() {
+    router.replace({
+      query: {
+        pageSize: currentPageSize + NEWS_LIMIT,
+      },
+    });
+  }
 }
