@@ -75,11 +75,6 @@ export async function getServerSideProps({
       pageSize: query.pageSize,
     },
   };
-  const res = await fetch(`http://minio-s3.localhost:40110/pelican-local-env/alpaca_354f087dda.png`);
-  if (!res.ok) {
-    // eslint-disable-next-line no-console
-    console.log(`Ошибка`);
-  }
 
   try {
     const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
