@@ -1,10 +1,10 @@
-import Head from 'next/head';
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
 import { useRouter } from 'next/router';
 import { ContactZooPageProps, GlobalComponentProps, HomePageProps } from '../common/types';
 import { NotFound } from '../components/not-found-page/NotFound/NotFound';
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 import { getPageData } from '../common/utils/getPageData';
+import { SeoHead } from '../components/globals/SeoHead/SeoHead';
 
 type UniversalProps = {
   globalData: GlobalComponentProps,
@@ -32,13 +32,11 @@ export default function UniversalPage({
 
   return (
     <>
-      <Head>
-        <title>{seo?.metaTitle}</title>
-        <meta
-          name={seo?.metaDescription}
-          content="Сайт зоопарка"
-        />
-      </Head>
+      <SeoHead
+        metaTitle={seo?.metaTitle || `Челябинский зоопарк`}
+        metaDescription={seo?.metaDescription}
+        metaKeywords={seo?.metaKeywords}
+      />
       {blocks.map((block) => (
         <BlockRenderer
           slug={route.asPath}

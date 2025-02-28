@@ -3,14 +3,14 @@ import { MOCK_NEWS } from "@/src/common/mocks/collections-mock/news-collection-m
 import { api } from "@/src/common/utils/HttpClient";
 import { Article } from "@/src/components/globals/Article/Article";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
-import Head from "next/head";
 import { NewsCollectionListResponse } from '@/src/common/api-types';
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
 import { NewsArticleProps } from '@/src/common/types';
+import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 
 const NEWS_SLIDER_LIMIT = 4;
 
-type SingleNewsProps = Pick<NewsArticleProps, 'innerContent' | 'publishedAt' | 'title'>;
+type SingleNewsProps = Pick<NewsArticleProps, 'innerContent' | 'publishedAt' | 'title' | 'seo'>;
 type OtherNewsProps = Pick<NewsArticleProps, 'id' | 'description' | 'title' | 'slug'>[];
 
 export default function News({
@@ -26,13 +26,11 @@ export default function News({
 
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="Сайт зоопарка"
-        />
-        <title>{news.title}</title>
-      </Head>
+      <SeoHead
+        metaTitle={news?.seo?.metaTitle || news.title}
+        metaDescription={news?.seo?.metaDescription}
+        metaKeywords={news?.seo?.metaKeywords}
+      />
       <Article
         title={news.title}
         date={news.publishedAt}
@@ -79,6 +77,7 @@ export async function getServerSideProps({
       `innerContent`,
       `publishedAt`,
     ],
+    populate: [`seo`],
     filters: {
       slug: {
         $eq: query.slug,
@@ -112,6 +111,13 @@ export async function getServerSideProps({
       title: newsResponse.data![0].title!,
       innerContent: newsResponse.data![0].innerContent!,
       publishedAt: newsResponse.data![0]?.publishedAt,
+      ...(newsResponse.data![0]?.seo && {
+        seo: {
+          metaTitle: newsResponse.data![0].seo.metaTitle!,
+          metaDescription: newsResponse.data![0].seo?.metaDescription,
+          metaKeywords: newsResponse.data![0].seo?.keywords,
+        },
+      }),
     };
 
     const otherNewsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(otherNewsQueryParams)}`);

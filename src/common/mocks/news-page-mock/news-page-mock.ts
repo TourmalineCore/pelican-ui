@@ -1,6 +1,9 @@
 import { NewsPageProps } from "../../types";
 
 export const MOCK_NEWS_PAGE: NewsPageProps = {
-  title: `Новости Челябинского зоопарка`,
+  seo: {
+    metaTitle: `Новости`,
+    metaDescription: `Описание страницы новостей`,
+  },
   newsTitle: `Новости зоопарка`,
 };

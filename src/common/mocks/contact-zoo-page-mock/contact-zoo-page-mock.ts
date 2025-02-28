@@ -5,7 +5,7 @@ import { ContactZooPageProps } from "../../types";
 export const MOCK_CONTACT_ZOO_PAGE: ContactZooPageProps = {
   seo: {
     metaTitle: `Челябинский зоопарк: контактный зоопарк`,
-    metaDescription: `Описание страниц контактного зоопарка`,
+    metaDescription: `Описание страницы контактного зоопарка`,
   },
   blocks: [MOCK_CONTACT_ZOO_HERO, MOCK_CONTACT_ZOO_TICKETS],
 };

@@ -1,12 +1,12 @@
-import Head from 'next/head';
 import qs from 'qs';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { MOCK_NEWS_PAGE } from '@/src/common/mocks/news-page-mock/news-page-mock';
 import { MOCK_NEWS } from '@/src/common/mocks/collections-mock/news-collection-mock';
 import { NEWS_LIMIT, NewsList } from '@/src/components/news-page/NewsList/NewsList';
 import { api } from '@/src/common/utils/HttpClient';
-import { NewsCollectionListResponse } from '@/src/common/api-types';
+import { NewsCollectionListResponse, NewsPageResponse } from '@/src/common/api-types';
 import { NewsPageProps, NewsArticleProps } from '@/src/common/types';
+import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 
 export default function NewsPage({
   pageData,
@@ -24,19 +24,17 @@ export default function NewsPage({
   }
 
   const {
-    title,
+    seo,
     newsTitle,
   } = pageData;
 
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="Сайт зоопарка"
-        />
-        <title>{title}</title>
-      </Head>
+      <SeoHead
+        metaTitle={seo?.metaTitle || `Новости`}
+        metaDescription={seo?.metaDescription}
+        metaKeywords={seo?.metaKeywords}
+      />
       <NewsList
         newsTitle={newsTitle}
         news={news}
@@ -81,6 +79,7 @@ export async function getServerSideProps({
   };
 
   try {
+    const newsPageResponse: NewsPageResponse = await api.get(`/news-page?populate=*`);
     const newsResponse: NewsCollectionListResponse = await api.get(`/news?${qs.stringify(queryParams)}`);
 
     const news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[] = newsResponse.data!.map((newsItem) => ({
@@ -96,7 +95,16 @@ export async function getServerSideProps({
 
     return {
       props: {
-        pageData: MOCK_NEWS_PAGE,
+        pageData: {
+          newsTitle: newsPageResponse.data?.title,
+          ...(newsPageResponse.data?.seo && {
+            seo: {
+              metaTitle: newsPageResponse.data?.seo?.metaTitle,
+              metaDescription: newsPageResponse.data?.seo?.metaDescription,
+              metaKeywords: newsPageResponse.data?.seo?.keywords,
+            },
+          }),
+        },
         news,
         pageSize: newsResponse.meta!.pagination!.pageSize,
         totalNews: newsResponse.meta!.pagination!.total!,

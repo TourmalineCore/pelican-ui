@@ -1,8 +1,7 @@
-import Head from 'next/head';
 import { NotFound } from '@/src/components/not-found-page/NotFound/NotFound';
 import { MOCK_DOCUMENTS_PAGE } from '@/src/common/mocks/documents-page-mock/documents-page-mock';
 import { api } from '@/src/common/utils/HttpClient';
-import { DocumentListResponse, DocumentsCategoryListResponse } from '@/src/common/api-types';
+import { DocumentListResponse, DocumentsCategoryListResponse, DocumentsPageResponse } from '@/src/common/api-types';
 import qs from 'qs';
 import { Categories } from '@/src/components/globals/Categories/Categories';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
@@ -10,6 +9,7 @@ import { CategoryProps, DocumentsPageProps } from '@/src/common/types';
 import { getDocumentsQueryParams } from '@/src/common/utils/getDocumentsQueryParams';
 import { MOCK_DOCUMENTS } from '@/src/common/mocks/collections-mock/documents-collection-mock';
 import dayjs from 'dayjs';
+import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 
 export default function DocumentsPage({
   pageData,
@@ -23,19 +23,17 @@ export default function DocumentsPage({
   }
 
   const {
-    pageTitle,
+    seo,
     documentsTitle,
   } = pageData;
 
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="Сайт зоопарка"
-        />
-        <title>{pageTitle}</title>
-      </Head>
+      <SeoHead
+        metaTitle={seo?.metaTitle || `Документы`}
+        metaDescription={seo?.metaDescription}
+        metaKeywords={seo?.metaKeywords}
+      />
       <Categories
         categoriesTitle={documentsTitle}
         categories={categories}
@@ -86,6 +84,8 @@ export async function getServerSideProps() {
   }
 
   try {
+    const documentsPageResponse: DocumentsPageResponse = await api.get(`/documents-page?populate=*`);
+
     const documentsCategoriesResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories`);
 
     const documentsCategories: Omit<CategoryProps, 'hasTabs'>[] = (await Promise.all(
@@ -114,7 +114,16 @@ export async function getServerSideProps() {
 
     return {
       props: {
-        pageData: MOCK_DOCUMENTS_PAGE,
+        pageData: {
+          documentsTitle: documentsPageResponse.data?.title,
+          ...(documentsPageResponse.data?.seo && {
+            seo: {
+              metaTitle: documentsPageResponse.data?.seo?.metaTitle,
+              metaDescription: documentsPageResponse.data?.seo?.metaDescription,
+              metaKeywords: documentsPageResponse.data?.seo?.keywords,
+            },
+          }),
+        },
         categories: documentsCategories,
       },
     };

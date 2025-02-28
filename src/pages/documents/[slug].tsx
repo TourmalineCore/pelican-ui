@@ -5,9 +5,9 @@ import { CategoryProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/
 import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryParams";
 import { api } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
+import { SeoHead } from "@/src/components/globals/SeoHead/SeoHead";
 import { NotFound } from "@/src/components/not-found-page/NotFound/NotFound";
 import dayjs from "dayjs";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import qs from "qs";
 import { useEffect } from "react";
@@ -38,19 +38,18 @@ export default function DocumentsCategories({
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   if (!category) {
     return <NotFound />;
   }
 
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="Сайт зоопарка"
-        />
-        <title>{category.title}</title>
-      </Head>
+      <SeoHead
+        metaTitle={category?.seo?.metaTitle || category.title}
+        metaDescription={category?.seo?.metaDescription}
+        metaKeywords={category?.seo?.metaKeywords}
+      />
       <DocumentsList
         category={category}
         availableYears={availableYears}
@@ -142,7 +141,7 @@ export async function getServerSideProps({
   }
 
   try {
-    const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?filters[slug][$eq]=${query.slug}`);
+    const categoryResponse: DocumentsCategoryListResponse = await api.get(`/documents-categories?populate=*&filters[slug][$eq]=${query.slug}`);
     const availableYears: number[] = [];
 
     await Promise.all(
@@ -217,6 +216,13 @@ export async function getServerSideProps({
           id: categoryResponse.data![0].documentId,
           title: categoryResponse.data![0].title,
           hasTabs: categoryResponse.data![0].hasTabs,
+          ...(categoryResponse.data![0]?.seo && {
+            seo: {
+              metaTitle: categoryResponse.data![0].seo.metaTitle,
+              metaDescription: categoryResponse.data![0].seo.metaDescription,
+              metaKeywords: categoryResponse.data![0]?.seo?.keywords,
+            },
+          }),
         },
         queryYear: query.year || lastYear,
         availableYears,
