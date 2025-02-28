@@ -8,7 +8,7 @@ export const HOME_MOCK_HERO: HeroComponentProps = {
   title: `Челябинский зоопарк`,
   image: {
     url: heroImage,
-    alternativeText: `Изображение львов`,
+    alternativeText: ``,
   },
   scheduleTitle: `График работы`,
   scheduleTimetables: [

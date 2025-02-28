@@ -10,11 +10,11 @@ export const MOCK_IMAGE_WITH_BUTTON_GRID: ImageWithButtonGridComponentProps = {
   description: `В этой части зоопарка вы почувствуете себя вдали от городской суеты в компании кур, гусей, коз и многих других животных.`,
   largeImage: {
     url: LargeImageSrc,
-    alternativeText: `Изображение кролика`,
+    alternativeText: ``,
   },
   smallImage: {
     url: SmallImageSrc,
-    alternativeText: `Изображение кролика`,
+    alternativeText: ``,
   },
   link: AppRoute.CONTACT_ZOO,
   label: `Подробнее`,

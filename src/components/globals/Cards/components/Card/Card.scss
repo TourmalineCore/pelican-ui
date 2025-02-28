@@ -1,5 +1,8 @@
 .card {
   &__wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: start;
     border-radius: 16px;
     height: 100%;
     box-shadow: 0 2px 16px 0 rgb(1 60 30 / 4%);

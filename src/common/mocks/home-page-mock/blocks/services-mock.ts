@@ -16,7 +16,7 @@ export const MOCK_SERVICES: ServicesComponentProps = {
       id: 0,
       image: {
         url: excursionImage,
-        alternativeText: `Фотография процесса проведения экскурсии`,
+        alternativeText: ``,
       },
       labels: [
         {
@@ -35,7 +35,7 @@ export const MOCK_SERVICES: ServicesComponentProps = {
       id: 1,
       image: {
         url: questImage,
-        alternativeText: `Фотография процесса проведения квеста`,
+        alternativeText: ``,
       },
       labels: [
         {
@@ -54,7 +54,7 @@ export const MOCK_SERVICES: ServicesComponentProps = {
       id: 2,
       image: {
         url: contactLessonImage,
-        alternativeText: `Фотография процесса проведения контактного занятия`,
+        alternativeText: ``,
       },
       labels: [
         {
@@ -73,7 +73,7 @@ export const MOCK_SERVICES: ServicesComponentProps = {
       id: 3,
       image: {
         url: exitLecturesImage,
-        alternativeText: `Фотография процесса проведения выездной лекции`,
+        alternativeText: ``,
       },
       labels: [
         {

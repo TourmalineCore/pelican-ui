@@ -7,7 +7,7 @@ export const MOCK_TEXT_AND_MEDIA: TextAndMediaComponentProps = {
   title: `В зоопарке\n141 вид животных`,
   description: `Снежные барсы, ленивцы, росомахи, гепард и другие редкие животные, которые вас удивят.`,
   media: {
-    alternativeText: `Видео о зоопарке`,
+    alternativeText: ``,
     url: `/video/text-and-media-video.mp4`,
     mime: `video/mp4`,
   },

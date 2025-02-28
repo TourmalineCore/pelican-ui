@@ -30,6 +30,7 @@ export function Tab({
         )}
         onClick={onClick}
         aria-label={ariaLabel}
+        data-testid="tab"
       >
         {label}
       </button>
