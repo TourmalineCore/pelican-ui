@@ -20,6 +20,10 @@ const nextConfig = {
         hostname: 'minio-s3.localhost',
       },
       {
+        protocol: 'http',
+        hostname: '10.244.0.8',
+      },
+      {
         protocol: 'https',
         hostname: '**'
       },
