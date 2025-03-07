@@ -3,6 +3,8 @@ FROM node:21-alpine as base
 # Install dependencies
 FROM base AS deps
 
+USER root
+
 RUN apk add --no-cache libc6-compat curl
 WORKDIR /app
 
