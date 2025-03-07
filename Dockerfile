@@ -1,14 +1,13 @@
-FROM node:21-alpine as base
+FROM node:21 as base
 
 # Install dependencies
 FROM base AS deps
 
-USER root
-
-RUN apk add --no-cache libc6-compat curl
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
+RUN npm i sharp
 RUN npm ci
 
 # Build
@@ -25,7 +24,6 @@ WORKDIR /app
 
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
-ENV NEXT_SHARP_PATH /app/node_modules/sharp
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
