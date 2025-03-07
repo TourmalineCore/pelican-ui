@@ -9,6 +9,7 @@ RUN apk add --no-cache libc6-compat curl
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
+RUN npm i sharp
 RUN npm ci
 
 # Build
