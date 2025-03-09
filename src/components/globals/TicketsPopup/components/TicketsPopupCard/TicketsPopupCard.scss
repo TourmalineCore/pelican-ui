@@ -36,6 +36,7 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 1.45;
+    white-space: pre-wrap;
 
     @include tablet {
       max-width: 200px;
@@ -51,9 +52,11 @@
 
   &__description {
     margin-top: 4px;
+    max-width: 100%;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.45;
+    white-space: pre-wrap;
     color: $color-black-75;
 
     @include tablet {

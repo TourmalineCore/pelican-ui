@@ -134,6 +134,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 1.45;
+    white-space: pre-wrap;
     color: $color-black-75;
 
     @include tablet {
@@ -291,6 +292,8 @@
   }
 
   &__refund-head {
+    white-space: pre-wrap;
+
     @include tablet {
       max-width: 300px;
     }

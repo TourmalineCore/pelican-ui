@@ -57,6 +57,7 @@ export async function getServerSideProps({
   },
 }) {
   let pageData;
+
   if (process.env.APP_ENV === `static`) {
     pageData = getMockPageData({
       slug: query.slug,

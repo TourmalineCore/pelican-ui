@@ -33,19 +33,59 @@ export type GlobalComponentProps = {
     // TODO: in the future change string to enum AppRoute
     link: string;
   }[];
-  ticketsPopupGeneral: Ticket[];
-  ticketsPopupSubsidized: Ticket[];
-  ticketsPopupRulesImages: Image[];
-  ticketsPopupRefundReasons: {
-    id: number,
-    refundReason: string
-  }[]
   email: string;
   phone: string;
   popupTicketBuyText: string;
-  ticketBuyLink: string;
   footerNavTitleLeft: string;
   footerNavTitleRight: string;
+  ticketsPopup: {
+    generalTicketsLink: string;
+    generalTickets: {
+      id: number,
+      category: string,
+      price: string,
+      description?: string,
+    }[],
+    subsidizedTicket: {
+      category: string,
+      description: string,
+      categories: {
+        id: number,
+        category: string,
+        price: string,
+      }[],
+      button: {
+        label: string,
+        link: string,
+      },
+    },
+    accordionVisitingRules: {
+      images: {
+        url: string,
+        alternativeText: string,
+      }[],
+      button: {
+        label: string,
+        link: string,
+      },
+    },
+    accordionTicketRefund: {
+      refundHead: string,
+      refundBody: {
+        id: number,
+        refundReason: string,
+      }[],
+      button: {
+        label: string,
+        link: string,
+      },
+    },
+    buyTicketsButton: {
+      label: string,
+      link: string,
+    },
+    note: string,
+  },
 };
 
 export type HeroComponentProps = {

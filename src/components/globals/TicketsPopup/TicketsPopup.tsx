@@ -7,25 +7,28 @@ import FocusLock from 'react-focus-lock';
 import crossIcon from "@/public/images/tickets-popup/icon-cross.svg";
 import iconChevron from "@/public/images/svg/icon-chevron.svg";
 import iconChevronGreen from "@/public/images/svg/icon-chevron-green.svg";
-import { MOCK_POPUP_TICKET_BUY_TEXT, MOCK_TICKET_BUY_LINK } from '@/src/common/mocks/globals-mock/ticket-mock';
+import { MOCK_POPUP_TICKET_BUY_TEXT } from '@/src/common/mocks/globals-mock/ticket-mock';
 import { Accordion } from "../Accordion/Accordion";
 import { TicketsPopupCard } from './components/TicketsPopupCard/TicketsPopupCard';
 import { TicketsPopupRulesList } from './components/TicketsPopupRulesList/TicketsPopupRulesList';
 import { TicketsPopupRefundReasons } from './components/TicketsPopupRefundReasons/TicketsPopupRefundReasons';
 
 export function TicketsPopup({
-  ticketsPopupGeneral,
-  ticketsPopupSubsidized,
-  ticketsPopupRulesImages,
-  ticketsPopupRefundReasons,
+  ticketsPopup,
   overlayElementRef,
-}: Pick<GlobalComponentProps,
-"ticketsPopupGeneral" |
-"ticketsPopupSubsidized" |
-"ticketsPopupRulesImages" |
-"ticketsPopupRefundReasons"> & {
+}: Pick<GlobalComponentProps, "ticketsPopup"> & {
   overlayElementRef: MutableRefObject<null | HTMLElement>
 }) {
+  const {
+    generalTicketsLink,
+    generalTickets,
+    subsidizedTicket,
+    accordionVisitingRules,
+    accordionTicketRefund,
+    buyTicketsButton,
+    note,
+  } = ticketsPopup;
+
   const {
     isTicketPopupActive,
     handleTicketPopupToggle,
@@ -73,8 +76,10 @@ export function TicketsPopup({
               </button>
             </div>
             <ul className="tickets-popup__cards">
-              {ticketsPopupGeneral.map(({
-                category, price, description,
+              {generalTickets.map(({
+                category,
+                price,
+                description,
               }) => (
                 <TicketsPopupCard
                   key={category}
@@ -82,15 +87,14 @@ export function TicketsPopup({
                   category={category}
                   price={price}
                   description={description}
-                  hasLink
+                  link={generalTicketsLink}
                 />
               ))}
               <TicketsPopupCard
                 key="tickets-popup-card-with-accodion"
                 className="tickets-popup__card tickets-popup-card--with-accordion"
-                category="Льготный"
-                description="Требуется подтверждающий льготу оригинал документа, покупка только на&nbsp;кассе"
-                hasLink={false}
+                category={subsidizedTicket.category}
+                description={subsidizedTicket.description}
               >
                 <Accordion
                   triggerText="Подробнее"
@@ -100,8 +104,10 @@ export function TicketsPopup({
                   ariaLabel="Подробнее о льготных категориях"
                 >
                   <ul className="tickets-popup__prices-table">
-                    {ticketsPopupSubsidized.map(({
-                      id, category, price,
+                    {subsidizedTicket.categories.map(({
+                      id,
+                      category,
+                      price,
                     }) => (
                       <li
                         className="tickets-popup__prices-table-row"
@@ -115,12 +121,12 @@ export function TicketsPopup({
                   <Link
                     className="tickets-popup__link button button--secondary"
                     // TODO: Change path when the page appears
-                    href="https://vk.com/topic-71671982_48253263"
+                    href={subsidizedTicket.button.link}
                     // TODO: Remove when the page appears
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Остальные льготные категории
+                    {subsidizedTicket.button.label}
                   </Link>
                 </Accordion>
               </TicketsPopupCard>
@@ -133,17 +139,17 @@ export function TicketsPopup({
               >
                 <TicketsPopupRulesList
                   className="tickets-popup__rules-list"
-                  ticketsPopupRulesImages={ticketsPopupRulesImages}
+                  ticketsPopupRulesImages={accordionVisitingRules.images}
                 />
                 <Link
                   className="tickets-popup__more-link button button--secondary"
                   // TODO: Change path when the page appears
-                  href="http://chelzoo.ru/media/articles/2022/05/06/prikaz-221-ot-050522-o-pravilah-posescheniya-2.pdf"
+                  href={accordionVisitingRules.button.link}
                   // TODO: Remove when the page appears
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Подробнее о правилах посещения
+                  {accordionVisitingRules.button.label}
                 </Link>
               </Accordion>
               <Accordion
@@ -152,34 +158,37 @@ export function TicketsPopup({
                 icon={iconChevron}
               >
                 <div className="tickets-popup__refund">
-                  <div className="tickets-popup__refund-head">Возврат билета осуществляется в&nbsp;следующих случаях:</div>
+                  <div className="tickets-popup__refund-head">
+                    {accordionTicketRefund.refundHead}
+                  </div>
                   <TicketsPopupRefundReasons
-                    ticketsPopupRefundReasons={ticketsPopupRefundReasons}
+                    ticketsPopupRefundReasons={accordionTicketRefund.refundBody}
                     className="tickets-popup__refund-reasons"
                   />
                   <Link
                     className="tickets-popup__more-link button button--secondary"
-                    // TODO: Change path when the page appears
-                    href="http://chelzoo.ru/articles/prikaz-ob-utverzhdenii-pravil-prodazhi-i-vozvrata-/"
+                    href={accordionTicketRefund.button.link}
                     // TODO: Remove when the page appears
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Подробнее о возврате билетов
+                    {accordionTicketRefund.button.label}
                   </Link>
                 </div>
               </Accordion>
             </div>
             <Link
               className="tickets-popup__buy-button button button--primary button--featured"
-              href={MOCK_TICKET_BUY_LINK}
+              href={buyTicketsButton.link}
               target="_blank"
               rel="noopener noreferrer"
               data-testid="tickets-popup-buy-button"
             >
-              Купить билет
+              {buyTicketsButton.label}
             </Link>
-            <p className="tickets-popup__disclaimer">Покупая билет, вы соглашаетесь с&nbsp;правилами посещения</p>
+            <p className="tickets-popup__disclaimer">
+              {note}
+            </p>
           </div>
         </FocusLock>
       )}

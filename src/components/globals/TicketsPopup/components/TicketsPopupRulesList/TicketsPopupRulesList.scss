@@ -4,8 +4,10 @@
   gap: 8px;
 
   &__rule {
+    position: relative;
     width: 71px;
     max-width: 25%;
+    aspect-ratio: 1 / 1;
 
     @include tablet-xl {
       width: 80px;

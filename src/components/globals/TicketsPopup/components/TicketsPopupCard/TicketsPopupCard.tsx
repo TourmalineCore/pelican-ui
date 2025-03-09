@@ -7,8 +7,8 @@ type TicketsPopupCardProps = PropsWithChildren & {
   className?: string;
   category: string;
   price?: string;
-  hasLink: boolean;
   description?: string;
+  link?: string,
 };
 
 export function TicketsPopupCard({
@@ -16,7 +16,7 @@ export function TicketsPopupCard({
   category,
   price,
   description,
-  hasLink,
+  link,
   children,
 }: TicketsPopupCardProps) {
   return (
@@ -27,10 +27,10 @@ export function TicketsPopupCard({
       )}
     >
       {
-        hasLink ? (
+        link ? (
           <Link
             className="tickets-popup-card__link"
-            href={MOCK_TICKET_BUY_LINK}
+            href={link || MOCK_TICKET_BUY_LINK}
             target="blank"
             data-testid="tickets-popup-card-link"
           >

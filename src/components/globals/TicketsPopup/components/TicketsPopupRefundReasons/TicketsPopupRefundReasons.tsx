@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { PropsWithChildren } from "react";
 
 type TicketsPopupCardProps = PropsWithChildren & {
-  ticketsPopupRefundReasons: GlobalComponentProps["ticketsPopupRefundReasons"];
+  ticketsPopupRefundReasons: GlobalComponentProps['ticketsPopup']['accordionTicketRefund']['refundBody'];
   className?: string;
 };
 
@@ -18,7 +18,8 @@ export function TicketsPopupRefundReasons({
     )}
     >
       {ticketsPopupRefundReasons.map(({
-        id, refundReason,
+        id,
+        refundReason,
       }) => (
         <li
           className="tickets-popup-refund-reasons__reason"

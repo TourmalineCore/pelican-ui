@@ -30,10 +30,7 @@ export function Layout({
   popupTicketBuyText,
   footerNavTitleLeft,
   footerNavTitleRight,
-  ticketsPopupGeneral,
-  ticketsPopupSubsidized,
-  ticketsPopupRulesImages,
-  ticketsPopupRefundReasons,
+  ticketsPopup,
 }: {
 } & LayoutProps) {
   const {
@@ -100,10 +97,7 @@ export function Layout({
         isMobileMenuOpen={isMobileMenuOpen}
       />
       <TicketsPopup
-        ticketsPopupGeneral={ticketsPopupGeneral}
-        ticketsPopupSubsidized={ticketsPopupSubsidized}
-        ticketsPopupRulesImages={ticketsPopupRulesImages}
-        ticketsPopupRefundReasons={ticketsPopupRefundReasons}
+        ticketsPopup={ticketsPopup}
         overlayElementRef={overlayElementRef}
       />
       <main

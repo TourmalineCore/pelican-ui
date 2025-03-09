@@ -11,11 +11,7 @@ import { SocialMedia } from "../SocialNetwork/SocialMedia";
 type FooterProps =
   Omit<GlobalComponentProps,
   "navigationLinks"
-  | "ticketsPopupGeneral"
-  | "ticketsPopupSubsidized"
-  | "ticketsPopupRulesImages"
-  | "ticketsPopupRefundReasons"
-  | "ticketBuyLink"
+  | "ticketsPopup"
   > & {
     footerElementRef: MutableRefObject<HTMLDivElement | null>
   };

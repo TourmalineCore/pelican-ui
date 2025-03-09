@@ -3,7 +3,7 @@ import clsx from "clsx";
 import Image from 'next/image';
 
 type TicketsPopupRulesListProps = {
-  ticketsPopupRulesImages: GlobalComponentProps["ticketsPopupRulesImages"];
+  ticketsPopupRulesImages: GlobalComponentProps['ticketsPopup']['accordionVisitingRules']['images'];
   className?: string;
 };
 
@@ -19,7 +19,8 @@ export function TicketsPopupRulesList({
       )}
     >
       {ticketsPopupRulesImages.map(({
-        alternativeText, url,
+        url,
+        alternativeText,
       }) => (
         <li
           className="tickets-popup-rules-list__rule"
@@ -30,6 +31,7 @@ export function TicketsPopupRulesList({
             className="tickets-popup-rules-list__rule-img"
             src={url}
             alt={alternativeText}
+            fill
           />
         </li>
       ))}
