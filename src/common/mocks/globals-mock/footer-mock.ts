@@ -66,14 +66,14 @@ export const MOCK_OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
   },
   {
     id: 4,
-    name: `Губернатор Челябинской области`,
+    name: `Губернатор Челябинской\u00A0области`,
     link: `https://gubernator74.ru/`,
     icon: iconAdministration3,
     alt: `Иконка`,
   },
   {
     id: 5,
-    name: `Правительство Челябинской области`,
+    name: `Правительство Челябинской\u00A0области`,
     link: `https://pravmin.gov74.ru/`,
     icon: iconAdministration2,
     alt: `Иконка`,

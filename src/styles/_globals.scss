@@ -5,6 +5,7 @@ body {
   height: 100%;
   box-sizing: border-box;
   background-color: $color-background-page;
+  overflow-wrap: break-word;
 }
 
 .main {

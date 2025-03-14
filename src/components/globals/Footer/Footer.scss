@@ -134,19 +134,19 @@
 
   &__official-link-name {
     margin-left: 12px;
-    max-width: 200px;
+    max-width: 220px;
 
     @include tablet {
-      max-width: 180px;
+      max-width: 185px;
     }
 
     @include tablet-xl {
-      max-width: 200px;
+      max-width: 250px;
     }
 
     @include desktop-xl {
       margin-left: 22px;
-      max-width: 300px;
+      max-width: 370px;
     }
   }
 
