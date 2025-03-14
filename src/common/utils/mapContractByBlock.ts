@@ -120,16 +120,16 @@ export function mapContractByBlock({
       };
 
     case BlockTypes.SHARED_TICKETS:
-      const sharedtTicketsBlock = block as SharedTicketsComponent;
+      const sharedTicketsBlock = block as SharedTicketsComponent;
 
       return {
         id: crypto.randomUUID(),
-        __component: sharedtTicketsBlock.__component,
-        title: sharedtTicketsBlock.title,
-        description: sharedtTicketsBlock.description,
-        tickets: sharedtTicketsBlock.subsidizedTickets,
-        link: sharedtTicketsBlock.link,
-        note: sharedtTicketsBlock.note,
+        __component: sharedTicketsBlock.__component,
+        title: sharedTicketsBlock.title,
+        description: sharedTicketsBlock.description,
+        tickets: sharedTicketsBlock.subsidizedTickets,
+        link: sharedTicketsBlock.link,
+        note: sharedTicketsBlock.note,
       };
 
     default:

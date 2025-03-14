@@ -3,26 +3,122 @@ import { AppRoute, Breakpoint } from '@/src/common/enum';
 import { gotoPage, hideTextAndMedia, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
+const expectedMobileHeaderFocusOrder = [
+  `skip-link`,
+  `header-logo`,
+  `header-popup-button`,
+];
+
+const expectedDesktopHeaderFocusOrder = [
+  `skip-link`,
+  `header-logo`,
+  `header-navigation-link`,
+  `header-navigation-link`,
+  `header-navigation-link`,
+  `header-navigation-link`,
+  `header-contact-button`,
+  `header-tickets-popup-button`,
+];
+
+const expectedMobileFooterFocusOrder = [
+  `footer-tickets-popup-button`,
+  `footer-nav-link`,
+  `footer-nav-link`,
+  `footer-nav-link`,
+  `footer-nav-link`,
+  `footer-tel-link`,
+  `footer-email-link`,
+  `social-icon-vkontakte`,
+  `social-icon-telegram`,
+  `social-icon-odnoklassniki`,
+  `social-icon-dzen`,
+  `footer-copyright-link`,
+  `footer-official-link`,
+  `footer-official-link`,
+  `footer-official-link`,
+];
+
+const expectedDesktopFooterFocusOrder = [
+  `footer-tickets-popup-button`,
+  `footer-nav-link`,
+  `footer-nav-link`,
+  `footer-nav-link`,
+  `footer-nav-link`,
+  `footer-tel-link`,
+  `footer-email-link`,
+  `footer-copyright-link`,
+  `social-icon-vkontakte`,
+  `social-icon-telegram`,
+  `social-icon-odnoklassniki`,
+  `social-icon-dzen`,
+  `footer-official-link`,
+  `footer-official-link`,
+  `footer-official-link`,
+];
+
 test.describe(`Logical focus order verification`, () => {
-  test.beforeEach(async ({
-    page,
-  }) => {
-    await gotoPage({
+  test.describe(`Home page check`, () => {
+    test.beforeEach(async ({
       page,
-      url: AppRoute.HOME,
+    }) => {
+      await gotoPage({
+        page,
+        url: AppRoute.HOME,
+      });
     });
+
+    test(`HomePageMobileTest`, homePageMobileTest);
+
+    test(`HomePageDesktopTest`, homePageDesktopTest);
   });
 
-  test(`MobileTest`, mobileTest);
+  test.describe(`Mobile menu and tickets popup check`, () => {
+    test.beforeEach(async ({
+      page,
+    }) => {
+      await gotoPage({
+        page,
+        url: AppRoute.HOME,
+      });
+    });
 
-  test(`MobileMenuOpenTest`, mobileMenuOpenTest);
+    test(`MobileMenuOpenTest`, mobileMenuOpenTest);
 
-  test(`DesktopTest`, desktopTest);
+    test(`TicketsPopupOpenTest`, ticketsPopupOpenTest);
+  });
 
-  test(`TicketsPopupOpenTest`, ticketsPopupOpenTest);
+  test.describe(`News page check`, () => {
+    test.beforeEach(async ({
+      page,
+    }) => {
+      await gotoPage({
+        page,
+        url: AppRoute.NEWS,
+      });
+    });
+
+    test(`NewsPageMobileTest`, newsPageMobileTest);
+
+    test(`NewsPageDesktopTest`, newsPageDesktopTest);
+  });
+
+  test.describe(`Documents page check`, () => {
+    test.beforeEach(async ({
+      page,
+    }) => {
+      await gotoPage({
+        page,
+        url: AppRoute.DOCUMENTS,
+      });
+    });
+
+    test(`DocumentsPageMobileTest`, documentsPageMobileTest);
+
+    test(`DocumentsPageDesktopTest`, documentsPageDesktopTest);
+  });
 });
 
-async function mobileTest({
+async function homePageMobileTest({
   page,
 }: {
   page: Page,
@@ -31,14 +127,8 @@ async function mobileTest({
     page,
   });
 
-  await hideTextAndMedia({
-    page,
-  });
-
   const expectedFocusOrder = [
-    `skip-link`,
-    `header-logo`,
-    `header-popup-button`,
+    ...expectedMobileHeaderFocusOrder,
     `hero-contact-button`,
     `hero-tickets-popup-button`,
     `services-phone-link`,
@@ -50,29 +140,46 @@ async function mobileTest({
     `tickets-buy-button`,
     `tickets-all-discounts`,
     `text-link`,
-    `footer-tickets-popup-button`,
-    `footer-nav-link`,
-    `footer-nav-link`,
-    `footer-nav-link`,
-    `footer-nav-link`,
-    `footer-tel-link`,
-    `footer-email-link`,
-    `social-icon-vkontakte`,
-    `social-icon-telegram`,
-    `social-icon-odnoklassniki`,
-    `social-icon-dzen`,
-    `footer-copyright-link`,
-    `footer-official-link`,
-    `footer-official-link`,
-    `footer-official-link`,
+    ...expectedMobileFooterFocusOrder,
   ];
 
-  for (const element of expectedFocusOrder) {
-    await page.keyboard.press(`Tab`);
-    await page.waitForTimeout(500);
-    await expect(page.locator(`:focus`))
-      .toHaveAttribute(`data-testid`, `${element}`);
-  }
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
+}
+
+async function homePageDesktopTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+  });
+
+  await hideTextAndMedia({
+    page,
+  });
+
+  const expectedFocusOrder = [
+    ...expectedDesktopHeaderFocusOrder,
+    `services-phone-link`,
+    `services-email-link`,
+    `image-grid-btn`,
+    `ticket-card-link`,
+    `ticket-card-link`,
+    `ticket-card-link`,
+    `tickets-discounts-link`,
+    `text-link`,
+    ...expectedDesktopFooterFocusOrder,
+  ];
+
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
 }
 
 async function mobileMenuOpenTest({
@@ -101,68 +208,10 @@ async function mobileMenuOpenTest({
     `social-icon-dzen`,
   ];
 
-  for (const element of expectedFocusOrder) {
-    await page.keyboard.press(`Tab`);
-    await page.waitForTimeout(500);
-    await expect(page.locator(`:focus`))
-      .toHaveAttribute(`data-testid`, `${element}`);
-  }
-}
-
-async function desktopTest({
-  page,
-}: {
-  page: Page,
-}) {
-  await setViewportSize({
+  await checkNavigationUsingTab({
     page,
-    width: Breakpoint.DESKTOP,
+    expectedFocusOrder,
   });
-
-  await hideTextAndMedia({
-    page,
-  });
-
-  const expectedFocusOrder = [
-    `skip-link`,
-    `header-logo`,
-    `header-navigation-link`,
-    `header-navigation-link`,
-    `header-navigation-link`,
-    `header-navigation-link`,
-    `header-contact-button`,
-    `header-tickets-popup-button`,
-    `services-phone-link`,
-    `services-email-link`,
-    `image-grid-btn`,
-    `ticket-card-link`,
-    `ticket-card-link`,
-    `ticket-card-link`,
-    `tickets-discounts-link`,
-    `text-link`,
-    `footer-tickets-popup-button`,
-    `footer-nav-link`,
-    `footer-nav-link`,
-    `footer-nav-link`,
-    `footer-nav-link`,
-    `footer-tel-link`,
-    `footer-email-link`,
-    `footer-copyright-link`,
-    `social-icon-vkontakte`,
-    `social-icon-telegram`,
-    `social-icon-odnoklassniki`,
-    `social-icon-dzen`,
-    `footer-official-link`,
-    `footer-official-link`,
-    `footer-official-link`,
-  ];
-
-  for (const element of expectedFocusOrder) {
-    await page.keyboard.press(`Tab`);
-    await page.waitForTimeout(500);
-    await expect(page.locator(`:focus`))
-      .toHaveAttribute(`data-testid`, `${element}`);
-  }
 }
 
 async function ticketsPopupOpenTest({
@@ -189,9 +238,134 @@ async function ticketsPopupOpenTest({
     `tickets-popup-close-button`,
   ];
 
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
+}
+
+async function newsPageMobileTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+  });
+
+  const expectedFocusOrder = [
+    ...expectedMobileHeaderFocusOrder,
+    `cards-card`,
+    `cards-card`,
+    `cards-card`,
+    `cards-card`,
+    `cards-card`,
+    `cards-card`,
+    `news-list-button`,
+    ...expectedMobileFooterFocusOrder,
+  ];
+
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
+}
+
+async function newsPageDesktopTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+  });
+
+  const expectedFocusOrder = [
+    ...expectedDesktopHeaderFocusOrder,
+    `cards-card`,
+    `cards-card`,
+    `cards-card`,
+    `cards-card`,
+    `cards-card`,
+    `cards-card`,
+    `news-list-button`,
+    ...expectedDesktopFooterFocusOrder,
+  ];
+
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
+}
+
+async function documentsPageMobileTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+  });
+
+  const expectedFocusOrder = [
+    ...expectedMobileHeaderFocusOrder,
+    `category`,
+    `category`,
+    `category`,
+    `category`,
+    `category`,
+    `category`,
+    `category`,
+    `category`,
+    ...expectedMobileFooterFocusOrder,
+  ];
+
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
+}
+
+async function documentsPageDesktopTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+    width: Breakpoint.DESKTOP,
+  });
+
+  const expectedFocusOrder = [
+    ...expectedDesktopHeaderFocusOrder,
+    `category`,
+    `category`,
+    `category`,
+    `category`,
+    `category`,
+    `category`,
+    `category`,
+    `category`,
+    ...expectedDesktopFooterFocusOrder,
+  ];
+
+  await checkNavigationUsingTab({
+    page,
+    expectedFocusOrder,
+  });
+}
+
+async function checkNavigationUsingTab({
+  page,
+  expectedFocusOrder,
+}: {
+  page: Page,
+  expectedFocusOrder: string[]
+}) {
   for (const element of expectedFocusOrder) {
     await page.keyboard.press(`Tab`);
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(200);
     await expect(page.locator(`:focus`))
       .toHaveAttribute(`data-testid`, `${element}`);
   }

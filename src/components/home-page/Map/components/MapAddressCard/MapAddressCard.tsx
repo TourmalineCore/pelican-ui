@@ -39,7 +39,6 @@ export function MapAddressCard({
           <div className="map-address-card__image-wrapper">
             <Image
               data-testid="map-card-image"
-              loading="lazy"
               src={image.url}
               alt={image.alternativeText}
               fill
@@ -56,7 +55,6 @@ export function MapAddressCard({
         )}
         {!isTablet && (
           <Image
-            loading="lazy"
             className="map-address-card__flower"
             src={flower}
             alt=""

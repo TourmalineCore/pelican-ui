@@ -21,13 +21,16 @@ export function Card({
   return (
     <li
       className={`card ${className}`}
-      data-testid={dataTestId}
+      {...(!link && {
+        "data-testid": dataTestId,
+      })}
     >
       {link ? (
         <Link
           href={link}
           ref={firstCardRef}
           tabIndex={0}
+          data-testid={dataTestId}
         >
           {renderCardMarkup({
             title,

@@ -16,7 +16,6 @@ export function Map({
       id="map-section"
     >
       <Image
-        loading="lazy"
         className="map__background-image"
         data-testid="map-image"
         src={mapBackgroundImage}
