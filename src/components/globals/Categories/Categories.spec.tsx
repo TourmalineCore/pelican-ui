@@ -1,5 +1,10 @@
 /* eslint-disable no-await-in-loop */
-import { gotoPage, hideHeader, setViewportSize } from '@/playwright-tests/helpers';
+import {
+  gotoPage,
+  hideCookie,
+  hideHeader,
+  setViewportSize,
+} from '@/playwright-tests/helpers';
 import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { test, expect, Page } from '@playwright/test';
@@ -14,6 +19,10 @@ test.describe(`CategoriesListComponentTests`, () => {
     });
 
     await hideHeader({
+      page,
+    });
+
+    await hideCookie({
       page,
     });
   });

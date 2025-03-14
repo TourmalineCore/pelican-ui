@@ -1,6 +1,7 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import {
   gotoPage,
+  hideCookie,
   hideHeader,
   hideSkipLink,
   setViewportSize,
@@ -21,6 +22,10 @@ test.describe(`HomepageImageWithButtonGridTests`, () => {
     });
 
     await hideSkipLink({
+      page,
+    });
+
+    await hideCookie({
       page,
     });
   });

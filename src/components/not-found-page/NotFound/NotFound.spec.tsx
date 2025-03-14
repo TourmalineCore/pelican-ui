@@ -1,6 +1,7 @@
 import { Breakpoint } from '@/src/common/enum';
 import {
   gotoPage,
+  hideCookie,
   hideFooter,
   hideHeader,
   setViewportSize,
@@ -21,6 +22,10 @@ test.describe(`NotFoundComponentTests`, () => {
     });
 
     await hideFooter({
+      page,
+    });
+
+    await hideCookie({
       page,
     });
   });

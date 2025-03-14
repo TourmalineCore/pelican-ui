@@ -1,6 +1,7 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import {
   gotoPage,
+  hideCookie,
   hideFooter,
   hideHeader,
   hideTickets,
@@ -26,6 +27,10 @@ test.describe(`MapComponentTests`, () => {
     });
 
     await hideTickets({
+      page,
+    });
+
+    await hideCookie({
       page,
     });
   });

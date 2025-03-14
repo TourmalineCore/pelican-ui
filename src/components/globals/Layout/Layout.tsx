@@ -16,6 +16,7 @@ import { Header } from '../Header/Header';
 import { TicketsPopup } from '../TicketsPopup/TicketsPopup';
 import { Footer } from '../Footer/Footer';
 import { SkipLink } from '../SkipLink/SkipLink';
+import Cookie from '../Cookie/Cookie';
 
 type LayoutProps = GlobalComponentProps & PropsWithChildren;
 
@@ -81,58 +82,61 @@ export function Layout({
   }
 
   return (
-    <div className="layout">
-      <SkipLink
-        mainElementRef={mainElementRef}
-      />
-      <Header
-        navigationLinks={navigationLinks}
-        email={email}
-        phone={phone}
-        popupTicketBuyText={popupTicketBuyText}
-        overlayElementRef={overlayElementRef}
-        mainElementRef={mainElementRef}
-        footerElementRef={footerElementRef}
-        handleMobileMenuToggle={handleMobileMenuToggle}
-        isMobileMenuOpen={isMobileMenuOpen}
-      />
-      <TicketsPopup
-        ticketsPopup={ticketsPopup}
-        overlayElementRef={overlayElementRef}
-      />
-      <main
-        id="main-content"
-        ref={mainElementRef}
-        className="main"
-        tabIndex={-1}
-        data-testid="main-content"
-      >
-        {children}
-      </main>
-      <div
-        ref={overlayElementRef}
-        className="overlay"
-        onClick={() => {
-          if (isMobileMenuOpen) {
-            handleMobileMenuToggle();
-          }
+    <>
+      <div className="layout">
+        <SkipLink
+          mainElementRef={mainElementRef}
+        />
+        <Header
+          navigationLinks={navigationLinks}
+          email={email}
+          phone={phone}
+          popupTicketBuyText={popupTicketBuyText}
+          overlayElementRef={overlayElementRef}
+          mainElementRef={mainElementRef}
+          footerElementRef={footerElementRef}
+          handleMobileMenuToggle={handleMobileMenuToggle}
+          isMobileMenuOpen={isMobileMenuOpen}
+        />
+        <TicketsPopup
+          ticketsPopup={ticketsPopup}
+          overlayElementRef={overlayElementRef}
+        />
+        <main
+          id="main-content"
+          ref={mainElementRef}
+          className="main"
+          tabIndex={-1}
+          data-testid="main-content"
+        >
+          {children}
+        </main>
+        <div
+          ref={overlayElementRef}
+          className="overlay"
+          onClick={() => {
+            if (isMobileMenuOpen) {
+              handleMobileMenuToggle();
+            }
 
-          if (isTicketPopupActive) {
-            handleTicketPopupToggle();
-          }
-        }}
-      />
-      <Footer
-        footerElementRef={footerElementRef}
-        officialLinks={officialLinks}
-        footerUserLinks={footerUserLinks}
-        footerAboutLinks={footerAboutLinks}
-        email={email}
-        phone={phone}
-        footerNavTitleLeft={footerNavTitleLeft}
-        footerNavTitleRight={footerNavTitleRight}
-        popupTicketBuyText={popupTicketBuyText}
-      />
-    </div>
+            if (isTicketPopupActive) {
+              handleTicketPopupToggle();
+            }
+          }}
+        />
+        <Footer
+          footerElementRef={footerElementRef}
+          officialLinks={officialLinks}
+          footerUserLinks={footerUserLinks}
+          footerAboutLinks={footerAboutLinks}
+          email={email}
+          phone={phone}
+          footerNavTitleLeft={footerNavTitleLeft}
+          footerNavTitleRight={footerNavTitleRight}
+          popupTicketBuyText={popupTicketBuyText}
+        />
+      </div>
+      <Cookie />
+    </>
   );
 }

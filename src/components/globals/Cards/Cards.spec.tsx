@@ -1,6 +1,7 @@
 import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
 import {
   gotoPage,
+  hideCookie,
   hideFooter,
   hideHeader,
   hideSkipLink,
@@ -26,6 +27,10 @@ test.describe(`CardsComponentTests`, () => {
     });
 
     await hideSkipLink({
+      page,
+    });
+
+    await hideCookie({
       page,
     });
   });

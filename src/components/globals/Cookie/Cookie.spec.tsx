@@ -1,29 +1,31 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
 import {
   gotoPage,
-  hideCookie,
   hideHeader,
+  hideSkipLink,
   setViewportSize,
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-test.describe(`HomepageHeroComponentTests`, () => {
+test.describe(`CookieTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
     await gotoPage({
       page,
-      url: AppRoute.HOME,
+      url: AppRoute.INTERNAL_TEST_PAGE,
     });
 
     await hideHeader({
       page,
     });
 
-    await hideCookie({
+    await hideSkipLink({
       page,
     });
   });
+
+  test(`ActionTest`, actionTest);
 
   test(`MobileTest`, mobileTest);
 
@@ -36,6 +38,27 @@ test.describe(`HomepageHeroComponentTests`, () => {
   test(`DesktopXlTest`, desktopXlTest);
 });
 
+async function actionTest({
+  page,
+}: {
+  page: Page,
+}) {
+  await setViewportSize({
+    page,
+  });
+
+  await page.getByTestId(`cookie-button`)
+    .click();
+
+  await expect(page.getByTestId(`cookie`))
+    .toBeHidden;
+
+  await page.reload();
+
+  await expect(page.getByTestId(`cookie`))
+    .toBeHidden;
+}
+
 async function mobileTest({
   page,
 }: {
@@ -43,13 +66,12 @@ async function mobileTest({
 }) {
   await setViewportSize({
     page,
-    width: 378,
   });
 
-  await expect(getHeroByTestId({
+  await expect(getCookieByTestId({
     page,
   }))
-    .toHaveScreenshot(`hero-mobile.png`);
+    .toHaveScreenshot(`cookie-mobile.png`);
 }
 
 async function tabletTest({
@@ -60,13 +82,12 @@ async function tabletTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET,
-    height: 437,
   });
 
-  await expect(getHeroByTestId({
+  await expect(getCookieByTestId({
     page,
   }))
-    .toHaveScreenshot(`hero-tablet.png`);
+    .toHaveScreenshot(`cookie-tablet.png`);
 }
 
 async function tabletXlTest({
@@ -77,13 +98,12 @@ async function tabletXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.TABLET_XL,
-    height: 556,
   });
 
-  await expect(getHeroByTestId({
+  await expect(getCookieByTestId({
     page,
   }))
-    .toHaveScreenshot(`hero-tablet-xl.png`);
+    .toHaveScreenshot(`cookie-tablet-xl.png`);
 }
 
 async function desktopTest({
@@ -96,10 +116,10 @@ async function desktopTest({
     width: Breakpoint.DESKTOP,
   });
 
-  await expect(getHeroByTestId({
+  await expect(getCookieByTestId({
     page,
   }))
-    .toHaveScreenshot(`hero-desktop.png`);
+    .toHaveScreenshot(`cookie-desktop.png`);
 }
 
 async function desktopXlTest({
@@ -110,19 +130,18 @@ async function desktopXlTest({
   await setViewportSize({
     page,
     width: Breakpoint.DESKTOP_XL,
-    height: 955,
   });
 
-  await expect(getHeroByTestId({
+  await expect(getCookieByTestId({
     page,
   }))
-    .toHaveScreenshot(`hero-desktop-xl.png`);
+    .toHaveScreenshot(`cookie-desktop-xl.png`);
 }
 
-function getHeroByTestId({
+function getCookieByTestId({
   page,
 }: {
   page: Page
 }) {
-  return page.getByTestId(`hero`);
+  return page.getByTestId(`cookie`);
 }

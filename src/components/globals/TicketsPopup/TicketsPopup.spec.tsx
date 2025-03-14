@@ -1,5 +1,5 @@
 import { AppRoute, Breakpoint } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, hideCookie, setViewportSize } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`TicketsPopupComponentTests`, () => {
@@ -9,6 +9,10 @@ test.describe(`TicketsPopupComponentTests`, () => {
     await gotoPage({
       page,
       url: AppRoute.HOME,
+    });
+
+    await hideCookie({
+      page,
     });
 
     await page.getByTestId(`footer-tickets-popup-button`)
