@@ -1358,6 +1358,7 @@ export interface CardCardComponent {
 
 export interface SharedCardsComponent {
   id?: number;
+  __component?: "shared.cards";
   title?: string;
   cards?: CardCardComponent[];
 }

@@ -7,6 +7,7 @@ import {
   HomeMapCardComponent,
   HomeTicketsComponent,
   SharedTicketsComponent,
+  SharedCardsComponent,
 } from "../api-types";
 import { BlockTypes } from "../enum";
 import { Block } from "../types";
@@ -130,6 +131,22 @@ export function mapContractByBlock({
         tickets: sharedTicketsBlock.subsidizedTickets,
         link: sharedTicketsBlock.link,
         note: sharedTicketsBlock.note,
+      };
+
+    case BlockTypes.SHARED_CARDS:
+      const sharedCardsBlock = block as SharedCardsComponent;
+
+      return {
+        id: crypto.randomUUID(),
+        __component: sharedCardsBlock.__component,
+        title: sharedCardsBlock.title,
+        cards: sharedCardsBlock.cards?.map((card) => ({
+          ...card,
+          image: {
+            url: card.image?.url || ``,
+            alternativeText: card.image?.alternativeText || ``,
+          },
+        })),
       };
 
     default:
