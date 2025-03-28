@@ -1,0 +1,69 @@
+.visiting-rules-emergency {
+  padding-top: 40px;
+  padding-bottom: 56px;
+
+  &__inner {
+    display: grid;
+    border-radius: 32px;
+    padding: 28px 16px;
+    background-color: $color-blue;
+    gap: 16px;
+
+    @include tablet-xl {
+      border-radius: 64px;
+      padding: 40px 32px;
+      gap: 32px;
+    }
+
+    @include desktop {
+      padding: 40px;
+    }
+
+    @include desktop-xl {
+      padding: 64px;
+    }
+  }
+
+  &__header {
+    @include h2-text;
+
+    color: $color-black-75;
+
+    @include desktop {
+      @include h1-text;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    gap: 10px;
+
+    @include tablet {
+      gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tablet-xl {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include desktop {
+      gap: 24px;
+    }
+  }
+
+  @include tablet {
+    padding-top: 52px;
+    padding-bottom: 48px;
+  }
+
+  @include desktop {
+    padding-top: 64px;
+    padding-bottom: 80px;
+  }
+
+  @include desktop-xl {
+    padding-top: 88px;
+    padding-bottom: 128px;
+  }
+}

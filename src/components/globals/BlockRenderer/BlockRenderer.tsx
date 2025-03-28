@@ -13,6 +13,10 @@ import {
   SharedTicketsComponentProps,
   CategoriesComponentProps,
   ArticleComponentProps,
+  VisitingRulesHeroComponentProps,
+  VisitingRulesWarningsComponentProps,
+  VisitingRulesPhotoComponentProps,
+  VisitingRulesEmergencyComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 import { Cards } from '../Cards/Cards';
@@ -95,6 +99,34 @@ const Article = dynamic(
   },
 );
 
+const VisitingRulesHero = dynamic(
+  () => import(`../../visiting-rules-page/VisitingRulesHero/VisitingRulesHero`).then((component) => component.VisitingRulesHero),
+  {
+    ssr: false,
+  },
+);
+
+const VisitingRulesWarnings = dynamic(
+  () => import(`../../visiting-rules-page/VisitingRulesWarnings/VisitingRulesWarnings`).then((component) => component.VisitingRulesWarnings),
+  {
+    ssr: false,
+  },
+);
+
+const VisitingRulesPhoto = dynamic(
+  () => import(`../../visiting-rules-page/VisitingRulesPhoto/VisitingRulesPhoto`).then((component) => component.VisitingRulesPhoto),
+  {
+    ssr: false,
+  },
+);
+
+const VisitingRulesEmergency = dynamic(
+  () => import(`../../visiting-rules-page/VisitingRulesEmergency/VisitingRulesEmergency`).then((component) => component.VisitingRulesEmergency),
+  {
+    ssr: false,
+  },
+);
+
 type Block = HeroComponentProps
   | SharedTicketsComponentProps
   | TextAndMediaComponentProps
@@ -105,7 +137,11 @@ type Block = HeroComponentProps
   | HomeTicketsComponentProps
   | NotFoundComponentProps
   | CategoriesComponentProps
-  | ArticleComponentProps;
+  | ArticleComponentProps
+  | VisitingRulesHeroComponentProps
+  | VisitingRulesWarningsComponentProps
+  | VisitingRulesPhotoComponentProps
+  | VisitingRulesEmergencyComponentProps;
 
 export const BlockRenderer = ({
   slug,
@@ -268,6 +304,44 @@ export const BlockRenderer = ({
         innerContent={block.innerContent}
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.VISITING_RULES_HERO) {
+    return (
+      <VisitingRulesHero
+        title={block.title}
+        link={block.link}
+        description={block.description}
+        cardsTitle={block.cardsTitle}
+        cards={block.cards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.VISITING_RULES_WARNINGS) {
+    return (
+      <VisitingRulesWarnings
+        cards={block.cards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.VISITING_RULES_PHOTO) {
+    return (
+      <VisitingRulesPhoto
+        cardsTitle={block.cardsTitle}
+        cards={block.cards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.VISITING_RULES_EMERGENCY) {
+    return (
+      <VisitingRulesEmergency
+        cardsTitle={block.cardsTitle}
+        cards={block.cards}
       />
     );
   }

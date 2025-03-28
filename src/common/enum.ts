@@ -4,6 +4,7 @@ export enum AppRoute {
   DOCUMENTS = `/documents`,
   CONTACT_ZOO = `/contact-zoo`,
   INTERNAL_TEST_PAGE = `/internal-test-page`,
+  VISITING_RULES = `/visiting-rules`,
 }
 
 export enum Breakpoint {
@@ -29,4 +30,8 @@ export enum BlockTypes {
 
   NOT_FOUND = `not-found.not-found`,
 
+  VISITING_RULES_HERO = `visiting-rules.visiting-rules-hero`,
+  VISITING_RULES_WARNINGS = `visiting-rules.visiting-rules-warnings`,
+  VISITING_RULES_PHOTO = `visiting-rules.visiting-rules-photo`,
+  VISITING_RULES_EMERGENCY = `visiting-rules.visiting-rules-emergency`,
 }

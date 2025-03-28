@@ -31,7 +31,7 @@ npm ci
 ```bash
 npm run dev
 ```
-Чтобы увидеть страницу, откройте в браузере [http://localhost:3000](http://localhost:3000) .
+Чтобы увидеть страницу, откройте в браузере [http://localhost:3000](http://localhost:3000).
 
 ## Запуск повторного создания типов TypeScript по документации strapi swagger
 ```bash

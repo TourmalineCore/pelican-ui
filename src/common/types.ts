@@ -34,6 +34,16 @@ export type DocumentsPageProps = {
   seo?: Seo,
 };
 
+export type VisitingRulesPageProps = {
+  seo: Seo,
+  blocks: (
+    VisitingRulesHeroComponentProps
+    | VisitingRulesWarningsComponentProps
+    | VisitingRulesPhotoComponentProps
+    | VisitingRulesEmergencyComponentProps
+  )[];
+};
+
 // Component
 
 export type GlobalComponentProps = {
@@ -292,6 +302,44 @@ export type CategoryProps = {
 export type DocumentsTabsProps = {
   queryYear: string,
   availableYears: number[],
+};
+
+export type VisitingRulesComponentProps = {
+  id: number,
+  title: string,
+  link: {
+    label: string,
+    path: string,
+  },
+  description: string,
+  cardsTitle: string,
+};
+
+export type VisitingRulesCardProps = {
+  id?: number,
+  label: string,
+  phone?: string,
+  iconUrl?: string,
+};
+
+export type VisitingRulesHeroComponentProps = VisitingRulesComponentProps & {
+  __component: BlockTypes.VISITING_RULES_HERO,
+  cards: Omit<VisitingRulesCardProps, 'phone'>[],
+};
+
+export type VisitingRulesWarningsComponentProps = Pick<VisitingRulesComponentProps, 'id'> & {
+  __component: BlockTypes.VISITING_RULES_WARNINGS,
+  cards: Omit<VisitingRulesCardProps, 'iconUrl' | 'phone'>[],
+};
+
+export type VisitingRulesPhotoComponentProps = Pick<VisitingRulesComponentProps, 'id' | 'cardsTitle'> & {
+  __component: BlockTypes.VISITING_RULES_PHOTO,
+  cards: Omit<VisitingRulesCardProps, 'iconUrl' | 'phone'>[],
+};
+
+export type VisitingRulesEmergencyComponentProps = Pick<VisitingRulesComponentProps, 'id' | 'cardsTitle'> & {
+  __component: BlockTypes.VISITING_RULES_EMERGENCY,
+  cards: Omit<VisitingRulesCardProps, 'iconUrl'>[],
 };
 
 export type Block = SharedHeroComponent | HomeServicesComponent;
