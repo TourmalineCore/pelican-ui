@@ -28,18 +28,16 @@ export function Video({
       aria-hidden="true"
       data-testid={dataTestid}
     >
-      {/* <Plyr
-        source={{
-          type: `video`,
-          title,
-          sources: [sources],
-        }}
-        options={options}
-      /> */}
       <video
-        className="plyr"
-        src={sources.src}
-      />
+        width="640"
+        height="360"
+        controls
+      >
+        <source
+          src="/video/text-and-media-video.mp4"
+          type="video/mp4"
+        />
+      </video>
     </div>
   );
 }
