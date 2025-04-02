@@ -1,25 +1,26 @@
-import dynamic from 'next/dynamic';
-import { Options, Source } from 'plyr';
+/* eslint-disable jsx-a11y/media-has-caption */
+// import dynamic from 'next/dynamic';
+import { Source } from 'plyr';
 import 'plyr-react/plyr.css';
 
-const Plyr = dynamic(() => import(`plyr-react`), {
-  ssr: false,
-});
+// const Plyr = dynamic(() => import(`plyr-react`), {
+//   ssr: false,
+// });
 
 type VideoProps = {
   className?: string,
   dataTestid?: string,
-  title?: string,
+  // title?: string,
   sources: Source,
-  options?: Options,
+  // options?: Options,
 };
 
 export function Video({
   className,
   dataTestid,
-  title,
+  // title,
   sources,
-  options,
+  // options,
 }: VideoProps) {
   return (
     <div
@@ -27,13 +28,17 @@ export function Video({
       aria-hidden="true"
       data-testid={dataTestid}
     >
-      <Plyr
+      {/* <Plyr
         source={{
           type: `video`,
           title,
           sources: [sources],
         }}
         options={options}
+      /> */}
+      <video
+        className="plyr"
+        src={sources.src}
       />
     </div>
   );
