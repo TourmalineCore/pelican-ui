@@ -6,7 +6,7 @@ export const MOCK_NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   {
     id: 1,
     name: `Льготы`,
-    link: `https://vk.com/topic-71671982_48253263`,
+    link: AppRoute.DISCOUNTS,
   },
   // TODO: Uncomment when the page appears
   // {

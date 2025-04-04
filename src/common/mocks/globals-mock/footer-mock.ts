@@ -13,7 +13,7 @@ export const MOCK_FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [
   {
     id: 1,
     name: `Льготы`,
-    link: `https://vk.com/topic-71671982_48253263`,
+    link: AppRoute.DISCOUNTS,
   },
   // TODO: Uncomment when the page appears
   // {

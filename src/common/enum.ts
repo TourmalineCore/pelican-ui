@@ -4,6 +4,7 @@ export enum AppRoute {
   DOCUMENTS = `/documents`,
   CONTACT_ZOO = `/contact-zoo`,
   INTERNAL_TEST_PAGE = `/internal-test-page`,
+  DISCOUNTS = `/discounts`,
 }
 
 export enum Breakpoint {
@@ -12,6 +13,14 @@ export enum Breakpoint {
   TABLET_XL = 1024,
   DESKTOP = 1366,
   DESKTOP_XL = 1920,
+}
+
+export enum BreakpointName {
+  MOBILE = `mobile`,
+  TABLET = `tablet`,
+  TABLET_XL = `tablet-xl`,
+  DESKTOP = `desktop`,
+  DESKTOP_XL = `desktop-xl`,
 }
 
 export enum BlockTypes {
@@ -29,4 +38,6 @@ export enum BlockTypes {
 
   NOT_FOUND = `not-found.not-found`,
 
+  DISCOUNTS_TERMS = `discounts.terms`,
+  DISCOUNTS_CATEGORIES = `discounts.categories`,
 }

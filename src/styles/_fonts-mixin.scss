@@ -225,3 +225,21 @@
     line-height: 1.35;
   }
 }
+
+@mixin link-text {
+  @include regular-font;
+
+  font-size: 16px;
+  line-height: 1.45;
+  text-decoration: underline;
+
+  @include tablet-xl {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  @include desktop-xl {
+    font-size: 30px;
+    line-height: 1.4;
+  }
+}

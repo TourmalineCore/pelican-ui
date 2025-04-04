@@ -1,0 +1,67 @@
+.discounts-rules-card {
+  display: flex;
+  border: 1px solid $color-green-15;
+  border-radius: 24px;
+  padding: 15px 18px;
+  box-sizing: border-box;
+  background-color: $color-white-80;
+  gap: 16px;
+
+  &::before {
+    @include body-1-medium;
+
+    counter-increment: num;
+    content: counter(num);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1000px;
+    height: 40px;
+    min-width: 40px;
+    color: $color-black-75;
+    background-color: $color-green-10;
+
+    @include tablet {
+      color: $color-black;
+    }
+
+    @include tablet-xl {
+      @include text-medium;
+    }
+
+    @include desktop-xl {
+      height: 64px;
+      min-width: 64px;
+    }
+  }
+
+  &__text {
+    @include caption-1-regular;
+
+    display: flex;
+    align-items: center;
+
+    @include desktop-xl {
+      font-size: 24px;
+    }
+  }
+
+  @include tablet {
+    align-items: center;
+    padding: 15px 20px;
+  }
+
+  @include tablet-xl {
+    padding: 23px 28px;
+  }
+
+  @include desktop {
+    align-items: start;
+    flex-direction: column;
+    padding: 31px 24px;
+  }
+
+  @include desktop-xl {
+    padding: 36px 28px;
+  }
+}

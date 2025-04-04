@@ -125,11 +125,7 @@ export function TicketsPopup({
                   </ul>
                   <Link
                     className="tickets-popup__link button button--secondary"
-                    // TODO: Change path when the page appears
                     href={subsidizedTicket.button.link}
-                    // TODO: Remove when the page appears
-                    target="_blank"
-                    rel="noopener noreferrer"
                     onClick={handleTicketPopupToggle}
                   >
                     {subsidizedTicket.button.label}

@@ -1,0 +1,105 @@
+.discounts-categories {
+  padding: 40px 16px 56px;
+
+  &__title {
+    @include h1-text;
+
+    margin-bottom: 24px;
+    color: $color-black-75;
+
+    @include tablet {
+      margin-bottom: 23px;
+    }
+
+    @include desktop {
+      margin-bottom: 32px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__list {
+    > * {
+      margin-top: 20px;
+
+      @include tablet {
+        margin-top: 17px;
+      }
+
+      @include tablet-xl {
+        margin-top: 20px;
+      }
+
+      @include desktop {
+        margin-top: 24px;
+      }
+
+      @include desktop-xl {
+        margin-top: 49px;
+      }
+    }
+  }
+
+  &__remark {
+    @include body-2-regular;
+
+    margin-top: 20px;
+    border-radius: 24px;
+    padding: 28px 24px;
+    color: $color-white;
+    background-image: url("../../../../public/images/backgrounds/bg-zebra.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &-link {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+
+      &:hover,
+      &:focus {
+        color: $color-pink-bright;
+        transition: color ease-out 0.2s;
+      }
+    }
+
+    @include tablet {
+      margin-top: 24px;
+      padding: 30px 16px;
+    }
+
+    @include tablet-xl {
+      @include caption-1-medium;
+
+      padding: 24px 28px;
+    }
+
+    @include desktop {
+      margin-top: 32px;
+      padding: 24px 32px;
+    }
+
+    @include desktop-xl {
+      margin-top: 48px;
+      padding: 32px 40px;
+    }
+  }
+
+  @include tablet {
+    padding: 52px 16px 48px;
+  }
+
+  @include tablet-xl {
+    padding: 52px 32px 48px;
+  }
+
+  @include desktop {
+    padding: 64px 40px 80px;
+  }
+
+  @include desktop-xl {
+    padding: 88px 64px 128px;
+  }
+}

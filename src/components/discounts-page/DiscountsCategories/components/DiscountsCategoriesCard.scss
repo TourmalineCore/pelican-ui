@@ -1,0 +1,254 @@
+.discounts-categories-card {
+  border-radius: 24px;
+  padding: 15px 16px;
+  box-shadow: 0 2px 10px 0 $color-green-shadow;
+  background-color: $color-white;
+
+  &__note {
+    @include caption-1-medium;
+
+    margin-bottom: 8px;
+    color: $color-black-60;
+
+    @include tablet {
+      margin-top: -2px;
+      margin-bottom: 0;
+    }
+
+    @include tablet-xl {
+      margin-top: 0;
+      margin-bottom: 4px;
+    }
+  }
+
+  &__title {
+    @include h2-text;
+
+    margin-bottom: 32px;
+    color: $color-black-75;
+
+    @include desktop {
+      max-width: 1044px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__price {
+    @include h2-text;
+
+    margin-bottom: 24px;
+    color: $color-green;
+
+    @include tablet-xl {
+      margin-bottom: 32px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__container {
+    > *:not(:last-child) {
+      margin-bottom: 23px;
+
+      @include tablet {
+        margin-bottom: 13px;
+      }
+
+      @include tablet-xl {
+        margin-bottom: 33px;
+      }
+
+      @include desktop-xl {
+        margin-bottom: 39px;
+      }
+    }
+  }
+
+  &__rules {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 24px 15px;
+    background-color: $color-green-5;
+    gap: 24px;
+
+    @include tablet {
+      flex-direction: row;
+      padding: 24px 16px;
+      gap: 43px;
+    }
+
+    @include tablet-xl {
+      padding: 40px 32px;
+      gap: 64px;
+    }
+
+    @include desktop {
+      gap: 164px;
+    }
+
+    @include desktop-xl {
+      border-radius: 32px;
+      padding: 48px 40px;
+      gap: 96px;
+    }
+  }
+
+  &__rules-text {
+    @include caption-1-regular;
+
+    color: $color-black-75;
+
+    @include tablet {
+      width: 423px;
+    }
+
+    @include tablet-xl {
+      @include text-regular;
+
+      width: 460px;
+    }
+
+    @include desktop {
+      width: 542px;
+      font-weight: 500;
+    }
+
+    @include desktop-xl {
+      width: 912px;
+    }
+  }
+
+  &__rules-list {
+    list-style-type: decimal;
+    margin: 0;
+    padding-left: 24px;
+
+    > *:not(:last-child) {
+      margin-bottom: 4px;
+
+      @include tablet-xl {
+        margin-bottom: 8px;
+      }
+
+      @include desktop-xl {
+        margin-bottom: 16px;
+      }
+    }
+
+    @include tablet {
+      padding-left: 24px;
+    }
+
+    @include tablet-xl {
+      padding-left: 28px;
+    }
+
+    @include desktop-xl {
+      padding-left: 44px;
+    }
+  }
+
+  &__rules-basis {
+    display: flex;
+    flex-direction: column;
+    margin-top: -1px;
+
+    > *:not(:last-child) {
+      margin-bottom: 4px;
+
+      @include tablet-xl {
+        margin-bottom: 8px;
+      }
+
+      @include desktop-xl {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  &__rules-info {
+    @include caption-1-medium;
+
+    margin-top: 4px;
+    color: $color-black-75;
+
+    @include tablet-xl {
+      margin-top: 8px;
+      font-weight: 500;
+      font-size: 20px;
+    }
+
+    @include tablet-xl {
+      margin-bottom: 8px;
+    }
+
+    @include desktop {
+      font-weight: 600;
+    }
+
+    @include desktop-xl {
+      font-size: 30px;
+      gap: 16px;
+    }
+  }
+
+  &__link {
+    @include link-text;
+
+    color: $color-black-75;
+    text-underline-offset: 4px;
+
+    &:hover,
+    &:focus {
+      color: $color-green-dark;
+      transition: color ease-out 0.2s;
+    }
+
+    @include desktop {
+      text-underline-offset: 7px;
+    }
+  }
+
+  &__rules-title {
+    @include body-1-medium;
+
+    margin-bottom: 8px;
+    color: $color-black-75;
+
+    @include tablet-xl {
+      @include body-2-medium;
+
+      margin-bottom: 12px;
+    }
+
+    @include desktop {
+      margin-bottom: 8px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 24px;
+    }
+  }
+
+  @include tablet {
+    padding: 24px 16px 16px;
+  }
+
+  @include tablet-xl {
+    padding: 32px 24px 24px;
+  }
+
+  @include desktop {
+    border-radius: 40px;
+  }
+
+  @include desktop-xl {
+    padding: 48px 40px 40px;
+  }
+}
