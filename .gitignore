@@ -135,3 +135,6 @@ dist
 /playwright-report/axeReport/
 /playwright-tests/playwright-test-results
 /playwright-tests/axe-reports/
+
+# Auto generated file on MacOS
+.DS_Store

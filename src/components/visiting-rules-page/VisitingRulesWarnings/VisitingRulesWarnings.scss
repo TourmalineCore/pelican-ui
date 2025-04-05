@@ -1,0 +1,43 @@
+.visiting-rules-warnings {
+  &__cards {
+    display: grid;
+    padding: 40px 16px;
+    gap: 10px;
+
+    @include tablet {
+      padding: 52px 16px;
+      gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tablet-xl {
+      padding: 52px 32px;
+    }
+
+    @include desktop {
+      padding: 64px 40px;
+      gap: 24px;
+    }
+
+    @include desktop-xl {
+      padding: 88px 64px;
+    }
+  }
+
+  &__card {
+    border: 2px solid $color-green-dark;
+    padding: 14px;
+
+    @include desktop {
+      gap: 8px;
+    }
+
+    @include tablet-xl {
+      padding: 22px;
+    }
+
+    @include desktop-xl {
+      padding: 30px;
+    }
+  }
+}

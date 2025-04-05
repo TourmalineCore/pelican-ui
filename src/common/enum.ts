@@ -4,6 +4,7 @@ export enum AppRoute {
   DOCUMENTS = `/documents`,
   CONTACT_ZOO = `/contact-zoo`,
   INTERNAL_TEST_PAGE = `/internal-test-page`,
+  VISITING_RULES = `/visiting-rules`,
 }
 
 export enum Breakpoint {
@@ -12,6 +13,14 @@ export enum Breakpoint {
   TABLET_XL = 1024,
   DESKTOP = 1366,
   DESKTOP_XL = 1920,
+}
+
+export enum BreakpointName {
+  MOBILE = `mobile`,
+  TABLET = `tablet`,
+  TABLET_XL = `tablet-xl`,
+  DESKTOP = `desktop`,
+  DESKTOP_XL = `desktop-xl`,
 }
 
 export enum BlockTypes {
@@ -29,4 +38,8 @@ export enum BlockTypes {
 
   NOT_FOUND = `not-found.not-found`,
 
+  VISITING_RULES_MAIN = `visiting-rules.main`,
+  VISITING_RULES_WARNINGS = `visiting-rules.warnings`,
+  VISITING_RULES_PHOTOS_POLICY = `visiting-rules.photos-policy`,
+  VISITING_RULES_EMERGENCY_PHONES = `visiting-rules.emergency-phones`,
 }

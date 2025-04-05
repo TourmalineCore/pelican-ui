@@ -1,0 +1,84 @@
+.visiting-rules-photos-policy {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  &__wrapper {
+    border-radius: 32px;
+    background-color: $color-yellow;
+
+    @include tablet-xl {
+      border-radius: 64px;
+    }
+  }
+
+  &__inner {
+    padding: 28px 16px;
+
+    @include tablet-xl {
+      padding: 40px 32px;
+    }
+
+    @include desktop {
+      padding: 40px;
+    }
+
+    @include desktop-xl {
+      padding: 64px;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    gap: 10px;
+
+    @include tablet {
+      gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tablet-xl {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include desktop {
+      gap: 24px;
+    }
+  }
+
+  &__header {
+    @include h2-text;
+
+    margin-bottom: 16px;
+    color: $color-black-75;
+
+    @include tablet-xl {
+      margin-bottom: 32px;
+      max-width: 482px;
+    }
+
+    @include desktop {
+      @include h1-text;
+
+      max-width: 650px;
+    }
+
+    @include desktop-xl {
+      max-width: 1000px;
+    }
+  }
+
+  @include tablet {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+
+  @include desktop {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  @include desktop-xl {
+    padding-top: 88px;
+    padding-bottom: 88px;
+  }
+}

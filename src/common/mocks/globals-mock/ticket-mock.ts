@@ -1,4 +1,5 @@
 
+import { AppRoute } from '../../enum';
 import { GlobalComponentProps } from '../../types';
 
 export const MOCK_POPUP_TICKET_BUY_TEXT = `Билеты`;
@@ -119,7 +120,7 @@ export const MOCK_TICKETS_POPUP: GlobalComponentProps['ticketsPopup'] = {
     images: MOCK_TICKETS_POPUP_RULES_IMAGES,
     button: {
       label: `Подробнее о правилах посещения`,
-      link: `http://chelzoo.ru/media/articles/2022/05/06/prikaz-221-ot-050522-o-pravilah-posescheniya-2.pdf`,
+      link: AppRoute.VISITING_RULES,
     },
   },
   ticketRefundAccordion: {

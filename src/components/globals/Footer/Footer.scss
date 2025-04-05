@@ -60,6 +60,12 @@
       color: $color-green;
     }
 
+    &:first-child {
+      border-radius: 0;
+      width: 100%;
+      text-align: start;
+    }
+
     @include tablet-xl {
       font-size: 16px;
       line-height: 1.4;

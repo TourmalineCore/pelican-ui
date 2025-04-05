@@ -31,7 +31,7 @@ npm ci
 ```bash
 npm run dev
 ```
-Чтобы увидеть страницу, откройте в браузере [http://localhost:3000](http://localhost:3000) .
+Чтобы увидеть страницу, откройте в браузере [http://localhost:3000](http://localhost:3000).
 
 ## Запуск повторного создания типов TypeScript по документации strapi swagger
 ```bash
@@ -115,4 +115,12 @@ npm uninstall @playwright/test
 
 ```bash
 npm install -D @playwright/test@1.49.0 --save-exact
+```
+
+Решение возможных проблем:
+
+- Если на windows при выполнении pull у вас будет ошибка, что название какого-то файла слишком длинное выполните следующую команду в powershell [подробнее тут](https://stackoverflow.com/questions/22575662/filename-too-long-in-git-for-windows):
+
+```bash
+& git config "--global" core.longpaths true
 ```

@@ -10,11 +10,6 @@ export const MOCK_NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   },
   // TODO: Uncomment when the page appears
   // {
-  //   id: 2,
-  //   name: `Правила посещения`,
-  //   link: `#`,
-  // },
-  // {
   //   id: 3,
   //   name: `Адрес`,
   //   link: `#`,
@@ -25,13 +20,18 @@ export const MOCK_NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
   //   link: `#`,
   // },
   {
-    id: 5,
+    id: 4,
     name: `Документы`,
     link: AppRoute.DOCUMENTS,
   },
   {
-    id: 6,
+    id: 5,
     name: `Новости`,
     link: AppRoute.NEWS,
+  },
+  {
+    id: 6,
+    name: `Правила посещения`,
+    link: AppRoute.VISITING_RULES,
   },
 ];

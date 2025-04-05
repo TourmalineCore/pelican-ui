@@ -1,4 +1,9 @@
-import { AppRoute, BlockTypes, Breakpoint } from '@/src/common/enum';
+import {
+  AppRoute,
+  BlockTypes,
+  Breakpoint,
+  BreakpointName,
+} from '@/src/common/enum';
 import {
   gotoPage,
   hideCookie,
@@ -8,6 +13,8 @@ import {
   setViewportSize,
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
+
+const PAGE_ID = `image-with-button-grid`;
 
 test.describe(`ImageWithButtonGridTests`, () => {
   test.beforeEach(async ({
@@ -56,7 +63,7 @@ async function mobileTest({
   await expect(getImageWithButtonGridByTestId({
     page,
   }))
-    .toHaveScreenshot(`image-with-button-grid-mobile.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletTest({
@@ -72,7 +79,7 @@ async function tabletTest({
   await expect(getImageWithButtonGridByTestId({
     page,
   }))
-    .toHaveScreenshot(`image-with-button-grid-tablet.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlTest({
@@ -88,7 +95,7 @@ async function tabletXlTest({
   await expect(getImageWithButtonGridByTestId({
     page,
   }))
-    .toHaveScreenshot(`image-with-button-grid-tablet-xl.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function desktopTest({
@@ -104,7 +111,7 @@ async function desktopTest({
   await expect(getImageWithButtonGridByTestId({
     page,
   }))
-    .toHaveScreenshot(`image-with-button-grid-desktop.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 function getImageWithButtonGridByTestId({
@@ -112,5 +119,5 @@ function getImageWithButtonGridByTestId({
 }: {
   page: Page
 }) {
-  return page.getByTestId(`image-with-button-grid`);
+  return page.getByTestId(PAGE_ID);
 }

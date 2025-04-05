@@ -1,0 +1,97 @@
+.visiting-rules-list {
+  margin-top: 16px;
+  border-radius: 32px;
+  background-color: $color-green-5;
+
+  &__inner {
+    padding: 28px 16px;
+
+    @include tablet-xl {
+      padding: 40px 32px;
+    }
+
+    @include desktop {
+      padding: 40px;
+    }
+
+    @include desktop-xl {
+      padding: 64px;
+    }
+  }
+
+  &__header {
+    @include body-2-medium;
+
+    margin-bottom: 16px;
+
+    @include tablet-xl {
+      margin-bottom: 24px;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+
+    > :first-child {
+      grid-column: span 2;
+    }
+
+    @include tablet {
+      gap: 16px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include desktop {
+      gap: 24px;
+    }
+  }
+
+  &__card {
+    align-content: flex-start;
+    flex-flow: column wrap;
+
+    @include desktop {
+      flex-flow: nowrap;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    @include desktop-xl {
+      align-items: center;
+      flex-direction: row;
+      gap: 24px;
+    }
+  }
+
+  &__link {
+    @include caption-1-medium;
+
+    margin-top: 16px;
+    padding: 11px 23px;
+    background-color: $color-background-page;
+  }
+
+  @include tablet {
+    margin-top: 24px;
+  }
+
+  @include tablet-xl {
+    border-radius: 64px;
+    gap: 32px;
+  }
+
+  @include desktop {
+    gap: 24px;
+  }
+
+  @include desktop-xl {
+    margin-top: 40px;
+    gap: 32px;
+  }
+}

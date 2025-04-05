@@ -13,6 +13,10 @@ import {
   SharedTicketsComponentProps,
   CategoriesComponentProps,
   ArticleComponentProps,
+  VisitingRulesMainComponentProps,
+  VisitingRulesWarningsComponentProps,
+  VisitingRulesPhotosPolicyComponentProps,
+  VisitingRulesEmergencyPhonesComponentProps,
 } from '@/src/common/types';
 import dynamic from 'next/dynamic';
 import { Cards } from '../Cards/Cards';
@@ -95,6 +99,34 @@ const Article = dynamic(
   },
 );
 
+const VisitingRulesMain = dynamic(
+  () => import(`../../visiting-rules-page/VisitingRulesMain/VisitingRulesMain`).then((component) => component.VisitingRulesMain),
+  {
+    ssr: false,
+  },
+);
+
+const VisitingRulesWarnings = dynamic(
+  () => import(`../../visiting-rules-page/VisitingRulesWarnings/VisitingRulesWarnings`).then((component) => component.VisitingRulesWarnings),
+  {
+    ssr: false,
+  },
+);
+
+const VisitingRulesPhotosPolicy = dynamic(
+  () => import(`../../visiting-rules-page/VisitingRulesPhotosPolicy/VisitingRulesPhotosPolicy`).then((component) => component.VisitingRulesPhotosPolicy),
+  {
+    ssr: false,
+  },
+);
+
+const VisitingRulesEmergencyPhones = dynamic(
+  () => import(`../../visiting-rules-page/VisitingRulesEmergencyPhones/VisitingRulesEmergencyPhones`).then((component) => component.VisitingRulesEmergencyPhones),
+  {
+    ssr: false,
+  },
+);
+
 type Block = HeroComponentProps
   | SharedTicketsComponentProps
   | TextAndMediaComponentProps
@@ -105,7 +137,11 @@ type Block = HeroComponentProps
   | HomeTicketsComponentProps
   | NotFoundComponentProps
   | CategoriesComponentProps
-  | ArticleComponentProps;
+  | ArticleComponentProps
+  | VisitingRulesMainComponentProps
+  | VisitingRulesWarningsComponentProps
+  | VisitingRulesPhotosPolicyComponentProps
+  | VisitingRulesEmergencyPhonesComponentProps;
 
 export const BlockRenderer = ({
   slug,
@@ -268,6 +304,44 @@ export const BlockRenderer = ({
         innerContent={block.innerContent}
         isFirstBlock={block.isFirstBlock}
         isLastBlock={block.isLastBlock}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.VISITING_RULES_MAIN) {
+    return (
+      <VisitingRulesMain
+        title={block.title}
+        link={block.link}
+        description={block.description}
+        cardsTitle={block.cardsTitle}
+        cards={block.cards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.VISITING_RULES_WARNINGS) {
+    return (
+      <VisitingRulesWarnings
+        cards={block.cards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.VISITING_RULES_PHOTOS_POLICY) {
+    return (
+      <VisitingRulesPhotosPolicy
+        cardsTitle={block.cardsTitle}
+        cards={block.cards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.VISITING_RULES_EMERGENCY_PHONES) {
+    return (
+      <VisitingRulesEmergencyPhones
+        cardsTitle={block.cardsTitle}
+        cards={block.cards}
       />
     );
   }

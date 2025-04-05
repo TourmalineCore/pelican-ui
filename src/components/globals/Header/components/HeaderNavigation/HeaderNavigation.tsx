@@ -39,22 +39,6 @@ export function HeaderNavigation({
             </Link>
           </li>
         ))}
-        {/* TODO: Remove when the page appears */}
-        <li
-          key="2"
-          className="header-navigation__item"
-        >
-          <Link
-            href="/documents/Visiting-rules.pdf"
-            className="header-navigation__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Перейти на страницу Правила посещения"
-            data-testid="header-navigation-link"
-          >
-            Правила посещения
-          </Link>
-        </li>
       </ul>
     </nav>
   );

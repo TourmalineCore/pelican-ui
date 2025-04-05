@@ -15,6 +15,11 @@ export const MOCK_FOOTER_USER_LINKS: GlobalComponentProps['footerUserLinks'] = [
     name: `Льготы`,
     link: `https://vk.com/topic-71671982_48253263`,
   },
+  {
+    id: 2,
+    name: `Правила посещения`,
+    link: AppRoute.VISITING_RULES,
+  },
   // TODO: Uncomment when the page appears
   // {
   //   id: 2,
@@ -34,12 +39,6 @@ export const MOCK_FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] =
     name: `Документы`,
     link: AppRoute.DOCUMENTS,
   },
-  // TODO: Uncomment when the page appears
-  // {
-  //   id: 3,
-  //   name: `Правила посещения`,
-  //   link: `#`,
-  // },
 ];
 
 export const MOCK_OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [

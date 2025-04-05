@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 import { test } from '@playwright/test';
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import { axeCheckAndWriteReport, setViewportSize } from '../helpers';
+
+const PAGE_NAME = `document-categories`;
 
 test(`axeCheckUp Documents Categories Page Desktop`, async ({
   page,
@@ -19,8 +21,8 @@ test(`axeCheckUp Documents Categories Page Desktop`, async ({
 
   await axeCheckAndWriteReport({
     page,
-    viewport: `desktop`,
-    pageName: `document-categories`,
+    viewport: BreakpointName.DESKTOP,
+    pageName: PAGE_NAME,
   });
 });
 
@@ -40,8 +42,8 @@ test(`axeCheckUp Documents Categories Page Tablet`, async ({
 
   await axeCheckAndWriteReport({
     page,
-    viewport: `tablet`,
-    pageName: `document-categories`,
+    viewport: BreakpointName.TABLET,
+    pageName: PAGE_NAME,
   });
 });
 
@@ -61,7 +63,7 @@ test(`axeCheckUp Documents Categories Page Mobile`, async ({
 
   await axeCheckAndWriteReport({
     page,
-    viewport: `mobile`,
-    pageName: `document-categories`,
+    viewport: BreakpointName.MOBILE,
+    pageName: PAGE_NAME,
   });
 });

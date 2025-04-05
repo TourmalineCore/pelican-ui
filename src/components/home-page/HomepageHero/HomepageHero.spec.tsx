@@ -1,4 +1,4 @@
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import {
   gotoPage,
   hideCookie,
@@ -6,6 +6,8 @@ import {
   setViewportSize,
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
+
+const PAGE_ID = `hero`;
 
 test.describe(`HomepageHeroComponentTests`, () => {
   test.beforeEach(async ({
@@ -49,7 +51,7 @@ async function mobileTest({
   await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`hero-mobile.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletTest({
@@ -66,7 +68,7 @@ async function tabletTest({
   await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`hero-tablet.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlTest({
@@ -83,7 +85,7 @@ async function tabletXlTest({
   await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`hero-tablet-xl.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function desktopTest({
@@ -99,7 +101,7 @@ async function desktopTest({
   await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`hero-desktop.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopXlTest({
@@ -116,7 +118,7 @@ async function desktopXlTest({
   await expect(getHeroByTestId({
     page,
   }))
-    .toHaveScreenshot(`hero-desktop-xl.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 function getHeroByTestId({
@@ -124,5 +126,5 @@ function getHeroByTestId({
 }: {
   page: Page
 }) {
-  return page.getByTestId(`hero`);
+  return page.getByTestId(PAGE_ID);
 }

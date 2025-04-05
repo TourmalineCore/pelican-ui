@@ -1,0 +1,67 @@
+.visiting-rules-info {
+  display: grid;
+  color: $color-black-75;
+  gap: 16px;
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+
+    @include tablet {
+      gap: 16px;
+    }
+  }
+
+  &__title {
+    @include h1-text;
+
+    white-space: nowrap;
+
+    @include tablet-xl {
+      @include h2-text;
+    }
+
+    @include desktop {
+      @include h1-text;
+    }
+  }
+
+  &__link {
+    @include caption-1-medium;
+
+    @include tablet-xl {
+      @include caption-2-medium;
+    }
+  }
+
+  &__description {
+    @include caption-1-regular;
+
+    @include tablet {
+      max-width: 700px;
+    }
+
+    @include tablet-xl {
+      @include caption-1-medium;
+
+      max-width: 582px;
+    }
+
+    @include desktop {
+      max-width: 630px;
+    }
+
+    @include desktop-xl {
+      max-width: 883px;
+    }
+  }
+
+  @include desktop {
+    gap: 24px;
+  }
+
+  @include desktop-xl {
+    padding-left: 40px;
+  }
+}

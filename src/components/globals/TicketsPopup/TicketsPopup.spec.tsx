@@ -1,4 +1,4 @@
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import {
   gotoPage,
   hideCookie,
@@ -6,6 +6,8 @@ import {
   setViewportSize,
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
+
+const PAGE_ID = `tickets-popup`;
 
 test.describe(`TicketsPopupComponentTests`, () => {
   test.beforeEach(async ({
@@ -83,7 +85,7 @@ async function mobileTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-mobile.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function mobileClickedTest({
@@ -103,7 +105,7 @@ async function mobileClickedTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-mobile-clicked.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.MOBILE}-clicked.png`);
 }
 
 async function tabletTest({
@@ -120,7 +122,7 @@ async function tabletTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-tablet.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletClickedTest({
@@ -141,7 +143,7 @@ async function tabletClickedTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-tablet-clicked.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET}-clicked.png`);
 }
 
 async function tabletXlTest({
@@ -158,7 +160,7 @@ async function tabletXlTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-tablet-xl.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function tabletXlClickedTest({
@@ -179,7 +181,7 @@ async function tabletXlClickedTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-tablet-xl-clicked.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET_XL}-clicked.png`);
 }
 
 async function desktopTest({
@@ -196,7 +198,7 @@ async function desktopTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-desktop.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopClickedTest({
@@ -217,7 +219,7 @@ async function desktopClickedTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-desktop-clicked.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP}-clicked.png`);
 }
 
 async function desktopXlTest({
@@ -234,7 +236,7 @@ async function desktopXlTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-desktop-xl.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 async function desktopXlClickedTest({
@@ -255,7 +257,7 @@ async function desktopXlClickedTest({
   await expect(getTicketsPopupByTestId({
     page,
   }))
-    .toHaveScreenshot(`tickets-popup-desktop-xl-clicked.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP_XL}-clicked.png`);
 }
 
 function getTicketsPopupByTestId({
@@ -263,5 +265,5 @@ function getTicketsPopupByTestId({
 }: {
   page: Page
 }) {
-  return page.getByTestId(`tickets-popup`);
+  return page.getByTestId(PAGE_ID);
 }

@@ -1,4 +1,4 @@
-import { AppRoute, Breakpoint } from '@/src/common/enum';
+import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import {
   gotoPage,
   hideHeader,
@@ -6,6 +6,8 @@ import {
   setViewportSize,
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
+
+const PAGE_ID = `cookie`;
 
 test.describe(`CookieTests`, () => {
   test.beforeEach(async ({
@@ -50,12 +52,12 @@ async function actionTest({
   await page.getByTestId(`cookie-button`)
     .click();
 
-  await expect(page.getByTestId(`cookie`))
+  await expect(page.getByTestId(PAGE_ID))
     .toBeHidden;
 
   await page.reload();
 
-  await expect(page.getByTestId(`cookie`))
+  await expect(page.getByTestId(PAGE_ID))
     .toBeHidden;
 }
 
@@ -71,7 +73,7 @@ async function mobileTest({
   await expect(getCookieByTestId({
     page,
   }))
-    .toHaveScreenshot(`cookie-mobile.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletTest({
@@ -87,7 +89,7 @@ async function tabletTest({
   await expect(getCookieByTestId({
     page,
   }))
-    .toHaveScreenshot(`cookie-tablet.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlTest({
@@ -103,7 +105,7 @@ async function tabletXlTest({
   await expect(getCookieByTestId({
     page,
   }))
-    .toHaveScreenshot(`cookie-tablet-xl.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function desktopTest({
@@ -119,7 +121,7 @@ async function desktopTest({
   await expect(getCookieByTestId({
     page,
   }))
-    .toHaveScreenshot(`cookie-desktop.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopXlTest({
@@ -135,7 +137,7 @@ async function desktopXlTest({
   await expect(getCookieByTestId({
     page,
   }))
-    .toHaveScreenshot(`cookie-desktop-xl.png`);
+    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 function getCookieByTestId({
@@ -143,5 +145,5 @@ function getCookieByTestId({
 }: {
   page: Page
 }) {
-  return page.getByTestId(`cookie`);
+  return page.getByTestId(PAGE_ID);
 }
