@@ -2,6 +2,7 @@
   $this: &;
 
   z-index: $tickets-popup;
+  display: none;
 
   &__inner {
     @include medium-font;
@@ -309,5 +310,9 @@
       max-width: 400px;
       font-size: 22px;
     }
+  }
+
+  &.is-active {
+    display: block;
   }
 }
