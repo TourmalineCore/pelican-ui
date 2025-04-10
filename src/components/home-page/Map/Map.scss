@@ -15,25 +15,16 @@
     z-index: -1;
     height: 100%;
     object-fit: cover;
-    object-position: -72px 32px;
     transform: scale(1.2);
     inset: 0;
 
-    @include tablet {
-      object-position: 0 32px;
-    }
-
-    @include tablet-xl {
-      object-position: 0 44px;
-    }
-
     @include desktop {
-      object-position: 0 30px;
+      object-position: 0 -108px;
+      transform: scale(1.1);
     }
 
     @include desktop-xl {
-      object-position: 0 24px;
-      transform: scale(1.1);
+      object-position: 0 -172px;
     }
   }
 
