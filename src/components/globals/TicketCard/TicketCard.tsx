@@ -9,11 +9,11 @@ export function TicketCard({
   isSubsidized,
   isGeneral,
 }: {
-  className: string,
-  link?: string,
-  ticket: Ticket,
-  isSubsidized?: boolean,
-  isGeneral?: boolean,
+  className: string;
+  link?: string;
+  ticket: Ticket;
+  isSubsidized?: boolean;
+  isGeneral?: boolean;
 }) {
   return (
     <li
@@ -52,7 +52,7 @@ export function TicketCard({
 function renderTicketMarkup({
   ticket,
 }: {
-  ticket: Ticket,
+  ticket: Ticket;
 }) {
   return (
     <div className="ticket-card__inner">

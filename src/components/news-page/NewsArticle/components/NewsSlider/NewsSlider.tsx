@@ -10,7 +10,7 @@ import 'glider-js/glider.min.css';
 export function NewsSlider({
   news,
 }: {
-  news: Pick<NewsArticleProps, 'id' | 'description' | 'title' | 'slug'>[]
+  news: Pick<NewsArticleProps, 'id' | 'description' | 'title' | 'slug'>[];
 }) {
   const gliderRef = useRef <GliderMethods>(null);
   const prevButtonRef = useRef<HTMLButtonElement>(null);

@@ -11,7 +11,7 @@ export function MapAddressCard({
   note,
   image,
 }: Omit<MapComponentProps, 'id' | '__component'> & {
-  className: string
+  className: string;
 }) {
   const {
     isTablet,

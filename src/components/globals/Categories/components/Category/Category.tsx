@@ -8,10 +8,10 @@ export function Category({
   pageUrl,
   title,
 }: {
-  className: string,
-  slug: CategoryProps['slug'],
-  pageUrl: CategoryProps['pageUrl'],
-  title: CategoryProps['title'],
+  className: string;
+  slug: CategoryProps['slug'];
+  pageUrl: CategoryProps['pageUrl'];
+  title: CategoryProps['title'];
 }) {
   return (
     <li className={`${className} category`}>

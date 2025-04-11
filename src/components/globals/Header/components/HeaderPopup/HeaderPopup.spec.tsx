@@ -26,7 +26,7 @@ test.describe(`HeaderPopupTests`, () => {
 async function actionTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -44,7 +44,7 @@ async function actionTest({
 async function navigationTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await gotoPage({
     page,
@@ -71,7 +71,7 @@ async function navigationTest({
 async function mobilePopupTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -91,7 +91,7 @@ async function mobilePopupTest({
 async function tabletPopupTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -112,7 +112,7 @@ async function tabletPopupTest({
 async function tabletXlPopupTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -133,7 +133,7 @@ async function tabletXlPopupTest({
 async function getHeaderPopupButtonByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
   return page.getByTestId(`header-popup-button`);
 }
@@ -141,7 +141,7 @@ async function getHeaderPopupButtonByTestId({
 function getHeaderPopupByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
   return page.getByTestId(`header-popup`);
 }

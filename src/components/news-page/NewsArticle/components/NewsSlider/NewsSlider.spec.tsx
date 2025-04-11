@@ -7,7 +7,7 @@ import {
 } from '@/playwright-tests/helpers';
 import { test, expect, Page } from '@playwright/test';
 
-const PAGE_ID = `news-slider`;
+const TEST_ID = `news-slider`;
 
 test.describe(`NewsSliderComponentTest`, () => {
   test.beforeEach(async ({
@@ -43,7 +43,7 @@ test.describe(`NewsSliderComponentTest`, () => {
 async function navigationTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await page.getByTestId(`slider-card`)
     .first()
@@ -56,7 +56,7 @@ async function navigationTest({
 async function mobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -65,13 +65,13 @@ async function mobileTest({
   await expect(getNewsSliderByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.MOBILE}.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
 }
 
 async function tabletTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -81,13 +81,13 @@ async function tabletTest({
   await expect(getNewsSliderByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET}.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
 }
 
 async function tabletXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -97,13 +97,13 @@ async function tabletXlTest({
   await expect(getNewsSliderByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.TABLET_XL}.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}.png`);
 }
 
 async function desktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -113,13 +113,13 @@ async function desktopTest({
   await expect(getNewsSliderByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP}.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
 }
 
 async function desktopXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -129,13 +129,13 @@ async function desktopXlTest({
   await expect(getNewsSliderByTestId({
     page,
   }))
-    .toHaveScreenshot(`${PAGE_ID}-${BreakpointName.DESKTOP_XL}.png`);
+    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
 }
 
 function getNewsSliderByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
-  return page.getByTestId(PAGE_ID);
+  return page.getByTestId(TEST_ID);
 }

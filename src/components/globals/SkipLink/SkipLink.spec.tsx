@@ -18,7 +18,7 @@ test.describe(`SkipLinkTest`, () => {
 async function mobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,

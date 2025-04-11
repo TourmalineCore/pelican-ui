@@ -9,7 +9,7 @@ import { HeroSchedule } from "./components/HeroSchedule/HeroSchedule";
 import { HeroInfoCard } from "./components/HeroInfoCard/HeroInfoCard";
 
 type HeroProps = Omit<HeroComponentProps, 'id' | '__component'> & Partial<Pick<GlobalComponentProps, 'email'>> & {
-  isInternalPage?: boolean
+  isInternalPage?: boolean;
 };
 
 export function Hero({

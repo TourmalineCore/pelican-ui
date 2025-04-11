@@ -36,7 +36,7 @@ const ICONS = [
 export function SocialMedia({
   className,
 }: {
-  className: string,
+  className: string;
 }) {
   return (
     <>

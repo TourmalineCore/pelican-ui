@@ -7,6 +7,17 @@ const nextConfig = {
     APP_ENV: process.env.APP_ENV,
   },
 
+  // https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports
+  experimental: {
+    optimizePackageImports: [
+      'clsx',
+      'dayjs',
+      'plyr-react',
+      'react-markdown',
+      'axios'
+    ]
+  },
+
   images: {
     unoptimized: process.env.NODE_ENV === 'test',
     formats: ['image/avif', 'image/webp'],

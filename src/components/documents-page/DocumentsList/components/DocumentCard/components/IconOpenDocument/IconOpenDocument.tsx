@@ -1,7 +1,7 @@
 export function IconOpenDocument({
   className,
 }: {
-  className: string,
+  className: string;
 }) {
   return (
     <svg

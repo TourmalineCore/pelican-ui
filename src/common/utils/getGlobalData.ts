@@ -5,7 +5,7 @@ import { api } from './HttpClient';
 export async function getGlobalData({
   isPreview,
 }: {
-  isPreview: boolean
+  isPreview: boolean;
 }) {
   const headerPopulateList = [
     `ticketsPopup.generalTickets`,

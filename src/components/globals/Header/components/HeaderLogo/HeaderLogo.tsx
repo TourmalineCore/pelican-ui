@@ -8,7 +8,7 @@ import LogoDesktop from '../../../../../../public/images/header/logo-desktop.svg
 export function HeaderLogo({
   className,
 }: {
-  className: string,
+  className: string;
 }) {
   const {
     isDesktop,
@@ -36,7 +36,7 @@ export function HeaderLogo({
   function getLogo({
     isDesktopSize,
   }: {
-    isDesktopSize: boolean
+    isDesktopSize: boolean;
   }) {
     if (isDesktopSize) {
       return LogoDesktop;

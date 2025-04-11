@@ -6,8 +6,8 @@ import {
 } from "react";
 
 type TicketPopup = {
-  isActive: boolean,
-  handleTicketPopupToggle:() => void,
+  isActive: boolean;
+  handleTicketPopupToggle:() => void;
 };
 
 export const TicketPopupContext = createContext<TicketPopup>({

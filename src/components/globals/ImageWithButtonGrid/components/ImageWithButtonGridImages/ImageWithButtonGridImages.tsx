@@ -7,9 +7,9 @@ export function ImageWithButtonGridImages({
   largeImage,
   smallImage,
 }: {
-  className: string,
-  largeImage: ImageWithButtonGridComponentProps["largeImage"],
-  smallImage: ImageWithButtonGridComponentProps["smallImage"],
+  className: string;
+  largeImage: ImageWithButtonGridComponentProps["largeImage"];
+  smallImage: ImageWithButtonGridComponentProps["smallImage"];
 }) {
   const {
     isDesktop,

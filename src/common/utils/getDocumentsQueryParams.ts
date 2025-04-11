@@ -5,11 +5,11 @@ export function getDocumentsQueryParams({
   pageSize = 100,
   previewMode,
 }: {
-  categoryDocumentId: string,
-  yearLessThanOrEqual?: number,
-  yearGreaterThanOrEqual?: number,
-  pageSize?: number,
-  previewMode: string
+  categoryDocumentId: string;
+  yearLessThanOrEqual?: number;
+  yearGreaterThanOrEqual?: number;
+  pageSize?: number;
+  previewMode: string;
 }) {
   return {
     populate: [`files`, `category`],

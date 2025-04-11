@@ -52,7 +52,7 @@ test.describe(`DocumentsListComponentTests`, () => {
 async function tabAction({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await page.locator(`li`, {
     hasText: `2024`,
@@ -68,7 +68,7 @@ async function tabAction({
 async function mobileTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -84,7 +84,7 @@ async function mobileTest({
 async function mobileClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -104,7 +104,7 @@ async function mobileClickedTest({
 async function tabletTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -121,7 +121,7 @@ async function tabletTest({
 async function tabletClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -142,7 +142,7 @@ async function tabletClickedTest({
 async function tabletXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -159,7 +159,7 @@ async function tabletXlTest({
 async function tabletXlClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -180,7 +180,7 @@ async function tabletXlClickedTest({
 async function desktopTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -197,7 +197,7 @@ async function desktopTest({
 async function desktopClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -218,7 +218,7 @@ async function desktopClickedTest({
 async function desktopXlTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -235,7 +235,7 @@ async function desktopXlTest({
 async function desktopXlClickedTest({
   page,
 }: {
-  page: Page,
+  page: Page;
 }) {
   await setViewportSize({
     page,
@@ -256,7 +256,7 @@ async function desktopXlClickedTest({
 function getDocumentsListByTestId({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
   return page.getByTestId(`documents`);
 }
@@ -264,7 +264,7 @@ function getDocumentsListByTestId({
 async function openDocumentsListPopupAccordions({
   page,
 }: {
-  page: Page
+  page: Page;
 }) {
   const allAccordions = await page.getByTestId(`accordion-trigger`)
     .all();

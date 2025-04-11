@@ -17,10 +17,10 @@ export default function DocumentsCategories({
   availableYears,
   documents,
 }: {
-  category: CategoryProps,
-  queryYear: DocumentsTabsProps[`queryYear`],
-  availableYears: DocumentsTabsProps[`availableYears`],
-  documents: DocumentsProps[],
+  category: CategoryProps;
+  queryYear: DocumentsTabsProps[`queryYear`];
+  availableYears: DocumentsTabsProps[`availableYears`];
+  documents: DocumentsProps[];
 }) {
   const router = useRouter();
 
@@ -59,11 +59,11 @@ export async function getServerSideProps({
   preview = false,
   query,
 }: {
-  preview: boolean,
+  preview: boolean;
   query: {
-    slug: string,
-    year: string,
-  }
+    slug: string;
+    year: string;
+  };
 }) {
   const currentYear = dayjs()
     .year();

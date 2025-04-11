@@ -7,11 +7,11 @@ export function Tab({
   ariaLabel,
   onClick,
 }: {
-  className: string
-  label: string | number
-  isActive: boolean
-  ariaLabel: string
-  onClick: () => void
+  className: string;
+  label: string | number;
+  isActive: boolean;
+  ariaLabel: string;
+  onClick: () => void;
 }) {
   return (
     <li

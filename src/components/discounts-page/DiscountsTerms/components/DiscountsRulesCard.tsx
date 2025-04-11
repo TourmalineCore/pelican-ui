@@ -1,7 +1,7 @@
 export function DiscountsRulesCard({
   text,
 }: {
-  text: string,
+  text: string;
 }) {
   return (
     <li className="discounts-rules-card">

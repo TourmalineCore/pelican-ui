@@ -8,6 +8,7 @@ import crossIcon from "@/public/images/tickets-popup/icon-cross.svg";
 import iconChevron from "@/public/images/svg/icon-chevron.svg";
 import iconChevronGreen from "@/public/images/svg/icon-chevron-green.svg";
 import { MOCK_POPUP_TICKET_BUY_TEXT } from '@/src/common/mocks/globals-mock/ticket-mock';
+import { AppRoute } from '@/src/common/enum';
 import { Accordion } from "../Accordion/Accordion";
 import { TicketsPopupCard } from './components/TicketsPopupCard/TicketsPopupCard';
 import { TicketsPopupRulesList } from './components/TicketsPopupRulesList/TicketsPopupRulesList';
@@ -17,7 +18,7 @@ export function TicketsPopup({
   ticketsPopup,
   overlayElementRef,
 }: Pick<GlobalComponentProps, "ticketsPopup"> & {
-  overlayElementRef: MutableRefObject<null | HTMLElement>
+  overlayElementRef: MutableRefObject<null | HTMLElement>;
 }) {
   const {
     generalTicketsLink,
@@ -126,11 +127,7 @@ export function TicketsPopup({
                     </ul>
                     <Link
                       className="tickets-popup__link button button--secondary"
-                      // TODO: Change path when the page appears
-                      href={subsidizedTicket.button.link}
-                      // TODO: Remove when the page appears
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={AppRoute.DISCOUNTS}
                       onClick={handleTicketPopupToggle}
                     >
                       {subsidizedTicket.button.label}

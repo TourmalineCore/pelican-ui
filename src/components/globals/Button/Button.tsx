@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 
 type ButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
-  theme: 'primary' | 'secondary',
-  isFeatured?: boolean,
+  theme: 'primary' | 'secondary';
+  isFeatured?: boolean;
 };
 
 export function Button({

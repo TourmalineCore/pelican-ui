@@ -14,7 +14,7 @@ export function DocumentCard({
   description,
   files,
 }: Omit<DocumentsProps, 'id' | 'category'> & {
-  className: string,
+  className: string;
 }) {
   const isFilesEmpty = files.length === 0;
   const isSingleDocument = files.length === 1;

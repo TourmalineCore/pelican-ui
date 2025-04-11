@@ -4,8 +4,8 @@ import { NotFoundComponentProps } from "../../types";
 
 type NotFoundPageProps = {
   seo: {
-    metaTitle: string
-  },
+    metaTitle: string;
+  };
   blocks: (
     NotFoundComponentProps
   )[];

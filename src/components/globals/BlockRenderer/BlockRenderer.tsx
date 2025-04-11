@@ -166,9 +166,9 @@ export const BlockRenderer = ({
   block,
   email,
 }: {
-  slug?: string,
-  block: Block,
-  email: GlobalComponentProps['email']
+  slug?: string;
+  block: Block;
+  email: GlobalComponentProps['email'];
 }) => {
   if (block.__component === BlockTypes.SHARED_HERO && (slug === AppRoute.HOME || slug?.startsWith(`${AppRoute.HOME}#`))) {
     return (

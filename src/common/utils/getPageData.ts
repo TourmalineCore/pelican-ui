@@ -11,8 +11,8 @@ export async function getPageData({
   slug = ``,
   preview,
 }: {
-  slug: string,
-  preview: boolean
+  slug: string;
+  preview: boolean;
 }) {
   switch (`/${slug}`) {
     case AppRoute.HOME:
@@ -74,9 +74,9 @@ async function getData({
   populate,
   preview,
 }: {
-  slug: string,
-  populate: string[],
-  preview: boolean
+  slug: string;
+  populate: string[];
+  preview: boolean;
 }) {
   const pageResponse: PageData = await api.get(`/${slug}?${qs.stringify({
     populate,

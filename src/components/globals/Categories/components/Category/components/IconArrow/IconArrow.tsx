@@ -1,7 +1,7 @@
 export function IconArrow({
   className,
 }: {
-  className: string,
+  className: string;
 }) {
   return (
     <svg

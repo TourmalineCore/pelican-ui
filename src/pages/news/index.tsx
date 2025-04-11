@@ -13,10 +13,10 @@ export default function NewsPage({
   totalNews,
   pageSize,
 }: {
-  pageData: NewsPageProps,
-  news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[],
-  pageSize: number,
-  totalNews: number,
+  pageData: NewsPageProps;
+  news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[];
+  pageSize: number;
+  totalNews: number;
 }) {
   const {
     seo,
@@ -44,10 +44,10 @@ export async function getServerSideProps({
   query,
   preview = false,
 }: {
-  preview: boolean,
+  preview: boolean;
   query: {
-    pageSize: number
-  }
+    pageSize: number;
+  };
 }) {
   if (process.env.APP_ENV === `static`) {
     return {

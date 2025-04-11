@@ -9,10 +9,10 @@ export function HeroSchedule({
   scheduleTimetables,
   isInternalPage,
 }: {
-  className: string,
-  scheduleTitle: HeroComponentProps['scheduleTitle'],
-  scheduleTimetables: HeroComponentProps['scheduleTimetables'],
-  isInternalPage?: boolean,
+  className: string;
+  scheduleTitle: HeroComponentProps['scheduleTitle'];
+  scheduleTimetables: HeroComponentProps['scheduleTimetables'];
+  isInternalPage?: boolean;
 }) {
   const {
     isTablet,

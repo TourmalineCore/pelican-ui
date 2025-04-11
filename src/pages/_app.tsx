@@ -59,7 +59,7 @@ export default function App({
   isPreview: boolean;
 }) {
   const {
-    pathname,
+    asPath,
     query,
   } = useRouter();
 
@@ -85,7 +85,7 @@ export default function App({
         top: 0,
       });
     }
-  }, [pathname, query]);
+  }, [asPath, query]);
 
   const {
     navigationLinks,
@@ -130,8 +130,8 @@ App.getInitialProps = async ({
   router,
 }: {
   router: {
-    isPreview: boolean
-  }
+    isPreview: boolean;
+  };
 }) => {
   const globalMock = {
     popupTicketBuyText: MOCK_POPUP_TICKET_BUY_TEXT,

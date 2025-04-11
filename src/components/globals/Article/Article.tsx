@@ -11,12 +11,12 @@ export function Article({
   isLastBlock,
   className,
 }: {
-  title: ArticleComponentProps['title'],
-  date: ArticleComponentProps['publishedAt'],
-  innerContent: ArticleComponentProps['innerContent']
-  isFirstBlock: ArticleComponentProps['isFirstBlock']
-  isLastBlock: ArticleComponentProps['isLastBlock']
-  className?: string
+  title: ArticleComponentProps['title'];
+  date: ArticleComponentProps['publishedAt'];
+  innerContent: ArticleComponentProps['innerContent'];
+  isFirstBlock: ArticleComponentProps['isFirstBlock'];
+  isLastBlock: ArticleComponentProps['isLastBlock'];
+  className?: string;
 }) {
   return (
     <div

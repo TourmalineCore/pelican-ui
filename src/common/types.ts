@@ -1,11 +1,11 @@
 import { StaticImageData } from "next/image";
-import { BlockTypes } from "./enum";
+import { AppRoute, BlockTypes } from "./enum";
 import { HomeServicesComponent, SharedHeroComponent, SharedSeoComponent } from "./api-types";
 
 // Page
 
 export type HomePageProps = {
-  seo: Seo,
+  seo: Seo;
   blocks: (
     HeroComponentProps
     | TextAndMediaComponentProps
@@ -13,11 +13,11 @@ export type HomePageProps = {
     | ImageWithButtonGridComponentProps
     | MapComponentProps
     | HomeTicketsComponentProps
-  )[],
+  )[];
 };
 
 export type ContactZooPageProps = {
-  seo: Seo,
+  seo: Seo;
   blocks: (
     HeroComponentProps
     | SharedTicketsComponentProps
@@ -26,23 +26,23 @@ export type ContactZooPageProps = {
 
 export type NewsPageProps = {
   newsTitle: string;
-  seo?: Seo,
+  seo?: Seo;
 };
 
 export type DocumentsPageProps = {
   documentsTitle: string;
-  seo?: Seo,
+  seo?: Seo;
 };
 
 export type DiscountsPageProps = {
-  seo?: Seo,
+  seo?: Seo;
   blocks:(DiscountsTermsComponentProps
   | DiscountsCategoriesComponentProps
   )[];
 };
 
 export type VisitingRulesPageProps = {
-  seo: Seo,
+  seo: Seo;
   blocks: (
     VisitingRulesMainComponentProps
     | VisitingRulesWarningsComponentProps
@@ -57,31 +57,23 @@ export type GlobalComponentProps = {
   navigationLinks: {
     id: number;
     name: string;
-
-    // TODO: in the future change string to enum AppRoute
-    link: string;
+    link: AppRoute;
   }[];
   officialLinks: {
     id: number;
     name: string;
-
-    // TODO: in the future change string to enum AppRoute
     link: string;
-    icon: StaticImageData,
+    icon: StaticImageData;
     alt: string;
   }[];
   footerUserLinks: {
     id: number;
     name: string;
-
-    // TODO: in the future change string to enum AppRoute
     link: string;
   }[];
   footerAboutLinks: {
     id: number;
     name: string;
-
-    // TODO: in the future change string to enum AppRoute
     link: string;
   }[];
   email: string;
@@ -92,122 +84,121 @@ export type GlobalComponentProps = {
   ticketsPopup: {
     generalTicketsLink: string;
     generalTickets: {
-      id: number,
-      category: string,
-      price: string,
-      description?: string,
-    }[],
+      id: number;
+      category: string;
+      price: string;
+      description?: string;
+    }[];
     subsidizedTicket: {
-      category: string,
-      description: string,
+      category: string;
+      description: string;
       categories: {
-        id: number,
-        category: string,
-        price: string,
-      }[],
+        id: number;
+        category: string;
+        price: string;
+      }[];
       button: {
-        label: string,
-        link: string,
-      },
-    },
+        label: string;
+      };
+    };
     visitingRulesAccordion: {
       images: {
-        url: string,
-        alternativeText: string,
-      }[],
+        url: string;
+        alternativeText: string;
+      }[];
       button: {
-        label: string,
-        link: string,
-      },
-    },
+        label: string;
+        link: string;
+      };
+    };
     ticketRefundAccordion: {
-      refundHead: string,
+      refundHead: string;
       refundBody: {
-        id: number,
-        refundReason: string,
-      }[],
+        id: number;
+        refundReason: string;
+      }[];
       button: {
-        label: string,
-        link: string,
-      },
-    },
+        label: string;
+        link: string;
+      };
+    };
     buyTicketsButton: {
-      label: string,
-      link: string,
-    },
-    note: string,
-  },
+      label: string;
+      link: string;
+    };
+    note: string;
+  };
 };
 
 export type DiscountsCategoriesComponentProps = {
-  id: number,
-  __component: BlockTypes.DISCOUNTS_CATEGORIES,
-  title: string,
-  categoriesCards: CategoriesCards[]
+  id: number;
+  __component: BlockTypes.DISCOUNTS_CATEGORIES;
+  title: string;
+  categoriesCards: CategoriesCards[];
   remark: {
-    title:string,
-    link: string,
-  }
+    title:string;
+    link: string;
+  };
 };
 
 export type CategoriesCards = {
-  id: number,
-  title: string,
-  note?: string,
-  price: string,
+  id: number;
+  title: string;
+  note?: string;
+  price: string;
   rules: {
-    terms?: string[],
-    info?: string,
-    docs?: string[],
+    terms?: string[];
+    info?: string;
+    docs?: string[];
     basis?: {
-      title:string,
-      link: string,
-    }[]
-  },
+      title:string;
+      link: string;
+    }[];
+  };
 };
 
 export type DiscountsTermsComponentProps = {
-  id: number,
-  __component: BlockTypes.DISCOUNTS_TERMS,
-  title: string,
-  rulesCards: Rules[]
+  id: number;
+  __component: BlockTypes.DISCOUNTS_TERMS;
+  title: string;
+  rulesCards: Rules[];
 };
 
 export type Rules = {
-  id: number,
-  text: string,
+  id: number;
+  text: string;
 };
 
 export type HeroComponentProps = {
-  id: number
-  __component: BlockTypes.SHARED_HERO,
-  title: string,
-  image: Image,
-  scheduleTitle: string,
-  scheduleTimetables: Timetable[],
-  infoCardTitle?: string,
-  infoCardDescription: string,
+  id: number;
+  __component: BlockTypes.SHARED_HERO;
+  title: string;
+  image: Image;
+  scheduleTitle: string;
+  scheduleTimetables: Timetable[];
+  infoCardTitle?: string;
+  infoCardDescription: string;
 } & BlockPosition;
 
 export type Timetable = {
-  id: number,
-  days: string,
-  time: string,
-  ticketsOfficeTime: string,
+  id: number;
+  days: string;
+  time: string;
+  ticketsOfficeTime: string;
 };
 
 export type TextAndMediaComponentProps = {
-  id: number
-  __component: BlockTypes.SHARED_TEXT_AND_MEDIA,
-  title: string,
-  description: string,
+  id: number;
+  __component: BlockTypes.SHARED_TEXT_AND_MEDIA;
+  title: string;
+  description: string;
   media: {
-    alternativeText: string,
-    url: string,
-    mime: string,
-  },
-  contentOrder: "Текст слева" | "Текст справа",
-  viewFootsteps: boolean,
+    alternativeText: string;
+    url: string;
+    mime: string;
+  };
+  contentOrder: "Текст слева" | "Текст справа";
+  viewFootsteps: boolean;
 } & BlockPosition;
 
 export type ArticleComponentProps = Omit<NewsArticleProps, 'id' | 'date' | 'link' | 'labels'> & {
@@ -223,169 +214,169 @@ export type NewsArticleProps = CardProps & {
 };
 
 export type ServicesComponentProps = {
-  id: number,
-  __component: BlockTypes.HOME_SERVICES
-  title: string,
-  cards: CardProps[],
-  phone: string,
-  email: string,
+  id: number;
+  __component: BlockTypes.HOME_SERVICES;
+  title: string;
+  cards: CardProps[];
+  phone: string;
+  email: string;
 };
 
 export type CardsComponentProps = {
-  id: number,
-  __component: BlockTypes.SHARED_CARDS,
-  title: string,
-  cards: CardProps[],
+  id: number;
+  __component: BlockTypes.SHARED_CARDS;
+  title: string;
+  cards: CardProps[];
 };
 
 export type CardProps = {
-  id: number | string,
-  image: Image,
-  title: string,
-  description?: string,
-  link?: string,
+  id: number | string;
+  image: Image;
+  title: string;
+  description?: string;
+  link?: string;
   labels?: {
-    id: number,
-    text: string
-  }[]
+    id: number;
+    text: string;
+  }[];
 };
 
 export type ImageWithButtonGridComponentProps = {
-  id: number
-  __component: BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID,
-  title: string,
-  description: string,
-  largeImage: Image,
-  smallImage?: Image,
-  link: string,
-  label: string,
-  isInternalPage?: boolean
+  id: number;
+  __component: BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID;
+  title: string;
+  description: string;
+  largeImage: Image;
+  smallImage?: Image;
+  link: string;
+  label: string;
+  isInternalPage?: boolean;
 } & BlockPosition;
 
 export type MapComponentProps = {
-  id: number
-  __component: BlockTypes.HOME_MAP,
-  title: string,
-  subtitle: string,
-  note: string,
-  image: Image,
+  id: number;
+  __component: BlockTypes.HOME_MAP;
+  title: string;
+  subtitle: string;
+  note: string;
+  image: Image;
 };
 
 export type NotFoundComponentProps = {
-  id: number,
-  __component: BlockTypes.NOT_FOUND,
+  id: number;
+  __component: BlockTypes.NOT_FOUND;
 };
 
 export type SharedTicketsComponentProps = {
-  id: number
-  __component: BlockTypes.SHARED_TICKETS,
-  title: string,
-  description?: string,
-  link?: string,
-  tickets: Ticket[],
-  note?: string,
+  id: number;
+  __component: BlockTypes.SHARED_TICKETS;
+  title: string;
+  description?: string;
+  link?: string;
+  tickets: Ticket[];
+  note?: string;
 } & BlockPosition;
 
 export type HomeTicketsComponentProps = {
-  id: number
-  __component: BlockTypes.HOME_TICKETS,
-  generalTicketsTitle: string,
-  generalTickets: Ticket[],
-  generalTicketsLink: string,
-  subsidizedTickets: Ticket[],
-  subsidizedTicketsLink: string,
-  subsidizedTicketsTitle: string,
-  subsidizedTicketsDescription?: string,
-  isInternalPage?: boolean,
-  contactZooNote?: string,
+  id: number;
+  __component: BlockTypes.HOME_TICKETS;
+  generalTicketsTitle: string;
+  generalTickets: Ticket[];
+  generalTicketsLink: string;
+  subsidizedTickets: Ticket[];
+  subsidizedTicketsLink: string;
+  subsidizedTicketsTitle: string;
+  subsidizedTicketsDescription?: string;
+  isInternalPage?: boolean;
+  contactZooNote?: string;
 };
 
 export type Ticket = {
-  id: number,
-  category: string,
-  price: string,
-  description?: string,
-  frequency?: string,
-  theme?: `Зелёный` | `Коричневый`,
+  id: number;
+  category: string;
+  price: string;
+  description?: string;
+  frequency?: string;
+  theme?: `Зелёный` | `Коричневый`;
 };
 
 export type CategoriesComponentProps = {
-  id: number,
-  __component: BlockTypes.SHARED_CATEGORIES,
-  categoriesTitle: string,
-  categories: Omit<CategoryProps, 'hasTabs'>[],
+  id: number;
+  __component: BlockTypes.SHARED_CATEGORIES;
+  categoriesTitle: string;
+  categories: Omit<CategoryProps, 'hasTabs'>[];
 };
 
 export type DocumentsProps = {
-  id: number,
-  date: string,
-  showDate: boolean,
-  title: string,
-  subtitle?: string,
-  description?: string,
-  files: DocumentFileProps[] | [],
+  id: number;
+  date: string;
+  showDate: boolean;
+  title: string;
+  subtitle?: string;
+  description?: string;
+  files: DocumentFileProps[] | [];
   category: {
-    id: CategoryProps['id'],
-  }
+    id: CategoryProps['id'];
+  };
 };
 
 export type DocumentFileProps = {
-  id: number,
-  name: string,
-  url: string,
-  ext: string,
+  id: number;
+  name: string;
+  url: string;
+  ext: string;
 };
 
 export type CategoryProps = {
-  id: string | number,
-  slug: string,
-  title: string,
-  pageUrl: string,
-  hasTabs: boolean,
-  seo?: Seo,
+  id: string | number;
+  slug: string;
+  title: string;
+  pageUrl: string;
+  hasTabs: boolean;
+  seo?: Seo;
 };
 
 export type DocumentsTabsProps = {
-  queryYear: string,
-  availableYears: number[],
+  queryYear: string;
+  availableYears: number[];
 };
 
 export type VisitingRulesComponentProps = {
-  id: number,
-  title: string,
+  id: number;
+  title: string;
   link: {
-    label: string,
-    path: string,
-  },
-  description: string,
-  cardsTitle: string,
+    label: string;
+    path: string;
+  };
+  description: string;
+  cardsTitle: string;
 };
 
 export type VisitingRulesCardProps = {
-  id?: number,
-  label: string,
-  phone?: string,
-  iconUrl?: string,
+  id?: number;
+  label: string;
+  phone?: string;
+  iconUrl?: string;
 };
 
 export type VisitingRulesMainComponentProps = VisitingRulesComponentProps & {
-  __component: BlockTypes.VISITING_RULES_MAIN,
-  cards: Omit<VisitingRulesCardProps, 'phone'>[],
+  __component: BlockTypes.VISITING_RULES_MAIN;
+  cards: Omit<VisitingRulesCardProps, 'phone'>[];
 };
 
 export type VisitingRulesWarningsComponentProps = Pick<VisitingRulesComponentProps, 'id'> & {
-  __component: BlockTypes.VISITING_RULES_WARNINGS,
-  cards: Omit<VisitingRulesCardProps, 'iconUrl' | 'phone'>[],
+  __component: BlockTypes.VISITING_RULES_WARNINGS;
+  cards: Omit<VisitingRulesCardProps, 'iconUrl' | 'phone'>[];
 };
 
 export type VisitingRulesPhotosPolicyComponentProps = Pick<VisitingRulesComponentProps, 'id' | 'cardsTitle'> & {
-  __component: BlockTypes.VISITING_RULES_PHOTOS_POLICY,
-  cards: Omit<VisitingRulesCardProps, 'iconUrl' | 'phone'>[],
+  __component: BlockTypes.VISITING_RULES_PHOTOS_POLICY;
+  cards: Omit<VisitingRulesCardProps, 'iconUrl' | 'phone'>[];
 };
 
 export type VisitingRulesEmergencyPhonesComponentProps = Pick<VisitingRulesComponentProps, 'id' | 'cardsTitle'> & {
-  __component: BlockTypes.VISITING_RULES_EMERGENCY_PHONES,
-  cards: Omit<VisitingRulesCardProps, 'iconUrl'>[],
+  __component: BlockTypes.VISITING_RULES_EMERGENCY_PHONES;
+  cards: Omit<VisitingRulesCardProps, 'iconUrl'>[];
 };
 
 export type Block = SharedHeroComponent | HomeServicesComponent;
@@ -393,19 +384,19 @@ export type Block = SharedHeroComponent | HomeServicesComponent;
 export type PageData = {
   data: {
     blocks: Block[];
-    seo?: SharedSeoComponent
-  }
+    seo?: SharedSeoComponent;
+  };
 };
 
 export type Seo = {
-  metaTitle: string,
-  metaDescription?: string,
-  metaKeywords?: string,
+  metaTitle: string;
+  metaDescription?: string;
+  metaKeywords?: string;
 };
 
 type BlockPosition = {
-  isFirstBlock?: boolean,
-  isLastBlock?: boolean
+  isFirstBlock?: boolean;
+  isLastBlock?: boolean;
 };
 
 type Image = {

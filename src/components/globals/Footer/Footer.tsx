@@ -14,7 +14,7 @@ type FooterProps =
   "navigationLinks"
   | "ticketsPopup"
   > & {
-    footerElementRef: MutableRefObject<HTMLDivElement | null>
+    footerElementRef: MutableRefObject<HTMLDivElement | null>;
   };
 
 export function Footer({
@@ -104,12 +104,7 @@ export function Footer({
                         href={link}
                         className="footer__nav-link"
                         data-testid="footer-nav-link"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          if (router.pathname !== link) {
-                            router.push(link);
-                          }
-                        }}
+                        onClick={(e) => router.pathname === link && e.preventDefault()}
                         aria-label={`Перейти на страницу ${name}`}
                       >
                         {name}
@@ -249,8 +244,8 @@ function renderCopyright({
   className,
   isTablet = false,
 } : {
-  className?: string,
-  isTablet?: boolean,
+  className?: string;
+  isTablet?: boolean;
 } = {}) {
   return (
     <div className={clsx(

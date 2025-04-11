@@ -5,8 +5,8 @@ export function DiscountsTerms({
   title,
   rulesCards,
 }: {
-  title:string
-  rulesCards: Rules[]
+  title:string;
+  rulesCards: Rules[];
 }) {
   return (
     <section

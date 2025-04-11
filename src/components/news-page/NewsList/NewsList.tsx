@@ -13,10 +13,10 @@ export function NewsList({
   total,
   pageSize,
 }: {
-  newsTitle: string,
-  news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[]
+  newsTitle: string;
+  news: Omit<NewsArticleProps, 'innerContent' | 'publishedAt'>[];
   total: number;
-  pageSize: number
+  pageSize: number;
 }) {
   const [currentPageSize, setCurrentPageSize] = useState(pageSize);
   const firstNewsRef = useRef<HTMLAnchorElement>(null);

@@ -15,7 +15,7 @@ import { Block } from "../types";
 export function mapContractByBlock({
   block,
 }: {
-  block: Block
+  block: Block;
 }) {
   switch (`${block.__component}`) {
     case BlockTypes.SHARED_HERO:

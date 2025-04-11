@@ -9,10 +9,10 @@ export function DocumentsList({
   documents,
   currentYear,
 }: {
-  category: CategoryProps,
-  availableYears: DocumentsTabsProps[`availableYears`],
-  documents: DocumentsProps[],
-  currentYear: number
+  category: CategoryProps;
+  availableYears: DocumentsTabsProps[`availableYears`];
+  documents: DocumentsProps[];
+  currentYear: number;
 }) {
   const router = useRouter();
 

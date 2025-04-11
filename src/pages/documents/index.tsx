@@ -14,8 +14,8 @@ export default function DocumentsPage({
   pageData,
   categories,
 }: {
-  pageData: DocumentsPageProps,
-  categories: Omit<CategoryProps, 'hasTabs'>[],
+  pageData: DocumentsPageProps;
+  categories: Omit<CategoryProps, 'hasTabs'>[];
 }) {
   const {
     seo,
@@ -40,7 +40,7 @@ export default function DocumentsPage({
 export async function getServerSideProps({
   preview = false,
 }: {
-  preview: boolean,
+  preview: boolean;
 }) {
   const currentYear = dayjs()
     .year();

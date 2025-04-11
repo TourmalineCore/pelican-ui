@@ -7,9 +7,9 @@ export function NewsSliderCard({
   title,
   description,
 }: {
-  slug: NewsArticleProps['slug']
-  title: NewsArticleProps['title'],
-  description: NewsArticleProps['description']
+  slug: NewsArticleProps['slug'];
+  title: NewsArticleProps['title'];
+  description: NewsArticleProps['description'];
 }) {
   return (
     <Link

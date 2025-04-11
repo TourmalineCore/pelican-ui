@@ -6,18 +6,18 @@ export function DiscountsCategoriesCard({
   price,
   rules,
 }: {
-  title: string,
-  note?: string,
-  price: string,
+  title: string;
+  note?: string;
+  price: string;
   rules: {
-    terms?: string[],
-    info?: string,
-    docs?: string[],
+    terms?: string[];
+    info?: string;
+    docs?: string[];
     basis?: {
-      title:string,
-      link: string,
-    }[],
-  }
+      title:string;
+      link: string;
+    }[];
+  };
 }) {
   return (
     <li className="discounts-categories-card">

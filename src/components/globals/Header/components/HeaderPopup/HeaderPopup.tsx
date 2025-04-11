@@ -14,8 +14,8 @@ export function HeaderPopup({
   popupTicketBuyText,
   onTicketPopupOpen,
 }: Pick <GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
-  isActive: boolean,
-  className: string,
+  isActive: boolean;
+  className: string;
   onTicketPopupOpen: MouseEventHandler<HTMLButtonElement>;
 }) {
   const {

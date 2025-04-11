@@ -7,12 +7,12 @@ export function DiscountsCategories({
   categoriesCards,
   remark,
 }: {
-  title:string
-  categoriesCards: CategoriesCards[],
+  title:string;
+  categoriesCards: CategoriesCards[];
   remark: {
-    title:string,
-    link: string,
-  }
+    title:string;
+    link: string;
+  };
 }) {
   return (
     <section

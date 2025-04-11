@@ -6,9 +6,9 @@ export function ScheduleTimetable({
   scheduleTimetable,
   isInternalPage,
 }: {
-  className: string,
-  scheduleTimetable: Timetable,
-  isInternalPage?: boolean,
+  className: string;
+  scheduleTimetable: Timetable;
+  isInternalPage?: boolean;
 }) {
   return (
     <li className={clsx(

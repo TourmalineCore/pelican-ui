@@ -5,9 +5,9 @@ export function HeaderPopupButton({
   isActive,
   handleToggle,
 }: {
-  className: string,
+  className: string;
   isActive: boolean;
-  handleToggle: () => void
+  handleToggle: () => void;
 }) {
   return (
     <button

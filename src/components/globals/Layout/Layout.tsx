@@ -39,7 +39,7 @@ export function Layout({
 }: {
 } & LayoutProps) {
   const {
-    pathname,
+    asPath,
   } = useRouter();
 
   const overlayElementRef = useRef<null | HTMLDivElement>(null);
@@ -79,7 +79,7 @@ export function Layout({
       setIsMobileMenuActive(false);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  }, [asPath]);
 
   if (windowWidth === 0) {
     return null;

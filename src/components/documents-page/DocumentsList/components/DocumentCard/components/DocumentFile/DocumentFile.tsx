@@ -10,12 +10,12 @@ export function DocumentFile({
   url,
   extension,
 } : {
-  className: string,
-  numberOfFiles: number,
-  buttonTheme: "primary" | "secondary",
-  name: DocumentFileProps['name'],
-  url: DocumentFileProps['url'],
-  extension: DocumentFileProps['ext'],
+  className: string;
+  numberOfFiles: number;
+  buttonTheme: "primary" | "secondary";
+  name: DocumentFileProps['name'];
+  url: DocumentFileProps['url'];
+  extension: DocumentFileProps['ext'];
 }) {
   const numberOfFilesStyle = numberOfFiles === 1 ? `single-document` : `several-documents`;
   const replaceDocumentName = name.replace(`${extension}`, ``);

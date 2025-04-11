@@ -7,11 +7,11 @@ const Plyr = dynamic(() => import(`plyr-react`), {
 });
 
 type VideoProps = {
-  className?: string,
-  dataTestid?: string,
-  title?: string,
-  sources: Source,
-  options?: Options,
+  className?: string;
+  dataTestid?: string;
+  title?: string;
+  sources: Source;
+  options?: Options;
 };
 
 export function Video({

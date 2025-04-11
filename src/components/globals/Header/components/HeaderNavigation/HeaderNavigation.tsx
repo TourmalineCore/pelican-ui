@@ -6,8 +6,8 @@ export function HeaderNavigation({
   className,
   navigationLinks,
 }: {
-  className?: string
-  navigationLinks: GlobalComponentProps['navigationLinks'],
+  className?: string;
+  navigationLinks: GlobalComponentProps['navigationLinks'];
 }) {
   const router = useRouter();
 
@@ -26,12 +26,7 @@ export function HeaderNavigation({
             <Link
               href={link}
               className="header-navigation__link"
-              onClick={(e) => {
-                e.preventDefault();
-                if (router.pathname !== link) {
-                  router.push(link);
-                }
-              }}
+              onClick={(e) => router.pathname === link && e.preventDefault()}
               aria-label={`Перейти на страницу ${name}`}
               data-testid="header-navigation-link"
             >

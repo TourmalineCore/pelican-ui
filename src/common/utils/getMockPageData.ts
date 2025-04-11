@@ -8,7 +8,7 @@ import { MOCK_VISITING_RULES_PAGE } from "../mocks/visiting-rules-page-mock/visi
 export function getMockPageData({
   slug = ``,
 }: {
-  slug: string
+  slug: string;
 }) {
   switch (`/${slug}`) {
     case AppRoute.HOME:

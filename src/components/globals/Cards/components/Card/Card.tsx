@@ -17,8 +17,8 @@ export function Card({
 }: Omit<CardProps, 'id'> & {
   className: string;
   dataTestId?: string;
-  firstCardRef?: Ref<HTMLAnchorElement>
-  isNews: boolean,
+  firstCardRef?: Ref<HTMLAnchorElement>;
+  isNews: boolean;
 }) {
   return (
     <li
@@ -62,12 +62,12 @@ function renderCardMarkup({
   labels,
   isNews,
 }: {
-  title: CardProps['title'],
-  description: CardProps['description'],
-  image: CardProps['image']
-  isLink?: boolean,
-  labels: CardProps['labels'],
-  isNews?: boolean,
+  title: CardProps['title'];
+  description: CardProps['description'];
+  image: CardProps['image'];
+  isLink?: boolean;
+  labels: CardProps['labels'];
+  isNews?: boolean;
 }) {
   return (
     <div className={clsx(`card__wrapper`, {

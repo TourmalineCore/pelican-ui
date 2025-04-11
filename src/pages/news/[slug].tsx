@@ -16,8 +16,8 @@ export default function News({
   news,
   otherNews,
 }: {
-  news: SingleNewsProps
-  otherNews: OtherNewsProps
+  news: SingleNewsProps;
+  otherNews: OtherNewsProps;
 }) {
   return (
     <>
@@ -44,9 +44,9 @@ export async function getServerSideProps({
   preview = false,
 }: {
   query: {
-    slug: string
-  }
-  preview: boolean
+    slug: string;
+  };
+  preview: boolean;
 }) {
   if (process.env.APP_ENV === `static`) {
     const otherNews = MOCK_NEWS.filter((news) => news.slug !== query.slug)

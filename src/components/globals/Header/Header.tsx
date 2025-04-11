@@ -17,11 +17,11 @@ const HeaderPopup = dynamic(
 );
 
 type HeaderProps = Pick<GlobalComponentProps, "navigationLinks" | "email" | "phone" | "popupTicketBuyText"> & {
-  overlayElementRef: MutableRefObject<null | HTMLElement>,
-  mainElementRef: MutableRefObject<null | HTMLElement>,
-  footerElementRef: MutableRefObject<null | HTMLElement>,
-  isMobileMenuOpen: boolean,
-  handleMobileMenuToggle: () => void,
+  overlayElementRef: MutableRefObject<null | HTMLElement>;
+  mainElementRef: MutableRefObject<null | HTMLElement>;
+  footerElementRef: MutableRefObject<null | HTMLElement>;
+  isMobileMenuOpen: boolean;
+  handleMobileMenuToggle: () => void;
 };
 
 export function Header({

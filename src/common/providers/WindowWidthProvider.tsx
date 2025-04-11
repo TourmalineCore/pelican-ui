@@ -6,8 +6,8 @@ import {
 } from "react";
 
 type WindowWidth = {
-  windowWidth: number,
-  handleSetWindowWidth:() => void
+  windowWidth: number;
+  handleSetWindowWidth:() => void;
 };
 
 export const WindowWidthContext = createContext<WindowWidth>({

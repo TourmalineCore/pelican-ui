@@ -8,7 +8,7 @@ type TicketsPopupCardProps = PropsWithChildren & {
   category: string;
   price?: string;
   description?: string;
-  link?: string,
+  link?: string;
 };
 
 export function TicketsPopupCard({

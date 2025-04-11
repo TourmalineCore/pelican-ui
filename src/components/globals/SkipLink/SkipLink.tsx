@@ -4,7 +4,7 @@ import { MutableRefObject } from "react";
 export function SkipLink({
   mainElementRef,
 }: {
-  mainElementRef: MutableRefObject<null | HTMLElement>
+  mainElementRef: MutableRefObject<null | HTMLElement>;
 }) {
   return (
     <Link

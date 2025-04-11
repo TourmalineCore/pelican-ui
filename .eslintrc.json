@@ -159,6 +159,19 @@
         "ignoreChainWithDepth": 1
       }
     ],
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "semi",
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "semi", 
+          "requireLast": true
+        }
+      }
+    ],
     // https://www.npmjs.com/package/eslint-plugin-import-newlines
     "import-newlines/enforce": [
       "error",

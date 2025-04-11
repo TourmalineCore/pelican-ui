@@ -12,9 +12,9 @@ export function VisitingRulesCard({
   isFirst,
   className,
 } : VisitingRulesCardProps & {
-  isWarning?: boolean,
-  isFirst?: boolean,
-  className?: string,
+  isWarning?: boolean;
+  isFirst?: boolean;
+  className?: string;
 }) {
   return (
     <li className={clsx(`visiting-rules-card`, className, {

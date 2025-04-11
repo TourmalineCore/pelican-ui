@@ -14,12 +14,12 @@ export function Cards({
   currentPageSize,
   isNews,
 }: Omit<CardsComponentProps, 'id' | '__component'> & {
-  children?: ReactNode
-  childrenList?: ReactNode
+  children?: ReactNode;
+  childrenList?: ReactNode;
   className?: string;
   dataTestId?: string;
   firstCardRef?: Ref<HTMLAnchorElement>;
-  currentPageSize?: number,
+  currentPageSize?: number;
   isNews?: boolean;
 }) {
   return (

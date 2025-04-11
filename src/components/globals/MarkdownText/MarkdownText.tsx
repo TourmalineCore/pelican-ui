@@ -9,8 +9,8 @@ export function MarkdownText({
   children,
   className,
 }: {
-  children: string,
-  className?: string,
+  children: string;
+  className?: string;
 }) {
   return (
     <ReactMarkdown
@@ -45,7 +45,7 @@ export function MarkdownText({
           const sourceProps = props.children.find(({
             type,
           }: {
-            type: string
+            type: string;
           }) => type === `source`).props;
 
           return (

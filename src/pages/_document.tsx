@@ -5,6 +5,7 @@ import {
   Main,
   NextScript,
 } from 'next/document';
+import Script from 'next/script';
 import { optionYandexMetrika } from '../components/globals/Cookie/Cookie';
 
 export default function Document() {
@@ -44,15 +45,17 @@ export default function Document() {
         <Main />
         <NextScript />
 
-        <script
-          type="text/javascript"
-          // eslint-disable-next-line react/no-danger
+        <Script
+          id="yandex-metrika"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-              var z = null;m[i].l=1*new Date();
-              for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-              k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+              (function(m,e,t,r,i,k,a){
+                m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                var z = null;m[i].l=1*new Date();
+                for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+                k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+              })
               (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
               var isCookieAccept = document.cookie.includes('cookieAccept=true');
