@@ -2,7 +2,7 @@
   $this: &;
 
   z-index: $tickets-popup;
-  visibility: hidden;
+  display: none;
 
   &__inner {
     @include medium-font;
@@ -313,6 +313,6 @@
   }
 
   &.is-active {
-    visibility: visible;
+    display: block;
   }
 }
