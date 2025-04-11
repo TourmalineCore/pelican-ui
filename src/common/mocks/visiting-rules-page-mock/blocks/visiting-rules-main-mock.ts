@@ -15,57 +15,57 @@ export const MOCK_VISITING_RULES_MAIN: VisitingRulesMainComponentProps = {
     {
       id: 0,
       label: `Дети до 13 лет (включительно) могут посещать зоопарк только в\u00A0сопровождении взрослых.`,
-      iconUrl: `/images/svg/no-breaking.svg`,
+      iconUrl: `/images/visiting-rules/kids-only-with-adults.svg`,
     },
     {
       id: 1,
       label: `Запрещены колесные гаджеты.`,
-      iconUrl: `/images/svg/no-scooter.svg`,
+      iconUrl: `/images/visiting-rules/no-wheeled-gadgets.svg`,
     },
     {
       id: 2,
       label: `Не кормить животных.`,
-      iconUrl: `/images/svg/no-food.svg`,
+      iconUrl: `/images/visiting-rules/not-feed-animals.svg`,
     },
     {
       id: 3,
       label: `Не приводить животных.`,
-      iconUrl: `/images/svg/no-pets.svg`,
+      iconUrl: `/images/visiting-rules/not-bring-animals.svg`,
     },
     {
       id: 4,
       label: `Не курить.`,
-      iconUrl: `/images/svg/no-smoking.svg`,
+      iconUrl: `/images/visiting-rules/not-smoke.svg`,
     },
     {
       id: 5,
       label: `Не распивать спиртные напитки.`,
-      iconUrl: `/images/svg/no-alcohol.svg`,
+      iconUrl: `/images/visiting-rules/not-drink-alcohol.svg`,
     },
     {
       id: 6,
       label: `Не дразнить животных.`,
-      iconUrl: `/images/svg/no-teasing.svg`,
+      iconUrl: `/images/visiting-rules/not-tease-animals.svg`,
     },
     {
       id: 7,
       label: `Не засовывать ничего в\u00A0клетки.`,
-      iconUrl: `/images/svg/no-sticking-objects-into-cages.svg`,
+      iconUrl: `/images/visiting-rules/not-stick-smth-into-cages.svg`,
     },
     {
       id: 8,
       label: `Не перелазить ограждения.`,
-      iconUrl: `/images/svg/no-climbing.svg`,
+      iconUrl: `/images/visiting-rules/not-climb-barriers.svg`,
     },
     {
       id: 9,
       label: `Не трогать животных.`,
-      iconUrl: `/images/svg/no-touching.svg`,
+      iconUrl: `/images/visiting-rules/not-touch-animals.svg`,
     },
     {
       id: 10,
       label: `Не шуметь.`,
-      iconUrl: `/images/svg/no-noise.svg`,
+      iconUrl: `/images/visiting-rules/not-make-noise.svg`,
     },
   ],
 };

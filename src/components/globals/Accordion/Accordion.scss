@@ -1,6 +1,8 @@
 .accordion {
   $this: &;
 
+  width: 100%;
+
   &__trigger {
     @include medium-font;
 
