@@ -18,7 +18,7 @@ export function TicketsPopup({
   ticketsPopup,
   overlayElementRef,
 }: Pick<GlobalComponentProps, "ticketsPopup"> & {
-  overlayElementRef: MutableRefObject<null | HTMLElement>
+  overlayElementRef: MutableRefObject<null | HTMLElement>;
 }) {
   const {
     generalTicketsLink,
