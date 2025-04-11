@@ -18,7 +18,7 @@ export function TicketsPopup({
   ticketsPopup,
   overlayElementRef,
 }: Pick<GlobalComponentProps, "ticketsPopup"> & {
-  overlayElementRef: MutableRefObject<null | HTMLElement>
+  overlayElementRef: MutableRefObject<null | HTMLElement>;
 }) {
   const {
     generalTicketsLink,
@@ -67,7 +67,7 @@ export function TicketsPopup({
       >
         <div
           className="container tickets-popup__inner"
-          data-testId="tickets-popup"
+          data-testid="tickets-popup"
         >
           <div className="tickets-popup__head">
             <span className="tickets-popup__title">{MOCK_POPUP_TICKET_BUY_TEXT}</span>
