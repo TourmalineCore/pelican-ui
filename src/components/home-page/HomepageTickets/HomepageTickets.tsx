@@ -89,8 +89,6 @@ export function HomepageTickets({
                         href={subsidizedTicketsLink}
                         aria-label="Перейти на страницу со списком льгот"
                         data-testid="tickets-discounts-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
                       >
                         по ссылке.
                       </Link>
@@ -103,11 +101,9 @@ export function HomepageTickets({
               isMobile
              && (
                <Link
-                 href={subsidizedTicketsLink}
                  className="tickets__ticket-button button button--primary"
+                 href={subsidizedTicketsLink}
                  data-testid="tickets-all-discounts"
-                 target="_blank"
-                 rel="noopener noreferrer"
                >
                  Другие льготы
                </Link>

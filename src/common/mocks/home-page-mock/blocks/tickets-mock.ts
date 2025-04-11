@@ -1,4 +1,4 @@
-import { BlockTypes } from "../../../enum";
+import { AppRoute, BlockTypes } from "../../../enum";
 import { HomeTicketsComponentProps } from '../../../types';
 
 export const MOCK_HOME_TICKETS: HomeTicketsComponentProps = {
@@ -8,7 +8,7 @@ export const MOCK_HOME_TICKETS: HomeTicketsComponentProps = {
   generalTicketsLink: `https://widget.afisha.yandex.ru/w/sessions/ticketsteam-803@37605507?clientKey=3bc42fbd-a832-49aa-a269-79188e18d9e1&regionId=56`,
   subsidizedTicketsTitle: `Льготные билеты`,
   subsidizedTicketsDescription: `Купить льготный билет можно только на кассе зоопарка.`,
-  subsidizedTicketsLink: `https://vk.com/topic-71671982_48253263`,
+  subsidizedTicketsLink: AppRoute.DISCOUNTS,
   generalTickets: [
     {
       id: 0,
