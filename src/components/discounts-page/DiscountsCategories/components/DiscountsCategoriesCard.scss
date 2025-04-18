@@ -202,6 +202,7 @@
     @include link-text;
 
     color: $color-black-75;
+    overflow-wrap: anywhere;
     text-underline-offset: 4px;
 
     &:hover,
@@ -213,6 +214,14 @@
     @include desktop {
       text-underline-offset: 7px;
     }
+  }
+
+  &__text {
+    @include link-text;
+
+    text-decoration: none;
+    color: $color-black-75;
+    overflow-wrap: anywhere;
   }
 
   &__rules-title {

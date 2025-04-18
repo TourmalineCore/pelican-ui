@@ -15,7 +15,7 @@ export function DiscountsCategoriesCard({
     docs?: string[];
     basis?: {
       title:string;
-      link: string;
+      file: string;
     }[];
   };
 }) {
@@ -84,15 +84,21 @@ export function DiscountsCategoriesCard({
             <ul className="discounts-categories-card__rules-basis">
               {rules.basis.map((basis) => (
                 <li key={basis.title}>
-                  <Link
-                    className="discounts-categories-card__link"
-                    data-testid="discounts-link"
-                    href={basis.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {basis.title}
-                  </Link>
+                  {basis.file ? (
+                    <Link
+                      className="discounts-categories-card__link"
+                      data-testid="discounts-link"
+                      href={basis.file}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {basis.title}
+                    </Link>
+                  ) : (
+                    <p className="discounts-categories-card__text">
+                      {basis.title}
+                    </p>
+                  )}
                 </li>
               ))}
             </ul>

@@ -3,9 +3,11 @@ import { DiscountsRulesCard } from "./components/DiscountsRulesCard";
 
 export function DiscountsTerms({
   title,
+  subtitle,
   rulesCards,
 }: {
-  title:string;
+  title: string;
+  subtitle: string;
   rulesCards: Rules[];
 }) {
   return (
@@ -15,7 +17,7 @@ export function DiscountsTerms({
     >
       <h1 className="discounts-terms__title container">{title}</h1>
       <div className="discounts-terms__rules">
-        <h2 className="discounts-terms__rules-title container">Чтобы приобрести льготный билет, нужно</h2>
+        <h2 className="discounts-terms__rules-title container">{subtitle}</h2>
         <ol className="discounts-terms__list container">
           {rulesCards.map((card) => (
             <DiscountsRulesCard

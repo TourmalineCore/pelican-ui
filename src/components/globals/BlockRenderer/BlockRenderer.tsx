@@ -227,6 +227,7 @@ export const BlockRenderer = ({
     return (
       <DiscountsTerms
         title={block.title}
+        subtitle={block.subtitle}
         rulesCards={block.rulesCards}
       />
     );

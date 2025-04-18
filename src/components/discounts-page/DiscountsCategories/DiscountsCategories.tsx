@@ -11,7 +11,7 @@ export function DiscountsCategories({
   categoriesCards: CategoriesCards[];
   remark: {
     title:string;
-    link: string;
+    file: string;
   };
 }) {
   return (
@@ -34,15 +34,19 @@ export function DiscountsCategories({
       <p className="discounts-categories__remark">
         Данный перечень составлен в соответствии с
         {` `}
-        <Link
-          className="discounts-categories__remark-link"
-          data-testid="discounts-remark-link"
-          href={remark.link}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {remark.title}
-        </Link>
+        {remark.file ? (
+          <Link
+            className="discounts-categories__remark-link"
+            data-testid="discounts-remark-link"
+            href={remark.file}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {remark.title}
+          </Link>
+        ) : (
+          remark.title
+        )}
       </p>
     </section>
   );

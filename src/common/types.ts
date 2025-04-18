@@ -137,7 +137,7 @@ export type DiscountsCategoriesComponentProps = {
   categoriesCards: CategoriesCards[];
   remark: {
     title:string;
-    link: string;
+    file: string;
   };
 };
 
@@ -152,7 +152,7 @@ export type CategoriesCards = {
     docs?: string[];
     basis?: {
       title:string;
-      link: string;
+      file: string;
     }[];
   };
 };
@@ -161,6 +161,7 @@ export type DiscountsTermsComponentProps = {
   id: number;
   __component: BlockTypes.DISCOUNTS_TERMS;
   title: string;
+  subtitle: string;
   rulesCards: Rules[];
 };
 

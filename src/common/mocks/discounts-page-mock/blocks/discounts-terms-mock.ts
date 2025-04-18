@@ -5,6 +5,7 @@ export const MOCK_DISCOUNTS_TERMS: DiscountsTermsComponentProps = {
   id: 1,
   __component: BlockTypes.DISCOUNTS_TERMS,
   title: `Льготное посещение зоопарка`,
+  subtitle: `Чтобы приобрести льготный билет, нужно`,
   rulesCards: [
     {
       id: 0,

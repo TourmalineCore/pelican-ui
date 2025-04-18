@@ -8,6 +8,8 @@ import {
   HomeTicketsComponent,
   SharedTicketsComponent,
   SharedCardsComponent,
+  DiscountsTermsComponent,
+  DiscountsCategoriesComponent,
 } from "../api-types";
 import { BlockTypes } from "../enum";
 import { Block } from "../types";
@@ -134,7 +136,9 @@ export function mapContractByBlock({
       };
 
     case BlockTypes.SHARED_CARDS:
-      const sharedCardsBlock = block as SharedCardsComponent;
+      const sharedCardsBlock = block as (SharedCardsComponent & {
+        __component: BlockTypes;
+      });
 
       return {
         id: crypto.randomUUID(),
@@ -147,6 +151,46 @@ export function mapContractByBlock({
             alternativeText: card.image?.alternativeText || ``,
           },
         })),
+      };
+
+    case BlockTypes.DISCOUNTS_TERMS:
+      const termsBlock = block as DiscountsTermsComponent;
+
+      return {
+        id: crypto.randomUUID(),
+        __component: termsBlock.__component,
+        title: termsBlock.title,
+        subtitle: termsBlock.subtitle,
+        rulesCards: termsBlock.rulesCards,
+      };
+
+    case BlockTypes.DISCOUNTS_CATEGORIES:
+      const categoriesBlock = block as DiscountsCategoriesComponent;
+
+      return {
+        id: crypto.randomUUID(),
+        __component: categoriesBlock.__component,
+        title: categoriesBlock.title,
+        categoriesCards: categoriesBlock.discountsCards?.map((card) => ({
+          ...card,
+          rules: {
+            info: card.rules?.info,
+            terms: card.rules?.terms?.map((item) => (
+              item.text
+            )),
+            docs: card.rules?.docs?.map((item) => (
+              item.text
+            )),
+            basis: card.rules?.basis?.map((item) => ({
+              title: item.title,
+              file: item.file?.url || item.link,
+            })),
+          },
+        })),
+        remark: {
+          title: categoriesBlock.remark?.title,
+          file: categoriesBlock.remark?.file?.url || categoriesBlock.remark?.link,
+        },
       };
 
     default:
