@@ -191,6 +191,7 @@ export const BlockRenderer = ({
         image={block.image}
         scheduleTitle={block.scheduleTitle}
         scheduleTimetables={block.scheduleTimetables}
+        infoCardTitle={block.infoCardTitle}
         infoCardDescription={block.infoCardDescription}
         isInternalPage
         isFirstBlock={block.isFirstBlock}

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { test } from '@playwright/test';
 import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
-import { axeCheckAndWriteReport, setViewportSize } from '../helpers';
+import { axeCheckAndWriteReport, setViewportSize } from '../global-helpers';
 
 const PAGE_NAME = `document-categories`;
 

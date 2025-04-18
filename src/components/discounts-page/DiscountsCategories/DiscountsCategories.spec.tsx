@@ -3,7 +3,7 @@ import {
   hideCookie,
   hideHeader,
   setViewportSize,
-} from '@/playwright-tests/helpers';
+} from '@/playwright-tests/global-helpers';
 import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
 import { test, expect, Page } from '@playwright/test';
 

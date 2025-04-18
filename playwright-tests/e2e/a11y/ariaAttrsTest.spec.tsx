@@ -1,5 +1,5 @@
 import { AppRoute } from '@/src/common/enum';
-import { gotoPage } from '@/playwright-tests/helpers';
+import { gotoPage } from '@/playwright-tests/global-helpers';
 import { test, Page, expect } from '@playwright/test';
 
 test.describe(`ARIA Labels`, () => {

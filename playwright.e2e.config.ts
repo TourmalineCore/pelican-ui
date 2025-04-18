@@ -12,12 +12,11 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: `./`,
-  testIgnore: [`**/cms-integration/**`],
-  outputDir: `./playwright-tests/playwright-test-results/e2e-tests`,
-  snapshotDir: `./playwright-tests/screenshots/e2e-tests/base`,
+  testDir: `./playwright-tests/e2e/cms-integration`,
+  outputDir: `./playwright-tests/playwright-test-results/cms-integration`,
+  timeout: 45000,
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  // fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry twice locally and in pipelines to avoid extra flackiness after a retry or two */
@@ -29,57 +28,27 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: `http://localhost:3000`,
+    baseURL: process.env.CI ? process.env.FRONTEND_URL : `http://localhost:3000`,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: `on-first-retry`,
+    screenshot: `only-on-failure`,
   },
-  expect: {
-    // Maximum time expect() should wait for the condition to be met.
-    timeout: 10000,
-
-    toHaveScreenshot: {
-      maxDiffPixels: 50,
-    },
-  },
-  /* Configure projects for major browsers */
   projects: [
     {
-      name: `chromium`,
+      name: `setup`,
+      testMatch: /cms-integration\.setup\.ts/,
+      teardown: `teardown`,
+    },
+    {
+      name: `teardown`,
+      testMatch: /cms-integration\.teardown\.ts/,
+    },
+    {
+      name: `cmsIntegration`,
       use: {
         ...devices[`Desktop Chrome`],
       },
+      dependencies: [`setup`],
     },
-    // {
-    //   name: `firefox`,
-    //   use: {
-    //     ...devices[`Desktop Firefox`],
-    //   },
-    // },
-    // {
-    //   name: `webkit`,
-    //   use: {
-    //     ...devices[`Desktop Safari`],
-    //   },
-    // },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
   ],
 });

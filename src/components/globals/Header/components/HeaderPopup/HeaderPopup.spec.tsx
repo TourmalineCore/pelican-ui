@@ -1,5 +1,5 @@
 import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/helpers';
+import { gotoPage, setViewportSize } from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
 
 test.describe(`HeaderPopupTests`, () => {

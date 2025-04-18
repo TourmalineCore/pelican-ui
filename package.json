@@ -19,6 +19,8 @@
     "prepare": "husky",
     "playwright-test": "npx playwright test",
     "playwright-test:ui": "npx playwright test --ui",
+    "playwright-e2e-test": "npx playwright test --config=playwright.e2e.config.ts",
+    "playwright-e2e-test:ui": "npx playwright test --ui --config=playwright.e2e.config.ts",
     "update-snapshots": "npx playwright test --update-snapshots",
     "generate-api-types": "docker-compose -f ./api-types/docker-compose.yml up --build ts_generator"
   },

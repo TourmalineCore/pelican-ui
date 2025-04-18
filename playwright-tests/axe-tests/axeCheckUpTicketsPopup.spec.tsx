@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { test } from '@playwright/test';
 import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
-import { axeCheckAndWriteReport, openTicketsPopupAccordions, setViewportSize } from '../helpers';
+import { axeCheckAndWriteReport, openTicketsPopupAccordions, setViewportSize } from '../global-helpers';
 
 const PAGE_NAME = `tickets-popup`;
 

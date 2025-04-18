@@ -5,7 +5,7 @@ import {
   hideFooter,
   hideHeader,
   setViewportSize,
-} from '@/playwright-tests/helpers';
+} from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
 
 const TEST_ID = `not-found`;
