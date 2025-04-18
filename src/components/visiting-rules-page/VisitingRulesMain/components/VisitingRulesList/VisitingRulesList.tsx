@@ -29,7 +29,7 @@ export function VisitingRulesList({
             />
           ))}
         </ul>
-        {isMobile && (
+        {isMobile && link.path && (
           <Link
             className="visiting-rules-list__link button button--secondary"
             href={link.path}

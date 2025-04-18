@@ -21,7 +21,7 @@ export function VisitingRulesInfo({
         <h1 className="visiting-rules-info__title">
           {title}
         </h1>
-        {!isMobile && (
+        {!isMobile && path && (
           <Link
             className="text-link visiting-rules-info__link"
             href={path}

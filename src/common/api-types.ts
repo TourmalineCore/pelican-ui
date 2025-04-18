@@ -27,6 +27,7 @@ export interface ContactZooRequest {
         | BaseNullComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
         | BaseNullComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
         | BaseNullComponentMapping<"shared.tickets", SharedTicketsComponent>
+        | BaseNullComponentMapping<"shared.cards", SharedCardsComponent>
       );
     seo?: SharedSeoComponent;
     locale?: string;
@@ -57,6 +58,7 @@ export interface ContactZoo {
       | AbstractNullComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
       | AbstractNullComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
       | AbstractNullComponentMapping<"shared.tickets", SharedTicketsComponent>
+      | AbstractNullComponentMapping<"shared.cards", SharedCardsComponent>
     );
   seo?: SharedSeoComponent;
   /** @format date-time */
@@ -83,6 +85,7 @@ export interface ContactZoo {
         | DiscriminatorNullComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
         | DiscriminatorNullComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
         | DiscriminatorNullComponentMapping<"shared.tickets", SharedTicketsComponent>
+        | DiscriminatorNullComponentMapping<"shared.cards", SharedCardsComponent>
       );
     seo?: SharedSeoComponent;
     /** @format date-time */
@@ -367,6 +370,72 @@ export interface SharedTicketsComponent {
   subsidizedTickets?: TicketsTicketComponent[];
   note?: string;
   link?: string;
+}
+
+export interface CardLabelComponent {
+  id?: number;
+  text?: string;
+}
+
+export interface CardCardComponent {
+  id?: number;
+  title?: string;
+  description?: string;
+  image?: {
+    id?: number;
+    documentId?: string;
+    name?: string;
+    alternativeText?: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    formats?: any;
+    hash?: string;
+    ext?: string;
+    mime?: string;
+    /** @format float */
+    size?: number;
+    url?: string;
+    previewUrl?: string;
+    provider?: string;
+    provider_metadata?: any;
+    related?: {
+      id?: number;
+      documentId?: string;
+    }[];
+    folder?: {
+      id?: number;
+      documentId?: string;
+    };
+    folderPath?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  };
+  labels?: CardLabelComponent[];
+  link?: string;
+}
+
+export interface SharedCardsComponent {
+  id?: number;
+  title?: string;
+  cards?: CardCardComponent[];
 }
 
 export interface SharedMetaSocialComponent {
@@ -955,19 +1024,6 @@ export interface DocumentsPageRequest {
   };
 }
 
-export interface DocumentsPageResponse {
-  data?: DocumentsPage;
-  meta?: object;
-}
-
-export interface HeaderRequest {
-  data: {
-    ticketsPopup: TicketsPopupTicketsPopupComponent;
-    locale?: string;
-    localizations?: (number | string)[];
-  };
-}
-
 export interface DocumentsPageListResponse {
   data?: DocumentsPage[];
   meta?: {
@@ -1027,6 +1083,11 @@ export interface DocumentsPage {
       documentId?: string;
     }[];
   }[];
+}
+
+export interface DocumentsPageResponse {
+  data?: DocumentsPage;
+  meta?: object;
 }
 
 export interface HeaderRequest {
@@ -1114,12 +1175,17 @@ export interface TicketsPopupCategoryComponent {
   price?: string;
 }
 
+export interface ButtonButtonWithTextComponent {
+  id?: number;
+  label?: string;
+}
+
 export interface TicketsPopupAccordionTicketComponent {
   id?: number;
   category?: string;
   description?: string;
   categories?: TicketsPopupCategoryComponent[];
-  button?: ButtonButtonComponent;
+  button?: ButtonButtonWithTextComponent;
 }
 
 export interface TicketsPopupVisitingRulesAccordionComponent {
@@ -1259,14 +1325,14 @@ export interface Home {
   localizations?: {
     id?: number;
     documentId?: string;
-    blocks?: AbstractNull1 &
+    blocks?: InternalNull1 &
       (
-        | AbstractNull1ComponentMapping<"shared.hero", SharedHeroComponent>
-        | AbstractNull1ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
-        | AbstractNull1ComponentMapping<"home.services", HomeServicesComponent>
-        | AbstractNull1ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
-        | AbstractNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
-        | AbstractNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
+        | InternalNull1ComponentMapping<"shared.hero", SharedHeroComponent>
+        | InternalNull1ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+        | InternalNull1ComponentMapping<"home.services", HomeServicesComponent>
+        | InternalNull1ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
+        | InternalNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
+        | InternalNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
       );
     seo?: SharedSeoComponent;
     /** @format date-time */
@@ -1294,73 +1360,6 @@ export interface Home {
 export interface HomeResponse {
   data?: Home;
   meta?: object;
-}
-
-export interface CardLabelComponent {
-  id?: number;
-  text?: string;
-}
-
-export interface CardCardComponent {
-  id?: number;
-  title?: string;
-  description?: string;
-  image?: {
-    id?: number;
-    documentId?: string;
-    name?: string;
-    alternativeText?: string;
-    caption?: string;
-    width?: number;
-    height?: number;
-    formats?: any;
-    hash?: string;
-    ext?: string;
-    mime?: string;
-    /** @format float */
-    size?: number;
-    url?: string;
-    previewUrl?: string;
-    provider?: string;
-    provider_metadata?: any;
-    related?: {
-      id?: number;
-      documentId?: string;
-    }[];
-    folder?: {
-      id?: number;
-      documentId?: string;
-    };
-    folderPath?: string;
-    /** @format date-time */
-    createdAt?: string;
-    /** @format date-time */
-    updatedAt?: string;
-    /** @format date-time */
-    publishedAt?: string;
-    createdBy?: {
-      id?: number;
-      documentId?: string;
-    };
-    updatedBy?: {
-      id?: number;
-      documentId?: string;
-    };
-    locale?: string;
-    localizations?: {
-      id?: number;
-      documentId?: string;
-    }[];
-  };
-  labels?: CardLabelComponent[];
-  link?: string;
-}
-
-export interface SharedCardsComponent {
-  id?: number;
-  __component?: "shared.cards";
-  title?: string;
-  cards?: CardCardComponent[];
 }
 
 export interface HomeServicesComponent {
@@ -1448,7 +1447,7 @@ export interface NewsCollectionRequest {
     title: string;
     description?: string;
     /** @example "string or id" */
-    image: number | string;
+    image?: number | string;
     innerContent: string;
     slug?: string;
     seo?: SharedSeoComponent;
@@ -1476,7 +1475,7 @@ export interface NewsCollection {
   documentId?: string;
   title: string;
   description?: string;
-  image: {
+  image?: {
     id?: number;
     documentId?: string;
     name?: string;
@@ -1866,11 +1865,258 @@ export interface NewsPageResponse {
   meta?: object;
 }
 
+export interface VisitingRulesPageRequest {
+  data: {
+    seo?: SharedSeoComponent;
+    blocks?: DiscriminatorNull1 &
+      (
+        | DiscriminatorNull1ComponentMapping<"visiting-rules.warnings", VisitingRulesWarningsComponent>
+        | DiscriminatorNull1ComponentMapping<
+            "visiting-rules.visiting-rules-main",
+            VisitingRulesVisitingRulesMainComponent
+          >
+        | DiscriminatorNull1ComponentMapping<"visiting-rules.photos-policy", VisitingRulesPhotosPolicyComponent>
+        | DiscriminatorNull1ComponentMapping<"visiting-rules.emergency-phones", VisitingRulesEmergencyPhonesComponent>
+      );
+    locale?: string;
+    localizations?: (number | string)[];
+  };
+}
+
+export interface VisitingRulesPageListResponse {
+  data?: VisitingRulesPage[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
+export interface VisitingRulesPage {
+  id?: number;
+  documentId?: string;
+  seo?: SharedSeoComponent;
+  blocks?: PolymorphNull1 &
+    (
+      | PolymorphNull1ComponentMapping<"visiting-rules.warnings", VisitingRulesWarningsComponent>
+      | PolymorphNull1ComponentMapping<"visiting-rules.visiting-rules-main", VisitingRulesVisitingRulesMainComponent>
+      | PolymorphNull1ComponentMapping<"visiting-rules.photos-policy", VisitingRulesPhotosPolicyComponent>
+      | PolymorphNull1ComponentMapping<"visiting-rules.emergency-phones", VisitingRulesEmergencyPhonesComponent>
+    );
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** @format date-time */
+  publishedAt?: string;
+  createdBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  updatedBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  locale?: string;
+  localizations?: {
+    id?: number;
+    documentId?: string;
+    seo?: SharedSeoComponent;
+    blocks?: InternalNull2 &
+      (
+        | InternalNull2ComponentMapping<"visiting-rules.warnings", VisitingRulesWarningsComponent>
+        | InternalNull2ComponentMapping<"visiting-rules.visiting-rules-main", VisitingRulesVisitingRulesMainComponent>
+        | InternalNull2ComponentMapping<"visiting-rules.photos-policy", VisitingRulesPhotosPolicyComponent>
+        | InternalNull2ComponentMapping<"visiting-rules.emergency-phones", VisitingRulesEmergencyPhonesComponent>
+      );
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  }[];
+}
+
+export interface VisitingRulesPageResponse {
+  data?: VisitingRulesPage;
+  meta?: object;
+}
+
+export interface VisitingRulesTextCardComponent {
+  id?: number;
+  label?: string;
+}
+
+export interface VisitingRulesWarningsComponent {
+  id?: number;
+  __component?: "visiting-rules.warnings";
+  warningsCards?: VisitingRulesTextCardComponent[];
+}
+
+export interface VisitingRulesMainRulesCardComponent {
+  id?: number;
+  image?: {
+    id?: number;
+    documentId?: string;
+    name?: string;
+    alternativeText?: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    formats?: any;
+    hash?: string;
+    ext?: string;
+    mime?: string;
+    /** @format float */
+    size?: number;
+    url?: string;
+    previewUrl?: string;
+    provider?: string;
+    provider_metadata?: any;
+    related?: {
+      id?: number;
+      documentId?: string;
+    }[];
+    folder?: {
+      id?: number;
+      documentId?: string;
+    };
+    folderPath?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  };
+  label?: string;
+}
+
+export interface VisitingRulesMainRulesComponent {
+  id?: number;
+  title?: string;
+  mainRulesCards?: VisitingRulesMainRulesCardComponent[];
+}
+
+export interface VisitingRulesDocumentLinkComponent {
+  id?: number;
+  label?: string;
+  file?: {
+    id?: number;
+    documentId?: string;
+    name?: string;
+    alternativeText?: string;
+    caption?: string;
+    width?: number;
+    height?: number;
+    formats?: any;
+    hash?: string;
+    ext?: string;
+    mime?: string;
+    /** @format float */
+    size?: number;
+    url?: string;
+    previewUrl?: string;
+    provider?: string;
+    provider_metadata?: any;
+    related?: {
+      id?: number;
+      documentId?: string;
+    }[];
+    folder?: {
+      id?: number;
+      documentId?: string;
+    };
+    folderPath?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  };
+}
+
+export interface VisitingRulesVisitingRulesMainComponent {
+  id?: number;
+  __component?: "visiting-rules.visiting-rules-main";
+  title?: string;
+  description?: string;
+  mainRules?: VisitingRulesMainRulesComponent;
+  documentLink?: VisitingRulesDocumentLinkComponent;
+}
+
+export interface VisitingRulesPhotosPolicyComponent {
+  id?: number;
+  __component?: "visiting-rules.photos-policy";
+  title?: string;
+  photosPolicyCards?: VisitingRulesTextCardComponent[];
+}
+
+export interface VisitingRulesEmergencyPhonesCardComponent {
+  id?: number;
+  phone?: string;
+  label?: string;
+}
+
+export interface VisitingRulesEmergencyPhonesComponent {
+  id?: number;
+  __component?: "visiting-rules.emergency-phones";
+  title?: string;
+  emergencyPhonesCards?: VisitingRulesEmergencyPhonesCardComponent[];
+}
+
 type BaseNull = (
   | SharedHeroComponent
   | SharedTextAndMediaComponent
   | SharedImageWithButtonGridComponent
   | SharedTicketsComponent
+  | SharedCardsComponent
 )[];
 
 type BaseNullComponentMapping<Key, Type> = {
@@ -1882,6 +2128,7 @@ type AbstractNull = (
   | SharedTextAndMediaComponent
   | SharedImageWithButtonGridComponent
   | SharedTicketsComponent
+  | SharedCardsComponent
 )[];
 
 type AbstractNullComponentMapping<Key, Type> = {
@@ -1893,6 +2140,7 @@ type DiscriminatorNull = (
   | SharedTextAndMediaComponent
   | SharedImageWithButtonGridComponent
   | SharedTicketsComponent
+  | SharedCardsComponent
 )[];
 
 type DiscriminatorNullComponentMapping<Key, Type> = {
@@ -1925,7 +2173,7 @@ type PolymorphNullComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type AbstractNull1 = (
+type InternalNull1 = (
   | SharedHeroComponent
   | SharedTextAndMediaComponent
   | HomeServicesComponent
@@ -1934,6 +2182,39 @@ type AbstractNull1 = (
   | HomeTicketsComponent
 )[];
 
-type AbstractNull1ComponentMapping<Key, Type> = {
+type InternalNull1ComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
+type DiscriminatorNull1 = (
+  | VisitingRulesWarningsComponent
+  | VisitingRulesVisitingRulesMainComponent
+  | VisitingRulesPhotosPolicyComponent
+  | VisitingRulesEmergencyPhonesComponent
+)[];
+
+type DiscriminatorNull1ComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
+type PolymorphNull1 = (
+  | VisitingRulesWarningsComponent
+  | VisitingRulesVisitingRulesMainComponent
+  | VisitingRulesPhotosPolicyComponent
+  | VisitingRulesEmergencyPhonesComponent
+)[];
+
+type PolymorphNull1ComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
+type InternalNull2 = (
+  | VisitingRulesWarningsComponent
+  | VisitingRulesVisitingRulesMainComponent
+  | VisitingRulesPhotosPolicyComponent
+  | VisitingRulesEmergencyPhonesComponent
+)[];
+
+type InternalNull2ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
