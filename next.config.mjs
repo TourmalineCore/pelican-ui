@@ -58,6 +58,7 @@ const nextConfig = {
       path: `https://${process.env.CDN_DOMAIN}/_next/image`
     }),
 
+    minimumCacheTTL: 100,
     unoptimized: process.env.NODE_ENV === 'test',
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
