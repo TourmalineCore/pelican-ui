@@ -5,6 +5,15 @@ const nextConfig = {
   async headers() {
     return [
       {
+        source: "/favicon/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
         source: '/(.*)',
         headers: [
           // CORS headers
@@ -143,6 +152,10 @@ const nextConfig = {
     }),
 
     unoptimized: process.env.NODE_ENV === 'test',
+
+    // lifetime in seconds for cached optimized images
+    // https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl
+    minimumCacheTTL: 86400,
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
@@ -153,7 +166,14 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'minio-s3',
       },
-      ...(process.env.CDN_DOMAIN ? [
+      {
+        protocol: 'https',
+        hostname: 'storage.yandexcloud.net',
+
+        // Todo: need specify production bucket name 
+        // pathname: '/bucketName/**',
+      },
+      ...(process.env.CDN_ENABLED === 'true' && process.env.CDN_DOMAIN ? [
         {
           protocol: 'https',
           hostname: process.env.CDN_DOMAIN,
