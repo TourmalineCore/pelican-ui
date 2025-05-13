@@ -11,8 +11,6 @@ containerPorts:
   http: 3000
   https: ""
 
-replicaCount: 1
-
 # 1000m means 100% of processor time 
 # 1m means 0.1% of processor time.
 # at start pod is being allocated with resources from requests, if it needs more consumption can grow until limits.
@@ -24,11 +22,28 @@ resources:
     cpu: 1m
     memory: 256Mi
 
+replicaCount: 2
+
+updateStrategy:
+  # RollingUpdate strategy allows to update service without downtime (hopefully)
+  rollingUpdate:
+    maxUnavailable: 1
+    maxSurge: 1
+
+# Here you can read more about container probes https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 livenessProbe:
-  enabled: false
+  enabled: true
+  path: /
+  # initialDelaySeconds defines how many seconds after the container is started, the probes start
+  initialDelaySeconds: 15
+  # periodSeconds defines how long to wait before starting a new probe in case of a failed check
+  periodSeconds: 5
 
 readinessProbe:
-  enabled: false
+  enabled: true
+  path: /
+  initialDelaySeconds: 15
+  periodSeconds: 5
 
 service:
   type: ClusterIP
@@ -38,7 +53,6 @@ service:
 
 ingress:
   enabled: true
-  hostname: "pelican.tourmalinecore.com"
   path: ""
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt 
