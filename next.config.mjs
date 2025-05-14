@@ -5,11 +5,19 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/.*\\.mp4$',
+        source: '/:path*\\.(mp4|webm|mov|avi|mkv)$',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=31536000, immutable'
+          },
+          {
+            key: 'Content-Type',
+            value: 'video/:segment'
+          },
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*'
           },
         ],
       },
