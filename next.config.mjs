@@ -5,6 +5,30 @@ const nextConfig = {
   async headers() {
     return [
       {
+        source: '/:path*\\.(mp4|webm|mov|avi|mkv)$',
+        headers: [
+          // Manages caching of video files in the browser and intermediate CDN proxies
+          {
+            key: 'Cache-Control',
+            // public - Allows caching of the file not only in the user's browser, but also on proxy servers, such as CDN.
+            // If it were set to private, caching would only be allowed in the browser.
+            // max-age - Specifies how many seconds (60 sec = 1 minute) a file can be stored in the cache before being re-checked.
+            // After this time, the browser will make a new request, even if the file has not changed.
+            // immutable - Tells the browser that the file will never change (the content is static).
+            // Until max-age expires, the browser will not check for updates (even when the page is reloaded).
+            value: 'public, max-age=60, immutable'
+          },
+          {
+            key: 'Content-Type',
+            value: 'video/:segment'
+          },
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: 'https://chelzoo.tech'
+          },
+        ],
+      },
+      {
         source: '/(.*)',
         headers: [
           // CORS headers
