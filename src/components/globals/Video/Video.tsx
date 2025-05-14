@@ -21,6 +21,17 @@ export function Video({
   sources,
   options,
 }: VideoProps) {
+  const updatedOptions = {
+    ...options,
+
+    // turn off downloading https://cdn.plyr.io/3.7.8/plyr.svg
+    loadSprite: false,
+
+    // turn off downloading https://cdn.plyr.io/static/blank.mp4
+    // this issue help to do this https://github.com/sampotts/plyr/issues/1245
+    blankVideo: `/video/plyr-blank.mp4`,
+  };
+
   return (
     <div
       className={className}
@@ -33,7 +44,7 @@ export function Video({
           title,
           sources: [sources],
         }}
-        options={options}
+        options={updatedOptions}
       />
     </div>
   );
