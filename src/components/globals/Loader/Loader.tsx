@@ -4,7 +4,12 @@ import { LoaderContainer } from "./components/LoaderContainer";
 
 export function Loader() {
   const [isLoading, setIsLoading] = useState(false);
+  const [nonce, setNonce] = useState<string | null>(null);
   const route = useRouter();
+
+  useEffect(() => {
+    setNonce((window as any).__NONCE__ || null);
+  }, []);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -36,12 +41,12 @@ export function Loader() {
     };
   });
 
-  return isLoading && (
+  return isLoading && nonce ? (
     <div
       data-testid="loader"
       id="static-loader"
     >
-      <LoaderContainer />
+      <LoaderContainer nonce={nonce} />
     </div>
-  );
+  ) : null;
 }

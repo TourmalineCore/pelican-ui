@@ -1,9 +1,24 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @stylistic/max-len */
+export function LoaderContainer({
+  nonce,
+}: { nonce: string; }) {
+  const styles = Array.from({
+    length: 8,
+  })
+    .map(
+      (_, i) => `
+        .loader:nth-of-type(${i + 1}) {
+          animation-delay: ${i * 0.25}s;
+          transform: rotate(${i * 45}deg) translateY(-50px) rotate(${i + 140}deg);
+        }
+      `,
+    )
+    .join(`\n`);
 
-export function LoaderContainer() {
   return (
     <div className="loader-container">
+      <style nonce={nonce}>{styles}</style>
       {Array.from({
         length: 8,
       })
@@ -11,10 +26,6 @@ export function LoaderContainer() {
           <div
             className="loader"
             key={i}
-            style={{
-              animationDelay: `${i * 0.25}s`,
-              transform: `rotate(${i * 45}deg) translateY(-50px) rotate(${i + 140}deg)`,
-            }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
