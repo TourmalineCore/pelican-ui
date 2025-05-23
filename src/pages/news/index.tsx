@@ -8,6 +8,7 @@ import defaultBackground from '@/public/images/news/default-background.png';
 import { MOCK_NEWS } from '@/src/common/mocks/collections-mock/news-collection-mock';
 import { MOCK_NEWS_PAGE } from '@/src/common/mocks/news-page-mock/news-page-mock';
 import { useScrollTop } from '@/src/common/hooks/useScrollTop';
+import { HttpStatusCode, isAxiosError } from 'axios';
 
 export default function NewsPage({
   pageData,
@@ -103,8 +104,14 @@ async function getNewsPageData({
         },
       }),
     };
-  } catch {
-    return {};
+  } catch (error) {
+    if (isAxiosError(error)) {
+      if (error.status === HttpStatusCode.NotFound) {
+        return {};
+      }
+    }
+
+    throw error;
   }
 }
 
@@ -149,7 +156,11 @@ async function getNewsData({
       })),
       pageCount: response.meta!.pagination!.pageCount!,
     };
-  } catch {
+  } catch (error) {
+    if (isAxiosError(error)) {
+      throw error;
+    }
+
     return {
       news: [],
       pageCount: 0,

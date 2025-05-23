@@ -1,5 +1,6 @@
 import { getMockPageData } from '@/src/common/utils/getMockPageData';
 import { useRouter } from 'next/router';
+import { HttpStatusCode, isAxiosError } from 'axios';
 import { ContactZooPageProps, GlobalComponentProps, HomePageProps } from '../common/types';
 import { BlockRenderer } from '../components/globals/BlockRenderer/BlockRenderer';
 import { getPageData } from '../common/utils/getPageData';
@@ -109,12 +110,18 @@ export async function getServerSideProps({
         pageData,
       },
     };
-  } catch {
-    return {
-      props: {
-        pageData: {},
-      },
-    };
+  } catch (error) {
+    if (isAxiosError(error)) {
+      if (error.status === HttpStatusCode.NotFound) {
+        return {
+          props: {
+            pageData: {},
+          },
+        };
+      }
+    }
+
+    throw error;
   }
 }
 

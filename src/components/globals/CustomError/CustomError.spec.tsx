@@ -8,9 +8,9 @@ import {
 } from '@/playwright-tests/global-helpers';
 import { test, expect, Page } from '@playwright/test';
 
-const TEST_ID = `not-found`;
+const TEST_ID = `custom-error`;
 
-test.describe(`NotFoundComponentTests`, () => {
+test.describe(`CustomErrorComponentTests`, () => {
   test.beforeEach(async ({
     page,
   }) => {
@@ -52,7 +52,7 @@ async function mobileTest({
     page,
   });
 
-  await expect(getNotFoundByTestId({
+  await expect(getCustomErrorByTestId({
     page,
   }))
     .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
@@ -69,7 +69,7 @@ async function tabletTest({
     height: 807,
   });
 
-  await expect(getNotFoundByTestId({
+  await expect(getCustomErrorByTestId({
     page,
   }))
     .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
@@ -86,7 +86,7 @@ async function tabletXlTest({
     height: 807,
   });
 
-  await expect(getNotFoundByTestId({
+  await expect(getCustomErrorByTestId({
     page,
   }))
     .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}.png`);
@@ -103,7 +103,7 @@ async function desktopTest({
     height: 797,
   });
 
-  await expect(getNotFoundByTestId({
+  await expect(getCustomErrorByTestId({
     page,
   }))
     .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
@@ -120,13 +120,13 @@ async function desktopXlTest({
     height: 1176,
   });
 
-  await expect(getNotFoundByTestId({
+  await expect(getCustomErrorByTestId({
     page,
   }))
     .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
 }
 
-function getNotFoundByTestId({
+function getCustomErrorByTestId({
   page,
 }: {
   page: Page;

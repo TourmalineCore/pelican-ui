@@ -12,6 +12,7 @@ import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryPar
 import { strapiFetch } from "@/src/common/utils/HttpClient";
 import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
 import { SeoHead } from "@/src/components/globals/SeoHead/SeoHead";
+import { isAxiosError } from "axios";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import qs from "qs";
@@ -220,7 +221,11 @@ async function getDocumentCategory({
     return mapDocumentCategory({
       documentCategory: response.data![0],
     });
-  } catch {
+  } catch (error) {
+    if (isAxiosError(error)) {
+      throw error;
+    }
+
     return null;
   }
 }
@@ -300,7 +305,11 @@ async function getDocuments({
     return mapDocuments({
       documents: responseData,
     });
-  } catch {
+  } catch (error) {
+    if (isAxiosError(error)) {
+      throw error;
+    }
+
     return [];
   }
 }

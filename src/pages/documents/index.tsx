@@ -11,6 +11,7 @@ import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 import { AppRoute } from '@/src/common/enum';
 import { MOCK_DOCUMENTS_CATEGORIES } from '@/src/common/mocks/collections-mock/documents-categories-collection-mock';
 import { useScrollTop } from '@/src/common/hooks/useScrollTop';
+import { HttpStatusCode, isAxiosError } from 'axios';
 
 export default function DocumentsPage({
   pageData,
@@ -122,8 +123,14 @@ async function getDocumentsPageData({
         },
       }),
     };
-  } catch {
-    return {};
+  } catch (error) {
+    if (isAxiosError(error)) {
+      if (error.status === HttpStatusCode.NotFound) {
+        return {};
+      }
+    }
+
+    throw error;
   }
 }
 
@@ -161,7 +168,11 @@ async function getDocumentsCategories({
           return null;
         }),
     )).filter((item) => item !== null);
-  } catch {
+  } catch (error) {
+    if (isAxiosError(error)) {
+      throw error;
+    }
+
     return [];
   }
 }

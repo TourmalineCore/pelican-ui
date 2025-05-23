@@ -1,5 +1,11 @@
-import { NotFound } from "../components/globals/NotFound/NotFound";
+import { HttpStatusCode } from "axios";
+import { CustomError } from "../components/globals/CustomError/CustomError";
 
 export default function Custom404() {
-  return <NotFound />;
+  return (
+    <CustomError
+      statusCode={HttpStatusCode.NotFound}
+      message="Страница не найдена или не существует"
+    />
+  );
 }

@@ -8,6 +8,7 @@ import { NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 import { useScrollTop } from '@/src/common/hooks/useScrollTop';
 import { useRouter } from 'next/router';
+import { isAxiosError } from 'axios';
 
 const NEWS_SLIDER_LIMIT = 6;
 
@@ -147,7 +148,11 @@ async function getNews({
     return mapSelectedNews({
       news: response.data![0],
     });
-  } catch {
+  } catch (error) {
+    if (isAxiosError(error)) {
+      throw error;
+    }
+
     return null;
   }
 }
@@ -208,7 +213,11 @@ async function getOtherNews({
       news: response.data!,
       slug,
     });
-  } catch {
+  } catch (error) {
+    if (isAxiosError(error)) {
+      throw error;
+    }
+
     return [];
   }
 }
