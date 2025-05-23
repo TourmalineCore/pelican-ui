@@ -54,9 +54,11 @@ export default function UniversalPage({
 }
 
 export async function getServerSideProps({
+  res,
   query,
   preview = false,
 }: {
+  res: any;
   preview: boolean;
   query: {
     slug: string;
@@ -103,6 +105,11 @@ export async function getServerSideProps({
       slug: query.slug,
       blocks: pageData.blocks,
     });
+
+    res.setHeader(
+      `Cache-Control`,
+      `public, s-maxage=10, stale-while-revalidate=59`,
+    );
 
     return {
       props: {

@@ -5,6 +5,19 @@ const nextConfig = {
   async headers() {
     return [
       {
+        // Apply the middleware to everything except Next.js API routes and static assets
+        source: `/((?!api|_next/static|_next/data|_next/image|favicon.ico).*)`,
+        // These headers are added by Next.js or browsers when preloading routes or resources
+        // We skip applying middleware to avoid unnecessary work or CSP processing for them
+        // For example, when you hover over the link and Next preloads a preview of a new page
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=300, immutable"
+          }
+        ]
+      },
+      {
         source: "/favicon/:path*",
         headers: [
           {
