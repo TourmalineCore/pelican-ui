@@ -240,6 +240,7 @@
   &__copyright {
     @include caption-2-medium;
 
+    display: grid;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.46;
@@ -255,19 +256,52 @@
   }
 
   &__copyright-link {
-    margin-left: 4px;
+    @include caption-2-medium;
+
     background: linear-gradient(90deg, #ff8fd2 0%, #c38cff 54%, #9abfff 100%);
     background-clip: text;
     -webkit-text-fill-color: transparent;
 
+    @include tablet-xl {
+      @include caption-1-medium;
+    }
+  }
+
+  &__github-link {
+    position: absolute;
+  }
+
+  &__github-icon {
+    display: block;
+    width: 68px;
+    height: 60px;
+    transform: translateX(190px) translateY(-3px);
+
+    &:hover,
+    &:focus {
+      fill: #e4e4fa;
+    }
+
+    @include tablet {
+      transform: translateX(168px) translateY(-3px);
+    }
+
+    @include tablet-xl {
+      width: 74px;
+      height: 64px;
+      transform: translateX(204px);
+    }
+
     @include desktop {
-      display: block;
-      margin: 0;
-      font-size: 18px;
+      width: 100px;
+      height: 88px;
+      transform: translateX(202px);
     }
 
     @include desktop-xl {
-      font-size: 34px;
+      width: 152px;
+      height: 134px;
+      transform: translateX(308px);
     }
   }
 
