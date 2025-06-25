@@ -24,6 +24,6 @@ jobs:
       path_to_values: deploy/values-ui.yaml.gotmpl
       deploy_env: |
                  PELICAN_UI_BRANCH=${{ github.head_ref || github.ref_name }}
-      playwright_env: 
-        FRONTEND_URL: http://localhost:40110 
-        API_URL: 'http://localhost:40110/cms/api'
+      playwright_env: |
+        FRONTEND_URL=http://localhost:40110 
+        API_URL=http://localhost:40110/cms/api
