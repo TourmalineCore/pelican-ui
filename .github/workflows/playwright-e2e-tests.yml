@@ -23,7 +23,11 @@ jobs:
       prefix: local-env
       path_to_values: deploy/values-ui.yaml.gotmpl
       deploy_env: |
-                 PELICAN_UI_BRANCH=${{ github.head_ref || github.ref_name }}
+       # this variable is used by local-env helmfile to use current feature branch helm chart values.yaml file
+       # this is needed for a case when as part of the feature the chart was changed and is different from master branch
+       # this should properly fill the feature branch name in spite of the pipeline trigger source (PR, commit, etc.)
+       # https://stackoverflow.com/a/71158878
+       PELICAN_UI_BRANCH=${{ github.head_ref || github.ref_name }}
       playwright_env: |
-        FRONTEND_URL=http://localhost:40110 
-        API_URL=http://localhost:40110/cms/api
+       FRONTEND_URL=http://localhost:40110 
+       API_URL=http://localhost:40110/cms/api
