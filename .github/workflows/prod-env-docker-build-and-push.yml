@@ -1,21 +1,18 @@
-name: Publish Docker image for local-env
+name: Publish Docker image for prod-env
 
 on:
   push:
     branches:
       - master
       - feature/*
-  # to allow to wait for a docker image to be published to proceed in another workflow
-  workflow_call:
 
 jobs:
   push_to_registry:
     uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@feature/build_and_push_workflow
     with:
-        # Prefix used to be able to build images for local-env and prod-env with different tags
-        prefix: "local-env"
         # Build-args used to define variables that will be used in image
         build-args: |
-          CDN_ENABLED=false
+          CDN_ENABLED=true
+          CDN_DOMAIN=cdn.chelzoo.tech
     # without this it cannot login to the registry
     secrets: inherit
