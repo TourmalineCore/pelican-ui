@@ -20,8 +20,8 @@ jobs:
     needs: push_to_registry
     uses: TourmalineCore/pelican-github-workflows/.github/workflows/playwright-e2e-tests.yml@feature/playwright_e2e_tests_workflow
     with: 
-      # In some services we are using prefixes to build docker images for local-env and prod-env with different tags
-      # Prefix defines which prefix will be used in image tag
+      # We use CDN at prod, that enabling or disabling only during build and can't be enabled/disabled at runtime.   
+      # Prefix is used to choose between images with enabled CDN for Prod Env and with disabled CDN for Local Env.
       prefix: local-env
       path_to_values: deploy/values-ui.yaml.gotmpl
       deploy_env: |
