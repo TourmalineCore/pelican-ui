@@ -8,11 +8,7 @@ WORKDIR /app
 
 COPY package.json package-lock.json* ./
 
-RUN ping -6 registry.npmjs.org -c 10
-
-RUN ping -4 registry.npmjs.org -c 10
-
-RUN npm ci --loglevel verbose
+RUN node --dns-result-order=ipv4first /usr/local/bin/npm ci --loglevel verbose
 
 # Build
 FROM base as builder
