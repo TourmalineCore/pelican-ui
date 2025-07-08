@@ -8,9 +8,9 @@ WORKDIR /app
 
 COPY package.json package-lock.json* ./
 
-RUN ping -4 registry.npmjs.org -c 10
-
 RUN ping -6 registry.npmjs.org -c 10
+
+RUN ping -4 registry.npmjs.org -c 10
 
 RUN npm ci --loglevel verbose
 
