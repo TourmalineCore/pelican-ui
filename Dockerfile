@@ -8,7 +8,7 @@ WORKDIR /app
 
 COPY package.json package-lock.json* ./
 
-RUN npm config list
+RUN npm config ls -l
 
 RUN node --dns-result-order=ipv4first /usr/local/bin/npm ci --loglevel verbose
 
