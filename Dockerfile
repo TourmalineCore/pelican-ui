@@ -7,6 +7,11 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
+
+RUN ping -4 registry.npmjs.org
+
+RUN ping -6 registry.npmjs.org
+
 RUN npm ci --loglevel verbose
 
 # Build
