@@ -1,15 +1,13 @@
 .tickets-popup {
   $this: &;
 
-  z-index: $tickets-popup;
-
   &__inner {
     @include medium-font;
 
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 100;
+    z-index: $tickets-popup;
     overflow-y: auto;
     padding-bottom: 200px;
     width: 100%;

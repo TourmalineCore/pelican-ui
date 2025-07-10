@@ -138,3 +138,5 @@ dist
 
 # Auto generated file on MacOS
 .DS_Store
+
+/public/robots.txt

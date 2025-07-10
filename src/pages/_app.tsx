@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import localFont from "next/font/local";
 import router from 'next/router';
 import { useEffect } from 'react';
+import { NextPage } from 'next';
 import { Layout } from '../components/globals/Layout/Layout';
 import { WindowWidthProvider } from '../common/providers/WindowWidthProvider';
 import {
@@ -52,11 +53,19 @@ const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === 'true';
 
 const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
 
+type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: React.ReactElement) => React.ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
 export default function App({
   Component,
   pageProps,
   isPreview,
-}: AppProps & {
+}: AppPropsWithLayout & {
   isPreview: boolean;
 }) {
   useEffect(() => {
@@ -93,26 +102,30 @@ export default function App({
     ticketsPopup,
   } = pageProps.globalData;
 
+  const getLayout = Component?.getLayout || ((page) => (
+    <Layout
+      navigationLinks={navigationLinks}
+      officialLinks={officialLinks}
+      footerAboutLinks={footerAboutLinks}
+      footerUserLinks={footerUserLinks}
+      email={email}
+      phone={phone}
+      popupTicketBuyText={popupTicketBuyText}
+      footerNavTitleLeft={footerNavTitleLeft}
+      footerNavTitleRight={footerNavTitleRight}
+      ticketsPopup={ticketsPopup}
+      isPreview={isPreview}
+    >
+      {page}
+    </Layout>
+  ));
+
   return (
     <WindowWidthProvider>
       <TicketPopupProvider>
         <div className={inter.variable}>
           <RouteChangeLoader />
-          <Layout
-            navigationLinks={navigationLinks}
-            officialLinks={officialLinks}
-            footerAboutLinks={footerAboutLinks}
-            footerUserLinks={footerUserLinks}
-            email={email}
-            phone={phone}
-            popupTicketBuyText={popupTicketBuyText}
-            footerNavTitleLeft={footerNavTitleLeft}
-            footerNavTitleRight={footerNavTitleRight}
-            ticketsPopup={ticketsPopup}
-            isPreview={isPreview}
-          >
-            <Component {...pageProps} />
-          </Layout>
+          {getLayout(<Component {...pageProps} />)}
         </div>
       </TicketPopupProvider>
     </WindowWidthProvider>

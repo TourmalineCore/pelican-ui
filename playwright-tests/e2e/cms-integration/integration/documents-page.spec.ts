@@ -1,15 +1,14 @@
-import { gotoPage } from "@/playwright-tests/global-helpers";
 import { AppRoute } from "@/src/common/enum";
 import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
-import test, { expect, Page } from "@playwright/test";
 import axios, { AxiosError, HttpStatusCode } from "axios";
 import { DocumentsCategory, Document } from "@/src/common/api-types";
 import {
-  E2E_DRAFT_UI_NAME_PREFIX,
-  E2E_UI_NAME_PREFIX,
-  getFileIdByName,
-  gotoWithDraftPreviewMode,
-} from "../helpers/cms-integration-helpers";
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from "@/playwright-tests/custom-test";
+import { E2E_DRAFT_UI_NAME_PREFIX, E2E_UI_NAME_PREFIX, getFileIdByName } from "../helpers/cms-integration-helpers";
 
 const DOCUMENTS_PAGE_TITLE = `${E2E_UI_NAME_PREFIX} Документы`;
 const DOCUMENT_TITLE = `${E2E_UI_NAME_PREFIX} Отчет о деятельности зоопарка`;
@@ -106,11 +105,12 @@ test.describe(`Documents page CMS integration tests`, () => {
 
 async function checkDocumentsPageDraftPreviewTest({
   page,
+  gotoWithDraftPreviewMode,
 }: {
   page: Page;
+  gotoWithDraftPreviewMode: CustomTestFixtures['gotoWithDraftPreviewMode'];
 }) {
   await gotoWithDraftPreviewMode({
-    page,
     slug: AppRoute.DOCUMENTS.slice(1),
   });
 
@@ -124,13 +124,12 @@ async function checkDocumentsPageDraftPreviewTest({
 
 async function checkDocumentsPageOnUiTest({
   page,
+  goto,
 }: {
   page: Page;
+  goto: CustomTestFixtures['goto'];
 }) {
-  await gotoPage({
-    page,
-    url: AppRoute.DOCUMENTS,
-  });
+  await goto(AppRoute.DOCUMENTS);
 
   await checkDocumentPageContent({
     page,

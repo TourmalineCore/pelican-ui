@@ -1,9 +1,13 @@
-import { gotoPage, setViewportSize } from "@/playwright-tests/global-helpers";
 import { AppRoute, Breakpoint } from "@/src/common/enum";
-import test, { expect, Page } from "@playwright/test";
 import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import axios, { HttpStatusCode, AxiosError } from "axios";
-import { E2E_DRAFT_UI_NAME_PREFIX, gotoWithDraftPreviewMode } from "../helpers/cms-integration-helpers";
+import {
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from "@/playwright-tests/custom-test";
+import { E2E_DRAFT_UI_NAME_PREFIX } from "../helpers/cms-integration-helpers";
 import { TEST_MOCK_DISCOUNTS } from "../cms-integration-mocks";
 
 const DISCOUNTS_DRAFT_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Льготы`;
@@ -51,16 +55,16 @@ test.describe(`Discounts page CMS integration tests`, () => {
 
 async function checkDiscountsPageOnUiTest({
   page,
+  goto,
+  setViewportSize,
 }: {
   page: Page;
+  goto: CustomTestFixtures['goto'];
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await gotoPage({
-    page,
-    url: AppRoute.DISCOUNTS,
-  });
+  await goto(AppRoute.DISCOUNTS);
 
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 
@@ -73,16 +77,18 @@ async function checkDiscountsPageOnUiTest({
 }
 async function checkDiscountsPageDraftPreviewOnUiTest({
   page,
+  gotoWithDraftPreviewMode,
+  setViewportSize,
 }: {
   page: Page;
+  gotoWithDraftPreviewMode: CustomTestFixtures['gotoWithDraftPreviewMode'];
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await gotoWithDraftPreviewMode({
-    page,
     slug: AppRoute.DISCOUNTS.slice(1),
   });
 
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 

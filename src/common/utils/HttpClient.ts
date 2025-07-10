@@ -1,7 +1,7 @@
 import { HttpStatusCode } from "axios";
 import { getStrapiURL } from "./getStrapiURL";
 
-type CustomRequestInit = RequestInit & { isPreview?: boolean; };
+type CustomRequestInit = RequestInit & { isPreview?: boolean; isResponseText?: boolean; };
 
 const getApiFetch = () => {
   const baseUrl = getStrapiURL();
@@ -9,6 +9,7 @@ const getApiFetch = () => {
   return async (endpoint: string, options: CustomRequestInit = {}) => {
     const {
       isPreview,
+      isResponseText,
       ...restOptions
     } = options;
 
@@ -29,6 +30,10 @@ const getApiFetch = () => {
 
     if (response.status === HttpStatusCode.NotFound) {
       return null;
+    }
+
+    if (isResponseText) {
+      return response.text();
     }
 
     return response.json();

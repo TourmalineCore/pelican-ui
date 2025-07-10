@@ -1,4 +1,4 @@
-/* eslint-disable @stylistic/max-len */
+/* eslint-disable max-len */
 import { optionYandexMetrika } from "@/src/components/globals/Cookie/Cookie";
 
 const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;

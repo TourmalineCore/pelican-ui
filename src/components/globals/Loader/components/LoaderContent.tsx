@@ -1,5 +1,5 @@
+/* eslint-disable max-len */
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable @stylistic/max-len */
 
 // uses in RouteChangeLoader for pages load
 // and in _document.ts on the first page load for speed loading without waiting for other files

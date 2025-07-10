@@ -32,6 +32,7 @@ export function TicketsPopupRulesList({
             src={url}
             alt={alternativeText}
             fill
+            loading="eager"
           />
         </li>
       ))}

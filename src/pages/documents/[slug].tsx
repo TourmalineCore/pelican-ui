@@ -4,18 +4,17 @@ import {
   DocumentsCategory,
   DocumentsCategoryListResponse,
 } from "@/src/common/api-types";
+import { useSetYearInQuery } from "@/src/common/hooks/useSetYearInQuery";
 import { useScrollTop } from "@/src/common/hooks/useScrollTop";
 import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
 import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { CategoryProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
 import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryParams";
 import { apiFetch } from "@/src/common/utils/HttpClient";
-import { DocumentsList } from "@/src/components/documents-page/DocumentsList/DocumentsList";
+import { Documents } from "@/src/components/documents-page/Documents/Documents";
 import { SeoHead } from "@/src/components/globals/SeoHead/SeoHead";
 import dayjs from "dayjs";
-import { useRouter } from "next/router";
 import qs from "qs";
-import { useEffect } from "react";
 
 export default function DocumentsCategories({
   category,
@@ -28,27 +27,11 @@ export default function DocumentsCategories({
   availableYears: DocumentsTabsProps[`availableYears`];
   documents: DocumentsProps[];
 }) {
-  const router = useRouter();
-
   useScrollTop();
 
-  useEffect(() => {
-    if (queryYear) {
-      router.replace(
-        {
-          query: {
-            ...router.query,
-            year: queryYear,
-          },
-        },
-        undefined,
-        {
-          shallow: true,
-        },
-      );
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useSetYearInQuery({
+    year: queryYear,
+  });
 
   return (
     <>
@@ -57,7 +40,7 @@ export default function DocumentsCategories({
         metaDescription={category?.seo?.metaDescription}
         metaKeywords={category?.seo?.metaKeywords}
       />
-      <DocumentsList
+      <Documents
         category={category}
         availableYears={availableYears}
         documents={documents}
@@ -77,9 +60,6 @@ export async function getServerSideProps({
     year: string;
   };
 }) {
-  const currentYear = dayjs()
-    .year();
-
   if (process.env.APP_ENV === `static`) {
     const documentCategory = MOCK_DOCUMENTS_CATEGORIES.find(({
       slug,
@@ -110,7 +90,7 @@ export async function getServerSideProps({
       length: 3,
     })
       .map(async (_, i) => {
-        const year = currentYear - i;
+        const year = 2025 - i;
         const documentsResponse = MOCK_DOCUMENTS.filter(({
           date,
           category,
@@ -157,6 +137,9 @@ export async function getServerSideProps({
       notFound: true,
     };
   }
+
+  const currentYear = dayjs()
+    .year();
 
   const availableYears: number[] = [];
 

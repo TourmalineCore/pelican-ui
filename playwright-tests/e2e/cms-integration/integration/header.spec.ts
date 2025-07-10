@@ -1,9 +1,13 @@
-import { gotoPage, setViewportSize } from "@/playwright-tests/global-helpers";
-import { AppRoute, Breakpoint } from "@/src/common/enum";
+import { Breakpoint } from "@/src/common/enum";
 import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
-import test, { expect, Page } from "@playwright/test";
 import axios, { AxiosError, HttpStatusCode } from "axios";
-import { E2E_DRAFT_UI_NAME_PREFIX, getFileIdByName, gotoWithDraftPreviewMode } from "../helpers/cms-integration-helpers";
+import {
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from "@/playwright-tests/custom-test";
+import { E2E_DRAFT_UI_NAME_PREFIX, getFileIdByName } from "../helpers/cms-integration-helpers";
 import { TEST_MOCK_HEADER } from "../cms-integration-mocks";
 
 const HEADER_API_ENDPOINT = `${getStrapiURL()}/header`;
@@ -52,16 +56,16 @@ test.describe(`Header CMS integration tests`, () => {
 
 async function checkTicketsPopupOnUiTest({
   page,
+  goto,
+  setViewportSize,
 }: {
   page: Page;
+  goto: CustomTestFixtures['goto'];
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await gotoPage({
-    page,
-    url: AppRoute.HOME,
-  });
+  await goto();
 
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 
@@ -73,16 +77,16 @@ async function checkTicketsPopupOnUiTest({
 
 async function checkTicketsPopupDraftPreviewTest({
   page,
+  gotoWithDraftPreviewMode,
+  setViewportSize,
 }: {
   page: Page;
+  gotoWithDraftPreviewMode: CustomTestFixtures['gotoWithDraftPreviewMode'];
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await gotoWithDraftPreviewMode({
-    page,
-    slug: AppRoute.HOME.slice(1),
-  });
+  await gotoWithDraftPreviewMode();
 
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 

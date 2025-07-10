@@ -1,15 +1,14 @@
-import { gotoPage } from "@/playwright-tests/global-helpers";
 import { AppRoute } from "@/src/common/enum";
-import test, { expect, Page } from "@playwright/test";
 import { NewsCollection } from "@/src/common/api-types";
 import axios, { HttpStatusCode, AxiosError } from "axios";
 import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import {
-  E2E_DRAFT_UI_NAME_PREFIX,
-  E2E_UI_NAME_PREFIX,
-  getFileIdByName,
-  gotoWithDraftPreviewMode,
-} from "../helpers/cms-integration-helpers";
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from "@/playwright-tests/custom-test";
+import { E2E_DRAFT_UI_NAME_PREFIX, E2E_UI_NAME_PREFIX, getFileIdByName } from "../helpers/cms-integration-helpers";
 
 const NEWS_PAGE_TITLE = `${E2E_UI_NAME_PREFIX} Новости`;
 const NEWS_TITLE = `${E2E_UI_NAME_PREFIX} В зоопарке появился амурский тигр`;
@@ -106,11 +105,12 @@ test.describe(`News page CMS integration tests`, () => {
 
 async function checkNewsPageDraftPreviewOnUiTest({
   page,
+  gotoWithDraftPreviewMode,
 }: {
   page: Page;
+  gotoWithDraftPreviewMode: CustomTestFixtures['gotoWithDraftPreviewMode'];
 }) {
   await gotoWithDraftPreviewMode({
-    page,
     slug: AppRoute.NEWS.slice(1),
   });
 
@@ -125,13 +125,12 @@ async function checkNewsPageDraftPreviewOnUiTest({
 
 async function checkNewsPageOnUiTest({
   page,
+  goto,
 }: {
   page: Page;
+  goto: CustomTestFixtures['goto'];
 }) {
-  await gotoPage({
-    page,
-    url: AppRoute.NEWS,
-  });
+  await goto(AppRoute.NEWS);
 
   await checkNewsPageContent({
     page,

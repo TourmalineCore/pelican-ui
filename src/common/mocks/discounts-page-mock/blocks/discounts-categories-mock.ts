@@ -1,4 +1,4 @@
-/* eslint-disable @stylistic/max-len */
+/* eslint-disable max-len */
 import { DiscountsCategoriesComponentProps } from "@/src/common/types";
 import { BlockTypes } from "../../../enum";
 

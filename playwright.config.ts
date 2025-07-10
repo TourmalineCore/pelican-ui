@@ -13,9 +13,9 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: `./`,
-  testIgnore: [`**/cms-integration/**`, `**/security-headers/**`],
-  outputDir: `./playwright-tests/playwright-test-results/e2e-tests`,
-  snapshotDir: `./playwright-tests/screenshots/e2e-tests/base`,
+  testIgnore: [`**/e2e/**`],
+  outputDir: `./playwright-tests/playwright-test-results/test`,
+  snapshotDir: `./playwright-tests/screenshots/base`,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -34,12 +34,7 @@ export default defineConfig({
     trace: `on-first-retry`,
   },
   expect: {
-    // Maximum time expect() should wait for the condition to be met.
     timeout: 10000,
-
-    toHaveScreenshot: {
-      maxDiffPixels: 50,
-    },
   },
   /* Configure projects for major browsers */
   projects: [

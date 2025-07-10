@@ -1,4 +1,4 @@
-/* eslint-disable @stylistic/max-len */
+/* eslint-disable max-len */
 import employeeImage from "@/public/images/news/employee.png";
 import amurTigerImage from "@/public/images/news/amur-tiger.png";
 import sanitaryDayImage from "@/public/images/news/sanitary-day.png";

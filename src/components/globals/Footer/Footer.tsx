@@ -7,8 +7,8 @@ import { useRouter } from "next/router";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MutableRefObject } from "react";
 import clsx from "clsx";
+import { AppRoute, ComponentName } from "@/src/common/enum";
 import { normalizeSlug } from "@/src/common/utils/normalizeSlug";
-import { AppRoute } from "@/src/common/enum";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 import { GosBanner } from "../../home-page/GosBanner/GosBanner";
 import { IconGit } from "./components/IconGit/IconGit";
@@ -43,6 +43,13 @@ export function Footer({
   const {
     handleTicketPopupToggle,
   } = useTicketPopup();
+
+  const slugAfterNormalize = normalizeSlug({
+    slug: router.asPath,
+  });
+
+  const isGosBannerVisible = slugAfterNormalize === AppRoute.HOME
+   || slugAfterNormalize === `${AppRoute.COMPONENTS}/${ComponentName.FOOTER}`;
 
   return (
     <footer
@@ -175,9 +182,7 @@ export function Footer({
           </div>
         </div>
       </div>
-      {normalizeSlug({
-        slug: router.asPath,
-      }) === AppRoute.HOME && <GosBanner />}
+      {isGosBannerVisible && <GosBanner />}
       <div className="container footer__bottom">
         <ul className="footer__official-links grid">
           {officialLinks.map(({

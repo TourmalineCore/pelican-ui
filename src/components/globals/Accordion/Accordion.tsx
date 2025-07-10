@@ -51,6 +51,7 @@ export function Accordion({
             unoptimized
             aria-hidden="true"
             alt={isOpen ? `Свернуть контент` : `Показать скрытый контент`}
+            loading="eager"
           />
         </span>
       </button>

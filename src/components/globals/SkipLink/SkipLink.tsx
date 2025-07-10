@@ -1,17 +1,22 @@
+import clsx from "clsx";
 import Link from "next/link";
 import { MutableRefObject } from "react";
 
 export function SkipLink({
+  isComponentPage,
   mainElementRef,
 }: {
+  isComponentPage?: boolean;
   mainElementRef: MutableRefObject<null | HTMLElement>;
 }) {
   return (
     <Link
       href="#main-content"
-      className="skip-link button"
+      className={clsx(`skip-link button`, {
+        'skip-link--components-page': isComponentPage,
+      })}
       onClick={() => {
-        mainElementRef.current!.focus();
+        mainElementRef?.current!.focus();
       }}
       data-testid="skip-link"
     >

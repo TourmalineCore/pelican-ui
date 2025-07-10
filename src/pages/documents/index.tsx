@@ -46,16 +46,13 @@ export async function getServerSideProps({
 }: {
   preview: boolean;
 }) {
-  const currentYear = dayjs()
-    .year();
-
   if (process.env.APP_ENV === `static`) {
     const documentsCategories = MOCK_DOCUMENTS_CATEGORIES.filter(({
       id,
       hasTabs,
     }) => {
       for (let i = 0; i < 3; i++) {
-        const year = currentYear - i;
+        const year = 2025 - i;
         const documents = MOCK_DOCUMENTS.filter(({
           date,
           category,
@@ -85,6 +82,9 @@ export async function getServerSideProps({
       },
     };
   }
+
+  const currentYear = dayjs()
+    .year();
 
   const documentPageData = await getDocumentsPageData({
     isPreview: preview,

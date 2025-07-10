@@ -1,53 +1,51 @@
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
+import { BREAKPOINTS } from '@/playwright-tests/constants/breakpoints';
 import {
-  gotoPage,
-  hideCookie,
-  hideHeader,
-  setViewportSize,
-} from '@/playwright-tests/global-helpers';
-import { test, expect, Page } from '@playwright/test';
-
-const TEST_ID = `news-list`;
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from '@/playwright-tests/custom-test';
+import { AppRoute, ComponentName } from '@/src/common/enum';
 
 test.describe(`NewsListComponentTest`, () => {
   test.beforeEach(async ({
-    page,
+    goToComponentsPage,
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.NEWS,
-    });
-
-    await hideHeader({
-      page,
-    });
-
-    await hideCookie({
-      page,
-    });
+    await goToComponentsPage(ComponentName.NEWS_LIST);
   });
 
   test(`PaginationTest`, paginationTest);
 
-  test(`MobileTest`, mobileTest);
-
-  test(`TabletTest`, tabletTest);
-
-  test(`TabletXlTest`, tabletXlTest);
-
-  test(`DesktopTest`, desktopTest);
-
-  test(`DesktopXlTest`, desktopXlTest);
+  for (const {
+    name,
+    breakpoint,
+    breakpointName,
+  } of BREAKPOINTS) {
+    test(name, async ({
+      testScreenshotAtBreakpoint,
+    }) => {
+      await testScreenshotAtBreakpoint({
+        testId: `news-list`,
+        breakpoint,
+        breakpointName,
+      });
+    });
+  }
 });
 
 async function paginationTest({
   page,
+  setViewportSize,
+  goto,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
+  goto: CustomTestFixtures['goto'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  // We are not testing pagination on a component page because there is no pagination logic on it.
+  await goto(AppRoute.NEWS);
+
+  await setViewportSize();
 
   await expect(getNewsCardByTestId({
     page,
@@ -61,98 +59,6 @@ async function paginationTest({
     page,
   }))
     .toHaveCount(7);
-}
-
-async function mobileTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-    height: 2434,
-  });
-
-  await expect(getNewsListByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
-}
-
-async function tabletTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-    width: Breakpoint.TABLET,
-    height: 1319,
-  });
-
-  await expect(getNewsListByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
-}
-
-async function tabletXlTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-    width: Breakpoint.TABLET_XL,
-    height: 1760,
-  });
-
-  await expect(getNewsListByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}.png`);
-}
-
-async function desktopTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-    width: Breakpoint.DESKTOP,
-    height: 1314,
-  });
-
-  await expect(getNewsListByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
-}
-
-async function desktopXlTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-    width: Breakpoint.DESKTOP_XL,
-    height: 1695,
-  });
-
-  await expect(getNewsListByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
-}
-
-function getNewsListByTestId({
-  page,
-}: {
-  page: Page;
-}) {
-  return page.getByTestId(TEST_ID);
 }
 
 function getNewsCardByTestId({

@@ -78,6 +78,8 @@ export function Layout({
           isMobileMenuOpen={isMobileMenuOpen}
         />
         <TicketsPopup
+          isActive={isTicketPopupActive}
+          handleTicketPopupToggle={handleTicketPopupToggle}
           ticketsPopup={ticketsPopup}
           overlayElementRef={overlayElementRef}
         />

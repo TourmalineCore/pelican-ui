@@ -59,7 +59,7 @@ export const MOCK_OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
   {
     id: 3,
     name: `Администрация г.\u00A0Челябинска`,
-    link: `https://cheladmin.ru/`,
+    link: `https://cheladmin.gov74.ru/`,
     icon: iconAdministration1,
     alt: ``,
   },

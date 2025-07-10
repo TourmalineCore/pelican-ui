@@ -6,6 +6,7 @@ export enum AppRoute {
   INTERNAL_TEST_PAGE = `/internal-test-page`,
   DISCOUNTS = `/discounts`,
   VISITING_RULES = `/visiting-rules`,
+  COMPONENTS = `/components`,
 }
 
 export enum Breakpoint {
@@ -44,4 +45,35 @@ export enum BlockTypes {
   VISITING_RULES_WARNINGS = `visiting-rules.warnings`,
   VISITING_RULES_PHOTOS_POLICY = `visiting-rules.photos-policy`,
   VISITING_RULES_EMERGENCY_PHONES = `visiting-rules.emergency-phones`,
+}
+
+export enum ComponentName {
+  DISCOUNTS_CATEGORIES = `discounts-categories`,
+  DISCOUNTS_TERMS = `discounts-terms`,
+  DOCUMENTS_LIST = `documents-list`,
+  ARTICLE = `article`,
+  CARDS = `cards`,
+  CATEGORIES = `categories`,
+  COOKIE = `cookie`,
+  CUSTOM_ERROR = `custom-error`,
+  FOOTER = `footer`,
+  HEADER = `header`,
+  HEADER_POPUP = `header-popup`,
+  TICKET_POPUP = `ticket-popup`,
+  HERO = `hero`,
+  IMAGE_WITH_BUTTON_GRID = `image-with-button-grid`,
+  SKIP_LINK = `skip-link`,
+  TEXT_AND_MEDIA = `text-and-media`,
+  TICKETS = `tickets`,
+  HOME_PAGE_HERO = `home-page-hero`,
+  HOME_IMAGE_WITH_BUTTON_GRID = `home-image-with-button-grid`,
+  HOME_TICKETS = `home-tickets`,
+  HOME_MAP = `home-map`,
+  HOME_SERVICES = `home-services`,
+  NEWS_SLIDER = `news-slider`,
+  NEWS_LIST = `news-list`,
+  VISITING_RULES_EMERGENCY_PHONES = `visiting-rules-emergency-phones`,
+  VISITING_RULES_MAIN = `visiting-rules-main`,
+  VISITING_RULES_PHOTOS_POLICY = `visiting-rules-photo-policy`,
+  VISITING_RULES_WARNING = `visiting-rules-warning`,
 }

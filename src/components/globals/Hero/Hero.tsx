@@ -66,6 +66,7 @@ export function Hero({
           alt={image.alternativeText}
           sizes="(min-width: 768px) 50vw, 100vw"
           fill
+          loading="eager"
           priority
         />
       </div>

@@ -5,7 +5,7 @@
 	// this is using playwright docker image with pre-installed browsers and their deps
 	// this image doesn't contain playwright itself
 	// https://playwright.dev/docs/docker
-	"image": "mcr.microsoft.com/playwright:v1.49.0-noble",
+	"image": "mcr.microsoft.com/playwright:v1.53.0-noble",
 	// for now we need to install all packages but ToDo we need to install only playwright and its deps
 	"onCreateCommand": "npm ci",
 	// it is needed so that our tests can make calls to the parent container network 

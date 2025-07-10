@@ -1,4 +1,4 @@
-/* eslint-disable @stylistic/max-len */
+/* eslint-disable max-len */
 export function IconDzen() {
   return (
     <svg

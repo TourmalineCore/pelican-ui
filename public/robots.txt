@@ -1,6 +1,0 @@
-User-Agent: *
-Allow: /
-Disallow: /internal-test-page
-
-# Host
-Host: chelzoo.ru

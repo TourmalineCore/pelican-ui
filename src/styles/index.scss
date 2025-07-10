@@ -5,6 +5,7 @@
 @import "variables";
 @import "globals";
 @import "grid";
+@import "../pages/components/components-page";
 
 // Component
 @import "../components/globals/Button/Button";
@@ -39,9 +40,9 @@
 @import "../components/news-page/NewsArticle/components/NewsSlider/NewsSlider";
 @import "../components/news-page/NewsArticle/components/NewsSlider/components/NewsSliderCard/NewsSliderCard";
 @import "../components/globals/CustomError/CustomError";
-@import "../components/documents-page/DocumentsList/DocumentsList";
-@import "../components/documents-page/DocumentsList/components/DocumentCard/DocumentCard";
-@import "../components/documents-page/DocumentsList/components/DocumentCard/components/DocumentFile/DocumentFile";
+@import "../components/documents-page/Documents/Documents";
+@import "../components/documents-page/Documents/components/DocumentCard/DocumentCard";
+@import "../components/documents-page/Documents/components/DocumentCard/components/DocumentFile/DocumentFile";
 @import "../components/discounts-page/DiscountsTerms/DiscountsTerms";
 @import "../components/discounts-page/DiscountsTerms/components/DiscountsRulesCard";
 @import "../components/discounts-page/DiscountsCategories/DiscountsCategories";

@@ -1,10 +1,14 @@
-import { gotoPage, setViewportSize } from "@/playwright-tests/global-helpers";
 import { AppRoute, Breakpoint } from "@/src/common/enum";
-import test, { expect, Page } from "@playwright/test";
 import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import axios, { HttpStatusCode, AxiosError } from "axios";
+import {
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from "@/playwright-tests/custom-test";
 import { TEST_MOCK_EMERGENCY_PHONES } from "../cms-integration-mocks";
-import { E2E_DRAFT_UI_NAME_PREFIX, gotoWithDraftPreviewMode } from "../helpers/cms-integration-helpers";
+import { E2E_DRAFT_UI_NAME_PREFIX } from "../helpers/cms-integration-helpers";
 
 const VISITING_RULES_DRAFT_EMERGENCY_PHONES_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Экстренные службы`;
 const VISITING_RULES_PAGE_API_ENDPOINT = `${getStrapiURL()}/visiting-rules-page`;
@@ -51,16 +55,16 @@ test.describe(`Visiting rules page CMS integration tests`, () => {
 
 async function checkVisitingRulesPageOnUiTest({
   page,
+  goto,
+  setViewportSize,
 }: {
   page: Page;
+  goto: CustomTestFixtures['goto'];
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await gotoPage({
-    page,
-    url: AppRoute.VISITING_RULES,
-  });
+  await goto(AppRoute.VISITING_RULES);
 
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 
@@ -71,16 +75,18 @@ async function checkVisitingRulesPageOnUiTest({
 }
 async function checkVisitingRulesPageDraftPreviewOnUiTest({
   page,
+  gotoWithDraftPreviewMode,
+  setViewportSize,
 }: {
   page: Page;
+  gotoWithDraftPreviewMode: CustomTestFixtures['gotoWithDraftPreviewMode'];
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
   await gotoWithDraftPreviewMode({
-    page,
     slug: AppRoute.VISITING_RULES.slice(1),
   });
 
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 

@@ -43,21 +43,21 @@ export function Header({
   } = useWindowWidth();
 
   useEffect(() => {
-    const overlayElement = overlayElementRef.current!;
-    const mainElement = mainElementRef.current!;
-    const footerElement = footerElementRef.current!;
+    const overlayElement = overlayElementRef?.current;
+    const mainElement = mainElementRef?.current;
+    const footerElement = footerElementRef?.current;
 
     if (isMobileMenuOpen) {
-      overlayElement.classList.add(`is-visible`);
-      mainElement.setAttribute(`inert`, `true`);
-      footerElement.setAttribute(`inert`, `true`);
+      overlayElement?.classList.add(`is-visible`);
+      mainElement?.setAttribute(`inert`, `true`);
+      footerElement?.setAttribute(`inert`, `true`);
       document.querySelector(`body`)!.classList.add(`is-modal-open`);
     }
 
     return () => {
-      overlayElement.classList.remove(`is-visible`);
-      mainElement.removeAttribute(`inert`);
-      footerElement.removeAttribute(`inert`);
+      overlayElement?.classList.remove(`is-visible`);
+      mainElement?.removeAttribute(`inert`);
+      footerElement?.removeAttribute(`inert`);
       document.querySelector(`body`)!.classList.remove(`is-modal-open`);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps

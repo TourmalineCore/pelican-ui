@@ -19,4 +19,8 @@
   @include tablet {
     width: auto;
   }
+
+  &--components-page {
+    transform: translate(-50%, 0);
+  }
 }

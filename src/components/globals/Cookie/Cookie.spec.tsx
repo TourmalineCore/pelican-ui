@@ -1,149 +1,52 @@
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
+import { BREAKPOINTS } from '@/playwright-tests/constants/breakpoints';
 import {
-  gotoPage,
-  hideHeader,
-  hideSkipLink,
-  setViewportSize,
-} from '@/playwright-tests/global-helpers';
-import { test, expect, Page } from '@playwright/test';
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from '@/playwright-tests/custom-test';
+import { ComponentName } from '@/src/common/enum';
 
 const TEST_ID = `cookie`;
 
 test.describe(`CookieTests`, () => {
   test.beforeEach(async ({
-    page,
+    goToComponentsPage,
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.INTERNAL_TEST_PAGE,
-    });
-
-    await hideHeader({
-      page,
-    });
-
-    await hideSkipLink({
-      page,
-    });
+    await goToComponentsPage(ComponentName.COOKIE);
   });
 
   test(`ActionTest`, actionTest);
 
-  test(`MobileTest`, mobileTest);
-
-  test(`TabletTest`, tabletTest);
-
-  test(`TabletXlTest`, tabletXlTest);
-
-  test(`DesktopTest`, desktopTest);
-
-  test(`DesktopXlTest`, desktopXlTest);
+  for (const {
+    name,
+    breakpoint,
+    breakpointName,
+  } of BREAKPOINTS) {
+    test(name, async ({
+      testScreenshotAtBreakpoint,
+    }) => {
+      await testScreenshotAtBreakpoint({
+        testId: TEST_ID,
+        breakpoint,
+        breakpointName,
+      });
+    });
+  }
 });
 
 async function actionTest({
   page,
+  setViewportSize,
 }: {
   page: Page;
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await setViewportSize({
-    page,
-  });
+  await setViewportSize();
 
   await page.getByTestId(`cookie-button`)
     .click();
 
   await expect(page.getByTestId(TEST_ID))
-    .toBeHidden;
-
-  await page.reload();
-
-  await expect(page.getByTestId(TEST_ID))
-    .toBeHidden;
-}
-
-async function mobileTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-  });
-
-  await expect(getCookieByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
-}
-
-async function tabletTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-    width: Breakpoint.TABLET,
-  });
-
-  await expect(getCookieByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
-}
-
-async function tabletXlTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-    width: Breakpoint.TABLET_XL,
-  });
-
-  await expect(getCookieByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET_XL}.png`);
-}
-
-async function desktopTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-    width: Breakpoint.DESKTOP,
-  });
-
-  await expect(getCookieByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
-}
-
-async function desktopXlTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-    width: Breakpoint.DESKTOP_XL,
-  });
-
-  await expect(getCookieByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
-}
-
-function getCookieByTestId({
-  page,
-}: {
-  page: Page;
-}) {
-  return page.getByTestId(TEST_ID);
+    .toBeHidden();
 }

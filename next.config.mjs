@@ -1,12 +1,16 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  devIndicators: {
+    buildActivity: false,
+  },
+
   // https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers
   async headers() {
     return [
       // Icons are not cached by default, so we do it manually
       {
-        source: "/(apple-touch-icon|favicon-96x96.png|favicon.ico|favicon.svg|web-app-manifest-192x192.png|web-app-manifest-512x512.png)",
+        source: "/(apple-touch-icon|favicon-96x96.png|favicon.ico|favicon.svg|web-app-manifest-192x192.png|web-app-manifest-512x512.png|site.webmanifest)",
         headers: [
           {
             key: "Cache-Control",
@@ -29,7 +33,9 @@ const nextConfig = {
           // Specifies the origin that has access to the resource
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://chelzoo.tech",
+            value: process.env.NODE_ENV === "production"
+              ? process.env.CORS_ORIGIN
+              : process.env.CORS_ORIGIN || "http://localhost:3000",
           },
 
           // Indicates how the browser should handle opening new windows and tabs in the context of cross-origin requests
@@ -153,8 +159,6 @@ const nextConfig = {
       domains: [process.env.CDN_DOMAIN],
       path: `https://${process.env.CDN_DOMAIN}/_next/image`
     }),
-
-    unoptimized: process.env.IMAGE_OPTIMIZATION_DISABLED === 'true',
 
     // lifetime in seconds for cached optimized images
     // https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl

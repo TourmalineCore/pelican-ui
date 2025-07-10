@@ -1,10 +1,14 @@
-import { gotoPage, setViewportSize } from "@/playwright-tests/global-helpers";
-import { AppRoute, Breakpoint } from "@/src/common/enum";
-import test, { expect, Page } from "@playwright/test";
+import { Breakpoint } from "@/src/common/enum";
 import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import axios, { HttpStatusCode, AxiosError } from "axios";
+import {
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from "@/playwright-tests/custom-test";
 import { TEST_MOCK_HERO } from "../cms-integration-mocks";
-import { E2E_DRAFT_UI_NAME_PREFIX, getFileIdByName, gotoWithDraftPreviewMode } from "../helpers/cms-integration-helpers";
+import { E2E_DRAFT_UI_NAME_PREFIX, getFileIdByName } from "../helpers/cms-integration-helpers";
 
 const HOME_PAGE_DRAFT_HERO_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Челябинский зоопарк`;
 const HOME_PAGE_API_ENDPOINT = `${getStrapiURL()}/home`;
@@ -51,16 +55,16 @@ test.describe(`Home page CMS integration tests`, () => {
 
 async function checkHomePageOnUiTest({
   page,
+  goto,
+  setViewportSize,
 }: {
   page: Page;
+  goto: CustomTestFixtures['goto'];
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await gotoPage({
-    page,
-    url: AppRoute.HOME,
-  });
+  await goto();
 
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 
@@ -72,16 +76,16 @@ async function checkHomePageOnUiTest({
 
 async function checkHomePageDraftPreviewOnUiTest({
   page,
+  gotoWithDraftPreviewMode,
+  setViewportSize,
 }: {
   page: Page;
+  gotoWithDraftPreviewMode: CustomTestFixtures['gotoWithDraftPreviewMode'];
+  setViewportSize: CustomTestFixtures['setViewportSize'];
 }) {
-  await gotoWithDraftPreviewMode({
-    page,
-    slug: AppRoute.HOME.slice(1),
-  });
+  await gotoWithDraftPreviewMode();
 
   await setViewportSize({
-    page,
     width: Breakpoint.DESKTOP,
   });
 

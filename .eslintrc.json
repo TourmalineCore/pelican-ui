@@ -45,7 +45,7 @@
       "error",
       "unix"
     ],
-    "@stylistic/max-len": [
+    "max-len": [
       "error",
       {
         "code": 180,

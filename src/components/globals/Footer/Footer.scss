@@ -240,6 +240,7 @@
   &__copyright {
     @include caption-2-medium;
 
+    position: relative;
     display: grid;
     font-weight: 500;
     font-size: 14px;

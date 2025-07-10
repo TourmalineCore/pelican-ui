@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { GlobalComponentProps } from "@/src/common/types";
-import { useTicketPopup } from '@/src/common/hooks/useTicketPopup';
 import Link from 'next/link';
 import { MutableRefObject, useEffect } from 'react';
 import FocusLock from 'react-focus-lock';
@@ -16,9 +15,13 @@ import { TicketsPopupRefundReasons } from './components/TicketsPopupRefundReason
 
 export function TicketsPopup({
   ticketsPopup,
+  isActive,
   overlayElementRef,
+  handleTicketPopupToggle,
 }: Pick<GlobalComponentProps, "ticketsPopup"> & {
   overlayElementRef: MutableRefObject<null | HTMLElement>;
+  isActive: boolean;
+  handleTicketPopupToggle:() => void;
 }) {
   const {
     generalTicketsLink,
@@ -30,34 +33,29 @@ export function TicketsPopup({
     note,
   } = ticketsPopup;
 
-  const {
-    isTicketPopupActive,
-    handleTicketPopupToggle,
-  } = useTicketPopup();
-
   useEffect(() => {
-    const overlayElement = overlayElementRef.current!;
+    const overlayElement = overlayElementRef?.current!;
 
-    if (isTicketPopupActive) {
-      overlayElement.classList.add(`is-visible`);
-      overlayElement.classList.add(`is-header-hidden`);
+    if (isActive) {
+      overlayElement?.classList.add(`is-visible`);
+      overlayElement?.classList.add(`is-header-hidden`);
       document.querySelector(`body`)!.classList.add(`is-modal-open`);
     }
 
     return () => {
-      overlayElement.classList.remove(`is-visible`);
-      overlayElement.classList.remove(`is-header-hidden`);
+      overlayElement?.classList.remove(`is-visible`);
+      overlayElement?.classList.remove(`is-header-hidden`);
       document.querySelector(`body`)!.classList.remove(`is-modal-open`);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isTicketPopupActive]);
+  }, [isActive]);
 
   return (
     <div
       className="tickets-popup"
       role="complementary"
     >
-      {isTicketPopupActive && (
+      {isActive && (
         <FocusLock
           returnFocus
         >
@@ -78,6 +76,7 @@ export function TicketsPopup({
                   priority
                   src={crossIcon}
                   alt="Close tickets popup"
+                  loading="eager"
                 />
               </button>
             </div>

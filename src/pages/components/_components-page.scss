@@ -1,0 +1,21 @@
+.components-page {
+  padding: 40px;
+
+  &__subtitle {
+    @include h2-text;
+
+    margin-top: 20px;
+  }
+
+  &__item {
+    @include body-1-medium;
+
+    &::before {
+      content: "- ";
+    }
+
+    & + & {
+      margin-top: 10px;
+    }
+  }
+}

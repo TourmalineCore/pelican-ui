@@ -1,95 +1,29 @@
-import { AppRoute, Breakpoint, BreakpointName } from '@/src/common/enum';
-import { gotoPage, setViewportSize } from '@/playwright-tests/global-helpers';
-import { test, expect, Page } from '@playwright/test';
-
-const TEST_ID = `header`;
+import { BREAKPOINTS } from '@/playwright-tests/constants/breakpoints';
+import { test } from '@/playwright-tests/custom-test';
+import { Breakpoint, ComponentName } from '@/src/common/enum';
 
 test.describe(`HeaderComponentTests`, () => {
   test.beforeEach(async ({
-    page,
+    goToComponentsPage,
   }) => {
-    await gotoPage({
-      page,
-      url: AppRoute.INTERNAL_TEST_PAGE,
+    await goToComponentsPage(ComponentName.HEADER);
+  });
+
+  const breakpoints = BREAKPOINTS.filter((breakpoint) => breakpoint.breakpoint !== Breakpoint.TABLET_XL);
+
+  for (const {
+    name,
+    breakpoint,
+    breakpointName,
+  } of breakpoints) {
+    test(name, async ({
+      testScreenshotAtBreakpoint,
+    }) => {
+      await testScreenshotAtBreakpoint({
+        testId: `header`,
+        breakpoint,
+        breakpointName,
+      });
     });
-  });
-
-  test(`MobileTest`, mobileTest);
-
-  test(`TabletTest`, tabletTest);
-
-  test(`DesktopTest`, desktopTest);
-
-  test(`DesktopXlTest`, desktopXlTest);
+  }
 });
-
-async function mobileTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-  });
-
-  await expect(getHeaderByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.MOBILE}.png`);
-}
-
-async function tabletTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-    width: Breakpoint.TABLET,
-  });
-
-  await expect(getHeaderByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.TABLET}.png`);
-}
-
-async function desktopTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-    width: Breakpoint.DESKTOP,
-  });
-
-  await expect(getHeaderByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP}.png`);
-}
-
-async function desktopXlTest({
-  page,
-}: {
-  page: Page;
-}) {
-  await setViewportSize({
-    page,
-    width: Breakpoint.DESKTOP_XL,
-  });
-
-  await expect(getHeaderByTestId({
-    page,
-  }))
-    .toHaveScreenshot(`${TEST_ID}-${BreakpointName.DESKTOP_XL}.png`);
-}
-
-function getHeaderByTestId({
-  page,
-}: {
-  page: Page;
-}) {
-  return page.getByTestId(TEST_ID);
-}
