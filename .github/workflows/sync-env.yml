@@ -6,6 +6,14 @@ on:
       - feature/sync_local_env
 
 jobs:
+  # this is needed to wait for the new docker image to be build and published to the registry
+  # so that we can use the image to run ui of the needed commit related version as part of local-env
+  # the idea is taken from here https://stackoverflow.com/a/71489231
+  push_to_registry:
+    uses: ./.github/workflows/local-env-docker-build-and-push.yml
+    # without this it cannot login to the registry
+    secrets: inherit
+
   Trigger_Local_Env:
     runs-on: ubuntu-24.04
     steps: 
