@@ -1,0 +1,23 @@
+name: Publish Docker image for small-env
+
+on:
+  push:
+    branches:
+      - master
+      - feature/*
+
+jobs:
+  push_to_registry:
+    uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@master
+    with:
+        # We use CDN at prod, that enabling or disabling only during build and can't be enabled/disabled at runtime.   
+        # Prefix is used to build several images, the first one with disabled CDN for Local Env
+        # the second and the third ones with enabled CDN and different CDN_DOMAIN's for Prod and Staging Envs
+        prefix: "small-env"
+        # Build-args used to define variables that will be used in image
+        build-args: |
+          CDN_ENABLED=true
+          CDN_DOMAIN=cdn.small.chelzoo.tech
+          CORS_ORIGIN=https://small.chelzoo.tech
+    # without this it cannot login to the registry
+    secrets: inherit
