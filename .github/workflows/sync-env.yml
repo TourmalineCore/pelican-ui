@@ -6,16 +6,16 @@ on:
       - feature/sync_local_env
 
 jobs:
-  # this is needed to wait for the new docker image to be build and published to the registry
+  # this is needed to wait for the new docker image to be build and published to the registry and wait for the e2e tests
   # so that we can use the image to run ui of the needed commit related version as part of local-env
   # the idea is taken from here https://stackoverflow.com/a/71489231
-  push_to_registry:
-    uses: ./.github/workflows/local-env-docker-build-and-push.yml
+  playwright-e2e-tests:
+    uses: ./.github/workflows/playwright-e2e-tests.yml
     # without this it cannot login to the registry
     secrets: inherit
 
   Trigger_Local_Env:
-    needs: push_to_registry
+    needs: playwright-e2e-tests
     runs-on: ubuntu-24.04
     steps: 
       - name: Checkout 
