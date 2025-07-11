@@ -5,7 +5,7 @@ on:
     branches:
       - master
       - feature/*
-
+ 
 jobs:
   push_to_registry:
     uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@feature/use_native_arm64_runners_without_emulation
