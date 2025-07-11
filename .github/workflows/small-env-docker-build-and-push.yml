@@ -1,4 +1,4 @@
-name: Publish Docker image for small-env
+name: Publish Docker image for staging-env
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
         # We use CDN at prod, that enabling or disabling only during build and can't be enabled/disabled at runtime.   
         # Prefix is used to build several images, the first one with disabled CDN for Local Env
         # the second and the third ones with enabled CDN and different CDN_DOMAIN's for Prod and Staging Envs
-        prefix: "small-env"
+        prefix: "staging-env"
         # Build-args used to define variables that will be used in image
         build-args: |
           CDN_ENABLED=true
