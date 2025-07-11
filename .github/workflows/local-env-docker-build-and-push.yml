@@ -10,7 +10,7 @@ on:
 
 jobs:
   push_to_registry:
-    uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@master
+    uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@feature/use_native_arm64_runners_without_emulation
     with:
         # We use CDN at prod, that enabling or disabling only during build and can't be enabled/disabled at runtime.   
         # Prefix is used to build several images, the first one with disabled CDN for Local Env

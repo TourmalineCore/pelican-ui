@@ -8,7 +8,7 @@ on:
 
 jobs:
   push_to_registry:
-    uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@master
+    uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@feature/use_native_arm64_runners_without_emulation
     with:
         # Build-args used to define variables that will be used in image
         build-args: |
