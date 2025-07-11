@@ -3,7 +3,7 @@ name: Trigger Local Env
 on:
   push:
     branches:
-      - feature/sync_local_env
+      - master
 
 jobs:
   # this is needed to wait for the new docker image to be build and published to the registry and wait for the e2e tests
