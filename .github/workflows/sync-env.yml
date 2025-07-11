@@ -33,7 +33,10 @@ jobs:
           -d '{
           "event_type": "latest-ui-image-tag",
           "client_payload": {
-            "sha": "${{ github.sha }}",
+            "image_tag": "local-env-sha-${{ github.sha }}",
             "commit_message": "${{ github.event.head_commit.message }}",
             "repository": "${{ github.event.repository.name }}",
-            "short_sha": "${{ env.SHORT_SHA }}"}}' 
+            "short_sha": "${{ env.SHORT_SHA }}",
+            "path_to_values": "deploy/values-ui.yaml.gotmpl"
+            }}' 
+
