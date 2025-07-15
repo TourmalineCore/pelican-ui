@@ -7,10 +7,10 @@ on:
       - feature/*
   # to allow to wait for a docker image to be published to proceed in another workflow
   workflow_call:
-  
+
 jobs:
   push_to_registry:
-    uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@master
+    uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@feature/sync_envs_workflow
     with:
         # Build-args used to define variables that will be used in image
         build-args: |
@@ -18,5 +18,7 @@ jobs:
           CDN_DOMAIN=cdn.chelzoo.ru
           CORS_ORIGIN=https://chelzoo.ru
           ENABLE_SEO_INDEXING=true
+        # Env is used to write current env to digest name to be able to build several docker images for several envs in one workflow
+        env: "prod"
     # without this it cannot login to the registry
     secrets: inherit

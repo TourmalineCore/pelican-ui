@@ -10,7 +10,7 @@ on:
 
 jobs:
   push_to_registry:
-    uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@master
+    uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@feature/sync_envs_workflow
     with:
         # We use CDN at prod, that enabling or disabling only during build and can't be enabled/disabled at runtime.   
         # Prefix is used to build several images, the first one with disabled CDN for Local Env
@@ -20,5 +20,7 @@ jobs:
         build-args: |
           CDN_ENABLED=false
           CORS_ORIGIN=http://localhost:40110
+        # Env is used to write current env to digest name to be able to build several docker images for several envs in one workflow
+        env: "local"
     # without this it cannot login to the registry
     secrets: inherit
