@@ -16,11 +16,11 @@ jobs:
         # Prefix is used to build several images, the first one with disabled CDN for Local Env
         # the second and the third ones with enabled CDN and different CDN_DOMAIN's for Prod and Staging Envs
         prefix: "local-env"
-        # Env is used to write current env to digest name to be able to build several docker images for several envs in one workflow
-        env: "local"
         # Build-args used to define variables that will be used in image
         build-args: |
           CDN_ENABLED=false
           CORS_ORIGIN=http://localhost:40110
+        # Env is used to write current env to digest name to be able to build several docker images for several envs in one workflow
+        env: "local"
     # without this it cannot login to the registry
     secrets: inherit
