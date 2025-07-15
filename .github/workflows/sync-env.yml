@@ -1,42 +1,35 @@
-name: Trigger Local Env
+name: Trigger Local And Prod Envs
 
 on:
   push:
     branches:
-      - master
+      - feature/*
 
 jobs:
   # this is needed to wait for the new docker image to be build and published to the registry
   # so that we can use the image to run ui of the needed commit related version as part of local-env
   # the idea is taken from here https://stackoverflow.com/a/71489231
-  push_to_registry:
+  push_local_env_to_registry:
     uses: ./.github/workflows/local-env-docker-build-and-push.yml
     # without this it cannot login to the registry
     secrets: inherit
 
-  Trigger_Local_Env:
-    needs: push_to_registry
-    runs-on: ubuntu-24.04
-    steps: 
-      - name: Checkout 
-        uses: actions/checkout@v3
-        
-      - name: Write short-sha to GitHub Env
-        run: |
-          echo "SHORT_SHA=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
-        
-      - name: Trigger Local Env
-        run: |
-          curl -X POST https://api.github.com/repos/TourmalineCore/pelican-local-env/dispatches \
-          -H "Accept: application/vnd.github.everest-preview+json" \
-          -u ${{ secrets.PELICAN_ENV_SYNC_TRIGGER_TOKEN  }} \
-          -d '{
-          "event_type": "latest-ui-image-tag",
-          "client_payload": {
-            "image_tag": "local-env-sha-${{ github.sha }}",
-            "commit_message": "${{ github.event.head_commit.message }}",
-            "repository": "${{ github.event.repository.name }}",
-            "short_sha": "${{ env.SHORT_SHA }}",
-            "path_to_values": "deploy/values-ui.yaml.gotmpl"
-            }}' 
+  push_prod_env_to_registry:
+    uses: ./.github/workflows/prod-env-docker-build-and-push.yml
+    secrets: inherit
 
+  trigger_local_env:
+    needs: push_local_env_to_registry
+    uses: TourmalineCore/pelican-github-workflows/.github/workflows/sync-envs.yml@feature/sync_envs_workflow
+    with: 
+      pelican-env: pelican-local-env
+      image-tag: local-env-sha-${{ github.sha }}
+      path-to-values: deploy/values-ui.yaml.gotmpl
+
+  trigger_prod_env:
+    needs: push_prod_env_to_registry
+    uses: TourmalineCore/pelican-github-workflows/.github/workflows/sync-envs.yml@feature/sync_envs_workflow
+    with: 
+      pelican-env: pelican-prod-env
+      image-tag: sha-${{ github.sha }}
+      path-to-values: deploy/values-ui.yaml.gotmpl
