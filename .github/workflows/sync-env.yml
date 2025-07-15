@@ -25,6 +25,7 @@ jobs:
       pelican-env: pelican-local-env
       image-tag: local-env-sha-${{ github.sha }}
       path-to-values: deploy/values-ui.yaml.gotmpl
+    secrets: inherit
 
   trigger_prod_env:
     needs: push_prod_env_to_registry
@@ -33,3 +34,4 @@ jobs:
       pelican-env: pelican-prod-env
       image-tag: sha-${{ github.sha }}
       path-to-values: deploy/values-ui.yaml.gotmpl
+    secrets: inherit
