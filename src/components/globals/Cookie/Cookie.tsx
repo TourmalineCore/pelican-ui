@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getCookie, setCookie } from 'cookies-next';
 import { OptionYM } from '@/src/common/types';
-import { isYandexMetricsEnabled } from '@/src/common/thirdPartyScripts';
 import { Button } from '../Button/Button';
 
 const COOKIE_ACCEPT = `cookieAccept`;
@@ -16,6 +15,8 @@ export const optionYandexMetrika: OptionYM = {
   accurateTrackBounce: true,
   webvisor: true,
 };
+
+const isYandexMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
 
 export function Cookie({
   isComponentPage,
