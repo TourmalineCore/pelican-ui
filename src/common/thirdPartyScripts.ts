@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { optionYandexMetrika } from "@/src/components/globals/Cookie/Cookie";
 
-const isMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
+export const isYandexMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
 
 export const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
 
@@ -16,7 +16,7 @@ export const yMetricScript = `
 
   var isCookieAccept = document.cookie.includes('cookieAccept=true');
 
-  if (${isMetricsEnabled} && isCookieAccept) {
+  if (${isYandexMetricsEnabled} && isCookieAccept) {
     ym(${yandexId}, "init", ${JSON.stringify(optionYandexMetrika)})
   }
 `;
