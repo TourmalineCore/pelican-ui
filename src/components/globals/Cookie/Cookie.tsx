@@ -1,22 +1,10 @@
 import { useState, useEffect } from 'react';
 import { getCookie, setCookie } from 'cookies-next';
-import { OptionYM } from '@/src/common/types';
 import { Button } from '../Button/Button';
 
 const COOKIE_ACCEPT = `cookieAccept`;
 const MOCK_COOKIE_TEXT = `Мы обрабатываем Cookies для аналитики и маркетинга, чтобы вам было удобно пользоваться нашим веб-сайтом.`;
 const MOCK_COOKIE_BUTTON_TEXT = `Хорошо`;
-
-const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
-
-export const optionYandexMetrika: OptionYM = {
-  clickmap: true,
-  trackLinks: true,
-  accurateTrackBounce: true,
-  webvisor: true,
-};
-
-const isYandexMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
 
 export function Cookie({
   isComponentPage,
@@ -64,10 +52,6 @@ export function Cookie({
   function acceptCookie() {
     if (!isComponentPage) {
       setCookie(COOKIE_ACCEPT, true);
-
-      if (isYandexMetricsEnabled) {
-        window.ym(Number(yandexId), `init`, optionYandexMetrika);
-      }
     }
 
     setIsVisible(false);

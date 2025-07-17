@@ -1,9 +1,17 @@
 /* eslint-disable max-len */
-import { optionYandexMetrika } from "@/src/components/globals/Cookie/Cookie";
+
+import { OptionYM } from "./types";
 
 export const isYandexMetricsEnabled = process.env.NEXT_PUBLIC_METRICS_ENABLED === `true`;
 
 export const yandexId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID;
+
+const optionYandexMetrika: OptionYM = {
+  clickmap: true,
+  trackLinks: true,
+  accurateTrackBounce: true,
+  webvisor: true,
+};
 
 export const yMetricScript = `
   (function(m,e,t,r,i,k,a){
@@ -14,11 +22,7 @@ export const yMetricScript = `
   })
   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-  var isCookieAccept = document.cookie.includes('cookieAccept=true');
-
-  if (${isYandexMetricsEnabled} && isCookieAccept) {
-    ym(${yandexId}, "init", ${JSON.stringify(optionYandexMetrika)})
-  }
+  ym(${yandexId}, "init", ${JSON.stringify(optionYandexMetrika)})
 `;
 
 export const gosUslugiScript = `
