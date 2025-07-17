@@ -94,7 +94,7 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Playwright run
-        run: npm run playwright:run:e2e --grep-invert @load-validate --reporter=html 
+        run: npm run playwright:run:e2e ./playwright-tests/e2e/cms-integration/integration --reporter=html 
     
         env:
           FRONTEND_URL: http://localhost:40110 
