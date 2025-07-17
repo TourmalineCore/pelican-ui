@@ -63,6 +63,7 @@
     @include h1-text;
 
     margin-bottom: 12px;
+    white-space: pre;
     color: $color-black-75;
 
     @include tablet {

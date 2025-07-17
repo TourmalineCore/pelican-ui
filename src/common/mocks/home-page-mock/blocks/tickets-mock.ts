@@ -12,7 +12,7 @@ export const MOCK_HOME_TICKETS: HomeTicketsComponentProps = {
   generalTickets: [
     {
       id: 0,
-      category: `Взрослые,\nдети от 14 лет`,
+      category: `Взрослые, дети от 14 лет`,
       price: `400  ₽ / чел`,
       theme: `Зелёный`,
     },

@@ -44,7 +44,7 @@ export const MOCK_FOOTER_ABOUT_LINKS: GlobalComponentProps['footerAboutLinks'] =
 export const MOCK_OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
   {
     id: 1,
-    name: `Управление культуры администрации\u00A0г.\u00A0Челябинска`,
+    name: `Комитет по культуре \u00A0г.\u00A0Челябинска`,
     link: `https://kultura174.ru/`,
     icon: iconAdministration1,
     alt: ``,
