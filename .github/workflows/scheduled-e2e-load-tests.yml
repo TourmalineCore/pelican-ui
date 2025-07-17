@@ -1,11 +1,9 @@
 name: Scheduled E2E and Load Tests
 
 on:
-  schedule:
-    - cron: '0 4 * * *'
   push:
     branches:
-      - master
+      - feature/validate-load-test-results
       
 jobs:
   run-playwright-e2e-tests:
@@ -74,6 +72,18 @@ jobs:
       - name: Install dependencies
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
+      
+      - name: Install StepCI
+        run: npm install -g stepci
+
+      - name: Run load tests
+        run: |
+          set -e
+          stepci run --loadtest ./load-tests/loadtestHomePage.yml > loadtestHomePage-report.txt
+          stepci run --loadtest ./load-tests/loadtestDocumentsPage.yml > loadtestDocumentsPage-report.txt
+          stepci run --loadtest ./load-tests/loadtestNewsPage.yml > loadtestNewsPage-report.txt
+        env:
+          HOST: http://chelzoo.ru
 
       - name: Install Playwright Browsers
         if: steps.cache-playwrightbrowsers.outputs.cache-hit != 'true'
@@ -85,18 +95,6 @@ jobs:
         env:
           FRONTEND_URL: http://localhost:40110 
           API_URL: 'http://localhost:40110/cms/api'
-
-      - name: Install StepCI
-        run: npm install -g stepci
-
-      - name: Run load tests and validate metrics
-        run: |
-          set -e
-          stepci run --loadtest ./load-tests/loadtestHomePage.yml
-          stepci run --loadtest ./load-tests/loadtestDocumentsPage.yml
-          stepci run --loadtest ./load-tests/loadtestNewsPage.yml
-        env:
-          HOST: http://chelzoo.ru
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
