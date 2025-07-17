@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
-test(`Parse and validate StepCI text report`, async () => {
+test(`@load-validate Parse and validate StepCI text report`, async () => {
   const rawReport = fs.readFileSync(`./loadtestNewsPage-report.txt`, `utf-8`);
 
   const maxMatch = rawReport.match(/response_time:\s+.*?max:\s+\.*\s+(-?\d+)/s);
