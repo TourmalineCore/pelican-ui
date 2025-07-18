@@ -85,16 +85,58 @@ jobs:
         env:
           HOST: http://chelzoo.ru
 
-      - name: Install Playwright Browsers
-        if: steps.cache-playwrightbrowsers.outputs.cache-hit != 'true'
-        run: npx playwright install chromium --with-deps
+      - name: Validate load test thresholds
+        run: |
+          validate_report() {
+            FILE="$1"
+            MAX_LIMIT="$2"
+            AVG_LIMIT="$3"
 
-      - name: Playwright run
-        run: npm run playwright:run:e2e ./playwright-tests/e2e/load-validation --reporter=html 
+            echo "Validating $FILE"
+
+            MAX=$(grep -Po '"max":\s*\K\d+' "$FILE" | head -1)
+            AVG=$(grep -Po '"mean":\s*\K\d+' "$FILE" | head -1)
+            ERRORED=$(grep -Po '"errors":\s*\K\d+' "$FILE" | head -1)
+
+            echo "Parsed values: max=$MAX, avg=$AVG, errored=$ERRORED"
+
+            [[ -z "$MAX" || -z "$AVG" || -z "$ERRORED" ]] && {
+              echo "❌ Could not parse metrics from $FILE"
+              exit 1
+            }
+
+            if [ "$MAX" -ge "$MAX_LIMIT" ]; then
+              echo "❌ Max response time ($MAX ms) exceeds threshold ($MAX_LIMIT ms)"
+              exit 1
+            fi
+
+            if [ "$AVG" -ge "$AVG_LIMIT" ]; then
+              echo "❌ Avg response time ($AVG ms) exceeds threshold ($AVG_LIMIT ms)"
+              exit 1
+            fi
+
+            if [ "$ERRORED" -ne 0 ]; then
+              echo "❌ There are errored steps: $ERRORED"
+              exit 1
+            fi
+
+            echo "✅ $FILE passed all checks"
+          }
+
+          # threshold: max < 10000, avg < 1500, errors == 0
+          validate_report loadtestHomePage-report.txt 10000 1500
+          validate_report loadtestDocumentsPage-report.txt 10000 1500
+          validate_report loadtestNewsPage-report.txt 10000 1500
+      # - name: Install Playwright Browsers
+      #   if: steps.cache-playwrightbrowsers.outputs.cache-hit != 'true'
+      #   run: npx playwright install chromium --with-deps
+
+      # - name: Playwright run
+      #   run: npm run playwright:run:e2e ./playwright-tests/e2e/load-validation --reporter=html 
     
-        env:
-          FRONTEND_URL: http://localhost:40110 
-          API_URL: 'http://localhost:40110/cms/api'
+      #   env:
+      #     FRONTEND_URL: http://localhost:40110 
+      #     API_URL: 'http://localhost:40110/cms/api'
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
