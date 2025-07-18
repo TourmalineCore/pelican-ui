@@ -4,6 +4,10 @@ on:
   schedule: 
     - cron: '0 * * * *'
 
+  push:
+    branches:
+      - feature/*
+
 jobs:
   # this is needed to wait for the new docker image to be build and published to the registry
   # so that we can use the image to run ui of the needed commit related version as part of local-env
@@ -101,14 +105,14 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Playwright run main E2E tests
-        run: npm run playwright:run:e2e ./playwright-tests/e2e/cms-integration/integration --reporter=html 
+        run: npm run playwright:run:e2e --reporter=html 
     
         env:
           FRONTEND_URL: http://localhost:40110 
           API_URL: 'http://localhost:40110/cms/api'
 
       - name: Playwright run Load tests
-        run: npm run playwright:run:e2e ./playwright-tests/e2e/load-validation --reporter=html 
+        run: npm run playwright:run:load-tests --reporter=html 
     
         env:
           FRONTEND_URL: http://localhost:40110 
