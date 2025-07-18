@@ -87,10 +87,8 @@ jobs:
 
       - name: Validate load test thresholds
         run: |
-          # Даем права на выполнение скрипта
           chmod +x ./load-tests/validator.sh
           
-          # Проверяем каждый отчет с помощью скрипта
           ./load-tests/validator.sh ./loadtestHomePage-report.txt
           ./load-tests/validator.sh ./loadtestDocumentsPage-report.txt
           ./load-tests/validator.sh ./loadtestNewsPage-report.txt
