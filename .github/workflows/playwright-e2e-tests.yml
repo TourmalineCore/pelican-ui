@@ -5,7 +5,7 @@ name: Run playwright E2E tests
 on: 
   push:
     branches:
-      - feature/*
+      # - feature/*
   # to allow to wait for a e2e tests to be passed to proceed in another workflow
   workflow_call:
   
