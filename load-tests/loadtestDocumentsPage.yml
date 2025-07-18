@@ -12,14 +12,14 @@ config:
     
     phases:
       - duration: 60 # Время выполнения теста в секундах
-        arrivalRate: 10 # Количество запросов в секунду (RPS - Requests Per Second)
+        arrivalRate: 5 # Количество запросов в секунду (RPS - Requests Per Second)
 
 tests:
   custom:
     steps:
-      - name: GET Home Page
+      - name: GET Documents Page
         http:
-          url: https://${{env.host}}/documents # Ссылка куда будут отправляться запросы (env.host задается в самом начале файла), можно дописать /news, /discounts и так далее
+          url: https://${{env.host}}/documents/uchreditelnye-dokumenty-i-rekvizity?year=2025 # Ссылка куда будут отправляться запросы (env.host задается в самом начале файла), можно дописать /news, /discounts и так далее
           method: GET
           timeout: 10000 # Таймаут на 1 запрос в миллисекундах
           headers:

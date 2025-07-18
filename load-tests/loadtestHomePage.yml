@@ -12,7 +12,7 @@ config:
     
     phases:
       - duration: 60 # Время выполнения теста в секундах
-        arrivalRate: 1 # Количество запросов в секунду (RPS - Requests Per Second)
+        arrivalRate: 5 # Количество запросов в секунду (RPS - Requests Per Second)
 
 tests:
   custom:
