@@ -10,7 +10,12 @@ import Document, {
 } from 'next/document';
 import Script from 'next/script';
 import { LoaderContent, loaderStyles } from '../components/globals/Loader/components/LoaderContent';
-import { gosUslugiScript, yandexId, yMetricScript } from '../common/thirdPartyScripts';
+import {
+  gosUslugiScript,
+  isYandexMetricsEnabled,
+  yandexId,
+  yMetricScript,
+} from '../common/thirdPartyScripts';
 import { getHash } from '../common/utils/getHash';
 
 class AppDocument extends Document {
@@ -105,18 +110,20 @@ class AppDocument extends Document {
           <Main />
           <NextScript nonce={nonce} />
 
-          <Script
-            id="yandex-metrika"
-            strategy="lazyOnload"
-            nonce={nonce}
-            // integrity - check hash of the sctipt to be confident that the script has not changed in origin
-            integrity={yMetricHash}
-            // crossOrigin="anonymous" allows loading resources from other origins without sending credentials (cookies, etc.)
-            crossOrigin="anonymous"
-            dangerouslySetInnerHTML={{
-              __html: yMetricScript,
-            }}
-          />
+          {isYandexMetricsEnabled && (
+            <Script
+              id="yandex-metrika"
+              strategy="lazyOnload"
+              nonce={nonce}
+              // integrity - check hash of the sctipt to be confident that the script has not changed in origin
+              integrity={yMetricHash}
+              // crossOrigin="anonymous" allows loading resources from other origins without sending credentials (cookies, etc.)
+              crossOrigin="anonymous"
+              dangerouslySetInnerHTML={{
+                __html: yMetricScript,
+              }}
+            />
+          )}
 
           <Script
             id="gosWidgetScript"
@@ -129,18 +136,20 @@ class AppDocument extends Document {
             }}
           />
 
-          <noscript nonce={nonce}>
-            <div>
-              <img
-                src={`https://mc.yandex.ru/watch/${yandexId}`}
-                style={{
-                  position: `absolute`,
-                  left: `-9999px`,
-                }}
-                alt=""
-              />
-            </div>
-          </noscript>
+          {isYandexMetricsEnabled && (
+            <noscript nonce={nonce}>
+              <div>
+                <img
+                  src={`https://mc.yandex.ru/watch/${yandexId}`}
+                  style={{
+                    position: `absolute`,
+                    left: `-9999px`,
+                  }}
+                  alt=""
+                />
+              </div>
+            </noscript>
+          )}
         </body>
       </Html>
     );

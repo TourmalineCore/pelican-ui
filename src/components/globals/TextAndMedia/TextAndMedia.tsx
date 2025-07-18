@@ -1,5 +1,4 @@
 import { TextAndMediaComponentProps } from "@/src/common/types";
-import { MarkdownText } from "@/src/components/globals/MarkdownText/MarkdownText";
 import { Video } from "@/src/components/globals/Video/Video";
 import clsx from "clsx";
 import Image from "next/image";
@@ -29,7 +28,7 @@ export function TextAndMedia({
       <div
         className="text-and-media__text"
       >
-        <MarkdownText className="text-and-media__title">{title}</MarkdownText>
+        <h2 className="text-and-media__title">{title}</h2>
         <p className="text-and-media__description">{description}</p>
       </div>
       {media?.mime?.startsWith(`video`) && (

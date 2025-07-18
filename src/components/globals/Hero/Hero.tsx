@@ -8,7 +8,7 @@ import Link from "next/link";
 import { HeroSchedule } from "./components/HeroSchedule/HeroSchedule";
 import { HeroInfoCard } from "./components/HeroInfoCard/HeroInfoCard";
 
-type HeroProps = Omit<HeroComponentProps, 'id' | '__component'> & Partial<Pick<GlobalComponentProps, 'email'>> & {
+type HeroProps = Omit<HeroComponentProps, 'id' | '__component'> & Partial<Pick<GlobalComponentProps, 'phone'>> & {
   isInternalPage?: boolean;
 };
 
@@ -20,7 +20,7 @@ export function Hero({
   infoCardDescription,
   image,
   isInternalPage,
-  email,
+  phone,
   isFirstBlock,
   isLastBlock,
 }: HeroProps) {
@@ -88,10 +88,10 @@ export function Hero({
         && (
           <div className="hero__buttons">
             <Link
-              href={`mailto:${email}`}
+              href={`tel:${phone}`}
               className="button button--secondary hero__contact-button"
               data-testid="hero-contact-button"
-              aria-label="Связаться с нами по почте"
+              aria-label={`Связаться с нами по телефону ${phone}`}
             >
               Связаться
             </Link>

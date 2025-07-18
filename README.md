@@ -104,6 +104,17 @@ npm run playwright:run:e2e
 npm run playwright:open:e2e
 ```
 
+## Выключение оптимизации для изображений 
+
+Для отключения оптимизации изображений необходимо внести правки в next.config.mjs, а именно добавить параметр `unoptimized` в настройки `images`:
+
+```js
+images: {
+  unoptimized: true,
+}
+```
+
+
 ## Обновление версии Playwright
 
 Версия Playwright должна быть зафиксирована для корректной работы в Dev-контейнере.
