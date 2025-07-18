@@ -1,13 +1,25 @@
-name: Scheduled E2E and Load Tests
+name: Run Prod Load Tests with E2E
 
 on:
+  # schedule: 
+  #   - cron: '0 * * * *'
   push:
-    branches:
-      - feature/validate-load-test-results
-      
+    branch:
+      - feature/*
+
+  
 jobs:
+  # this is needed to wait for the new docker image to be build and published to the registry
+  # so that we can use the image to run ui of the needed commit related version as part of local-env
+  # the idea is taken from here https://stackoverflow.com/a/71489231
+  push_to_registry:
+    uses: ./.github/workflows/local-env-docker-build-and-push.yml
+    # without this it cannot login to the registry
+    secrets: inherit
+
   run-playwright-e2e-tests:
     runs-on: ubuntu-24.04
+    needs: push_to_registry
 
     strategy:
       fail-fast: false
@@ -25,7 +37,10 @@ jobs:
         with:
           runCmd: |
             # we need to override "latest" image tag of ui inside local-env to run e2e against the current commit ui version and not against latest from master
-            yq -i '.image.tag = "local-env-sha-${{ github.sha }}"' deploy/values-ui.yaml.gotmpl
+            # We tried to use yq to change the image tag, but in the values files for helmfile we have non-yaml code that yq can`t parse or ignore
+            # so for that reason we use Stream EDitor which can find needeed string using regular expressions and change it to a new value
+            # The -i flag is needed to write new image tag directly to values file
+            sed -i "0,/tag:.*/s//tag: \"local-env-sha-${{ github.sha }}\"/" deploy/values-ui.yaml.gotmpl
 
             kind create cluster --name pelican --config kind-local-config.yaml --kubeconfig ./.pelican-cluster-kubeconfig
             
@@ -85,19 +100,18 @@ jobs:
         env:
           HOST: http://chelzoo.ru
 
-      # - name: Validate load test thresholds
-      #   run: |
-      #     chmod +x ./load-tests/validator.sh
-          
-      #     ./load-tests/validator.sh ./loadtestHomePage-report.txt
-      #     ./load-tests/validator.sh ./loadtestDocumentsPage-report.txt
-      #     ./load-tests/validator.sh ./loadtestNewsPage-report.txt
-
       - name: Install Playwright Browsers
         if: steps.cache-playwrightbrowsers.outputs.cache-hit != 'true'
         run: npx playwright install chromium --with-deps
 
-      - name: Playwright run
+      - name: Playwright run main E2E tests
+        run: npm run playwright:run:e2e ./playwright-tests/e2e/cms-integration/integration --reporter=html 
+    
+        env:
+          FRONTEND_URL: http://localhost:40110 
+          API_URL: 'http://localhost:40110/cms/api'
+
+      - name: Playwright run Load tests
         run: npm run playwright:run:e2e ./playwright-tests/e2e/load-validation --reporter=html 
     
         env:
