@@ -1,9 +1,9 @@
 name: Validate Load Test and Playwright E2E
 
-on:
-  push:
-    branches:
-      # - feature/validate-load-test-results
+# on:
+#   push:
+#     branches:
+#       # - feature/validate-load-test-results
 
 jobs:
   push_to_registry:

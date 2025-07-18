@@ -85,24 +85,24 @@ jobs:
         env:
           HOST: http://chelzoo.ru
 
-      - name: Validate load test thresholds
-        run: |
-          chmod +x ./load-tests/validator.sh
+      # - name: Validate load test thresholds
+      #   run: |
+      #     chmod +x ./load-tests/validator.sh
           
-          ./load-tests/validator.sh ./loadtestHomePage-report.txt
-          ./load-tests/validator.sh ./loadtestDocumentsPage-report.txt
-          ./load-tests/validator.sh ./loadtestNewsPage-report.txt
+      #     ./load-tests/validator.sh ./loadtestHomePage-report.txt
+      #     ./load-tests/validator.sh ./loadtestDocumentsPage-report.txt
+      #     ./load-tests/validator.sh ./loadtestNewsPage-report.txt
 
-      # - name: Install Playwright Browsers
-      #   if: steps.cache-playwrightbrowsers.outputs.cache-hit != 'true'
-      #   run: npx playwright install chromium --with-deps
+      - name: Install Playwright Browsers
+        if: steps.cache-playwrightbrowsers.outputs.cache-hit != 'true'
+        run: npx playwright install chromium --with-deps
 
-      # - name: Playwright run
-      #   run: npm run playwright:run:e2e ./playwright-tests/e2e/load-validation --reporter=html 
+      - name: Playwright run
+        run: npm run playwright:run:e2e ./playwright-tests/e2e/load-validation --reporter=html 
     
-      #   env:
-      #     FRONTEND_URL: http://localhost:40110 
-      #     API_URL: 'http://localhost:40110/cms/api'
+        env:
+          FRONTEND_URL: http://localhost:40110 
+          API_URL: 'http://localhost:40110/cms/api'
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
