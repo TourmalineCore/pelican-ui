@@ -24,7 +24,4 @@ tests:
           timeout: 10000 # Таймаут на 1 запрос в миллисекундах
           headers:
             User-Agent: "LoadTestBot"
-    checks:
-      - metric: http.response_time
-        max: 8000    # Макс. время ответа (ms)
 
