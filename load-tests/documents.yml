@@ -1,0 +1,20 @@
+config:
+  target: "https://small.chelzoo.tech"
+  plugins:
+    html-reporter:
+      output: "./artillery-report-documents.html"
+
+  phases:
+    - duration: 60
+      arrivalRate: 10
+
+  thresholds:
+    http.response_time.p95: ["<", 500]
+    http.response_time.p99: ["<", 800]
+    http.response_time.max: ["<", 1000]
+
+scenarios:
+  - name: Documents Page Load Test
+    flow:
+      - get:
+          url: "/documents/uchreditelnye-dokumenty-i-rekvizity?year=2025"
