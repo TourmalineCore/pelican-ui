@@ -20,7 +20,7 @@ test(`@load-validate Parse and validate StepCI text report`, async () => {
   const p99 = parseInt(p99Match[1], 10);
   const errored = parseInt(erroredMatch[1], 10);
 
-  console.log(`📊 Load Test Metrics Report:`);
+  console.log(`📊 Documents Page Load Test Metrics Report:`);
   console.log(`  Max Response Time: ${max}ms`);
   console.log(`  Average Response Time: ${avg}ms`);
   console.log(`  95th Percentile: ${p95}ms`);
