@@ -92,41 +92,50 @@ jobs:
             MAX_LIMIT="$2"
             AVG_LIMIT="$3"
 
-            echo "Validating $FILE"
+            echo "📊 Validating $FILE"
+
+            if [[ ! -f "$FILE" ]]; then
+              echo "❌ Report file $FILE not found!"
+              exit 1
+            fi
 
             MAX=$(grep -Po '"max":\s*\K\d+' "$FILE" | head -1)
             AVG=$(grep -Po '"mean":\s*\K\d+' "$FILE" | head -1)
             ERRORED=$(grep -Po '"errors":\s*\K\d+' "$FILE" | head -1)
 
-            echo "Parsed values: max=$MAX, avg=$AVG, errored=$ERRORED"
+            echo "Parsed values:"
+            echo "  ↪ max:     $MAX"
+            echo "  ↪ mean:    $AVG"
+            echo "  ↪ errors:  $ERRORED"
 
-            [[ -z "$MAX" || -z "$AVG" || -z "$ERRORED" ]] && {
-              echo "❌ Could not parse metrics from $FILE"
-              exit 1
-            }
-
-            if [ "$MAX" -ge "$MAX_LIMIT" ]; then
-              echo "❌ Max response time ($MAX ms) exceeds threshold ($MAX_LIMIT ms)"
+            if [[ -z "$MAX" || -z "$AVG" || -z "$ERRORED" ]]; then
+              echo "❌ Could not parse required metrics from $FILE"
               exit 1
             fi
 
-            if [ "$AVG" -ge "$AVG_LIMIT" ]; then
-              echo "❌ Avg response time ($AVG ms) exceeds threshold ($AVG_LIMIT ms)"
+            if (( MAX >= MAX_LIMIT )); then
+              echo "❌ Max response time ($MAX ms) exceeds limit ($MAX_LIMIT ms)"
               exit 1
             fi
 
-            if [ "$ERRORED" -ne 0 ]; then
-              echo "❌ There are errored steps: $ERRORED"
+            if (( AVG >= AVG_LIMIT )); then
+              echo "❌ Mean response time ($AVG ms) exceeds limit ($AVG_LIMIT ms)"
               exit 1
             fi
 
-            echo "✅ $FILE passed all checks"
+            if (( ERRORED > 0 )); then
+              echo "❌ Found $ERRORED errored steps"
+              exit 1
+            fi
+
+            echo "✅ $FILE passed all thresholds."
           }
 
-          # threshold: max < 10000, avg < 1500, errors == 0
+          # Thresholds: max < 10000 ms, mean < 1500 ms, errors == 0
           validate_report loadtestHomePage-report.txt 10000 1500
           validate_report loadtestDocumentsPage-report.txt 10000 1500
           validate_report loadtestNewsPage-report.txt 10000 1500
+
       # - name: Install Playwright Browsers
       #   if: steps.cache-playwrightbrowsers.outputs.cache-hit != 'true'
       #   run: npx playwright install chromium --with-deps
