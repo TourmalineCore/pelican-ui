@@ -22,7 +22,7 @@ export default function UniversalPage({
   useGosBannerWidget();
 
   const {
-    email,
+    phone,
   } = globalData;
 
   const {
@@ -46,7 +46,7 @@ export default function UniversalPage({
           slug={asPath}
           key={block.id}
           block={block}
-          email={email}
+          phone={phone}
         />
       ))}
     </>
