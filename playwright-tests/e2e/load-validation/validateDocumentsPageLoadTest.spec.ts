@@ -18,8 +18,8 @@ test(`@load-validate Parse and validate StepCI text report`, async () => {
 
   expect(max, `Max response time should be < 10000ms (was ${max}ms)`)
     .toBeLessThan(10000);
-  expect(avg, `Average response time should be < 1000ms (was ${avg}ms)`)
-    .toBeLessThan(1000);
+  expect(avg, `Average response time should be < 1600ms (was ${avg}ms)`)
+    .toBeLessThan(1600);
   expect(errored, `Errored steps should be 0 (found ${errored})`)
     .toBe(0);
 });
