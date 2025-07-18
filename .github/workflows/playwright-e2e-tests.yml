@@ -2,12 +2,12 @@ name: Run playwright E2E tests
 
 # ToDo should it be triggered only as part of an open PR?
 # currently it triggers for any commit in a FB
-# on: 
-#   push:
-#     branches:
-#       # - feature/*
+on: 
+  push:
+    branches:
+      - feature/*
   # to allow to wait for a e2e tests to be passed to proceed in another workflow
-  # workflow_call:
+  workflow_call:
   
 jobs:
   # this is needed to wait for the new docker image to be build and published to the registry
