@@ -25,6 +25,7 @@ jobs:
       pelican-env: pelican-local-env
       prefix: local-env
       path-to-values: deploy/values-ui.yaml.gotmpl
+      path-to-helmfile: deploy/helmfile.yaml
     secrets: inherit
 
   trigger_prod_env:
@@ -33,4 +34,5 @@ jobs:
     with: 
       pelican-env: pelican-prod-env
       path-to-values: deploy/values-ui.yaml.gotmpl
+      path-to-helmfile: deploy/helmfile.yaml
     secrets: inherit
