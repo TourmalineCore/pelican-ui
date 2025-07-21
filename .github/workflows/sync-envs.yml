@@ -20,18 +20,17 @@ jobs:
 
   trigger_local_env:
     needs: push_local_env_to_registry
-    uses: TourmalineCore/pelican-github-workflows/.github/workflows/sync-envs.yml@feature/sync_envs_workflow
+    uses: TourmalineCore/pelican-github-workflows/.github/workflows/sync-envs.yml@feature/separate_image_tag
     with: 
       pelican-env: pelican-local-env
-      image-tag: local-env-sha-${{ github.sha }}
+      prefix: local-env
       path-to-values: deploy/values-ui.yaml.gotmpl
     secrets: inherit
 
   trigger_prod_env:
     needs: push_prod_env_to_registry
-    uses: TourmalineCore/pelican-github-workflows/.github/workflows/sync-envs.yml@feature/sync_envs_workflow
+    uses: TourmalineCore/pelican-github-workflows/.github/workflows/sync-envs.yml@feature/separate_image_tag
     with: 
       pelican-env: pelican-prod-env
-      image-tag: sha-${{ github.sha }}
       path-to-values: deploy/values-ui.yaml.gotmpl
     secrets: inherit
