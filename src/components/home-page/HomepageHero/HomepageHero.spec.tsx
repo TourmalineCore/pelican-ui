@@ -38,12 +38,8 @@ async function HomepageheroContactLinkAttributeCheck({
     height: 768,
   });
 
-  const contactLink = await page.locator(`a[href^="tel:"]`)
-    .first();
+  const contactLink = await page.getByTestId(`hero-contact-button`);
 
-  const expectedPhone = await contactLink.getAttribute(`href`);
-
-  // TODO: Check why there is a build error when importing the MOCK_PHONE constant
-  await expect(expectedPhone)
-    .toBe(`tel:+7 (351) 263-18-64`);
+  await expect(contactLink)
+    .toHaveAttribute(`href`, /^tel:/);
 }

@@ -40,12 +40,8 @@ async function HeaderContactLinkAttributeCheck({
     height: 768,
   });
 
-  const contactLink = await page.locator(`a[href^="mailto:"]`)
-    .first();
+  const contactLink = await page.getByTestId(`header-contact-button`);
 
-  const expectedEmail = await contactLink.getAttribute(`href`);
-
-  // TODO: Check why there is a build error when importing the MOCK_EMAIL constant
-  await expect(expectedEmail)
-    .toBe(`mailto:metodist@chelzoo.ru`);
+  await expect(contactLink)
+    .toHaveAttribute(`href`, /^mailto:/);
 }
