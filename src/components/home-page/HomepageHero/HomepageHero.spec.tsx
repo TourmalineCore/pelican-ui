@@ -26,9 +26,9 @@ test.describe(`HomepageHeroComponentTests`, () => {
   }
 
   test(`HomepageHeroContactLinkAttributeCheckTest`, async ({
-    checkArchorLink,
+    checkAnchorLink,
   }) => {
-    await checkArchorLink({
+    await checkAnchorLink({
       testId: `hero-contact-button`,
       path: /^tel:/,
     });

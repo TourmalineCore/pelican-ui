@@ -26,14 +26,14 @@ test.describe(`ServicesComponentTests`, () => {
   }
 
   test(`ServicesContactLinksAttributeCheckTest`, async ({
-    checkArchorLink,
+    checkAnchorLink,
   }) => {
-    await checkArchorLink({
+    await checkAnchorLink({
       testId: `services-phone-link`,
       path: /^tel:/,
     });
 
-    await checkArchorLink({
+    await checkAnchorLink({
       testId: `services-email-link`,
       path: /^mailto:/,
     });
