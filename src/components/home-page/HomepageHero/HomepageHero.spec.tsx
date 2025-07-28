@@ -25,10 +25,10 @@ test.describe(`HomepageHeroComponentTests`, () => {
     });
   }
 
-  test(`HomepageheroContactLinkAttributeCheckTest`, HomepageheroContactLinkAttributeCheck);
+  test(`HomepageHeroContactLinkAttributeCheckTest`, HomepageHeroContactLinkAttributeCheck);
 });
 
-async function HomepageheroContactLinkAttributeCheck({
+async function HomepageHeroContactLinkAttributeCheck({
   page,
 }: {
   page: Page;
