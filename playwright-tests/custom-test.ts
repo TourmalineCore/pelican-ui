@@ -17,7 +17,7 @@ export type CustomTestFixtures = {
     }) => void;
   apiImageMock: () => void;
   setViewportSize: (options?: { width?: number; height?: number; }) => void;
-  checkAnchorLink: (
+  checkContactLink: (
     options: {
       testId: string;
       path: RegExp;
@@ -149,11 +149,11 @@ export const test = base.extend<CustomTestFixtures>({
     await use(apiImageMock);
   },
 
-  checkAnchorLink: async ({
+  checkContactLink: async ({
     page,
     setViewportSize,
   }, use) => {
-    const checkAnchorLink = async ({
+    const checkContactLink = async ({
       testId,
       path,
       width,
@@ -173,7 +173,7 @@ export const test = base.extend<CustomTestFixtures>({
         .toHaveAttribute(`href`, path);
     };
 
-    use(checkAnchorLink);
+    use(checkContactLink);
   },
 });
 

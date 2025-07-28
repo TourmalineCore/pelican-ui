@@ -28,9 +28,9 @@ test.describe(`HeaderComponentTests`, () => {
   }
 
   test(`HeaderContactLinkAttributeCheckTest`, async ({
-    checkAnchorLink,
+    checkContactLink,
   }) => {
-    await checkAnchorLink({
+    await checkContactLink({
       width: 1366,
       testId: `header-contact-button`,
       path: /^mailto:/,

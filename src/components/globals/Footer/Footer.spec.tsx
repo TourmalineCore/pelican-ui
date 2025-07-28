@@ -37,14 +37,14 @@ test.describe(`FooterTests`, () => {
   }
 
   test(`FooterContactLinksAttributeCheckTest`, async ({
-    checkAnchorLink,
+    checkContactLink,
   }) => {
-    await checkAnchorLink({
+    await checkContactLink({
       testId: `footer-tel-link`,
       path: /^tel:/,
     });
 
-    await checkAnchorLink({
+    await checkContactLink({
       testId: `footer-email-link`,
       path: /^mailto:/,
     });
