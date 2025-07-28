@@ -24,4 +24,18 @@ test.describe(`ServicesComponentTests`, () => {
       });
     });
   }
+
+  test(`ServicesContactLinksAttributeCheckTest`, async ({
+    checkArchorLink,
+  }) => {
+    await checkArchorLink({
+      testId: `services-phone-link`,
+      path: /^tel:/,
+    });
+
+    await checkArchorLink({
+      testId: `services-email-link`,
+      path: /^mailto:/,
+    });
+  });
 });

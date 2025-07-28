@@ -1,5 +1,5 @@
 import { BREAKPOINTS } from '@/playwright-tests/constants/breakpoints';
-import { expect, Page, test } from '@/playwright-tests/custom-test';
+import { test } from '@/playwright-tests/custom-test';
 import { Breakpoint, ComponentName } from '@/src/common/enum';
 
 test.describe(`HeaderComponentTests`, () => {
@@ -27,21 +27,13 @@ test.describe(`HeaderComponentTests`, () => {
     });
   }
 
-  test(`HeaderContactLinkAttributeCheckTest`, HeaderContactLinkAttributeCheck);
-});
-
-async function HeaderContactLinkAttributeCheck({
-  page,
-}: {
-  page: Page;
-}) {
-  await page.setViewportSize({
-    width: 1366,
-    height: 768,
+  test(`HeaderContactLinkAttributeCheckTest`, async ({
+    checkArchorLink,
+  }) => {
+    await checkArchorLink({
+      width: 1366,
+      testId: `header-contact-button`,
+      path: /^mailto:/,
+    });
   });
-
-  const contactLink = await page.getByTestId(`header-contact-button`);
-
-  await expect(contactLink)
-    .toHaveAttribute(`href`, /^mailto:/);
-}
+});

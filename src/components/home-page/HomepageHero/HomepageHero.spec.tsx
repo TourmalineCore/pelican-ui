@@ -1,5 +1,5 @@
 import { BREAKPOINTS } from '@/playwright-tests/constants/breakpoints';
-import { expect, Page, test } from '@/playwright-tests/custom-test';
+import { test } from '@/playwright-tests/custom-test';
 import { ComponentName } from '@/src/common/enum';
 
 test.describe(`HomepageHeroComponentTests`, () => {
@@ -25,21 +25,12 @@ test.describe(`HomepageHeroComponentTests`, () => {
     });
   }
 
-  test(`HomepageHeroContactLinkAttributeCheckTest`, HomepageHeroContactLinkAttributeCheck);
-});
-
-async function HomepageHeroContactLinkAttributeCheck({
-  page,
-}: {
-  page: Page;
-}) {
-  await page.setViewportSize({
-    width: 375,
-    height: 768,
+  test(`HomepageHeroContactLinkAttributeCheckTest`, async ({
+    checkArchorLink,
+  }) => {
+    await checkArchorLink({
+      testId: `hero-contact-button`,
+      path: /^tel:/,
+    });
   });
-
-  const contactLink = await page.getByTestId(`hero-contact-button`);
-
-  await expect(contactLink)
-    .toHaveAttribute(`href`, /^tel:/);
-}
+});
