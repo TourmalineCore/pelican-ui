@@ -166,7 +166,8 @@ export const test = base.extend<CustomTestFixtures>({
         width,
       });
 
-      const archorLink = await page.getByTestId(testId);
+      const archorLink = await page.getByTestId(testId)
+        .first();
 
       await expect(archorLink)
         .toHaveAttribute(`href`, path);
