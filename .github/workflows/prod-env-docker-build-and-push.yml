@@ -10,7 +10,7 @@ on:
 
 jobs:
   push_to_registry:
-    uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@feature/rename_env_variable
+    uses: TourmalineCore/pelican-github-workflows/.github/workflows/docker-build-and-push.yml@master
     with:
         # Build-args used to define variables that will be used in image
         build-args: |
