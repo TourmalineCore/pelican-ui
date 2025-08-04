@@ -1,15 +1,21 @@
-name: Scheduled E2E and Load Tests
+name: Run Prod Load Tests with E2E
 
 on:
-  schedule:
-    - cron: '0 4 * * *'
-  push:
-    branches:
-      - master
-      
+  schedule: 
+    - cron: '0 * * * *'
+
 jobs:
+  # this is needed to wait for the new docker image to be built and published to the registry
+  # so that we can use the image to run ui of the needed commit related version as part of local-env
+  # the idea is taken from here https://stackoverflow.com/a/71489231
+  push_to_registry:
+    uses: ./.github/workflows/local-env-docker-build-and-push.yml
+    # without this it cannot login to the registry
+    secrets: inherit
+
   run-playwright-e2e-tests:
     runs-on: ubuntu-24.04
+    needs: push_to_registry
 
     strategy:
       fail-fast: false
@@ -27,7 +33,10 @@ jobs:
         with:
           runCmd: |
             # we need to override "latest" image tag of ui inside local-env to run e2e against the current commit ui version and not against latest from master
-            yq -i '.image.tag = "local-env-sha-${{ github.sha }}"' deploy/values-ui.yaml.gotmpl
+            # We tried to use yq to change the image tag, but in the values files for helmfile we have non-yaml code that yq can`t parse or ignore
+            # so for that reason we use Stream EDitor which can find needeed string using regular expressions and change it to a new value
+            # The -i flag is needed to write new image tag directly to values file
+            sed -i "0,/tag:.*/s//tag: \"local-env-sha-${{ github.sha }}\"/" deploy/values-ui.yaml.gotmpl
 
             kind create cluster --name pelican --config kind-local-config.yaml --kubeconfig ./.pelican-cluster-kubeconfig
             
@@ -74,29 +83,36 @@ jobs:
       - name: Install dependencies
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
+      
+      - name: Install StepCI
+        run: npm install -g stepci
+
+      - name: Run load tests
+        run: |
+          set -e
+          stepci run --loadtest ./load-tests/loadtestHomePage.yml > loadtestHomePage-report.txt
+          stepci run --loadtest ./load-tests/loadtestDocumentsPage.yml > loadtestDocumentsPage-report.txt
+          stepci run --loadtest ./load-tests/loadtestNewsPage.yml > loadtestNewsPage-report.txt
+        env:
+          HOST: http://chelzoo.ru
 
       - name: Install Playwright Browsers
         if: steps.cache-playwrightbrowsers.outputs.cache-hit != 'true'
         run: npx playwright install chromium --with-deps
 
-      - name: Playwright run
+      - name: Playwright run main E2E tests
         run: npm run playwright:run:e2e --reporter=html 
     
         env:
           FRONTEND_URL: http://localhost:40110 
           API_URL: 'http://localhost:40110/cms/api'
 
-      - name: Install StepCI
-        run: npm install -g stepci
-
-      - name: Run load tests and validate metrics
-        run: |
-          set -e
-          stepci run --loadtest ./load-tests/loadtestHomePage.yml
-          stepci run --loadtest ./load-tests/loadtestDocumentsPage.yml
-          stepci run --loadtest ./load-tests/loadtestNewsPage.yml
+      - name: Playwright run Load tests
+        run: npm run playwright:run:load-tests --reporter=html 
+    
         env:
-          HOST: http://chelzoo.ru
+          FRONTEND_URL: http://localhost:40110 
+          API_URL: 'http://localhost:40110/cms/api'
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
