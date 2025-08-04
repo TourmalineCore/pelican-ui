@@ -20,7 +20,7 @@ jobs:
         build-args: |
           CDN_ENABLED=false
           CORS_ORIGIN=http://localhost:40110
-        # Env is used to write current env to digest name to be able to build several docker images for several envs in one workflow
-        env: "local"
+        # build-env is used to write current env to digest name to be able to build several docker images for several envs in one workflow
+        build-env: "local"
     # without this it cannot login to the registry
     secrets: inherit

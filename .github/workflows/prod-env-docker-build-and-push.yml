@@ -18,7 +18,7 @@ jobs:
           CDN_DOMAIN=cdn.chelzoo.ru
           CORS_ORIGIN=https://chelzoo.ru
           ENABLE_SEO_INDEXING=true
-        # Env is used to write current env to digest name to be able to build several docker images for several envs in one workflow
-        env: "prod"
+        # build-env is used to write current env to digest name to be able to build several docker images for several envs in one workflow
+        build-env: "prod"
     # without this it cannot login to the registry
     secrets: inherit
