@@ -162,7 +162,7 @@ const nextConfig = {
 
     // lifetime in seconds for cached optimized images
     // https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl
-    minimumCacheTTL: 3600,
+    minimumCacheTTL: 604800,
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
