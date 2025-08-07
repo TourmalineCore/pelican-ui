@@ -35,4 +35,18 @@ test.describe(`FooterTests`, () => {
       });
     });
   }
+
+  test(`FooterContactLinksAttributeCheckTest`, async ({
+    checkContactLink,
+  }) => {
+    await checkContactLink({
+      testId: `footer-tel-link`,
+      path: /^tel:/,
+    });
+
+    await checkContactLink({
+      testId: `footer-email-link`,
+      path: /^mailto:/,
+    });
+  });
 });

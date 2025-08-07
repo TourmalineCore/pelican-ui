@@ -24,4 +24,13 @@ test.describe(`HomepageHeroComponentTests`, () => {
       });
     });
   }
+
+  test(`HomepageHeroContactLinkAttributeCheckTest`, async ({
+    checkContactLink,
+  }) => {
+    await checkContactLink({
+      testId: `hero-contact-button`,
+      path: /^tel:/,
+    });
+  });
 });
