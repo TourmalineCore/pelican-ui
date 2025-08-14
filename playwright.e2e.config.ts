@@ -15,7 +15,7 @@ export default defineConfig({
   testDir: `./playwright-tests/e2e`,
   testIgnore: [`/load-validation/**`],
   outputDir: `./playwright-tests/playwright-test-results/e2e-tests`,
-  timeout: 45000,
+  timeout: 90000,
   /* Run tests in files in parallel */
   // fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

@@ -82,9 +82,26 @@ export async function getPageData({
       });
 
     default:
-      return {
-        notFound: true,
-      };
+      return getData({
+        slug,
+        populate: [
+          `blocks.button`,
+          `blocks.largeImage`,
+          `blocks.smallImage`,
+          `blocks.media`,
+          `blocks.categories`,
+          `blocks.cards`,
+          `blocks.cards.image`,
+          `blocks.cards.labels`,
+          `blocks.subsidizedTickets`,
+          `blocks.infoCard`,
+          `blocks.scheduleCard`,
+          `blocks.scheduleCard.timetable`,
+          `blocks.seo`,
+          `blocks.image`,
+        ],
+        preview,
+      });
   }
 }
 
@@ -105,20 +122,31 @@ async function getData({
   });
 
   if (!pageResponse) {
-    return pageResponse;
+    const contentTypes = await apiFetch(`/content-type-builder/content-types`);
+    const singleType = contentTypes.data.find((item: any) => item.schema.singularName === slug);
+
+    if (singleType) {
+      return pageResponse;
+    }
+
+    return {
+      notFound: true,
+    };
   }
 
   const blocks = pageResponse.data?.blocks?.map((block) => (mapContractByBlock({
     block,
   })));
 
+  const seoBlock = blocks.find((block) => block.__component === `shared.seo`);
+
   return {
     blocks,
-    ...(pageResponse.data?.seo && {
+    ...((pageResponse.data?.seo || seoBlock) && {
       seo: {
-        metaTitle: pageResponse.data?.seo.metaTitle,
-        metaDescription: pageResponse.data?.seo.metaDescription,
-        metaKeywords: pageResponse.data?.seo.keywords,
+        metaTitle: pageResponse.data?.seo?.metaTitle || seoBlock?.metaTitle,
+        metaDescription: pageResponse.data?.seo?.metaDescription || seoBlock?.metaDescription,
+        metaKeywords: pageResponse.data?.seo?.keywords || seoBlock?.keywords,
       },
     }),
   };

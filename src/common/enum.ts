@@ -6,6 +6,7 @@ export enum AppRoute {
   INTERNAL_TEST_PAGE = `/internal-test-page`,
   DISCOUNTS = `/discounts`,
   VISITING_RULES = `/visiting-rules`,
+  OTHER = `/other`,
   COMPONENTS = `/components`,
 }
 
