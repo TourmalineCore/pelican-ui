@@ -1,10 +1,11 @@
-import { Page, test } from "@/playwright-tests/custom-test";
+import { CustomTestFixtures, Page, test } from "@/playwright-tests/custom-test";
 
-test(`Dynamic addition of new pages`, async ({
+test(`Dynamic addition of new pages еуые`, async ({
   goto,
   page,
 }: {
   page: Page;
+  goto: CustomTestFixtures['goto'];
 }) => {
   await page.goto(process.env.API_URL || `http://localhost:1337`);
 

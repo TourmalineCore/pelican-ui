@@ -17,7 +17,7 @@ const expectedDesktopHeaderFocusOrder = [
   `skip-link`,
   `header-logo`,
   ...generateTestIdDuplicates({
-    count: 4,
+    count: 5,
     string: `header-navigation-link`,
   }),
   `header-contact-button`,
@@ -252,7 +252,7 @@ async function mobileMenuOpenTest({
   const expectedFocusOrder = [
     `header-popup-ticket-button`,
     ...generateTestIdDuplicates({
-      count: 4,
+      count: 5,
       string: `header-navigation-link`,
     }),
     `header-popup-phone`,
