@@ -400,6 +400,9 @@ export type Block =
   | SharedCardsComponent & {
     __component: BlockTypes;
   }
+  | SharedSeoComponent & {
+    __component: 'shared.seo';
+  }
   | DiscountsTermsComponent
   | DiscountsCategoriesComponent
   | VisitingRulesVisitingRulesMainComponent
