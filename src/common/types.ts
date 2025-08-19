@@ -66,6 +66,11 @@ export type VisitingRulesPageProps = {
   )[];
 };
 
+export type OtherPageProps = {
+  title: string;
+  seo?: Seo;
+};
+
 // Component
 
 export type GlobalComponentProps = {

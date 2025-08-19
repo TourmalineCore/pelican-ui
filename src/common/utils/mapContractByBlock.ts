@@ -141,9 +141,7 @@ export function mapContractByBlock({
       };
 
     case BlockTypes.SHARED_CARDS:
-      const sharedCardsBlock = block as (SharedCardsComponent & {
-        __component: BlockTypes;
-      });
+      const sharedCardsBlock = block as SharedCardsComponent;
 
       return {
         id: crypto.randomUUID(),

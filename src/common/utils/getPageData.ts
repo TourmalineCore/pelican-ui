@@ -100,6 +100,7 @@ export async function getPageData({
           `blocks.seo`,
           `blocks.image`,
         ],
+        isOtherPages: true,
         preview,
       });
   }
@@ -109,32 +110,62 @@ async function getData({
   slug,
   populate,
   preview,
+  isOtherPages = false,
 }: {
   slug: string;
   populate: string[];
   preview: boolean;
+  isOtherPages?: boolean;
 }) {
-  const pageResponse: PageData = await apiFetch(`/${slug}?${qs.stringify({
-    populate,
-    status: preview ? `draft` : `published`,
-  })}`, {
-    isPreview: preview,
-  });
+  let pageData: PageData;
 
-  if (!pageResponse) {
-    const contentTypes = await apiFetch(`/content-type-builder/content-types`);
-    const singleType = contentTypes.data.find((item: any) => item.schema.singularName === slug);
+  if (isOtherPages) {
+    const response = await apiFetch(`/other-pages?${qs.stringify({
+      populate,
+      status: preview ? `draft` : `published`,
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
+    })}`, {
+      isPreview: preview,
+    });
 
-    if (singleType) {
-      return pageResponse;
+    const responseData = response.data[0];
+
+    if (!responseData) {
+      return {
+        notFound: true,
+      };
     }
 
-    return {
-      notFound: true,
+    pageData = {
+      data: responseData,
     };
+  } else {
+    pageData = await apiFetch(`/${slug}?${qs.stringify({
+      populate,
+      status: preview ? `draft` : `published`,
+    })}`, {
+      isPreview: preview,
+    });
+
+    if (!pageData) {
+      const contentTypes = await apiFetch(`/content-type-builder/content-types`);
+      const singleType = contentTypes.data.find((item: any) => item.schema.singularName === slug);
+
+      if (singleType) {
+        return pageData;
+      }
+
+      return {
+        notFound: true,
+      };
+    }
   }
 
-  const blocks = pageResponse.data?.blocks?.map((block) => (mapContractByBlock({
+  const blocks = pageData.data?.blocks?.map((block) => (mapContractByBlock({
     block,
   })));
 
@@ -142,11 +173,11 @@ async function getData({
 
   return {
     blocks,
-    ...((pageResponse.data?.seo || seoBlock) && {
+    ...((pageData.data?.seo || seoBlock) && {
       seo: {
-        metaTitle: pageResponse.data?.seo?.metaTitle || seoBlock?.metaTitle,
-        metaDescription: pageResponse.data?.seo?.metaDescription || seoBlock?.metaDescription,
-        metaKeywords: pageResponse.data?.seo?.keywords || seoBlock?.keywords,
+        metaTitle: pageData.data?.seo?.metaTitle || seoBlock?.metaTitle,
+        metaDescription: pageData.data?.seo?.metaDescription || seoBlock?.metaDescription,
+        metaKeywords: pageData.data?.seo?.keywords || seoBlock?.keywords,
       },
     }),
   };

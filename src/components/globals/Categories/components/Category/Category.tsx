@@ -17,7 +17,7 @@ export function Category({
     <li className={`${className} category`}>
       <Link
         className="category__wrapper"
-        href={pageUrl ? `${pageUrl}/${slug}` : `${slug}`}
+        href={pageUrl ? `${pageUrl}/${slug}` : `/${slug}`}
         aria-label={`Перейти на страницу категории ${title}`}
         data-testid="category"
       >
