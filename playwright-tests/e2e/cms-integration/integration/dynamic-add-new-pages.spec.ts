@@ -1,167 +1,110 @@
-import { CustomTestFixtures, Page, test } from "@/playwright-tests/custom-test";
+import {
+  CustomTestFixtures,
+  expect,
+  Page,
+  test,
+} from "@/playwright-tests/custom-test";
+import { OtherPage } from "@/src/common/api-types";
+import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
+import axios, { AxiosError, HttpStatusCode } from "axios";
+import { E2E_UI_NAME_PREFIX } from "../helpers/cms-integration-helpers";
 
-test(`Dynamic addition of new pages еуые`, async ({
-  goto,
-  page,
-}: {
-  page: Page;
-  goto: CustomTestFixtures['goto'];
-}) => {
-  await page.goto(process.env.API_URL || `http://localhost:1337`);
+const OTHER_PAGE_API_ENDPOINT = `${getStrapiURL()}/other-pages`;
+const OTHER_PAGE_TITLE = `${E2E_UI_NAME_PREFIX} Услуги`;
 
-  await page.locator(`input[name=email]`)
-    .fill(`admin@init-strapi-admin.strapi.io`);
-
-  await page.locator(`input[name=password]`)
-    .fill(`admin`);
-
-  await page.getByText(`Remember me`)
-    .click();
-
-  await page.getByText(`Login`)
-    .click();
-
-  await page.getByText(`Content-Type Builder`)
-    .click();
-
-  const skipTour = await page.getByText(`Skip the tour`);
-
-  if (await skipTour.isVisible()) {
-    await skipTour.click();
-  }
-
-  await page.getByRole(`button`, {
-    name: `Create new single type`,
-  })
-    .click();
-
-  await page.locator(`input[name=displayName]`)
-    .fill(`Test`);
-
-  await page.getByRole(`button`, {
-    name: `Continue`,
-  })
-    .click();
-
-  await page.getByText(`Add new field`)
-    .first()
-    .click();
-
-  await page.getByText(`Dynamic zone`)
-    .click();
-
-  await page.locator(`input[name=name]`)
-    .fill(`blocks`);
-
-  await page.getByRole(`button`, {
-    name: `Add components to the zone`,
-  })
-    .click();
-
-  await page.getByText(`Use an existing component`)
-    .click();
-
-  await page.getByRole(`combobox`)
-    .click();
-
-  await page.getByRole(`option`, {
-    name: `shared`,
-    exact: true,
-  })
-    .click();
-
-  await page.click(`body`);
-
-  await page.getByRole(`button`, {
-    name: `Finish`,
-  })
-    .click();
-
-  await page.getByRole(`button`, {
-    name: `Save`,
-  })
-    .click();
-
-  await page.waitForTimeout(30000);
-
-  await page.goto(process.env.API_URL || `http://localhost:1337`, {
-    waitUntil: `networkidle`,
+test.describe(`Dynamic addition of new pages`, () => {
+  test.afterEach(async () => {
+    await cleanupOtherPageByTitle({
+      title: OTHER_PAGE_TITLE,
+    });
   });
 
-  await page.getByRole(`link`, {
-    name: `Content Manager`,
-  })
-    .click();
+  test(`Dynamic addition of new pages`, async ({
+    goto,
+    page,
+  }: {
+    page: Page;
+    goto: CustomTestFixtures['goto'];
+  }) => {
+    await page.goto(process.env.API_URL || `http://localhost:1337`);
 
-  await page.getByRole(`link`, {
-    name: `Test`,
-  })
-    .click();
+    await page.locator(`input[name=email]`)
+      .fill(`admin@init-strapi-admin.strapi.io`);
 
-  await page.getByRole(`button`, {
-    name: `Add a component to blocks`,
-  })
-    .click();
+    await page.locator(`input[name=password]`)
+      .fill(`admin`);
 
-  await page.getByRole(`button`, {
-    name: `Категории`,
-    exact: true,
-  })
-    .click();
+    await page.getByText(`Login`)
+      .click();
 
-  await page.getByText(`Категории`, {
-    exact: true,
-  })
-    .click();
+    await page.getByText(`Content Manager`)
+      .click();
 
-  await page.locator(`input[name='blocks.0.title']`)
-    .fill(`Test category`);
+    await page.getByRole(`link`, {
+      name: `Другие страницы`,
+    })
+      .click();
 
-  await page.getByRole(`button`, {
-    name: `Publish`,
-  })
-    .click();
+    await page.getByText(`Create new entry`)
+      .first()
+      .click();
 
-  await page.getByText(`Страница другое`)
-    .click();
+    await page.locator(`input[name=title]`)
+      .fill(OTHER_PAGE_TITLE);
 
-  await page.getByRole(`button`, {
-    name: `Add a component to blocks`,
-  })
-    .click();
+    await page.getByRole(`button`, {
+      name: `Add a component to blocks`,
+    })
+      .click();
 
-  await page.getByRole(`button`, {
-    name: `Категории`,
-    exact: true,
-  })
-    .click();
+    await page.getByRole(`button`, {
+      name: `Категории`,
+      exact: true,
+    })
+      .click();
 
-  await page.getByText(`Категории`, {
-    exact: true,
-  })
-    .click();
+    await page.getByText(`Категории`, {
+      exact: true,
+    })
+      .click();
 
-  await page.getByText(`No entry yet. Click to add one.`)
-    .click();
+    await page.locator(`input[name='blocks.0.title']`)
+      .fill(`Test category`);
 
-  await page.locator(`input[name='blocks.0.categories.0.title']`)
-    .fill(`Test`);
+    await page.getByRole(`button`, {
+      name: `Publish`,
+    })
+      .click();
 
-  await page.locator(`input[name='blocks.0.categories.0.slug']`)
-    .fill(`/test`);
+    await page.waitForTimeout(1500);
 
-  await page.getByRole(`button`, {
-    name: `Publish`,
-  })
-    .click();
+    await goto(`/other`);
 
-  await page.waitForTimeout(1500);
+    await page.getByText(OTHER_PAGE_TITLE)
+      .click();
 
-  await goto(`/other`);
-
-  await page.getByText(`Test`)
-    .click();
-
-  await page.getByText(`Test category`)
-    .isVisible();
+    await page.getByText(`Test category`)
+      .isVisible();
+  });
 });
+
+async function cleanupOtherPageByTitle({
+  title,
+}: {
+  title: string;
+}) {
+  try {
+    const otherPageResponse = (await axios.get(`${OTHER_PAGE_API_ENDPOINT}?populate=*`)).data;
+
+    const testOtherPage = otherPageResponse.data.find((item: OtherPage) => item.title === title);
+
+    if (testOtherPage) {
+      const response = await axios.delete(`${OTHER_PAGE_API_ENDPOINT}/${testOtherPage.documentId}`);
+
+      await expect(response.status, `Other page should be deleted with status 204`)
+        .toEqual(HttpStatusCode.NoContent);
+    }
+  } catch (error) {
+    throw new Error(`Failed to delete test other page: ${(error as AxiosError).message}`);
+  }
+}
