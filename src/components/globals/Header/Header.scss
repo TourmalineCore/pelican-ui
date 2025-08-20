@@ -54,6 +54,25 @@
     }
   }
 
+  &__contacts {
+    @include desktop {
+      margin-right: 16px;
+    }
+
+    @include desktop-xl {
+      margin-right: 24px;
+    }
+  }
+
+  &__contact {
+    @include desktop {
+      @include caption-1-medium;
+
+      display: block;
+      color: $color-green-dark;
+    }
+  }
+
   &__wrapper,
   &__right,
   &__left,
