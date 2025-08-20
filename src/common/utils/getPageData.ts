@@ -100,7 +100,7 @@ export async function getPageData({
           `blocks.seo`,
           `blocks.image`,
         ],
-        isOtherPages: true,
+        isOtherPage: true,
         preview,
       });
   }
@@ -110,16 +110,16 @@ async function getData({
   slug,
   populate,
   preview,
-  isOtherPages = false,
+  isOtherPage = false,
 }: {
   slug: string;
   populate: string[];
   preview: boolean;
-  isOtherPages?: boolean;
+  isOtherPage?: boolean;
 }) {
   let pageData: PageData;
 
-  if (isOtherPages) {
+  if (isOtherPage) {
     const response = await apiFetch(`/other-pages?${qs.stringify({
       populate,
       status: preview ? `draft` : `published`,
