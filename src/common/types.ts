@@ -78,7 +78,7 @@ export type GlobalComponentProps = {
     id: number;
     name: string;
     link: string;
-    icon: StaticImageData;
+    icon?: StaticImageData;
     alt: string;
   }[];
   footerUserLinks: {

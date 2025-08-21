@@ -210,12 +210,14 @@ export function Footer({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image
-                  className="footer__official-link-logo"
-                  src={icon}
-                  alt={alt}
-                  aria-hidden="true"
-                />
+                {icon && (
+                  <Image
+                    className="footer__official-link-logo"
+                    src={icon}
+                    alt={alt}
+                    aria-hidden="true"
+                  />
+                )}
                 <span className="footer__official-link-name">{name}</span>
               </Link>
             </li>

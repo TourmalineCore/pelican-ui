@@ -2,7 +2,6 @@ import iconAdministration1 from '@/public/images/footer/chelyabinsk-coat-of-arms
 import iconAdministration2 from '@/public/images/footer/chelyabinsk-coat-of-arms-2.png';
 import iconAdministration3 from '@/public/images/footer/chelyabinsk-coat-of-arms-3.png';
 import iconAdministration4 from '@/public/images/footer/russia-coat-of-arms.png';
-import iconAdministration5 from '@/public/images/footer/default-icon.png';
 import { AppRoute } from '../../enum';
 import { GlobalComponentProps } from '../../types';
 
@@ -86,9 +85,8 @@ export const MOCK_OFFICIAL_LINKS: GlobalComponentProps['officialLinks'] = [
   },
   {
     id: 7,
-    name: `Портал Культура.РФ`,
+    name: `КУЛЬТУРА.РФ`,
     link: `https://www.culture.ru/`,
-    icon: iconAdministration5,
-    alt: ``,
+    alt: `Портал Культура.РФ`,
   },
 ];
