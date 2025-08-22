@@ -197,7 +197,6 @@ export function Footer({
             name,
             link,
             icon,
-            alt,
           }) => (
             <li
               key={id}
@@ -213,8 +212,8 @@ export function Footer({
                 {icon && (
                   <Image
                     className="footer__official-link-logo"
-                    src={icon}
-                    alt={alt}
+                    src={icon.path}
+                    alt={icon.alt}
                     aria-hidden="true"
                   />
                 )}
