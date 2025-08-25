@@ -36,21 +36,22 @@
     }
   }
 
-  &__contact-button {
+  &__contacts {
     @include desktop {
-      @include caption-1-medium;
-
       margin-right: 16px;
-      padding: 12px 24px;
-      height: 49px;
-      min-width: 141px;
     }
 
     @include desktop-xl {
       margin-right: 24px;
-      padding: 16px 40px;
-      height: 68px;
-      min-width: 214px;
+    }
+  }
+
+  &__contact {
+    @include desktop {
+      @include caption-1-medium;
+
+      display: block;
+      color: $color-green-dark;
     }
   }
 

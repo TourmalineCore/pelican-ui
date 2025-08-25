@@ -21,6 +21,7 @@ const expectedDesktopHeaderFocusOrder = [
     string: `header-navigation-link`,
   }),
   `header-contact-button`,
+  `header-contact-button`,
   `header-tickets-popup-button`,
 ];
 
