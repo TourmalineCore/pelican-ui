@@ -97,8 +97,8 @@ export async function getPageData({
           `blocks.infoCard`,
           `blocks.scheduleCard`,
           `blocks.scheduleCard.timetable`,
-          `blocks.seo`,
           `blocks.image`,
+          `seo`,
         ],
         isOtherPage: true,
         preview,
@@ -169,15 +169,13 @@ async function getData({
     block,
   })));
 
-  const seoBlock = blocks.find((block) => block.__component === `shared.seo`);
-
   return {
     blocks,
-    ...((pageData.data?.seo || seoBlock) && {
+    ...(pageData.data?.seo && {
       seo: {
-        metaTitle: pageData.data?.seo?.metaTitle || seoBlock?.metaTitle,
-        metaDescription: pageData.data?.seo?.metaDescription || seoBlock?.metaDescription,
-        metaKeywords: pageData.data?.seo?.keywords || seoBlock?.keywords,
+        metaTitle: pageData.data?.seo?.metaTitle,
+        metaDescription: pageData.data?.seo?.metaDescription,
+        metaKeywords: pageData.data?.seo?.keywords,
       },
     }),
   };
