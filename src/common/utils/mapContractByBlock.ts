@@ -7,14 +7,13 @@ import {
   HomeMapCardComponent,
   HomeTicketsComponent,
   SharedTicketsComponent,
-  SharedCardsComponent,
   DiscountsTermsComponent,
   DiscountsCategoriesComponent,
   VisitingRulesVisitingRulesMainComponent,
   VisitingRulesWarningsComponent,
   VisitingRulesPhotosPolicyComponent,
   VisitingRulesEmergencyPhonesComponent,
-  SharedCategoriesComponent,
+  SharedCardsComponent,
 } from "../api-types";
 import { BlockTypes } from "../enum";
 import { Block } from "../types";
@@ -154,16 +153,6 @@ export function mapContractByBlock({
             alternativeText: card.image?.alternativeText || ``,
           },
         })),
-      };
-
-    case BlockTypes.SHARED_CATEGORIES:
-      const sharedCategoriesBlock = block as SharedCategoriesComponent;
-
-      return {
-        id: crypto.randomUUID(),
-        __component: sharedCategoriesBlock.__component,
-        categoriesTitle: sharedCategoriesBlock.title,
-        categories: sharedCategoriesBlock.categories,
       };
 
     case BlockTypes.DISCOUNTS_TERMS:
