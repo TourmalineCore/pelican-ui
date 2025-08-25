@@ -66,6 +66,11 @@ export type VisitingRulesPageProps = {
   )[];
 };
 
+export type OtherPageProps = {
+  title: string;
+  seo?: Seo;
+};
+
 // Component
 
 export type GlobalComponentProps = {
@@ -401,6 +406,9 @@ export type Block =
   | SharedTicketsComponent
   | SharedCardsComponent & {
     __component: BlockTypes;
+  }
+  | SharedSeoComponent & {
+    __component: 'shared.seo';
   }
   | DiscountsTermsComponent
   | DiscountsCategoriesComponent
