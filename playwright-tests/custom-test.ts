@@ -166,10 +166,10 @@ export const test = base.extend<CustomTestFixtures>({
         width,
       });
 
-      const archorLink = await page.getByTestId(testId)
+      const contactLink = await page.getByTestId(testId)
         .first();
 
-      await expect(archorLink)
+      await expect(contactLink)
         .toHaveAttribute(`href`, path);
     };
 

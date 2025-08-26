@@ -32,7 +32,13 @@ test.describe(`HeaderComponentTests`, () => {
   }) => {
     await checkContactLink({
       width: 1366,
-      testId: `header-contact-button`,
+      testId: `header-tel-link`,
+      path: /^tel:/,
+    });
+
+    await checkContactLink({
+      width: 1366,
+      testId: `header-email-link`,
       path: /^mailto:/,
     });
   });
