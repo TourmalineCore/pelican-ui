@@ -93,14 +93,22 @@ export function Header({
           )}
           {isDesktop && (
             <div className="header__buttons">
-              <Link
-                className="button button--secondary header__contact-button"
-                href={`mailto:${email}`}
-                aria-label="Связаться с нами по почте"
-                data-testid="header-contact-button"
-              >
-                Связаться
-              </Link>
+              <div className="header__contacts">
+                <Link
+                  className="header__contact"
+                  href={`tel:${phone}`}
+                  data-testid="header-contact-button"
+                >
+                  {phone}
+                </Link>
+                <Link
+                  className="header__contact"
+                  href={`mailto:${email}`}
+                  data-testid="header-contact-button"
+                >
+                  {email}
+                </Link>
+              </div>
               <Button
                 className="header__ticket-button"
                 theme="primary"

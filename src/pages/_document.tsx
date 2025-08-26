@@ -85,6 +85,12 @@ class AppDocument extends Document {
             rel="manifest"
             href="/site.webmanifest"
           />
+
+          {/* ToDo: Delete when verification is complete */}
+          <meta
+            name="yandex-verification"
+            content="33783565b730b2de"
+          />
         </Head>
 
         <body>
