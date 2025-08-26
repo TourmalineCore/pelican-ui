@@ -5,6 +5,8 @@ on:
     branches:
       - master
       - feature/*
+  # to allow to wait for a docker image to be published to proceed in another workflow
+  workflow_call:
 
 jobs:
   push_to_registry:
@@ -16,5 +18,7 @@ jobs:
           CDN_DOMAIN=cdn.chelzoo.ru
           CORS_ORIGIN=https://chelzoo.ru
           ENABLE_SEO_INDEXING=true
+        # build-env is used to write current env to digest name to be able to build several docker images for several envs in one workflow
+        build-env: "prod"
     # without this it cannot login to the registry
     secrets: inherit

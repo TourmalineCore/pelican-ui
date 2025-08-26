@@ -59,11 +59,11 @@ type Block = HeroComponentProps
 export const BlockRenderer = ({
   slug,
   block,
-  email,
+  phone,
 }: {
   slug: string;
   block: Block;
-  email: GlobalComponentProps['email'];
+  phone: GlobalComponentProps['phone'];
 }) => {
   const normalizedSlug = normalizeSlug({
     slug,
@@ -78,7 +78,7 @@ export const BlockRenderer = ({
         scheduleTimetables={block.scheduleTimetables}
         infoCardTitle={block.infoCardTitle}
         infoCardDescription={block.infoCardDescription}
-        email={email}
+        phone={phone}
       />
     );
   }

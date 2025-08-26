@@ -253,7 +253,7 @@ export default function ComponentsPage() {
     return (
       <HomepageHero
         {...HOME_MOCK_HERO}
-        email={MOCK_EMAIL}
+        phone={MOCK_PHONE}
       />
     );
   }

@@ -13,6 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: `./playwright-tests/e2e`,
+  testIgnore: [`/load-validation/**`],
   outputDir: `./playwright-tests/playwright-test-results/e2e-tests`,
   timeout: 45000,
   /* Run tests in files in parallel */

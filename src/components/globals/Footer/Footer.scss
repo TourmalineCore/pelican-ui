@@ -1,4 +1,6 @@
 .footer {
+  $this: &;
+
   z-index: $footer;
   flex-shrink: 0;
   color: $color-black-60;
@@ -81,6 +83,19 @@
   }
 
   &__official-link-item {
+    &:last-child {
+      #{$this}__official-link-name {
+        padding: 12px 0;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.4;
+
+        @include desktop-xl {
+          font-size: 26px;
+        }
+      }
+    }
+
     @include tablet {
       padding-right: 6px;
 
@@ -122,6 +137,7 @@
   }
 
   &__official-link-logo {
+    margin-right: 12px;
     width: 38px;
     filter: grayscale(1);
 
@@ -134,12 +150,12 @@
     }
 
     @include desktop-xl {
+      margin-right: 22px;
       width: 78px;
     }
   }
 
   &__official-link-name {
-    margin-left: 12px;
     max-width: 220px;
 
     @include tablet {
@@ -151,7 +167,6 @@
     }
 
     @include desktop-xl {
-      margin-left: 22px;
       max-width: 370px;
     }
   }

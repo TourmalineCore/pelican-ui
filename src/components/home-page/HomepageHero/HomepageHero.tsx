@@ -9,8 +9,8 @@ export function HomepageHero({
   scheduleTimetables,
   infoCardTitle,
   infoCardDescription,
-  email,
-}: Omit<HeroComponentProps, 'id' | '__component'> & Pick<GlobalComponentProps, 'email'>) {
+  phone,
+}: Omit<HeroComponentProps, 'id' | '__component'> & Pick<GlobalComponentProps, 'phone'>) {
   const currentDate = new Date();
 
   return (
@@ -24,7 +24,7 @@ export function HomepageHero({
         month: currentDate.getMonth(),
       })}
       infoCardDescription={infoCardDescription}
-      email={email}
+      phone={phone}
       isFirstBlock={false}
       isLastBlock={false}
     />

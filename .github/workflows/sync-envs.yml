@@ -1,0 +1,45 @@
+name: Trigger Local And Prod Envs
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  # this is needed to wait for the new docker image to be build and published to the registry
+  # so that we can use the image to run ui of the needed commit related version as part of local-env
+  # the idea is taken from here https://stackoverflow.com/a/71489231
+  push_local_env_to_registry:
+    uses: ./.github/workflows/local-env-docker-build-and-push.yml
+    # without this it cannot login to the registry
+    secrets: inherit
+
+  push_prod_env_to_registry:
+    uses: ./.github/workflows/prod-env-docker-build-and-push.yml
+    secrets: inherit
+
+  trigger_local_env:
+    needs: push_local_env_to_registry
+    uses: TourmalineCore/pelican-github-workflows/.github/workflows/sync-env.yml@master
+    with:
+      # pelican-env is used to define which env will be synced
+      pelican-env: pelican-local-env
+      # We use CDN at prod, that enabling or disabling only during build and can't be enabled/disabled at runtime.   
+      # Prefix is used to build several images, the first one with disabled CDN for Local Env
+      # the second and the third ones with enabled CDN and different CDN_DOMAIN's for Prod and Staging Envs
+      # prefix is also used to choose which environment will be used
+      prefix: local-env
+      # path-to-values is used to define where the values files is stored
+      path-to-values: deploy/values-ui.yaml.gotmpl
+      # path-to-helmfile is used to define where the helmfile is stored
+      path-to-helmfile: deploy/helmfile.yaml
+    secrets: inherit
+
+  trigger_prod_env:
+    needs: push_prod_env_to_registry
+    uses: TourmalineCore/pelican-github-workflows/.github/workflows/sync-env.yml@master
+    with: 
+      pelican-env: pelican-prod-env
+      path-to-values: deploy/values-ui.yaml.gotmpl
+      path-to-helmfile: deploy/helmfile.yaml
+    secrets: inherit
