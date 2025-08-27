@@ -99,7 +99,6 @@ jobs:
         env:
           FRONTEND_URL: http://localhost:40110 
           API_URL: 'http://localhost:40110/cms/api'
-          STRAPI_URL: 'http://localhost:40110/cms'
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
