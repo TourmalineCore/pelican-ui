@@ -49,9 +49,7 @@ export function Cookie({
   );
 
   function acceptCookie() {
-    if (!isComponentPage) {
-      localStorage.setItem(STORAGE_KEY, `true`);
-    }
+    localStorage.setItem(STORAGE_KEY, `true`);
 
     setIsVisible(false);
   }
