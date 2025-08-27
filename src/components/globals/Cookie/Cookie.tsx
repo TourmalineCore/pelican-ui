@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { getCookie, setCookie } from 'cookies-next';
 import { Button } from '../Button/Button';
 
-const COOKIE_ACCEPT = `cookieAccept`;
+const STORAGE_KEY = `cookieAccept`;
 const MOCK_COOKIE_TEXT = `Мы обрабатываем Cookies для аналитики и маркетинга, чтобы вам было удобно пользоваться нашим веб-сайтом.`;
 const MOCK_COOKIE_BUTTON_TEXT = `Хорошо`;
 
@@ -14,7 +13,7 @@ export function Cookie({
   const [isVisible, setIsVisible] = useState(!!isComponentPage);
 
   useEffect(() => {
-    if (getCookie(COOKIE_ACCEPT) !== `true`) {
+    if (!localStorage.getItem(STORAGE_KEY)) {
       setIsVisible(true);
     }
   }, []);
@@ -51,7 +50,7 @@ export function Cookie({
 
   function acceptCookie() {
     if (!isComponentPage) {
-      setCookie(COOKIE_ACCEPT, true);
+      localStorage.setItem(STORAGE_KEY, `true`);
     }
 
     setIsVisible(false);
