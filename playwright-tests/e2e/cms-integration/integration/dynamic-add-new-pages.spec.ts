@@ -107,7 +107,68 @@ test.describe(`Dynamic addition of new pages`, () => {
     })
       .click();
 
-    await page.waitForTimeout(1500);
+    await page.waitForTimeout(1000);
+
+    await page.getByText(`Settings`)
+      .click();
+
+    await page.getByRole(`link`, {
+      name: `Configuration`,
+    })
+      .last()
+      .click();
+
+    await page.waitForTimeout(2000);
+
+    const isInputFilled = await page.locator(`input[name=baseURL]`)
+      .evaluate((el: any) => el.value.length > 0);
+
+    if (!isInputFilled) {
+      await page.locator(`input[name=baseURL]`)
+        .fill(`http://localhost`);
+
+      await page.getByText(`Add another field to this collection type`)
+        .click();
+
+      await page.locator(`div[name=type]`)
+        .click();
+
+      await page.getByText(`Другие страницы`)
+        .click();
+
+      await page.locator(`div[name=langcode]`)
+        .click();
+
+      await page.getByText(`en`, {
+        exact: true,
+      })
+        .click();
+
+      await page.locator(`input[name=pattern]`)
+        .fill(`/other-pages/[slug]`);
+
+      await page.locator(`div[name=priority]`)
+        .click();
+
+      await page.getByText(`0.5`, {
+        exact: true,
+      })
+        .click();
+
+      await page.locator(`div[name=frequency]`)
+        .click();
+
+      await page.getByText(`Daily`, {
+        exact: true,
+      })
+        .click();
+
+      await page.getByText(`Confirm`)
+        .click();
+
+      await page.getByText(`Save`)
+        .click();
+    }
 
     await goto(`/other`);
 
@@ -147,7 +208,7 @@ test.describe(`Dynamic addition of new pages`, () => {
     // Check sitemap
     await goto(`/api/get-sitemap`);
 
-    await expect(page.getByText(`<loc>https://localhost/other-pages/e2e-ui-uslugi</loc>`))
+    await expect(page.getByText(`<loc>http://localhost/other-pages/e2e-ui-uslugi</loc>`))
       .toBeVisible();
   });
 });
