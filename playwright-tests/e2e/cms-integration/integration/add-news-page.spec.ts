@@ -77,6 +77,65 @@ test.describe(`Addition of a news article page`, () => {
     })
       .click();
 
+    await page.waitForTimeout(1000);
+
+    // adding sitemap
+
+    await page.getByText(`Settings`)
+      .click();
+
+    await page.getByText(`Configuration`)
+      .last()
+      .click();
+
+    await page.waitForTimeout(1000);
+
+    await page.locator(`input`)
+      .first()
+      .fill(`http://localhost:3000/`);
+
+    await page.getByText(`Add another field to this collection type`)
+      .click();
+
+    await page.waitForTimeout(1000);
+
+    await page.locator(`div[name=type]`)
+      .click();
+
+    await page.getByText(`Новости`)
+      .click();
+
+    await page.locator(`div[name=langcode]`)
+      .click();
+
+    await page.getByText(`Default Language`)
+      .last()
+      .click();
+
+    await page.locator(`input[name=pattern]`)
+      .fill(`news/[slug]`);
+
+    await page.locator(`div[name=priority]`)
+      .click();
+
+    await page.getByText(`0.1`)
+      .last()
+      .click();
+
+    await page.locator(`div[name=frequency]`)
+      .click();
+
+    await page.getByText(`Daily`, {
+      exact: true,
+    })
+      .click();
+
+    await page.getByText(`Confirm`)
+      .click();
+
+    await page.getByText(`Save`)
+      .click();
+
     await page.waitForTimeout(1500);
 
     await goto(`/news`);
@@ -105,6 +164,12 @@ test.describe(`Addition of a news article page`, () => {
 
     expect(metaDescription)
       .toBe(SEO_META_DESCRIPTION);
+
+    // Check sitemap
+    await goto(`/api/get-sitemap`);
+
+    await expect(page.locator(`html`))
+      .toContainText(`e2e-ui-testovaya-novost`);
   });
 });
 
