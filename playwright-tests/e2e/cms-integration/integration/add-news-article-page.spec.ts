@@ -90,51 +90,58 @@ test.describe(`Addition of a news article page`, () => {
 
     await page.waitForTimeout(1000);
 
-    await page.locator(`input`)
-      .first()
-      .fill(`http://localhost:3000/`);
+    const rows = await page.locator(`table[role=grid] > tbody > tr`)
+      .count();
+    const isSitemapConfigExist = rows > 0;
 
-    await page.getByText(`Add another field to this collection type`)
-      .click();
+    if (!isSitemapConfigExist) {
+      await page.locator(`input`)
+        .first()
+        .fill(`http://localhost:3000/`);
 
-    await page.waitForTimeout(1000);
+      await page.getByText(`Add another field to this collection type`)
+        .click();
 
-    await page.locator(`div[name=type]`)
-      .click();
+      await page.waitForTimeout(1000);
 
-    await page.getByText(`Новости`)
-      .click();
+      await page.locator(`div[name=type]`)
+        .click();
 
-    await page.locator(`div[name=langcode]`)
-      .click();
+      await page.getByText(`Новости`)
+        .click();
 
-    await page.getByText(`Default Language`)
-      .last()
-      .click();
+      await page.locator(`div[name=langcode]`)
+        .click();
 
-    await page.locator(`input[name=pattern]`)
-      .fill(`news/[slug]`);
+      await page.getByText(`Default Language`)
+        .last()
+        .click();
 
-    await page.locator(`div[name=priority]`)
-      .click();
+      await page.locator(`input[name=pattern]`)
+        .fill(`news/[slug]`);
 
-    await page.getByText(`0.1`)
-      .last()
-      .click();
+      await page.locator(`div[name=priority]`)
+        .click();
 
-    await page.locator(`div[name=frequency]`)
-      .click();
+      await page.getByText(`0.1`)
+        .last()
+        .click();
 
-    await page.getByText(`Daily`, {
-      exact: true,
-    })
-      .click();
+      await page.locator(`div[name=frequency]`)
+        .click();
 
-    await page.getByText(`Confirm`)
-      .click();
+      await page.getByText(`Daily`, {
+        exact: true,
+      })
+        .click();
 
-    await page.getByText(`Save`)
-      .click();
+      await page.getByText(`Confirm`)
+        .click();
+
+      await page.getByText(`Save`)
+
+        .click();
+    }
 
     await page.waitForTimeout(1500);
 
