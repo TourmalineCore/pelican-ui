@@ -33,7 +33,7 @@ test.describe(`Addition of a news article page`, () => {
     page: Page;
     goto: CustomTestFixtures['goto'];
   }) => {
-    await page.goto(process.env.API_URL || `http://localhost:1337`);
+    await page.goto(process.env.STRAPI_URL || `http://localhost:1337`);
 
     await page.locator(`input[name=email]`)
       .fill(`admin@init-strapi-admin.strapi.io`);
