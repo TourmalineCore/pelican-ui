@@ -36,10 +36,10 @@ test.describe(`Addition of a news article page`, () => {
     await page.goto(process.env.STRAPI_URL || `http://localhost:1337`);
 
     await page.locator(`input[name=email]`)
-      .fill(`admin@init-strapi-admin.strapi.io`);
+      .fill(process.env.STRAPI_EMAIL || `admin@init-strapi-admin.strapi.io`);
 
     await page.locator(`input[name=password]`)
-      .fill(`admin`);
+      .fill(process.env.STRAPI_PASSWORD || `admin`);
 
     await page.getByText(`Login`)
       .click();
@@ -99,50 +99,54 @@ test.describe(`Addition of a news article page`, () => {
         .first()
         .fill(`http://localhost:3000/`);
 
-      await page.getByText(`Add another field to this collection type`)
-        .click();
+      const isTestSitemapCreated = await page.getByText(`/news-test/[slug]`)
+        .isVisible();
 
-      await page.waitForTimeout(1000);
+      if (!isTestSitemapCreated) {
+        await page.getByText(`Add another field to this collection type`)
+          .click();
 
-      await page.locator(`div[name=type]`)
-        .click();
+        await page.waitForTimeout(1000);
 
-      await page.getByText(`Новости`)
-        .click();
+        await page.locator(`div[name=type]`)
+          .click();
 
-      await page.locator(`div[name=langcode]`)
-        .click();
+        await page.getByText(`Новости`)
+          .click();
 
-      await page.getByText(`Default Language`)
-        .last()
-        .click();
+        await page.locator(`div[name=langcode]`)
+          .click();
 
-      await page.locator(`input[name=pattern]`)
-        .fill(`news/[slug]`);
+        await page.getByText(`Default Language`)
+          .last()
+          .click();
 
-      await page.locator(`div[name=priority]`)
-        .click();
+        await page.locator(`input[name=pattern]`)
+          .fill(`news-test/[slug]`);
 
-      await page.getByText(`0.1`)
-        .last()
-        .click();
+        await page.locator(`div[name=priority]`)
+          .click();
 
-      await page.locator(`div[name=frequency]`)
-        .click();
+        await page.getByText(`0.1`)
+          .last()
+          .click();
 
-      await page.getByText(`Daily`, {
-        exact: true,
-      })
-        .click();
+        await page.locator(`div[name=frequency]`)
+          .click();
 
-      await page.getByText(`Confirm`)
-        .click();
+        await page.getByText(`Daily`, {
+          exact: true,
+        })
+          .click();
 
-      await page.getByText(`Save`)
+        await page.getByText(`Confirm`)
+          .click();
 
-        .click();
+        await page.getByText(`Save`)
+
+          .click();
+      }
     }
-
     await page.waitForTimeout(1500);
 
     await goto(`/news`);
