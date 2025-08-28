@@ -9,6 +9,7 @@ import {
   SharedCardsComponent,
   SharedHeroComponent,
   SharedImageWithButtonGridComponent,
+  SharedMarkdownBlockComponent,
   SharedSeoComponent,
   SharedTextAndMediaComponent,
   SharedTicketsComponent,
@@ -396,7 +397,12 @@ export type VisitingRulesEmergencyPhonesComponentProps = Pick<VisitingRulesCompo
   cards: Omit<VisitingRulesCardProps, 'iconUrl'>[];
 };
 
-export type Block =
+export type MarkdownBlockProps = {
+  __component: BlockTypes.SHARED_MARKDOWN_BLOCK;
+  markdown: string;
+};
+
+export type ApiBlock =
   SharedHeroComponent
   | HomeServicesComponent
   | SharedTextAndMediaComponent
@@ -404,12 +410,11 @@ export type Block =
   | HomeMapCardComponent
   | HomeTicketsComponent
   | SharedTicketsComponent
-  | SharedCardsComponent & {
-    __component: BlockTypes;
-  }
+  | SharedCardsComponent
   | SharedSeoComponent & {
     __component: 'shared.seo';
   }
+  | SharedMarkdownBlockComponent
   | DiscountsTermsComponent
   | DiscountsCategoriesComponent
   | VisitingRulesVisitingRulesMainComponent
@@ -418,7 +423,7 @@ export type Block =
 
 export type PageData = {
   data: {
-    blocks: Block[];
+    blocks: ApiBlock[];
     seo?: SharedSeoComponent;
   };
 } | null;

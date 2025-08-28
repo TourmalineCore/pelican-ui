@@ -16,12 +16,12 @@ import {
   SharedCardsComponent,
 } from "../api-types";
 import { BlockTypes } from "../enum";
-import { Block } from "../types";
+import { ApiBlock } from "../types";
 
 export function mapContractByBlock({
   block,
 }: {
-  block: Block;
+  block: ApiBlock;
 }) {
   switch (`${block.__component}`) {
     case BlockTypes.SHARED_HERO:

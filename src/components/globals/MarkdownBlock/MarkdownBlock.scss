@@ -1,0 +1,57 @@
+.markdown-block {
+  @include body-2-regular;
+
+  color: $color-black-75;
+
+  .plyr,
+  img {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    border-radius: 32px;
+    height: auto;
+
+    @include tablet-xl {
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+
+    @include desktop-xl {
+      margin-top: 40px;
+      margin-bottom: 40px;
+      border-radius: 64px;
+    }
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  br {
+    display: none;
+  }
+
+  p {
+    margin-top: 12px;
+
+    @include tablet {
+      margin-top: 16px;
+    }
+
+    @include tablet-xl {
+      margin-top: 20px;
+    }
+
+    @include desktop {
+      margin-top: 24px;
+    }
+  }
+
+  li {
+    list-style-position: inside;
+    padding-left: 12px;
+  }
+}
