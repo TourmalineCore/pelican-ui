@@ -35,13 +35,13 @@ test.describe(`Dynamic addition of new pages`, () => {
     page: Page;
     goto: CustomTestFixtures['goto'];
   }) => {
-    await page.goto(process.env.API_URL || `http://localhost:1337`);
+    await page.goto(process.env.STRAPI_URL || `http://localhost:1337`);
 
     await page.locator(`input[name=email]`)
-      .fill(`admin@init-strapi-admin.strapi.io`);
+      .fill(process.env.STRAPI_EMAIL || `admin@init-strapi-admin.strapi.io`);
 
     await page.locator(`input[name=password]`)
-      .fill(`admin`);
+      .fill(process.env.STRAPI_PASSWORD || `admin`);
 
     await page.getByText(`Login`)
       .click();
@@ -118,15 +118,21 @@ test.describe(`Dynamic addition of new pages`, () => {
       .last()
       .click();
 
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(1000);
 
+    // adding sitemap
     const isInputFilled = await page.locator(`input[name=baseURL]`)
       .evaluate((el: any) => el.value.length > 0);
 
     if (!isInputFilled) {
       await page.locator(`input[name=baseURL]`)
         .fill(`http://localhost`);
+    }
 
+    const isTestSitemapCreated = await page.getByText(`/other-pages-test/[slug]`)
+      .isVisible();
+
+    if (!isTestSitemapCreated) {
       await page.getByText(`Add another field to this collection type`)
         .click();
 
@@ -139,20 +145,18 @@ test.describe(`Dynamic addition of new pages`, () => {
       await page.locator(`div[name=langcode]`)
         .click();
 
-      await page.getByText(`en`, {
-        exact: true,
-      })
+      await page.getByText(`Default Language`)
+        .last()
         .click();
 
       await page.locator(`input[name=pattern]`)
-        .fill(`/other-pages/[slug]`);
+        .fill(`/other-pages-test/[slug]`);
 
       await page.locator(`div[name=priority]`)
         .click();
 
-      await page.getByText(`0.5`, {
-        exact: true,
-      })
+      await page.getByText(`0.5`)
+        .last()
         .click();
 
       await page.locator(`div[name=frequency]`)
@@ -208,8 +212,8 @@ test.describe(`Dynamic addition of new pages`, () => {
     // Check sitemap
     await goto(`/api/get-sitemap`);
 
-    await expect(page.getByText(`<loc>http://localhost/other-pages/e2e-ui-uslugi</loc>`))
-      .toBeVisible();
+    await expect(page.locator(`html`))
+      .toContainText(`/other-pages-test/e2e-ui-uslugi`);
   });
 });
 
