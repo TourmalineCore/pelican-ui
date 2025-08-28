@@ -28,7 +28,7 @@ export function ImageWithButtonGrid({
     >
       <div className="image-with-button-grid__wrapper container">
         <div className="image-with-button-grid__text">
-          <h2 className="image-with-button-grid__title">{title}</h2>
+          {title && <h2 className="image-with-button-grid__title">{title}</h2>}
           <p className="image-with-button-grid__description">{description}</p>
         </div>
         <ImageWithButtonGridImages

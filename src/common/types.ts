@@ -213,7 +213,7 @@ export type Timetable = {
 export type TextAndMediaComponentProps = {
   id: number;
   __component: BlockTypes.SHARED_TEXT_AND_MEDIA;
-  title: string;
+  title?: string;
   description: string;
   media: {
     alternativeText: string;
@@ -266,7 +266,7 @@ export type CardProps = {
 export type ImageWithButtonGridComponentProps = {
   id: number;
   __component: BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID;
-  title: string;
+  title?: string;
   description: string;
   largeImage: Image;
   smallImage?: Image;
