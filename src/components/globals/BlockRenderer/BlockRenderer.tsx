@@ -19,6 +19,7 @@ import {
   VisitingRulesPhotosPolicyComponentProps,
   VisitingRulesEmergencyPhonesComponentProps,
   MarkdownBlockProps,
+  StepsBlockProps,
 } from '@/src/common/types';
 import { normalizeSlug } from '@/src/common/utils/normalizeSlug';
 import { Cards } from '../Cards/Cards';
@@ -40,6 +41,7 @@ import { TextAndMedia } from '../TextAndMedia/TextAndMedia';
 import { Tickets } from '../Tickets/Tickets';
 import { Map } from '../../home-page/Map/Map';
 import { MarkdownBlock } from '../MarkdownBlock/MarkdownBlock';
+import { Steps } from '../Steps/Steps';
 
 type Block = HeroComponentProps
   | SharedTicketsComponentProps
@@ -57,7 +59,8 @@ type Block = HeroComponentProps
   | VisitingRulesWarningsComponentProps
   | VisitingRulesPhotosPolicyComponentProps
   | VisitingRulesEmergencyPhonesComponentProps
-  | MarkdownBlockProps;
+  | MarkdownBlockProps
+  | StepsBlockProps;
 
 export const BlockRenderer = ({
   slug,
@@ -288,6 +291,15 @@ export const BlockRenderer = ({
     return (
       <MarkdownBlock
         markdown={block.markdown}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.SHARED_STEPS_BLOCK) {
+    return (
+      <Steps
+        subtitle={block.subtitle}
+        stepsCards={block.stepsCards}
       />
     );
   }

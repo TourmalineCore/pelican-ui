@@ -35,6 +35,7 @@ export enum BlockTypes {
   SHARED_CATEGORIES = `shared.categories`,
   SHARED_ARTICLE = `shared.article`,
   SHARED_MARKDOWN_BLOCK = `shared.markdown-block`,
+  SHARED_STEPS_BLOCK = `shared.steps`,
 
   HOME_SERVICES = `home.services`,
   HOME_TICKETS = `home.tickets`,

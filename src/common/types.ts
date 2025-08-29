@@ -11,6 +11,7 @@ import {
   SharedImageWithButtonGridComponent,
   SharedMarkdownBlockComponent,
   SharedSeoComponent,
+  SharedStepsComponent,
   SharedTextAndMediaComponent,
   SharedTicketsComponent,
   VisitingRulesEmergencyPhonesComponent,
@@ -402,6 +403,17 @@ export type MarkdownBlockProps = {
   markdown: string;
 };
 
+export type SharedStepsCardComponent = {
+  id?: number;
+  text: string;
+};
+
+export type StepsBlockProps = {
+  __component: BlockTypes.SHARED_STEPS_BLOCK;
+  subtitle?: string;
+  stepsCards: SharedStepsCardComponent[];
+};
+
 export type ApiBlock =
   SharedHeroComponent
   | HomeServicesComponent
@@ -415,6 +427,7 @@ export type ApiBlock =
     __component: 'shared.seo';
   }
   | SharedMarkdownBlockComponent
+  | SharedStepsComponent
   | DiscountsTermsComponent
   | DiscountsCategoriesComponent
   | VisitingRulesVisitingRulesMainComponent
