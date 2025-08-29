@@ -1,5 +1,4 @@
 import { SharedStepsCardComponent } from "@/src/common/api-types";
-import { DiscountsRulesCard } from "../../discounts-page/DiscountsTerms/components/DiscountsRulesCard";
 
 export function Steps({
   subtitle,
@@ -9,21 +8,24 @@ export function Steps({
   stepsCards: SharedStepsCardComponent[];
 }) {
   return (
-    <section
-      className="discounts-terms"
-      data-testid="discounts-terms"
-    >
-      <div className="discounts-terms__rules">
+    <section className="steps">
+      <div className="steps__inner">
         {subtitle && (
-          <h2 className="discounts-terms__rules-title container">{subtitle}</h2>
+          <h2 className="steps__title container">{subtitle}</h2>
         )}
         {stepsCards && (
-          <ol className="discounts-terms__list container">
+          <ol className="steps__list container">
             {stepsCards.map((card) => (
-              <DiscountsRulesCard
+              <li
+                className="steps__card"
                 key={card.id}
-                text={card.text}
-              />
+              >
+                {card.text && (
+                  <p className="steps__text">
+                    {card.text}
+                  </p>
+                )}
+              </li>
             ))}
           </ol>
         )}

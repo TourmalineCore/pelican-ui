@@ -1,3 +1,121 @@
 .steps {
-  //
+  @include shared-paddings;
+
+  &__inner {
+    border-radius: 32px;
+  }
+
+  &__title {
+    @include body-1-medium;
+
+    margin-bottom: 16px;
+    color: $color-black-75;
+
+    @include tablet-xl {
+      margin-bottom: 32px;
+    }
+
+    @include desktop {
+      @include h2-text;
+
+      color: $color-black;
+    }
+
+    @include desktop-xl {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__list {
+    counter-reset: num;
+    display: grid;
+    flex-direction: column;
+    gap: 12px;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto auto;
+    }
+
+    @include tablet-xl {
+      gap: 16px;
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+    }
+
+    @include desktop-xl {
+      gap: 32px;
+    }
+  }
+
+  &__card {
+    display: flex;
+    border: 1px solid $color-green-15;
+    border-radius: 24px;
+    padding: 15px 18px;
+    box-sizing: border-box;
+    background-color: $color-white-80;
+    gap: 16px;
+
+    &::before {
+      @include body-1-medium;
+
+      counter-increment: num;
+      content: counter(num);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1000px;
+      height: 40px;
+      min-width: 40px;
+      color: $color-black-75;
+      background-color: $color-green-10;
+
+      @include tablet {
+        color: $color-black;
+      }
+
+      @include tablet-xl {
+        @include text-medium;
+      }
+
+      @include desktop-xl {
+        height: 64px;
+        min-width: 64px;
+      }
+    }
+
+    @include tablet {
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    @include tablet-xl {
+      padding: 23px 28px;
+    }
+
+    @include desktop {
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 31px 24px;
+    }
+
+    @include desktop-xl {
+      padding: 36px 28px;
+    }
+  }
+
+  &__text {
+    @include caption-1-regular;
+
+    display: flex;
+    align-items: center;
+
+    @include desktop-xl {
+      font-size: 24px;
+    }
+  }
 }
