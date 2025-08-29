@@ -7,8 +7,10 @@ export function MarkdownBlock({
   markdown: string;
 }) {
   return (
-    <MarkdownText className="markdown-block container">
-      {markdown}
-    </MarkdownText>
+    <div className="markdown-block container">
+      <MarkdownText className="markdown-block__content">
+        {markdown}
+      </MarkdownText>
+    </div>
   );
 }

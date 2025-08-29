@@ -1,5 +1,6 @@
 .markdown-block {
   @include body-2-regular;
+  @include shared-paddings;
 
   color: $color-black-75;
 
@@ -53,5 +54,19 @@
   li {
     list-style-position: inside;
     padding-left: 12px;
+  }
+
+  &__content {
+    @include tablet-xl {
+      max-width: 798px;
+    }
+
+    @include desktop {
+      max-width: 850px;
+    }
+
+    @include desktop-xl {
+      max-width: 1184px;
+    }
   }
 }
