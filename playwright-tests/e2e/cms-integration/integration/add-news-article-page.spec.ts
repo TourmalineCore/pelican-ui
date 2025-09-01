@@ -23,7 +23,7 @@ test.describe(`Addition of a news article page`, () => {
   test.afterEach(async ({
     page,
   }) => {
-    await cleanupNewsArticleByTitle({
+    await cleanupNewsArticlePageByTitle({
       title: NEWS_ARTICLE_PAGE_TITLE,
     });
 
