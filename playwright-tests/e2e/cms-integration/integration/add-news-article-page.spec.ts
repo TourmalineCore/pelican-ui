@@ -221,10 +221,10 @@ async function cleanupSitemapConfiguration({
     waitUntil: `networkidle`,
   });
 
-  const targetRow = await page.locator(`tr:has(td span:has-text("news-test/"))`)
+  const testRecord = await page.locator(`tr:has(td span:has-text("news-test/"))`)
     .first();
 
-  await targetRow.getByRole(`button`, {
+  await testRecord.getByRole(`button`, {
     name: `Delete`,
   })
     .click();
