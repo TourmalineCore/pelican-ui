@@ -291,6 +291,8 @@ export const BlockRenderer = ({
     return (
       <MarkdownBlock
         markdown={block.markdown}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
       />
     );
   }
@@ -300,6 +302,8 @@ export const BlockRenderer = ({
       <Steps
         subtitle={block.subtitle}
         stepsCards={block.stepsCards}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
       />
     );
   }

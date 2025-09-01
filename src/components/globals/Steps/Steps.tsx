@@ -1,14 +1,21 @@
-import { SharedStepsCardComponent } from "@/src/common/api-types";
+import { StepsBlockProps } from "@/src/common/types";
+import clsx from "clsx";
 
 export function Steps({
   subtitle,
   stepsCards,
-}: {
-  subtitle?: string;
-  stepsCards: SharedStepsCardComponent[];
-}) {
+  isFirstBlock,
+  isLastBlock,
+}: & Omit<StepsBlockProps, '__component'>) {
   return (
-    <section className="steps">
+    <section className={clsx(
+      `steps`,
+      {
+        'first-block': isFirstBlock,
+        'last-block': isLastBlock,
+      },
+    )}
+    >
       <div className="steps__inner">
         {subtitle && (
           <h2 className="steps__title container">{subtitle}</h2>

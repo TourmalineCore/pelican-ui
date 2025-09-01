@@ -401,7 +401,7 @@ export type VisitingRulesEmergencyPhonesComponentProps = Pick<VisitingRulesCompo
 export type MarkdownBlockProps = {
   __component: BlockTypes.SHARED_MARKDOWN_BLOCK;
   markdown: string;
-};
+} & BlockPosition;
 
 export type SharedStepsCardComponent = {
   id?: number;
@@ -412,7 +412,7 @@ export type StepsBlockProps = {
   __component: BlockTypes.SHARED_STEPS_BLOCK;
   subtitle?: string;
   stepsCards: SharedStepsCardComponent[];
-};
+} & BlockPosition;
 
 export type ApiBlock =
   SharedHeroComponent
