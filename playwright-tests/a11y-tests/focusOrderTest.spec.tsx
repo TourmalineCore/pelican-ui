@@ -20,8 +20,8 @@ const expectedDesktopHeaderFocusOrder = [
     count: 5,
     string: `header-navigation-link`,
   }),
-  `header-contact-button`,
-  `header-contact-button`,
+  `header-tel-link`,
+  `header-email-link`,
   `header-tickets-popup-button`,
 ];
 

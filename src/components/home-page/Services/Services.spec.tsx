@@ -24,4 +24,18 @@ test.describe(`ServicesComponentTests`, () => {
       });
     });
   }
+
+  test(`ServicesContactLinksAttributeCheckTest`, async ({
+    checkContactLink,
+  }) => {
+    await checkContactLink({
+      testId: `services-phone-link`,
+      path: /^tel:/,
+    });
+
+    await checkContactLink({
+      testId: `services-email-link`,
+      path: /^mailto:/,
+    });
+  });
 });
