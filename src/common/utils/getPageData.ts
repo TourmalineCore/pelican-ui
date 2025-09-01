@@ -98,6 +98,7 @@ export async function getPageData({
           `blocks.scheduleCard`,
           `blocks.scheduleCard.timetable`,
           `blocks.image`,
+          `blocks.stepsCards`,
           `seo`,
         ],
         isOtherPage: true,
