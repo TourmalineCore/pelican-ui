@@ -6,6 +6,7 @@ export enum AppRoute {
   INTERNAL_TEST_PAGE = `/internal-test-page`,
   DISCOUNTS = `/discounts`,
   VISITING_RULES = `/visiting-rules`,
+  OTHER = `/other`,
   COMPONENTS = `/components`,
 }
 
@@ -33,6 +34,8 @@ export enum BlockTypes {
   SHARED_TEXT_AND_MEDIA = `shared.text-and-media`,
   SHARED_CATEGORIES = `shared.categories`,
   SHARED_ARTICLE = `shared.article`,
+  SHARED_MARKDOWN_BLOCK = `shared.markdown-block`,
+  SHARED_STEPS_BLOCK = `shared.steps`,
 
   HOME_SERVICES = `home.services`,
   HOME_TICKETS = `home.tickets`,

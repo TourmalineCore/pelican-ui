@@ -28,7 +28,7 @@ export function TextAndMedia({
       <div
         className="text-and-media__text"
       >
-        <h2 className="text-and-media__title">{title}</h2>
+        {title && <h2 className="text-and-media__title">{title}</h2>}
         <p className="text-and-media__description">{description}</p>
       </div>
       {media?.mime?.startsWith(`video`) && (

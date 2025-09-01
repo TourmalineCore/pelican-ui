@@ -1,6 +1,5 @@
 /* eslint-disable */
 /* tslint:disable */
-// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -25,14 +24,8 @@ export interface ContactZooRequest {
     blocks?: BaseNull &
       (
         | BaseNullComponentMapping<"shared.hero", SharedHeroComponent>
-        | BaseNullComponentMapping<
-            "shared.text-and-media",
-            SharedTextAndMediaComponent
-          >
-        | BaseNullComponentMapping<
-            "shared.image-with-button-grid",
-            SharedImageWithButtonGridComponent
-          >
+        | BaseNullComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+        | BaseNullComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
         | BaseNullComponentMapping<"shared.tickets", SharedTicketsComponent>
         | BaseNullComponentMapping<"shared.cards", SharedCardsComponent>
       );
@@ -62,14 +55,8 @@ export interface ContactZoo {
   blocks?: AbstractNull &
     (
       | AbstractNullComponentMapping<"shared.hero", SharedHeroComponent>
-      | AbstractNullComponentMapping<
-          "shared.text-and-media",
-          SharedTextAndMediaComponent
-        >
-      | AbstractNullComponentMapping<
-          "shared.image-with-button-grid",
-          SharedImageWithButtonGridComponent
-        >
+      | AbstractNullComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+      | AbstractNullComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
       | AbstractNullComponentMapping<"shared.tickets", SharedTicketsComponent>
       | AbstractNullComponentMapping<"shared.cards", SharedCardsComponent>
     );
@@ -95,22 +82,10 @@ export interface ContactZoo {
     blocks?: DiscriminatorNull &
       (
         | DiscriminatorNullComponentMapping<"shared.hero", SharedHeroComponent>
-        | DiscriminatorNullComponentMapping<
-            "shared.text-and-media",
-            SharedTextAndMediaComponent
-          >
-        | DiscriminatorNullComponentMapping<
-            "shared.image-with-button-grid",
-            SharedImageWithButtonGridComponent
-          >
-        | DiscriminatorNullComponentMapping<
-            "shared.tickets",
-            SharedTicketsComponent
-          >
-        | DiscriminatorNullComponentMapping<
-            "shared.cards",
-            SharedCardsComponent
-          >
+        | DiscriminatorNullComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+        | DiscriminatorNullComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
+        | DiscriminatorNullComponentMapping<"shared.tickets", SharedTicketsComponent>
+        | DiscriminatorNullComponentMapping<"shared.cards", SharedCardsComponent>
       );
     seo?: SharedSeoComponent;
     /** @format date-time */
@@ -217,6 +192,7 @@ export interface SharedHeroComponent {
 export interface SharedTextAndMediaComponent {
   id?: number;
   __component?: "shared.text-and-media";
+  title?: string;
   description?: string;
   media?: {
     id?: number;
@@ -267,7 +243,6 @@ export interface SharedTextAndMediaComponent {
   };
   contentOrder?: "Текст слева" | "Текст справа";
   viewFootsteps?: boolean;
-  title?: string;
 }
 
 export interface ButtonButtonComponent {
@@ -459,6 +434,7 @@ export interface CardCardComponent {
 
 export interface SharedCardsComponent {
   id?: number;
+  __component?: "shared.cards";
   title?: string;
   cards?: CardCardComponent[];
 }
@@ -581,14 +557,8 @@ export interface DiscountPageRequest {
     seo?: SharedSeoComponent;
     blocks?: InternalNull &
       (
-        | InternalNullComponentMapping<
-            "discounts.categories",
-            DiscountsCategoriesComponent
-          >
-        | InternalNullComponentMapping<
-            "discounts.terms",
-            DiscountsTermsComponent
-          >
+        | InternalNullComponentMapping<"discounts.categories", DiscountsCategoriesComponent>
+        | InternalNullComponentMapping<"discounts.terms", DiscountsTermsComponent>
       );
     locale?: string;
     localizations?: (number | string)[];
@@ -615,14 +585,8 @@ export interface DiscountPage {
   seo?: SharedSeoComponent;
   blocks?: PolymorphNull &
     (
-      | PolymorphNullComponentMapping<
-          "discounts.categories",
-          DiscountsCategoriesComponent
-        >
-      | PolymorphNullComponentMapping<
-          "discounts.terms",
-          DiscountsTermsComponent
-        >
+      | PolymorphNullComponentMapping<"discounts.categories", DiscountsCategoriesComponent>
+      | PolymorphNullComponentMapping<"discounts.terms", DiscountsTermsComponent>
     );
   /** @format date-time */
   createdAt?: string;
@@ -643,16 +607,10 @@ export interface DiscountPage {
     id?: number;
     documentId?: string;
     seo?: SharedSeoComponent;
-    blocks?: DiscriminatorNull1 &
+    blocks?: PolymorphNull1 &
       (
-        | DiscriminatorNull1ComponentMapping<
-            "discounts.categories",
-            DiscountsCategoriesComponent
-          >
-        | DiscriminatorNull1ComponentMapping<
-            "discounts.terms",
-            DiscountsTermsComponent
-          >
+        | PolymorphNull1ComponentMapping<"discounts.categories", DiscountsCategoriesComponent>
+        | PolymorphNull1ComponentMapping<"discounts.terms", DiscountsTermsComponent>
       );
     /** @format date-time */
     createdAt?: string;
@@ -1485,29 +1443,14 @@ export interface TicketsPopupTicketsPopupComponent {
 
 export interface HomeRequest {
   data: {
-    blocks?: DiscriminatorNull2 &
+    blocks?: BaseNull1 &
       (
-        | DiscriminatorNull2ComponentMapping<"shared.hero", SharedHeroComponent>
-        | DiscriminatorNull2ComponentMapping<
-            "shared.text-and-media",
-            SharedTextAndMediaComponent
-          >
-        | DiscriminatorNull2ComponentMapping<
-            "home.services",
-            HomeServicesComponent
-          >
-        | DiscriminatorNull2ComponentMapping<
-            "shared.image-with-button-grid",
-            SharedImageWithButtonGridComponent
-          >
-        | DiscriminatorNull2ComponentMapping<
-            "home.map-card",
-            HomeMapCardComponent
-          >
-        | DiscriminatorNull2ComponentMapping<
-            "home.tickets",
-            HomeTicketsComponent
-          >
+        | BaseNull1ComponentMapping<"shared.hero", SharedHeroComponent>
+        | BaseNull1ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+        | BaseNull1ComponentMapping<"home.services", HomeServicesComponent>
+        | BaseNull1ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
+        | BaseNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
+        | BaseNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
       );
     seo?: SharedSeoComponent;
     locale?: string;
@@ -1532,26 +1475,14 @@ export interface HomeListResponse {
 export interface Home {
   id?: number;
   documentId?: string;
-  blocks?: DiscriminatorNull3 &
+  blocks?: DiscriminatorNull1 &
     (
-      | DiscriminatorNull3ComponentMapping<"shared.hero", SharedHeroComponent>
-      | DiscriminatorNull3ComponentMapping<
-          "shared.text-and-media",
-          SharedTextAndMediaComponent
-        >
-      | DiscriminatorNull3ComponentMapping<
-          "home.services",
-          HomeServicesComponent
-        >
-      | DiscriminatorNull3ComponentMapping<
-          "shared.image-with-button-grid",
-          SharedImageWithButtonGridComponent
-        >
-      | DiscriminatorNull3ComponentMapping<
-          "home.map-card",
-          HomeMapCardComponent
-        >
-      | DiscriminatorNull3ComponentMapping<"home.tickets", HomeTicketsComponent>
+      | DiscriminatorNull1ComponentMapping<"shared.hero", SharedHeroComponent>
+      | DiscriminatorNull1ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+      | DiscriminatorNull1ComponentMapping<"home.services", HomeServicesComponent>
+      | DiscriminatorNull1ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
+      | DiscriminatorNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
+      | DiscriminatorNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
     );
   seo?: SharedSeoComponent;
   /** @format date-time */
@@ -1572,20 +1503,14 @@ export interface Home {
   localizations?: {
     id?: number;
     documentId?: string;
-    blocks?: AbstractNull1 &
+    blocks?: BaseNull2 &
       (
-        | AbstractNull1ComponentMapping<"shared.hero", SharedHeroComponent>
-        | AbstractNull1ComponentMapping<
-            "shared.text-and-media",
-            SharedTextAndMediaComponent
-          >
-        | AbstractNull1ComponentMapping<"home.services", HomeServicesComponent>
-        | AbstractNull1ComponentMapping<
-            "shared.image-with-button-grid",
-            SharedImageWithButtonGridComponent
-          >
-        | AbstractNull1ComponentMapping<"home.map-card", HomeMapCardComponent>
-        | AbstractNull1ComponentMapping<"home.tickets", HomeTicketsComponent>
+        | BaseNull2ComponentMapping<"shared.hero", SharedHeroComponent>
+        | BaseNull2ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+        | BaseNull2ComponentMapping<"home.services", HomeServicesComponent>
+        | BaseNull2ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
+        | BaseNull2ComponentMapping<"home.map-card", HomeMapCardComponent>
+        | BaseNull2ComponentMapping<"home.tickets", HomeTicketsComponent>
       );
     seo?: SharedSeoComponent;
     /** @format date-time */
@@ -2124,27 +2049,216 @@ export interface NewsPageResponse {
   meta?: object;
 }
 
+export interface OtherRequest {
+  data: {
+    title?: string;
+    seo?: SharedSeoComponent;
+    locale?: string;
+    localizations?: (number | string)[];
+  };
+}
+
+export interface OtherListResponse {
+  data?: Other[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
+export interface Other {
+  id?: number;
+  documentId?: string;
+  title?: string;
+  seo?: SharedSeoComponent;
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** @format date-time */
+  publishedAt?: string;
+  createdBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  updatedBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  locale?: string;
+  localizations?: {
+    id?: number;
+    documentId?: string;
+    title?: string;
+    seo?: SharedSeoComponent;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  }[];
+}
+
+export interface OtherResponse {
+  data?: Other;
+  meta?: object;
+}
+
+export interface OtherPageRequest {
+  data: {
+    title: string;
+    slug?: string;
+    blocks: BaseNull3 &
+      (
+        | BaseNull3ComponentMapping<"shared.tickets", SharedTicketsComponent>
+        | BaseNull3ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+        | BaseNull3ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
+        | BaseNull3ComponentMapping<"shared.hero", SharedHeroComponent>
+        | BaseNull3ComponentMapping<"shared.cards", SharedCardsComponent>
+        | BaseNull3ComponentMapping<"shared.markdown-block", SharedMarkdownBlockComponent>
+        | BaseNull3ComponentMapping<"shared.steps", SharedStepsComponent>
+      );
+    seo: SharedSeoComponent;
+    locale?: string;
+    localizations?: (number | string)[];
+  };
+}
+
+export interface OtherPageListResponse {
+  data?: OtherPage[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
+export interface OtherPage {
+  id?: number;
+  documentId?: string;
+  title: string;
+  slug?: string;
+  blocks: PolymorphNull2 &
+    (
+      | PolymorphNull2ComponentMapping<"shared.tickets", SharedTicketsComponent>
+      | PolymorphNull2ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+      | PolymorphNull2ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
+      | PolymorphNull2ComponentMapping<"shared.hero", SharedHeroComponent>
+      | PolymorphNull2ComponentMapping<"shared.cards", SharedCardsComponent>
+      | PolymorphNull2ComponentMapping<"shared.markdown-block", SharedMarkdownBlockComponent>
+      | PolymorphNull2ComponentMapping<"shared.steps", SharedStepsComponent>
+    );
+  seo: SharedSeoComponent;
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** @format date-time */
+  publishedAt?: string;
+  createdBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  updatedBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  locale?: string;
+  localizations?: {
+    id?: number;
+    documentId?: string;
+    title?: string;
+    slug?: string;
+    blocks?: DiscriminatorNull2 &
+      (
+        | DiscriminatorNull2ComponentMapping<"shared.tickets", SharedTicketsComponent>
+        | DiscriminatorNull2ComponentMapping<"shared.text-and-media", SharedTextAndMediaComponent>
+        | DiscriminatorNull2ComponentMapping<"shared.image-with-button-grid", SharedImageWithButtonGridComponent>
+        | DiscriminatorNull2ComponentMapping<"shared.hero", SharedHeroComponent>
+        | DiscriminatorNull2ComponentMapping<"shared.cards", SharedCardsComponent>
+        | DiscriminatorNull2ComponentMapping<"shared.markdown-block", SharedMarkdownBlockComponent>
+        | DiscriminatorNull2ComponentMapping<"shared.steps", SharedStepsComponent>
+      );
+    seo?: SharedSeoComponent;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  }[];
+}
+
+export interface OtherPageResponse {
+  data?: OtherPage;
+  meta?: object;
+}
+
+export interface SharedMarkdownBlockComponent {
+  id?: number;
+  __component?: "shared.markdown-block";
+  markdown?: string;
+}
+
+export interface SharedStepsCardComponent {
+  id?: number;
+  text?: string;
+}
+
+export interface SharedStepsComponent {
+  id?: number;
+  __component?: "shared.steps";
+  subtitle?: string;
+  stepsCards?: SharedStepsCardComponent[];
+}
+
 export interface VisitingRulesPageRequest {
   data: {
     seo?: SharedSeoComponent;
-    blocks?: InternalNull1 &
+    blocks?: BaseNull4 &
       (
-        | InternalNull1ComponentMapping<
-            "visiting-rules.warnings",
-            VisitingRulesWarningsComponent
-          >
-        | InternalNull1ComponentMapping<
-            "visiting-rules.visiting-rules-main",
-            VisitingRulesVisitingRulesMainComponent
-          >
-        | InternalNull1ComponentMapping<
-            "visiting-rules.photos-policy",
-            VisitingRulesPhotosPolicyComponent
-          >
-        | InternalNull1ComponentMapping<
-            "visiting-rules.emergency-phones",
-            VisitingRulesEmergencyPhonesComponent
-          >
+        | BaseNull4ComponentMapping<"visiting-rules.warnings", VisitingRulesWarningsComponent>
+        | BaseNull4ComponentMapping<"visiting-rules.visiting-rules-main", VisitingRulesVisitingRulesMainComponent>
+        | BaseNull4ComponentMapping<"visiting-rules.photos-policy", VisitingRulesPhotosPolicyComponent>
+        | BaseNull4ComponentMapping<"visiting-rules.emergency-phones", VisitingRulesEmergencyPhonesComponent>
       );
     locale?: string;
     localizations?: (number | string)[];
@@ -2169,24 +2283,12 @@ export interface VisitingRulesPage {
   id?: number;
   documentId?: string;
   seo?: SharedSeoComponent;
-  blocks?: InternalNull2 &
+  blocks?: AbstractNull1 &
     (
-      | InternalNull2ComponentMapping<
-          "visiting-rules.warnings",
-          VisitingRulesWarningsComponent
-        >
-      | InternalNull2ComponentMapping<
-          "visiting-rules.visiting-rules-main",
-          VisitingRulesVisitingRulesMainComponent
-        >
-      | InternalNull2ComponentMapping<
-          "visiting-rules.photos-policy",
-          VisitingRulesPhotosPolicyComponent
-        >
-      | InternalNull2ComponentMapping<
-          "visiting-rules.emergency-phones",
-          VisitingRulesEmergencyPhonesComponent
-        >
+      | AbstractNull1ComponentMapping<"visiting-rules.warnings", VisitingRulesWarningsComponent>
+      | AbstractNull1ComponentMapping<"visiting-rules.visiting-rules-main", VisitingRulesVisitingRulesMainComponent>
+      | AbstractNull1ComponentMapping<"visiting-rules.photos-policy", VisitingRulesPhotosPolicyComponent>
+      | AbstractNull1ComponentMapping<"visiting-rules.emergency-phones", VisitingRulesEmergencyPhonesComponent>
     );
   /** @format date-time */
   createdAt?: string;
@@ -2207,24 +2309,15 @@ export interface VisitingRulesPage {
     id?: number;
     documentId?: string;
     seo?: SharedSeoComponent;
-    blocks?: InternalNull3 &
+    blocks?: DiscriminatorNull3 &
       (
-        | InternalNull3ComponentMapping<
-            "visiting-rules.warnings",
-            VisitingRulesWarningsComponent
-          >
-        | InternalNull3ComponentMapping<
+        | DiscriminatorNull3ComponentMapping<"visiting-rules.warnings", VisitingRulesWarningsComponent>
+        | DiscriminatorNull3ComponentMapping<
             "visiting-rules.visiting-rules-main",
             VisitingRulesVisitingRulesMainComponent
           >
-        | InternalNull3ComponentMapping<
-            "visiting-rules.photos-policy",
-            VisitingRulesPhotosPolicyComponent
-          >
-        | InternalNull3ComponentMapping<
-            "visiting-rules.emergency-phones",
-            VisitingRulesEmergencyPhonesComponent
-          >
+        | DiscriminatorNull3ComponentMapping<"visiting-rules.photos-policy", VisitingRulesPhotosPolicyComponent>
+        | DiscriminatorNull3ComponentMapping<"visiting-rules.emergency-phones", VisitingRulesEmergencyPhonesComponent>
       );
     /** @format date-time */
     createdAt?: string;
@@ -2451,83 +2544,122 @@ type PolymorphNullComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
+type PolymorphNull1 = (DiscountsCategoriesComponent | DiscountsTermsComponent)[];
+
+type PolymorphNull1ComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
+type BaseNull1 = (
+  | SharedHeroComponent
+  | SharedTextAndMediaComponent
+  | HomeServicesComponent
+  | SharedImageWithButtonGridComponent
+  | HomeMapCardComponent
+  | HomeTicketsComponent
+)[];
+
+type BaseNull1ComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
 type DiscriminatorNull1 = (
-  | DiscountsCategoriesComponent
-  | DiscountsTermsComponent
+  | SharedHeroComponent
+  | SharedTextAndMediaComponent
+  | HomeServicesComponent
+  | SharedImageWithButtonGridComponent
+  | HomeMapCardComponent
+  | HomeTicketsComponent
 )[];
 
 type DiscriminatorNull1ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type DiscriminatorNull2 = (
+type BaseNull2 = (
   | SharedHeroComponent
   | SharedTextAndMediaComponent
   | HomeServicesComponent
   | SharedImageWithButtonGridComponent
   | HomeMapCardComponent
   | HomeTicketsComponent
+)[];
+
+type BaseNull2ComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
+type BaseNull3 = (
+  | SharedTicketsComponent
+  | SharedTextAndMediaComponent
+  | SharedImageWithButtonGridComponent
+  | SharedHeroComponent
+  | SharedCardsComponent
+  | SharedMarkdownBlockComponent
+  | SharedStepsComponent
+)[];
+
+type BaseNull3ComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
+type PolymorphNull2 = (
+  | SharedTicketsComponent
+  | SharedTextAndMediaComponent
+  | SharedImageWithButtonGridComponent
+  | SharedHeroComponent
+  | SharedCardsComponent
+  | SharedMarkdownBlockComponent
+  | SharedStepsComponent
+)[];
+
+type PolymorphNull2ComponentMapping<Key, Type> = {
+  __component: Key;
+} & Type;
+
+type DiscriminatorNull2 = (
+  | SharedTicketsComponent
+  | SharedTextAndMediaComponent
+  | SharedImageWithButtonGridComponent
+  | SharedHeroComponent
+  | SharedCardsComponent
+  | SharedMarkdownBlockComponent
+  | SharedStepsComponent
 )[];
 
 type DiscriminatorNull2ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type DiscriminatorNull3 = (
-  | SharedHeroComponent
-  | SharedTextAndMediaComponent
-  | HomeServicesComponent
-  | SharedImageWithButtonGridComponent
-  | HomeMapCardComponent
-  | HomeTicketsComponent
+type BaseNull4 = (
+  | VisitingRulesWarningsComponent
+  | VisitingRulesVisitingRulesMainComponent
+  | VisitingRulesPhotosPolicyComponent
+  | VisitingRulesEmergencyPhonesComponent
 )[];
 
-type DiscriminatorNull3ComponentMapping<Key, Type> = {
+type BaseNull4ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
 type AbstractNull1 = (
-  | SharedHeroComponent
-  | SharedTextAndMediaComponent
-  | HomeServicesComponent
-  | SharedImageWithButtonGridComponent
-  | HomeMapCardComponent
-  | HomeTicketsComponent
+  | VisitingRulesWarningsComponent
+  | VisitingRulesVisitingRulesMainComponent
+  | VisitingRulesPhotosPolicyComponent
+  | VisitingRulesEmergencyPhonesComponent
 )[];
 
 type AbstractNull1ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type InternalNull1 = (
+type DiscriminatorNull3 = (
   | VisitingRulesWarningsComponent
   | VisitingRulesVisitingRulesMainComponent
   | VisitingRulesPhotosPolicyComponent
   | VisitingRulesEmergencyPhonesComponent
 )[];
 
-type InternalNull1ComponentMapping<Key, Type> = {
-  __component: Key;
-} & Type;
-
-type InternalNull2 = (
-  | VisitingRulesWarningsComponent
-  | VisitingRulesVisitingRulesMainComponent
-  | VisitingRulesPhotosPolicyComponent
-  | VisitingRulesEmergencyPhonesComponent
-)[];
-
-type InternalNull2ComponentMapping<Key, Type> = {
-  __component: Key;
-} & Type;
-
-type InternalNull3 = (
-  | VisitingRulesWarningsComponent
-  | VisitingRulesVisitingRulesMainComponent
-  | VisitingRulesPhotosPolicyComponent
-  | VisitingRulesEmergencyPhonesComponent
-)[];
-
-type InternalNull3ComponentMapping<Key, Type> = {
+type DiscriminatorNull3ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;

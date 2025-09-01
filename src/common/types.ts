@@ -9,7 +9,9 @@ import {
   SharedCardsComponent,
   SharedHeroComponent,
   SharedImageWithButtonGridComponent,
+  SharedMarkdownBlockComponent,
   SharedSeoComponent,
+  SharedStepsComponent,
   SharedTextAndMediaComponent,
   SharedTicketsComponent,
   VisitingRulesEmergencyPhonesComponent,
@@ -64,6 +66,11 @@ export type VisitingRulesPageProps = {
     | VisitingRulesPhotosPolicyComponentProps
     | VisitingRulesEmergencyPhonesComponentProps
   )[];
+};
+
+export type OtherPageProps = {
+  title: string;
+  seo?: Seo;
 };
 
 // Component
@@ -208,7 +215,7 @@ export type Timetable = {
 export type TextAndMediaComponentProps = {
   id: number;
   __component: BlockTypes.SHARED_TEXT_AND_MEDIA;
-  title: string;
+  title?: string;
   description: string;
   media: {
     alternativeText: string;
@@ -261,7 +268,7 @@ export type CardProps = {
 export type ImageWithButtonGridComponentProps = {
   id: number;
   __component: BlockTypes.SHARED_IMAGE_WITH_BUTTON_GRID;
-  title: string;
+  title?: string;
   description: string;
   largeImage: Image;
   smallImage?: Image;
@@ -391,7 +398,23 @@ export type VisitingRulesEmergencyPhonesComponentProps = Pick<VisitingRulesCompo
   cards: Omit<VisitingRulesCardProps, 'iconUrl'>[];
 };
 
-export type Block =
+export type MarkdownBlockProps = {
+  __component: BlockTypes.SHARED_MARKDOWN_BLOCK;
+  markdown: string;
+} & BlockPosition;
+
+export type SharedStepsCardComponent = {
+  id?: number;
+  text: string;
+};
+
+export type StepsBlockProps = {
+  __component: BlockTypes.SHARED_STEPS_BLOCK;
+  subtitle?: string;
+  stepsCards: SharedStepsCardComponent[];
+} & BlockPosition;
+
+export type ApiBlock =
   SharedHeroComponent
   | HomeServicesComponent
   | SharedTextAndMediaComponent
@@ -399,9 +422,12 @@ export type Block =
   | HomeMapCardComponent
   | HomeTicketsComponent
   | SharedTicketsComponent
-  | SharedCardsComponent & {
-    __component: BlockTypes;
+  | SharedCardsComponent
+  | SharedSeoComponent & {
+    __component: 'shared.seo';
   }
+  | SharedMarkdownBlockComponent
+  | SharedStepsComponent
   | DiscountsTermsComponent
   | DiscountsCategoriesComponent
   | VisitingRulesVisitingRulesMainComponent
@@ -410,7 +436,7 @@ export type Block =
 
 export type PageData = {
   data: {
-    blocks: Block[];
+    blocks: ApiBlock[];
     seo?: SharedSeoComponent;
   };
 } | null;

@@ -24,7 +24,7 @@ export function Tickets({
         <div className="tickets__inner container">
           <div className="tickets__group">
             <div className="tickets__head">
-              <h2 className="tickets__title">{title}</h2>
+              {title && <h2 className="tickets__title">{title}</h2>}
               {description && <p className="tickets__description">{description}</p>}
             </div>
             <ul className="tickets__list">

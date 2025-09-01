@@ -7,21 +7,21 @@ import {
   HomeMapCardComponent,
   HomeTicketsComponent,
   SharedTicketsComponent,
-  SharedCardsComponent,
   DiscountsTermsComponent,
   DiscountsCategoriesComponent,
   VisitingRulesVisitingRulesMainComponent,
   VisitingRulesWarningsComponent,
   VisitingRulesPhotosPolicyComponent,
   VisitingRulesEmergencyPhonesComponent,
+  SharedCardsComponent,
 } from "../api-types";
 import { BlockTypes } from "../enum";
-import { Block } from "../types";
+import { ApiBlock } from "../types";
 
 export function mapContractByBlock({
   block,
 }: {
-  block: Block;
+  block: ApiBlock;
 }) {
   switch (`${block.__component}`) {
     case BlockTypes.SHARED_HERO:
@@ -140,9 +140,7 @@ export function mapContractByBlock({
       };
 
     case BlockTypes.SHARED_CARDS:
-      const sharedCardsBlock = block as (SharedCardsComponent & {
-        __component: BlockTypes;
-      });
+      const sharedCardsBlock = block as SharedCardsComponent;
 
       return {
         id: crypto.randomUUID(),
@@ -246,6 +244,6 @@ export function mapContractByBlock({
       };
 
     default:
-      return {};
+      return block;
   }
 }
