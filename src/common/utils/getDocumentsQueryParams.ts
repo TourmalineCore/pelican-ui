@@ -26,6 +26,10 @@ export function getDocumentsQueryParams({
         },
       },
     },
+    sort: {
+      date: `desc`,
+      title: `desc`,
+    },
     pagination: {
       pageSize,
     },
