@@ -20,9 +20,15 @@ test.describe(`Addition of a news article page`, () => {
     });
   });
 
-  test.afterEach(async () => {
-    await cleanupNewsArticlePageByTitle({
+  test.afterEach(async ({
+    page,
+  }) => {
+    await cleanupNewsArticleByTitle({
       title: NEWS_ARTICLE_PAGE_TITLE,
+    });
+
+    await cleanupSitemapConfiguration({
+      page,
     });
   });
 
@@ -33,122 +39,21 @@ test.describe(`Addition of a news article page`, () => {
     page: Page;
     goto: CustomTestFixtures['goto'];
   }) => {
-    await page.goto(process.env.STRAPI_URL || `http://localhost:1337`);
+    await page.goto(process.env.CMS_URL as string);
 
-    await page.locator(`input[name=email]`)
-      .fill(process.env.STRAPI_EMAIL || `admin@init-strapi-admin.strapi.io`);
+    await authorizationInStrapi({
+      page,
+    });
 
-    await page.locator(`input[name=password]`)
-      .fill(process.env.STRAPI_PASSWORD || `admin`);
+    await createAndPublishNews({
+      page,
+    });
 
-    await page.getByText(`Login`)
-      .click();
+    await addSitemapConfiguration({
+      page,
+    });
 
-    await page.getByText(`Content Manager`)
-      .click();
-
-    await page.getByRole(`link`, {
-      name: `Новости`,
-    })
-      .click();
-
-    await page.getByText(`Create new entry`)
-      .first()
-      .click();
-
-    await page.locator(`input[name=title]`)
-      .fill(NEWS_ARTICLE_PAGE_TITLE);
-
-    await page.locator(`div[role=textbox]`)
-      .fill(`Тестовое описание`);
-
-    await page.getByText(`No entry yet. Click to add one.`)
-      .first()
-      .click();
-
-    await page.locator(`input[name='seo.metaTitle']`)
-      .fill(SEO_META_TITLE);
-
-    await page.locator(`textarea[name='seo.metaDescription']`)
-      .fill(SEO_META_DESCRIPTION);
-
-    await page.getByRole(`button`, {
-      name: `Publish`,
-    })
-      .click();
-
-    await page.waitForTimeout(1000);
-
-    // adding sitemap
-
-    await page.getByText(`Settings`)
-      .click();
-
-    await page.getByText(`Configuration`)
-      .last()
-      .click();
-
-    await page.waitForTimeout(1000);
-
-    const rows = await page.locator(`table[role=grid] > tbody > tr`)
-      .count();
-    const isSitemapConfigExist = rows > 0;
-
-    if (!isSitemapConfigExist) {
-      await page.locator(`input`)
-        .first()
-        .fill(`http://localhost:3000/`);
-
-      const isTestSitemapCreated = await page.getByText(`/news-test/[slug]`)
-        .isVisible();
-
-      if (!isTestSitemapCreated) {
-        await page.getByText(`Add another field to this collection type`)
-          .click();
-
-        await page.waitForTimeout(1000);
-
-        await page.locator(`div[name=type]`)
-          .click();
-
-        await page.getByText(`Новости`)
-          .click();
-
-        await page.locator(`div[name=langcode]`)
-          .click();
-
-        await page.getByText(`Default Language`)
-          .last()
-          .click();
-
-        await page.locator(`input[name=pattern]`)
-          .fill(`news-test/[slug]`);
-
-        await page.locator(`div[name=priority]`)
-          .click();
-
-        await page.getByText(`0.1`)
-          .last()
-          .click();
-
-        await page.locator(`div[name=frequency]`)
-          .click();
-
-        await page.getByText(`Daily`, {
-          exact: true,
-        })
-          .click();
-
-        await page.getByText(`Confirm`)
-          .click();
-
-        await page.getByText(`Save`)
-
-          .click();
-      }
-    }
-    await page.waitForTimeout(1500);
-
+    // Check news content on UI
     await goto(`/news`);
 
     await page.getByText(NEWS_ARTICLE_PAGE_TITLE)
@@ -157,32 +62,177 @@ test.describe(`Addition of a news article page`, () => {
     await page.getByText(`Тестовая новость`)
       .isVisible();
 
-    await page.waitForTimeout(1000);
+    await checkSeo({
+      page,
+    });
 
-    // Check SEO
-    const metaTitle = await page.$eval(
-      `head title`,
-      (el) => el.innerHTML,
-    );
-
-    expect(metaTitle)
-      .toBe(SEO_META_TITLE);
-
-    const metaDescription = await page.$eval(
-      `head meta[name="description"]`,
-      (el) => el.getAttribute(`content`),
-    );
-
-    expect(metaDescription)
-      .toBe(SEO_META_DESCRIPTION);
-
-    // Check sitemap
-    await goto(`/api/get-sitemap`);
-
-    await expect(page.locator(`html`))
-      .toContainText(`e2e-ui-testovaya-novost`);
+    await checkSitemap({
+      page,
+      goto,
+    });
   });
 });
+
+async function authorizationInStrapi({
+  page,
+}: {
+  page: Page;
+}) {
+  await page.locator(`input[name=email]`)
+    .fill(process.env.CMS_EMAIL as string);
+
+  await page.locator(`input[name=password]`)
+    .fill(process.env.CMS_PASSWORD as string);
+
+  await page.getByText(`Login`)
+    .click();
+}
+
+async function createAndPublishNews({
+  page,
+}: {
+  page: Page;
+}) {
+  await page.getByText(`Content Manager`)
+    .click();
+
+  await page.getByRole(`link`, {
+    name: `Новости`,
+  })
+    .click();
+
+  await page.getByText(`Create new entry`)
+    .first()
+    .click();
+
+  await page.locator(`input[name=title]`)
+    .fill(NEWS_ARTICLE_PAGE_TITLE);
+
+  await page.locator(`div[role=textbox]`)
+    .fill(`Тестовое описание`);
+
+  await page.getByText(`No entry yet. Click to add one.`)
+    .first()
+    .click();
+
+  await page.locator(`input[name='seo.metaTitle']`)
+    .fill(SEO_META_TITLE);
+
+  await page.locator(`textarea[name='seo.metaDescription']`)
+    .fill(SEO_META_DESCRIPTION);
+
+  await page.getByRole(`button`, {
+    name: `Publish`,
+  })
+    .click();
+
+  // Wait for the CMS to save the entry to the db
+  await page.waitForTimeout(1000);
+}
+
+async function addSitemapConfiguration({
+  page,
+}: {
+  page: Page;
+}) {
+  await page.getByText(`Settings`)
+    .click();
+
+  await page.getByText(`Configuration`)
+    .last()
+    .click();
+
+  await page.locator(`input[name=baseURL]`)
+    .fill(process.env.FRONTEND_URL as string);
+
+  await page.getByText(`Add another field to this collection type`)
+    .click();
+
+  await page.waitForTimeout(1000);
+
+  await page.locator(`div[name=type]`)
+    .click();
+
+  await page.getByText(`Новости`)
+    .click();
+
+  await page.locator(`div[name=langcode]`)
+    .click();
+
+  await page.getByText(`Default Language`)
+    .last()
+    .click();
+
+  await page.locator(`input[name=pattern]`)
+    .fill(`news-test/[slug]`);
+
+  await page.locator(`div[name=priority]`)
+    .click();
+
+  await page.getByText(`0.1`)
+    .last()
+    .click();
+
+  await page.locator(`div[name=frequency]`)
+    .click();
+
+  await page.getByText(`Daily`)
+    .last()
+    .click();
+
+  await page.getByText(`Confirm`)
+    .click();
+
+  await page.getByText(`Save`)
+    .click();
+}
+
+async function checkSeo({
+  page,
+}: {
+  page: Page;
+}) {
+  await expect(page)
+    .toHaveTitle(SEO_META_TITLE);
+
+  await expect(page.locator(`meta[name="description"]`))
+    .toHaveAttribute(`content`, SEO_META_DESCRIPTION);
+}
+
+async function checkSitemap({
+  page,
+  goto,
+}:{
+  page: Page;
+  goto: CustomTestFixtures['goto'];
+}) {
+  await goto(`/api/get-sitemap`);
+
+  await expect(page.locator(`html`))
+    .toContainText(`e2e-ui-testovaya-novost`);
+}
+
+async function cleanupSitemapConfiguration({
+  page,
+}: {
+  page: Page;
+}) {
+  await page.goto(`${process.env.CMS_URL}/admin/settings/strapi-5-sitemap-plugin`, {
+    waitUntil: `networkidle`,
+  });
+
+  const targetRow = await page.locator(`tr:has(td span:has-text("news-test/"))`)
+    .first();
+
+  await targetRow.getByRole(`button`, {
+    name: `Delete`,
+  })
+    .click();
+
+  await page.getByText(`Delete`)
+    .last()
+    .click();
+}
 
 async function cleanupNewsArticlePageByTitle({
   title,
