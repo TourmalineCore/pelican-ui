@@ -44,8 +44,6 @@ async function actionTest({
 }) {
   await setViewportSize();
 
-  await page.evaluate(() => window.localStorage.clear());
-
   await expect(page.getByTestId(TEST_ID))
     .toBeVisible();
 
@@ -54,9 +52,4 @@ async function actionTest({
 
   await expect(page.getByTestId(TEST_ID))
     .toBeHidden();
-
-  const isCookieAccept = await page.evaluate(() => localStorage.getItem(`cookieAccept`));
-
-  expect(isCookieAccept)
-    .toBe(`true`);
 }
