@@ -17,6 +17,12 @@ export type CustomTestFixtures = {
     }) => void;
   apiImageMock: () => void;
   setViewportSize: (options?: { width?: number; height?: number; }) => void;
+  checkContactLink: (
+    options: {
+      testId: string;
+      path: RegExp;
+      width?: number;
+    }) => void;
 };
 
 // https://playwright.dev/docs/test-fixtures
@@ -141,6 +147,33 @@ export const test = base.extend<CustomTestFixtures>({
     };
 
     await use(apiImageMock);
+  },
+
+  checkContactLink: async ({
+    page,
+    setViewportSize,
+  }, use) => {
+    const checkContactLink = async ({
+      testId,
+      path,
+      width,
+    }: {
+      testId: string;
+      path: RegExp;
+      width?: number;
+    }) => {
+      await setViewportSize({
+        width,
+      });
+
+      const contactLink = await page.getByTestId(testId)
+        .first();
+
+      await expect(contactLink)
+        .toHaveAttribute(`href`, path);
+    };
+
+    use(checkContactLink);
   },
 });
 

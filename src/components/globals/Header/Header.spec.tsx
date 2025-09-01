@@ -26,4 +26,20 @@ test.describe(`HeaderComponentTests`, () => {
       });
     });
   }
+
+  test(`HeaderContactLinkAttributeCheckTest`, async ({
+    checkContactLink,
+  }) => {
+    await checkContactLink({
+      width: 1366,
+      testId: `header-tel-link`,
+      path: /^tel:/,
+    });
+
+    await checkContactLink({
+      width: 1366,
+      testId: `header-email-link`,
+      path: /^mailto:/,
+    });
+  });
 });
