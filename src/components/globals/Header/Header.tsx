@@ -97,14 +97,14 @@ export function Header({
                 <Link
                   className="header__contact"
                   href={`tel:${phone}`}
-                  data-testid="header-contact-button"
+                  data-testid="header-tel-link"
                 >
                   {phone}
                 </Link>
                 <Link
                   className="header__contact"
                   href={`mailto:${email}`}
-                  data-testid="header-contact-button"
+                  data-testid="header-email-link"
                 >
                   {email}
                 </Link>
