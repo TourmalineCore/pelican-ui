@@ -104,7 +104,7 @@ test.describe(`Documents page CMS integration tests`, () => {
 
   test.describe(`Check document sorting test`, () => {
     const firstDocumentTitle = `Отчет`;
-    const secondaryDocumentTitle = `Отчет 1`;
+    const secondDocumentTitle = `Отчет 1`;
 
     test.beforeEach(async () => {
       await cleanupTestDocumentCategoryByTitle({
@@ -116,7 +116,7 @@ test.describe(`Documents page CMS integration tests`, () => {
       });
 
       await cleanupTestDocumentByTitle({
-        title: secondaryDocumentTitle,
+        title: secondDocumentTitle,
       });
 
       documentsCategoryId = await createTestDocumentsCategory({
@@ -129,7 +129,7 @@ test.describe(`Documents page CMS integration tests`, () => {
       });
 
       await createTestDocument({
-        title: secondaryDocumentTitle,
+        title: secondDocumentTitle,
         date: `2025-01-17`,
       });
     });
@@ -144,7 +144,7 @@ test.describe(`Documents page CMS integration tests`, () => {
       });
 
       await cleanupTestDocumentByTitle({
-        title: secondaryDocumentTitle,
+        title: secondDocumentTitle,
       });
     });
 
