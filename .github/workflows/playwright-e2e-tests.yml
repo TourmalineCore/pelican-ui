@@ -97,9 +97,10 @@ jobs:
         run: npm run playwright:run:e2e --reporter=html 
     
         env:
-          FRONTEND_URL: http://localhost:40110 
-          API_URL: 'http://localhost:40110/cms/api'
-          STRAPI_URL: 'http://localhost:40110/cms'
+          CMS_URL: http://localhost:40110/cms
+          API_URL: http://localhost:40110/cms/api
+          CMS_EMAIL: admin@init-strapi-admin.strapi.io
+          CMS_PASSWORD: admin
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4

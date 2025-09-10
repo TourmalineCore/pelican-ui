@@ -29,112 +29,105 @@ test.describe(`Dynamic addition of new pages`, () => {
   });
 
   test(`Dynamic addition of new pages`, async ({
-    goto,
     page,
+    goto,
+    authorizeInCms,
   }: {
     page: Page;
+    authorizeInCms: CustomTestFixtures['authorizeInCms'];
     goto: CustomTestFixtures['goto'];
   }) => {
-    await page.goto(process.env.STRAPI_URL || `http://localhost:1337`);
+    await page.goto(process.env.CMS_URL as string);
 
-    await page.locator(`input[name=email]`)
-      .fill(process.env.STRAPI_EMAIL || `admin@init-strapi-admin.strapi.io`);
+    await test.step(`Authorize in CMS`, authorizeInCms);
 
-    await page.locator(`input[name=password]`)
-      .fill(process.env.STRAPI_PASSWORD || `admin`);
+    await test.step(`Setup CMS content`, setupCmsContent);
 
-    await page.getByText(`Login`)
-      .click();
+    await test.step(`Add sitemap configuration`, addSitemapConfiguration);
 
-    await page.getByText(`Content Manager`)
-      .click();
+    await test.step(`Check created page on UI`, checkCreatedPageOnUi);
 
-    await page.getByRole(`link`, {
-      name: `Другие страницы`,
-    })
-      .click();
+    async function setupCmsContent() {
+      await page.getByText(`Content Manager`)
+        .click();
 
-    await page.getByText(`Create new entry`)
-      .first()
-      .click();
+      await page.getByRole(`link`, {
+        name: `Другие страницы`,
+      })
+        .click();
 
-    await page.locator(`input[name=title]`)
-      .fill(OTHER_PAGE_TITLE);
+      await page.getByText(`Create new entry`)
+        .first()
+        .click();
 
-    await page.getByRole(`button`, {
-      name: `Add a component to blocks`,
-    })
-      .click();
+      await page.locator(`input[name=title]`)
+        .fill(OTHER_PAGE_TITLE);
 
-    await page.getByRole(`button`, {
-      name: `Блок с билетами`,
-      exact: true,
-    })
-      .click();
+      await page.getByRole(`button`, {
+        name: `Add a component to blocks`,
+      })
+        .click();
 
-    await page.getByText(`Блок с билетами`, {
-      exact: true,
-    })
-      .click();
+      await page.getByRole(`button`, {
+        name: `Блок с билетами`,
+        exact: true,
+      })
+        .click();
 
-    await page.locator(`input[name='blocks.0.title']`)
-      .fill(`Тест`);
+      await page.getByText(`Блок с билетами`, {
+        exact: true,
+      })
+        .click();
 
-    await page.locator(`textarea[name='blocks.0.description']`)
-      .fill(`Тестовое описание`);
+      await page.locator(`input[name='blocks.0.title']`)
+        .fill(`Тест`);
 
-    await page.getByText(`No entry yet. Click to add one.`)
-      .first()
-      .click();
+      await page.locator(`textarea[name='blocks.0.description']`)
+        .fill(`Тестовое описание`);
 
-    await page.locator(`textarea[name='blocks.0.subsidizedTickets.0.category']`)
-      .fill(`Тестовый билет`);
+      await page.getByText(`No entry yet. Click to add one.`)
+        .first()
+        .click();
 
-    await page.locator(`input[name='blocks.0.subsidizedTickets.0.price']`)
-      .fill(`100`);
+      await page.locator(`textarea[name='blocks.0.subsidizedTickets.0.category']`)
+        .fill(`Тестовый билет`);
 
-    await page.locator(`input[name='seo.metaTitle']`)
-      .fill(SEO_META_TITLE);
+      await page.locator(`input[name='blocks.0.subsidizedTickets.0.price']`)
+        .fill(`100`);
 
-    await page.locator(`textarea[name='seo.metaDescription']`)
-      .fill(SEO_META_DESCRIPTION);
+      await page.locator(`input[name='seo.metaTitle']`)
+        .fill(SEO_META_TITLE);
 
-    await page.locator(`textarea[name='seo.keywords']`)
-      .fill(SEO_KEYWORDS);
+      await page.locator(`textarea[name='seo.metaDescription']`)
+        .fill(SEO_META_DESCRIPTION);
 
-    await page.getByRole(`button`, {
-      name: `Publish`,
-    })
-      .click();
+      await page.locator(`textarea[name='seo.keywords']`)
+        .fill(SEO_KEYWORDS);
 
-    await page.waitForTimeout(1000);
+      await page.getByRole(`button`, {
+        name: `Publish`,
+      })
+        .click();
 
-    await page.getByText(`Settings`)
-      .click();
-
-    await page.getByRole(`link`, {
-      name: `Configuration`,
-    })
-      .last()
-      .click();
-
-    await page.waitForTimeout(1000);
-
-    // adding sitemap
-    const isInputFilled = await page.locator(`input[name=baseURL]`)
-      .evaluate((el: any) => el.value.length > 0);
-
-    if (!isInputFilled) {
-      await page.locator(`input[name=baseURL]`)
-        .fill(`http://localhost`);
+      // Wait until navigation record is saved in db
+      await page.waitForTimeout(1000);
     }
 
-    const isTestSitemapCreated = await page.getByText(`/other-pages-test/[slug]`)
-      .isVisible();
+    async function addSitemapConfiguration() {
+      await page.getByText(`Settings`)
+        .click();
 
-    if (!isTestSitemapCreated) {
+      await page.getByText(`Configuration`)
+        .last()
+        .click();
+
+      await page.locator(`input[name=baseURL]`)
+        .fill(process.env.FRONTEND_URL as string);
+
       await page.getByText(`Add another field to this collection type`)
         .click();
+
+      await page.waitForTimeout(1000);
 
       await page.locator(`div[name=type]`)
         .click();
@@ -155,16 +148,15 @@ test.describe(`Dynamic addition of new pages`, () => {
       await page.locator(`div[name=priority]`)
         .click();
 
-      await page.getByText(`0.5`)
+      await page.getByText(`0.1`)
         .last()
         .click();
 
       await page.locator(`div[name=frequency]`)
         .click();
 
-      await page.getByText(`Daily`, {
-        exact: true,
-      })
+      await page.getByText(`Daily`)
+        .last()
         .click();
 
       await page.getByText(`Confirm`)
@@ -174,46 +166,33 @@ test.describe(`Dynamic addition of new pages`, () => {
         .click();
     }
 
-    await goto(`/other`);
+    async function checkCreatedPageOnUi() {
+      await goto(`/other`);
 
-    await page.getByText(OTHER_PAGE_TITLE)
-      .click();
+      await page.getByText(OTHER_PAGE_TITLE)
+        .click();
 
-    await page.getByText(`Тестовый билет`)
-      .isVisible();
+      await page.getByText(`Тестовый билет`)
+        .isVisible();
 
-    await page.waitForTimeout(1000);
+      await page.waitForTimeout(1000);
 
-    // Check SEO
-    const metaTitle = await page.$eval(
-      `head title`,
-      (el) => el.innerHTML,
-    );
+      // Check seo
+      await expect(page)
+        .toHaveTitle(SEO_META_TITLE);
 
-    expect(metaTitle)
-      .toBe(SEO_META_TITLE);
+      await expect(page.locator(`meta[name="description"]`))
+        .toHaveAttribute(`content`, SEO_META_DESCRIPTION);
 
-    const metaDescription = await page.$eval(
-      `head meta[name="description"]`,
-      (el) => el.getAttribute(`content`),
-    );
+      await expect(page.locator(`meta[name="keywords"]`))
+        .toHaveAttribute(`content`, SEO_KEYWORDS);
 
-    expect(metaDescription)
-      .toBe(SEO_META_DESCRIPTION);
+      // Check sitemap
+      await goto(`/api/get-sitemap`);
 
-    const metaKeywords = await page.$eval(
-      `head meta[name="keywords"]`,
-      (el) => el.getAttribute(`content`),
-    );
-
-    expect(metaKeywords)
-      .toBe(SEO_KEYWORDS);
-
-    // Check sitemap
-    await goto(`/api/get-sitemap`);
-
-    await expect(page.locator(`html`))
-      .toContainText(`/other-pages-test/e2e-ui-uslugi`);
+      await expect(page.locator(`html`))
+        .toContainText(`/other-pages-test/e2e-ui-uslugi`);
+    }
   });
 });
 
