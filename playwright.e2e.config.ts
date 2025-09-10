@@ -7,7 +7,6 @@ dotenv.config({
   path: path.resolve(__dirname, `.env`),
 });
 
-
 /**
  * See https://playwright.dev/docs/test-configuration.
  */

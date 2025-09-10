@@ -97,6 +97,7 @@ jobs:
         run: npm run playwright:run:e2e --reporter=html 
     
         env:
+          FRONTEND_URL: http://localhost:40110
           CMS_URL: http://localhost:40110/cms
           API_URL: http://localhost:40110/cms/api
           CMS_EMAIL: admin@init-strapi-admin.strapi.io
