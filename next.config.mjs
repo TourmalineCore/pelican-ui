@@ -159,7 +159,6 @@ const nextConfig = {
       domains: [process.env.CDN_DOMAIN],
       path: `https://${process.env.CDN_DOMAIN}/_next/image`
     }),
-    unoptimized: true,
     // lifetime in seconds for cached optimized images
     // https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl
     // 7 days
