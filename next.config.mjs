@@ -175,6 +175,10 @@ const nextConfig = {
         hostname: 'minio-s3',
       },
       {
+        protocol: 'http',
+        hostname: 'minio-s3.localhost',
+      },
+      {
         protocol: 'https',
         hostname: 'storage.yandexcloud.net',
 
