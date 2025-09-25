@@ -15,6 +15,10 @@ const HEADER_API_ENDPOINT = `${getStrapiURL()}/header`;
 const TICKET_POPUP_DRAFT_BUY_TICKETS_BUTTON_LABEL = `${E2E_DRAFT_UI_NAME_PREFIX} Купить билет`;
 
 test.describe(`Header CMS integration tests`, () => {
+  test.beforeEach(async () => {
+    await cleanupTestHeader();
+  });
+
   test.afterEach(async () => {
     await cleanupTestHeader();
   });
