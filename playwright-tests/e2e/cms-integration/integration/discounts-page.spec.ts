@@ -14,6 +14,10 @@ const DISCOUNTS_DRAFT_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Льготы`;
 const DISCOUNTS_PAGE_API_ENDPOINT = `${getStrapiURL()}/discount-page`;
 
 test.describe(`Discounts page CMS integration tests`, () => {
+  test.beforeEach(async () => {
+    await cleanupTestDiscountsPage();
+  });
+
   test.afterEach(async () => {
     await cleanupTestDiscountsPage();
   });

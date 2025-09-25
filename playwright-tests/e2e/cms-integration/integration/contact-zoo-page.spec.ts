@@ -14,6 +14,10 @@ const CONTACT_ZOO_DRAFT_HERO_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Челябин
 const CONTACT_ZOO_PAGE_API_ENDPOINT = `${getStrapiURL()}/contact-zoo`;
 
 test.describe(`Contact zoo page CMS integration tests`, () => {
+  test.beforeEach(async () => {
+    await cleanupTestContactZooPage();
+  });
+
   test.afterEach(async () => {
     await cleanupTestContactZooPage();
   });
