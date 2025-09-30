@@ -37,6 +37,10 @@ const nextConfig = {
               ? process.env.CORS_ORIGIN
               : process.env.CORS_ORIGIN || "http://localhost:3000",
           },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET, OPTIONS",
+          },
 
           // Indicates how the browser should handle opening new windows and tabs in the context of cross-origin requests
           {
