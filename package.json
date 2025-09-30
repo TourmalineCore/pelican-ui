@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "cookies-next": "^4.3.0",
     "dayjs": "^1.11.13",
     "next": "^14.2.30",
     "next-sitemap": "^4.2.3",
