@@ -105,7 +105,84 @@ test.describe(`Documents page CMS integration tests`, () => {
       checkDocumentsPageDraftPreviewTest,
     );
   });
+
+  test.describe(`Check document sorting test`, () => {
+    const firstDocumentTitle = `Отчет`;
+    const secondDocumentTitle = `Отчет 1`;
+
+    test.beforeEach(async () => {
+      await cleanupTestDocumentCategoryByTitle({
+        title: DOCUMENTS_CATEGORY_TITLE,
+      });
+
+      await cleanupTestDocumentByTitle({
+        title: firstDocumentTitle,
+      });
+
+      await cleanupTestDocumentByTitle({
+        title: secondDocumentTitle,
+      });
+
+      documentsCategoryId = await createTestDocumentsCategory({
+        title: DOCUMENTS_CATEGORY_TITLE,
+      });
+
+      await createTestDocument({
+        title: firstDocumentTitle,
+        date: `2025-01-16`,
+      });
+
+      await createTestDocument({
+        title: secondDocumentTitle,
+        date: `2025-01-17`,
+      });
+    });
+
+    test.afterEach(async () => {
+      await cleanupTestDocumentCategoryByTitle({
+        title: DOCUMENTS_CATEGORY_TITLE,
+      });
+
+      await cleanupTestDocumentByTitle({
+        title: firstDocumentTitle,
+      });
+
+      await cleanupTestDocumentByTitle({
+        title: secondDocumentTitle,
+      });
+    });
+
+    test(
+      `
+        GIVEN documents page
+        WHEN  call method POST /api/documents-category
+        AND call method POST /api/documents
+        AND go to documents category
+        AND documents are sorted correctly
+      `,
+      checkDocumentSortingTest,
+    );
+  });
 });
+
+async function checkDocumentSortingTest({
+  page,
+  goto,
+}: {
+  page: Page;
+  goto: CustomTestFixtures['goto'];
+}) {
+  await goto(AppRoute.DOCUMENTS);
+
+  await page.getByText(DOCUMENTS_CATEGORY_TITLE)
+    .click();
+
+  await page.waitForURL(`${AppRoute.DOCUMENTS}/**`);
+
+  await expect(page.getByTestId(`document-card`)
+    .first())
+    .toContainText(`17.01.2025`);
+}
 
 async function checkDocumentsPageDraftPreviewTest({
   page,
@@ -246,15 +323,20 @@ async function cleanupTestDocumentsPage() {
 
 async function createTestDocument({
   title,
+  date,
   isDraft = false,
 }: {
   title: string;
+  date?: string;
   isDraft?: boolean;
 }) {
   try {
     const response = await axios.post(`${DOCUMENTS_API_ENDPOINT}?status=${isDraft ? `draft` : `published`}`, {
       data: {
         title,
+        ...(date && {
+          date,
+        }),
         files: [
           await getFileIdByName(
             {
@@ -266,10 +348,10 @@ async function createTestDocument({
       },
     });
 
-    await expect(response.status, `News should be created with status 201`)
+    await expect(response.status, `Document should be created with status 201`)
       .toEqual(HttpStatusCode.Created);
   } catch (error) {
-    throw new Error(`Failed to create test news: ${(error as AxiosError).message}`);
+    throw new Error(`Failed to create test document: ${(error as AxiosError).message}`);
   }
 }
 

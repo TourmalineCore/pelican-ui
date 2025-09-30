@@ -21,7 +21,10 @@ export function DocumentCard({
   const hasMultipleFiles = !isSingleDocument && !isFilesEmpty;
 
   return (
-    <li className={`${className} document-card`}>
+    <li
+      className={`${className} document-card`}
+      data-testid="document-card"
+    >
       <div className="document-card__header">
         <div className="document-card__info">
           {showDate && (
