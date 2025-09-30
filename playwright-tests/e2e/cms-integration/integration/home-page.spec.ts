@@ -14,6 +14,10 @@ const HOME_PAGE_DRAFT_HERO_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Челябинс
 const HOME_PAGE_API_ENDPOINT = `${getStrapiURL()}/home`;
 
 test.describe(`Home page CMS integration tests`, () => {
+  test.beforeEach(async () => {
+    await cleanupTestHomePage();
+  });
+
   test.afterEach(async () => {
     await cleanupTestHomePage();
   });

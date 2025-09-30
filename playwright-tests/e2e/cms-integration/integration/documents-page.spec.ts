@@ -25,6 +25,10 @@ const DOCUMENTS_PAGE_API_ENDPOINT = `${getStrapiURL()}/documents-page`;
 let documentsCategoryId: number;
 
 test.describe(`Documents page CMS integration tests`, () => {
+  test.beforeEach(async () => {
+    await cleanupTestDocumentsPage();
+  });
+
   test.afterEach(async () => {
     await cleanupTestDocumentsPage();
   });

@@ -24,6 +24,10 @@ const NEWS_API_ENDPOINT = `${getStrapiURL()}/news`;
 const NEWS_PAGE_API_ENDPOINT = `${getStrapiURL()}/news-page`;
 
 test.describe(`News page CMS integration tests`, () => {
+  test.beforeEach(async () => {
+    await cleanupTestNewsPage();
+  });
+
   test.afterEach(async () => {
     await cleanupTestNewsPage();
   });
