@@ -44,6 +44,9 @@ async function actionTest({
 }) {
   await setViewportSize();
 
+  await expect(page.getByTestId(TEST_ID))
+    .toBeVisible();
+
   await page.getByTestId(`cookie-button`)
     .click();
 

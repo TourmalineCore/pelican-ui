@@ -14,6 +14,10 @@ const VISITING_RULES_DRAFT_EMERGENCY_PHONES_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX}
 const VISITING_RULES_PAGE_API_ENDPOINT = `${getStrapiURL()}/visiting-rules-page`;
 
 test.describe(`Visiting rules page CMS integration tests`, () => {
+  test.beforeEach(async () => {
+    await cleanupTestVisitingRulesPage();
+  });
+
   test.afterEach(async () => {
     await cleanupTestVisitingRulesPage();
   });
