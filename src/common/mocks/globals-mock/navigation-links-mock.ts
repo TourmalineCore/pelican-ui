@@ -34,4 +34,9 @@ export const MOCK_NAVIGATION_LINKS: GlobalComponentProps['navigationLinks'] = [
     name: `Правила посещения`,
     link: AppRoute.VISITING_RULES,
   },
+  {
+    id: 7,
+    name: `Другое`,
+    link: AppRoute.OTHER,
+  },
 ];

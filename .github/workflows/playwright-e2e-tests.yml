@@ -94,7 +94,7 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Playwright run
-        run: npm run playwright:run:e2e --reporter=html 
+        run: npx playwright test --config=playwright.e2e.config.ts --reporter=list,html 
 
         env:
           FRONTEND_URL: http://localhost:40110 
@@ -102,7 +102,7 @@ jobs:
           API_URL: http://localhost:40110/cms/api
           CMS_EMAIL: admin@init-strapi-admin.strapi.io
           CMS_PASSWORD: admin
-        
+
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
         if: failure()

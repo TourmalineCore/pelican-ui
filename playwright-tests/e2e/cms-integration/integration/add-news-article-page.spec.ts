@@ -164,7 +164,7 @@ async function addSitemapConfiguration({
     .click();
 
   await page.locator(`input[name=pattern]`)
-    .fill(`news-test/[slug]`);
+    .fill(`/news-test/[slug]`);
 
   await page.locator(`div[name=priority]`)
     .click();

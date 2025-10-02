@@ -5,7 +5,7 @@ import { E2E_UI_NAME_PREFIX } from './helpers/cms-integration-helpers';
 
 const UPLOAD_API_ENDPOINT = `${getStrapiURL()}/upload/files`;
 
-teardown(`Cleanup test files and single types`, async () => {
+teardown(`Cleanup test files`, async () => {
   const filesResponse = (await axios.get(`${UPLOAD_API_ENDPOINT}`)).data;
 
   const filesDelete: any[] = filesResponse
