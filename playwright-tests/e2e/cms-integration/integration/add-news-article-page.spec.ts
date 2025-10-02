@@ -185,9 +185,6 @@ async function addSitemapConfiguration({
 
   await page.getByText(`Save`)
     .click();
-
-  // Wait until is saved in db
-  await page.waitForTimeout(1000);
 }
 
 async function checkSeo({
