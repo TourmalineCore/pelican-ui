@@ -164,7 +164,7 @@ async function addSitemapConfiguration({
     .click();
 
   await page.locator(`input[name=pattern]`)
-    .fill(`news-test/[slug]`);
+    .fill(`/news-test/[slug]`);
 
   await page.locator(`div[name=priority]`)
     .click();
@@ -185,6 +185,9 @@ async function addSitemapConfiguration({
 
   await page.getByText(`Save`)
     .click();
+
+  // Wait until is saved in db
+  await page.waitForTimeout(1000);
 }
 
 async function checkSeo({

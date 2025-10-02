@@ -164,6 +164,9 @@ test.describe(`Dynamic addition of new pages`, () => {
 
       await page.getByText(`Save`)
         .click();
+
+      // Wait until is saved in db
+      await page.waitForTimeout(1000);
     }
 
     async function checkCreatedPageOnUi() {
