@@ -65,10 +65,7 @@
     margin-bottom: 12px;
     white-space: pre;
     color: $color-black-75;
-
-    @include tablet {
-      max-width: 95%;
-    }
+    text-wrap: auto;
 
     @include tablet-xl {
       margin-bottom: 16px;
