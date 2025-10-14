@@ -67,6 +67,7 @@ export enum ComponentName {
   IMAGE_WITH_BUTTON_GRID = `image-with-button-grid`,
   SKIP_LINK = `skip-link`,
   TEXT_AND_MEDIA = `text-and-media`,
+  TEXT_AND_MEDIA_WITH_LONG_TITLE = `text-and-media-long-title`,
   TICKETS = `tickets`,
   HOME_PAGE_HERO = `home-page-hero`,
   HOME_IMAGE_WITH_BUTTON_GRID = `home-image-with-button-grid`,

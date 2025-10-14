@@ -243,6 +243,18 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.TEXT_AND_MEDIA_WITH_LONG_TITLE) {
+    return (
+      <TextAndMedia
+        {...MOCK_TEXT_AND_MEDIA}
+        title="ЗООКОММУНИКАЦИЯ  12+"
+        viewFootsteps={false}
+        // eslint-disable-next-line max-len
+        description="Как птицы рассказывают птенцам, куда лететь осенью? Можно ли рассказать о себе с помощью запахов? Как танцы помогают найти свою любовь? Эта лекция посвящена общению во всем его разнообразии. Вы получите возможность больше узнать о том, как общаются животные и порассуждать о том, применимы ли эти знания к людям."
+      />
+    );
+  }
+
   if (componentName === ComponentName.TICKETS) {
     return (
       <Tickets {...MOCK_CONTACT_ZOO_TICKETS} />
@@ -382,6 +394,9 @@ export default function ComponentsPage() {
           <Link href={ComponentName.TEXT_AND_MEDIA}>Text and media</Link>
         </li>
         <li className="components-page__item">
+          <Link href={ComponentName.TEXT_AND_MEDIA_WITH_LONG_TITLE}>Text and media with long title</Link>
+        </li>
+        <li className="components-page__item">
           <Link href={ComponentName.TICKETS}>Tickets</Link>
         </li>
 
@@ -410,36 +425,35 @@ export default function ComponentsPage() {
           <Link href={ComponentName.NEWS_LIST}>News List</Link>
         </li>
 
-        <h2 className="components-page__subtitle">Visting rules page components</h2>
+        <h2 className="components-page__subtitle">Visiting rules page components</h2>
         <li className="components-page__item">
           <Link
             href={ComponentName.VISITING_RULES_EMERGENCY_PHONES}
           >
-            Visting rules emergency phones
+            Visiting rules emergency phones
           </Link>
         </li>
         <li className="components-page__item">
           <Link
             href={ComponentName.VISITING_RULES_MAIN}
           >
-            Visting rules main
+            Visiting rules main
           </Link>
         </li>
         <li className="components-page__item">
           <Link
             href={ComponentName.VISITING_RULES_PHOTOS_POLICY}
           >
-            Visting rules photo policy
+            Visiting rules photo policy
           </Link>
         </li>
         <li className="components-page__item">
           <Link
             href={ComponentName.VISITING_RULES_WARNING}
           >
-            Visting rules warning
+            Visiting rules warning
           </Link>
         </li>
-
       </ul>
     </div>
   );
