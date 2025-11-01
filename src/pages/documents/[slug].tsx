@@ -87,7 +87,7 @@ export async function getServerSideProps({
     const availableYears: number[] = [];
 
     Array.from({
-      length: 3,
+      length: 5,
     })
       .map(async (_, i) => {
         const year = 2025 - i;
@@ -235,7 +235,7 @@ async function checkAvailableYearsForCategory({
 }) {
   await Promise.all(
     Array.from({
-      length: 3,
+      length: 5,
     })
       .map(async (_, i) => {
         const year = currentYear - i;
