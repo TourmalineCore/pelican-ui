@@ -157,7 +157,7 @@ test.describe(`Documents page CMS integration tests`, () => {
         WHEN  call method POST /api/documents-category
         AND call method POST /api/documents
         AND go to documents category
-        AND documents are sorted correctly
+        SHOULD documents are sorted correctly
       `,
       checkDocumentSortingTest,
     );
@@ -242,9 +242,9 @@ test.describe(`Documents page CMS integration tests`, () => {
       `
         GIVEN documents page
         WHEN call method POST /api/documents-category
-        AND call method POST /api/documents
+        AND call method POST /api/documents for creating document for the last 6 year
         AND go to documents category
-        AND documents are filtering correctly
+        SHOULD display documents for the last 5 years
       `,
       checkDocumentFilteringByYearTest,
     );
