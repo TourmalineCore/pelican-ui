@@ -39,10 +39,9 @@ test.describe(`Documents page CMS integration tests`, () => {
 
   test.describe(`Main scenario tests`, () => {
     test.beforeEach(async () => {
-      await cleanupAfterDocumentsPageTest({
-        documentTitle: DOCUMENT_TITLE,
-        documentsCategoryTitle: DOCUMENTS_CATEGORY_TITLE,
-      });
+      await cleanupTestDocuments();
+
+      await cleanupTestDocumentCategories();
 
       await setupBeforeDocumentsPageTest({
         documentPageTitle: DOCUMENTS_PAGE_TITLE,
@@ -52,10 +51,9 @@ test.describe(`Documents page CMS integration tests`, () => {
     });
 
     test.afterEach(async () => {
-      await cleanupAfterDocumentsPageTest({
-        documentTitle: DOCUMENT_TITLE,
-        documentsCategoryTitle: DOCUMENTS_CATEGORY_TITLE,
-      });
+      await cleanupTestDocuments();
+
+      await cleanupTestDocumentCategories();
     });
 
     test(
@@ -75,10 +73,9 @@ test.describe(`Documents page CMS integration tests`, () => {
 
   test.describe(`Draft preview tests`, () => {
     test.beforeEach(async () => {
-      await cleanupAfterDocumentsPageTest({
-        documentTitle: DOCUMENT_DRAFT_TITLE,
-        documentsCategoryTitle: DOCUMENTS_DRAFT_CATEGORY_TITLE,
-      });
+      await cleanupTestDocuments();
+
+      await cleanupTestDocumentCategories();
 
       await setupBeforeDocumentsPageTest({
         documentPageTitle: DOCUMENTS_DRAFT_PAGE_TITLE,
@@ -89,10 +86,9 @@ test.describe(`Documents page CMS integration tests`, () => {
     });
 
     test.afterEach(async () => {
-      await cleanupAfterDocumentsPageTest({
-        documentTitle: DOCUMENT_DRAFT_TITLE,
-        documentsCategoryTitle: DOCUMENTS_DRAFT_CATEGORY_TITLE,
-      });
+      await cleanupTestDocuments();
+
+      await cleanupTestDocumentCategories();
     });
 
     test(
@@ -111,17 +107,10 @@ test.describe(`Documents page CMS integration tests`, () => {
   });
 
   test.describe(`Check document sorting test`, () => {
-    const firstDocumentTitle = `Отчет`;
-    const secondDocumentTitle = `Отчет 1`;
-
     test.beforeEach(async () => {
-      await cleanupTestDocumentCategoryByTitle({
-        title: DOCUMENTS_CATEGORY_TITLE,
-      });
+      await cleanupTestDocumentCategories();
 
-      await cleanupTestDocuments({
-        documentsTitle: [firstDocumentTitle, secondDocumentTitle],
-      });
+      await cleanupTestDocuments();
 
       documentsCategoryId = await createTestDocumentsCategory({
         title: DOCUMENTS_CATEGORY_TITLE,
@@ -130,11 +119,11 @@ test.describe(`Documents page CMS integration tests`, () => {
       await createTestDocuments({
         documents: [
           {
-            title: firstDocumentTitle,
+            title: `${E2E_UI_NAME_PREFIX} Отчет 1`,
             date: `${CURRENT_YEAR}-01-16`,
           },
           {
-            title: secondDocumentTitle,
+            title: `${E2E_UI_NAME_PREFIX} Отчет 2`,
             date: `${CURRENT_YEAR}-01-17`,
           },
         ],
@@ -142,13 +131,9 @@ test.describe(`Documents page CMS integration tests`, () => {
     });
 
     test.afterEach(async () => {
-      await cleanupTestDocumentCategoryByTitle({
-        title: DOCUMENTS_CATEGORY_TITLE,
-      });
+      await cleanupTestDocumentCategories();
 
-      await cleanupTestDocuments({
-        documentsTitle: [firstDocumentTitle, secondDocumentTitle],
-      });
+      await cleanupTestDocuments();
     });
 
     test(
@@ -164,28 +149,10 @@ test.describe(`Documents page CMS integration tests`, () => {
   });
 
   test.describe(`Check that the documents are displayed only for 5 years`, () => {
-    const firstDocumentTitle = `Отчет`;
-    const secondDocumentTitle = `Отчет 1`;
-    const thirdDocumentTitle = `Отчет 2`;
-    const fourthDocumentTitle = `Отчет 3`;
-    const fifthDocumentTitle = `Отчет 4`;
-    const sixthDocumentTitle = `Отчет 5`;
-
     test.beforeEach(async () => {
-      await cleanupTestDocumentCategoryByTitle({
-        title: DOCUMENTS_CATEGORY_TITLE,
-      });
+      await cleanupTestDocumentCategories();
 
-      await cleanupTestDocuments({
-        documentsTitle: [
-          firstDocumentTitle,
-          secondDocumentTitle,
-          thirdDocumentTitle,
-          fourthDocumentTitle,
-          fifthDocumentTitle,
-          sixthDocumentTitle,
-        ],
-      });
+      await cleanupTestDocuments();
 
       documentsCategoryId = await createTestDocumentsCategory({
         title: DOCUMENTS_CATEGORY_TITLE,
@@ -194,27 +161,27 @@ test.describe(`Documents page CMS integration tests`, () => {
       await createTestDocuments({
         documents: [
           {
-            title: firstDocumentTitle,
+            title: `${E2E_UI_NAME_PREFIX} Отчет`,
             date: `${CURRENT_YEAR - 5}-01-16`,
           },
           {
-            title: secondDocumentTitle,
+            title: `${E2E_UI_NAME_PREFIX} Отчет 1`,
             date: `${CURRENT_YEAR - 4}-01-17`,
           },
           {
-            title: thirdDocumentTitle,
+            title: `${E2E_UI_NAME_PREFIX} Отчет 2`,
             date: `${CURRENT_YEAR - 3}-01-17`,
           },
           {
-            title: fourthDocumentTitle,
+            title: `${E2E_UI_NAME_PREFIX} Отчет 3`,
             date: `${CURRENT_YEAR - 2}-01-17`,
           },
           {
-            title: fifthDocumentTitle,
+            title: `${E2E_UI_NAME_PREFIX} Отчет 4`,
             date: `${CURRENT_YEAR - 1}-01-17`,
           },
           {
-            title: sixthDocumentTitle,
+            title: `${E2E_UI_NAME_PREFIX} Отчет 5`,
             date: `${CURRENT_YEAR}-01-17`,
           },
         ],
@@ -222,20 +189,9 @@ test.describe(`Documents page CMS integration tests`, () => {
     });
 
     test.afterEach(async () => {
-      await cleanupTestDocumentCategoryByTitle({
-        title: DOCUMENTS_CATEGORY_TITLE,
-      });
+      await cleanupTestDocumentCategories();
 
-      await cleanupTestDocuments({
-        documentsTitle: [
-          firstDocumentTitle,
-          secondDocumentTitle,
-          thirdDocumentTitle,
-          fourthDocumentTitle,
-          fifthDocumentTitle,
-          sixthDocumentTitle,
-        ],
-      });
+      await cleanupTestDocuments();
     });
 
     test(
@@ -388,22 +344,6 @@ async function setupBeforeDocumentsPageTest({
   });
 }
 
-async function cleanupAfterDocumentsPageTest({
-  documentTitle,
-  documentsCategoryTitle,
-}: {
-  documentTitle: string;
-  documentsCategoryTitle: string;
-}) {
-  await cleanupTestDocuments({
-    documentsTitle: [documentTitle],
-  });
-
-  await cleanupTestDocumentCategoryByTitle({
-    title: documentsCategoryTitle,
-  });
-}
-
 async function updateTestDocumentsPage({
   title,
   isDraft = false,
@@ -476,24 +416,19 @@ async function createTestDocuments({
   }
 }
 
-async function cleanupTestDocuments({
-  documentsTitle,
-}: {
-  documentsTitle: string[];
-}) {
+async function cleanupTestDocuments() {
   try {
-    const documentsResponse = (await axios.get(`${DOCUMENTS_API_ENDPOINT}?populate=*&status=draft`)).data;
+    const documentsResponse = (await axios.get<{ data: Document[]; }>(`${DOCUMENTS_API_ENDPOINT}?populate=*&status=draft`)).data;
 
-    documentsTitle.forEach(async (documentTitle) => {
-      const testDocument = documentsResponse.data
-        .find((item: Document) => item.title === documentTitle);
+    const documentsToDelete = documentsResponse.data.filter(({
+      title,
+    }) => title.startsWith(E2E_UI_NAME_PREFIX) || title.startsWith(E2E_DRAFT_UI_NAME_PREFIX));
 
-      if (testDocument) {
-        const response = await axios.delete(`${DOCUMENTS_API_ENDPOINT}/${testDocument.documentId}`);
+    documentsToDelete.forEach(async (document) => {
+      const response = await axios.delete(`${DOCUMENTS_API_ENDPOINT}/${document.documentId}`);
 
-        await expect(response.status, `Document should be deleted with status 204`)
-          .toEqual(HttpStatusCode.NoContent);
-      }
+      await expect(response.status, `Document should be deleted with status 204`)
+        .toEqual(HttpStatusCode.NoContent);
     });
   } catch (error) {
     throw new Error(`Failed to delete test document: ${(error as AxiosError).message}`);
@@ -523,23 +458,20 @@ async function createTestDocumentsCategory({
   }
 }
 
-async function cleanupTestDocumentCategoryByTitle({
-  title,
-}: {
-  title: string;
-}) {
+async function cleanupTestDocumentCategories() {
   try {
-    const documentsCategoriesResponse = (await axios.get(`${DOCUMENTS_CATEGORY_API_ENDPOINT}?populate=*&status=draft`)).data;
+    const documentCategoriesResponse = (await axios.get<{ data: DocumentsCategory[]; }>(`${DOCUMENTS_CATEGORY_API_ENDPOINT}?populate=*&status=draft`)).data;
 
-    const testDocumentsCategory = documentsCategoriesResponse.data
-      .find((item: DocumentsCategory) => item.title === title);
+    const documentCategoriesToDelete = documentCategoriesResponse.data.filter(({
+      title,
+    }) => title.startsWith(E2E_UI_NAME_PREFIX) || title.startsWith(E2E_DRAFT_UI_NAME_PREFIX));
 
-    if (testDocumentsCategory) {
-      const response = await axios.delete(`${DOCUMENTS_CATEGORY_API_ENDPOINT}/${testDocumentsCategory.documentId}`);
+    documentCategoriesToDelete.forEach(async (documentCategory) => {
+      const response = await axios.delete(`${DOCUMENTS_CATEGORY_API_ENDPOINT}/${documentCategory.documentId}`);
 
       await expect(response.status, `Documents category should be deleted with status 204`)
         .toEqual(HttpStatusCode.NoContent);
-    }
+    });
   } catch (error) {
     throw new Error(`Failed to delete test documents category: ${(error as AxiosError).message}`);
   }
