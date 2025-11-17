@@ -1,4 +1,4 @@
-name: Check linting and run playwright tests
+name: Run linting and tests
 
 # ToDo should it be triggered only as part of an open PR?
 # currently it triggers for any commit in a FB
@@ -95,7 +95,7 @@ jobs:
         name: jest-test-results
         path: |
           coverage/
-    retention-days: 7
+        retention-days: 7
 
   run-playwright-tests:
     runs-on: ubuntu-24.04
