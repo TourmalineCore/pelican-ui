@@ -12,6 +12,7 @@ dotenv.config({
  */
 export default defineConfig({
   testDir: `./playwright-tests/e2e`,
+  testMatch: `**/*.spec.{js,ts}`,
   testIgnore: [`/load-validation/**`],
   outputDir: `./playwright-tests/playwright-test-results/e2e-tests`,
   timeout: 45000,
