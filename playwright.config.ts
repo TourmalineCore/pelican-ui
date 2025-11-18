@@ -13,6 +13,7 @@ dotenv.config({
 export default defineConfig({
   testDir: `./`,
   testIgnore: [`**/e2e/**`],
+  testMatch: `**/*.spec.{js,ts}`,
   outputDir: `./playwright-tests/playwright-test-results/test`,
   snapshotDir: `./playwright-tests/screenshots/base`,
   /* Run tests in files in parallel */
