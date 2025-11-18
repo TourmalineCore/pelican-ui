@@ -67,8 +67,7 @@ export async function getAvailableYearsForCategory({
 
   const results = await Promise.all(
     years
-      .map(async (_, i) => {
-        const year = currentYear - i;
+      .map(async (year) => {
         const response: DocumentListResponse = await apiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
           categoryDocumentId: category.id!,
           ...((category.hasTabs) && {
