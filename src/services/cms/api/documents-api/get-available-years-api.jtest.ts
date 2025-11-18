@@ -53,7 +53,7 @@ describe(`getAvailableYearsForCategory`, () => {
   test(`
     GIVEN isPreview = false and other props
     WHEN getAvailableYearsForCategory is called with then
-    THEN query string should contain draft status
+    THEN query string should contain published status
     `, async () => {
     await getAvailableYearsForCategory({
       category: MOCK_CATEGORY,
@@ -62,11 +62,13 @@ describe(`getAvailableYearsForCategory`, () => {
     });
 
     expect(mockedApiFetch)
-      .toHaveBeenCalledWith(expect.stringContaining(`status=published`));
+      .toHaveBeenCalledWith(
+        expect.stringContaining(`status=published`),
+      );
   });
 
   test(`
-    GIVEN isPreview = false and other props
+    GIVEN isPreview = true and other props
     WHEN getAvailableYearsForCategory is called with then
     THEN query string should contain draft status
     `, async () => {
@@ -77,6 +79,8 @@ describe(`getAvailableYearsForCategory`, () => {
     });
 
     expect(mockedApiFetch)
-      .toHaveBeenCalledWith(expect.stringContaining(`status=draft`));
+      .toHaveBeenCalledWith(
+        expect.stringContaining(`status=draft`),
+      );
   });
 });
