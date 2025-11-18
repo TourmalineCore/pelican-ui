@@ -8,7 +8,7 @@ import {
   Page,
   test,
 } from "@/playwright-tests/custom-test";
-import { E2E_DRAFT_UI_NAME_PREFIX, E2E_UI_NAME_PREFIX, getFileIdByName } from "../helpers/cms-integration-helpers";
+import { E2E_UI_NAME_PREFIX, getFileIdByName } from "../helpers/cms-integration-helpers";
 
 const DOCUMENTS_PAGE_TITLE = `${E2E_UI_NAME_PREFIX} Документы`;
 const DOCUMENT_TITLE = `${E2E_UI_NAME_PREFIX} Отчет о деятельности зоопарка`;
@@ -72,139 +72,6 @@ test.describe(`Documents page CMS integration tests`, () => {
       checkDocumentsPageOnUiTest,
     );
   });
-  //   test.beforeEach(async () => {
-  //     await cleanupTestDocuments();
-
-  //     await cleanupTestDocumentCategories();
-
-  //     await setupBeforeDocumentsPageTest({
-  //       documentPageTitle: DOCUMENTS_DRAFT_PAGE_TITLE,
-  //       documentsCategoryTitle: DOCUMENTS_DRAFT_CATEGORY_TITLE,
-  //       documentTitle: DOCUMENT_DRAFT_TITLE,
-  //       isDraft: true,
-  //     });
-  //   });
-
-  //   test.afterEach(async () => {
-  //     await cleanupTestDocuments();
-
-  //     await cleanupTestDocumentCategories();
-  //   });
-
-  //   test(
-  //     `
-  //       GIVEN documents page draft without content
-  //       WHEN call method PUT /api/documents-page
-  //       AND call method POST /api/documents-category
-  //       AND call method POST /api/documents
-  //       AND go to documents page draft
-  //       SHOULD display documents page draft content correctly
-  //       AND document category is displayed correctly
-  //       AND document is displayed correctly
-  //     `,
-  //     checkDocumentsPageDraftPreviewTest,
-  //   );
-  // });
-
-  // test.describe(`Check document sorting test`, () => {
-  //   test.beforeEach(async () => {
-  //     await cleanupTestDocumentCategories();
-
-  //     await cleanupTestDocuments();
-
-  //     documentsCategoryId = await createTestDocumentsCategory({
-  //       title: DOCUMENTS_CATEGORY_TITLE,
-  //     });
-
-  //     await createTestDocuments({
-  //       documents: [
-  //         {
-  //           title: `${E2E_UI_NAME_PREFIX} Отчет 1`,
-  //           date: `${CURRENT_YEAR}-01-16`,
-  //         },
-  //         {
-  //           title: `${E2E_UI_NAME_PREFIX} Отчет 2`,
-  //           date: `${CURRENT_YEAR}-01-17`,
-  //         },
-  //       ],
-  //     });
-  //   });
-
-  //   test.afterEach(async () => {
-  //     await cleanupTestDocumentCategories();
-
-  //     await cleanupTestDocuments();
-  //   });
-
-  //   test(
-  //     `
-  //       GIVEN documents page
-  //       WHEN  call method POST /api/documents-category
-  //       AND call method POST /api/documents
-  //       AND go to documents category
-  //       SHOULD documents are sorted correctly
-  //     `,
-  //     checkDocumentSortingTest,
-  //   );
-  // });
-
-  // test.describe(`Check that the documents are displayed only for 5 years`, () => {
-  //   test.beforeEach(async () => {
-  //     await cleanupTestDocumentCategories();
-
-  //     await cleanupTestDocuments();
-
-  //     documentsCategoryId = await createTestDocumentsCategory({
-  //       title: DOCUMENTS_CATEGORY_TITLE,
-  //     });
-
-  //     await createTestDocuments({
-  //       documents: [
-  //         {
-  //           title: `${E2E_UI_NAME_PREFIX} Отчет`,
-  //           date: `${CURRENT_YEAR - 5}-01-16`,
-  //         },
-  //         {
-  //           title: `${E2E_UI_NAME_PREFIX} Отчет 1`,
-  //           date: `${CURRENT_YEAR - 4}-01-17`,
-  //         },
-  //         {
-  //           title: `${E2E_UI_NAME_PREFIX} Отчет 2`,
-  //           date: `${CURRENT_YEAR - 3}-01-17`,
-  //         },
-  //         {
-  //           title: `${E2E_UI_NAME_PREFIX} Отчет 3`,
-  //           date: `${CURRENT_YEAR - 2}-01-17`,
-  //         },
-  //         {
-  //           title: `${E2E_UI_NAME_PREFIX} Отчет 4`,
-  //           date: `${CURRENT_YEAR - 1}-01-17`,
-  //         },
-  //         {
-  //           title: `${E2E_UI_NAME_PREFIX} Отчет 5`,
-  //           date: `${CURRENT_YEAR}-01-17`,
-  //         },
-  //       ],
-  //     });
-  //   });
-
-  //   test.afterEach(async () => {
-  //     await cleanupTestDocumentCategories();
-
-  //     await cleanupTestDocuments();
-  //   });
-
-  //   test(
-  //     `
-  //       GIVEN documents page
-  //       WHEN call method POST /api/documents-category
-  //       AND call method POST /api/documents for creating document for the last 6 year
-  //       AND go to documents category
-  //       SHOULD display documents for the last 5 years
-  //     `,
-  //     checkDocumentFilteringByYearTest,
-  //   );
-  // });
 });
 
 async function checkDocumentsPageOnUiTest({
@@ -320,11 +187,11 @@ async function createTestDocuments({
 
 async function cleanupTestDocuments() {
   try {
-    const documentsResponse = (await axios.get<{ data: Document[]; }>(`${DOCUMENTS_API_ENDPOINT}?populate=*&status=draft`)).data;
+    const documentsResponse = (await axios.get<{ data: Document[]; }>(`${DOCUMENTS_API_ENDPOINT}?populate=*`)).data;
 
     const documentsToDelete = documentsResponse.data.filter(({
       title,
-    }) => title.startsWith(E2E_UI_NAME_PREFIX) || title.startsWith(E2E_DRAFT_UI_NAME_PREFIX));
+    }) => title.startsWith(E2E_UI_NAME_PREFIX));
 
     documentsToDelete.forEach(async (document) => {
       const response = await axios.delete(`${DOCUMENTS_API_ENDPOINT}/${document.documentId}`);
@@ -360,11 +227,11 @@ async function createTestDocumentsCategory({
 
 async function cleanupTestDocumentCategories() {
   try {
-    const documentCategoriesResponse = (await axios.get<{ data: DocumentsCategory[]; }>(`${DOCUMENTS_CATEGORY_API_ENDPOINT}?populate=*&status=draft`)).data;
+    const documentCategoriesResponse = (await axios.get<{ data: DocumentsCategory[]; }>(`${DOCUMENTS_CATEGORY_API_ENDPOINT}?populate=*`)).data;
 
     const documentCategoriesToDelete = documentCategoriesResponse.data.filter(({
       title,
-    }) => title.startsWith(E2E_UI_NAME_PREFIX) || title.startsWith(E2E_DRAFT_UI_NAME_PREFIX));
+    }) => title.startsWith(E2E_UI_NAME_PREFIX));
 
     documentCategoriesToDelete.forEach(async (documentCategory) => {
       const response = await axios.delete(`${DOCUMENTS_CATEGORY_API_ENDPOINT}/${documentCategory.documentId}`);
