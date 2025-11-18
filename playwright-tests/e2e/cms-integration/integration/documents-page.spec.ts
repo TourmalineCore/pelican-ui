@@ -36,7 +36,7 @@ test.describe(`Documents page CMS integration tests`, () => {
       await cleanupTestDocumentCategories();
 
       documentsCategoryId = await createTestDocumentsCategory({
-        title: DOCUMENTS_PAGE_TITLE,
+        title: DOCUMENTS_CATEGORY_TITLE,
       });
 
       await createTestDocuments({
