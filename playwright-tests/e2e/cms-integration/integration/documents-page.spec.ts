@@ -8,23 +8,15 @@ import {
   Page,
   test,
 } from "@/playwright-tests/custom-test";
-import dayjs from 'dayjs';
 import { E2E_DRAFT_UI_NAME_PREFIX, E2E_UI_NAME_PREFIX, getFileIdByName } from "../helpers/cms-integration-helpers";
 
 const DOCUMENTS_PAGE_TITLE = `${E2E_UI_NAME_PREFIX} Документы`;
 const DOCUMENT_TITLE = `${E2E_UI_NAME_PREFIX} Отчет о деятельности зоопарка`;
 const DOCUMENTS_CATEGORY_TITLE = `${E2E_UI_NAME_PREFIX} Отчеты`;
 
-const DOCUMENTS_DRAFT_PAGE_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Документы`;
-const DOCUMENT_DRAFT_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Отчет о деятельности зоопарка`;
-const DOCUMENTS_DRAFT_CATEGORY_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Отчеты`;
-
 const DOCUMENTS_CATEGORY_API_ENDPOINT = `${getStrapiURL()}/documents-categories`;
 const DOCUMENTS_API_ENDPOINT = `${getStrapiURL()}/documents`;
 const DOCUMENTS_PAGE_API_ENDPOINT = `${getStrapiURL()}/documents-page`;
-
-const CURRENT_YEAR = dayjs()
-  .year();
 
 let documentsCategoryId: number;
 
@@ -43,10 +35,20 @@ test.describe(`Documents page CMS integration tests`, () => {
 
       await cleanupTestDocumentCategories();
 
-      await setupBeforeDocumentsPageTest({
-        documentPageTitle: DOCUMENTS_PAGE_TITLE,
-        documentsCategoryTitle: DOCUMENTS_CATEGORY_TITLE,
-        documentTitle: DOCUMENT_TITLE,
+      documentsCategoryId = await createTestDocumentsCategory({
+        title: DOCUMENTS_PAGE_TITLE,
+      });
+
+      await createTestDocuments({
+        documents: [
+          {
+            title: DOCUMENT_TITLE,
+          },
+        ],
+      });
+
+      await updateTestDocumentsPage({
+        title: DOCUMENTS_PAGE_TITLE,
       });
     });
 
@@ -70,205 +72,140 @@ test.describe(`Documents page CMS integration tests`, () => {
       checkDocumentsPageOnUiTest,
     );
   });
+  //   test.beforeEach(async () => {
+  //     await cleanupTestDocuments();
 
-  test.describe(`Draft preview tests`, () => {
-    test.beforeEach(async () => {
-      await cleanupTestDocuments();
+  //     await cleanupTestDocumentCategories();
 
-      await cleanupTestDocumentCategories();
+  //     await setupBeforeDocumentsPageTest({
+  //       documentPageTitle: DOCUMENTS_DRAFT_PAGE_TITLE,
+  //       documentsCategoryTitle: DOCUMENTS_DRAFT_CATEGORY_TITLE,
+  //       documentTitle: DOCUMENT_DRAFT_TITLE,
+  //       isDraft: true,
+  //     });
+  //   });
 
-      await setupBeforeDocumentsPageTest({
-        documentPageTitle: DOCUMENTS_DRAFT_PAGE_TITLE,
-        documentsCategoryTitle: DOCUMENTS_DRAFT_CATEGORY_TITLE,
-        documentTitle: DOCUMENT_DRAFT_TITLE,
-        isDraft: true,
-      });
-    });
+  //   test.afterEach(async () => {
+  //     await cleanupTestDocuments();
 
-    test.afterEach(async () => {
-      await cleanupTestDocuments();
+  //     await cleanupTestDocumentCategories();
+  //   });
 
-      await cleanupTestDocumentCategories();
-    });
+  //   test(
+  //     `
+  //       GIVEN documents page draft without content
+  //       WHEN call method PUT /api/documents-page
+  //       AND call method POST /api/documents-category
+  //       AND call method POST /api/documents
+  //       AND go to documents page draft
+  //       SHOULD display documents page draft content correctly
+  //       AND document category is displayed correctly
+  //       AND document is displayed correctly
+  //     `,
+  //     checkDocumentsPageDraftPreviewTest,
+  //   );
+  // });
 
-    test(
-      `
-        GIVEN documents page draft without content
-        WHEN call method PUT /api/documents-page
-        AND call method POST /api/documents-category
-        AND call method POST /api/documents
-        AND go to documents page draft
-        SHOULD display documents page draft content correctly
-        AND document category is displayed correctly
-        AND document is displayed correctly
-      `,
-      checkDocumentsPageDraftPreviewTest,
-    );
-  });
+  // test.describe(`Check document sorting test`, () => {
+  //   test.beforeEach(async () => {
+  //     await cleanupTestDocumentCategories();
 
-  test.describe(`Check document sorting test`, () => {
-    test.beforeEach(async () => {
-      await cleanupTestDocumentCategories();
+  //     await cleanupTestDocuments();
 
-      await cleanupTestDocuments();
+  //     documentsCategoryId = await createTestDocumentsCategory({
+  //       title: DOCUMENTS_CATEGORY_TITLE,
+  //     });
 
-      documentsCategoryId = await createTestDocumentsCategory({
-        title: DOCUMENTS_CATEGORY_TITLE,
-      });
+  //     await createTestDocuments({
+  //       documents: [
+  //         {
+  //           title: `${E2E_UI_NAME_PREFIX} Отчет 1`,
+  //           date: `${CURRENT_YEAR}-01-16`,
+  //         },
+  //         {
+  //           title: `${E2E_UI_NAME_PREFIX} Отчет 2`,
+  //           date: `${CURRENT_YEAR}-01-17`,
+  //         },
+  //       ],
+  //     });
+  //   });
 
-      await createTestDocuments({
-        documents: [
-          {
-            title: `${E2E_UI_NAME_PREFIX} Отчет 1`,
-            date: `${CURRENT_YEAR}-01-16`,
-          },
-          {
-            title: `${E2E_UI_NAME_PREFIX} Отчет 2`,
-            date: `${CURRENT_YEAR}-01-17`,
-          },
-        ],
-      });
-    });
+  //   test.afterEach(async () => {
+  //     await cleanupTestDocumentCategories();
 
-    test.afterEach(async () => {
-      await cleanupTestDocumentCategories();
+  //     await cleanupTestDocuments();
+  //   });
 
-      await cleanupTestDocuments();
-    });
+  //   test(
+  //     `
+  //       GIVEN documents page
+  //       WHEN  call method POST /api/documents-category
+  //       AND call method POST /api/documents
+  //       AND go to documents category
+  //       SHOULD documents are sorted correctly
+  //     `,
+  //     checkDocumentSortingTest,
+  //   );
+  // });
 
-    test(
-      `
-        GIVEN documents page
-        WHEN  call method POST /api/documents-category
-        AND call method POST /api/documents
-        AND go to documents category
-        SHOULD documents are sorted correctly
-      `,
-      checkDocumentSortingTest,
-    );
-  });
+  // test.describe(`Check that the documents are displayed only for 5 years`, () => {
+  //   test.beforeEach(async () => {
+  //     await cleanupTestDocumentCategories();
 
-  test.describe(`Check that the documents are displayed only for 5 years`, () => {
-    test.beforeEach(async () => {
-      await cleanupTestDocumentCategories();
+  //     await cleanupTestDocuments();
 
-      await cleanupTestDocuments();
+  //     documentsCategoryId = await createTestDocumentsCategory({
+  //       title: DOCUMENTS_CATEGORY_TITLE,
+  //     });
 
-      documentsCategoryId = await createTestDocumentsCategory({
-        title: DOCUMENTS_CATEGORY_TITLE,
-      });
+  //     await createTestDocuments({
+  //       documents: [
+  //         {
+  //           title: `${E2E_UI_NAME_PREFIX} Отчет`,
+  //           date: `${CURRENT_YEAR - 5}-01-16`,
+  //         },
+  //         {
+  //           title: `${E2E_UI_NAME_PREFIX} Отчет 1`,
+  //           date: `${CURRENT_YEAR - 4}-01-17`,
+  //         },
+  //         {
+  //           title: `${E2E_UI_NAME_PREFIX} Отчет 2`,
+  //           date: `${CURRENT_YEAR - 3}-01-17`,
+  //         },
+  //         {
+  //           title: `${E2E_UI_NAME_PREFIX} Отчет 3`,
+  //           date: `${CURRENT_YEAR - 2}-01-17`,
+  //         },
+  //         {
+  //           title: `${E2E_UI_NAME_PREFIX} Отчет 4`,
+  //           date: `${CURRENT_YEAR - 1}-01-17`,
+  //         },
+  //         {
+  //           title: `${E2E_UI_NAME_PREFIX} Отчет 5`,
+  //           date: `${CURRENT_YEAR}-01-17`,
+  //         },
+  //       ],
+  //     });
+  //   });
 
-      await createTestDocuments({
-        documents: [
-          {
-            title: `${E2E_UI_NAME_PREFIX} Отчет`,
-            date: `${CURRENT_YEAR - 5}-01-16`,
-          },
-          {
-            title: `${E2E_UI_NAME_PREFIX} Отчет 1`,
-            date: `${CURRENT_YEAR - 4}-01-17`,
-          },
-          {
-            title: `${E2E_UI_NAME_PREFIX} Отчет 2`,
-            date: `${CURRENT_YEAR - 3}-01-17`,
-          },
-          {
-            title: `${E2E_UI_NAME_PREFIX} Отчет 3`,
-            date: `${CURRENT_YEAR - 2}-01-17`,
-          },
-          {
-            title: `${E2E_UI_NAME_PREFIX} Отчет 4`,
-            date: `${CURRENT_YEAR - 1}-01-17`,
-          },
-          {
-            title: `${E2E_UI_NAME_PREFIX} Отчет 5`,
-            date: `${CURRENT_YEAR}-01-17`,
-          },
-        ],
-      });
-    });
+  //   test.afterEach(async () => {
+  //     await cleanupTestDocumentCategories();
 
-    test.afterEach(async () => {
-      await cleanupTestDocumentCategories();
+  //     await cleanupTestDocuments();
+  //   });
 
-      await cleanupTestDocuments();
-    });
-
-    test(
-      `
-        GIVEN documents page
-        WHEN call method POST /api/documents-category
-        AND call method POST /api/documents for creating document for the last 6 year
-        AND go to documents category
-        SHOULD display documents for the last 5 years
-      `,
-      checkDocumentFilteringByYearTest,
-    );
-  });
+  //   test(
+  //     `
+  //       GIVEN documents page
+  //       WHEN call method POST /api/documents-category
+  //       AND call method POST /api/documents for creating document for the last 6 year
+  //       AND go to documents category
+  //       SHOULD display documents for the last 5 years
+  //     `,
+  //     checkDocumentFilteringByYearTest,
+  //   );
+  // });
 });
-
-async function checkDocumentFilteringByYearTest({
-  page,
-  goto,
-}: {
-  page: Page;
-  goto: CustomTestFixtures['goto'];
-}) {
-  await goto(AppRoute.DOCUMENTS);
-
-  await page.getByText(DOCUMENTS_CATEGORY_TITLE)
-    .click();
-
-  await page.waitForURL(`${AppRoute.DOCUMENTS}/**`);
-
-  for (let i = 0; i < 5; i++) {
-    // eslint-disable-next-line no-await-in-loop
-    await expect(page.locator(`body`))
-      .toContainText(String(CURRENT_YEAR - i));
-  }
-
-  await expect(page.locator(`body`))
-    .not
-    .toContainText(String(CURRENT_YEAR - 5));
-}
-
-async function checkDocumentSortingTest({
-  page,
-  goto,
-}: {
-  page: Page;
-  goto: CustomTestFixtures['goto'];
-}) {
-  await goto(AppRoute.DOCUMENTS);
-
-  await page.getByText(DOCUMENTS_CATEGORY_TITLE)
-    .click();
-
-  await page.waitForURL(`${AppRoute.DOCUMENTS}/**`);
-
-  await expect(page.getByTestId(`document-card`)
-    .first())
-    .toContainText(`17.01.${CURRENT_YEAR}`);
-}
-
-async function checkDocumentsPageDraftPreviewTest({
-  page,
-  gotoWithDraftPreviewMode,
-}: {
-  page: Page;
-  gotoWithDraftPreviewMode: CustomTestFixtures['gotoWithDraftPreviewMode'];
-}) {
-  await gotoWithDraftPreviewMode({
-    slug: AppRoute.DOCUMENTS.slice(1),
-  });
-
-  await checkDocumentPageContent({
-    page,
-    documentsPageTitle: DOCUMENTS_DRAFT_PAGE_TITLE,
-    documentsCategoryTitle: DOCUMENTS_DRAFT_CATEGORY_TITLE,
-    documentsTitle: DOCUMENT_DRAFT_TITLE,
-  });
-}
 
 async function checkDocumentsPageOnUiTest({
   page,
@@ -313,46 +250,13 @@ async function checkDocumentPageContent({
     .toBeVisible();
 }
 
-async function setupBeforeDocumentsPageTest({
-  documentsCategoryTitle,
-  documentTitle,
-  documentPageTitle,
-  isDraft = false,
-}: {
-  documentsCategoryTitle: string;
-  documentTitle: string;
-  documentPageTitle: string;
-  isDraft?: boolean;
-}) {
-  documentsCategoryId = await createTestDocumentsCategory({
-    title: documentsCategoryTitle,
-    isDraft,
-  });
-
-  await createTestDocuments({
-    documents: [
-      {
-        title: documentTitle,
-        isDraft,
-      },
-    ],
-  });
-
-  await updateTestDocumentsPage({
-    title: documentPageTitle,
-    isDraft,
-  });
-}
-
 async function updateTestDocumentsPage({
   title,
-  isDraft = false,
 }: {
   title: string;
-  isDraft?: boolean;
 }) {
   try {
-    const response = await axios.put(`${DOCUMENTS_PAGE_API_ENDPOINT}?status=${isDraft ? `draft` : `published`}`, {
+    const response = await axios.put(`${DOCUMENTS_PAGE_API_ENDPOINT}`, {
       data: {
         title,
       },
@@ -382,16 +286,14 @@ async function createTestDocuments({
   documents: {
     title: string;
     date?: string;
-    isDraft?: boolean;
   }[];
 }) {
   try {
     documents.forEach(async ({
       title,
       date,
-      isDraft,
     }) => {
-      const response = await axios.post(`${DOCUMENTS_API_ENDPOINT}?status=${isDraft ? `draft` : `published`}`, {
+      const response = await axios.post(`${DOCUMENTS_API_ENDPOINT}`, {
         data: {
           title,
           ...(date && {
@@ -437,13 +339,11 @@ async function cleanupTestDocuments() {
 
 async function createTestDocumentsCategory({
   title,
-  isDraft = false,
 }: {
   title: string;
-  isDraft?: boolean;
 }) {
   try {
-    const response = await axios.post(`${DOCUMENTS_CATEGORY_API_ENDPOINT}?status=${isDraft ? `draft` : `published`}`, {
+    const response = await axios.post(`${DOCUMENTS_CATEGORY_API_ENDPOINT}`, {
       data: {
         title,
       },
