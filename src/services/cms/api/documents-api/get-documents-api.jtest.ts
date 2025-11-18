@@ -18,9 +18,9 @@ describe(`getDocuments`, () => {
   });
 
   test(`
-    GIVEN getDocuments
-    WHEN use it
-    SHOULD call apiFetch with correct sorting params
+    GIVEN documents props
+    WHEN getDocuments is called with then
+    THEN query string should contain correct sorting parameters
     `, async () => {
     await getDocuments({
       categoryDocumentId: 1,
@@ -38,9 +38,9 @@ describe(`getDocuments`, () => {
   });
 
   test(`
-    GIVEN getDocuments
-    WHEN prop isPreview = false
-    SHOULD call apiFetch with published status
+    GIVEN isPreview = false and other props
+    WHEN getDocuments is called with then
+    THEN query string should contain published status
     `, async () => {
     await getDocuments({
       categoryDocumentId: 1,
@@ -48,13 +48,15 @@ describe(`getDocuments`, () => {
     });
 
     expect(mockedApiFetch)
-      .toHaveBeenCalledWith(expect.stringContaining(`status=published`));
+      .toHaveBeenCalledWith(
+        expect.stringContaining(`status=published`),
+      );
   });
 
   test(`
-    GIVEN getDocuments
-    WHEN prop isPreview = true
-    SHOULD call apiFetch with draft status
+    GIVEN isPreview = true and other props
+    WHEN getDocuments is called with then
+    THEN query string should contain draft status
     `, async () => {
     await getDocuments({
       categoryDocumentId: 1,
@@ -62,6 +64,8 @@ describe(`getDocuments`, () => {
     });
 
     expect(mockedApiFetch)
-      .toHaveBeenCalledWith(expect.stringContaining(`status=draft`));
+      .toHaveBeenCalledWith(
+        expect.stringContaining(`status=draft`),
+      );
   });
 });

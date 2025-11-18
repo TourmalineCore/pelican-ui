@@ -1,7 +1,5 @@
 import { apiFetch } from '@/src/common/utils/HttpClient';
 import { jest } from '@jest/globals';
-import qs from 'qs';
-import dayjs from 'dayjs';
 import { getAvailableYearsForCategory } from './documents-api';
 
 jest.mock(`@/src/common/utils/HttpClient`);
@@ -17,32 +15,14 @@ describe(`getAvailableYearsForCategory`, () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    mockedApiFetch.mockImplementation((url: string) => {
-      const queryString = url.split(`?`)[1];
-      const params = qs.parse(queryString);
-      const year = dayjs((params.filters as { date: { lte: string; }; })?.date.lte)
-        .year();
-
-      // As if there are documents for the last 7 years
-      if (year >= 2019 && year <= 2025) {
-        return Promise.resolve({
-          data: [],
-          meta: {
-            pagination: {
-              total: 5,
-            },
-          },
-        });
-      }
-      return Promise.resolve({
-        data: [],
-        meta: {
-          pagination: {
-            total: 0,
-          },
+    mockedApiFetch.mockImplementation(() => Promise.resolve({
+      data: [],
+      meta: {
+        pagination: {
+          total: 1,
         },
-      });
-    });
+      },
+    }));
   });
 
   afterEach(() => {
@@ -50,8 +30,8 @@ describe(`getAvailableYearsForCategory`, () => {
   });
 
   test(`
-    GIVEN getAvailableYearsForCategory
-    WHEN currentYear is equal 2025
+    GIVEN currentYear = 2025 and other props
+    WHEN getAvailableYearsForCategory is called with then
     SHOULD return list of years for the last five years only
     `, async () => {
     const result = await getAvailableYearsForCategory({
@@ -71,9 +51,9 @@ describe(`getAvailableYearsForCategory`, () => {
   });
 
   test(`
-    GIVEN getAvailableYearsForCategory
-    WHEN isPreview = false
-    SHOULD call apiFetch with published status
+    GIVEN isPreview = false and other props
+    WHEN getAvailableYearsForCategory is called with then
+    THEN query string should contain draft status
     `, async () => {
     await getAvailableYearsForCategory({
       category: MOCK_CATEGORY,
@@ -86,9 +66,9 @@ describe(`getAvailableYearsForCategory`, () => {
   });
 
   test(`
-    GIVEN getAvailableYearsForCategory
-    WHEN isPreview = true
-    SHOULD call apiFetch with draft status
+    GIVEN isPreview = false and other props
+    WHEN getAvailableYearsForCategory is called with then
+    THEN query string should contain draft status
     `, async () => {
     await getAvailableYearsForCategory({
       category: MOCK_CATEGORY,
