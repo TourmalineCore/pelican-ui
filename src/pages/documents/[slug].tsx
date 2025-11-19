@@ -1,20 +1,14 @@
-import {
-  Document,
-  DocumentListResponse,
-  DocumentsCategory,
-  DocumentsCategoryListResponse,
-} from "@/src/common/api-types";
+import { DocumentsCategory, DocumentsCategoryListResponse } from "@/src/common/api-types";
 import { useSetYearInQuery } from "@/src/common/hooks/useSetYearInQuery";
 import { useScrollTop } from "@/src/common/hooks/useScrollTop";
 import { MOCK_DOCUMENTS_CATEGORIES } from "@/src/common/mocks/collections-mock/documents-categories-collection-mock";
 import { MOCK_DOCUMENTS } from "@/src/common/mocks/collections-mock/documents-collection-mock";
 import { CategoryProps, DocumentsProps, DocumentsTabsProps } from "@/src/common/types";
-import { getDocumentsQueryParams } from "@/src/common/utils/getDocumentsQueryParams";
 import { apiFetch } from "@/src/common/utils/HttpClient";
 import { Documents } from "@/src/components/documents-page/Documents/Documents";
 import { SeoHead } from "@/src/components/globals/SeoHead/SeoHead";
 import dayjs from "dayjs";
-import qs from "qs";
+import { getAvailableYearsForCategory, getDocuments } from "@/src/services/cms/api/documents-api/documents-api";
 
 export default function DocumentsCategories({
   category,
@@ -87,7 +81,7 @@ export async function getServerSideProps({
     const availableYears: number[] = [];
 
     Array.from({
-      length: 3,
+      length: 5,
     })
       .map(async (_, i) => {
         const year = 2025 - i;
@@ -141,16 +135,11 @@ export async function getServerSideProps({
   const currentYear = dayjs()
     .year();
 
-  const availableYears: number[] = [];
-
-  await checkAvailableYearsForCategory({
+  const availableYears = await getAvailableYearsForCategory({
     isPreview: preview,
-    availableYears,
     category,
     currentYear,
   });
-
-  availableYears.sort((a: number, b:number) => b - a);
 
   const lastYear = availableYears[0] || currentYear;
 
@@ -220,86 +209,4 @@ function mapDocumentCategory({
       },
     }),
   };
-}
-
-async function checkAvailableYearsForCategory({
-  category,
-  currentYear,
-  availableYears,
-  isPreview,
-}: {
-  category: Omit<CategoryProps, 'slug' | 'pageUrl'>;
-  currentYear: number;
-  availableYears: number[];
-  isPreview: boolean;
-}) {
-  await Promise.all(
-    Array.from({
-      length: 3,
-    })
-      .map(async (_, i) => {
-        const year = currentYear - i;
-        const yearsResponse: DocumentListResponse = await apiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
-          categoryDocumentId: category.id!,
-          ...((category.hasTabs) && {
-            yearLessThanOrEqual: year,
-            yearGreaterThanOrEqual: year,
-          }),
-          pageSize: 1,
-          previewMode: isPreview ? `draft` : `published`,
-        }))}`);
-
-        if (yearsResponse.meta?.pagination?.total) {
-          availableYears.push(year);
-        }
-      }),
-  );
-}
-
-async function getDocuments({
-  categoryDocumentId,
-  isPreview,
-  year,
-}: {
-  categoryDocumentId: CategoryProps['id'];
-  isPreview: boolean;
-  year?: number;
-}) {
-  const responseData = (await apiFetch(`/documents?${qs.stringify(getDocumentsQueryParams({
-    categoryDocumentId,
-    ...(year ? {
-      yearLessThanOrEqual: year,
-      yearGreaterThanOrEqual: year,
-    } : {}),
-    previewMode: isPreview ? `draft` : `published`,
-  }))}`)).data;
-
-  return mapDocuments({
-    documents: responseData,
-  });
-}
-
-function mapDocuments({
-  documents,
-}: {
-  documents: Document[] | [];
-}) {
-  return documents
-    .map((document) => ({
-      id: document.id!,
-      date: document!.date!,
-      showDate: document!.showDate!,
-      title: document!.title!,
-      subtitle: document!.subtitle,
-      description: document!.description,
-      files: document.files ? document.files.map((file) => ({
-        id: file.id!,
-        name: file.name!,
-        url: file.url!,
-        ext: file.ext!,
-      })) : [],
-      category: {
-        id: document!.category.documentId!,
-      },
-    }));
 }

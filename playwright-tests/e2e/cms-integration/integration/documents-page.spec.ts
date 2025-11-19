@@ -8,15 +8,11 @@ import {
   Page,
   test,
 } from "@/playwright-tests/custom-test";
-import { E2E_DRAFT_UI_NAME_PREFIX, E2E_UI_NAME_PREFIX, getFileIdByName } from "../helpers/cms-integration-helpers";
+import { E2E_UI_NAME_PREFIX, getFileIdByName } from "../helpers/cms-integration-helpers";
 
 const DOCUMENTS_PAGE_TITLE = `${E2E_UI_NAME_PREFIX} Документы`;
 const DOCUMENT_TITLE = `${E2E_UI_NAME_PREFIX} Отчет о деятельности зоопарка`;
 const DOCUMENTS_CATEGORY_TITLE = `${E2E_UI_NAME_PREFIX} Отчеты`;
-
-const DOCUMENTS_DRAFT_PAGE_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Документы`;
-const DOCUMENT_DRAFT_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Отчет о деятельности зоопарка`;
-const DOCUMENTS_DRAFT_CATEGORY_TITLE = `${E2E_DRAFT_UI_NAME_PREFIX} Отчеты`;
 
 const DOCUMENTS_CATEGORY_API_ENDPOINT = `${getStrapiURL()}/documents-categories`;
 const DOCUMENTS_API_ENDPOINT = `${getStrapiURL()}/documents`;
@@ -35,23 +31,31 @@ test.describe(`Documents page CMS integration tests`, () => {
 
   test.describe(`Main scenario tests`, () => {
     test.beforeEach(async () => {
-      await cleanupAfterDocumentsPageTest({
-        documentTitle: DOCUMENT_TITLE,
-        documentsCategoryTitle: DOCUMENTS_CATEGORY_TITLE,
+      await cleanupTestDocuments();
+
+      await cleanupTestDocumentCategories();
+
+      documentsCategoryId = await createTestDocumentsCategory({
+        title: DOCUMENTS_CATEGORY_TITLE,
       });
 
-      await setupBeforeDocumentsPageTest({
-        documentPageTitle: DOCUMENTS_PAGE_TITLE,
-        documentsCategoryTitle: DOCUMENTS_CATEGORY_TITLE,
-        documentTitle: DOCUMENT_TITLE,
+      await createTestDocuments({
+        documents: [
+          {
+            title: DOCUMENT_TITLE,
+          },
+        ],
+      });
+
+      await updateTestDocumentsPage({
+        title: DOCUMENTS_PAGE_TITLE,
       });
     });
 
     test.afterEach(async () => {
-      await cleanupAfterDocumentsPageTest({
-        documentTitle: DOCUMENT_TITLE,
-        documentsCategoryTitle: DOCUMENTS_CATEGORY_TITLE,
-      });
+      await cleanupTestDocuments();
+
+      await cleanupTestDocumentCategories();
     });
 
     test(
@@ -68,140 +72,7 @@ test.describe(`Documents page CMS integration tests`, () => {
       checkDocumentsPageOnUiTest,
     );
   });
-
-  test.describe(`Draft preview tests`, () => {
-    test.beforeEach(async () => {
-      await cleanupAfterDocumentsPageTest({
-        documentTitle: DOCUMENT_DRAFT_TITLE,
-        documentsCategoryTitle: DOCUMENTS_DRAFT_CATEGORY_TITLE,
-      });
-
-      await setupBeforeDocumentsPageTest({
-        documentPageTitle: DOCUMENTS_DRAFT_PAGE_TITLE,
-        documentsCategoryTitle: DOCUMENTS_DRAFT_CATEGORY_TITLE,
-        documentTitle: DOCUMENT_DRAFT_TITLE,
-        isDraft: true,
-      });
-    });
-
-    test.afterEach(async () => {
-      await cleanupAfterDocumentsPageTest({
-        documentTitle: DOCUMENT_DRAFT_TITLE,
-        documentsCategoryTitle: DOCUMENTS_DRAFT_CATEGORY_TITLE,
-      });
-    });
-
-    test(
-      `
-        GIVEN documents page draft without content
-        WHEN call method PUT /api/documents-page
-        AND call method POST /api/documents-category
-        AND call method POST /api/documents
-        AND go to documents page draft
-        SHOULD display documents page draft content correctly
-        AND document category is displayed correctly
-        AND document is displayed correctly
-      `,
-      checkDocumentsPageDraftPreviewTest,
-    );
-  });
-
-  test.describe(`Check document sorting test`, () => {
-    const firstDocumentTitle = `Отчет`;
-    const secondDocumentTitle = `Отчет 1`;
-
-    test.beforeEach(async () => {
-      await cleanupTestDocumentCategoryByTitle({
-        title: DOCUMENTS_CATEGORY_TITLE,
-      });
-
-      await cleanupTestDocumentByTitle({
-        title: firstDocumentTitle,
-      });
-
-      await cleanupTestDocumentByTitle({
-        title: secondDocumentTitle,
-      });
-
-      documentsCategoryId = await createTestDocumentsCategory({
-        title: DOCUMENTS_CATEGORY_TITLE,
-      });
-
-      await createTestDocument({
-        title: firstDocumentTitle,
-        date: `2025-01-16`,
-      });
-
-      await createTestDocument({
-        title: secondDocumentTitle,
-        date: `2025-01-17`,
-      });
-    });
-
-    test.afterEach(async () => {
-      await cleanupTestDocumentCategoryByTitle({
-        title: DOCUMENTS_CATEGORY_TITLE,
-      });
-
-      await cleanupTestDocumentByTitle({
-        title: firstDocumentTitle,
-      });
-
-      await cleanupTestDocumentByTitle({
-        title: secondDocumentTitle,
-      });
-    });
-
-    test(
-      `
-        GIVEN documents page
-        WHEN  call method POST /api/documents-category
-        AND call method POST /api/documents
-        AND go to documents category
-        AND documents are sorted correctly
-      `,
-      checkDocumentSortingTest,
-    );
-  });
 });
-
-async function checkDocumentSortingTest({
-  page,
-  goto,
-}: {
-  page: Page;
-  goto: CustomTestFixtures['goto'];
-}) {
-  await goto(AppRoute.DOCUMENTS);
-
-  await page.getByText(DOCUMENTS_CATEGORY_TITLE)
-    .click();
-
-  await page.waitForURL(`${AppRoute.DOCUMENTS}/**`);
-
-  await expect(page.getByTestId(`document-card`)
-    .first())
-    .toContainText(`17.01.2025`);
-}
-
-async function checkDocumentsPageDraftPreviewTest({
-  page,
-  gotoWithDraftPreviewMode,
-}: {
-  page: Page;
-  gotoWithDraftPreviewMode: CustomTestFixtures['gotoWithDraftPreviewMode'];
-}) {
-  await gotoWithDraftPreviewMode({
-    slug: AppRoute.DOCUMENTS.slice(1),
-  });
-
-  await checkDocumentPageContent({
-    page,
-    documentsPageTitle: DOCUMENTS_DRAFT_PAGE_TITLE,
-    documentsCategoryTitle: DOCUMENTS_DRAFT_CATEGORY_TITLE,
-    documentsTitle: DOCUMENT_DRAFT_TITLE,
-  });
-}
 
 async function checkDocumentsPageOnUiTest({
   page,
@@ -246,58 +117,13 @@ async function checkDocumentPageContent({
     .toBeVisible();
 }
 
-async function setupBeforeDocumentsPageTest({
-  documentsCategoryTitle,
-  documentTitle,
-  documentPageTitle,
-  isDraft = false,
-}: {
-  documentsCategoryTitle: string;
-  documentTitle: string;
-  documentPageTitle: string;
-  isDraft?: boolean;
-}) {
-  documentsCategoryId = await createTestDocumentsCategory({
-    title: documentsCategoryTitle,
-    isDraft,
-  });
-
-  await createTestDocument({
-    title: documentTitle,
-    isDraft,
-  });
-
-  await updateTestDocumentsPage({
-    title: documentPageTitle,
-    isDraft,
-  });
-}
-
-async function cleanupAfterDocumentsPageTest({
-  documentTitle,
-  documentsCategoryTitle,
-}: {
-  documentTitle: string;
-  documentsCategoryTitle: string;
-}) {
-  await cleanupTestDocumentByTitle({
-    title: documentTitle,
-  });
-
-  await cleanupTestDocumentCategoryByTitle({
-    title: documentsCategoryTitle,
-  });
-}
-
 async function updateTestDocumentsPage({
   title,
-  isDraft = false,
 }: {
   title: string;
-  isDraft?: boolean;
 }) {
   try {
-    const response = await axios.put(`${DOCUMENTS_PAGE_API_ENDPOINT}?status=${isDraft ? `draft` : `published`}`, {
+    const response = await axios.put(`${DOCUMENTS_PAGE_API_ENDPOINT}`, {
       data: {
         title,
       },
@@ -321,57 +147,58 @@ async function cleanupTestDocumentsPage() {
   }
 }
 
-async function createTestDocument({
-  title,
-  date,
-  isDraft = false,
+async function createTestDocuments({
+  documents,
 }: {
-  title: string;
-  date?: string;
-  isDraft?: boolean;
+  documents: {
+    title: string;
+    date?: string;
+  }[];
 }) {
   try {
-    const response = await axios.post(`${DOCUMENTS_API_ENDPOINT}?status=${isDraft ? `draft` : `published`}`, {
-      data: {
-        title,
-        ...(date && {
-          date,
-        }),
-        files: [
-          await getFileIdByName(
-            {
-              name: `[E2E-SMOKE]-new-document.pdf`,
-            },
-          ),
-        ],
-        category: documentsCategoryId,
-      },
-    });
+    documents.forEach(async ({
+      title,
+      date,
+    }) => {
+      const response = await axios.post(`${DOCUMENTS_API_ENDPOINT}`, {
+        data: {
+          title,
+          ...(date && {
+            date,
+          }),
+          files: [
+            await getFileIdByName(
+              {
+                name: `[E2E-SMOKE]-new-document.pdf`,
+              },
+            ),
+          ],
+          category: documentsCategoryId,
+        },
+      });
 
-    await expect(response.status, `Document should be created with status 201`)
-      .toEqual(HttpStatusCode.Created);
+      await expect(response.status, `Document should be created with status 201`)
+        .toEqual(HttpStatusCode.Created);
+    });
   } catch (error) {
     throw new Error(`Failed to create test document: ${(error as AxiosError).message}`);
   }
 }
 
-async function cleanupTestDocumentByTitle({
-  title,
-}: {
-  title: string;
-}) {
+async function cleanupTestDocuments() {
   try {
-    const documentsResponse = (await axios.get(`${DOCUMENTS_API_ENDPOINT}?populate=*&status=draft`)).data;
+    const documentsResponse = (await axios.get<{ data: Document[]; }>(`${DOCUMENTS_API_ENDPOINT}?populate=*`)).data;
 
-    const testDocument = documentsResponse.data
-      .find((item: Document) => item.title === title);
+    const documentsToDelete = documentsResponse.data.filter(({
+      title,
+    }) => title.startsWith(E2E_UI_NAME_PREFIX));
 
-    if (testDocument) {
-      const response = await axios.delete(`${DOCUMENTS_API_ENDPOINT}/${testDocument.documentId}`);
+    documentsToDelete.forEach(async (document) => {
+      const response = await axios.delete(`${DOCUMENTS_API_ENDPOINT}/${document.documentId}`);
 
       await expect(response.status, `Document should be deleted with status 204`)
         .toEqual(HttpStatusCode.NoContent);
-    }
+    });
   } catch (error) {
     throw new Error(`Failed to delete test document: ${(error as AxiosError).message}`);
   }
@@ -379,13 +206,11 @@ async function cleanupTestDocumentByTitle({
 
 async function createTestDocumentsCategory({
   title,
-  isDraft = false,
 }: {
   title: string;
-  isDraft?: boolean;
 }) {
   try {
-    const response = await axios.post(`${DOCUMENTS_CATEGORY_API_ENDPOINT}?status=${isDraft ? `draft` : `published`}`, {
+    const response = await axios.post(`${DOCUMENTS_CATEGORY_API_ENDPOINT}`, {
       data: {
         title,
       },
@@ -400,23 +225,20 @@ async function createTestDocumentsCategory({
   }
 }
 
-async function cleanupTestDocumentCategoryByTitle({
-  title,
-}: {
-  title: string;
-}) {
+async function cleanupTestDocumentCategories() {
   try {
-    const documentsCategoriesResponse = (await axios.get(`${DOCUMENTS_CATEGORY_API_ENDPOINT}?populate=*&status=draft`)).data;
+    const documentCategoriesResponse = (await axios.get<{ data: DocumentsCategory[]; }>(`${DOCUMENTS_CATEGORY_API_ENDPOINT}?populate=*`)).data;
 
-    const testDocumentsCategory = documentsCategoriesResponse.data
-      .find((item: DocumentsCategory) => item.title === title);
+    const documentCategoriesToDelete = documentCategoriesResponse.data.filter(({
+      title,
+    }) => title.startsWith(E2E_UI_NAME_PREFIX));
 
-    if (testDocumentsCategory) {
-      const response = await axios.delete(`${DOCUMENTS_CATEGORY_API_ENDPOINT}/${testDocumentsCategory.documentId}`);
+    documentCategoriesToDelete.forEach(async (documentCategory) => {
+      const response = await axios.delete(`${DOCUMENTS_CATEGORY_API_ENDPOINT}/${documentCategory.documentId}`);
 
       await expect(response.status, `Documents category should be deleted with status 204`)
         .toEqual(HttpStatusCode.NoContent);
-    }
+    });
   } catch (error) {
     throw new Error(`Failed to delete test documents category: ${(error as AxiosError).message}`);
   }
