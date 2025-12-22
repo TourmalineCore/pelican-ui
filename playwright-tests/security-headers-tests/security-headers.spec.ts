@@ -108,6 +108,9 @@ async function expectSecurityHeaders({
   expect(headers[`access-control-allow-origin`])
     .toBe(`http://localhost:3000`);
 
+  expect(headers[`access-control-allow-methods`])
+    .toBe(`GET, OPTIONS`);
+
   expect(headers[`cross-origin-opener-policy`])
     .toBe(`same-origin`);
 
