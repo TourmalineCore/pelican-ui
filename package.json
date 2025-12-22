@@ -29,13 +29,14 @@
     "playwright:open:e2e": "npx playwright test --ui --config=playwright.e2e.config.ts",
     "playwright:run:load-tests": "npx playwright test --config=playwright.load-tests.config.ts",
     "update-snapshots": "npx playwright test --update-snapshots",
-    "generate-api-types": "docker-compose -f ./api-types/docker-compose.yml up --build ts_generator"
+    "generate-api-types": "docker-compose -f ./api-types/docker-compose.yml up --build ts_generator",
+    "jest:run": "jest"
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "cookies-next": "^4.3.0",
     "dayjs": "^1.11.13",
-    "next": "^14.2.30",
+    "dotenv": "^17.2.2",
+    "next": "^14.2.35",
     "next-sitemap": "^4.2.3",
     "plyr-react": "^5.3.0",
     "qs": "^6.14.0",
@@ -53,6 +54,10 @@
     "@playwright/test": "^1.53.0",
     "@stylistic/eslint-plugin": "^1.8.1",
     "@stylistic/stylelint-config": "^1.0.1",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/qs": "^6.14.0",
     "@types/react": "^18",
@@ -74,10 +79,14 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "file-loader": "^6.2.0",
     "husky": "^9.1.7",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "sass": "^1.89.2",
     "stylelint": "^16.21.1",
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-order": "^6.0.4",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
 }

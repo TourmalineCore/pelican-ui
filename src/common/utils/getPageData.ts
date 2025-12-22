@@ -82,9 +82,28 @@ export async function getPageData({
       });
 
     default:
-      return {
-        notFound: true,
-      };
+      return getData({
+        slug,
+        populate: [
+          `blocks.button`,
+          `blocks.largeImage`,
+          `blocks.smallImage`,
+          `blocks.media`,
+          `blocks.categories`,
+          `blocks.cards`,
+          `blocks.cards.image`,
+          `blocks.cards.labels`,
+          `blocks.subsidizedTickets`,
+          `blocks.infoCard`,
+          `blocks.scheduleCard`,
+          `blocks.scheduleCard.timetable`,
+          `blocks.image`,
+          `blocks.stepsCards`,
+          `seo`,
+        ],
+        isOtherPage: true,
+        preview,
+      });
   }
 }
 
@@ -92,33 +111,72 @@ async function getData({
   slug,
   populate,
   preview,
+  isOtherPage = false,
 }: {
   slug: string;
   populate: string[];
   preview: boolean;
+  isOtherPage?: boolean;
 }) {
-  const pageResponse: PageData = await apiFetch(`/${slug}?${qs.stringify({
-    populate,
-    status: preview ? `draft` : `published`,
-  })}`, {
-    isPreview: preview,
-  });
+  let pageData: PageData;
 
-  if (!pageResponse) {
-    return pageResponse;
+  if (isOtherPage) {
+    const response = await apiFetch(`/other-pages?${qs.stringify({
+      populate,
+      status: preview ? `draft` : `published`,
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
+    })}`, {
+      isPreview: preview,
+    });
+
+    const responseData = response.data[0];
+
+    if (!responseData) {
+      return {
+        notFound: true,
+      };
+    }
+
+    pageData = {
+      data: responseData,
+    };
+  } else {
+    pageData = await apiFetch(`/${slug}?${qs.stringify({
+      populate,
+      status: preview ? `draft` : `published`,
+    })}`, {
+      isPreview: preview,
+    });
+
+    if (!pageData) {
+      const contentTypes = await apiFetch(`/content-type-builder/content-types`);
+      const singleType = contentTypes.data.find((item: any) => item.schema.singularName === slug);
+
+      if (singleType) {
+        return pageData;
+      }
+
+      return {
+        notFound: true,
+      };
+    }
   }
 
-  const blocks = pageResponse.data?.blocks?.map((block) => (mapContractByBlock({
+  const blocks = pageData.data?.blocks?.map((block) => (mapContractByBlock({
     block,
   })));
 
   return {
     blocks,
-    ...(pageResponse.data?.seo && {
+    ...(pageData.data?.seo && {
       seo: {
-        metaTitle: pageResponse.data?.seo.metaTitle,
-        metaDescription: pageResponse.data?.seo.metaDescription,
-        metaKeywords: pageResponse.data?.seo.keywords,
+        metaTitle: pageData.data?.seo?.metaTitle,
+        metaDescription: pageData.data?.seo?.metaDescription,
+        metaKeywords: pageData.data?.seo?.keywords,
       },
     }),
   };

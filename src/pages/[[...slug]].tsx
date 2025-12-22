@@ -88,7 +88,7 @@ export async function getServerSideProps({
   }
 
   pageData = await getPageData({
-    slug: query.slug,
+    slug: Array.isArray(query.slug) ? query.slug[0] : query.slug,
     preview,
   });
 

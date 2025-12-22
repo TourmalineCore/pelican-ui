@@ -10,16 +10,14 @@ export function Category({
 }: {
   className: string;
   slug: CategoryProps['slug'];
-  pageUrl: CategoryProps['pageUrl'];
+  pageUrl?: CategoryProps['pageUrl'];
   title: CategoryProps['title'];
 }) {
   return (
     <li className={`${className} category`}>
       <Link
         className="category__wrapper"
-        href={{
-          pathname: `${pageUrl}/${slug}`,
-        }}
+        href={pageUrl ? `${pageUrl}/${slug}` : `/${slug}`}
         aria-label={`Перейти на страницу категории ${title}`}
         data-testid="category"
       >

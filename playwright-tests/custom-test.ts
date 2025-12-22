@@ -23,6 +23,7 @@ export type CustomTestFixtures = {
       path: RegExp;
       width?: number;
     }) => void;
+  authorizeInCms: () => void;
 };
 
 // https://playwright.dev/docs/test-fixtures
@@ -174,6 +175,23 @@ export const test = base.extend<CustomTestFixtures>({
     };
 
     use(checkContactLink);
+  },
+
+  authorizeInCms: async ({
+    page,
+  }, use) => {
+    const authorizeInCms = async () => {
+      await page.locator(`input[name=email]`)
+        .fill(process.env.CMS_EMAIL as string);
+
+      await page.locator(`input[name=password]`)
+        .fill(process.env.CMS_PASSWORD as string);
+
+      await page.getByText(`Login`)
+        .click();
+    };
+
+    await use(authorizeInCms);
   },
 });
 

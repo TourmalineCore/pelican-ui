@@ -5,9 +5,11 @@ export function DiscountsRulesCard({
 }) {
   return (
     <li className="discounts-rules-card">
-      <p className="discounts-rules-card__text">
-        {text}
-      </p>
+      {text && (
+        <p className="discounts-rules-card__text">
+          {text}
+        </p>
+      )}
     </li>
   );
 }

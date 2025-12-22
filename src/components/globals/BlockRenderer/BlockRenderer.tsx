@@ -18,6 +18,8 @@ import {
   VisitingRulesWarningsComponentProps,
   VisitingRulesPhotosPolicyComponentProps,
   VisitingRulesEmergencyPhonesComponentProps,
+  MarkdownBlockProps,
+  StepsBlockProps,
 } from '@/src/common/types';
 import { normalizeSlug } from '@/src/common/utils/normalizeSlug';
 import { Cards } from '../Cards/Cards';
@@ -38,6 +40,8 @@ import { Hero } from '../Hero/Hero';
 import { TextAndMedia } from '../TextAndMedia/TextAndMedia';
 import { Tickets } from '../Tickets/Tickets';
 import { Map } from '../../home-page/Map/Map';
+import { MarkdownBlock } from '../MarkdownBlock/MarkdownBlock';
+import { Steps } from '../Steps/Steps';
 
 type Block = HeroComponentProps
   | SharedTicketsComponentProps
@@ -54,7 +58,9 @@ type Block = HeroComponentProps
   | VisitingRulesMainComponentProps
   | VisitingRulesWarningsComponentProps
   | VisitingRulesPhotosPolicyComponentProps
-  | VisitingRulesEmergencyPhonesComponentProps;
+  | VisitingRulesEmergencyPhonesComponentProps
+  | MarkdownBlockProps
+  | StepsBlockProps;
 
 export const BlockRenderer = ({
   slug,
@@ -277,6 +283,27 @@ export const BlockRenderer = ({
       <VisitingRulesEmergencyPhones
         cardsTitle={block.cardsTitle}
         cards={block.cards}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.SHARED_MARKDOWN_BLOCK) {
+    return (
+      <MarkdownBlock
+        markdown={block.markdown}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
+      />
+    );
+  }
+
+  if (block.__component === BlockTypes.SHARED_STEPS_BLOCK) {
+    return (
+      <Steps
+        subtitle={block.subtitle}
+        stepsCards={block.stepsCards}
+        isFirstBlock={block.isFirstBlock}
+        isLastBlock={block.isLastBlock}
       />
     );
   }
