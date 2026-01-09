@@ -14,7 +14,7 @@ const nextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable"
+            value: "public, no-cache"
           }
         ]
       },
@@ -163,11 +163,10 @@ const nextConfig = {
       domains: [process.env.CDN_DOMAIN],
       path: `https://${process.env.CDN_DOMAIN}/_next/image`
     }),
-
     // lifetime in seconds for cached optimized images
     // https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl
     // 7 days
-    minimumCacheTTL: 604800,
+    minimumCacheTTL: 0,
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
