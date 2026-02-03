@@ -11,12 +11,19 @@
   grid-template-rows: auto;
 
   &__title {
+    display: none;
+
     @include desktop {
       @include h-text;
 
+      display: block;
       color: $color-green-dark;
       grid-column: 2 / 3;
       grid-row: 1 / 1;
+    }
+
+    &--internal-page {
+      display: block;
     }
   }
 
@@ -84,6 +91,10 @@
 
     @include tablet-xl {
       gap: 16px;
+    }
+
+    @include desktop {
+      display: none;
     }
   }
 
