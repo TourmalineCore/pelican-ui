@@ -1,4 +1,3 @@
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import Image from "next/image";
 import Link from "next/link";
 import { AppRoute } from "@/src/common/enum";
@@ -14,10 +13,6 @@ export function HeaderLogo({
   isMobileMenuOpen: boolean;
   handleMobileMenuToggle: () => void;
 }) {
-  const {
-    isDesktop,
-  } = useWindowWidth();
-
   return (
     <Link
       className={`${className} header-logo`}
@@ -31,26 +26,21 @@ export function HeaderLogo({
       }}
     >
       <Image
-        src={getLogo({
-          isDesktopSize: isDesktop,
-        })}
+        className="header-logo__image--desktop"
+        src={LogoDesktop}
         priority
         unoptimized
-        alt="Логотип челябинского зоопарка"
+        alt=""
+        aria-hidden="true"
+      />
+      <Image
+        className="header-logo__image--mobile"
+        src={Logo}
+        priority
+        unoptimized
+        alt=""
         aria-hidden="true"
       />
     </Link>
   );
-
-  function getLogo({
-    isDesktopSize,
-  }: {
-    isDesktopSize: boolean;
-  }) {
-    if (isDesktopSize) {
-      return LogoDesktop;
-    }
-
-    return Logo;
-  }
 }
