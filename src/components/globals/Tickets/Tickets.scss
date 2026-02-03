@@ -233,9 +233,14 @@
     }
 
     &--link {
+      display: none;
       font-size: 20px;
       line-height: 1.4;
       color: $color-black-75;
+
+      @include tablet {
+        display: block;
+      }
 
       @include desktop {
         font-size: 24px;
@@ -247,8 +252,14 @@
     }
 
     &--button {
+      display: none;
+
       @include tablet {
         display: flex;
+      }
+
+      @include tablet-xl {
+        display: none;
       }
     }
 
@@ -285,6 +296,7 @@
   &__ticket-button {
     @include medium-font;
 
+    display: flex;
     padding: 12px;
     width: 100%;
     font-size: 16px;
@@ -303,6 +315,12 @@
         background-image: url("../../../../public/images/tickets/parrot.png");
         background-size: contain;
         background-repeat: no-repeat;
+      }
+    }
+
+    &--mobile {
+      @include tablet {
+        display: none;
       }
     }
   }
