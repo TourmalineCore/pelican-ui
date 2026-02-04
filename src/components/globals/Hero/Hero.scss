@@ -11,19 +11,43 @@
   grid-template-rows: auto;
 
   &__title {
-    display: none;
-
     @include desktop {
       @include h-text;
 
-      display: block;
       color: $color-green-dark;
       grid-column: 2 / 3;
       grid-row: 1 / 1;
     }
 
-    &--internal-page {
-      display: block;
+    &--homepage {
+      position: absolute;
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+      width: 1px;
+      height: 1px;
+      word-wrap: normal;
+      white-space: nowrap;
+      user-select: none;
+      clip-path: inset(100%);
+
+      @include desktop {
+        position: static;
+        display: block;
+        clip: auto;
+        overflow: visible;
+        margin: 0;
+        border: initial;
+        padding: 0;
+        width: auto;
+        height: auto;
+        word-wrap: normal;
+        white-space: normal;
+        user-select: auto;
+        clip-path: none;
+      }
     }
   }
 
