@@ -21,7 +21,7 @@ export function CustomError({
       <h2 className="custom-error__subtitle">Ой, что-то пошло не так</h2>
       <p className="custom-error__note">{message}</p>
       <Image
-        className="custom-error__image "
+        className="custom-error__image"
         src={BearImageSrc}
         unoptimized
         alt=""
