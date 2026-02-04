@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { AppRoute } from "@/src/common/enum";
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import Link from "next/link";
 import GeeseImageSrc from "@/public/images/contact-zoo/contact-zoo-geese.svg";
 import { HttpStatusCode } from "axios";
@@ -13,10 +12,6 @@ export function CustomError({
   statusCode: HttpStatusCode.InternalServerError | HttpStatusCode.NotFound;
   message: string;
 }) {
-  const {
-    isTablet,
-  } = useWindowWidth();
-
   return (
     <section
       className="custom-error container"
@@ -26,19 +21,17 @@ export function CustomError({
       <h2 className="custom-error__subtitle">Ой, что-то пошло не так</h2>
       <p className="custom-error__note">{message}</p>
       <Image
-        className="custom-error__image"
+        className="custom-error__image "
         src={BearImageSrc}
         unoptimized
         alt=""
       />
-      {isTablet && (
-        <Image
-          className="custom-error__image"
-          src={GeeseImageSrc}
-          unoptimized
-          alt=""
-        />
-      )}
+      <Image
+        className="custom-error__image custom-error__image--geese"
+        src={GeeseImageSrc}
+        unoptimized
+        alt=""
+      />
       {statusCode === HttpStatusCode.NotFound && (
         <Link
           href={AppRoute.HOME}
