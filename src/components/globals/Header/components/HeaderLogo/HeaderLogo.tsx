@@ -26,7 +26,7 @@ export function HeaderLogo({
       }}
     >
       <Image
-        className="header-logo__image--desktop"
+        className="header-logo__image header-logo__image--desktop"
         src={LogoDesktop}
         priority
         unoptimized
@@ -34,7 +34,7 @@ export function HeaderLogo({
         aria-hidden="true"
       />
       <Image
-        className="header-logo__image--mobile"
+        className="header-logo__image header-logo__image--mobile"
         src={Logo}
         priority
         unoptimized
