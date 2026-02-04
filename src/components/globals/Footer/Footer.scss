@@ -171,20 +171,22 @@
     }
   }
 
-  &__contacts-tablet {
-    display: none;
-
-    @include tablet {
-      display: block;
-    }
-  }
-
-  &__contacts-mobile {
-    display: block;
-    margin-top: 65px;
-
-    @include tablet {
+  &__contacts {
+    &--tablet {
       display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+
+    &--mobile {
+      display: block;
+      margin-top: 65px;
+
+      @include tablet {
+        display: none;
+      }
     }
   }
 

@@ -8,6 +8,7 @@ import { MutableRefObject } from "react";
 import { AppRoute, ComponentName } from "@/src/common/enum";
 import { normalizeSlug } from "@/src/common/utils/normalizeSlug";
 import dynamic from "next/dynamic";
+import clsx from "clsx";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 import { IconGit } from "./components/IconGit/IconGit";
 
@@ -125,7 +126,7 @@ export function Footer({
               </div>
               {
                 renderContacts({
-                  className: `footer__contacts-tablet footer__col col-tablet-4`,
+                  className: `footer__contacts--tablet footer__col col-tablet-4`,
                   phone,
                   email,
                 })
@@ -133,7 +134,7 @@ export function Footer({
             </div>
             {
               renderContacts({
-                className: `footer__contacts-mobile`,
+                className: `footer__contacts--mobile`,
                 phone,
                 email,
               })
@@ -233,7 +234,7 @@ function renderContacts({
   email: string;
 }) {
   return (
-    <ul className={className}>
+    <ul className={clsx(`footer__contacts`, className)}>
       <li className="footer__contact">
         <a
           href={`tel:${phone}`}
