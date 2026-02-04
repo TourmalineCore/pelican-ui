@@ -15,7 +15,7 @@ import { IconGit } from "./components/IconGit/IconGit";
 const GosBanner = dynamic(
   () => import(`../../home-page/GosBanner/GosBanner`).then((component) => component.GosBanner),
   {
-    ssr: true,
+    ssr: false,
   },
 );
 
