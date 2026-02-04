@@ -286,33 +286,20 @@
     @include caption-2-medium;
 
     position: relative;
+    display: grid;
+    order: 1;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.46;
 
     @include tablet {
+      order: unset;
       margin-top: 0;
     }
 
     @include desktop-xl {
       font-size: 24px;
       line-height: 1.4;
-    }
-
-    &--mobile {
-      display: grid;
-
-      @include tablet {
-        display: none;
-      }
-    }
-
-    &--tablet {
-      display: none;
-
-      @include tablet {
-        display: grid;
-      }
     }
   }
 

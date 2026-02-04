@@ -5,7 +5,6 @@ import { GlobalComponentProps } from "@/src/common/types";
 import { useRouter } from "next/router";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MutableRefObject } from "react";
-import clsx from "clsx";
 import { AppRoute, ComponentName } from "@/src/common/enum";
 import { normalizeSlug } from "@/src/common/utils/normalizeSlug";
 import dynamic from "next/dynamic";
@@ -149,21 +148,40 @@ export function Footer({
                 МБУК «Зоопарк»
               </p>
             </div>
-            {
-              renderCopyright({
-                className: `footer__copyright--tablet col-tablet-4`,
-              })
-            }
+            <div className="footer__copyright col-tablet-4">
+              Открытый код проекта
+              <Link
+                href="https://www.tourmalinecore.com/ru/"
+                className="footer__copyright-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Перейти на сайт компании Tourmaline Core"
+                data-testid="footer-copyright-link"
+              >
+                Tourmaline Core
+                <span
+                  className="footer__heart"
+                  aria-hidden
+                >
+                  ❤
+                </span>
+              </Link>
+              <Link
+                href="https://github.com/TourmalineCore/pelican-documentation"
+                className="footer__github-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ссылка на github"
+                data-testid="footer-icon-github"
+              >
+                <IconGit />
+              </Link>
+            </div>
             <div className="footer__social-media col-tablet-4">
               <SocialMedia
                 className="footer__social-icon"
               />
             </div>
-            {
-              renderCopyright({
-                className: `footer__copyright--mobile`,
-              })
-            }
           </div>
         </div>
       </div>
@@ -202,48 +220,6 @@ export function Footer({
         </ul>
       </div>
     </footer>
-  );
-}
-
-function renderCopyright({
-  className,
-} : {
-  className?: string;
-} = {}) {
-  return (
-    <div className={clsx(
-      `footer__copyright`,
-      className,
-    )}
-    >
-      Открытый код проекта
-      <Link
-        href="https://www.tourmalinecore.com/ru/"
-        className="footer__copyright-link"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Перейти на сайт компании Tourmaline Core"
-        data-testid="footer-copyright-link"
-      >
-        Tourmaline Core
-        <span
-          className="footer__heart"
-          aria-hidden
-        >
-          ❤
-        </span>
-      </Link>
-      <Link
-        href="https://github.com/TourmalineCore/pelican-documentation"
-        className="footer__github-link"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Ссылка на github"
-        data-testid="footer-icon-github"
-      >
-        <IconGit />
-      </Link>
-    </div>
   );
 }
 
