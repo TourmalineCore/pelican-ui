@@ -180,15 +180,13 @@
   &--subsidized {
     background-image: url("../../../../public/images/backgrounds/bg-zebra.png");
 
-    &:last-child {
+    &:nth-child(3) {
       display: none;
 
       @include tablet {
         display: block;
       }
-    }
 
-    &:nth-child(3) {
       @include tablet-xl {
         display: none;
       }
