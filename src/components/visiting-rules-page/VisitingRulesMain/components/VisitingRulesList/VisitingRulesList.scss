@@ -72,9 +72,14 @@
   &__link {
     @include caption-1-medium;
 
+    display: block;
     margin-top: 16px;
     padding: 11px 23px;
     background-color: $color-background-page;
+
+    @include tablet {
+      display: none;
+    }
   }
 
   @include tablet {
