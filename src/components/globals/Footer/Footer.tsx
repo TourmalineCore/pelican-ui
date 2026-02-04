@@ -2,7 +2,6 @@
 import Link from "next/link";
 import Image from 'next/image';
 import { GlobalComponentProps } from "@/src/common/types";
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useRouter } from "next/router";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import { MutableRefObject } from "react";
@@ -40,12 +39,6 @@ export function Footer({
   footerElementRef,
 }: FooterProps) {
   const router = useRouter();
-
-  const {
-    isMobile,
-    isTablet,
-    isDesktop,
-  } = useWindowWidth();
 
   const {
     handleTicketPopupToggle,
@@ -132,49 +125,34 @@ export function Footer({
                 </ul>
               </div>
               {
-                isTablet && (
-                  renderContacts({
-                    className: `footer__col col-tablet-4`,
-                    phone,
-                    email,
-                  }))
+                renderContacts({
+                  className: `footer__contacts-tablet footer__col col-tablet-4`,
+                  phone,
+                  email,
+                })
               }
             </div>
             {
-              !isTablet && (
-                renderContacts({
-                  className: `footer__contacts`,
-                  phone,
-                  email,
-                }))
+              renderContacts({
+                className: `footer__contacts-mobile`,
+                phone,
+                email,
+              })
             }
           </div>
           <div className="footer__middle grid">
+            <div className="footer__official-name col-tablet-4">
+              <p className="footer__official-name-text footer__official-name-text--full">
+                Муниципальное Бюджетное Учреждение Культуры «Зоопарк»
+              </p>
+              <p className="footer__official-name-text footer__official-name-text--short">
+                МБУК «Зоопарк»
+              </p>
+            </div>
             {
-              isTablet && (
-                isDesktop
-                  ? (
-                    <div className="footer__official-name col-tablet-4">
-                      <p className="footer__official-name-text">
-                        Муниципальное Бюджетное Учреждение Культуры «Зоопарк»
-                      </p>
-                    </div>
-                  )
-                  : (
-                    <div className="footer__official-name col-tablet-4">
-                      <p className="footer__official-name-text">
-                        МБУК «Зоопарк»
-                      </p>
-                    </div>
-                  )
-              )
-            }
-            {
-              isTablet && (
-                renderCopyright({
-                  className: `col-tablet-4`,
-                  isTablet,
-                }))
+              renderCopyright({
+                className: `footer__copyright--tablet col-tablet-4`,
+              })
             }
             <div className="footer__social-media col-tablet-4">
               <SocialMedia
@@ -182,9 +160,9 @@ export function Footer({
               />
             </div>
             {
-              isMobile && (
-                renderCopyright()
-              )
+              renderCopyright({
+                className: `footer__copyright--mobile`,
+              })
             }
           </div>
         </div>
@@ -229,10 +207,8 @@ export function Footer({
 
 function renderCopyright({
   className,
-  isTablet = false,
 } : {
   className?: string;
-  isTablet?: boolean;
 } = {}) {
   return (
     <div className={clsx(
@@ -252,9 +228,7 @@ function renderCopyright({
         Tourmaline Core
         <span
           className="footer__heart"
-          {...(isTablet && {
-            "aria-hidden": `true`,
-          })}
+          aria-hidden
         >
           ❤
         </span>

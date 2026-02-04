@@ -171,8 +171,21 @@
     }
   }
 
-  &__contacts {
+  &__contacts-tablet {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
+
+  &__contacts-mobile {
+    display: block;
     margin-top: 65px;
+
+    @include tablet {
+      display: none;
+    }
   }
 
   &__social-media {
@@ -212,6 +225,7 @@
     @include tablet {
       @include medium-font;
 
+      display: block;
       font-size: 14px;
     }
 
@@ -227,6 +241,22 @@
     @include desktop-xl {
       max-width: 420px;
       font-size: 24px;
+    }
+
+    &--full {
+      @include tablet {
+        display: none;
+      }
+
+      @include desktop {
+        display: block;
+      }
+    }
+
+    &--short {
+      @include desktop {
+        display: none;
+      }
     }
   }
 
@@ -256,7 +286,6 @@
     @include caption-2-medium;
 
     position: relative;
-    display: grid;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.46;
@@ -268,6 +297,22 @@
     @include desktop-xl {
       font-size: 24px;
       line-height: 1.4;
+    }
+
+    &--mobile {
+      display: grid;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--tablet {
+      display: none;
+
+      @include tablet {
+        display: grid;
+      }
     }
   }
 
