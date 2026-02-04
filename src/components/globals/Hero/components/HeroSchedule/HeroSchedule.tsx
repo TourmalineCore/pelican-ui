@@ -1,5 +1,4 @@
 import { HeroComponentProps } from "@/src/common/types";
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import clsx from "clsx";
 import { ScheduleTimetable } from "./components/ScheduleTimetable/ScheduleTimetable";
 
@@ -14,10 +13,6 @@ export function HeroSchedule({
   scheduleTimetables: HeroComponentProps['scheduleTimetables'];
   isInternalPage?: boolean;
 }) {
-  const {
-    isTablet,
-  } = useWindowWidth();
-
   return (
     <div className={clsx(
       `hero-schedule`,
@@ -27,7 +22,7 @@ export function HeroSchedule({
       },
     )}
     >
-      {isTablet && <p className="hero-schedule__title">{scheduleTitle}</p>}
+      <p className="hero-schedule__title">{scheduleTitle}</p>
       <ul className="hero-schedule__list">
         {scheduleTimetables.map((el) => (
           <ScheduleTimetable

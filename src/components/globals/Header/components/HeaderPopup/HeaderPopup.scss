@@ -1,5 +1,6 @@
 .header-popup {
   position: relative;
+  display: block;
   overflow: hidden;
   border-radius: 0 0 32px 32px;
   background-color: $color-white;
@@ -90,6 +91,10 @@
     @include tablet-xl {
       @include h2-text;
     }
+  }
+
+  @include desktop {
+    display: none;
   }
 
   &--visible {

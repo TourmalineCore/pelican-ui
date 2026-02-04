@@ -3,12 +3,10 @@
 import {
   PropsWithChildren,
   useCallback,
-  useContext,
   useRef,
   useState,
 } from 'react';
 import { GlobalComponentProps } from '@/src/common/types';
-import { WindowWidthContext } from '@/src/common/providers/WindowWidthProvider';
 import { useTicketPopup } from '@/src/common/hooks/useTicketPopup';
 import { Header } from '../Header/Header';
 import { TicketsPopup } from '../TicketsPopup/TicketsPopup';
@@ -40,10 +38,6 @@ export function Layout({
   const mainElementRef = useRef<null | HTMLDivElement>(null);
   const footerElementRef = useRef<null | HTMLDivElement>(null);
 
-  const {
-    windowWidth,
-  } = useContext(WindowWidthContext);
-
   const [isMobileMenuOpen, setIsMobileMenuActive] = useState(false);
 
   const handleMobileMenuToggle = useCallback(() => {
@@ -54,10 +48,6 @@ export function Layout({
     isTicketPopupActive,
     handleTicketPopupToggle,
   } = useTicketPopup();
-
-  if (windowWidth === 0) {
-    return null;
-  }
 
   return (
     <>

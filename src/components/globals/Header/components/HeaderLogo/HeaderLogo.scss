@@ -2,6 +2,24 @@
   width: 184px;
   height: 40px;
 
+  &__image {
+    &--desktop {
+      display: none;
+
+      @include desktop {
+        display: block;
+      }
+    }
+
+    &--mobile {
+      display: block;
+
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+
   @include desktop {
     width: 77px;
     height: 46px;

@@ -2,7 +2,6 @@ import { MutableRefObject, useEffect } from "react";
 import { GlobalComponentProps } from "@/src/common/types";
 import dynamic from "next/dynamic";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import Link from "next/link";
 import { HeaderLogo } from "./components/HeaderLogo/HeaderLogo";
 import { Button } from "../Button/Button";
@@ -38,9 +37,6 @@ export function Header({
   const {
     handleTicketPopupToggle,
   } = useTicketPopup();
-  const {
-    isDesktop,
-  } = useWindowWidth();
 
   useEffect(() => {
     const overlayElement = overlayElementRef?.current;
@@ -75,65 +71,56 @@ export function Header({
             isMobileMenuOpen={isMobileMenuOpen}
             handleMobileMenuToggle={handleMobileMenuToggle}
           />
-          {isDesktop && (
-            <HeaderNavigation
-              className="header__navigation"
-              navigationLinks={navigationLinks}
-            />
-          )}
+          <HeaderNavigation
+            className="header__navigation"
+            navigationLinks={navigationLinks}
+          />
         </div>
-
         <div className="header__right">
-          {!isDesktop && (
-            <HeaderPopupButton
-              className="header__popup-button"
-              isActive={isMobileMenuOpen}
-              handleToggle={handleMobileMenuToggle}
-            />
-          )}
-          {isDesktop && (
-            <div className="header__buttons">
-              <div className="header__contacts">
-                <Link
-                  className="header__contact"
-                  href={`tel:${phone}`}
-                  data-testid="header-tel-link"
-                >
-                  {phone}
-                </Link>
-                <Link
-                  className="header__contact"
-                  href={`mailto:${email}`}
-                  data-testid="header-email-link"
-                >
-                  {email}
-                </Link>
-              </div>
-              <Button
-                className="header__ticket-button"
-                theme="primary"
-                isFeatured
-                onClick={handleTicketPopupToggle}
-                aria-label="Открыть модальное окно с билетами"
-                data-testid="header-tickets-popup-button"
+          <HeaderPopupButton
+            className="header__popup-button"
+            isActive={isMobileMenuOpen}
+            handleToggle={handleMobileMenuToggle}
+          />
+          <div className="header__buttons">
+            <div className="header__contacts">
+              <Link
+                className="header__contact"
+                href={`tel:${phone}`}
+                data-testid="header-tel-link"
               >
-                Билеты
-              </Button>
+                {phone}
+              </Link>
+              <Link
+                className="header__contact"
+                href={`mailto:${email}`}
+                data-testid="header-email-link"
+              >
+                {email}
+              </Link>
             </div>
-          )}
+            <Button
+              className="header__ticket-button"
+              theme="primary"
+              isFeatured
+              onClick={handleTicketPopupToggle}
+              aria-label="Открыть модальное окно с билетами"
+              data-testid="header-tickets-popup-button"
+            >
+              Билеты
+            </Button>
+          </div>
         </div>
       </div>
-      {!isDesktop && (
-        <HeaderPopup
-          className="header__popup"
-          isActive={isMobileMenuOpen}
-          email={email}
-          phone={phone}
-          navigationLinks={navigationLinks}
-          popupTicketBuyText={popupTicketBuyText}
-          handleMobileMenuToggle={handleMobileMenuToggle}
-        />
-      )}
+      <HeaderPopup
+        className="header__popup"
+        isActive={isMobileMenuOpen}
+        email={email}
+        phone={phone}
+        navigationLinks={navigationLinks}
+        popupTicketBuyText={popupTicketBuyText}
+        handleMobileMenuToggle={handleMobileMenuToggle}
+      />
     </header>
   );
 }

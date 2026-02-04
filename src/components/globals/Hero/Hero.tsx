@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { GlobalComponentProps, HeroComponentProps } from "@/src/common/types";
 import { Button } from "@/src/components/globals/Button/Button";
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { useTicketPopup } from "@/src/common/hooks/useTicketPopup";
 import clsx from "clsx";
 import Link from "next/link";
@@ -25,12 +24,6 @@ export function Hero({
   isLastBlock,
 }: HeroProps) {
   const {
-    isMobile,
-    isTablet,
-    isDesktop,
-  } = useWindowWidth();
-
-  const {
     handleTicketPopupToggle,
   } = useTicketPopup();
 
@@ -46,19 +39,17 @@ export function Hero({
       )}
       data-testid="hero"
     >
-      {(((isMobile || isTablet) && !isDesktop)) && (
-        <h1
-          className={clsx(
-            `hero__title hero__title--internal-page`,
-            {
-              'visually-hidden': !isInternalPage,
-            },
-          )}
-        >
-          {title}
-        </h1>
-      )}
-      {isDesktop && <h1 className="hero__title">{title}</h1>}
+      <h1
+        className={clsx(
+          `hero__title`,
+          {
+            'hero__title--internal-page': isInternalPage,
+            'hero__title--homepage': !isInternalPage,
+          },
+        )}
+      >
+        {title}
+      </h1>
       <div className="hero__image-wrapper">
         <Image
           data-testid="hero-image"
@@ -84,7 +75,7 @@ export function Hero({
           isInternalPage={isInternalPage}
         />
       </div>
-      {(!isDesktop && !isInternalPage)
+      {(!isInternalPage)
         && (
           <div className="hero__buttons">
             <Link

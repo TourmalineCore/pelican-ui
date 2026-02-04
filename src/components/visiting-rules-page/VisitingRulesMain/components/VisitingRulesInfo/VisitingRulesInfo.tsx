@@ -1,4 +1,3 @@
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { VisitingRulesMainComponentProps } from "@/src/common/types";
 import Link from "next/link";
 
@@ -11,17 +10,13 @@ export function VisitingRulesInfo({
     path, label,
   } = link;
 
-  const {
-    isMobile,
-  } = useWindowWidth();
-
   return (
     <div className="visiting-rules-info container">
       <div className="visiting-rules-info__header">
         <h1 className="visiting-rules-info__title">
           {title}
         </h1>
-        {!isMobile && path && (
+        {path && (
           <Link
             className="text-link visiting-rules-info__link"
             href={path}

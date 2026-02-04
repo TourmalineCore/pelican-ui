@@ -70,14 +70,12 @@ export function LoaderContent({
 export const loaderStyles = `
   .loader-container {
     position: fixed;
-    z-index: 99;
+    z-index: 999;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
     background-color: #f6f5f5;
-    opacity: 1;
+    inset: 0;
   }
 
   .loader {

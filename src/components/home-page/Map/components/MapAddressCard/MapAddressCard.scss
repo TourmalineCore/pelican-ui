@@ -45,9 +45,12 @@
   }
 
   &__note {
+    display: none;
+
     @include tablet {
       @include caption-2-medium;
 
+      display: block;
       white-space: pre-line;
       color: $color-black-75;
     }
@@ -107,6 +110,7 @@
 
   &__image-wrapper {
     position: relative;
+    display: none;
     width: 36.77%;
     min-height: 202px;
 
@@ -125,6 +129,10 @@
       @include desktop-xl {
         border-radius: 40px;
       }
+    }
+
+    @include tablet {
+      display: block;
     }
 
     @include tablet-xl {
@@ -171,6 +179,22 @@
       top: -95px;
       width: 168px;
       height: 160px;
+    }
+
+    &--tablet {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+
+    &--mobile {
+      display: block;
+
+      @include tablet {
+        display: none;
+      }
     }
   }
 

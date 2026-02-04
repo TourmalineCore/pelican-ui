@@ -6,7 +6,6 @@ import router from 'next/router';
 import { useEffect } from 'react';
 import { NextPage } from 'next';
 import { Layout } from '../components/globals/Layout/Layout';
-import { WindowWidthProvider } from '../common/providers/WindowWidthProvider';
 import {
   MOCK_POPUP_TICKET_BUY_TEXT,
   MOCK_EMAIL,
@@ -122,14 +121,12 @@ export default function App({
   ));
 
   return (
-    <WindowWidthProvider>
-      <TicketPopupProvider>
-        <div className={inter.variable}>
-          <RouteChangeLoader />
-          {getLayout(<Component {...pageProps} />)}
-        </div>
-      </TicketPopupProvider>
-    </WindowWidthProvider>
+    <TicketPopupProvider>
+      <div className={inter.variable}>
+        <RouteChangeLoader />
+        {getLayout(<Component {...pageProps} />)}
+      </div>
+    </TicketPopupProvider>
   );
 }
 
