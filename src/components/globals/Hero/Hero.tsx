@@ -41,15 +41,14 @@ export function Hero({
     >
       <h1
         className={clsx(
-          `hero__title hero__title--internal-page`,
+          `hero__title`,
           {
-            'visually-hidden': !isInternalPage,
+            'hero__title--internal-page': isInternalPage,
           },
         )}
       >
         {title}
       </h1>
-      <h1 className="hero__title">{title}</h1>
       <div className="hero__image-wrapper">
         <Image
           data-testid="hero-image"
