@@ -45,6 +45,7 @@ export function MapAddressCard({
         <Image
           className="map-address-card__flower map-address-card__flower--mobile"
           src={flower}
+          unoptimized
           alt=""
         />
       </div>
