@@ -93,7 +93,8 @@ async function checkFocusVisibility({
   page: Page;
 }) {
   const errors = [];
-  const focusableSelectors = [`a`, `button`];
+  // Check only visible elements
+  const focusableSelectors = [`a:visible`, `button:visible`];
 
   for (const selector of focusableSelectors) {
     const elements = await page.$$(selector);
