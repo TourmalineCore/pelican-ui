@@ -72,7 +72,7 @@
   &__link {
     @include caption-1-medium;
 
-    display: block;
+    display: flex;
     margin-top: 16px;
     padding: 11px 23px;
     background-color: $color-background-page;
