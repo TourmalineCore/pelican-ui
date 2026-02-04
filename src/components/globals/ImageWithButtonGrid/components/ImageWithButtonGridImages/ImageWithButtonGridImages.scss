@@ -26,5 +26,13 @@
 
   &__image {
     object-fit: cover;
+
+    &--small {
+      display: none;
+
+      @include desktop {
+        display: block;
+      }
+    }
   }
 }

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useWindowWidth } from "@/src/common/hooks/useWindowSize";
 import { ImageWithButtonGridComponentProps } from "@/src/common/types";
 
 export function ImageWithButtonGridImages({
@@ -11,10 +10,6 @@ export function ImageWithButtonGridImages({
   largeImage: ImageWithButtonGridComponentProps["largeImage"];
   smallImage: ImageWithButtonGridComponentProps["smallImage"];
 }) {
-  const {
-    isDesktop,
-  } = useWindowWidth();
-
   return (
     <div className={`${className} grid-images`}>
       <div className="grid-images__wrapper">
@@ -26,10 +21,10 @@ export function ImageWithButtonGridImages({
           sizes="(max-width: 768px) 98vw, (max-width: 1366px) 48vw, 30vw"
         />
       </div>
-      {isDesktop && smallImage?.url && (
+      {smallImage?.url && (
         <div className="grid-images__wrapper">
           <Image
-            className="grid-images__image"
+            className="grid-images__image grid-images__image--small"
             src={smallImage.url}
             alt={smallImage.alternativeText}
             fill
