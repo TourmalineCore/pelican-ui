@@ -96,21 +96,6 @@ class AppDocument extends Document {
         <body>
           <div id="static-loader">
             <LoaderContent nonce={nonce} />
-
-            <style
-              type="text/css"
-              nonce={nonce}
-              dangerouslySetInnerHTML={{
-                __html: `
-                  html {
-                    overflow-y: scroll !important;
-                  }
-                  body {
-                    display: block !important;
-                  }
-              `,
-              }}
-            />
           </div>
 
           <Main />
