@@ -44,6 +44,7 @@ export function Hero({
           `hero__title`,
           {
             'hero__title--internal-page': isInternalPage,
+            'visually-hidden': !isInternalPage,
           },
         )}
       >
