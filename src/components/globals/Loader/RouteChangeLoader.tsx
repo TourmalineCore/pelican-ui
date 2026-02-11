@@ -4,14 +4,7 @@ import { LoaderContent } from "./components/LoaderContent";
 
 export function RouteChangeLoader() {
   const [isLoading, setIsLoading] = useState(false);
-  const [nonce, setNonce] = useState<string>(``);
   const route = useRouter();
-
-  // Read the nonce from the global window object
-  // This injected on the server side, in _document.tsx
-  useEffect(() => {
-    setNonce((window as any).__NONCE__);
-  }, []);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -48,9 +41,7 @@ export function RouteChangeLoader() {
       data-testid="loader"
       id="static-loader"
     >
-      <LoaderContent
-        nonce={nonce}
-      />
+      <LoaderContent />
     </div>
   );
 }

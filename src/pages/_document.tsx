@@ -57,7 +57,7 @@ class AppDocument extends Document {
             }}
           />
 
-          <style nonce={nonce}>
+          <style>
             {loaderStyles}
           </style>
 
@@ -95,7 +95,7 @@ class AppDocument extends Document {
 
         <body>
           <div id="static-loader">
-            <LoaderContent nonce={nonce} />
+            <LoaderContent />
           </div>
 
           <Main />
@@ -135,7 +135,7 @@ class AppDocument extends Document {
           />
 
           {isYandexMetricsEnabled && (
-            <noscript nonce={nonce}>
+            <noscript>
               <div>
                 <img
                   src={`https://mc.yandex.ru/watch/${yandexId}`}
