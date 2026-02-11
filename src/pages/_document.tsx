@@ -118,6 +118,7 @@ class AppDocument extends Document {
 
           <Script
             strategy="lazyOnload"
+            nonce={nonce}
             src="https://culturaltracking.ru/static/js/spxl.js?pixelId=19304"
             data-pixel-id="19304"
             async
