@@ -132,6 +132,6 @@ async function expectSecurityHeaders({
     const nonce = await page.evaluate(() => (window as any).__NONCE__);
 
     expect(headers[`content-security-policy`])
-      .toBe(`default-src 'none'; script-src 'self' 'unsafe-inline' 'strict-dynamic' 'nonce-${nonce}' https://mc.yandex.ru https://pos.gosuslugi.ru; style-src 'self' 'strict-dynamic' 'nonce-${nonce}' https://cdn.chelzoo.tech; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
+      .toBe(`default-src 'none'; script-src 'self' 'strict-dynamic' 'nonce-${nonce}' https://mc.yandex.ru https://pos.gosuslugi.ru; style-src 'self' 'unsafe-inline' https://cdn.chelzoo.tech; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
   }
 }
