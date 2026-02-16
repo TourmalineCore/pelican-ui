@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 import { AppRoute } from "@/src/common/enum";
 import { NewsCollection } from "@/src/common/api-types";
 import axios, { HttpStatusCode, AxiosError } from "axios";
@@ -34,9 +35,7 @@ test.describe(`News page CMS integration tests`, () => {
 
   test.describe(`Main scenario integration tests`, () => {
     test.beforeEach(async () => {
-      await cleanupTestNewsByTitle({
-        title: NEWS_TITLE,
-      });
+      await cleanupTestNewsByTitle();
 
       await createTestNews({
         title: NEWS_TITLE,
@@ -50,9 +49,7 @@ test.describe(`News page CMS integration tests`, () => {
     });
 
     test.afterEach(async () => {
-      await cleanupTestNewsByTitle({
-        title: NEWS_TITLE,
-      });
+      await cleanupTestNewsByTitle();
     });
 
     test(
@@ -70,9 +67,7 @@ test.describe(`News page CMS integration tests`, () => {
 
   test.describe(`Draft preview tests`, () => {
     test.beforeEach(async () => {
-      await cleanupTestNewsByTitle({
-        title: NEWS_TITLE,
-      });
+      await cleanupTestNewsByTitle();
 
       await createTestNews({
         title: NEWS_DRAFT_TITLE,
@@ -88,9 +83,7 @@ test.describe(`News page CMS integration tests`, () => {
     });
 
     test.afterEach(async () => {
-      await cleanupTestNewsByTitle({
-        title: NEWS_DRAFT_TITLE,
-      });
+      await cleanupTestNewsByTitle();
     });
 
     test(
@@ -236,18 +229,14 @@ async function createTestNews({
   }
 }
 
-async function cleanupTestNewsByTitle({
-  title,
-}: {
-  title: string;
-}) {
+async function cleanupTestNewsByTitle() {
   try {
     const newsResponse = (await axios.get(`${NEWS_API_ENDPOINT}?populate=*&status=draft`)).data;
 
-    const testNews = newsResponse.data.find((item: NewsCollection) => item.title === title);
+    const toDeleteItems = newsResponse.data.find((item: NewsCollection) => item.title?.startsWith(E2E_UI_NAME_PREFIX));
 
-    if (testNews) {
-      const response = await axios.delete(`${NEWS_API_ENDPOINT}/${testNews.documentId}`);
+    for (const item of toDeleteItems) {
+      const response = await axios.delete(`${NEWS_API_ENDPOINT}/${item.documentId}`);
 
       await expect(response.status, `News should be deleted with status 204`)
         .toEqual(HttpStatusCode.NoContent);

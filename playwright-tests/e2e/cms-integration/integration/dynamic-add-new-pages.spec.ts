@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 import {
   CustomTestFixtures,
   expect,
@@ -17,15 +18,11 @@ const SEO_KEYWORDS = `Тестовые ключевые слова`;
 
 test.describe(`Dynamic addition of new pages`, () => {
   test.beforeEach(async () => {
-    await cleanupOtherPageByTitle({
-      title: OTHER_PAGE_TITLE,
-    });
+    await cleanupOtherPageByTitle();
   });
 
   test.afterEach(async () => {
-    await cleanupOtherPageByTitle({
-      title: OTHER_PAGE_TITLE,
-    });
+    await cleanupOtherPageByTitle();
   });
 
   test(`Dynamic addition of new pages`, async ({
@@ -199,18 +196,14 @@ test.describe(`Dynamic addition of new pages`, () => {
   });
 });
 
-async function cleanupOtherPageByTitle({
-  title,
-}: {
-  title: string;
-}) {
+async function cleanupOtherPageByTitle() {
   try {
     const otherPageResponse = (await axios.get(`${OTHER_PAGE_API_ENDPOINT}?populate=*`)).data;
 
-    const testOtherPage = otherPageResponse.data.find((item: OtherPage) => item.title === title);
+    const toDeleteItems = otherPageResponse.data.find((item: OtherPage) => item.title?.startsWith(E2E_UI_NAME_PREFIX));
 
-    if (testOtherPage) {
-      const response = await axios.delete(`${OTHER_PAGE_API_ENDPOINT}/${testOtherPage.documentId}`);
+    for (const item of toDeleteItems) {
+      const response = await axios.delete(`${OTHER_PAGE_API_ENDPOINT}/${item.documentId}`);
 
       await expect(response.status, `Other page should be deleted with status 204`)
         .toEqual(HttpStatusCode.NoContent);

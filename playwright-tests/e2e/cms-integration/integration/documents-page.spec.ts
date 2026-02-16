@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 import { AppRoute } from "@/src/common/enum";
 import { getStrapiURL } from "@/src/common/utils/getStrapiURL";
 import axios, { AxiosError, HttpStatusCode } from "axios";
@@ -156,10 +157,10 @@ async function createTestDocuments({
   }[];
 }) {
   try {
-    documents.forEach(async ({
+    for (const {
       title,
       date,
-    }) => {
+    } of documents) {
       const response = await axios.post(`${DOCUMENTS_API_ENDPOINT}`, {
         data: {
           title,
@@ -169,7 +170,7 @@ async function createTestDocuments({
           files: [
             await getFileIdByName(
               {
-                name: `[E2E-SMOKE]-new-document.pdf`,
+                name: `${E2E_UI_NAME_PREFIX}-new-document.pdf`,
               },
             ),
           ],
@@ -179,7 +180,7 @@ async function createTestDocuments({
 
       await expect(response.status, `Document should be created with status 201`)
         .toEqual(HttpStatusCode.Created);
-    });
+    }
   } catch (error) {
     throw new Error(`Failed to create test document: ${(error as AxiosError).message}`);
   }
@@ -193,12 +194,12 @@ async function cleanupTestDocuments() {
       title,
     }) => title.startsWith(E2E_UI_NAME_PREFIX));
 
-    documentsToDelete.forEach(async (document) => {
+    for (const document of documentsToDelete) {
       const response = await axios.delete(`${DOCUMENTS_API_ENDPOINT}/${document.documentId}`);
 
       await expect(response.status, `Document should be deleted with status 204`)
         .toEqual(HttpStatusCode.NoContent);
-    });
+    }
   } catch (error) {
     throw new Error(`Failed to delete test document: ${(error as AxiosError).message}`);
   }
@@ -233,12 +234,12 @@ async function cleanupTestDocumentCategories() {
       title,
     }) => title.startsWith(E2E_UI_NAME_PREFIX));
 
-    documentCategoriesToDelete.forEach(async (documentCategory) => {
+    for (const documentCategory of documentCategoriesToDelete) {
       const response = await axios.delete(`${DOCUMENTS_CATEGORY_API_ENDPOINT}/${documentCategory.documentId}`);
 
       await expect(response.status, `Documents category should be deleted with status 204`)
         .toEqual(HttpStatusCode.NoContent);
-    });
+    }
   } catch (error) {
     throw new Error(`Failed to delete test documents category: ${(error as AxiosError).message}`);
   }

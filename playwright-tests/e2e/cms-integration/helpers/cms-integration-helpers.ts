@@ -5,7 +5,7 @@ export const E2E_UI_NAME_PREFIX = `[E2E-UI]`;
 export const E2E_DRAFT_UI_NAME_PREFIX = `[E2E-DRAFT-UI]`;
 
 export async function getFileIdByName({
-  name = `[E2E-SMOKE]-tiger.png`,
+  name = `${E2E_UI_NAME_PREFIX}-tiger.png`,
 }: {
   name?: string;
 } = {}) {

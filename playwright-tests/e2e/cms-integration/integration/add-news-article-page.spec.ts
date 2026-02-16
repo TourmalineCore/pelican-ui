@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 import {
   CustomTestFixtures,
   expect,
@@ -15,17 +16,13 @@ const SEO_META_DESCRIPTION = `Описание тестовой новости`;
 
 test.describe(`Addition of a news article page`, () => {
   test.beforeEach(async () => {
-    await cleanupNewsArticlePageByTitle({
-      title: NEWS_ARTICLE_PAGE_TITLE,
-    });
+    await cleanupNewsArticlePageByTitle();
   });
 
   test.afterEach(async ({
     page,
   }) => {
-    await cleanupNewsArticlePageByTitle({
-      title: NEWS_ARTICLE_PAGE_TITLE,
-    });
+    await cleanupNewsArticlePageByTitle();
 
     await cleanupSitemapConfiguration({
       page,
@@ -234,18 +231,14 @@ async function cleanupSitemapConfiguration({
     .click();
 }
 
-async function cleanupNewsArticlePageByTitle({
-  title,
-}: {
-  title: string;
-}) {
+async function cleanupNewsArticlePageByTitle() {
   try {
     const newsListPageResponse = (await axios.get(`${NEWS_LIST_PAGE_API_ENDPOINT}?populate=*`)).data;
 
-    const testNewsArticlePage = newsListPageResponse.data.find((item: any) => item.title === title);
+    const toDeleteItems = newsListPageResponse.data.filter((item: any) => item.title?.startsWith(E2E_UI_NAME_PREFIX));
 
-    if (testNewsArticlePage) {
-      const response = await axios.delete(`${NEWS_LIST_PAGE_API_ENDPOINT}/${testNewsArticlePage.documentId}`);
+    for (const item of toDeleteItems) {
+      const response = await axios.delete(`${NEWS_LIST_PAGE_API_ENDPOINT}/${item.documentId}`);
 
       await expect(response.status, `News article page should be deleted with status 204`)
         .toEqual(HttpStatusCode.NoContent);
