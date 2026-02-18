@@ -11,7 +11,7 @@ setup(`Upload test files`, async () => {
   const files = [
     {
       name: `${E2E_UI_NAME_PREFIX}-tiger.png`,
-      path: `./playwright-tests/fixtures/[${E2E_UI_NAME_PREFIX}]-tiger.png`,
+      path: `./playwright-tests/fixtures/${E2E_UI_NAME_PREFIX}-tiger.png`,
     },
     {
       name: `${E2E_UI_NAME_PREFIX}-new-document.pdf`,
