@@ -57,7 +57,7 @@ class AppDocument extends Document {
             }}
           />
 
-          <style>
+          <style nonce={nonce}>
             {loaderStyles}
           </style>
 
@@ -95,7 +95,7 @@ class AppDocument extends Document {
 
         <body>
           <div id="static-loader">
-            <LoaderContent />
+            <LoaderContent nonce={nonce} />
           </div>
 
           <Main />
@@ -118,7 +118,6 @@ class AppDocument extends Document {
 
           <Script
             strategy="lazyOnload"
-            nonce={nonce}
             src="https://culturaltracking.ru/static/js/spxl.js?pixelId=19304"
             data-pixel-id="19304"
             async
@@ -136,7 +135,7 @@ class AppDocument extends Document {
           />
 
           {isYandexMetricsEnabled && (
-            <noscript>
+            <noscript nonce={nonce}>
               <div>
                 <img
                   src={`https://mc.yandex.ru/watch/${yandexId}`}

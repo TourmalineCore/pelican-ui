@@ -3,7 +3,11 @@
 
 // uses in RouteChangeLoader for pages load
 // and in _document.ts on the first page load for speed loading without waiting for other files
-export function LoaderContent() {
+export function LoaderContent({
+  nonce,
+}: {
+  nonce: string;
+}) {
   const styles = Array.from({
     length: 8,
   })
@@ -19,7 +23,14 @@ export function LoaderContent() {
 
   return (
     <div className="loader-container">
-      <style>
+      {/*
+        Insert dynamic inline styles into the page.
+        We add the CSP nonce to allow this inline <style> block to be executed
+        without violating Content Security Policy.
+      */}
+      <style
+        nonce={nonce}
+      >
         {styles}
       </style>
       {Array.from({
