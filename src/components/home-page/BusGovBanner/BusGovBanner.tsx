@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import Link from "next/link";
+
 import busGovQr from "@/public/images/footer/bus-gov-qr.jpg";
 
 export function BusGovBanner() {
@@ -10,14 +12,15 @@ export function BusGovBanner() {
           <li className="bus-gov-banner__card">
             <p className="bus-gov-banner__description">
               Пройдите
-              <a
+              <Link
                 className="text-link bus-gov-banner__link"
                 href="https://bus.gov.ru/qrcode/rate/438089?agencyId=33122"
+                data-testid="bus-gos-banner-link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 опрос о качестве
-              </a>
+              </Link>
               оказания услуг в нашем зоопарке,
               чтобы помочь нам понять, что сделать лучше,
               а&nbsp;что&nbsp;уже&nbsp;отлично.
@@ -28,7 +31,7 @@ export function BusGovBanner() {
               <Image
                 src={busGovQr}
                 fill
-                alt=""
+                alt="Отсканируйте QR код, чтобы пройти опрос о качестве оказания услуг"
               />
             </span>
           </li>
