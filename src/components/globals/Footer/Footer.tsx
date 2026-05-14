@@ -11,6 +11,7 @@ import dynamic from "next/dynamic";
 import clsx from "clsx";
 import { SocialMedia } from "../SocialNetwork/SocialMedia";
 import { IconGit } from "./components/IconGit/IconGit";
+import { BusGovBanner } from "../../home-page/BusGovBanner/BusGovBanner";
 
 const GosBanner = dynamic(
   () => import(`../../home-page/GosBanner/GosBanner`).then((component) => component.GosBanner),
@@ -49,6 +50,9 @@ export function Footer({
   });
 
   const isGosBannerVisible = slugAfterNormalize === AppRoute.HOME
+   || slugAfterNormalize === `${AppRoute.COMPONENTS}/${ComponentName.FOOTER}`;
+
+  const isBusGovBannerVisible = slugAfterNormalize === AppRoute.HOME
    || slugAfterNormalize === `${AppRoute.COMPONENTS}/${ComponentName.FOOTER}`;
 
   return (
@@ -168,6 +172,7 @@ export function Footer({
         </div>
       </div>
       {isGosBannerVisible && <GosBanner />}
+      {isBusGovBannerVisible && <BusGovBanner />}
       <div className="container footer__bottom">
         <ul className="footer__official-links grid">
           {officialLinks.map(({
