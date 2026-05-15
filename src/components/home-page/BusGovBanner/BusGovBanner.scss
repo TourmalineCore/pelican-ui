@@ -1,0 +1,90 @@
+.bus-gov-banner {
+  background-color: $color-green-5;
+
+  &__inner {
+    padding: 28px 16px;
+
+    @include tablet-xl {
+      padding: 40px 32px;
+    }
+
+    @include desktop {
+      padding: 40px;
+    }
+
+    @include desktop-xl {
+      padding: 64px;
+    }
+  }
+
+  &__cards {
+    @include tablet {
+      display: flex;
+    }
+  }
+
+  &__card {
+    display: flex;
+    justify-content: center;
+    border-radius: 24px;
+    padding: 16px;
+    background-color: $color-white;
+    gap: 12px;
+
+    &:first-child {
+      align-items: center;
+      flex-grow: 1;
+      flex-direction: row;
+
+      @include tablet {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 32px;
+      }
+
+      @include desktop-xl {
+        align-items: center;
+        flex-direction: row;
+      }
+    }
+
+    & + & {
+      margin-top: 12px;
+
+      @include tablet {
+        margin-top: 0;
+        margin-left: 16px;
+      }
+
+      @include desktop {
+        margin-left: 24px;
+      }
+    }
+  }
+
+  &__description {
+    @include caption-1-regular;
+
+    @include tablet-xl {
+      @include caption-1-medium;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    margin: 0 4px;
+  }
+
+  &__image {
+    position: relative;
+    display: block;
+    flex-shrink: 0;
+    width: 140px;
+    height: 140px;
+
+    @include desktop {
+      width: 120px;
+      height: 120px;
+    }
+  }
+}

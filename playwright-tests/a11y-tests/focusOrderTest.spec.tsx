@@ -176,6 +176,7 @@ async function homePageMobileTest({
     `footer-copyright-link`,
     `footer-icon-github`,
     `gos-banner-button`,
+    `bus-gos-banner-link`,
     ...generateTestIdDuplicates({
       count: 3,
       string: `footer-official-link`,
@@ -224,6 +225,7 @@ async function homePageDesktopTest({
     `social-icon-odnoklassniki`,
     `social-icon-dzen`,
     `gos-banner-button`,
+    `bus-gos-banner-link`,
     ...generateTestIdDuplicates({
       count: 3,
       string: `footer-official-link`,
