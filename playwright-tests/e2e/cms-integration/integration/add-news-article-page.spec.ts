@@ -96,6 +96,11 @@ async function createAndPublishNews({
   await page.getByText(`Content Manager`)
     .click();
 
+  await page.getByRole(`button`, {
+    name: `Skip`,
+  })
+    .click();
+
   await page.getByRole(`link`, {
     name: `Новости`,
   })

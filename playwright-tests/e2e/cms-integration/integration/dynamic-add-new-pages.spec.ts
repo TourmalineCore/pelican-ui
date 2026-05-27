@@ -54,6 +54,11 @@ test.describe(`Dynamic addition of new pages`, () => {
       await page.getByText(`Content Manager`)
         .click();
 
+      await page.getByRole(`button`, {
+        name: `Skip`,
+      })
+        .click();
+
       await page.getByRole(`link`, {
         name: `Другие страницы`,
       })
@@ -73,11 +78,6 @@ test.describe(`Dynamic addition of new pages`, () => {
 
       await page.getByRole(`button`, {
         name: `Блок с билетами`,
-        exact: true,
-      })
-        .click();
-
-      await page.getByText(`Блок с билетами`, {
         exact: true,
       })
         .click();
