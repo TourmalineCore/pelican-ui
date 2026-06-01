@@ -41,6 +41,19 @@ test.describe(`Addition of a news article page`, () => {
   }) => {
     await page.goto(process.env.CMS_URL as string);
 
+    // This is necessary to hide the guide tour banner, which blocks all clicks in the test.
+    await page.evaluate(() => {
+      localStorage.setItem(`STRAPI_GUIDED_TOUR`, JSON.stringify({
+        completedActions: [],
+        tours: {
+          contentManager: {
+            currentStep: 0,
+            isCompleted: true,
+          },
+        },
+      }));
+    });
+
     await authorizationInStrapi({
       page,
     });
@@ -94,11 +107,6 @@ async function createAndPublishNews({
   page: Page;
 }) {
   await page.getByText(`Content Manager`)
-    .click();
-
-  await page.getByRole(`button`, {
-    name: `Skip`,
-  })
     .click();
 
   await page.getByRole(`link`, {
