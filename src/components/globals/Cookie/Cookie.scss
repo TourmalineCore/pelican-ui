@@ -24,7 +24,7 @@
   }
 
   &__text {
-    @include caption-2-medium;
+    @include medium-font;
 
     margin-bottom: 16px;
     font-size: 14px;
@@ -38,6 +38,7 @@
 
     @include tablet-xl {
       font-size: 18px;
+      line-height: 1.4;
     }
 
     @include desktop {

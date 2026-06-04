@@ -285,10 +285,9 @@
   }
 
   &__copyright {
-    @include caption-2-medium;
+    @include medium-font;
 
     position: relative;
-    font-weight: 500;
     font-size: 14px;
     line-height: 1.46;
 
@@ -296,9 +295,13 @@
       margin-top: 0;
     }
 
+    @include tablet-xl {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
     @include desktop-xl {
       font-size: 24px;
-      line-height: 1.4;
     }
 
     &--mobile {
