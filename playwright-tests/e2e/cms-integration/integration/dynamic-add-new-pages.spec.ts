@@ -39,6 +39,19 @@ test.describe(`Dynamic addition of new pages`, () => {
   }) => {
     await page.goto(process.env.CMS_URL as string);
 
+    // This is necessary to hide the guide tour banner, which blocks all clicks in the test.
+    await page.evaluate(() => {
+      localStorage.setItem(`STRAPI_GUIDED_TOUR`, JSON.stringify({
+        completedActions: [],
+        tours: {
+          contentManager: {
+            currentStep: 0,
+            isCompleted: true,
+          },
+        },
+      }));
+    });
+
     await test.step(`Authorize in CMS`, authorizeInCms);
 
     await test.step(`Setup CMS content`, setupCmsContent);
@@ -73,11 +86,6 @@ test.describe(`Dynamic addition of new pages`, () => {
 
       await page.getByRole(`button`, {
         name: `Блок с билетами`,
-        exact: true,
-      })
-        .click();
-
-      await page.getByText(`Блок с билетами`, {
         exact: true,
       })
         .click();
