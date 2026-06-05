@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  devIndicators: {
-    buildActivity: false,
-  },
+  devIndicators: false,
 
   // https://nextjs.org/docs/pages/api-reference/config/next-config-js/headers
   async headers() {
