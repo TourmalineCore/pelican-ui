@@ -196,6 +196,11 @@
 
     a {
       @include tablet-xl {
+        width: 52px;
+        height: 52px;
+      }
+
+      @include desktop {
         width: 64px;
         height: 64px;
       }
@@ -206,11 +211,11 @@
       }
     }
 
-    @include tablet {
+    @include tablet-xl {
       gap: 12px;
     }
 
-    @include tablet-xl {
+    @include desktop {
       gap: 16px;
     }
   }

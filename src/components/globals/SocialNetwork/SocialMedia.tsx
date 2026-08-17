@@ -4,6 +4,7 @@ import { IconVk } from "./components/IconVk/IconVk";
 import { IconTg } from "./components/IconTg/IconTg";
 import { IconOk } from "./components/IconOk/IconOk";
 import { IconDzen } from "./components/IconDzen/IconDzen";
+import { IconMax } from "./components/IconMax/IconMax";
 
 // TODO: get link from api
 const ICONS = [
@@ -31,6 +32,12 @@ const ICONS = [
     link: `https://dzen.ru/chelzoo`,
     name: `dzen`,
   },
+  {
+    id: 5,
+    icon: IconMax,
+    link: `https://max.ru/chelzoopark`,
+    name: `max`,
+  },
 ];
 
 export function SocialMedia({
@@ -47,7 +54,7 @@ export function SocialMedia({
         name,
       }) => (
         <Link
-          className={`${className} social-link`}
+          className={`${className} social-link social-link--${name}`}
           href={link}
           key={id}
           aria-label={`Ссылка на ${name}`}
