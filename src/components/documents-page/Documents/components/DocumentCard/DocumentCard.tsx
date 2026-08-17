@@ -3,6 +3,7 @@ import iconChevronBlack from "@/public/images/svg/icon-chevron-black.svg";
 import { MarkdownText } from "@/src/components/globals/MarkdownText/MarkdownText";
 import dayjs from "dayjs";
 import { DocumentsProps } from "@/src/common/types";
+import { IconOpenDocument } from "./components/IconOpenDocument/IconOpenDocument";
 import { DocumentFile } from "./components/DocumentFile/DocumentFile";
 
 export function DocumentCard({
@@ -16,38 +17,15 @@ export function DocumentCard({
 }: Omit<DocumentsProps, 'id' | 'category'> & {
   className: string;
 }) {
-  const isFilesEmpty = files.length === 0;
   const isSingleDocument = files.length === 1;
-  const hasMultipleFiles = !isSingleDocument && !isFilesEmpty;
+  const hasMultipleFiles = files.length > 1;
 
   return (
     <li
       className={`${className} document-card`}
       data-testid="document-card"
     >
-      <div className="document-card__header">
-        <div className="document-card__info">
-          {showDate && (
-            <span className="document-card__date">
-              {
-                dayjs(date)
-                  .format(`DD.MM.YYYY`)
-              }
-            </span>
-          )}
-          <h2 className="document-card__title">{title}</h2>
-        </div>
-        {!isFilesEmpty && isSingleDocument && (
-          <DocumentFile
-            className="document-card__document-file"
-            numberOfFiles={files.length}
-            buttonTheme="primary"
-            name={files[0].name}
-            url={files[0].url}
-            extension={files[0].ext}
-          />
-        )}
-      </div>
+      {renderDocumentCardHeader()}
       {(subtitle || hasMultipleFiles) && (
         <Accordion
           triggerText="Подробнее"
@@ -74,12 +52,9 @@ export function DocumentCard({
                     key={file.id}
                   >
                     <DocumentFile
-                      className="document-card__document-file"
-                      numberOfFiles={files.length}
-                      buttonTheme="secondary"
-                      name={file.name}
+                      className="document-card__file"
+                      name={file.name.replace(`${file.ext}`, ``)}
                       url={file.url}
-                      extension={file.ext}
                     />
                   </li>
                 ))
@@ -91,4 +66,47 @@ export function DocumentCard({
       )}
     </li>
   );
+
+  function renderDocumentCardHeader() {
+    const documentHeaderInfo = (
+      <div className="document-card__info">
+        {showDate && (
+          <span className="document-card__date">
+            {
+              dayjs(date)
+                .format(`DD.MM.YYYY`)
+            }
+          </span>
+        )}
+        <h2 className="document-card__title">{title}</h2>
+      </div>
+    );
+
+    if (isSingleDocument) {
+      const firstFile = files[0];
+      const replaceDocumentName = firstFile.name.replace(`${firstFile.ext}`, ``);
+
+      return (
+        <a
+          className="document-card__header-link"
+          href={firstFile.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Открыть файл с документом ${replaceDocumentName} в новой вкладке`}
+        >
+          {documentHeaderInfo}
+          <IconOpenDocument
+            className="document-card__icon-open-document"
+            theme="primary"
+          />
+        </a>
+      );
+    }
+
+    return (
+      <div className="document-card__header">
+        {documentHeaderInfo}
+      </div>
+    );
+  }
 }

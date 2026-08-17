@@ -1,0 +1,38 @@
+.icon-open-document {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  width: 32px;
+  height: 32px;
+
+  svg {
+    @include tablet-xl {
+      width: 17px;
+      height: 17px;
+    }
+
+    @include desktop-xl {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  @include tablet-xl {
+    width: 40px;
+    height: 40px;
+  }
+
+  @include desktop-xl {
+    width: 64px;
+    height: 64px;
+  }
+
+  &--primary {
+    background-color: $color-green-5;
+  }
+
+  &--secondary {
+    background-color: $color-white;
+  }
+}
