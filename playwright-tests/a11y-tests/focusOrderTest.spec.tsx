@@ -7,6 +7,14 @@ import {
   test,
 } from '../custom-test';
 
+const socialMedia = [
+  `social-icon-vkontakte`,
+  `social-icon-telegram`,
+  `social-icon-odnoklassniki`,
+  `social-icon-dzen`,
+  `social-icon-max`,
+]
+
 const expectedMobileHeaderFocusOrder = [
   `skip-link`,
   `header-logo`,
@@ -33,10 +41,7 @@ const expectedMobileFooterFocusOrder = [
   }),
   `footer-tel-link`,
   `footer-email-link`,
-  `social-icon-vkontakte`,
-  `social-icon-telegram`,
-  `social-icon-odnoklassniki`,
-  `social-icon-dzen`,
+  ...socialMedia,
   `footer-copyright-link`,
   `footer-icon-github`,
   ...generateTestIdDuplicates({
@@ -55,10 +60,7 @@ const expectedDesktopFooterFocusOrder = [
   `footer-email-link`,
   `footer-copyright-link`,
   `footer-icon-github`,
-  `social-icon-vkontakte`,
-  `social-icon-telegram`,
-  `social-icon-odnoklassniki`,
-  `social-icon-dzen`,
+  ...socialMedia,
   ...generateTestIdDuplicates({
     count: 3,
     string: `footer-official-link`,
@@ -169,10 +171,7 @@ async function homePageMobileTest({
     }),
     `footer-tel-link`,
     `footer-email-link`,
-    `social-icon-vkontakte`,
-    `social-icon-telegram`,
-    `social-icon-odnoklassniki`,
-    `social-icon-dzen`,
+    ...socialMedia,
     `footer-copyright-link`,
     `footer-icon-github`,
     `gos-banner-button`,
@@ -220,10 +219,7 @@ async function homePageDesktopTest({
     `footer-email-link`,
     `footer-copyright-link`,
     `footer-icon-github`,
-    `social-icon-vkontakte`,
-    `social-icon-telegram`,
-    `social-icon-odnoklassniki`,
-    `social-icon-dzen`,
+    ...socialMedia,
     `gos-banner-button`,
     `bus-gos-banner-link`,
     ...generateTestIdDuplicates({
@@ -260,10 +256,7 @@ async function mobileMenuOpenTest({
     }),
     `header-popup-phone`,
     `header-popup-email`,
-    `social-icon-vkontakte`,
-    `social-icon-telegram`,
-    `social-icon-odnoklassniki`,
-    `social-icon-dzen`,
+    ...socialMedia
   ];
 
   await checkNavigationUsingTab({
