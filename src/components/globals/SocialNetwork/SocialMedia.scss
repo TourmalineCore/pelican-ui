@@ -13,7 +13,7 @@
   }
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     #{$this}__icon {
       path {
         fill: $color-white;
@@ -29,5 +29,9 @@
         }
       }
     }
+  }
+
+  &--max {
+    grid-column: 2;
   }
 }
