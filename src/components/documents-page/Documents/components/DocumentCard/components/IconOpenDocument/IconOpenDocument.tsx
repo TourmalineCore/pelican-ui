@@ -1,20 +1,22 @@
 export function IconOpenDocument({
   className,
+  theme,
 }: {
   className: string;
+  theme: "primary" | "secondary";
 }) {
   return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden="true"
-    >
-      <path
-        d="M3 1C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1
+    <span className={`icon-open-document icon-open-document--${theme} ${className}`}>
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 14 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          d="M3 1C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1
         3V11C1 11.5304 1.21071 12.0391 1.58579 12.4142C1.96086 12.7893 2.46957 13 3
         13H11C11.5304 13 12.0391 12.7893 12.4142 12.4142C12.7893 12.0391 13 11.5304 13
         11V8.5C13 8.36739 13.0527 8.24021 13.1464 8.14645C13.2402 8.05268 13.3674 8 13.5
@@ -31,9 +33,10 @@ export function IconOpenDocument({
         6.00063 8.23989 5.94789 8.146 5.854C8.05211 5.76011 7.99937 5.63278 7.99937 5.5C7.99937 5.36722
         8.05211 5.23989 8.146 5.146L12.293 1H8.5C8.36739 1 8.24021 0.947321 8.14645 0.853553C8.05268
         0.759785 8 0.632608 8 0.5Z"
-        fill="black"
-        fillOpacity="0.75"
-      />
-    </svg>
+          fill="black"
+          fillOpacity="0.75"
+        />
+      </svg>
+    </span>
   );
 }
