@@ -125,7 +125,7 @@ async function expectSecurityHeaders({
     .toBe(`no-referrer`);
 
   expect(headers[`permissions-policy`])
-    .toBe(`interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()`);
+    .toBe(`interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(self "https://vk.ru" "https://vkvideo.ru"), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()`);
 
   // 3. Expect CSP headers if exist
   if (headers[`content-security-policy`]) {
