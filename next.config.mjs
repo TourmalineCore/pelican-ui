@@ -70,7 +70,7 @@ const nextConfig = {
           // Block access to browser features and APIs
           {
             key: 'Permissions-Policy',
-            value: "interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()",
+            value: "interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(self \"https://vk.ru\" \"https://vkvideo.ru\"), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()",
           }
         ]
       }
