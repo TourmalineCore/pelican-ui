@@ -125,13 +125,13 @@ async function expectSecurityHeaders({
     .toBe(`no-referrer`);
 
   expect(headers[`permissions-policy`])
-    .toBe(`interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()`);
+    .toBe(`interest-cohort=(), camera=(), microphone=(), geolocation=(), fullscreen=(self "https://vk.ru" "https://vkvideo.ru"), payment=(), usb=(), accelerometer=(), display-capture=(), gyroscope=(), magnetometer=(), midi=(), picture-in-picture=(self), xr-spatial-tracking=()`);
 
   // 3. Expect CSP headers if exist
   if (headers[`content-security-policy`]) {
     const nonce = await page.evaluate(() => (window as any).__NONCE__);
 
     expect(headers[`content-security-policy`])
-      .toBe(`default-src 'none'; script-src 'self' 'strict-dynamic' 'nonce-${nonce}' https://mc.yandex.ru https://pos.gosuslugi.ru; style-src 'self' 'unsafe-inline' https://cdn.chelzoo.tech; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
+      .toBe(`default-src 'none'; script-src 'self' 'strict-dynamic' 'nonce-${nonce}' https://mc.yandex.ru https://pos.gosuslugi.ru; https://vkvideo.ru; https://vk.ru;  style-src 'self' 'unsafe-inline' https://cdn.chelzoo.tech; img-src 'self' https://pos.gosuslugi.ru https://cdn.chelzoo.tech; font-src 'self' https://cdn.chelzoo.tech; media-src 'self' https://storage.yandexcloud.net; frame-src https://pos.gosuslugi.ru; https://vkvideo.ru; https://vk.ru; connect-src 'self' https://cdn.chelzoo.tech; manifest-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests;`);
   }
 }
