@@ -16,7 +16,7 @@ jobs:
         prefix: "small-env"
         # Build-args used to define variables that will be used in image
         build-args: |
-          CDN_ENABLED=true
+          CDN_ENABLED=false
           CDN_DOMAIN=cdn.small.chelzoo.tech
           CORS_ORIGIN=https://small.chelzoo.tech
     # without this it cannot login to the registry
