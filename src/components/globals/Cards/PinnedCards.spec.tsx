@@ -18,7 +18,7 @@ test.describe(`PinnedCardsComponentTests`, () => {
       testScreenshotAtBreakpoint,
     }) => {
       await testScreenshotAtBreakpoint({
-        testId: 'cards',
+        testId: `cards`,
         breakpoint,
         breakpointName,
       });
