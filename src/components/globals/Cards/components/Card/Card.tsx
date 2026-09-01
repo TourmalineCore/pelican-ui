@@ -3,6 +3,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { Ref } from "react";
+import iconPinSrc from "@/public/images/svg/icon-pin.svg";
 
 export function Card({
   className,
@@ -11,6 +12,7 @@ export function Card({
   link,
   title,
   description,
+  isPinned,
   dataTestId,
   firstCardRef,
   isNews,
@@ -40,6 +42,7 @@ export function Card({
             image,
             labels,
             isLink: true,
+            isPinned,
             isNews,
           })}
         </Link>
@@ -49,6 +52,7 @@ export function Card({
         image,
         labels,
         isNews,
+        isPinned,
       })}
     </li>
   );
@@ -59,6 +63,7 @@ function renderCardMarkup({
   description,
   image,
   isLink,
+  isPinned,
   labels,
   isNews,
 }: {
@@ -66,14 +71,28 @@ function renderCardMarkup({
   description: CardProps['description'];
   image: CardProps['image'];
   isLink?: boolean;
+  isPinned?: boolean;
   labels: CardProps['labels'];
   isNews?: boolean;
 }) {
+  const hasImage = image.url !== ``;
+
   return (
     <div className={clsx(`card__wrapper`, {
+      'card__wrapper--pinned': isPinned,
       'card__wrapper--link': isLink,
     })}
     >
+      {isPinned && (
+        <span className="card__pinned-icon-wrapper">
+          <Image
+            className="card__pinned-icon"
+            src={iconPinSrc}
+            unoptimized
+            alt=""
+          />
+        </span>
+      )}
       <div className="card__info">
         {
           isNews
@@ -94,7 +113,10 @@ function renderCardMarkup({
           </p>
         )}
       </div>
-      <div className="card__image-wrapper">
+      <div className={clsx(`card__image-wrapper`, {
+        'card__image-wrapper--no-image': !hasImage,
+      })}
+      >
         {labels && (
           <ul className="card__labels">
             {labels.map(({
@@ -110,12 +132,14 @@ function renderCardMarkup({
             ))}
           </ul>
         )}
-        <Image
-          src={image.url}
-          fill
-          sizes="(max-width: 768px) 98vw, (max-width: 1366px) 48vw, 30vw"
-          alt={image.alternativeText}
-        />
+        {hasImage && (
+          <Image
+            src={image.url}
+            fill
+            sizes="(max-width: 768px) 98vw, (max-width: 1366px) 48vw, 30vw"
+            alt={image.alternativeText}
+          />
+        )}
       </div>
     </div>
   );

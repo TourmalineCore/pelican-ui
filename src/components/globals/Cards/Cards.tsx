@@ -43,6 +43,7 @@ export function Cards({
               image={card.image}
               title={card.title}
               description={card.description}
+              isPinned={card.isPinned}
               labels={card.labels}
               link={card.link}
               firstCardRef={currentPageSize === index ? firstCardRef : null}

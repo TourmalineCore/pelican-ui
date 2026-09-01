@@ -1,5 +1,12 @@
 import { apiFetch } from '@/src/common/utils/HttpClient';
-import { jest } from '@jest/globals';
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  jest,
+  test,
+} from '@jest/globals';
 import { getAvailableYearsForCategory } from './documents-api';
 
 jest.mock(`@/src/common/utils/HttpClient`);

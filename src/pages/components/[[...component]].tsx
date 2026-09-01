@@ -129,6 +129,26 @@ export default function ComponentsPage() {
     );
   }
 
+  if (componentName === ComponentName.PINNED_CARDS) {
+    return (
+      <Cards
+        title="Наши услуги"
+        cards={[
+          {
+            id: 1,
+            image: {
+              url: ``,
+              alternativeText: ``,
+            },
+            title: `Закрепленная новость`,
+            description: `Это новость закреплена`,
+            isPinned: true,
+          },
+        ]}
+      />
+    );
+  }
+
   if (componentName === ComponentName.CATEGORIES) {
     return (
       <Categories
@@ -359,6 +379,9 @@ export default function ComponentsPage() {
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.CARDS}>Cards</Link>
+        </li>
+        <li className="components-page__item">
+          <Link href={ComponentName.PINNED_CARDS}>Pinned card</Link>
         </li>
         <li className="components-page__item">
           <Link href={ComponentName.CATEGORIES}>Categories</Link>
