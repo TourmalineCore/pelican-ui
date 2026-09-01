@@ -29,7 +29,7 @@ describe(`getNews`, () => {
   test(`
     GIVEN isPreview = false and page = 1
     WHEN getNews is called
-    THEN query string should contain all required fields including isPinned
+    THEN query string should contain all required fields
   `, async () => {
     await getNews({
       isPreview: false,
