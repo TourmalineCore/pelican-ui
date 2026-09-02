@@ -34,14 +34,14 @@ function mapDocuments({
 }) {
   return documents
     .map((document) => ({
-      id: document.id!,
+      id: Number(document.id!),
       date: document!.date!,
       showDate: document!.showDate!,
       title: document!.title!,
       subtitle: document!.subtitle,
       description: document!.description,
       files: document.files ? document.files.map((file) => ({
-        id: file.id!,
+        id: Number(file.id!),
         name: file.name!,
         url: file.url!,
         ext: file.ext!,

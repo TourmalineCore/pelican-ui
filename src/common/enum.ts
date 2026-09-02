@@ -56,6 +56,7 @@ export enum ComponentName {
   DOCUMENTS_LIST = `documents-list`,
   ARTICLE = `article`,
   CARDS = `cards`,
+  PINNED_CARDS = `pinned-cards`,
   CATEGORIES = `categories`,
   COOKIE = `cookie`,
   CUSTOM_ERROR = `custom-error`,

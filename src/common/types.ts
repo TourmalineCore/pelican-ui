@@ -263,6 +263,7 @@ export type CardProps = {
     id: number;
     text: string;
   }[];
+  isPinned?: boolean;
 };
 
 export type ImageWithButtonGridComponentProps = {

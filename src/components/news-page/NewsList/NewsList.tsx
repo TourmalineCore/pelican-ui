@@ -7,10 +7,9 @@ import {
 } from "react";
 import { NewsArticleProps } from "@/src/common/types";
 import { AppRoute, ComponentName } from "@/src/common/enum";
+import { NEWS_LIMIT } from "@/src/common/constants";
 import { Cards } from "../../globals/Cards/Cards";
 import { Button } from "../../globals/Button/Button";
-
-export const NEWS_LIMIT = 6;
 
 export function NewsList({
   newsTitle,

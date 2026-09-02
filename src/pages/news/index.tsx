@@ -1,13 +1,13 @@
-import qs from 'qs';
-import { NEWS_LIMIT, NewsList } from '@/src/components/news-page/NewsList/NewsList';
+import { NewsList } from '@/src/components/news-page/NewsList/NewsList';
 import { apiFetch } from '@/src/common/utils/HttpClient';
-import { NewsCollectionListResponse, NewsPageResponse } from '@/src/common/api-types';
+import { NewsPageResponse } from '@/src/common/api-types';
 import { NewsPageProps, NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
-import defaultBackground from '@/public/images/news/default-background.png';
 import { MOCK_NEWS } from '@/src/common/mocks/collections-mock/news-collection-mock';
 import { MOCK_NEWS_PAGE } from '@/src/common/mocks/news-page-mock/news-page-mock';
 import { useScrollTop } from '@/src/common/hooks/useScrollTop';
+import { getNews } from '@/src/services/cms/api/news-api/get-news-api';
+import { NEWS_LIMIT } from '@/src/common/constants';
 
 export default function NewsPage({
   pageData,
@@ -65,13 +65,14 @@ export async function getServerSideProps({
   const [
     newsPageData,
     {
-      news, pageCount,
+      news,
+      pageCount,
     },
   ] = await Promise.all([
     getNewsPageData({
       isPreview: preview,
     }),
-    getNewsData({
+    getNews({
       isPreview: preview,
       page: currentPage,
     }),
@@ -108,49 +109,5 @@ async function getNewsPageData({
         metaKeywords: response.data?.seo?.keywords,
       },
     }),
-  };
-}
-
-async function getNewsData({
-  isPreview,
-  page,
-}: {
-  isPreview: boolean;
-  page: number;
-}) {
-  const queryParams = {
-    populate: [`image`],
-    fields: [
-      `title`,
-      `description`,
-      `slug`,
-    ],
-    sort: {
-      date: `desc`,
-      id: `desc`,
-    },
-    pagination: {
-      page,
-      pageSize: NEWS_LIMIT,
-    },
-    status: isPreview ? `draft` : `published`,
-  };
-
-  const response: NewsCollectionListResponse = await apiFetch(`/news?${qs.stringify(queryParams)}`, {
-    isPreview,
-  });
-
-  return {
-    news: response.data!.map((newsItem) => ({
-      id: newsItem.id!,
-      slug: newsItem.slug!,
-      image: {
-        url: newsItem.image?.url || defaultBackground,
-        alternativeText: newsItem.image?.alternativeText || ``,
-      },
-      title: newsItem.title,
-      description: newsItem.description,
-    })),
-    pageCount: response.meta!.pagination!.pageCount!,
   };
 }
