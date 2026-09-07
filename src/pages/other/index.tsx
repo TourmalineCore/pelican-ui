@@ -1,5 +1,4 @@
 import { OtherPageListResponse, OtherResponse } from "@/src/common/api-types";
-import { useScrollTop } from "@/src/common/hooks/useScrollTop";
 import { CategoryProps, OtherPageProps } from "@/src/common/types";
 import { apiFetch } from "@/src/common/utils/HttpClient";
 import { Categories } from "@/src/components/globals/Categories/Categories";
@@ -17,8 +16,6 @@ export default function OtherPage({
     seo,
     title,
   } = pageData;
-
-  useScrollTop();
 
   return (
     <>

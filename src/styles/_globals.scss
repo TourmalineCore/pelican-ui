@@ -1,6 +1,5 @@
 html,
 body {
-  overflow-x: hidden;
   margin: 0;
   height: 100%;
   box-sizing: border-box;
@@ -11,6 +10,10 @@ body {
     overflow: hidden;
     scrollbar-gutter: stable;
   }
+}
+
+html {
+  overflow-x: hidden;
 }
 
 .main {
