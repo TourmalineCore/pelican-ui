@@ -62,6 +62,9 @@ async function documentsClickedTestAtBreakpoint({
     page,
   });
 
+  // we remove the cursor so that there is no underlining under the links and it does not interfere with the screenshots
+  await page.mouse.move(0, 0);
+
   await testScreenshotAtBreakpoint({
     testId: TEST_ID,
     breakpoint,
