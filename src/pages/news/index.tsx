@@ -5,7 +5,6 @@ import { NewsPageProps, NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
 import { MOCK_NEWS } from '@/src/common/mocks/collections-mock/news-collection-mock';
 import { MOCK_NEWS_PAGE } from '@/src/common/mocks/news-page-mock/news-page-mock';
-import { useScrollTop } from '@/src/common/hooks/useScrollTop';
 import { getNews } from '@/src/services/cms/api/news-api/get-news-api';
 import { NEWS_LIMIT } from '@/src/common/constants';
 
@@ -22,8 +21,6 @@ export default function NewsPage({
     seo,
     newsTitle,
   } = pageData;
-
-  useScrollTop();
 
   return (
     <>

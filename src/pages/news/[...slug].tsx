@@ -6,8 +6,6 @@ import { NewsCollection, NewsCollectionListResponse } from '@/src/common/api-typ
 import { NewsSlider } from '@/src/components/news-page/NewsArticle/components/NewsSlider/NewsSlider';
 import { NewsArticleProps } from '@/src/common/types';
 import { SeoHead } from '@/src/components/globals/SeoHead/SeoHead';
-import { useScrollTop } from '@/src/common/hooks/useScrollTop';
-import { useRouter } from 'next/router';
 
 const NEWS_SLIDER_LIMIT = 6;
 
@@ -21,14 +19,6 @@ export default function News({
   selectedNews: SelectedNewsProps;
   otherNews: OtherNewsProps;
 }) {
-  const {
-    asPath,
-  } = useRouter();
-
-  useScrollTop({
-    dependencies: [asPath],
-  });
-
   return (
     <>
       <SeoHead
